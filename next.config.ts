@@ -1,7 +1,31 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      // Kilimanjaro-specific old booking pages (exact match rules first)
+      {
+        source:
+          "/booking/:slug(.*kilimanjaro.*|.*machame.*|.*lemosho.*|.*marangu.*|.*rongai.*|.*northern-circuit.*)",
+        destination: "/kilimanjaro",
+        permanent: true,
+      },
+      // All other old booking/tour pages → safaris listing
+      {
+        source: "/booking/:slug*",
+        destination: "/safaris",
+        permanent: true,
+      },
+      // Old category/taxonomy pages
+      { source: "/kilimanjaro-mountain", destination: "/kilimanjaro", permanent: true },
+      { source: "/tanzania-safaris", destination: "/safaris", permanent: true },
+      { source: "/mount-meru-trekking", destination: "/trekking/mount-meru", permanent: true },
+      { source: "/destinations", destination: "/safaris", permanent: true },
+      { source: "/ba_type/:slug*", destination: "/safaris", permanent: true },
+      { source: "/accommodation", destination: "/safaris", permanent: true },
+      { source: "/zanzibar", destination: "/safaris/10-day-safari-zanzibar", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

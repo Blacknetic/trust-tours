@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
+/* ─── Brand tokens ─────────────────────────────────────────────────
+   NEVER hardcode hex values in components — always use these vars.
+   Swap tokens here when the logo/brand evolves; nothing else changes.
+──────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #1c2419;
+  --paper: #fbf8f1;
+  --forest: #2e4b3c;
+  --gold: #c99b3f;
+  --sunset: #d96e30;
+  --snow: #eef2f4;
+  --wa-green: #25d366;
 }
 
+/* Expose brand tokens as Tailwind utilities (bg-forest, text-gold, etc.) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-forest: var(--forest);
+  --color-gold: var(--gold);
+  --color-sunset: var(--sunset);
+  --color-snow: var(--snow);
+  --color-wa-green: var(--wa-green);
+
+  /* next/font injects these CSS vars via className on <html> */
+  --font-display: var(--font-bricolage);
+  --font-body: var(--font-albert);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ─── Base styles ──────────────────────────────────────────────── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  max-width: 65ch;
+}
+
+/* Visible keyboard focus — gold ring on all interactive elements */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Reduced motion ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
