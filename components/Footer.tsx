@@ -10,7 +10,7 @@ const KILI_LINKS = [
 const SAFARI_LINKS = [
   { href: "/safaris/7-day-great-migration-safari", label: "7-Day Migration Safari" },
   { href: "/safaris/10-day-safari-zanzibar", label: "10-Day Safari + Zanzibar" },
-  { href: "/trekking/mount-meru", label: "4-Day Mount Meru" },
+  { href: "/trekking/4-day-mount-meru-trek", label: "4-Day Mount Meru" },
 ];
 
 const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
@@ -31,7 +31,8 @@ export default function Footer() {
             Trust Tours &amp; Safaris
           </p>
           <p className="text-sm leading-relaxed mb-4">
-            Moshi-based operator leading climbs on Kilimanjaro and safaris across northern Tanzania since 2015.
+            Moshi-based operator leading climbs on Kilimanjaro and safaris
+            across northern Tanzania. Plan directly with Ombeni on WhatsApp.
           </p>
           {/* TODO: confirm TALA license number with Ombeni */}
           <p className="text-xs" style={{ color: "rgba(251,248,241,0.4)" }}>

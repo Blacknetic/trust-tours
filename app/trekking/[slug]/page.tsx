@@ -8,7 +8,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return byCategory("kilimanjaro").map((p) => ({ slug: p.slug }));
+  return byCategory("trekking").map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -16,17 +16,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pkg = getPackage(slug);
   if (!pkg) return {};
 
-  const title = `${pkg.shortName} – Kilimanjaro Climb`;
+  const title = `${pkg.shortName} – Tanzania Trek`;
   const description = pkg.summary.slice(0, 155);
 
   return { title, description, openGraph: { title, description, type: "website" } };
 }
 
-export default async function KiliPage({ params }: Props) {
+export default async function TrekkingPage({ params }: Props) {
   const { slug } = await params;
   const pkg = getPackage(slug);
 
-  if (!pkg || pkg.category !== "kilimanjaro") notFound();
+  if (!pkg || pkg.category !== "trekking") notFound();
 
   return <PackagePageView pkg={pkg} />;
 }

@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const NAV = [
   { href: "/kilimanjaro", label: "Kilimanjaro" },
   { href: "/safaris", label: "Safaris" },
-  { href: "/trekking/mount-meru", label: "Mount Meru" },
+  { href: "/trekking/4-day-mount-meru-trek", label: "Mount Meru" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

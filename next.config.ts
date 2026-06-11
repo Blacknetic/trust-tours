@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
       // Old category/taxonomy pages
       { source: "/kilimanjaro-mountain", destination: "/kilimanjaro", permanent: true },
       { source: "/tanzania-safaris", destination: "/safaris", permanent: true },
-      { source: "/mount-meru-trekking", destination: "/trekking/mount-meru", permanent: true },
+      { source: "/mount-meru-trekking", destination: "/trekking/4-day-mount-meru-trek", permanent: true },
       { source: "/destinations", destination: "/safaris", permanent: true },
       { source: "/ba_type/:slug*", destination: "/safaris", permanent: true },
       { source: "/accommodation", destination: "/safaris", permanent: true },

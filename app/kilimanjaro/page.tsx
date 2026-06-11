@@ -1,0 +1,67 @@
+import type { Metadata } from "next";
+import { byCategory } from "@/data/packages";
+import PackageCard from "@/components/PackageCard";
+import CTABand from "@/components/CTABand";
+
+export const metadata: Metadata = {
+  title: "Kilimanjaro Climbing Routes & Prices",
+  description:
+    "Compare Kilimanjaro routes with Trust Tours: Machame, Lemosho, Marangu and Northern Circuit. From $1,799 per person with licensed guides and full crew.",
+};
+
+export default function KilimanjaroListingPage() {
+  const climbs = byCategory("kilimanjaro");
+
+  return (
+    <>
+      {/* ── Page header ───────────────────────────────────────── */}
+      <section className="py-16 md:py-20" style={{ background: "var(--forest)" }}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <p
+            className="text-sm font-semibold tracking-widest uppercase mb-3"
+            style={{ color: "var(--gold)" }}
+          >
+            Mount Kilimanjaro · 5,895 m
+          </p>
+          <h1
+            className="text-4xl md:text-6xl font-extrabold mb-5"
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--paper)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Climb Kilimanjaro
+          </h1>
+          <p
+            className="text-base leading-relaxed"
+            style={{ color: "rgba(251,248,241,0.7)", maxWidth: "60ch" }}
+          >
+            Four routes to the roof of Africa, each with licensed guides, a full
+            porter and cook crew, and twice-daily health checks. Longer routes
+            mean better acclimatization and higher summit success — we&apos;ll help
+            you pick the right one for your fitness and budget.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Route cards ───────────────────────────────────────── */}
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {climbs.map((pkg) => (
+            <PackageCard key={pkg.slug} pkg={pkg} />
+          ))}
+        </div>
+      </section>
+
+      <CTABand
+        eyebrow="Not sure which route?"
+        title="Ask Ombeni which route fits you"
+        subtitle="Tell us your dates, group size and hiking experience — we'll recommend a route and send a day-by-day plan."
+        ctaLabel="Get route advice on WhatsApp"
+        waMessage="Hi Ombeni! I want to climb Kilimanjaro but I'm not sure which route to pick. Can you help?"
+      />
+    </>
+  );
+}

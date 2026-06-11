@@ -59,6 +59,27 @@ p {
   border-radius: 2px;
 }
 
+/* ─── Hero animations (DESIGN.md: Ken Burns + gradient shift, pure CSS) ── */
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-ken-burns {
+  animation: ken-burns 12s ease-out forwards;
+  will-change: transform;
+}
+
+.hero-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
 /* ─── Reduced motion ───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,

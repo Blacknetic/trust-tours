@@ -41,31 +41,32 @@ Goal: deployable shell with correct visual identity and routing.
 Goal: the `/kilimanjaro/[slug]` package page — the highest-value page on the site.
 
 ### 2.1 Package Page Template
-- [ ] `app/kilimanjaro/[slug]/page.tsx` — SSG with `generateStaticParams()` from `packages.ts`
-- [ ] `generateMetadata()` — title ≤60 chars, description ≤155 chars, OpenGraph
-- [ ] Hero section — `next/image priority`, headline, price block ("From $X per person"), priceNote
-- [ ] Highlights section — icon list, 4–6 bullets from `package.highlights`
-- [ ] Itinerary timeline — `components/ItineraryTimeline.tsx`, reads `package.itinerary[]`
+- [x] `app/kilimanjaro/[slug]/page.tsx` — SSG with `generateStaticParams()` from `packages.ts` (build verified: 4 routes prerendered)
+- [x] `generateMetadata()` — title ≤60 chars, description ≤155 chars, OpenGraph
+- [x] Hero section — headline, breadcrumb, price block ("From $X per person"), priceNote (gradient placeholder; swap to `next/image priority` when hero photos arrive)
+- [x] Highlights section — check list from `package.highlights`
+- [x] Itinerary timeline — folded into `ElevationJourney.tsx` (day list + elevation panel in one component, no separate ItineraryTimeline)
 
 ### 2.2 Signature Animation
-- [ ] `components/ElevationJourney.tsx` — SVG elevation profile, scroll-driven marker from gate to Uhuru Peak, current day camp + altitude label
-- [ ] Safari packages reuse as flat route timeline with moving marker
-- [ ] Respects `prefers-reduced-motion`
+- [x] `components/ElevationJourney.tsx` — SVG elevation profile, scroll-driven line draw + marker from gate to Uhuru Peak, current day camp + altitude readout
+- [ ] Safari packages reuse as flat route timeline with moving marker — do in Phase 4 with `/safaris/[slug]`
+- [x] Respects `prefers-reduced-motion` (`useReducedMotion` — line fully drawn, marker jumps without spring)
 
 ### 2.3 Supporting Sections
-- [ ] Included/Excluded lists (`package.included`, `package.excluded`)
-- [ ] `components/FAQAccordion.tsx` — accordion from `package.faqs[]`, h3 questions
-- [ ] Review snippets (`package.reviewSnippets[]`)
-- [ ] Sticky bottom CTA bar (mobile only) — price + "Plan on WhatsApp" button
+- [x] Included/Excluded lists (`package.included`, `package.excluded`)
+- [x] `components/FAQAccordion.tsx` — accordion from `package.faqs[]`, h3 questions, aria-expanded
+- [x] Review snippets (`package.reviewSnippets[]`) — 5-star blockquote cards
+- [x] Sticky bottom CTA bar (mobile only) — `components/MobileCTABar.tsx`, price + "Plan on WhatsApp"
 
 ### 2.4 SEO / Schema
-- [ ] `components/TripJsonLd.tsx` — TouristTrip + Product/Offer + FAQPage + BreadcrumbList, all data from `packages.ts`
-- [ ] Validate with Google Rich Results Test
+- [x] `components/TripJsonLd.tsx` — TouristTrip + Product/Offer + FAQPage + BreadcrumbList from `packages.ts` (Product/Offer skipped when price is 0/ASK_OMBENI)
+- [ ] Validate with Google Rich Results Test — needs public URL, do after first Vercel deploy
 
-### 2.5 QA
-- [ ] Verify layout at 375px width
-- [ ] Run Lighthouse mobile — target Performance ≥90, SEO 100
-- [ ] Keyboard focus states visible on all interactive elements
+### 2.5 QA (automated via `qa-phase2.mjs` — Playwright + system Edge)
+- [x] Verify layout at 375px width — scrollWidth exactly 375, no overflow
+- [x] FAQ accordion opens on tap; JSON-LD parses with all 4 types; exactly one h1
+- [x] Keyboard focus states — gold 2px outline confirmed on Tab
+- [ ] Lighthouse mobile ≥90 perf / 100 SEO — run against production deploy (dev-mode scores are meaningless), do in Phase 5/6
 
 ---
 
@@ -73,24 +74,35 @@ Goal: the `/kilimanjaro/[slug]` package page — the highest-value page on the s
 Goal: client-facing preview — send preview link after this phase.
 
 ### 3.1 Homepage (`app/page.tsx`)
-- [ ] Hero — Ken Burns CSS animation (scale 1→1.06, 12s) + 8s gradient shift overlay
-- [ ] Top 3 packages — cards from `packages.ts` (Machame, Migration Safari, Meru)
-- [ ] Ombeni founder note — photo placeholder + first-person copy
-- [ ] How it works — 3-step section
-- [ ] Review strip — from `reviewSnippets`
-- [ ] CTA band — "Plan your trip on WhatsApp"
+- [x] Hero — Ken Burns CSS animation (scale 1→1.06, 12s) + 8s gradient shift overlay (`.hero-ken-burns` / `.hero-gradient-shift` in globals.css; gradient placeholder until hero photo arrives)
+- [x] Top 3 packages — cards from `packages.ts` (Machame, Migration Safari, Meru)
+- [x] Ombeni founder note — photo placeholder ("O" monogram) + first-person quote
+- [x] How it works — 3-step section
+- [x] Review strip — Robin V quote from `reviewSnippets`
+- [x] CTA band — extracted as reusable `components/CTABand.tsx`
 
 ### 3.2 Listing Pages
-- [ ] `app/kilimanjaro/page.tsx` — all kilimanjaro packages as cards from `packages.ts`
-- [ ] `app/safaris/page.tsx` — all safari packages as cards
-- [ ] `components/PackageCard.tsx` — reusable card component (hero image, title, days, price, CTA)
+- [x] `app/kilimanjaro/page.tsx` — 4 route cards + "which route?" CTA band
+- [x] `app/safaris/page.tsx` — safari + zanzibar cards + custom-safari CTA band
+- [x] `components/PackageCard.tsx` — category gradient placeholder, days badge, price, line-clamped summary, hover shadow
+
+### 3.2b Shared template (pulled forward from Phase 4 to avoid 404s from homepage cards)
+- [x] Extracted `components/PackagePageView.tsx` with category lexicon (Climb/Safari/Trek wording)
+- [x] `app/safaris/[slug]/page.tsx` + `app/trekking/[slug]/page.tsx` — live, SSG verified
+- [x] Fixed Mount Meru links + redirect to real slug `/trekking/4-day-mount-meru-trek`
+- [x] Removed invented "since 2015" claim from Footer (never invent facts)
 
 ### 3.3 Content
-- [ ] Fill 7-Day Machame itinerary in `packages.ts` (already done in brief — confirm accuracy)
-- [ ] Fill 2 more flagship itineraries (pull from old site before it goes offline)
+- [x] 7-Day Machame itinerary in `packages.ts` — full (flag accuracy check for Ombeni)
+- [ ] Fill 2 more flagship itineraries — BLOCKED on old-site facts; never invent. Folded into Phase 4.1.
 
 ### 3.4 Deploy Preview
-- [ ] Deploy Vercel preview link → send to client (Ombeni) for first review
+- [ ] Deploy Vercel preview link → send to client (Ombeni) for first review — needs user to connect GitHub repo to Vercel
+
+### 3.5 QA (automated via `qa-phase3.mjs`)
+- [x] All 7 package URLs return 200 with correct h1
+- [x] No horizontal overflow at 375px on /, /kilimanjaro, /safaris, Meru page
+- [x] Production build green — 13 pages prerendered
 
 ---
 
@@ -182,5 +194,5 @@ Goal: all packages have real itineraries; supporting pages live.
 
 ---
 
-## Current Phase: 2 — Conversion Unit
-**Next action:** Build `/kilimanjaro/[slug]` package page template (Phase 2.1).
+## Current Phase: 3 complete (except deploy) → 4 — Content Rollout
+**Next action:** Either (a) deploy preview to Vercel — needs GitHub push + Vercel connect, or (b) continue to Phase 4: supporting pages (/about, /contact, /reviews), inquiry form, remaining itineraries (needs old-site facts).
