@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Itinerary source material (client pricing + names — never deploy)
+_source/
+_itinerary-text/

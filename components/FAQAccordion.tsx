@@ -9,7 +9,7 @@ export default function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
   return (
     <dl>
       {faqs.map((faq, i) => (
-        <div key={i} style={{ borderBottom: "1px solid rgba(28,36,25,0.1)" }}>
+        <div key={i} style={{ borderBottom: "1px solid rgba(26, 26, 22,0.1)" }}>
           <dt>
             <button
               onClick={() => setOpen(open === i ? null : i)}

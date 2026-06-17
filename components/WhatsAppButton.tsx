@@ -49,7 +49,7 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       onClick={handleClick}
       aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-transform duration-200 hover:scale-105"
+      className="wa-halo fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-transform duration-200 hover:scale-105"
       style={{ background: "var(--wa-green)" }}
     >
       {/* WhatsApp official logo SVG */}

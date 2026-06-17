@@ -5,6 +5,7 @@ import CTABand from "@/components/CTABand";
 
 export const metadata: Metadata = {
   title: "Tanzania Safari Packages & Prices",
+  alternates: { canonical: "/safaris" },
   description:
     "Private Tanzania safaris with Trust Tours: Serengeti, Ngorongoro Crater, Tarangire and the Great Migration — plus safari & Zanzibar beach combinations.",
 };

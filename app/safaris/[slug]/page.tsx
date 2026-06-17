@@ -20,8 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = `${pkg.shortName} – Tanzania Safari`;
   const description = pkg.summary.slice(0, 155);
+  const canonical = `/safaris/${pkg.slug}`;
 
-  return { title, description, openGraph: { title, description, type: "website" } };
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: { title, description, type: "website", url: canonical },
+  };
 }
 
 export default async function SafariPage({ params }: Props) {

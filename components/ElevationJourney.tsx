@@ -14,9 +14,10 @@ interface Props {
   itinerary: ItineraryDay[];
 }
 
-const W = 400;
-const H = 110;
-const PAD = 14;
+const W = 380;
+const H = 132;
+const PAD_X = 18;
+const PAD_Y = 22;
 
 interface Point {
   x: number;
@@ -36,8 +37,8 @@ function buildPoints(days: ItineraryDay[]): Point[] {
   const range = maxAlt - minAlt || 1;
 
   return withAlt.map((day, i) => ({
-    x: PAD + (i / (withAlt.length - 1)) * (W - PAD * 2),
-    y: H - PAD - ((day.altitudeEnd! - minAlt) / range) * (H - PAD * 2),
+    x: PAD_X + (i / (withAlt.length - 1)) * (W - PAD_X * 2),
+    y: H - PAD_Y - ((day.altitudeEnd! - minAlt) / range) * (H - PAD_Y * 2),
     alt: day.altitudeEnd!,
     label: day.accommodation.split("(")[0].trim(),
     day: day.day,
@@ -70,14 +71,18 @@ export default function ElevationJourney({ itinerary }: Props) {
     points.length >= 2
       ? `${pathD} L ${points[points.length - 1].x.toFixed(1)} ${H} L ${points[0].x.toFixed(1)} ${H} Z`
       : "";
+  const summit = points.length >= 2 ? points.reduce((a, b) => (b.alt > a.alt ? b : a), points[0]) : null;
+  const totalKm = itinerary.reduce((sum, d) => sum + (d.distanceKm ?? 0), 0);
 
   useEffect(() => {
     if (pathRef.current) setTotalLength(pathRef.current.getTotalLength());
   }, [pathD]);
 
+  // Track scroll through the whole itinerary so the marker "rises" up the
+  // mountain as the reader moves down the day list.
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.75", "end 0.25"],
+    offset: ["start 0.7", "end 0.4"],
   });
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
@@ -105,43 +110,49 @@ export default function ElevationJourney({ itinerary }: Props) {
   return (
     <div
       ref={containerRef}
-      className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 lg:gap-12 items-start"
+      className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8 lg:gap-10 items-start"
     >
-      {/* ── Elevation SVG panel ────────────────────────────── */}
-      {points.length >= 2 && (
+      {/* ── Sticky elevation panel (climbs & treks only) ──────────── */}
+      {points.length >= 2 && summit && (
         <div
           className="lg:sticky lg:top-24 rounded-2xl p-5"
-          style={{ background: "var(--snow)" }}
+          style={{ background: "var(--ink)" }}
         >
-          <p
-            className="text-xs font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "var(--forest)", opacity: 0.55 }}
-          >
-            Elevation profile
-          </p>
+          <div className="flex items-baseline justify-between mb-3">
+            <p
+              className="text-xs font-semibold uppercase tracking-widest"
+              style={{ color: "var(--gold)" }}
+            >
+              Route profile
+            </p>
+            <p className="text-xs" style={{ color: "rgba(251,248,241,0.45)" }}>
+              {itinerary.length} days · {totalKm > 0 ? `${totalKm} km` : `${summit.alt.toLocaleString()} m`}
+            </p>
+          </div>
 
           <svg
             viewBox={`0 0 ${W} ${H}`}
             className="w-full h-auto"
-            aria-label="Route elevation profile chart"
             role="img"
+            aria-label="Route elevation profile chart"
           >
             <defs>
               <linearGradient id="elevFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#2E4B3C" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="#2E4B3C" stopOpacity="0" />
+                <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.28" />
+                <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
               </linearGradient>
             </defs>
 
-            {/* Area under the path */}
+            {/* Faint full path so the shape reads before scroll fills it */}
             <path d={areaD} fill="url(#elevFill)" />
+            <path d={pathD} fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeOpacity="0.22" />
 
-            {/* Elevation line — draws itself on scroll */}
+            {/* Elevation line draws itself as you scroll the days */}
             <motion.path
               ref={pathRef}
               d={pathD}
               fill="none"
-              stroke="var(--forest)"
+              stroke="var(--gold)"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -151,44 +162,35 @@ export default function ElevationJourney({ itinerary }: Props) {
 
             {/* Static day dots */}
             {points.map((pt, i) => (
-              <circle
-                key={i}
-                cx={pt.x}
-                cy={pt.y}
-                r={3}
-                fill="var(--forest)"
-                opacity={0.3}
-              />
+              <circle key={i} cx={pt.x} cy={pt.y} r={2.5} fill="var(--gold)" opacity={0.5} />
             ))}
 
-            {/* Animated active-day marker */}
+            {/* Rising active-day marker */}
             {activePoint && (
               <motion.g
                 animate={{ x: activePoint.x, y: activePoint.y }}
                 transition={
-                  prefersReduced
-                    ? { duration: 0 }
-                    : { type: "spring", stiffness: 180, damping: 22 }
+                  prefersReduced ? { duration: 0 } : { type: "spring", stiffness: 180, damping: 22 }
                 }
               >
-                <circle r="9" fill="var(--gold)" opacity="0.2" />
+                <circle r="9" fill="var(--gold)" opacity="0.25" />
                 <circle r="4.5" fill="var(--gold)" />
               </motion.g>
             )}
           </svg>
 
-          {/* Active day readout */}
+          {/* Active-day readout — updates as you scroll */}
           {activePoint && itinerary[activeIdx] && (
             <div
               className="flex items-center justify-between mt-3 pt-3"
-              style={{ borderTop: "1px solid rgba(28,36,25,0.1)" }}
+              style={{ borderTop: "1px solid rgba(251,248,241,0.12)" }}
             >
-              <span className="text-xs" style={{ color: "var(--forest)", opacity: 0.7 }}>
+              <span className="text-xs" style={{ color: "rgba(251,248,241,0.7)" }}>
                 Day {itinerary[activeIdx].day} · {activePoint.label}
               </span>
               <span
                 className="text-base font-extrabold"
-                style={{ fontFamily: "var(--font-display)", color: "var(--forest)" }}
+                style={{ fontFamily: "var(--font-display)", color: "var(--paper)" }}
               >
                 {activePoint.alt.toLocaleString()} m
               </span>
@@ -197,7 +199,7 @@ export default function ElevationJourney({ itinerary }: Props) {
         </div>
       )}
 
-      {/* ── Itinerary day list ─────────────────────────────── */}
+      {/* ── Itinerary day list ────────────────────────────────────── */}
       <ol className="relative">
         {itinerary.map((day, idx) => (
           <li key={day.day} className="relative flex gap-5 pb-10 last:pb-0">

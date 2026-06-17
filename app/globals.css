@@ -5,13 +5,23 @@
    Swap tokens here when the logo/brand evolves; nothing else changes.
 ──────────────────────────────────────────────────────────────────── */
 :root {
-  --ink: #1c2419;
-  --paper: #fbf8f1;
-  --forest: #2e4b3c;
-  --gold: #c99b3f;
-  --sunset: #d96e30;
-  --snow: #eef2f4;
-  --wa-green: #25d366;
+  --ink: #1a1a16;     /* warm near-black — body text + darkest surfaces */
+  --paper: #f7f3ea;   /* warm bone (was cool cream) */
+  --forest: #4a2912;  /* primary dark SURFACE: bands, footer, CTA — rich espresso
+                         brown matched to the Trust Tours logo. Also used as the
+                         brand brown for accent text/headings on light pages.
+                         (Was warm charcoal #2b2b25 — rebranded to brown & white
+                         per the client's logo; gold kept as complementary accent.) */
+  --gold: #8a5a32;    /* caramel BROWN — was antique gold; the brand is brown & white only,
+                         so the former gold accent is now a mid-brown. Token name kept to
+                         avoid churn across components. */
+  --sunset: #6e3b1f;  /* warm reddish-BROWN — was terracotta/orange; demoted to a deep
+                         brown so the palette stays strictly brown & white. */
+  --snow: #efe8db;    /* warm stone — light cards/sections */
+  --sand: #e7dccb;    /* warm sand neutral */
+  --wa-green: #4a2912; /* WAS WhatsApp green — per client, the site is strictly brown &
+                          white with zero exceptions, so the WhatsApp button is espresso
+                          brown. Token name kept to avoid churn. */
 }
 
 /* Expose brand tokens as Tailwind utilities (bg-forest, text-gold, etc.) */
@@ -22,11 +32,21 @@
   --color-gold: var(--gold);
   --color-sunset: var(--sunset);
   --color-snow: var(--snow);
+  --color-sand: var(--sand);
   --color-wa-green: var(--wa-green);
 
   /* next/font injects these CSS vars via className on <html> */
-  --font-display: var(--font-bricolage);
+  --font-display: var(--font-fraunces);
   --font-body: var(--font-albert);
+}
+
+/* ─── Dawn-to-dusk journey palette ─────────────────────────────────
+   The homepage travels through a day on the mountain as you scroll. */
+:root {
+  --dawn:   #f3e2c4; /* sunrise haze — warm, unchanged */
+  --canopy: #241a10; /* midday — deep brown (warmed from charcoal for brown brand) */
+  --dusk:   #18110a; /* evening under the trees — deep brown */
+  --night:  #100a05; /* campfire dark — brown-black */
 }
 
 /* ─── Base styles ──────────────────────────────────────────────── */
@@ -43,9 +63,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display), system-ui, sans-serif;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display), Georgia, serif;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
 }
 
 p {
@@ -80,6 +100,263 @@ p {
   animation: gradient-shift 8s ease-in-out infinite;
 }
 
+/* One-time entrance for hero copy — transform/opacity only, after first paint */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fade-up 0.5s ease-out forwards;
+}
+.fade-up-2 { animation-delay: 0.08s; }
+.fade-up-3 { animation-delay: 0.16s; }
+.fade-up-4 { animation-delay: 0.24s; }
+
+/* ─── Scroll reveal ────────────────────────────────────────────────
+   components/Reveal.tsx adds `.reveal` on mount (so no-JS users always
+   see content) then toggles `.is-visible` when scrolled into view. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CINEMATIC / GUIDED-JOURNEY SYSTEM
+   All effects use transform/opacity only (60fps) and are neutralised by
+   the prefers-reduced-motion block at the bottom of this file.
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── Topographic contour texture (premium expedition motif) ──────── */
+.contour-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Cg fill='none' stroke='%238a5a32' stroke-width='1' opacity='0.5'%3E%3Cpath d='M-50 120 C150 60 350 180 550 110 S850 60 950 140'/%3E%3Cpath d='M-50 200 C150 140 350 260 550 190 S850 140 950 220'/%3E%3Cpath d='M-50 290 C150 230 350 350 550 280 S850 230 950 310'/%3E%3Cpath d='M-50 390 C150 330 350 450 550 380 S850 330 950 410'/%3E%3Cpath d='M-50 490 C150 430 350 550 550 480 S850 430 950 510'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 900px auto;
+  background-repeat: repeat;
+}
+
+/* ── Hero light-dust (slow drifting gold motes) ──────────────────── */
+.light-dust {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.light-dust span {
+  position: absolute;
+  bottom: -10%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(138, 90, 50,0.9), rgba(138, 90, 50,0));
+  opacity: 0;
+  animation: dust-rise linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes dust-rise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.5; }
+  100% { transform: translateY(-90vh) translateX(24px); opacity: 0; }
+}
+
+/* ── Typewriter headline ─────────────────────────────────────────── */
+.tw-caret {
+  display: inline-block;
+  width: 0.06em;
+  margin-left: 0.04em;
+  background: var(--gold);
+  animation: tw-blink 0.9s step-end infinite;
+  align-self: stretch;
+  vertical-align: -0.08em;
+  height: 1em;
+}
+@keyframes tw-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+/* ── The guided trail spine (scroll-drawn) ───────────────────────── */
+.trail-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(138, 90, 50, 0.18);
+  overflow: visible;
+}
+.trail-spine::before { /* drawn-ahead fill, height driven by --trail (0–1) via JS */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--trail, 0) * 100%);
+  background: linear-gradient(var(--gold), var(--sunset));
+  box-shadow: 0 0 12px rgba(138, 90, 50, 0.55);
+  transition: height 0.1s linear;
+}
+
+/* Waypoint dots — ignite when their section reveals */
+.waypoint {
+  position: relative;
+}
+.waypoint::before {
+  content: "";
+  position: absolute;
+  left: -2.15rem;
+  top: 0.55em;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid rgba(138, 90, 50, 0.4);
+  transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
+}
+.waypoint.is-visible::before {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.15);
+  box-shadow: 0 0 0 5px rgba(138, 90, 50, 0.18), 0 0 16px rgba(138, 90, 50, 0.6);
+}
+/* The inline dot aligns with desktop margins — hide it on narrow screens. */
+@media (max-width: 1023px) {
+  .waypoint::before { display: none; }
+}
+
+/* ── Clip-path wipe reveal (the trail uncovering the view) ───────────
+   IMPORTANT: `.wipe` must live on an INNER element, not on the Reveal
+   root that owns the IntersectionObserver. A `clip-path` that clips the
+   observed element to zero area makes its intersectionRatio 0, so the
+   observer never adds `.is-visible` — a deadlock that leaves the element
+   permanently hidden. The Reveal root stays unclipped; its `.is-visible`
+   drives the inner wipe. */
+.wipe {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path;
+}
+.reveal.is-visible .wipe { clip-path: inset(0 0 0 0); }
+
+/* ── Draw-on underline for links ─────────────────────────────────── */
+.link-draw {
+  position: relative;
+}
+.link-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1.5px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-draw:hover::after { transform: scaleX(1); }
+
+/* ── Button fill-from-left ───────────────────────────────────────── */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+.btn-fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-fill:hover::before { transform: scaleX(1); }
+
+/* ── Card lift + gold edge on hover ──────────────────────────────── */
+.card-lift {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  will-change: transform;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px -18px rgba(26, 26, 22, 0.45), 0 0 0 1px rgba(138, 90, 50, 0.5);
+}
+
+/* ── Step number badges ignite as their step reveals ─────────────── */
+.step-badge {
+  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease, color 0.5s ease;
+}
+.reveal.is-visible .step-badge {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 6px rgba(138, 90, 50, 0.14), 0 10px 26px -8px rgba(138, 90, 50, 0.55);
+}
+
+/* ── Organic ridge divider ───────────────────────────────────────── */
+.ridge-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -54px;
+  height: 56px;
+  display: block;
+}
+
+/* ── WhatsApp halo pulse ─────────────────────────────────────────── */
+/* NOTE: don't set position here — the button is already `fixed`; the
+   ::after positions against it. Setting position would override .fixed. */
+.wa-halo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 rgba(74, 41, 18, 0.5);
+  animation: wa-pulse 2.6s ease-out infinite;
+}
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 41, 18, 0.45); }
+  70%  { box-shadow: 0 0 0 16px rgba(74, 41, 18, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 41, 18, 0); }
+}
+
+/* ── Testimonials marquee ────────────────────────────────────────── */
+.marquee-mask {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: marquee-x 46s linear infinite;
+  will-change: transform;
+}
+.marquee-track.is-reverse {
+  animation-direction: reverse;
+}
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Scroll-cue bounce ───────────────────────────────────────────── */
+.scroll-cue { animation: cue-bob 1.8s ease-in-out infinite; }
+@keyframes cue-bob {
+  0%, 100% { transform: translateY(0); opacity: 0.75; }
+  50%      { transform: translateY(8px); opacity: 1; }
+}
+
+/* ── Slow breathing zoom for section photos ──────────────────────── */
+.kb-slow { animation: ken-burns 18s ease-out forwards; will-change: transform; }
+
 /* ─── Reduced motion ───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -90,4 +367,18 @@ p {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  /* Never leave revealed content hidden when motion is reduced */
+  .reveal,
+  .wipe {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .trail-spine::before { height: 100% !important; }
+  .light-dust { display: none !important; }
+  .tw-caret { display: none !important; }
+  .wa-halo::after { animation: none !important; }
+  /* Marquee becomes a manually scrollable strip */
+  .marquee-track { animation: none !important; }
+  .marquee-mask { overflow-x: auto !important; }
 }

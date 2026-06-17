@@ -18,8 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = `${pkg.shortName} – Kilimanjaro Climb`;
   const description = pkg.summary.slice(0, 155);
+  const canonical = `/kilimanjaro/${pkg.slug}`;
 
-  return { title, description, openGraph: { title, description, type: "website" } };
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: { title, description, type: "website", url: canonical },
+  };
 }
 
 export default async function KiliPage({ params }: Props) {

@@ -19,7 +19,7 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
         telephone: "+255785938860",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Moshi",
+          addressLocality: "Arusha",
           addressCountry: "TZ",
         },
       },

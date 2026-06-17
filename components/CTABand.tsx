@@ -41,8 +41,8 @@ export default function CTABand({ eyebrow, title, subtitle, ctaLabel, waMessage 
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-base transition-opacity hover:opacity-90"
-        style={{ background: "var(--sunset)" }}
+        className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-ink font-semibold text-base transition-opacity hover:opacity-90"
+        style={{ background: "var(--gold)" }}
       >
         {ctaLabel}
       </a>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { TripPackage } from "@/data/packages";
 
 const BASE_PATH: Record<TripPackage["category"], string> = {
@@ -8,13 +9,14 @@ const BASE_PATH: Record<TripPackage["category"], string> = {
   zanzibar: "/safaris",
 };
 
-// Brand-token gradients per category until real photos arrive.
-// TODO: replace with next/image using pkg.heroImage once photos are in public/images/.
+// Brand-token gradients per category — used as a fallback when a package has
+// no real photo yet (pkg.heroImage === ""), and as the tint behind every image.
+// Brown-only brand gradients (no green/gold/orange — strictly brown & white).
 const PLACEHOLDER: Record<TripPackage["category"], string> = {
-  kilimanjaro: "linear-gradient(150deg, #3a5a45 0%, #2E4B3C 45%, #1C2419 100%)",
-  safari: "linear-gradient(150deg, #C99B3F 0%, #a5732a 45%, #2a1f0e 100%)",
-  trekking: "linear-gradient(150deg, #2E4B3C 0%, #1C2419 55%, #2a1f0e 100%)",
-  zanzibar: "linear-gradient(150deg, #2E4B3C 0%, #C99B3F 60%, #D96E30 100%)",
+  kilimanjaro: "linear-gradient(150deg, #6e3b1f 0%, #4a2912 45%, #2a1f0e 100%)",
+  safari: "linear-gradient(150deg, #a5732a 0%, #6e3b1f 45%, #2a1f0e 100%)",
+  trekking: "linear-gradient(150deg, #4a2912 0%, #2a1f0e 55%, #1a1206 100%)",
+  zanzibar: "linear-gradient(150deg, #6e3b1f 0%, #a5732a 60%, #4a2912 100%)",
 };
 
 const CATEGORY_LABEL: Record<TripPackage["category"], string> = {
@@ -24,22 +26,52 @@ const CATEGORY_LABEL: Record<TripPackage["category"], string> = {
   zanzibar: "Safari + Beach",
 };
 
+function MountainRating({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="flex items-center gap-2 text-xs">
+      <span className="w-12 flex-shrink-0" style={{ color: "var(--ink)", opacity: 0.5 }}>
+        {label}
+      </span>
+      <span aria-label={`${label}: ${value} out of 5`} className="leading-none tracking-tight">
+        {[1, 2, 3, 4, 5].map((n) => (
+          <span
+            key={n}
+            aria-hidden="true"
+            style={{ color: n <= value ? "var(--gold)" : "rgba(26, 26, 22,0.16)" }}
+          >
+            ▲
+          </span>
+        ))}
+      </span>
+    </div>
+  );
+}
+
 export default function PackageCard({ pkg }: { pkg: TripPackage }) {
   const href = `${BASE_PATH[pkg.category]}/${pkg.slug}`;
 
   return (
     <Link
       href={href}
-      className="group flex flex-col rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-xl"
-      style={{ border: "1px solid rgb(28 36 25 / 0.08)", background: "#fff" }}
+      className="card-lift group flex flex-col h-full rounded-2xl overflow-hidden"
+      style={{ border: "1px solid rgb(26 26 22 / 0.08)", background: "#fff" }}
     >
-      {/* Image area — placeholder gradient until photos arrive */}
+      {/* Image area — real photo when available, brand gradient otherwise */}
       <div
-        className="relative aspect-[4/3] flex items-end p-4"
+        className="relative aspect-[4/3] flex items-end p-4 overflow-hidden"
         style={{ background: PLACEHOLDER[pkg.category] }}
       >
+        {pkg.heroImage && (
+          <Image
+            src={pkg.heroImage}
+            alt={pkg.shortName}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
         <span
-          className="px-2.5 py-1 rounded-full text-xs font-semibold"
+          className="relative z-10 px-2.5 py-1 rounded-full text-xs font-semibold"
           style={{ background: "rgba(251,248,241,0.92)", color: "var(--forest)" }}
         >
           {pkg.days} days · {CATEGORY_LABEL[pkg.category]}
@@ -68,9 +100,16 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
           {pkg.summary}
         </p>
 
+        {pkg.effort != null && pkg.summitChance != null && (
+          <div className="flex flex-col gap-1.5 mb-4">
+            <MountainRating label="Effort" value={pkg.effort} />
+            <MountainRating label="Summit" value={pkg.summitChance} />
+          </div>
+        )}
+
         <div
           className="flex items-end justify-between gap-3 pt-4"
-          style={{ borderTop: "1px solid rgba(28,36,25,0.08)" }}
+          style={{ borderTop: "1px solid rgba(26, 26, 22,0.08)" }}
         >
           <div>
             {pkg.priceFromUSD > 0 ? (

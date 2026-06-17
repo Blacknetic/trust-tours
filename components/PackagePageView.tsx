@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { TripPackage } from "@/data/packages";
 import TripJsonLd from "@/components/TripJsonLd";
 import FAQAccordion from "@/components/FAQAccordion";
 import MobileCTABar from "@/components/MobileCTABar";
 import ElevationJourney from "@/components/ElevationJourney";
+import BookingCard from "@/components/BookingCard";
 import CTABand from "@/components/CTABand";
 
 const SITE_URL = "https://trusttourstz.com";
@@ -48,6 +50,8 @@ const LEXICON: Record<
   },
 };
 
+const BORDER = "rgba(26, 26, 22,0.08)";
+
 export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   const lex = LEXICON[pkg.category];
   const waMsg = `Hi Ombeni! I'm interested in the ${pkg.title}. Can you send me the itinerary and pricing?`;
@@ -60,16 +64,28 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
 
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section
-        className="relative flex items-end min-h-[58vh]"
+        className="relative flex items-end min-h-[58vh] overflow-hidden"
         style={{
-          /* TODO: replace with next/image priority once hero photos arrive from Ombeni */
           background:
-            "linear-gradient(160deg, #3a5a45 0%, #2E4B3C 35%, #1C2419 70%, #2a1f0e 100%)",
+            "linear-gradient(160deg, #6e3b1f 0%, #4a2912 35%, #2a1f0e 70%, #1a1206 100%)",
         }}
       >
+        {pkg.heroImage && (
+          <Image
+            src={pkg.heroImage}
+            alt={pkg.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        )}
         <div
           className="absolute inset-0"
-          style={{ background: "rgba(10,16,9,0.3)" }}
+          style={{
+            background:
+              "linear-gradient(to top, rgba(10,16,9,0.80) 0%, rgba(10,16,9,0.45) 45%, rgba(10,16,9,0.25) 100%)",
+          }}
           aria-hidden="true"
         />
 
@@ -141,8 +157,8 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm transition-opacity hover:opacity-90"
-                style={{ background: "var(--sunset)" }}
+                className="hidden md:inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-ink font-semibold text-sm transition-opacity hover:opacity-90"
+                style={{ background: "var(--gold)" }}
               >
                 Plan on WhatsApp
               </a>
@@ -151,160 +167,193 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
         </div>
       </section>
 
-      {/* ── Summary + Best months ─────────────────────────────── */}
-      <section
-        className="max-w-7xl mx-auto px-4 md:px-6 py-10 border-b"
-        style={{ borderColor: "rgba(28,36,25,0.08)" }}
-      >
-        <p className="text-lg leading-relaxed mb-4" style={{ color: "var(--ink)", maxWidth: "65ch" }}>
-          {pkg.summary}
-        </p>
-        <p className="text-sm font-medium" style={{ color: "var(--gold)" }}>
-          Best months to {lex.verb}: {pkg.bestMonths.join(" · ")}
-        </p>
-      </section>
+      {/* ── Body: main content + sticky booking card ──────────── */}
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-10 lg:py-14">
+        <div className="lg:grid lg:grid-cols-[1fr_330px] lg:gap-12 xl:gap-16">
+          {/* MAIN COLUMN */}
+          <div className="min-w-0">
+            {/* Summary + Best months */}
+            <section className="pb-9 border-b" style={{ borderColor: BORDER }}>
+              <p className="text-lg leading-relaxed mb-4" style={{ color: "var(--ink)", maxWidth: "65ch" }}>
+                {pkg.summary}
+              </p>
+              <p className="text-sm font-medium" style={{ color: "var(--gold)" }}>
+                Best months to {lex.verb}: {pkg.bestMonths.join(" · ")}
+              </p>
+            </section>
 
-      {/* ── Highlights ────────────────────────────────────────── */}
-      <section
-        className="max-w-7xl mx-auto px-4 md:px-6 py-12 border-b"
-        style={{ borderColor: "rgba(28,36,25,0.08)" }}
-      >
-        <h2
-          className="text-2xl font-extrabold mb-7"
-          style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-        >
-          Highlights
-        </h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
-          {pkg.highlights.map((h, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <span className="mt-0.5 flex-shrink-0 font-bold" style={{ color: "var(--gold)" }}>✓</span>
-              <span className="text-sm leading-relaxed" style={{ color: "var(--ink)" }}>{h}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* ── Itinerary + Elevation Journey ─────────────────────── */}
-      <section
-        className="max-w-7xl mx-auto px-4 md:px-6 py-12 border-b"
-        style={{ borderColor: "rgba(28,36,25,0.08)" }}
-      >
-        <h2
-          className="text-2xl font-extrabold mb-8"
-          style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-        >
-          Day-by-Day Itinerary
-        </h2>
-        <ElevationJourney itinerary={pkg.itinerary} />
-      </section>
-
-      {/* ── Included / Excluded ───────────────────────────────── */}
-      {(pkg.included.length > 0 || pkg.excluded.length > 0) && (
-        <section
-          className="py-12 border-b"
-          style={{ background: "var(--snow)", borderColor: "rgba(28,36,25,0.08)" }}
-        >
-          <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
-            {pkg.included.length > 0 && (
-              <div>
-                <h2
-                  className="text-xl font-extrabold mb-5"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-                >
-                  What&apos;s included
-                </h2>
-                <ul className="space-y-2.5">
-                  {pkg.included.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm" style={{ color: "var(--ink)" }}>
-                      <span className="mt-0.5 flex-shrink-0 font-bold" style={{ color: "var(--forest)" }}>✓</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {pkg.excluded.length > 0 && (
-              <div>
-                <h2
-                  className="text-xl font-extrabold mb-5"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-                >
-                  Not included
-                </h2>
-                <ul className="space-y-2.5">
-                  {pkg.excluded.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-sm"
-                      style={{ color: "var(--ink)", opacity: 0.72 }}
-                    >
-                      <span className="mt-0.5 flex-shrink-0" style={{ color: "var(--sunset)" }}>✕</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* ── FAQ ───────────────────────────────────────────────── */}
-      {pkg.faqs.length > 0 && (
-        <section
-          className="max-w-7xl mx-auto px-4 md:px-6 py-12 border-b"
-          style={{ borderColor: "rgba(28,36,25,0.08)" }}
-        >
-          <h2
-            className="text-2xl font-extrabold mb-2"
-            style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-          >
-            Frequently Asked Questions
-          </h2>
-          <p className="text-sm mb-8" style={{ color: "var(--ink)", opacity: 0.5 }}>
-            Still have questions? Ask Ombeni directly on WhatsApp.
-          </p>
-          <FAQAccordion faqs={pkg.faqs} />
-        </section>
-      )}
-
-      {/* ── Reviews ───────────────────────────────────────────── */}
-      {pkg.reviewSnippets && pkg.reviewSnippets.length > 0 && (
-        <section
-          className="max-w-7xl mx-auto px-4 md:px-6 py-12 border-b"
-          style={{ borderColor: "rgba(28,36,25,0.08)" }}
-        >
-          <h2
-            className="text-2xl font-extrabold mb-8"
-            style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-          >
-            {lex.reviewsTitle}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {pkg.reviewSnippets.map((r, i) => (
-              <blockquote
-                key={i}
-                className="rounded-2xl p-6"
-                style={{ background: "var(--snow)", border: "1px solid rgba(28,36,25,0.07)" }}
+            {/* Highlights */}
+            <section className="py-10 border-b" style={{ borderColor: BORDER }}>
+              <h2
+                className="text-2xl font-extrabold mb-7"
+                style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
               >
-                <div className="flex gap-0.5 mb-3" aria-label="5 stars">
-                  {[...Array(5)].map((_, s) => (
-                    <span key={s} style={{ color: "var(--gold)" }} aria-hidden="true">★</span>
+                Highlights
+              </h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
+                {pkg.highlights.map((h, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex-shrink-0 font-bold" style={{ color: "var(--gold)" }}>✓</span>
+                    <span className="text-sm leading-relaxed" style={{ color: "var(--ink)" }}>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Itinerary + Elevation Journey */}
+            <section className="py-10 border-b" style={{ borderColor: BORDER }}>
+              <h2
+                className="text-2xl font-extrabold mb-8"
+                style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+              >
+                Day-by-Day Itinerary
+              </h2>
+              <ElevationJourney itinerary={pkg.itinerary} />
+            </section>
+
+            {/* Included / Excluded */}
+            {(pkg.included.length > 0 || pkg.excluded.length > 0) && (
+              <section className="py-10 border-b" style={{ borderColor: BORDER }}>
+                <div
+                  className="rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-10"
+                  style={{ background: "var(--snow)" }}
+                >
+                  {pkg.included.length > 0 && (
+                    <div>
+                      <h2
+                        className="text-xl font-extrabold mb-5"
+                        style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+                      >
+                        What&apos;s included
+                      </h2>
+                      <ul className="space-y-2.5">
+                        {pkg.included.map((item, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm" style={{ color: "var(--ink)" }}>
+                            <span className="mt-0.5 flex-shrink-0 font-bold" style={{ color: "var(--forest)" }}>✓</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {pkg.excluded.length > 0 && (
+                    <div>
+                      <h2
+                        className="text-xl font-extrabold mb-5"
+                        style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+                      >
+                        Not included
+                      </h2>
+                      <ul className="space-y-2.5">
+                        {pkg.excluded.map((item, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-sm"
+                            style={{ color: "var(--ink)", opacity: 0.72 }}
+                          >
+                            <span className="mt-0.5 flex-shrink-0" style={{ color: "var(--sunset)" }}>✕</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </section>
+            )}
+
+            {/* Gallery */}
+            {pkg.gallery.length > 0 && (
+              <section className="py-10 border-b" style={{ borderColor: BORDER }}>
+                <h2
+                  className="text-2xl font-extrabold mb-7"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+                >
+                  Gallery
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                  {pkg.gallery.map((src, i) => (
+                    <div
+                      key={i}
+                      className="relative aspect-[4/3] rounded-xl overflow-hidden"
+                      style={{ background: "var(--snow)" }}
+                    >
+                      <Image
+                        src={src}
+                        alt={`${pkg.shortName} — photo ${i + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
                   ))}
                 </div>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
-                  &ldquo;{r.text}&rdquo;
+              </section>
+            )}
+
+            {/* FAQ */}
+            {pkg.faqs.length > 0 && (
+              <section className="py-10 border-b" style={{ borderColor: BORDER }}>
+                <h2
+                  className="text-2xl font-extrabold mb-2"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+                >
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-sm mb-8" style={{ color: "var(--ink)", opacity: 0.5 }}>
+                  Still have questions? Ask Ombeni directly on WhatsApp.
                 </p>
-                <footer className="text-xs" style={{ color: "var(--ink)", opacity: 0.5 }}>
-                  <cite className="not-italic font-semibold">{r.author}</cite>
-                  {" — "}{r.source}
-                </footer>
-              </blockquote>
-            ))}
+                <FAQAccordion faqs={pkg.faqs} />
+              </section>
+            )}
+
+            {/* Reviews */}
+            {pkg.reviewSnippets && pkg.reviewSnippets.length > 0 && (
+              <section className="pt-10">
+                <h2
+                  className="text-2xl font-extrabold mb-8"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+                >
+                  {lex.reviewsTitle}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {pkg.reviewSnippets.map((r, i) => (
+                    <blockquote
+                      key={i}
+                      className="rounded-2xl p-6"
+                      style={{ background: "var(--snow)", border: "1px solid rgba(26, 26, 22,0.07)" }}
+                    >
+                      <div className="flex gap-0.5 mb-3" aria-label="5 stars">
+                        {[...Array(5)].map((_, s) => (
+                          <span key={s} style={{ color: "var(--gold)" }} aria-hidden="true">★</span>
+                        ))}
+                      </div>
+                      <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
+                        &ldquo;{r.text}&rdquo;
+                      </p>
+                      <footer className="text-xs" style={{ color: "var(--ink)", opacity: 0.5 }}>
+                        <cite className="not-italic font-semibold">{r.author}</cite>
+                        {" — "}{r.source}
+                      </footer>
+                    </blockquote>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
-        </section>
-      )}
+
+          {/* STICKY BOOKING CARD (desktop only) */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-24">
+              <BookingCard
+                packageTitle={pkg.title}
+                priceFromUSD={pkg.priceFromUSD}
+                priceNote={pkg.priceNote}
+              />
+            </div>
+          </aside>
+        </div>
+      </div>
 
       {/* ── Bottom CTA band ───────────────────────────────────── */}
       <CTABand

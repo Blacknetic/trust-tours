@@ -1,13 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { getPackage } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
+import Reveal from "@/components/Reveal";
+import RotatingWords from "@/components/RotatingWords";
+import Parallax from "@/components/Parallax";
+import ScrollProgressSpine from "@/components/ScrollProgressSpine";
+import WaypointEyebrow from "@/components/WaypointEyebrow";
+import TestimonialsMarquee from "@/components/TestimonialsMarquee";
+import WhyTrustUs from "@/components/WhyTrustUs";
+import TripFinder from "@/components/TripFinder";
 
 export const metadata: Metadata = {
   title: "Kilimanjaro Climbs & Tanzania Safaris",
   description:
-    "Climb Kilimanjaro or track the Great Migration with Trust Tours & Safaris — a Moshi-based operator led by Ombeni. From $1,799. Plan your trip on WhatsApp.",
+    "Climb Kilimanjaro or track the Great Migration with Trust Tours & Safaris — an Arusha-based operator led by Ombeni. From $1,580. Plan your trip on WhatsApp.",
 };
 
 const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
@@ -17,7 +26,7 @@ const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
 const TOP_PICKS = [
   "7-day-machame-route",
   "7-day-great-migration-safari",
-  "4-day-mount-meru-trek",
+  "3-day-mount-meru-momela",
 ];
 
 const STEPS = [
@@ -35,234 +44,371 @@ const STEPS = [
   },
 ];
 
+// Pre-computed drifting light-dust motes (deterministic so SSR/CSR match).
+const DUST = Array.from({ length: 16 }, (_, i) => ({
+  left: `${(i * 6.1 + 3) % 100}%`,
+  duration: `${9 + ((i * 7) % 11)}s`,
+  delay: `${(i * 1.3) % 9}s`,
+  scale: 0.6 + ((i * 3) % 7) / 6,
+}));
+
 export default function HomePage() {
   const topPicks = TOP_PICKS.map(getPackage).filter((p) => p !== undefined);
-  const review = getPackage("7-day-machame-route")?.reviewSnippets?.[0];
 
   return (
     <>
-      {/* ── Hero ──────────────────────────────────────────────── */}
-      <section className="relative flex items-center min-h-[85vh] overflow-hidden">
-        {/* Ken Burns layer — TODO: swap gradient for next/image hero photo (priority) when it arrives */}
+      <ScrollProgressSpine />
+
+      {/* ── Hero — sunrise on the mountain ────────────────────────── */}
+      <section className="relative flex items-center min-h-[90vh] overflow-hidden">
+        {/* Parallax photo layer (oversized so the drift never reveals an edge) */}
+        <Parallax speed={0.18} className="absolute inset-0">
+          <div
+            className="hero-ken-burns absolute left-0 right-0"
+            style={{ top: "-9%", height: "118%" }}
+          >
+            <Image
+              src="/images/kilimanjaro-kibo-from-trail.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        </Parallax>
+
+        {/* Sunrise warm wash */}
         <div
-          className="absolute inset-0 hero-ken-burns"
+          className="absolute inset-0"
+          aria-hidden="true"
           style={{
             background:
-              "linear-gradient(155deg, #3a5a45 0%, #2E4B3C 30%, #1C2419 65%, #2a1f0e 100%)",
+              "linear-gradient(180deg, rgba(243,226,196,0.18) 0%, rgba(110,59,31,0.10) 35%, rgba(26,26,22,0) 70%)",
           }}
-          aria-hidden="true"
         />
-        {/* 8s gradient shift overlay */}
+        {/* Dark wash — heavier at the base where copy sits */}
+        <div
+          className="absolute inset-0"
+          aria-hidden="true"
+          style={{
+            background:
+              "linear-gradient(150deg, rgba(26,26,22,0.74) 0%, rgba(26,26,22,0.46) 42%, rgba(13,19,13,0.66) 100%)",
+          }}
+        />
+        {/* 8s gold sheen drift */}
         <div
           className="absolute inset-0 hero-gradient-shift"
+          aria-hidden="true"
           style={{
             background:
-              "linear-gradient(120deg, rgba(201,155,63,0.12), rgba(28,36,25,0) 40%, rgba(217,110,48,0.10) 80%)",
+              "linear-gradient(120deg, rgba(138,90,50,0.14), rgba(26,26,22,0) 40%, rgba(110,59,31,0.12) 80%)",
           }}
-          aria-hidden="true"
         />
+        {/* Drifting gold light-dust */}
+        <div className="light-dust" aria-hidden="true">
+          {DUST.map((d, i) => (
+            <span
+              key={i}
+              style={{
+                left: d.left,
+                animationDuration: d.duration,
+                animationDelay: d.delay,
+                transform: `scale(${d.scale})`,
+              }}
+            />
+          ))}
+        </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 py-24">
           <p
-            className="text-sm font-semibold tracking-widest uppercase mb-5"
+            className="fade-up text-sm font-semibold tracking-[0.22em] uppercase mb-6"
             style={{ color: "var(--gold)" }}
           >
             Kilimanjaro climbs · Tanzania safaris
           </p>
           <h1
-            className="text-5xl md:text-7xl font-extrabold mb-6"
+            className="fade-up fade-up-2 text-5xl md:text-7xl font-semibold mb-5"
             style={{
               fontFamily: "var(--font-display)",
               color: "var(--paper)",
-              lineHeight: 1.05,
-              letterSpacing: "-0.02em",
-              maxWidth: "14ch",
+              lineHeight: 1.04,
+              letterSpacing: "-0.015em",
+              maxWidth: "16ch",
             }}
           >
             The roof of Africa, with people you trust.
           </h1>
           <p
-            className="text-lg mb-10"
-            style={{ color: "rgba(251,248,241,0.75)", maxWidth: "52ch", lineHeight: 1.6 }}
+            className="fade-up fade-up-3 text-2xl md:text-3xl mb-7"
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--paper)",
+              fontStyle: "italic",
+              lineHeight: 1.25,
+            }}
           >
-            We&apos;re a small Moshi-based crew led by Ombeni. We drive, we cook, we
-            guide — from your airport pickup to the summit certificate or the
+            We guide you to{" "}
+            <RotatingWords
+              words={[
+                "the summit.",
+                "the Serengeti.",
+                "the crater rim.",
+                "the Great Migration.",
+                "Zanzibar.",
+              ]}
+              className="not-italic font-semibold text-gold"
+            />
+          </p>
+          <p
+            className="fade-up fade-up-4 text-base mb-10"
+            style={{ color: "rgba(251,248,241,0.72)", maxWidth: "50ch", lineHeight: 1.6 }}
+          >
+            A small Arusha-based crew, led by Ombeni. We drive, we cook, we
+            guide — from the moment you land to your summit certificate or your
             last game drive.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-4">
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-center px-8 py-4 rounded-full text-white font-semibold text-base transition-opacity hover:opacity-90"
-              style={{ background: "var(--sunset)" }}
+              className="text-center px-8 py-4 rounded-full text-ink font-semibold text-base transition-transform duration-200 hover:-translate-y-0.5"
+              style={{ background: "var(--gold)" }}
             >
               Plan my trip on WhatsApp
             </a>
             <Link
               href="/kilimanjaro"
-              className="text-center px-8 py-4 rounded-full font-semibold text-base transition-colors hover:bg-white/10"
-              style={{ border: "2px solid rgba(251,248,241,0.4)", color: "var(--paper)" }}
+              className="btn-fill text-center px-8 py-4 rounded-full font-semibold text-base transition-colors hover:text-white"
+              style={{ border: "2px solid rgba(251,248,241,0.45)", color: "var(--paper)" }}
             >
               View Kilimanjaro routes
             </Link>
           </div>
-        </div>
-      </section>
 
-      {/* ── Top packages ──────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
-        <div className="flex items-end justify-between mb-10">
-          <div>
+          {/* Trip finder — find your trip without browsing every page */}
+          <div className="fade-up fade-up-4 mt-10 max-w-4xl">
             <p
-              className="text-sm font-semibold tracking-widest uppercase mb-3"
-              style={{ color: "var(--gold)" }}
+              className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
+              style={{ color: "rgba(251,248,241,0.7)" }}
             >
-              Most requested
+              Or find your trip
             </p>
-            <h2
-              className="text-3xl md:text-4xl font-extrabold"
-              style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.1 }}
-            >
-              Three trips, three ways in
-            </h2>
+            <TripFinder />
           </div>
-          <Link
-            href="/safaris"
-            className="hidden sm:block text-sm font-semibold whitespace-nowrap transition-opacity hover:opacity-70"
-            style={{ color: "var(--forest)" }}
-          >
-            All safaris →
-          </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {topPicks.map((pkg) => (
-            <PackageCard key={pkg.slug} pkg={pkg} />
-          ))}
+        {/* Begin-the-journey scroll cue */}
+        <div
+          className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 scroll-cue"
+          aria-hidden="true"
+        >
+          <span
+            className="text-xs font-semibold tracking-[0.25em] uppercase"
+            style={{ color: "rgba(251,248,241,0.7)" }}
+          >
+            Begin the journey
+          </span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
+            <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
       </section>
 
-      {/* ── Ombeni founder note ───────────────────────────────── */}
-      <section style={{ background: "var(--snow)" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 items-center">
-          {/* TODO: replace with next/image — Ombeni portrait (pending from client) */}
-          <div
-            className="aspect-square rounded-2xl flex items-center justify-center mx-auto w-56 md:w-full"
-            style={{ background: "linear-gradient(150deg, #2E4B3C, #1C2419)" }}
-            aria-hidden="true"
-          >
-            <span
-              className="text-6xl font-extrabold"
-              style={{ fontFamily: "var(--font-display)", color: "var(--gold)" }}
+      {/* ── Top packages — morning light ──────────────────────────── */}
+      <section className="contour-bg" style={{ background: "var(--paper)" }}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <WaypointEyebrow
+                className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
+                style={{ color: "var(--gold)" }}
+              >
+                Most requested
+              </WaypointEyebrow>
+              <h2
+                className="text-3xl md:text-5xl font-semibold"
+                style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.08 }}
+              >
+                Three trips, three ways in
+              </h2>
+            </div>
+            <Link
+              href="/safaris"
+              className="link-draw hidden sm:block text-sm font-semibold whitespace-nowrap"
+              style={{ color: "var(--forest)" }}
             >
-              O
-            </span>
+              All safaris →
+            </Link>
           </div>
 
-          <div>
-            <p
-              className="text-sm font-semibold tracking-widest uppercase mb-4"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {topPicks.map((pkg, i) => (
+              <Reveal key={pkg.slug} delay={i * 110} className="h-full">
+                <PackageCard pkg={pkg} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Why travellers trust us — the proof, in light ─────────── */}
+      <WhyTrustUs />
+
+      {/* ── How it works — midday in the canopy ───────────────────── */}
+      <section className="relative" style={{ background: "var(--canopy)" }}>
+        {/* Forest ridge rising into the morning light above */}
+        <svg
+          className="ridge-top"
+          viewBox="0 0 1440 56"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 56 L0 30 C220 4 360 50 560 34 C760 18 880 -6 1080 20 C1240 40 1360 30 1440 22 L1440 56 Z"
+            fill="var(--canopy)"
+          />
+        </svg>
+
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+          <WaypointEyebrow
+            className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
+            style={{ color: "var(--gold)" }}
+          >
+            How it works
+          </WaypointEyebrow>
+          <h2
+            className="text-3xl md:text-5xl font-semibold mb-14"
+            style={{ fontFamily: "var(--font-display)", color: "var(--paper)", lineHeight: 1.08 }}
+          >
+            From first message to first game drive
+          </h2>
+
+          <ol className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+            {STEPS.map((step, i) => (
+              <Reveal key={i} delay={i * 130}>
+                <li>
+                  <span
+                    className="step-badge inline-flex items-center justify-center w-12 h-12 rounded-full text-lg font-semibold mb-5"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      background: "rgba(138,90,50,0.14)",
+                      border: "1.5px solid var(--gold)",
+                      color: "var(--gold)",
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                  <h3
+                    className="text-xl font-semibold mb-2.5"
+                    style={{ fontFamily: "var(--font-display)", color: "var(--paper)" }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(251,248,241,0.66)" }}>
+                    {step.body}
+                  </p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── Founder's word — evening under the trees ──────────────── */}
+      <section style={{ background: "var(--dusk)" }}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center">
+          <Reveal className="mx-auto w-56 md:w-full">
+            <div className="wipe relative aspect-square rounded-2xl overflow-hidden">
+              <Image
+                src="/images/ombeni-portrait.jpg"
+                alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
+                fill
+                loading="eager"
+                sizes="(max-width: 768px) 224px, 300px"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <WaypointEyebrow
+              className="text-sm font-semibold tracking-[0.22em] uppercase mb-4"
               style={{ color: "var(--gold)" }}
             >
               From the founder
-            </p>
+            </WaypointEyebrow>
             <blockquote
-              className="text-xl md:text-2xl font-semibold mb-6"
+              className="text-2xl md:text-3xl font-medium mb-6"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "var(--ink)",
+                color: "var(--paper)",
                 lineHeight: 1.35,
-                maxWidth: "30ch",
+                fontStyle: "italic",
+                maxWidth: "32ch",
               }}
             >
               &ldquo;When you message Trust Tours, you talk to me — not a call
               center. We keep the company small so every trip gets our full
               attention.&rdquo;
             </blockquote>
-            <p className="text-sm font-bold" style={{ color: "var(--ink)" }}>
+            <p className="text-sm font-bold" style={{ color: "var(--paper)" }}>
               Ombeni
             </p>
-            <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.55 }}>
-              Founder &amp; lead guide, Trust Tours &amp; Safaris — Moshi, Tanzania
+            <p className="text-sm" style={{ color: "rgba(251,248,241,0.55)" }}>
+              Founder &amp; lead guide, Trust Tours &amp; Safaris — Arusha, Tanzania
             </p>
-          </div>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full font-semibold text-sm text-paper transition-colors hover:bg-gold hover:text-ink"
+              style={{ border: "1.5px solid rgba(251,248,241,0.35)" }}
+            >
+              More about Trust Tours &amp; Ombeni →
+            </Link>
+          </Reveal>
         </div>
       </section>
 
-      {/* ── How it works ──────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
-        <p
-          className="text-sm font-semibold tracking-widest uppercase mb-3"
-          style={{ color: "var(--gold)" }}
-        >
-          How it works
-        </p>
-        <h2
-          className="text-3xl md:text-4xl font-extrabold mb-12"
-          style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.1 }}
-        >
-          From first message to first game drive
-        </h2>
+      {/* ── Testimonials marquee — campfire, night ────────────────── */}
+      <section style={{ background: "var(--night)" }}>
+        <Reveal className="max-w-7xl mx-auto px-4 md:px-6 pt-16 md:pt-24 text-center">
+          <p
+            className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
+            style={{ color: "var(--gold)" }}
+          >
+            Loved by travellers
+          </p>
+          <h2
+            className="text-3xl md:text-5xl font-semibold mb-3"
+            style={{ fontFamily: "var(--font-display)", color: "var(--paper)", lineHeight: 1.08 }}
+          >
+            In their own words
+          </h2>
+          <p className="text-sm mb-12" style={{ color: "rgba(251,248,241,0.6)" }}>
+            Independent five-star reviews from TripAdvisor.
+          </p>
+        </Reveal>
 
-        <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {STEPS.map((step, i) => (
-            <li key={i}>
-              <span
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full text-base font-extrabold mb-4"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  background: "var(--forest)",
-                  color: "var(--gold)",
-                }}
-              >
-                {i + 1}
-              </span>
-              <h3
-                className="text-lg font-extrabold mb-2"
-                style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-              >
-                {step.title}
-              </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--ink)", opacity: 0.65 }}>
-                {step.body}
-              </p>
-            </li>
-          ))}
-        </ol>
+        <div className="pb-12 md:pb-16">
+          <TestimonialsMarquee />
+        </div>
+
+        <div className="text-center pb-16 md:pb-24">
+          <a
+            href="https://www.tripadvisor.com/Attraction_Review-g297913-d13170128-Reviews-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-draw text-sm font-semibold"
+            style={{ color: "var(--gold)" }}
+          >
+            Read all reviews on TripAdvisor →
+          </a>
+        </div>
       </section>
 
-      {/* ── Review ────────────────────────────────────────────── */}
-      {review && (
-        <section style={{ background: "var(--snow)" }}>
-          <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
-            <div className="flex justify-center gap-1 mb-5" aria-label="5 stars">
-              {[...Array(5)].map((_, s) => (
-                <span key={s} className="text-xl" style={{ color: "var(--gold)" }} aria-hidden="true">
-                  ★
-                </span>
-              ))}
-            </div>
-            <blockquote
-              className="text-xl md:text-2xl font-semibold mx-auto mb-5"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--ink)",
-                lineHeight: 1.35,
-                maxWidth: "36ch",
-              }}
-            >
-              &ldquo;{review.text}&rdquo;
-            </blockquote>
-            <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.55 }}>
-              <span className="font-semibold">{review.author}</span> — {review.source}
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* ── CTA band ──────────────────────────────────────────── */}
+      {/* ── CTA band ──────────────────────────────────────────────── */}
       <CTABand
         eyebrow="Start planning"
         title="Tell us where you want to wake up"

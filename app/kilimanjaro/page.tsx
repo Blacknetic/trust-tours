@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { byCategory } from "@/data/packages";
-import PackageCard from "@/components/PackageCard";
+import KilimanjaroFilter from "@/components/KilimanjaroFilter";
 import CTABand from "@/components/CTABand";
 
 export const metadata: Metadata = {
   title: "Kilimanjaro Climbing Routes & Prices",
+  alternates: { canonical: "/kilimanjaro" },
   description:
-    "Compare Kilimanjaro routes with Trust Tours: Machame, Lemosho, Marangu and Northern Circuit. From $1,799 per person with licensed guides and full crew.",
+    "Compare Kilimanjaro routes with Trust Tours: Machame, Lemosho, Marangu and Northern Circuit. From $1,580 per person with licensed guides and full crew.",
 };
 
 export default function KilimanjaroListingPage() {
@@ -14,9 +16,25 @@ export default function KilimanjaroListingPage() {
 
   return (
     <>
-      {/* ── Page header ───────────────────────────────────────── */}
-      <section className="py-16 md:py-20" style={{ background: "var(--forest)" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      {/* ── Page header — INTERIM camp photo (swap for a hi-res hero) ── */}
+      <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: "var(--forest)" }}>
+        <Image
+          src="/Kilimanjaro/FB_IMG_1443033463870.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          aria-hidden="true"
+          style={{
+            background:
+              "linear-gradient(120deg, rgba(20,20,18,0.86) 0%, rgba(20,20,18,0.62) 52%, rgba(20,20,18,0.8) 100%)",
+          }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
           <p
             className="text-sm font-semibold tracking-widest uppercase mb-3"
             style={{ color: "var(--gold)" }}
@@ -46,13 +64,9 @@ export default function KilimanjaroListingPage() {
         </div>
       </section>
 
-      {/* ── Route cards ───────────────────────────────────────── */}
+      {/* ── Route cards + difficulty filter ───────────────────── */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {climbs.map((pkg) => (
-            <PackageCard key={pkg.slug} pkg={pkg} />
-          ))}
-        </div>
+        <KilimanjaroFilter climbs={climbs} />
       </section>
 
       <CTABand

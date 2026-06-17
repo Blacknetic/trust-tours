@@ -16,7 +16,7 @@ export default function MobileCTABar({ priceFromUSD, packageTitle }: Props) {
       className="fixed bottom-0 inset-x-0 z-30 md:hidden px-4 pt-3"
       style={{
         background: "var(--paper)",
-        borderTop: "1px solid rgba(28,36,25,0.1)",
+        borderTop: "1px solid rgba(26, 26, 22,0.1)",
         boxShadow: "0 -4px 24px rgba(0,0,0,0.08)",
         paddingBottom: "max(1rem, env(safe-area-inset-bottom))",
       }}
@@ -48,8 +48,8 @@ export default function MobileCTABar({ priceFromUSD, packageTitle }: Props) {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 text-center py-3.5 rounded-full text-white font-semibold text-sm transition-opacity hover:opacity-90"
-          style={{ background: "var(--sunset)" }}
+          className="flex-1 text-center py-3.5 rounded-full text-ink font-semibold text-sm transition-opacity hover:opacity-90"
+          style={{ background: "var(--gold)" }}
         >
           Plan on WhatsApp
         </a>

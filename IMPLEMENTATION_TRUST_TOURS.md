@@ -110,26 +110,37 @@ Goal: client-facing preview — send preview link after this phase.
 Goal: all packages have real itineraries; supporting pages live.
 
 ### 4.1 Remaining Package Pages
-- [ ] Complete itinerary for: 9-Day Northern Circuit
-- [ ] Complete itinerary for: 8-Day Lemosho Route
-- [ ] Complete itinerary for: 5-Day Marangu Route
-- [ ] Complete itinerary for: 7-Day Great Migration Safari
-- [ ] Complete itinerary for: 10-Day Safari + Zanzibar
-- [ ] Complete itinerary for: 4-Day Mount Meru Trek
-- [ ] `app/safaris/[slug]/page.tsx` — same template as kilimanjaro slug page
-- [ ] `app/trekking/[slug]/page.tsx` — same template
+- **UNBLOCKED 2026-06-15:** Ombeni sent 49 itinerary PDFs (now in `_source/itineraries/`, gitignored — contain client names + pricing, never deploy). Extracted to text via PyMuPDF.
+- [x] Lemosho 8-day — full itinerary + price ($2,180 midrange)
+- [x] Marangu — **slug renamed `5-day` → `6-day-marangu-route`** (Ombeni only sells 6-day); full itinerary + price ($1,580/5+pax, $1,690/1–4). Footer link + Kili listing metadata updated.
+- [x] Migration Safari 7-day — full itinerary + price ($2,200 budget / $2,800 mid-range)
+- [x] Safari+Zanzibar — **stub repurposed `10-day-safari-zanzibar` → `7-day-tanzania-zanzibar`** (no 10-day exists; 7-day is the real product, $2,879). Footer + `/zanzibar` redirect updated.
+- [x] NEW: `5-day-zanzibar-escape` (zanzibar category, $1,708 mid / $2,804 luxury) — first standalone Zanzibar product.
+- [ ] **Northern Circuit (9-day climb) + Mount Meru (4-day)** — STILL BLOCKED: no source PDF in the pack (the "Northern Circuit" PDF is a 7-day *safari*, not the climb; no Meru file at all). Left as "coming soon". Chase Ombeni for these two specifically.
+- [x] `app/safaris/[slug]/page.tsx` — done early in Phase 3.2b
+- [x] `app/trekking/[slug]/page.tsx` — done early in Phase 3.2b
+
+**Flags for Ombeni (don't guess):**
+- 7-day Machame price: code was $2,380, his official PDF says **$2,180** — changed to $2,180 with `CONFIRM` comment in `packages.ts`. Verify.
+- Office location: site says **Moshi**, his PDF letterhead says **Arusha (P.O. Box varies: 6111 / 14954 / 14319)**. Contact page still says Moshi — confirm which is the public office.
+- Summit success rate still `ASK_OMBENI` (no number in any PDF).
+- ~40 more itineraries available for a wider catalog (see Wave 2 candidates below).
+- [x] `app/safaris/[slug]/page.tsx` — done early in Phase 3.2b
+- [x] `app/trekking/[slug]/page.tsx` — done early in Phase 3.2b
 
 ### 4.2 Supporting Pages
-- [ ] `app/about/page.tsx` — Ombeni's story, TALA license, team, vehicles
-- [ ] `app/contact/page.tsx` — WhatsApp CTA, inquiry form, map embed placeholder
-- [ ] `app/reviews/page.tsx` — aggregated review snippets
+- [x] `app/about/page.tsx` — founder section (portrait placeholder), how-we-work values, TALA TODO, team photo grid TODO
+- [x] `app/contact/page.tsx` — WhatsApp panel, email + office cards, inquiry form
+- [x] `app/reviews/page.tsx` — auto-aggregates `reviewSnippets` from all packages with trip links; grows as reviews are added to packages.ts
+- [x] Footer: added /reviews link
 
-### 4.3 Inquiry Form (Contact + Package Pages)
-- [ ] Form fields: name, email, travel month, group size, message
-- [ ] `app/api/inquiry/route.ts` — route handler → email (confirm email service with client)
-- [ ] Honeypot field for spam protection
+### 4.3 Inquiry Form
+- [x] `components/InquiryForm.tsx` — name, email, travel month, group size, message; success state; error state falls back to WhatsApp link
+- [x] `app/api/inquiry/route.ts` — validation + Resend email (fetch, no SDK); returns honest 503 until `RESEND_API_KEY` + `INQUIRY_TO_EMAIL` env vars are set
+- [x] Honeypot field — bots get fake 200, humans never see it
+- [x] QA: probed honeypot (200), missing fields (400), bad email (400), unconfigured send (503 → WhatsApp fallback shown)
 
-### 4.4 Images
+### 4.4 Images — BLOCKED: no photos from client yet
 - [ ] Rename all client photos: descriptive filenames, convert to `.webp`
 - [ ] Place in `public/images/` matching paths in `packages.ts`
 - [ ] Audit all `next/image` alt text
@@ -138,27 +149,27 @@ Goal: all packages have real itineraries; supporting pages live.
 
 ## Phase 5 — Polish & Animations (Day 5)
 
-- [ ] ElevationJourney final pass — smooth scroll sync, correct altitude data from `itinerary[]`
-- [ ] Stat counters — count up on scroll into view (summit success rate, climbers guided, etc.)
-- [ ] Scroll reveal animations — fade-up 16px, 0.5s ease-out, stagger 0.08s, `viewport={{ once: true }}`
-- [ ] `prefers-reduced-motion` full audit — all animations disabled, content still visible
-- [ ] Keyboard focus audit — every link, button, accordion item, form field
-- [ ] Real-device mobile QA at 375px (Android preferred)
-- [ ] Fix any Lighthouse regressions from Days 3–4
+- [x] Scroll reveal animations — `components/Reveal.tsx` (IntersectionObserver, fade-up 16px / 0.5s, stagger via `delay`, fires once). Applied to homepage cards, how-it-works steps, review. No-JS safe (`.reveal` class only added on mount) + reduced-motion safe (override in globals.css). Also added `h-full` to PackageCard for equal-height grids.
+- [x] `prefers-reduced-motion` audit — global block disables all animation/transition; `.reveal` forced visible under reduced motion (content never hidden).
+- [x] Keyboard focus audit — global gold `:focus-visible` ring (2px, offset 3px) on all interactive elements; verified present.
+- [ ] ElevationJourney final pass — currently functional; smooth-scroll-sync polish deferred (not blocking).
+- [ ] Stat counters — BLOCKED: no real stats yet (summit success rate is `ASK_OMBENI`). Add once Ombeni provides numbers.
+- [ ] Real-device mobile QA at 375px (Android) — needs a physical device; automated 375px QA passes (`qa-content.mjs`).
+- [ ] Fix any Lighthouse regressions — needs production deploy (dev/local scores are meaningless).
 
 ---
 
 ## Phase 6 — SEO / AEO Hardening (Day 6)
 
-- [ ] `generateMetadata()` on every route — title, description, OG confirmed
-- [ ] `app/opengraph-image.tsx` — dynamic OG images via `next/og`
-- [ ] `app/sitemap.ts` — auto-generated from `packages.ts` slugs
-- [ ] `app/robots.ts`
-- [ ] Validate JSON-LD: [search.google.com/test/rich-results](https://search.google.com/test/rich-results) for each package page
-- [ ] Guide article 1: `app/blog/kilimanjaro-routes-compared/page.tsx`
-- [ ] Guide article 2: `app/blog/tanzania-safari-cost/page.tsx`
-- [ ] Google Search Console verified + sitemap submitted
-- [ ] GA4 measurement ID confirmed and live
+- [x] `generateMetadata()` / metadata on every route — titles, descriptions, OG confirmed; added `metadataBase` (https://trusttourstz.com) + per-route `alternates.canonical` on all pages and the 3 `[slug]` templates; `twitter: summary_large_image`.
+- [x] `app/opengraph-image.tsx` — branded dynamic OG (1200×630) via `next/og`; inherited site-wide. Verified `image/png` 200.
+- [x] `app/sitemap.ts` — auto-generated from `packages.ts` (18 URLs: 6 static + 12 packages; coming-soon stubs get lower priority).
+- [x] `app/robots.ts` — allow all, disallow `/api/`, points to sitemap, sets host.
+- [ ] Validate JSON-LD with Rich Results Test — needs public URL (after Vercel deploy).
+- [ ] Guide article 1: `app/blog/kilimanjaro-routes-compared/page.tsx` — not started (content build).
+- [ ] Guide article 2: `app/blog/tanzania-safari-cost/page.tsx` — not started (content build).
+- [ ] Google Search Console verified + sitemap submitted — needs deploy + user.
+- [ ] GA4 measurement ID confirmed and live — BLOCKED on Ombeni's Measurement ID.
 
 ---
 
@@ -188,11 +199,44 @@ Goal: all packages have real itineraries; supporting pages live.
 | Ombeni portrait photo | ⏳ Pending |
 | Team / vehicle photos | ⏳ Pending |
 | Safari / summit hero images | ⏳ Pending |
-| Email service for inquiry form | ⏳ Pending |
+| Email service for inquiry form (`RESEND_API_KEY` + `INQUIRY_TO_EMAIL` env vars) | ⏳ Pending |
 | Confirm old WordPress URL slugs (`CONFIRM` placeholders) | ⏳ Pending |
 | Permission to use Ombeni's name & photo | ⏳ Pending |
 
 ---
 
-## Current Phase: 3 complete (except deploy) → 4 — Content Rollout
-**Next action:** Either (a) deploy preview to Vercel — needs GitHub push + Vercel connect, or (b) continue to Phase 4: supporting pages (/about, /contact, /reviews), inquiry form, remaining itineraries (needs old-site facts).
+## Current Phase: 4 content rollout (2026-06-15 — Wave 1 + Wave 2 done) → 5 — Polish
+**Catalog now (12 products):**
+- Kilimanjaro: Machame 7d ($2,180), Lemosho 8d ($2,180), Marangu 6d ($1,580), Northern Circuit 9d (coming soon)
+- Safari: Migration 7d ($2,200), 3-Day ($1,460), 5-Day Northern ($2,125), 4-Day Balloon ($2,218), Tanzania+Zanzibar 7d ($2,879)
+- Zanzibar: 5-Day Escape ($1,708), 8-Day Tour ($2,500)
+- Trekking: Mount Meru 4d (coming soon)
+10 fully fleshed, 2 awaiting source (Northern Circuit climb, Mount Meru).
+
+**Resolved (used the document, per client 2026-06-15):**
+- TALA License No. **014216** (Class A Tourism Agent) → Footer + About.
+- Office location → **Arusha** (was Moshi) across homepage/Footer/About/Contact/JSON-LD. Trip-specific Moshi hotel mentions kept (accurate).
+- Machame price → **$2,180** (his official PDF; was $2,380). Homepage "from" price → $1,580.
+- Contact email confirmed.
+
+**Still blocked on client:** Northern Circuit climb + Mount Meru itineraries (NO source PDF), summit success rate (no number anywhere), photos, GA4 ID, email env vars.
+
+### Wave 2 — done this session
+Added: 3-Day Safari, 5-Day Northern Safari, 4-Day Balloon Safari, 8-Day Zanzibar.
+**Skipped 8-Day Machame** — on-mountain profile is identical to the 7-Day Machame (same 6 camps, same $2,180); would be a confusing duplicate.
+
+### Still available in `_source/` if a wider catalog is wanted
+6-Day standalone safari, Marangu Day Trip ($385), 4-Day standalone safari, 11-Day Bird Photography ($4,314), 12-Day Paramotoring ($11,500, exotic), more Zanzibar variants. Skip client one-offs (Annie, Jef, "for Two Adults", fixed-date customs).
+
+### QA (2026-06-15)
+- [x] Production build green — all routes prerendered + `/sitemap.xml`, `/robots.txt`, `/opengraph-image`
+- [x] `qa-content.mjs` — homepage + all 12 catalog pages: 200, single h1, no overflow at 375px
+- [x] `qa-seo.mjs` — sitemap (18 URLs, absolute), robots (sitemap + /api disallow), OG image (image/png 200), homepage canonical + og:image + no-JS-safe reveal content
+
+### Phases 5 & 6 progress (2026-06-15)
+- **Phase 6 SEO infra done:** metadataBase + canonicals everywhere, sitemap.ts, robots.ts, branded next/og OG image.
+- **Phase 5 polish done:** scroll-reveal (Reveal.tsx, accessible), reduced-motion audit, keyboard focus ring verified.
+- **Deferred (need deploy):** JSON-LD Rich Results validation, Lighthouse, Search Console, real-device QA.
+- **Deferred (need client):** GA4 Measurement ID, stat counters (real numbers), 2 blog guide articles, photos.
+
+**Next action:** Vercel deploy preview (unlocks Lighthouse + Rich Results + Search Console + GA4), or write the 2 Phase 6 blog guides, or get Ombeni's outstanding data (Meru/NC itineraries, GA4 ID, photos).
