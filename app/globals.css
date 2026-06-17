@@ -302,6 +302,9 @@ p {
   left: 0;
   right: 0;
   top: -54px;
+  width: 100%;   /* without this the SVG falls back to its intrinsic 1440px
+                    viewBox width (right:0 is ignored for auto-width replaced
+                    elements), forcing horizontal scroll on every breakpoint */
   height: 56px;
   display: block;
 }

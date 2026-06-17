@@ -43,3 +43,8 @@ next-env.d.ts
 # Itinerary source material (client pricing + names — never deploy)
 _source/
 _itinerary-text/
+
+# Responsive-audit tooling (throwaway)
+/.audit/
+/scripts/shots.mjs
+/scripts/probe.mjs
