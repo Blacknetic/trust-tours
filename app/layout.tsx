@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { SOCIAL_LINKS } from "@/data/social";
+import { jsonLd } from "@/lib/json-ld";
 import "./globals.css";
 
 // Site-wide organisation schema. `sameAs` is where search engines pick up
@@ -69,7 +70,7 @@ export default function RootLayout({
       <body className="min-h-dvh flex flex-col antialiased">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(ORG_JSON_LD) }}
         />
         <Header />
         <main className="flex-1">{children}</main>

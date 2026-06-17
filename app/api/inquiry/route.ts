@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { rateLimit, clientIp } from "@/lib/rate-limit";
 
 // Sends inquiry email via Resend (https://resend.com — free tier covers this volume).
 // Requires env vars: RESEND_API_KEY, INQUIRY_TO_EMAIL.
@@ -13,7 +14,23 @@ interface InquiryBody {
   website?: string; // honeypot
 }
 
+// Per-IP throttle: 5 inquiries / 10 min. Stops form-spam, email-bombing and the
+// serverless-saturation that an unthrottled outbound-email endpoint invites.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+
+// Reject oversized input before it reaches the email body / outbound request.
+const MAX = { name: 200, email: 200, message: 5000, meta: 100 };
+
 export async function POST(req: Request) {
+  const limit = rateLimit(clientIp(req), RATE_LIMIT, RATE_WINDOW_MS);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfterSec) } },
+    );
+  }
+
   let body: InquiryBody;
   try {
     body = await req.json();
@@ -35,6 +52,15 @@ export async function POST(req: Request) {
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+  }
+  if (
+    name.length > MAX.name ||
+    email.length > MAX.email ||
+    message.length > MAX.message ||
+    (body.travelMonth?.length ?? 0) > MAX.meta ||
+    (body.groupSize?.length ?? 0) > MAX.meta
+  ) {
+    return NextResponse.json({ error: "Input too long" }, { status: 413 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;

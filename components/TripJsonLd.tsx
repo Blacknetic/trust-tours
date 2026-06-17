@@ -1,4 +1,5 @@
 import type { TripPackage } from "@/data/packages";
+import { jsonLd } from "@/lib/json-ld";
 
 interface Props {
   pkg: TripPackage;
@@ -79,7 +80,7 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({ "@context": "https://schema.org", "@graph": graph }),
+        __html: jsonLd({ "@context": "https://schema.org", "@graph": graph }),
       }}
     />
   );
