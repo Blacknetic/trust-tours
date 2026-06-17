@@ -10,6 +10,14 @@ export const metadata: Metadata = {
     "Trust Tours & Safaris is a small, licensed tour operator based in Arusha, Tanzania, led by founder Ombeni. We drive, we cook, we guide — every trip, our own crew.",
 };
 
+// Confirmed company facts (from Trust Tours' own site + Ombeni).
+const CREDENTIALS = [
+  { stat: "Est. 2008", label: "Founded in Arusha, Tanzania" },
+  { stat: "Nominee", label: "World Travel Awards, 2023 & 2024" },
+  { stat: "Zanzibar · Nairobi", label: "Offices across East Africa" },
+  { stat: "TALA 014216", label: "Licensed Class A operator" },
+];
+
 const VALUES = [
   {
     title: "You talk to the owner",
@@ -35,7 +43,7 @@ export default function AboutPage() {
             className="text-sm font-semibold tracking-widest uppercase mb-3"
             style={{ color: "var(--gold)" }}
           >
-            Moshi, Tanzania
+            Arusha, Tanzania
           </p>
           <h1
             className="text-4xl md:text-6xl font-extrabold mb-5"
@@ -50,12 +58,33 @@ export default function AboutPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(251,248,241,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
           >
-            Trust Tours &amp; Safaris is a small operator at the foot of
-            Kilimanjaro. We keep groups personal, crews consistent, and planning
-            direct — one conversation on WhatsApp from first question to summit.
+            Since 2008, Trust Tours &amp; Safaris has guided travellers to the
+            roof of Africa and across the plains of Tanzania — always from our
+            home in Arusha, always with our own crew. We stay deliberately small,
+            so the person who plans your journey is the one who sees it through.
           </p>
+
+          {/* Confirmed credentials */}
+          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 mt-10">
+            {CREDENTIALS.map((c) => (
+              <div key={c.stat}>
+                <dt
+                  className="text-xl md:text-2xl font-extrabold"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--gold)" }}
+                >
+                  {c.stat}
+                </dt>
+                <dd
+                  className="text-xs md:text-sm mt-1 leading-snug"
+                  style={{ color: "rgba(255,255,255,0.7)" }}
+                >
+                  {c.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -82,20 +111,22 @@ export default function AboutPage() {
             className="text-3xl md:text-4xl font-extrabold mb-6"
             style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.1 }}
           >
-            Ombeni
+            Ombeni Kiware
           </h2>
           {/* TODO: replace with Ombeni's real story in his own words — interview him.
               Do not pad this with invented biography. */}
           <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--ink)" }}>
             <p style={{ maxWidth: "60ch" }}>
-              Ombeni grew up at the foot of Kilimanjaro and built Trust Tours
-              around a simple idea: the person who sells you the trip should be
-              the person responsible for it.
+              Ombeni Kiware grew up in the shadow of Kilimanjaro and founded Trust
+              Tours in 2008. He still leads from the front — shaping each route,
+              meeting the travellers who book it, and standing on the summit
+              beside them.
             </p>
             <p style={{ maxWidth: "60ch", opacity: 0.75 }}>
-              Ask him anything — route choice, training, tipping, what the food
-              is like at 4,600 m. You&apos;ll get a straight answer on WhatsApp,
-              usually with photos from last week&apos;s climb.
+              Around him is a close team of Tanzanian guides, drivers and cooks who
+              return season after season. It&apos;s why a Trust Tours trip feels
+              the same whether it&apos;s your first or your fifth — and why so much
+              of our work comes by word of mouth.
             </p>
           </div>
         </div>

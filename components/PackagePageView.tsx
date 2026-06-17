@@ -94,7 +94,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
           <nav
             aria-label="Breadcrumb"
             className="text-xs mb-5"
-            style={{ color: "rgba(251,248,241,0.5)" }}
+            style={{ color: "rgba(255,255,255,0.5)" }}
           >
             <Link href="/" className="hover:opacity-80 transition-opacity">Home</Link>
             <span className="mx-2" aria-hidden="true">›</span>
@@ -102,7 +102,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
               {lex.crumb}
             </Link>
             <span className="mx-2" aria-hidden="true">›</span>
-            <span style={{ color: "rgba(251,248,241,0.8)" }}>{pkg.shortName}</span>
+            <span style={{ color: "rgba(255,255,255,0.8)" }}>{pkg.shortName}</span>
           </nav>
 
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
@@ -131,25 +131,25 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
             <div className="md:text-right flex-shrink-0">
               {pkg.priceFromUSD > 0 ? (
                 <>
-                  <p className="text-sm" style={{ color: "rgba(251,248,241,0.55)" }}>From</p>
+                  <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>From</p>
                   <p
                     className="text-5xl font-extrabold leading-none"
                     style={{ fontFamily: "var(--font-display)", color: "var(--sunset)" }}
                   >
                     ${pkg.priceFromUSD.toLocaleString()}
                   </p>
-                  <p className="text-xs mt-1.5" style={{ color: "rgba(251,248,241,0.5)" }}>
+                  <p className="text-xs mt-1.5" style={{ color: "rgba(255,255,255,0.5)" }}>
                     per person
                   </p>
                   <p
                     className="text-xs mt-1 mb-5 md:ml-auto"
-                    style={{ color: "rgba(251,248,241,0.4)", maxWidth: "30ch" }}
+                    style={{ color: "rgba(255,255,255,0.4)", maxWidth: "30ch" }}
                   >
                     {pkg.priceNote}
                   </p>
                 </>
               ) : (
-                <p className="text-sm mb-5" style={{ color: "rgba(251,248,241,0.55)" }}>
+                <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.55)" }}>
                   Price on request
                 </p>
               )}

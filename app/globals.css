@@ -6,7 +6,10 @@
 ──────────────────────────────────────────────────────────────────── */
 :root {
   --ink: #1a1a16;     /* warm near-black — body text + darkest surfaces */
-  --paper: #f7f3ea;   /* warm bone (was cool cream) */
+  --paper: #ffffff;   /* PURE WHITE — primary light surface + the white in the
+                         brown & white brand. (Was warm bone #f7f3ea; client
+                         wants true white, not cream.) Also used as near-white
+                         text on the dark brown sections. */
   --forest: #4a2912;  /* primary dark SURFACE: bands, footer, CTA — rich espresso
                          brown matched to the Trust Tours logo. Also used as the
                          brand brown for accent text/headings on light pages.
@@ -17,8 +20,11 @@
                          avoid churn across components. */
   --sunset: #6e3b1f;  /* warm reddish-BROWN — was terracotta/orange; demoted to a deep
                          brown so the palette stays strictly brown & white. */
-  --snow: #efe8db;    /* warm stone — light cards/sections */
-  --sand: #e7dccb;    /* warm sand neutral */
+  --snow: #f3f4f4;    /* NEUTRAL near-white grey — section alternation against
+                         pure-white --paper. (Was warm stone #efe8db — neutralised
+                         so it reads as white, not cream.) */
+  --sand: #e8e8e6;    /* NEUTRAL light grey — borders/neutral surfaces.
+                         (Was warm sand #e7dccb.) */
   --wa-green: #4a2912; /* WAS WhatsApp green — per client, the site is strictly brown &
                           white with zero exceptions, so the WhatsApp button is espresso
                           brown. Token name kept to avoid churn. */

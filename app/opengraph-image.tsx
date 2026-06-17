@@ -63,7 +63,7 @@ export default function Image() {
           >
             Climb Kilimanjaro. Track the Great Migration.
           </div>
-          <div style={{ fontSize: "32px", color: "rgba(251,248,241,0.82)" }}>
+          <div style={{ fontSize: "32px", color: "rgba(255,255,255,0.82)" }}>
             Licensed Tanzania operator · Plan directly with Ombeni
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function Image() {
           >
             trusttourstz.com
           </div>
-          <div style={{ color: "rgba(251,248,241,0.7)", display: "flex" }}>
+          <div style={{ color: "rgba(255,255,255,0.7)", display: "flex" }}>
             WhatsApp +255 785 938 860
           </div>
         </div>

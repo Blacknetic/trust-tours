@@ -37,7 +37,7 @@ export default function SafarisListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(251,248,241,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
           >
             Private game drives in a 4x4 with pop-up roof across northern
             Tanzania&apos;s big three parks — timed to the Great Migration when you

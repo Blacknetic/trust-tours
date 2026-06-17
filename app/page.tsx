@@ -12,6 +12,7 @@ import WaypointEyebrow from "@/components/WaypointEyebrow";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import WhyTrustUs from "@/components/WhyTrustUs";
 import TripFinder from "@/components/TripFinder";
+import PillLink from "@/components/PillLink";
 
 export const metadata: Metadata = {
   title: "Kilimanjaro Climbs & Tanzania Safaris",
@@ -23,10 +24,17 @@ const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
   "Hi Ombeni! I'd like to plan a Tanzania trip with Trust Tours & Safaris."
 )}`;
 
-const TOP_PICKS = [
+// Featured trios for the homepage — a deliberate spread (popular / scenic /
+// classic) so visitors see range, not three near-identical options.
+const KILI_PICKS = [
   "7-day-machame-route",
+  "8-day-lemosho-route",
+  "6-day-marangu-route",
+];
+const SAFARI_PICKS = [
   "7-day-great-migration-safari",
-  "3-day-mount-meru-momela",
+  "3-day-safari-tarangire-manyara-ngorongoro",
+  "5-day-northern-safari",
 ];
 
 const STEPS = [
@@ -53,7 +61,8 @@ const DUST = Array.from({ length: 16 }, (_, i) => ({
 }));
 
 export default function HomePage() {
-  const topPicks = TOP_PICKS.map(getPackage).filter((p) => p !== undefined);
+  const kiliPicks = KILI_PICKS.map(getPackage).filter((p) => p !== undefined);
+  const safariPicks = SAFARI_PICKS.map(getPackage).filter((p) => p !== undefined);
 
   return (
     <>
@@ -162,7 +171,7 @@ export default function HomePage() {
           </p>
           <p
             className="fade-up fade-up-4 text-base mb-10"
-            style={{ color: "rgba(251,248,241,0.72)", maxWidth: "50ch", lineHeight: 1.6 }}
+            style={{ color: "rgba(255,255,255,0.72)", maxWidth: "50ch", lineHeight: 1.6 }}
           >
             A small Arusha-based crew, led by Ombeni. We drive, we cook, we
             guide — from the moment you land to your summit certificate or your
@@ -182,7 +191,7 @@ export default function HomePage() {
             <Link
               href="/kilimanjaro"
               className="btn-fill text-center px-8 py-4 rounded-full font-semibold text-base transition-colors hover:text-white"
-              style={{ border: "2px solid rgba(251,248,241,0.45)", color: "var(--paper)" }}
+              style={{ border: "2px solid rgba(255,255,255,0.45)", color: "var(--paper)" }}
             >
               View Kilimanjaro routes
             </Link>
@@ -192,7 +201,7 @@ export default function HomePage() {
           <div className="fade-up fade-up-4 mt-10 max-w-4xl">
             <p
               className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-              style={{ color: "rgba(251,248,241,0.7)" }}
+              style={{ color: "rgba(255,255,255,0.7)" }}
             >
               Or find your trip
             </p>
@@ -207,7 +216,7 @@ export default function HomePage() {
         >
           <span
             className="text-xs font-semibold tracking-[0.25em] uppercase"
-            style={{ color: "rgba(251,248,241,0.7)" }}
+            style={{ color: "rgba(255,255,255,0.7)" }}
           >
             Begin the journey
           </span>
@@ -217,49 +226,154 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Top packages — morning light ──────────────────────────── */}
+      {/* ── About — meet the person behind the company first ──────── */}
+      <section style={{ background: "var(--paper)" }}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center">
+          <Reveal className="mx-auto w-56 md:w-full">
+            <div className="wipe relative aspect-square rounded-2xl overflow-hidden">
+              <Image
+                src="/images/ombeni-portrait.jpg"
+                alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
+                fill
+                loading="eager"
+                sizes="(max-width: 768px) 224px, 300px"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <WaypointEyebrow
+              className="text-sm font-semibold tracking-[0.22em] uppercase mb-4"
+              style={{ color: "var(--gold)" }}
+            >
+              From the founder
+            </WaypointEyebrow>
+            <blockquote
+              className="text-2xl md:text-3xl font-medium mb-6"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--ink)",
+                lineHeight: 1.35,
+                fontStyle: "italic",
+                maxWidth: "32ch",
+              }}
+            >
+              &ldquo;When you message Trust Tours, you talk to me — not a call
+              center. We keep the company small so every trip gets our full
+              attention.&rdquo;
+            </blockquote>
+            <p className="text-sm font-bold" style={{ color: "var(--ink)" }}>
+              Ombeni
+            </p>
+            <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.55 }}>
+              Founder &amp; lead guide, Trust Tours &amp; Safaris — Arusha, Tanzania
+            </p>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full font-semibold text-sm transition-colors hover:bg-gold hover:text-ink"
+              style={{ border: "1.5px solid rgba(74,41,18,0.3)", color: "var(--forest)" }}
+            >
+              More about Trust Tours &amp; Ombeni →
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── Why travellers trust us — back the person with proof ───── */}
+      <WhyTrustUs background="var(--snow)" />
+
+      {/* ── Kilimanjaro picks — morning light ─────────────────────── */}
       <section className="contour-bg" style={{ background: "var(--paper)" }}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
-          <div className="flex items-end justify-between mb-10">
-            <div>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+            <div className="max-w-2xl">
               <WaypointEyebrow
                 className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
                 style={{ color: "var(--gold)" }}
               >
-                Most requested
+                Climb Kilimanjaro
               </WaypointEyebrow>
               <h2
-                className="text-3xl md:text-5xl font-semibold"
+                className="text-3xl md:text-5xl font-semibold mb-4"
                 style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.08 }}
               >
-                Three trips, three ways in
+                Choose your way to the summit
               </h2>
+              <p className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.7 }}>
+                Every route up Kilimanjaro trades one thing for another — scenery
+                for solitude, an extra day for better odds at the top. Whichever
+                you choose, you climb with a guide who has stood on Uhuru Peak
+                hundreds of times and will pace you slowly so your body has time
+                to adjust. These three are the ones our climbers ask for most.
+              </p>
             </div>
-            <Link
-              href="/safaris"
-              className="link-draw hidden sm:block text-sm font-semibold whitespace-nowrap"
-              style={{ color: "var(--forest)" }}
-            >
-              All safaris →
-            </Link>
+            <div className="hidden md:block">
+              <PillLink href="/kilimanjaro">All Kilimanjaro routes</PillLink>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {topPicks.map((pkg, i) => (
+            {kiliPicks.map((pkg, i) => (
               <Reveal key={pkg.slug} delay={i * 110} className="h-full">
                 <PackageCard pkg={pkg} />
               </Reveal>
             ))}
           </div>
+
+          <div className="md:hidden mt-8">
+            <PillLink href="/kilimanjaro">All Kilimanjaro routes</PillLink>
+          </div>
         </div>
       </section>
 
-      {/* ── Why travellers trust us — the proof, in light ─────────── */}
-      <WhyTrustUs />
+      {/* ── Safari picks — late morning on the plains ─────────────── */}
+      <section style={{ background: "var(--snow)" }}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+            <div className="max-w-2xl">
+              <WaypointEyebrow
+                className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
+                style={{ color: "var(--gold)" }}
+              >
+                Go on safari
+              </WaypointEyebrow>
+              <h2
+                className="text-3xl md:text-5xl font-semibold mb-4"
+                style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.08 }}
+              >
+                Meet Tanzania&rsquo;s wild north
+              </h2>
+              <p className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.7 }}>
+                From the elephants of Tarangire to a million wildebeest thundering
+                across the Serengeti, your days on safari are spent in a 4x4 with
+                a guide who knows where the animals move and when. Tell us how
+                many days you have and we&rsquo;ll shape the route around it —
+                here&rsquo;s where most travellers start.
+              </p>
+            </div>
+            <div className="hidden md:block">
+              <PillLink href="/safaris">All safaris</PillLink>
+            </div>
+          </div>
 
-      {/* ── How it works — midday in the canopy ───────────────────── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {safariPicks.map((pkg, i) => (
+              <Reveal key={pkg.slug} delay={i * 110} className="h-full">
+                <PackageCard pkg={pkg} />
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="md:hidden mt-8">
+            <PillLink href="/safaris">All safaris</PillLink>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials — social proof, right after the trips ─────── */}
       <section className="relative" style={{ background: "var(--canopy)" }}>
-        {/* Forest ridge rising into the morning light above */}
+        {/* Ridge rising out of the light safari section above */}
         <svg
           className="ridge-top"
           viewBox="0 0 1440 56"
@@ -272,6 +386,43 @@ export default function HomePage() {
           />
         </svg>
 
+        <Reveal className="max-w-7xl mx-auto px-4 md:px-6 pt-16 md:pt-24 text-center">
+          <p
+            className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
+            style={{ color: "var(--gold)" }}
+          >
+            Loved by travellers
+          </p>
+          <h2
+            className="text-3xl md:text-5xl font-semibold mb-3"
+            style={{ fontFamily: "var(--font-display)", color: "var(--paper)", lineHeight: 1.08 }}
+          >
+            In their own words
+          </h2>
+          <p className="text-sm mb-12" style={{ color: "rgba(255,255,255,0.6)" }}>
+            Independent five-star reviews from TripAdvisor.
+          </p>
+        </Reveal>
+
+        <div className="pb-12 md:pb-16">
+          <TestimonialsMarquee />
+        </div>
+
+        <div className="text-center pb-16 md:pb-24">
+          <a
+            href="https://www.tripadvisor.com/Attraction_Review-g297913-d13170128-Reviews-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-draw text-sm font-semibold"
+            style={{ color: "var(--gold)" }}
+          >
+            Read all reviews on TripAdvisor →
+          </a>
+        </div>
+      </section>
+
+      {/* ── How it works — clear the path right before the ask ────── */}
+      <section style={{ background: "var(--dusk)" }}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
           <WaypointEyebrow
             className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
@@ -307,104 +458,13 @@ export default function HomePage() {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(251,248,241,0.66)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.66)" }}>
                     {step.body}
                   </p>
                 </li>
               </Reveal>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* ── Founder's word — evening under the trees ──────────────── */}
-      <section style={{ background: "var(--dusk)" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center">
-          <Reveal className="mx-auto w-56 md:w-full">
-            <div className="wipe relative aspect-square rounded-2xl overflow-hidden">
-              <Image
-                src="/images/ombeni-portrait.jpg"
-                alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
-                fill
-                loading="eager"
-                sizes="(max-width: 768px) 224px, 300px"
-                className="object-cover"
-              />
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <WaypointEyebrow
-              className="text-sm font-semibold tracking-[0.22em] uppercase mb-4"
-              style={{ color: "var(--gold)" }}
-            >
-              From the founder
-            </WaypointEyebrow>
-            <blockquote
-              className="text-2xl md:text-3xl font-medium mb-6"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--paper)",
-                lineHeight: 1.35,
-                fontStyle: "italic",
-                maxWidth: "32ch",
-              }}
-            >
-              &ldquo;When you message Trust Tours, you talk to me — not a call
-              center. We keep the company small so every trip gets our full
-              attention.&rdquo;
-            </blockquote>
-            <p className="text-sm font-bold" style={{ color: "var(--paper)" }}>
-              Ombeni
-            </p>
-            <p className="text-sm" style={{ color: "rgba(251,248,241,0.55)" }}>
-              Founder &amp; lead guide, Trust Tours &amp; Safaris — Arusha, Tanzania
-            </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full font-semibold text-sm text-paper transition-colors hover:bg-gold hover:text-ink"
-              style={{ border: "1.5px solid rgba(251,248,241,0.35)" }}
-            >
-              More about Trust Tours &amp; Ombeni →
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── Testimonials marquee — campfire, night ────────────────── */}
-      <section style={{ background: "var(--night)" }}>
-        <Reveal className="max-w-7xl mx-auto px-4 md:px-6 pt-16 md:pt-24 text-center">
-          <p
-            className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
-            style={{ color: "var(--gold)" }}
-          >
-            Loved by travellers
-          </p>
-          <h2
-            className="text-3xl md:text-5xl font-semibold mb-3"
-            style={{ fontFamily: "var(--font-display)", color: "var(--paper)", lineHeight: 1.08 }}
-          >
-            In their own words
-          </h2>
-          <p className="text-sm mb-12" style={{ color: "rgba(251,248,241,0.6)" }}>
-            Independent five-star reviews from TripAdvisor.
-          </p>
-        </Reveal>
-
-        <div className="pb-12 md:pb-16">
-          <TestimonialsMarquee />
-        </div>
-
-        <div className="text-center pb-16 md:pb-24">
-          <a
-            href="https://www.tripadvisor.com/Attraction_Review-g297913-d13170128-Reviews-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-draw text-sm font-semibold"
-            style={{ color: "var(--gold)" }}
-          >
-            Read all reviews on TripAdvisor →
-          </a>
         </div>
       </section>
 

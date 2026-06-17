@@ -125,7 +125,7 @@ export default function ElevationJourney({ itinerary }: Props) {
             >
               Route profile
             </p>
-            <p className="text-xs" style={{ color: "rgba(251,248,241,0.45)" }}>
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
               {itinerary.length} days · {totalKm > 0 ? `${totalKm} km` : `${summit.alt.toLocaleString()} m`}
             </p>
           </div>
@@ -183,9 +183,9 @@ export default function ElevationJourney({ itinerary }: Props) {
           {activePoint && itinerary[activeIdx] && (
             <div
               className="flex items-center justify-between mt-3 pt-3"
-              style={{ borderTop: "1px solid rgba(251,248,241,0.12)" }}
+              style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}
             >
-              <span className="text-xs" style={{ color: "rgba(251,248,241,0.7)" }}>
+              <span className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
                 Day {itinerary[activeIdx].day} · {activePoint.label}
               </span>
               <span

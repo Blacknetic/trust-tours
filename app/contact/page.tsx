@@ -38,7 +38,7 @@ export default function ContactPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(251,248,241,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
           >
             WhatsApp is fastest — you&apos;ll chat with Ombeni directly. Prefer
             email? Use the form and we&apos;ll get back to you.
@@ -68,7 +68,7 @@ export default function ContactPage() {
             >
               +255 785 938 860
             </p>
-            <p className="text-sm" style={{ color: "rgba(251,248,241,0.65)" }}>
+            <p className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
               Tap to open a chat with Ombeni →
             </p>
           </a>

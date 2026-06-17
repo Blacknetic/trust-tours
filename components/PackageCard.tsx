@@ -72,7 +72,7 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
         )}
         <span
           className="relative z-10 px-2.5 py-1 rounded-full text-xs font-semibold"
-          style={{ background: "rgba(251,248,241,0.92)", color: "var(--forest)" }}
+          style={{ background: "rgba(255,255,255,0.92)", color: "var(--forest)" }}
         >
           {pkg.days} days · {CATEGORY_LABEL[pkg.category]}
         </span>

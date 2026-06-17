@@ -52,7 +52,7 @@ export default function ReviewsPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(251,248,241,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
           >
             Every review here was written by a real traveller on an independent
             platform. We link the trip each one took so you can read it in

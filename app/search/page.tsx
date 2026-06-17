@@ -91,7 +91,7 @@ export default async function SearchPage({
           </h1>
           <p
             className="text-base leading-relaxed mb-8"
-            style={{ color: "rgba(251,248,241,0.7)", maxWidth: "55ch" }}
+            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "55ch" }}
           >
             Pick what matters to you. Don&apos;t see the exact trip? Every Trust
             Tours itinerary is private and custom-built — message Ombeni and

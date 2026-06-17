@@ -5,7 +5,7 @@ function Card({ t }: { t: Testimonial }) {
     <figure
       className="flex flex-col w-[300px] sm:w-[360px] shrink-0 rounded-2xl p-6"
       style={{
-        background: "rgba(251,248,241,0.05)",
+        background: "rgba(255,255,255,0.05)",
         border: "1px solid rgba(138,90,50,0.18)",
       }}
     >
@@ -24,7 +24,7 @@ function Card({ t }: { t: Testimonial }) {
       </p>
       <blockquote
         className="text-sm leading-relaxed flex-1 mb-5"
-        style={{ color: "rgba(251,248,241,0.74)" }}
+        style={{ color: "rgba(255,255,255,0.74)" }}
       >
         &ldquo;{t.quote}&rdquo;
       </blockquote>
@@ -40,7 +40,7 @@ function Card({ t }: { t: Testimonial }) {
           <span className="block text-sm font-semibold truncate" style={{ color: "var(--paper)" }}>
             {t.name}
           </span>
-          <span className="block text-xs" style={{ color: "rgba(251,248,241,0.5)" }}>
+          <span className="block text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
             {t.context} · {t.source}
           </span>
         </span>

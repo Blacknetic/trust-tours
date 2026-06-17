@@ -23,7 +23,7 @@ export default function Footer() {
     <footer
       style={{
         background: "var(--forest)",
-        color: "rgba(251,248,241,0.72)",
+        color: "rgba(255,255,255,0.72)",
         borderTop: "1px solid rgba(176,130,42,0.3)",
       }}
     >
@@ -41,7 +41,7 @@ export default function Footer() {
             Arusha-based operator leading climbs on Kilimanjaro and safaris
             across northern Tanzania. Plan directly with Ombeni on WhatsApp.
           </p>
-          <p className="text-xs" style={{ color: "rgba(251,248,241,0.4)" }}>
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
             Licensed Tourism Agent (Class A) · TALA License No. 014216
           </p>
           <SocialLinks className="-ml-2 mt-5" linkClassName="text-paper/70 hover:text-gold" />
@@ -134,14 +134,14 @@ export default function Footer() {
                 Reviews on TripAdvisor →
               </a>
             </li>
-            <li style={{ color: "rgba(251,248,241,0.5)" }}>Arusha, Tanzania</li>
+            <li style={{ color: "rgba(255,255,255,0.5)" }}>Arusha, Tanzania</li>
           </ul>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs" style={{ color: "rgba(251,248,241,0.4)" }}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
           <p>© {new Date().getFullYear()} Trust Tours &amp; Safaris. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/about" className="transition-colors hover:text-white" style={{ color: "inherit" }}>About</Link>
