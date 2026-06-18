@@ -43,7 +43,7 @@ const LEXICON: Record<
   zanzibar: {
     noun: "Trip",
     crumb: "Zanzibar",
-    basePath: "/safaris",
+    basePath: "/zanzibar",
     readyLine: "Ready to go?",
     reviewsTitle: "What past travellers say",
     verb: "travel",

@@ -13,6 +13,7 @@ import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import WhyTrustUs from "@/components/WhyTrustUs";
 import TripFinder from "@/components/TripFinder";
 import PillLink from "@/components/PillLink";
+import SoaringBirds from "@/components/SoaringBirds";
 
 export const metadata: Metadata = {
   title: "Kilimanjaro Climbs & Tanzania Safaris",
@@ -128,6 +129,9 @@ export default function HomePage() {
             />
           ))}
         </div>
+
+        {/* Distant flock soaring across the sky */}
+        <SoaringBirds />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 py-24">
           <p

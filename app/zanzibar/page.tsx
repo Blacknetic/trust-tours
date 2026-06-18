@@ -4,14 +4,14 @@ import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
 
 export const metadata: Metadata = {
-  title: "Tanzania Safari Packages & Prices",
-  alternates: { canonical: "/safaris" },
+  title: "Zanzibar Beach Holidays & Tours",
+  alternates: { canonical: "/zanzibar" },
   description:
-    "Private Tanzania safaris with Trust Tours: Serengeti, Ngorongoro Crater, Tarangire and the Great Migration — plus safari & Zanzibar beach combinations.",
+    "Zanzibar beach holidays with Trust Tours: Stone Town, spice farms, Mnemba snorkelling and the white sands of Nungwi, Paje and Kendwa — standalone or paired with a safari.",
 };
 
-export default function SafarisListingPage() {
-  const safaris = byCategory("safari");
+export default function ZanzibarListingPage() {
+  const escapes = byCategory("zanzibar");
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function SafarisListingPage() {
             className="text-sm font-semibold tracking-widest uppercase mb-3"
             style={{ color: "var(--gold)" }}
           >
-            Serengeti · Ngorongoro · Tarangire
+            Stone Town · Spice Island · Indian Ocean
           </p>
           <h1
             className="text-4xl md:text-6xl font-extrabold mb-5"
@@ -33,34 +33,35 @@ export default function SafarisListingPage() {
               letterSpacing: "-0.02em",
             }}
           >
-            Tanzania Safaris
+            Zanzibar Beach Escapes
           </h1>
           <p
             className="text-base leading-relaxed"
             style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
           >
-            Private game drives in a 4x4 with pop-up roof across northern
-            Tanzania&apos;s big three parks — timed to the Great Migration when you
-            travel July to September. Add Zanzibar to finish on the beach.
+            White sand, turquoise water and the history of the Spice Island —
+            UNESCO-listed Stone Town, spice farms, Mnemba&apos;s coral reefs and the
+            beaches of Nungwi, Paje and Kendwa. Perfect on its own or as the
+            beach finish to a Tanzania safari or Kilimanjaro climb.
           </p>
         </div>
       </section>
 
-      {/* ── Safari cards ──────────────────────────────────────── */}
+      {/* ── Zanzibar cards ────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {safaris.map((pkg) => (
+          {escapes.map((pkg) => (
             <PackageCard key={pkg.slug} pkg={pkg} />
           ))}
         </div>
       </section>
 
       <CTABand
-        eyebrow="Custom trips welcome"
-        title="Build your own safari with Ombeni"
-        subtitle="Every safari is private — tell us your dates, budget and must-sees and we'll shape the trip around them."
-        ctaLabel="Plan my safari on WhatsApp"
-        waMessage="Hi Ombeni! I'm interested in a Tanzania safari. Can you share options?"
+        eyebrow="Safari + beach welcome"
+        title="Add Zanzibar to your Tanzania trip"
+        subtitle="Finish a safari or Kilimanjaro climb on the beach — tell us your dates and we'll arrange the flights and book it as one trip."
+        ctaLabel="Plan my Zanzibar trip on WhatsApp"
+        waMessage="Hi Ombeni! I'm interested in a Zanzibar beach holiday. Can you share options?"
       />
     </>
   );

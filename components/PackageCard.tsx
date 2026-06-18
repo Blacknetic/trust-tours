@@ -6,7 +6,7 @@ const BASE_PATH: Record<TripPackage["category"], string> = {
   kilimanjaro: "/kilimanjaro",
   safari: "/safaris",
   trekking: "/trekking",
-  zanzibar: "/safaris",
+  zanzibar: "/zanzibar",
 };
 
 // Brand-token gradients per category — used as a fallback when a package has

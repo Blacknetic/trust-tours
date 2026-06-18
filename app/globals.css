@@ -172,6 +172,42 @@ p {
   100% { transform: translateY(-90vh) translateX(24px); opacity: 0; }
 }
 
+/* ── Soaring birds (distant flock gliding across the hero sky) ─────── */
+.bird-flight {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* above the photo washes, below the hero copy (z-10) */
+  pointer-events: none;
+  overflow: hidden;
+}
+.bird {
+  position: absolute;
+  left: -8%;
+  color: var(--ink);
+  opacity: 0;
+  transform: scale(var(--scale, 1));
+  animation: bird-glide var(--dur, 36s) linear var(--delay, 0s) infinite;
+  will-change: transform, opacity;
+}
+.bird-wing {
+  transform-origin: center;
+  animation: bird-flap var(--flap, 3s) ease-in-out infinite;
+  will-change: transform;
+}
+/* Drift gently across and up on a thermal; fade in/out at the sky edges. */
+@keyframes bird-glide {
+  0%   { transform: translate(0, 0) scale(var(--scale, 1)); opacity: 0; }
+  5%   { opacity: var(--bird-opacity, 0.45); }
+  50%  { transform: translate(58vw, -16px) scale(var(--scale, 1)); }
+  95%  { opacity: var(--bird-opacity, 0.45); }
+  100% { transform: translate(120vw, 4px) scale(var(--scale, 1)); opacity: 0; }
+}
+/* Faint far-off wingbeat — wings flatten and lift, never a cartoon flap. */
+@keyframes bird-flap {
+  0%, 100% { transform: scaleY(1); }
+  50%      { transform: scaleY(0.62); }
+}
+
 /* ── Typewriter headline ─────────────────────────────────────────── */
 .tw-caret {
   display: inline-block;
@@ -385,6 +421,7 @@ p {
   }
   .trail-spine::before { height: 100% !important; }
   .light-dust { display: none !important; }
+  .bird-flight { display: none !important; }
   .tw-caret { display: none !important; }
   .wa-halo::after { animation: none !important; }
   /* Marquee becomes a manually scrollable strip */

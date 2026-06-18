@@ -7,7 +7,7 @@ const BASE = "https://trusttourstz.com";
 const categoryPath: Record<TripPackage["category"], string> = {
   kilimanjaro: "kilimanjaro",
   safari: "safaris",
-  zanzibar: "safaris",
+  zanzibar: "zanzibar",
   trekking: "trekking",
 };
 
@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/kilimanjaro`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/safaris`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/zanzibar`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/reviews`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
