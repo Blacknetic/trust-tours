@@ -14,6 +14,16 @@ const SAFARI_LINKS = [
   { href: "/trekking/3-day-mount-meru-momela", label: "3-Day Mount Meru" },
 ];
 
+// Written travel guides (data/guides.ts) — practical advice articles.
+const GUIDE_LINKS = [
+  { href: "/guides/how-long-to-climb-kilimanjaro", label: "How long to climb Kilimanjaro?" },
+  { href: "/guides/best-time-to-visit-tanzania", label: "Best time to visit Tanzania" },
+  { href: "/guides/altitude-sickness-on-kilimanjaro", label: "Altitude sickness on Kilimanjaro" },
+  { href: "/guides/tanzania-safari-packing-list", label: "Safari packing list" },
+  { href: "/guides/tanzania-visa-and-passport-requirements", label: "Visa & passport requirements" },
+  { href: "/guides/tanzania-vaccinations", label: "Vaccinations & health" },
+];
+
 const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
   "Hi Ombeni! I'd like to plan a Tanzania trip with Trust Tours & Safaris."
 )}`;
@@ -27,10 +37,10 @@ export default function Footer() {
         borderTop: "1px solid rgba(176,130,42,0.3)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
 
         {/* Brand */}
-        <div className="sm:col-span-2 md:col-span-1">
+        <div className="sm:col-span-2 lg:col-span-1">
           <p
             className="font-extrabold text-xl mb-3"
             style={{ fontFamily: "var(--font-display)", color: "var(--paper)" }}
@@ -90,6 +100,38 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+
+        {/* Travel guides & advice — our written guides */}
+        <div>
+          <h3
+            className="text-xs font-semibold uppercase tracking-widest mb-4"
+            style={{ color: "var(--gold)" }}
+          >
+            Travel Guides &amp; Advice
+          </h3>
+          <ul className="space-y-2">
+            {GUIDE_LINKS.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-sm transition-colors hover:text-white"
+                  style={{ color: "inherit" }}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/guides"
+                className="text-sm font-semibold transition-colors hover:text-white"
+                style={{ color: "var(--gold)" }}
+              >
+                All guides →
+              </Link>
+            </li>
           </ul>
         </div>
 

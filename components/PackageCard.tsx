@@ -1,12 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { TripPackage } from "@/data/packages";
+import { packageImage } from "@/data/images";
 
 const BASE_PATH: Record<TripPackage["category"], string> = {
   kilimanjaro: "/kilimanjaro",
   safari: "/safaris",
   trekking: "/trekking",
   zanzibar: "/zanzibar",
+  cultural: "/cultural",
+  paramotoring: "/paramotoring",
 };
 
 // Brand-token gradients per category — used as a fallback when a package has
@@ -17,6 +20,8 @@ const PLACEHOLDER: Record<TripPackage["category"], string> = {
   safari: "linear-gradient(150deg, #a5732a 0%, #6e3b1f 45%, #2a1f0e 100%)",
   trekking: "linear-gradient(150deg, #4a2912 0%, #2a1f0e 55%, #1a1206 100%)",
   zanzibar: "linear-gradient(150deg, #6e3b1f 0%, #a5732a 60%, #4a2912 100%)",
+  cultural: "linear-gradient(150deg, #8a5a2b 0%, #4a2912 55%, #2a1f0e 100%)",
+  paramotoring: "linear-gradient(150deg, #a5732a 0%, #6e3b1f 50%, #2a1f0e 100%)",
 };
 
 const CATEGORY_LABEL: Record<TripPackage["category"], string> = {
@@ -24,6 +29,8 @@ const CATEGORY_LABEL: Record<TripPackage["category"], string> = {
   safari: "Safari",
   trekking: "Trekking",
   zanzibar: "Safari + Beach",
+  cultural: "Cultural",
+  paramotoring: "Paramotoring",
 };
 
 function MountainRating({ label, value }: { label: string; value: number }) {
@@ -49,6 +56,7 @@ function MountainRating({ label, value }: { label: string; value: number }) {
 
 export default function PackageCard({ pkg }: { pkg: TripPackage }) {
   const href = `${BASE_PATH[pkg.category]}/${pkg.slug}`;
+  const img = packageImage(pkg);
 
   return (
     <Link
@@ -61,9 +69,9 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
         className="relative aspect-[4/3] flex items-end p-4 overflow-hidden"
         style={{ background: PLACEHOLDER[pkg.category] }}
       >
-        {pkg.heroImage && (
+        {img && (
           <Image
-            src={pkg.heroImage}
+            src={img}
             alt={pkg.shortName}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

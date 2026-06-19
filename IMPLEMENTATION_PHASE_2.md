@@ -24,21 +24,20 @@ via **exact 301 redirects**, then add his informational/blog content.
 
 ---
 
-## Phase 2A.0 — New-section infrastructure (needed before Kenya/Cultural/Paramotoring trips)
-- [ ] Extend `category` union in `data/packages.ts` (`kenya` | `cultural` | `paramotoring`)
-- [ ] `components/PackageCard.tsx` — add `BASE_PATH`, `PLACEHOLDER`, `CATEGORY_LABEL` entries
-- [ ] `components/PackagePageView.tsx` — add `LEXICON` entries (noun/crumb/basePath/verb…)
-- [ ] `app/sitemap.ts` — add `categoryPath` entries + static listing routes
-- [ ] Create routes: `app/kenya/{page,[slug]/page}.tsx`, `app/cultural/...`, `app/paramotoring/...`
-- [ ] `components/Header.tsx` NAV — add the new sections (watch desktop nav crowding)
-- [ ] `components/TripFinder.tsx` / `app/search/page.tsx` — add the new category labels
+## Phase 2A.0 — New-section infrastructure ✅ DONE
+- [x] Extended `category` union (`cultural` | `paramotoring`) — Kenya folded into Safaris (only 1)
+- [x] `PackageCard.tsx` — BASE_PATH, PLACEHOLDER, CATEGORY_LABEL entries
+- [x] `PackagePageView.tsx` — LEXICON entries
+- [x] `sitemap.ts` — categoryPath + static routes (/cultural, /paramotoring)
+- [x] Routes: `app/cultural/{page,[slug]}`, `app/paramotoring/{page,[slug]}`
+- [x] Header NAV — grouped Honeymoon + Cultural + Paramotoring under an **Experiences ▾** dropdown (avoids crowding)
 
 ---
 
 ## Phase 2A.1 — Safari wave
 - [x] 2-Day Tarangire & Ngorongoro — $576 — 301 ✅
-- [ ] 3-Day Serengeti + Hot-Air Balloon from Zanzibar — $2,228
-- [ ] 3-Day Calving-Season Migration (Jan–Apr, Ndutu) — $3,250
+- [x] 3-Day Serengeti + Hot-Air Balloon fly-in from Zanzibar — $2,228 (no old URL) ✅
+- [x] 6-Day Calving Safari (Tarangire/Ndutu/Ngorongoro) — from $2,350 — *source doc labelled "3-Day" but content is 6-Day* (no old URL) ✅
 - [x] 4-Day Private Ndutu Calving Safari — genericized, price-on-request — 301 ✅
 - [x] 4-Day Arusha NP Walk + Tarangire/Manyara/Ngorongoro — $2,218 — 301 ✅
 - [x] 5-Day Arusha Park + Serengeti + Maasai Culture — $1,955 (no old URL) ✅
@@ -47,32 +46,34 @@ via **exact 301 redirects**, then add his informational/blog content.
 - [x] 5-Day Luxury Fly-out Safari — from $2,499 (no old URL) ✅
 - [x] 6-Day Northern Year-Round — $2,625 — 301 (+ `-2` variant) ✅
 - [ ] 6-Day Mara River Crossing — old: `/booking/6-day-safari-to-witness-the-epic-migration-crossing-mara-river-in-tanzania`
-- [ ] 7-Day Northern Circuit Camp — $3,210 / $4,106
-- [ ] 7-Day Great Migration, Photography & Cultural — $3,450
+- [x] 7-Day Northern Circuit — from $3,210 (no old URL) ✅
+- [x] 7-Day Photography & Cultural (Hadzabe/Datoga/Lake Eyasi) — from $3,100 (no old URL) ✅
 - [x] 8-Day Great Migration (3/4-star) — from $3,250 — 301 ✅
-- [ ] 8-Day Mid-Range Customized — $3,899
-- [ ] 9-Day Wildlife & Culture / Northern Tanzania — $4,106 — old: `/booking/9-day-wildlife-and-culture-safari-in-tanzania`
+- [~] 8-Day Mid-Range Customized — **SKIPPED** (near-duplicate of the 8-Day Great Migration)
+- [x] 9-Day Northern Tanzania (Wildlife & Culture) — from $3,410 — 301 ✅
 - [x] 9-Day Beach, City & Bush (Zanzibar/Dar/Arusha/Maasai Mara) — from $2,890 — 301 ✅
 - [x] 10-Day Kenya Safari (Amboseli/Naivasha/Mara) — price on request — folded into Safaris (only 1 Kenya itinerary, so no dedicated section) ✅
-- [ ] 10-Day Serengeti Migration (calving focus) — old: `/booking/10-day-serengeti-great-migration-safari-itinerary-with-trust-tours-and-safaris-calving-season-focus-december-to-march`
-- [ ] 10-Day incl. Zanzibar/Tarangire/Ngorongoro — $5,999
-- [ ] 11-Day Adventure (5/4-star) — old: `/booking/11-day-adventure-is-perfect-...-stay-at-5-star-or-4-star-hotels-and-lodges`
-- [ ] 11-Day Bird Photography & Migration — $5,939
-- [ ] 12-Day Migration Crossing (customized) — $2,750 — old: `/booking/12-day-itinerary-customized-tracking-the-great-migration-crossing-with-trust-tours-and-safaris`
+- [x] 10-Day Calving Migration (Ndutu) — price on request — 301 ✅
+- [x] 10-Day Safari + Zanzibar Adventure (4/5-star) — from $4,890 — 301 ✅ *(this IS the "11-Day Adventure" doc — one page covers both items)*
+- [x] 11-Day Bird Photography & Migration — from $4,314 (no old URL) ✅
+- [x] 12-Day Kilimanjaro Trek + Safari + Culture + Lake Natron — from $2,750 — 301 ✅
 - [ ] 7-Day Northern Tanzania Mid-Range — old: `/7-day-northern-tanzania-midrange-safari-itinerary`
 - [ ] ⚠️ 2-Day Zanzibar → Mikumi — $850 — **HOLD**: source doc contradicts itself (day-trip vs overnight); confirm with Ombeni
 
-## Phase 2A.2 — Honeymoon trips (fold into safari/zanzibar)
-- [ ] 7-Day Ultimate Honeymoon (Tanzania) — old: `/booking/7-days-in-paradise-with-trust-tours-and-safaris-company-your-ultimate-honeymoon-haven`
-- [ ] 7-Day Mid-Range Honeymoon (Zanzibar)
-- [ ] 9-Day Honeymoon Northern Tanzania
-- [ ] 10-Day / 9-Night Honeymoon Migration — old: `/booking/tanzania-honeymoon-safari-tracking-the-great-migration`
-- [ ] 12 Days of Romance Honeymoon — $6,599
-- [ ] 20-Day Tanzania & Zanzibar Honeymoon — $8,750 — old: `/booking/20-day-tanzania-zanzibar-honeymoon-safari-adventure`
+## Phase 2A.2 — Honeymoon (dedicated `/honeymoon` themed listing; `tags:["honeymoon"]`, detail stays in Safaris/Zanzibar)
+- [x] Added `tags` field + built `/honeymoon` listing page + "Honeymoon" nav item + sitemap ✅
+- [x] 7-Day Ultimate Honeymoon (Safari + Zanzibar) — price on request — 301 ✅
+- [x] 10-Day Honeymoon Migration — price on request — 301 ✅
+- [x] 20-Day Tanzania & Zanzibar Honeymoon — from $8,750 — 301 ✅
+- [x] 7-Day Zanzibar Honeymoon — price on request (category zanzibar, shows on /honeymoon + /zanzibar) ✅
+- [x] 9-Day Honeymoon Northern Tanzania — price on request ✅
+- [x] 13-Day Romance Honeymoon (the "12 Days of Romance" doc) — from $5,646 / $6,599 ✅
+- [x] Tagged existing romantic trips onto /honeymoon: 4-Day Balloon, 4-Day Zanzibar, 5-Day Zanzibar ✅
+- **Honeymoon wave done: 9 trips on /honeymoon (6 dedicated + 3 tagged).**
 
 ## Phase 2A.3 — Hike + Safari combos
-- [ ] 7-Day Marangu Hike + Northern Circuit Safari + Maasai — $2,210 — old: `/booking/7-day-safari-adventure-marangu-route-hike-northern-circuit-safari-maasai-cultural-experience-northern-circuit`
-- [ ] 7-Day Tanzania Hiking & Safari
+- [x] 7-Day Kilimanjaro Hike + Northern Circuit + Maasai — $2,210 — 301 ✅
+- [~] 7-Day Tanzania Hiking & Safari — **SKIPPED** (same trip as above, no price/URL)
 
 ## Phase 2A.4 — Zanzibar wave
 - [x] 4-Day Zanzibar Escape — $1,708 ✅
@@ -81,16 +82,29 @@ via **exact 301 redirects**, then add his informational/blog content.
 - [ ] (decide) add premium 5-star 8-Day tier as note on `8-day-zanzibar-tour`? ($3,760–$8,850)
 
 ## Phase 2A.5 — Kilimanjaro / Trekking
-- [ ] Kilimanjaro Day-Trip via Marangu — $385
-- [ ] 5-Day Marangu (Coca-Cola Route) climb — old: `/booking/5-days-the-marangu-route-also-known-as-the-coca-cola-route`
-- [ ] 4-Day Mount Meru (Momela) — $725 / $765 (trekking)
-- [ ] (decide) old Kili routes not yet on site — 6-Day Machame, 6-Day Umbwe, 6-Day Rongai, 7-Day Lemosho — add or redirect to `/kilimanjaro`?
+- [x] Kilimanjaro Day-Trip via Marangu — $385 (trekking; rainforest day hike, no summit) ✅
+- [x] 4-Day Mount Meru (Momela) — from $725 ✅
+- [x] 5-Day Mount Meru (comfort, Rivertrees lodge nights) — price on request ✅ *("5 DAYS CLIMB MT" doc was Meru, not Kili Marangu*
+- [~] 5-Day Marangu (Kili) — no source doc; old `/booking/...marangu...` already 301s to `/kilimanjaro` via regex (added `umbwe` too)
+- [x] Old Kili routes (Machame/Umbwe/Rongai/Lemosho/Marangu) → `/kilimanjaro` via the booking regex ✅
+- [~] 10-Day Zanzibar ($5,999) — **SKIPPED**: same doc as the `10-day-safari-zanzibar-adventure` combo already live
 
-## Phase 2A.6 — New sections (after 2A.0 infra)
-- [~] **Kenya:** only 1 itinerary → folded into Safaris (per client: dedicated page only if 2+). Revisit if more Kenya trips arrive.
-- [ ] **Cultural:** Tanzania Cultural Tour — $1,800 — old: `/booking/cultural-tours` (dedupe the two cultural docs)
-- [ ] **Paramotoring:** 3-Day Paramotoring (Arusha & Kilimanjaro)
-- [ ] **Paramotoring:** 12-Day Paramotoring Safari & Discovery
+## Phase 2A.5b — Ol Doinyo Lengai ("Mountain of God") — NEW, added Jun 2026
+Active volcano + Lake Natron treks. Source: `_source/oldonyo-lengai/` (extracted to `_source/extracted/`).
+**Consideration:** these are mountain treks → category `trekking`, surfaced under the existing **Trekking** dropdown next to Kilimanjaro & Mount Meru (consistent with "Kili & Meru under Trekking"). With Lengai added, the dropdown holds 3+ treks → **build a `/trekking` listing page** rather than keep adding fixed dropdown links. The 5-day one is more safari than climb — likely category `safari` (or trekking with a safari note). No old `/booking/` URLs found for these (newer than the crawled sitemap) → no redirects unless Ombeni supplies them.
+- [x] 2-Day Ol Doinyo Lengai Climb — from $450 (trekking) ✅
+- [x] 3-Day Ol Doinyo Lengai Volcano Hike — from $650 (trekking; `(1)` dup ignored) ✅
+- [x] 5-Day Safari & Ol Doinyo Lengai — from $1,450 (safari category) ✅
+- [x] 7-Day Ol Doinyo Lengai Expedition — from $1,250 (trekking) ✅
+- [x] Built `/trekking` listing page (+ sitemap) and added Lengai + "All treks" to the Trekking dropdown ✅
+- [x] Built dedicated `/ol-doinyo-lengai` listing (all 4 Lengai trips, shortest-first) — nav "Ol Doinyo Lengai" now opens this instead of a single itinerary ✅ *(the `(1)` file is a confirmed exact duplicate, so 4 unique, not 5)*
+- [ ] (remaining trekking) 4-Day Mount Meru, Kilimanjaro day-trip, 5-Day Marangu — still queued in §2A.5
+
+## Phase 2A.6 — New sections ✅ DONE
+- [~] **Kenya:** only 1 itinerary → folded into Safaris (dedicated page only if 2+).
+- [x] **Cultural** (`/cultural`): 5-Day Cultural Tour + 8-Day Cultural Heritage Tour (price on request) — `/booking/cultural-tours` 301s to `/cultural` ✅
+- [x] **Paramotoring** (`/paramotoring`): 3-Day (Arusha & Kilimanjaro) + 12-Day Paramotoring Safari (price on request) ✅
+- Excluded the competitor "Kilimanjaro Wings" content embedded in the cultural doc.
 
 ---
 
@@ -103,18 +117,20 @@ via **exact 301 redirects**, then add his informational/blog content.
 
 ---
 
-## Phase 2B — Informational / blog content (after itineraries)
-- [ ] Decide structure: `/guides` (or `/blog`) section + route + nav entry
-- [ ] Visa & passport requirements (multiple docs → consolidate)
-- [ ] Essential vaccinations
-- [ ] Tanzania safari packing list
-- [ ] Best time to visit (June–October)
-- [ ] How long to climb Kilimanjaro / altitude sickness / pre-climb medical check
+## Phase 2B — Informational / guides content (IN PROGRESS)
+- [x] Structure built: `/guides` section + `/guides/[slug]` + `GuideView` + `data/guides.ts` (topic, sections, faqs, relatedPackages) + **Guides** nav item + sitemap
+- [x] How long to climb Kilimanjaro ✅
+- [x] Best time to visit Tanzania ✅
+- [x] Tanzania visa & passport requirements ✅
+- [x] Altitude sickness on Kilimanjaro ✅
+- [x] Vaccinations & health for Tanzania ✅
+- [x] Tanzania safari packing list ✅
+- [ ] Pre-Kilimanjaro medical check-up
 - [ ] Kilimanjaro food plan + travel insurance
-- [ ] FAQs — Kilimanjaro & safari (3 docs → consolidate)
+- [ ] FAQs — Kilimanjaro & safari (consolidate the 3 FAQ docs)
 - [ ] What to expect on your first safari · international flights · logistics
-- [ ] Refund & cancellation policy · volunteering · accommodations overview
-- [ ] **Exclude:** the 3 "Kilimanjaro Wings Expedition" docs (competitor content)
+- [ ] Refund & cancellation policy · volunteering · accommodations overview · discover Tanzania
+- [ ] **Exclude:** the "Kilimanjaro Wings Expedition" docs (competitor content)
 
 ---
 

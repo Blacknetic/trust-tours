@@ -402,6 +402,16 @@ p {
 /* ── Slow breathing zoom for section photos ──────────────────────── */
 .kb-slow { animation: ken-burns 18s ease-out forwards; will-change: transform; }
 
+/* ── Slow hover zoom for gallery / wall photos (transform-only) ───── */
+.photo-zoom img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.photo-zoom:hover img,
+.photo-zoom:focus-within img {
+  transform: scale(1.06);
+}
+
 /* ─── Reduced motion ───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -420,6 +430,8 @@ p {
     clip-path: none !important;
   }
   .trail-spine::before { height: 100% !important; }
+  .photo-zoom:hover img,
+  .photo-zoom:focus-within img { transform: none !important; }
   .light-dust { display: none !important; }
   .bird-flight { display: none !important; }
   .tw-caret { display: none !important; }

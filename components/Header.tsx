@@ -13,14 +13,26 @@ type NavItem = NavLink | NavGroup;
 const NAV: NavItem[] = [
   {
     label: "Trekking",
-    match: ["/kilimanjaro", "/trekking"],
+    match: ["/kilimanjaro", "/trekking", "/ol-doinyo-lengai"],
     children: [
       { href: "/kilimanjaro", label: "Climb Kilimanjaro" },
       { href: "/trekking/3-day-mount-meru-momela", label: "Mount Meru" },
+      { href: "/ol-doinyo-lengai", label: "Ol Doinyo Lengai" },
+      { href: "/trekking", label: "All treks →" },
     ],
   },
   { href: "/safaris", label: "Safaris" },
   { href: "/zanzibar", label: "Zanzibar" },
+  {
+    label: "Experiences",
+    match: ["/honeymoon", "/cultural", "/paramotoring"],
+    children: [
+      { href: "/honeymoon", label: "Honeymoon" },
+      { href: "/cultural", label: "Cultural Tours" },
+      { href: "/paramotoring", label: "Paramotoring" },
+    ],
+  },
+  { href: "/guides", label: "Guides" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

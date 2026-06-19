@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { TripPackage } from "@/data/packages";
+import { packageImage } from "@/data/images";
 import TripJsonLd from "@/components/TripJsonLd";
 import FAQAccordion from "@/components/FAQAccordion";
 import MobileCTABar from "@/components/MobileCTABar";
@@ -48,6 +49,22 @@ const LEXICON: Record<
     reviewsTitle: "What past travellers say",
     verb: "travel",
   },
+  cultural: {
+    noun: "Tour",
+    crumb: "Cultural Tours",
+    basePath: "/cultural",
+    readyLine: "Ready to explore?",
+    reviewsTitle: "What past travellers say",
+    verb: "travel",
+  },
+  paramotoring: {
+    noun: "Adventure",
+    crumb: "Paramotoring",
+    basePath: "/paramotoring",
+    readyLine: "Ready to fly?",
+    reviewsTitle: "What past flyers say",
+    verb: "fly",
+  },
 };
 
 const BORDER = "rgba(26, 26, 22,0.08)";
@@ -57,6 +74,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   const waMsg = `Hi Ombeni! I'm interested in the ${pkg.title}. Can you send me the itinerary and pricing?`;
   const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}`;
   const pageUrl = `${SITE_URL}${lex.basePath}/${pkg.slug}`;
+  const heroImg = packageImage(pkg);
 
   return (
     <>
@@ -70,14 +88,14 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
             "linear-gradient(160deg, #6e3b1f 0%, #4a2912 35%, #2a1f0e 70%, #1a1206 100%)",
         }}
       >
-        {pkg.heroImage && (
+        {heroImg && (
           <Image
-            src={pkg.heroImage}
+            src={heroImg}
             alt={pkg.title}
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover hero-ken-burns"
           />
         )}
         <div

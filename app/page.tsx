@@ -11,6 +11,7 @@ import ScrollProgressSpine from "@/components/ScrollProgressSpine";
 import WaypointEyebrow from "@/components/WaypointEyebrow";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import WhyTrustUs from "@/components/WhyTrustUs";
+import SummitWall from "@/components/SummitWall";
 import TripFinder from "@/components/TripFinder";
 import PillLink from "@/components/PillLink";
 import SoaringBirds from "@/components/SoaringBirds";
@@ -78,7 +79,7 @@ export default function HomePage() {
             style={{ top: "-9%", height: "118%" }}
           >
             <Image
-              src="/images/kilimanjaro-kibo-from-trail.jpg"
+              src="/images/kilimanjaro-hero.jpg"
               alt=""
               fill
               priority
@@ -286,6 +287,9 @@ export default function HomePage() {
 
       {/* ── Why travellers trust us — back the person with proof ───── */}
       <WhyTrustUs background="var(--snow)" />
+
+      {/* ── Wall of Summits — authentic proof, real guests & summits ─ */}
+      <SummitWall />
 
       {/* ── Kilimanjaro picks — morning light ─────────────────────── */}
       <section className="contour-bg" style={{ background: "var(--paper)" }}>

@@ -36,12 +36,14 @@ export const DESTINATIONS = [
   "Zanzibar",
   "Arusha",
   "Kenya",
+  "Ol Doinyo Lengai",
+  "Lake Natron",
 ] as const;
 export type Destination = (typeof DESTINATIONS)[number];
 
 export interface TripPackage {
   slug: string;
-  category: "kilimanjaro" | "safari" | "trekking" | "zanzibar";
+  category: "kilimanjaro" | "safari" | "trekking" | "zanzibar" | "cultural" | "paramotoring";
   // Places this trip visits — drives the finder's Destination filter.
   destinations: Destination[];
   title: string;
@@ -68,6 +70,9 @@ export interface TripPackage {
   difficulty?: Difficulty;
   reviewSnippets?: { author: string; text: string; source: string }[];
   oldUrl?: string;
+  // Cross-cutting themes (e.g. "honeymoon") — power themed listing pages like
+  // /honeymoon without changing a trip's primary category/route.
+  tags?: string[];
 }
 
 export const packages: TripPackage[] = [
@@ -1358,6 +1363,2246 @@ export const packages: TripPackage[] = [
     bestMonths: ["Jul", "Aug", "Sep", "Oct", "Jan", "Feb"],
   },
 
+  {
+    slug: "9-day-northern-tanzania-safari",
+    destinations: ["Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
+    category: "safari",
+    title: "9-Day Northern Tanzania Safari – Tarangire, Manyara, Ngorongoro & Serengeti",
+    shortName: "9-Day Northern Safari",
+    days: 9,
+    priceFromUSD: 3410,
+    priceNote:
+      "Per person, sharing (minimum 3). From $3,410 mid-range / $4,106 luxury, all-inclusive.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Nine unhurried days across the whole northern circuit — Tarangire, Lake Manyara, the Ngorongoro Crater and three days deep in the Serengeti, from the big-cat Seronera Valley to the Mara crossings of the north — finishing with a Maasai village visit in the Ngorongoro Highlands. A 'Comfort' or 'Classic' itinerary for travellers who want time to take it all in.",
+    highlights: [
+      "Three full days in the Serengeti — central plains to the northern Mara",
+      "Full game drive on the floor of the Ngorongoro Crater",
+      "Lake Manyara's tree-climbing lions and flamingos",
+      "Tarangire's elephant herds and 500+ bird species",
+      "Maasai village cultural visit in the Ngorongoro Highlands",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport and transferred to your mid-range lodge in Arusha, gateway to the northern circuit, with views of Mount Meru. Unwind in the afternoon, then a welcome dinner where you meet your guide and run through the itinerary.",
+        meals: "Dinner",
+        accommodation: "Mid-range lodge, Arusha",
+      },
+      {
+        day: 2,
+        title: "Tarangire National Park",
+        description:
+          "A scenic drive to Tarangire, renowned for vast elephant herds and towering baobabs. A morning game drive when wildlife is most active, picnic lunch in the park, then more game viewing among leopards, zebra, wildebeest and 500+ bird species. Dinner and overnight near the park.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range lodge or tented camp near Tarangire",
+      },
+      {
+        day: 3,
+        title: "Lake Manyara National Park",
+        description:
+          "An early drive to Lake Manyara for a morning game drive along the lakeshore — flamingos, hippos and the park's famous tree-climbing lions — then the groundwater forest for elephants, giraffe and baboons. Transfer to a lodge overlooking the Rift Valley escarpment for the evening.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range lodge near Lake Manyara",
+      },
+      {
+        day: 4,
+        title: "Ngorongoro Crater",
+        description:
+          "Descend into the Ngorongoro Crater — 'Africa's Eden' — for a morning among the Big Five, with the Lerai Forest for leopard and the open plains for wildebeest and zebra. Picnic lunch at the hippo pool, then ascend to a lodge on the crater rim with panoramic views.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range lodge on the Ngorongoro crater rim",
+      },
+      {
+        day: 5,
+        title: "Central Serengeti — Seronera Valley",
+        description:
+          "Drive into the Serengeti's endless plains and the Seronera Valley, the 'big cat capital of Africa', for an afternoon tracking lion, cheetah and leopard along the Seronera River. Overnight at a tented camp under a star-filled sky.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp, central Serengeti",
+      },
+      {
+        day: 6,
+        title: "Serengeti — Full Day Game Drive",
+        description:
+          "A full day exploring the Serengeti, starting at sunrise when predators return from the night's hunt. Explore the kopjes where lions bask and, in season, the migration herds crossing the plains. Sundowner and dinner back at camp.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp, central Serengeti",
+      },
+      {
+        day: 7,
+        title: "Northern Serengeti — Mara River",
+        description:
+          "Head to the quieter northern Serengeti, famous for the Mara River crossings — in season, thousands of wildebeest and zebra braving the crocodile-filled waters. Picnic lunch in the wilderness amid rolling hills, elephant and antelope. Overnight at a northern camp.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp, northern Serengeti",
+      },
+      {
+        day: 8,
+        title: "Serengeti to the Ngorongoro Highlands & Maasai Village",
+        description:
+          "A final Serengeti game drive, then the scenic drive back to the cooler Ngorongoro Highlands. After lunch, an optional Maasai village visit to learn about their traditions and relationship with the land. Dinner and overnight at a highland lodge.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Ngorongoro Highlands",
+      },
+      {
+        day: 9,
+        title: "Departure",
+        description:
+          "After breakfast, transfer back to Arusha with time for last-minute shopping or a market visit, then a farewell lunch and your transfer to Kilimanjaro International Airport for departure.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Eight nights in mid-range or luxury lodges and tented camps",
+      "All meals including picnic lunches on game-drive days",
+      "Daily game drives in a private 4x4 with pop-up roof and a professional guide",
+      "All park, crater and conservation fees",
+      "Maasai village cultural visit and scenic sundowners",
+      "All airport transfers and transport between parks",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Optional hot air balloon safari ($500 per person)",
+      "Tips, souvenirs and items of a personal nature",
+    ],
+    faqs: [
+      {
+        question: "How is this different from the shorter safaris?",
+        answer:
+          "At nine days it covers the full northern circuit at a relaxed pace, with three days in the Serengeti (central, full-day and the northern Mara) plus Lake Manyara and a cultural visit — more time and breadth than the 5-, 6- or 7-day options.",
+      },
+      {
+        question: "Is there a minimum group size?",
+        answer:
+          "Yes — this rate is based on a minimum of three travellers sharing. For couples or solo travellers we can quote a private version; message Ombeni on WhatsApp.",
+      },
+      {
+        question: "Will I see the Great Migration?",
+        answer:
+          "In season, yes — the northern Mara crossings are roughly July–October and the calving plains December–March. The Serengeti and Ngorongoro hold abundant resident wildlife year-round.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+    oldUrl: "/booking/9-day-wildlife-and-culture-safari-in-tanzania/",
+  },
+
+  {
+    slug: "10-day-serengeti-calving-safari",
+    destinations: ["Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
+    category: "safari",
+    title: "10-Day Calving-Season Migration Safari – Ndutu & the Serengeti",
+    shortName: "10-Day Calving Safari",
+    days: 10,
+    priceFromUSD: 0,
+    priceNote: "Calving-season safari (December–March). Per-person pricing on request.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Ten days timed to the Great Migration's calving season (December–March), when nearly half a million wildebeest give birth on the southern Serengeti plains. From Tarangire and Lake Manyara through the Ngorongoro Crater to two full days at Ndutu and the central Serengeti, it's built for travellers who want to witness the raw drama of new life and the predators it draws.",
+    highlights: [
+      "Two full days at Ndutu in peak calving season (Dec–Mar)",
+      "Half a million wildebeest calving — and the predators in pursuit",
+      "Full day inside the Ngorongoro Crater and the Big Five",
+      "Tarangire's baobabs and Lake Manyara's tree-climbing lions",
+      "Central Serengeti's resident leopards, lions and elephants",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport and transferred to a charming lodge in Arusha for a welcome drink. Depending on arrival time, a short city tour or time to relax, then a detailed safari briefing over dinner.",
+        meals: "Dinner",
+        accommodation: "Lodge in Arusha",
+      },
+      {
+        day: 2,
+        title: "Arusha to Tarangire National Park",
+        description:
+          "After breakfast, drive to Tarangire — famous for enormous baobabs and large elephant herds — and begin game viewing with a picnic lunch in the park. Watch elephants bathing, giraffe grazing and birds along the riverbanks before settling at a camp near the park.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Safari lodge or tented camp near Tarangire",
+      },
+      {
+        day: 3,
+        title: "Tarangire to Lake Manyara",
+        description:
+          "Drive to Lake Manyara, a small but stunning park of groundwater forest and soda lake. Explore its varied ecosystems for flamingos, hippos, tree-climbing lions and blue monkeys, then continue to a lodge in the Great Rift Valley.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge near Lake Manyara / Rift Valley",
+      },
+      {
+        day: 4,
+        title: "To the Ngorongoro Highlands",
+        description:
+          "A relaxed drive into the Ngorongoro Highlands through fertile farmland and highland villages, with photo stops and cultural encounters along the way. Arrive at a lodge near the crater rim with time to soak in the sweeping views.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Ngorongoro Highlands",
+      },
+      {
+        day: 5,
+        title: "Ngorongoro Crater to Ndutu",
+        description:
+          "An early descent into the Ngorongoro Crater for a dense concentration of wildlife — lion, black rhino, buffalo, zebra and birdlife — with a picnic lunch at the hippo pool. Ascend and continue to the southern Serengeti's Ndutu plains for the night.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Ndutu (southern Serengeti)",
+      },
+      {
+        day: 6,
+        title: "Ndutu Plains — Calving Season Begins",
+        description:
+          "A first full day in the heart of the calving season, where hundreds of thousands of wildebeest, zebra and gazelle gather to give birth — and lions, hyenas and cheetahs follow. Morning and afternoon game drives put you close to the action.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mobile tented camp or eco-lodge, Ndutu",
+      },
+      {
+        day: 7,
+        title: "Full Day in Ndutu — Migration & Predators",
+        description:
+          "Continue exploring Ndutu as the drama unfolds daily; the sheer number of newborn calves draws predators, and hunts often play out at a close but safe distance. Your guide reads the behaviour for the best photography, finishing with a sundowner in the wild.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mobile tented camp or eco-lodge, Ndutu",
+      },
+      {
+        day: 8,
+        title: "Ndutu to Central Serengeti",
+        description:
+          "Drive north to the central Serengeti, known for its resident wildlife and classic acacia-dotted plains — leopards in sausage trees, elephants in the grasslands and prides of lion in the sun. Settle into a camp amid the serenity of the plains.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, central Serengeti",
+      },
+      {
+        day: 9,
+        title: "Serengeti to Karatu",
+        description:
+          "A final morning game drive in the Serengeti, then the journey back through the Ngorongoro Highlands to Karatu, between the crater and Lake Manyara. An evening at leisure in a cosy lodge, reflecting on the past days.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Karatu",
+      },
+      {
+        day: 10,
+        title: "Karatu to Arusha — Departure",
+        description:
+          "After a leisurely breakfast, drive back to Arusha — with an optional coffee-plantation or souvenir stop depending on your flight — and a transfer to Kilimanjaro International Airport for your onward journey.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "All park fees and conservation charges",
+      "Private 4x4 safari vehicle with pop-up roof and a professional guide",
+      "All meals and accommodation as listed",
+      "Domestic flights where applicable",
+      "Bottled water on game drives and airport transfers",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Tips, souvenirs and items of a personal nature",
+      "Optional activities not mentioned in the itinerary",
+    ],
+    faqs: [
+      {
+        question: "When exactly is the calving season?",
+        answer:
+          "Roughly December to March, peaking in late January and February, when the herds mass on the southern Serengeti and Ndutu plains to give birth. It's one of the best windows for predator action and photography.",
+      },
+      {
+        question: "How is this different from the 5-Day Ndutu safari?",
+        answer:
+          "This 10-day trip adds Lake Manyara, more highlands and an extra Serengeti leg around the same Ndutu core, so you get the full northern circuit alongside the calving plains rather than a focused short version.",
+      },
+      {
+        question: "Why is the price shown on request?",
+        answer:
+          "The source itinerary doesn't list a fixed rate; pricing depends on group size, season and lodge level. Message Ombeni on WhatsApp with your dates and party for an exact quote.",
+      },
+    ],
+    bestMonths: ["Dec", "Jan", "Feb", "Mar"],
+    oldUrl:
+      "/booking/10-day-serengeti-great-migration-safari-itinerary-with-trust-tours-and-safaris-calving-season-focus-december-to-march/",
+  },
+
+  {
+    slug: "12-day-kilimanjaro-safari-culture",
+    destinations: ["Kilimanjaro", "Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
+    category: "safari",
+    title: "12-Day Tanzania Adventure – Kilimanjaro Trek, Safari & Culture",
+    shortName: "12-Day Trek, Safari & Culture",
+    days: 12,
+    priceFromUSD: 2750,
+    priceNote:
+      "Per person. From $2,750 shared group / $3,799 private (2–3-star camps & tents). Best July–October for the Mara crossings.",
+    tier: ["budget", "mid-range"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The full Tanzania adventure in twelve days: a scenic three-day Kilimanjaro trek on the Marangu Route to Horombo Hut, a cultural day of waterfalls, coffee and hot springs, the classic safari circuit tracking the Great Migration, and a finale at the surreal flamingo-filled Lake Natron. Trek, bush and culture in one trip, with mobile camping and a small group.",
+    highlights: [
+      "Three-day Marangu trek to Horombo Hut (3,720 m) with Mawenzi views",
+      "Materuni Waterfall, a coffee tour and the Kikuletwa Hot Springs",
+      "Tarangire, Lake Manyara and the Ngorongoro Crater",
+      "Serengeti and the Great Migration's Mara River crossing in season",
+      "Lake Natron's flamingos and the Engaresero Waterfall to finish",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Arrive in Arusha and settle into your accommodation. Our team meets you for a briefing on the trek and safari ahead and to sort any final details.",
+        meals: "—",
+        accommodation: "Lodge in Arusha",
+      },
+      {
+        day: 2,
+        title: "Marangu Gate to Mandara Hut",
+        description:
+          "Drive to Marangu Gate (1,860 m) on Kilimanjaro, meet your mountain guide and trek through lush rainforest — colobus monkeys and unique flora — to Mandara Hut (2,700 m) for dinner and your first night on the mountain.",
+        altitudeStart: 1860,
+        altitudeEnd: 2700,
+        hours: "4–5 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mandara Hut",
+      },
+      {
+        day: 3,
+        title: "Mandara Hut to Horombo Hut",
+        description:
+          "Climb out of the forest into open moorland with stunning views, reaching Horombo Hut (3,720 m). Time to acclimatize and take in Mawenzi Ridge before an early night.",
+        altitudeStart: 2700,
+        altitudeEnd: 3720,
+        hours: "5–6 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Horombo Hut",
+      },
+      {
+        day: 4,
+        title: "Descend to Marangu Gate, return to Arusha",
+        description:
+          "Descend through moorland and rainforest back to Marangu Gate, then transfer to Arusha to rest after your high-altitude trek.",
+        altitudeStart: 3720,
+        altitudeEnd: 1860,
+        hours: "5–6 hours",
+        meals: "Breakfast, lunch",
+        accommodation: "Lodge in Arusha",
+      },
+      {
+        day: 5,
+        title: "Materuni Waterfall, Coffee Tour & Hot Springs",
+        description:
+          "A cultural day near Kilimanjaro: a short hike to Materuni Falls, a traditional coffee-making experience with a home-cooked Tanzanian meal, then a relaxing swim at the Kikuletwa Hot Springs before returning to Arusha.",
+        meals: "Breakfast, lunch",
+        accommodation: "Lodge in Arusha",
+      },
+      {
+        day: 6,
+        title: "Tarangire National Park",
+        description:
+          "Depart at dawn for Tarangire, home to Tanzania's largest elephant herds. A full-day game drive among baobabs along the Tarangire River, spotting lion, giraffe, zebra and leopard, then a bonfire under the stars at a tented campsite.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp near Tarangire",
+      },
+      {
+        day: 7,
+        title: "Lake Manyara & Mto wa Mbu Village",
+        description:
+          "A morning game drive in Lake Manyara for tree-climbing lions, flamingos, elephants and hippos, then a cultural tour of Mto wa Mbu village — local food and banana plantations — before overnighting near Manyara.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Campsite or lodge near Lake Manyara",
+      },
+      {
+        day: 8,
+        title: "Ngorongoro Crater to the Serengeti",
+        description:
+          "An early descent into the Ngorongoro Crater for a sunrise game drive among the Big Five, flamingos at Lake Magadi and hyena, hippo and cheetah. In the afternoon, drive on to the Serengeti for a tented-camp overnight.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Serengeti",
+      },
+      {
+        day: 9,
+        title: "Central Serengeti Plains",
+        description:
+          "Explore the central Serengeti's vast plains — lion, cheetah and elephant — with sunrise and daytime game drives, before moving toward the northern Serengeti for the night.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Serengeti",
+      },
+      {
+        day: 10,
+        title: "Northern Serengeti & Mara River Crossing",
+        description:
+          "An early start for the northern Serengeti and the Mara River, where in season the wildebeest and zebra brave the crocodile-filled waters — the migration's most dramatic spectacle — with game drives throughout the day.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Serengeti",
+      },
+      {
+        day: 11,
+        title: "Serengeti to Lake Natron",
+        description:
+          "Depart for Lake Natron, home to thousands of flamingos. Visit the Engaresero Waterfall and hike the volcanic landscapes around the surreal alkaline lake, then camp under the African sky.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Camp near Lake Natron",
+      },
+      {
+        day: 12,
+        title: "Lake Natron to Arusha — Departure",
+        description:
+          "Depart Lake Natron's breathtaking landscapes for the 2–3 hour drive back to Arusha, where your adventure concludes with a transfer for your onward journey.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "All park fees and government taxes",
+      "Professional English-speaking mountain and safari guides",
+      "Transport in a 4x4 safari vehicle with pop-up roof",
+      "Accommodation in mountain huts, tented camps and tents",
+      "All meals (breakfast, lunch, dinner) and drinking water",
+      "Cultural village and coffee tour",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (required for the Kilimanjaro trek)",
+      "Tips for guides and crew ($20–30 per day recommended)",
+      "Personal expenses such as souvenirs and laundry",
+    ],
+    faqs: [
+      {
+        question: "Does the Kilimanjaro part reach the summit?",
+        answer:
+          "No — this is a scenic three-day Marangu trek to Horombo Hut (3,720 m), a beautiful high-altitude hike rather than a summit climb. If you'd like to summit Uhuru Peak, we can swap in a full 6–8 day climb; just ask.",
+      },
+      {
+        question: "Is this a group or private trip?",
+        answer:
+          "Both — it runs as a shared group tour from $2,750pp (joining other travellers) or as a private trip from $3,799pp. Tell Ombeni which you prefer on WhatsApp.",
+      },
+      {
+        question: "When is the best time to go?",
+        answer:
+          "July to October for the Mara River crossings and the most stable trekking weather. The safari and trek run at other times too, with resident wildlife year-round.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct"],
+    oldUrl:
+      "/booking/12-day-itinerary-customized-tracking-the-great-migration-crossing-with-trust-tours-and-safaris/",
+  },
+
+  {
+    slug: "7-day-northern-circuit-safari",
+    destinations: ["Arusha", "Tarangire", "Serengeti", "Ngorongoro"],
+    category: "safari",
+    title: "7-Day Northern Circuit Safari – Tarangire, Serengeti & Ngorongoro",
+    shortName: "7-Day Northern Circuit",
+    days: 7,
+    priceFromUSD: 3210,
+    priceNote:
+      "Per person, sharing, mid-range. 'Comfort' and 'Classic' accommodation options available.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "A week across Tanzania's Northern Circuit at a comfortable pace — Tarangire's elephants and baobabs with sunrise-to-sunset game drives, two days in the Serengeti, a full descent into the Ngorongoro Crater, and a Maasai village visit to finish. A relaxed 'Comfort' or 'Classic' safari for travellers who want the highlights without rushing.",
+    highlights: [
+      "Sunrise, daytime and sunset game drives in Tarangire",
+      "Two days in the Serengeti, including the Seronera Valley",
+      "Full game drive on the floor of the Ngorongoro Crater",
+      "Maasai village cultural visit",
+      "Choice of 'Comfort' or 'Classic' lodges and camps",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Welcomed at Kilimanjaro International Airport and transferred to your hotel in Arusha, gateway to the Northern Circuit at the foot of Mount Meru. A welcome dinner with your guide and a briefing on the week ahead.",
+        meals: "Dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 2,
+        title: "Tarangire National Park — Land of Giants",
+        description:
+          "A sunrise game drive in Tarangire, famous for its massive elephant herds and baobabs, then a full day across savannah and riverine forest with buffalo, zebra, wildebeest and 550+ bird species — ending with a golden-light sunset drive. Overnight near the park.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range lodge or tented camp near Tarangire",
+      },
+      {
+        day: 3,
+        title: "To the Serengeti — Seronera",
+        description:
+          "Drive through the Great Rift Valley and up the escarpment into the Serengeti, its open plains teeming with wildlife. An afternoon game drive in the central Seronera area — large herds and predators like lion and leopard — then a tented-camp dinner under unpolluted skies.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp or lodge, Serengeti",
+      },
+      {
+        day: 4,
+        title: "Full Day in the Serengeti",
+        description:
+          "A sunrise game drive when predators are on the hunt, then full days exploring different regions of the park — in season, the Great Migration crossing the plains. Your guide finds the best sightings, with an evening back at camp around the fire.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp or lodge, Serengeti",
+      },
+      {
+        day: 5,
+        title: "Serengeti to the Ngorongoro Crater",
+        description:
+          "A final morning game drive en route to the Ngorongoro Conservation Area, then descend into the crater — the 'Eighth Wonder of the World' — with a picnic lunch by the hippo pool. Ascend to a lodge on the crater rim for spectacular views and dinner.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro crater rim",
+      },
+      {
+        day: 6,
+        title: "Ngorongoro to Arusha — Maasai Village",
+        description:
+          "A morning visit to a Maasai village to learn about their customs and way of life, then the drive back to Arusha with time to relax or shop. A special farewell dinner to celebrate your last night in Tanzania.",
+        meals: "Breakfast, dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 7,
+        title: "Departure",
+        description:
+          "After breakfast and, depending on your flight, some free time in Arusha, your guide transfers you to Kilimanjaro International Airport for your departure flight.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Six nights in lodges and tented camps (Comfort or Classic)",
+      "All meals from dinner on Day 1 to breakfast on Day 7, with picnic lunches",
+      "Daily game drives — sunrise, sunset and a full Serengeti day — in a private 4x4",
+      "All park, crater and conservation fees",
+      "Maasai village cultural visit and scenic sundowners",
+      "All airport transfers and transport between parks",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Optional hot air balloon safari ($500 per person)",
+      "Tips, souvenirs and items of a personal nature",
+    ],
+    faqs: [
+      {
+        question: "What's the difference between 'Comfort' and 'Classic'?",
+        answer:
+          "The route and guiding are the same; the difference is the accommodation level. 'Classic' uses well-priced lodges and camps, 'Comfort' steps up to more upscale options. Tell Ombeni your preference for a tailored quote.",
+      },
+      {
+        question: "How is this different from the 7-Day Migration Safari?",
+        answer:
+          "This northern-circuit week balances Tarangire, two Serengeti days, the crater and a cultural visit at a relaxed pace, while the 7-Day Migration Safari spends more days deep in the Serengeti chasing the herds and river crossings.",
+      },
+      {
+        question: "Can I add a balloon flight or Zanzibar?",
+        answer:
+          "Yes — a sunrise hot air balloon over the Serengeti is $500pp, and a Zanzibar beach extension is easy to add as one trip. Just ask Ombeni on WhatsApp.",
+      },
+    ],
+    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct", "Dec"],
+  },
+
+  {
+    slug: "7-day-photography-cultural-safari",
+    destinations: ["Arusha", "Tarangire", "Serengeti", "Ngorongoro"],
+    category: "safari",
+    title: "7-Day Great Migration, Photography & Cultural Safari",
+    shortName: "7-Day Photo & Culture",
+    days: 7,
+    priceFromUSD: 3100,
+    priceNote:
+      "Per person. From $3,100 mid-range / $4,750 luxury (varies by group size and migration season).",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "A safari built for photographers and culture-seekers: golden-hour game drives through Tarangire, the Serengeti migration and the Ngorongoro Crater, paired with deep cultural immersion among the Hadzabe and Datoga peoples of Lake Eyasi and a Maasai village. Timed drives, expert photography guidance and authentic tribal encounters.",
+    highlights: [
+      "Golden-hour photography drives across the Northern Circuit",
+      "Great Migration tracking in the Serengeti (season-dependent)",
+      "Lake Eyasi — Hadzabe hunter-gatherers and Datoga blacksmiths",
+      "Full game drive in the Ngorongoro Crater — black rhino and flamingos",
+      "Maasai village portraits and on-safari photography guidance",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Welcomed at Kilimanjaro International Airport and transferred to a tranquil lodge set among gardens or coffee plantations. An evening cultural briefing and a photography orientation to set up your gear and your week.",
+        meals: "Dinner",
+        accommodation: "Tranquil lodge, Arusha",
+      },
+      {
+        day: 2,
+        title: "Tarangire National Park — Land of Giants",
+        description:
+          "A day among Tarangire's baobabs and elephant herds, framing wide-angle shots of elephants against ancient trees and the golden-hour glow over the riverbed as wildlife gathers. Overnight at a lodge or tented camp near the park.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp near Tarangire",
+      },
+      {
+        day: 3,
+        title: "Lake Eyasi — Hadzabe & Datoga Cultures",
+        description:
+          "A soul-stirring cultural day at Lake Eyasi: join the Hadzabe hunter-gatherers to learn bow hunting, language and rituals, then the Datoga blacksmith community for metalwork and jewellery crafting — a rare window into Tanzania's ancestral roots. Overnight at a cultural lodge near the lake.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Cultural lodge near Lake Eyasi",
+      },
+      {
+        day: 4,
+        title: "Into the Serengeti",
+        description:
+          "A scenic drive through the Ngorongoro highlands to the Serengeti, with an afternoon game drive across the endless plains — wildebeest, zebra and predators — and a sunset photography session at a kopje or river point. Overnight at a tented camp positioned for the season.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Serengeti (central or northern)",
+      },
+      {
+        day: 5,
+        title: "Full-Day Serengeti — Migration in Motion",
+        description:
+          "A full day chasing the migration — stampeding herds, river crossings and predator chases — with a midday rest and a golden-hour drive. An optional sunrise hot air balloon safari is available for aerial photography. Overnight under the Serengeti stars.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Serengeti",
+      },
+      {
+        day: 6,
+        title: "Ngorongoro Crater — Wildlife Wonderland",
+        description:
+          "An early game drive en route to Ngorongoro, then descend into the crater — a photographer's paradise of black rhino, flamingos and lion prides — with a picnic by the hippo pool. Overnight at a lodge on the crater rim with sweeping views.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro crater rim",
+      },
+      {
+        day: 7,
+        title: "Maasai Cultural Visit & Departure",
+        description:
+          "A morning at a Maasai village for music, storytelling and portrait photography, learning about their customs and dress, then return to Arusha for souvenir shopping or lunch before your airport transfer.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Expert wildlife and cultural safari guide with photography guidance",
+      "Private 4x4 Land Cruiser with pop-up roof",
+      "All park and conservation fees (Tarangire, Serengeti, Ngorongoro)",
+      "Six nights' mid-range or luxury accommodation, full board",
+      "Cultural activities with the Hadzabe, Datoga and Maasai",
+      "Bottled water and soft drinks on game drives, plus airport transfers",
+    ],
+    excluded: [
+      "International and domestic flights and Tanzania visa fees",
+      "Travel and health insurance",
+      "Optional balloon safari in the Serengeti ($550 per person)",
+      "Tips, alcoholic drinks and personal shopping",
+    ],
+    faqs: [
+      {
+        question: "Do I need to be a professional photographer?",
+        answer:
+          "Not at all. Drives are timed for the best light and your guide offers tips, whether you're shooting on a pro camera or a smartphone. A private photographic instructor can be arranged on request.",
+      },
+      {
+        question: "What makes the cultural side special?",
+        answer:
+          "Beyond the usual Maasai visit, you spend a full day at Lake Eyasi with the Hadzabe hunter-gatherers and Datoga blacksmiths — among the most authentic tribal encounters in Tanzania.",
+      },
+      {
+        question: "When is the best time for the migration?",
+        answer:
+          "June–October for the northern river crossings and December–March for the southern calving. Your camp location in the Serengeti is set to match the season, so you're always near the herds.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "11-day-bird-photography-safari",
+    destinations: ["Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
+    category: "safari",
+    title: "11-Day Bird Photography & Great Migration Safari",
+    shortName: "11-Day Bird Photography",
+    days: 11,
+    priceFromUSD: 4314,
+    priceNote:
+      "Per person, sharing. From $4,314 mid-range / $5,939 luxury, all-inclusive.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Eleven days for birders and photographers: the full Northern Circuit — Tarangire, Lake Manyara, the Ngorongoro Crater and five days in the Serengeti — timed to the Great Migration and built around the region's spectacular birdlife, from lovebirds and bustards to crowned cranes, fish eagles and Goliath herons. Mid-range lodges and tented camps throughout.",
+    highlights: [
+      "Five days in the Serengeti tracking the migration and birdlife",
+      "Lake Manyara — flamingos, pelicans and the African Fish Eagle",
+      "Ngorongoro's Secretary Bird and Grey Crowned Crane",
+      "Tarangire's Yellow-collared Lovebird and Kori Bustard",
+      "Big Five game viewing alongside dedicated birding stops",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport and transferred to Arusha. An evening safari briefing and equipment check (cameras, binoculars), with optional birding around the lodge gardens — superb starling, hadada ibis and tropical boubou.",
+        meals: "Lunch, dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 2,
+        title: "Tarangire National Park",
+        description:
+          "A full day in Tarangire with birding along the river — Yellow-collared Lovebird, Ashy Starling and Kori Bustard — plus elephants and baobabs for wide-angle shots. Afternoon searches for endemics like Von der Decken's Hornbill and the Red-and-Yellow Barbet, then sunset photography over the savanna.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented lodge near Tarangire",
+      },
+      {
+        day: 3,
+        title: "Lake Manyara — Birdwatching Paradise",
+        description:
+          "Early entry to Lake Manyara for waterbirds along the shore — Pink-backed Pelican, flamingos and the African Fish Eagle — and a picnic by the hippo pool. An optional forest walk for Silvery-cheeked Hornbill and Narina Trogon, then owls and nightjars in the evening.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge near Lake Manyara",
+      },
+      {
+        day: 4,
+        title: "To the Ngorongoro Highlands & Maasai Village",
+        description:
+          "A scenic drive into the Ngorongoro Highlands with photo stops, then an afternoon Maasai village visit and birding around the lodge for Scarlet-tufted Sunbird and Augur Buzzard. An early dinner ahead of the crater descent.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Ngorongoro Highlands",
+      },
+      {
+        day: 5,
+        title: "Ngorongoro Crater — Full Day",
+        description:
+          "A sunrise descent into the crater for the best light: wetland birding for Greater Flamingo and Black-winged Stilt, the Big Five including black rhino, and a picnic at Ngoitokitok. A walk through the Lerai Forest for Secretary Bird and Grey Crowned Crane, then sunset on the rim.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro crater rim",
+      },
+      {
+        day: 6,
+        title: "Central Serengeti — Seronera Valley",
+        description:
+          "Drive to the Serengeti with a birding stop at Naabi Hill (larks and bustards). An afternoon game drive in the Seronera Valley for leopard, cheetah and raptors among the big-cat country.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp, central Serengeti",
+      },
+      {
+        day: 7,
+        title: "Central & Western Serengeti",
+        description:
+          "Mornings tracking predators near the river crossings and birding the kopjes for Rock-loving Cisticola and Pygmy Falcon, with full-day game drives following the wildebeest herds and golden-hour photography over the plains.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp, Serengeti",
+      },
+      {
+        day: 8,
+        title: "Western Serengeti — Migration Focus",
+        description:
+          "More time with the migration herds and the western corridor's birdlife and predators, with timed drives for the best photographic light morning and evening.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp, Serengeti",
+      },
+      {
+        day: 9,
+        title: "Northern Serengeti — Mara River",
+        description:
+          "Head to the northern Serengeti and Kogatende for the Mara River crossings (July–October), a front-row seat to one of nature's greatest spectacles as the herds brave the crocodile-filled waters.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp, northern Serengeti",
+      },
+      {
+        day: 10,
+        title: "Northern Serengeti — River Birding",
+        description:
+          "Birding along the Mara River for Goliath Heron and Saddle-billed Stork between game drives, with more chances at the crossings and the predators that gather. Evening relaxation at the lodge.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp, northern Serengeti",
+      },
+      {
+        day: 11,
+        title: "Return to Arusha & Departure",
+        description:
+          "An early breakfast, then a scenic flight or drive back to Arusha with a market stop for souvenirs, and a transfer to Kilimanjaro International Airport for your departure.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Mid-range or luxury lodges and tented camps throughout",
+      "All meals including picnic lunches on game-drive days",
+      "Daily game drives in a private 4x4 with pop-up roof and a professional guide",
+      "All park, crater and conservation fees",
+      "Maasai village cultural visit and guided nature walks",
+      "All airport transfers and transport between parks",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Optional hot air balloon safari ($500 per person)",
+      "Tips, souvenirs and items of a personal nature",
+    ],
+    faqs: [
+      {
+        question: "Is this trip only for birders?",
+        answer:
+          "No — it pairs dedicated birding with full Big Five game viewing and the Great Migration, so it suits photographers and wildlife lovers too. The pace simply builds in more time for birds and light than a standard safari.",
+      },
+      {
+        question: "When is the best time for birds and the migration?",
+        answer:
+          "Resident birds are excellent year-round; migrant species peak November–April. For the migration, June–July is the western Serengeti (Grumeti) and August–October the northern Mara crossings.",
+      },
+      {
+        question: "Can I fly between some legs?",
+        answer:
+          "Yes — internal flights can replace some long drives (e.g. the return from the northern Serengeti). Ask Ombeni for a fly-in/fly-out version on WhatsApp.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct"],
+  },
+
+  {
+    slug: "3-day-serengeti-balloon-zanzibar",
+    destinations: ["Serengeti", "Zanzibar"],
+    category: "safari",
+    title: "3-Day Serengeti Safari & Hot Air Balloon from Zanzibar",
+    shortName: "3-Day Serengeti Fly-in",
+    days: 3,
+    priceFromUSD: 2228,
+    priceNote:
+      "Per person, sharing, mid-range. Includes round-trip flights from Zanzibar and the hot air balloon safari.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The perfect safari add-on to a Zanzibar beach holiday: fly straight from the island to the Serengeti for two nights of game drives and a dawn hot air balloon flight with a champagne bush breakfast, then fly back to the coast. Three action-packed days with the flights, balloon and all meals included.",
+    highlights: [
+      "Round-trip flights between Zanzibar and the Serengeti",
+      "Sunrise hot air balloon safari with a champagne bush breakfast",
+      "Game drives across the Serengeti's wildlife-rich plains",
+      "Lions, elephants, cheetahs, wildebeest and more",
+      "An easy safari taste for beach holidaymakers, all arranged",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Fly Zanzibar to the Serengeti — Afternoon Game Drive",
+        description:
+          "Fly directly from Zanzibar to the Serengeti and check into your lodge or tented camp. Head out for an afternoon game drive across the plains for your first sightings — lion, elephant, giraffe and herds of wildebeest — returning for a relaxed dinner.",
+        meals: "Lunch, dinner",
+        accommodation: "Mid-range lodge or tented camp, Serengeti",
+      },
+      {
+        day: 2,
+        title: "Hot Air Balloon Safari & Full-Day Game Drive",
+        description:
+          "An early start for a dawn hot air balloon flight over the Serengeti, drifting above the plains as the sunrise lights up the herds, followed by a champagne breakfast in the bush. A full-day game drive then explores more of the park — cheetah, zebra and hippo — with a picnic lunch at a scenic spot.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range lodge or tented camp, Serengeti",
+      },
+      {
+        day: 3,
+        title: "Final Game Drive & Return to Zanzibar",
+        description:
+          "A last morning game drive to catch the wildlife at its most active — predators returning from the night's hunt — then transfer to the airstrip for your return flight to Zanzibar.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Round-trip flights from Zanzibar to the Serengeti",
+      "Two nights' mid-range lodge or tented-camp accommodation",
+      "All meals — breakfast, lunch and dinner",
+      "Sunrise hot air balloon safari with champagne breakfast",
+      "Game drives in a 4x4 with a professional guide",
+      "Park entry and conservation fees",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Tips, souvenirs and items of a personal nature",
+      "Drinks beyond those specified",
+    ],
+    faqs: [
+      {
+        question: "Is this good as an add-on to a Zanzibar holiday?",
+        answer:
+          "Exactly — it's designed for it. You fly from Zanzibar to the Serengeti and back, so you get a real safari and a balloon flight in three days without unwinding your beach plans. We arrange the flights both ways.",
+      },
+      {
+        question: "Is the balloon flight guaranteed?",
+        answer:
+          "The sunrise balloon is included and pre-booked, but flies subject to weather for safety. If conditions force a cancellation, that portion is refunded by the operator.",
+      },
+      {
+        question: "Can I extend my time on safari?",
+        answer:
+          "Yes — add nights in the Serengeti or the Ngorongoro Crater, or combine with a longer northern-circuit safari. Message Ombeni with your dates on WhatsApp.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "6-day-calving-safari",
+    destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
+    category: "safari",
+    title: "6-Day Calving-Season Safari – Tarangire, Ndutu & Ngorongoro",
+    shortName: "6-Day Calving Safari",
+    days: 6,
+    priceFromUSD: 2350,
+    priceNote:
+      "Per person, mid-range. From $2,350 (3 travellers) / $2,650 (2) / $3,250 (solo). December–April.",
+    tier: ["mid-range"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Six days at the heart of the Great Migration's calving season (December–April), when over two million wildebeest, zebra and gazelle gather on the Ndutu and southern Serengeti plains and around 8,000 calves are born each day at the peak. Three full days in the migration zone, bookended by Tarangire and the Ngorongoro Crater — outstanding value and superb predator action.",
+    highlights: [
+      "Three days in the Ndutu calving grounds at peak season",
+      "Thousands of newborn calves and intense predator activity",
+      "Tarangire's baobabs and large elephant herds",
+      "Full game drive on the floor of the Ngorongoro Crater",
+      "Excellent value — per-person price drops with group size",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arusha to Tarangire National Park",
+        description:
+          "A morning briefing in Arusha, then the 2½-hour drive to Tarangire through Maasai country. An afternoon game drive among massive elephant herds, baobabs, lions and 550+ bird species, with a picnic lunch in the park. Continue to Karatu for dinner and overnight.",
+        meals: "Lunch, dinner",
+        accommodation: "Mid-range lodge, Karatu",
+      },
+      {
+        day: 2,
+        title: "Karatu to the Ndutu Conservation Area",
+        description:
+          "Drive through the Ngorongoro highlands and volcanic landscapes into the Ndutu ecosystem, arriving by midday as the plains fill with wildebeest, zebra and the predators that follow. An afternoon game drive where the migration drama begins — newborn calves, stalking lions and cheetahs.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Ndutu",
+      },
+      {
+        day: 3,
+        title: "Full Day in Ndutu — Calving Season",
+        description:
+          "A full day in the migration's maternity ward. Early morning for predators returning from the hunt, then tracking the short-grass plains where thousands of calves are born daily — wildebeest mothers, massive zebra herds, bat-eared foxes and serval cats. Evening storytelling around the campfire.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Ndutu",
+      },
+      {
+        day: 4,
+        title: "Full Day — Ndutu & Southern Serengeti",
+        description:
+          "Another full day following the herds, your guide positioning you in the most active areas. Lion prides with cubs, cheetahs hunting gazelle, large hyena clans and elephants crossing the plains — short grass and high density make it superb for photography. Spectacular southern Serengeti sunsets.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp, Ndutu",
+      },
+      {
+        day: 5,
+        title: "Ndutu to the Ngorongoro Highlands",
+        description:
+          "A final migration game drive, then after lunch the drive toward the Ngorongoro Highlands, arriving at the crater rim in the late afternoon for spectacular views over one of Africa's most iconic landscapes.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or camp, Ngorongoro rim",
+      },
+      {
+        day: 6,
+        title: "Ngorongoro Crater to Arusha",
+        description:
+          "An early descent into the Ngorongoro Crater — 'Africa's Garden of Eden' — for a chance at the Big Five in a single morning, plus hippo, flamingo and hyena, with a picnic lunch by the hippo pool. Continue your game drive, then return to Arusha where your safari concludes.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Private 4x4 Land Cruiser with pop-up roof and a professional guide",
+      "All national park, conservation and Ngorongoro Crater fees",
+      "Full-board accommodation throughout the safari",
+      "Unlimited game drives and bottled water on safari",
+      "Government taxes and VAT, plus Arusha airport transfers",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Alcoholic and soft drinks, plus personal expenses",
+      "Tips and gratuities for guide and staff",
+    ],
+    faqs: [
+      {
+        question: "When exactly is the calving season?",
+        answer:
+          "December to April, peaking January–March, when up to 500,000 calves are born around Ndutu and thousands of births occur daily — drawing exceptional numbers of predators.",
+      },
+      {
+        question: "How does the price work?",
+        answer:
+          "It's per person and drops with group size: from $3,250 solo, $2,650 for two, and $2,350 each for three travellers sharing. Message Ombeni with your party for an exact quote.",
+      },
+      {
+        question: "How is this different from the 5- and 10-day calving safaris?",
+        answer:
+          "The 6-day gives three full days in Ndutu — more migration time than the 5-day — while staying more focused (and better value) than the 10-day full-circuit version.",
+      },
+    ],
+    bestMonths: ["Dec", "Jan", "Feb", "Mar", "Apr"],
+  },
+
+  {
+    slug: "10-day-safari-zanzibar-adventure",
+    destinations: ["Tarangire", "Ngorongoro", "Serengeti", "Zanzibar"],
+    category: "safari",
+    title: "10-Day Safari & Zanzibar Adventure – Bush to Beach",
+    shortName: "10-Day Safari + Zanzibar",
+    days: 10,
+    priceFromUSD: 4890,
+    priceNote:
+      "Per person, double sharing. From $4,890 (4-star) / $5,999 (5-star). Includes the flight from the safari to Zanzibar.",
+    tier: ["comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The complete bush-to-beach escape: six days on the classic northern circuit — Tarangire, the Ngorongoro Crater and the Serengeti — then a flight to Zanzibar for four days of Stone Town, spice farms, Mnemba's reefs and the white sands of the Indian Ocean. A 'Comfort' (4-star) or 'Classic' (5-star) itinerary with the internal flight and all activities arranged.",
+    highlights: [
+      "Big Five game drives in Tarangire, Ngorongoro and the Serengeti",
+      "Flight from the safari straight to the Zanzibar coast",
+      "Stone Town tour, spice farm and a sunset dhow cruise",
+      "Mnemba Island snorkelling, dolphins and a Blue Safari",
+      "Sea turtles at Baraka and white-sand beach time to finish",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Welcomed at Kilimanjaro International Airport and transferred to your lodge in Arusha. Relax after your journey and meet your guide in the evening for a detailed briefing on the safari ahead.",
+        meals: "Dinner",
+        accommodation: "Lodge, Arusha",
+      },
+      {
+        day: 2,
+        title: "Tarangire National Park",
+        description:
+          "A scenic drive to Tarangire, famous for its large elephant herds and ancient baobabs. Picnic lunch in the park, then a game drive for elephant, giraffe, lion, leopard and abundant birdlife. Dinner under the stars at a lodge or tented camp near the park.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp near Tarangire",
+      },
+      {
+        day: 3,
+        title: "Tarangire to the Ngorongoro Crater",
+        description:
+          "An early game drive in Tarangire, then drive through the Great Rift Valley to the Ngorongoro Conservation Area and descend into the crater for an afternoon among the Big Five. Ascend to a lodge on the crater rim for dinner with a view.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro crater rim",
+      },
+      {
+        day: 4,
+        title: "Ngorongoro Crater to the Serengeti",
+        description:
+          "A second descent into the crater at dawn for predators and grazing herds, picnic lunch, then drive on to the central Serengeti (Seronera) for an evening game drive in big-cat country. Dinner and overnight at a Serengeti lodge or camp.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp, Serengeti",
+      },
+      {
+        day: 5,
+        title: "Full Day in the Serengeti",
+        description:
+          "A sunrise game drive in golden light, brunch and rest, then an afternoon following the wildlife — the Great Migration if in season, or resident herds and predators. A sundowner and dinner around the campfire.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or tented camp, Serengeti",
+      },
+      {
+        day: 6,
+        title: "Serengeti to Zanzibar",
+        description:
+          "A final morning game drive, then transfer to the airstrip and fly (via Kilimanjaro/Arusha) to Zanzibar. Arrive on the Spice Island and transfer to your Stone Town hotel for an evening at leisure.",
+        meals: "Breakfast, dinner",
+        accommodation: "Top-quality hotel, Stone Town",
+      },
+      {
+        day: 7,
+        title: "Stone Town & Sunset Dhow Cruise",
+        description:
+          "A guided walking tour of UNESCO-listed Stone Town — the House of Wonders, Sultan's Palace, Old Fort and Darajani Market — then a romantic sunset dhow cruise with cocktails and a traditional Swahili dinner.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Top-quality hotel, Stone Town",
+      },
+      {
+        day: 8,
+        title: "Spice Tour & Nakupenda Beach",
+        description:
+          "A morning spice farm tour — cinnamon, cloves and nutmeg — then the Nakupenda sandbank for swimming, snorkelling and a fresh seafood lunch on the beach. Evening at leisure with an optional spa treatment.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Beachfront hotel",
+      },
+      {
+        day: 9,
+        title: "Mnemba Island & Blue Safari",
+        description:
+          "Boat out to Mnemba Island to snorkel pristine reefs and look for dolphins, then a Blue Safari among remote sandbanks with a beach barbecue. Return for a private dinner, with the option to dine under the stars on the beach.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Beachfront hotel",
+      },
+      {
+        day: 10,
+        title: "Sea Turtles & Departure",
+        description:
+          "A morning visit to the Baraka Natural Aquarium to swim alongside endangered green sea turtles, then time to relax or explore Stone Town's galleries and shops before your airport transfer for departure.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Internal flight from the safari to Zanzibar and all transfers",
+      "Six nights' safari accommodation (4-star or 5-star) and three nights in Zanzibar, full board",
+      "All park, crater and conservation fees",
+      "Private 4x4 game drives with a professional guide",
+      "Stone Town and spice tours, Nakupenda, Mnemba snorkelling and Baraka turtles",
+      "Sunset dhow cruise and all activities as per the itinerary",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Optional activities not mentioned in the itinerary",
+      "Tips, souvenirs and items of a personal nature",
+    ],
+    faqs: [
+      {
+        question: "Is the flight to Zanzibar included?",
+        answer:
+          "Yes — the internal flight from the safari to Zanzibar is included, along with all transfers. You only arrange your international flights.",
+      },
+      {
+        question: "What's the difference between 4-star and 5-star?",
+        answer:
+          "The itinerary is identical; the difference is the hotels and lodges. The 4-star 'Comfort' package is from $4,890pp and the 5-star 'Classic' (Serena, Park Hyatt and similar) from $5,999pp.",
+      },
+      {
+        question: "Can the safari/beach split be adjusted?",
+        answer:
+          "Yes — you can lengthen either side or add a Kilimanjaro climb. Tell Ombeni what you have in mind on WhatsApp and he'll tailor it.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+    oldUrl:
+      "/booking/11-day-adventure-is-perfect-a-perfect-combination-for-an-unforgettable-adventure-with-trust-tours-and-safaris-stay-at-5-star-or-4-star-hotels-and-lodges/",
+  },
+
+  {
+    slug: "5-day-safari-lengai",
+    destinations: ["Tarangire", "Serengeti", "Ngorongoro", "Lake Natron", "Ol Doinyo Lengai"],
+    category: "safari",
+    title: "5-Day Safari & Ol Doinyo Lengai Volcano Adventure",
+    shortName: "5-Day Safari + Lengai Climb",
+    days: 5,
+    priceFromUSD: 1450,
+    priceNote:
+      "Per person. From $1,450 budget / $2,350 mid-range / $3,800+ luxury. Plus local climbing & TAWA fees (~$90–120pp). Available year-round.",
+    tier: ["budget", "mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Wildlife and volcano in one trip: game drives in Tarangire and the Serengeti, the Big Five in the Ngorongoro Crater, and a thrilling midnight climb of Ol Doinyo Lengai — the only active carbonatite volcano on Earth — for a sunrise over Lake Natron and the Great Rift Valley. A rare blend of safari, culture and real adventure.",
+    highlights: [
+      "Tarangire's elephant herds and the Serengeti's endless plains",
+      "Full game drive on the floor of the Ngorongoro Crater",
+      "Midnight summit of Ol Doinyo Lengai (2,962 m) for sunrise",
+      "Lake Natron, flamingos and the Great Rift Valley",
+      "Maasai mountain guides on the 'Mountain of God'",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arusha to Tarangire National Park",
+        description:
+          "Drive from Arusha to Tarangire for a full-day game drive among giant baobabs and large elephant herds, with lions, giraffe, zebra and 500+ bird species. Picnic lunch in the park, then dinner and overnight at your lodge or camp.",
+        meals: "Lunch, dinner",
+        accommodation: "Budget, mid-range or luxury lodge near Tarangire",
+      },
+      {
+        day: 2,
+        title: "Ngorongoro Highlands to the Serengeti",
+        description:
+          "Drive to the Serengeti via the Ngorongoro Highlands with scenic crater viewpoints, then a game drive across the endless plains — lions, cheetahs, leopards, elephants and thousands of grazers. Dinner under a sky full of stars.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Camp or lodge, Serengeti",
+      },
+      {
+        day: 3,
+        title: "Serengeti to Lake Natron",
+        description:
+          "An early game drive when predators are active, then journey toward the remote Lake Natron region through Maasai territory and dramatic volcanic scenery. Check in, an evening briefing for the climb, an early dinner and a few hours' rest before the ~11 PM start.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or camp, Lake Natron",
+      },
+      {
+        day: 4,
+        title: "Ol Doinyo Lengai Summit to Ngorongoro",
+        description:
+          "Shortly after midnight, climb Ol Doinyo Lengai with experienced Maasai guides — a steep 4–7 hour ascent under the stars to reach the summit for sunrise over Lake Natron, the Rift Valley, Mount Meru and, on clear mornings, Kilimanjaro. Descend for brunch, then drive to the Ngorongoro area for dinner and overnight.",
+        altitudeStart: 1000,
+        altitudeEnd: 2962,
+        hours: "4–7 hours up",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or camp near Ngorongoro",
+      },
+      {
+        day: 5,
+        title: "Ngorongoro Crater to Arusha",
+        description:
+          "An early descent 600 m into the Ngorongoro Crater — 'Africa's Garden of Eden' — for a chance at the Big Five in a single morning, plus hippo, flamingo and hyena, with a picnic lunch by the hippo pool. Return to Arusha in the afternoon.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Private 4x4 safari vehicle with pop-up roof and a driver-guide",
+      "Local Maasai mountain guide and Ol Doinyo Lengai climbing arrangements",
+      "Accommodation (budget, mid-range or luxury) and all meals on safari",
+      "All park entry, Ngorongoro Crater and conservation fees",
+      "Lake Natron activities and drinking water on safari",
+      "Government taxes",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended; trekking cover advised)",
+      "Local village climbing fee (~$70–100pp) and TAWA fee (~$20pp)",
+      "Tips, alcoholic drinks and personal expenses",
+    ],
+    faqs: [
+      {
+        question: "How hard is the Ol Doinyo Lengai climb?",
+        answer:
+          "It's challenging — a steep midnight ascent of about 1,600 m over a short distance to 2,962 m, taking 4–7 hours up. No technical climbing, but a real test of fitness and willpower. Experienced Maasai guides set the pace.",
+      },
+      {
+        question: "Why climb at midnight?",
+        answer:
+          "To reach the summit for sunrise and to avoid the fierce daytime heat of the Lake Natron basin, which can be extreme. You'll be back at the lodge by early afternoon to rest.",
+      },
+      {
+        question: "Can I do the volcano without the safari?",
+        answer:
+          "Yes — we also run 2-day, 3-day and 7-day Ol Doinyo Lengai trekking trips focused on the volcano and Lake Natron. See the Trekking section or ask Ombeni.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "7-day-kilimanjaro-hike-safari",
+    destinations: ["Kilimanjaro", "Arusha", "Tarangire", "Serengeti", "Ngorongoro"],
+    category: "safari",
+    title: "7-Day Kilimanjaro Hike + Northern Circuit Safari + Maasai Culture",
+    shortName: "7-Day Hike & Safari",
+    days: 7,
+    priceFromUSD: 2210,
+    priceNote:
+      "Per person, sharing, mid-range, all-inclusive. Trek, safari and culture in one trip.",
+    tier: ["mid-range"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Three experiences in one unforgettable week: a two-day taste of Kilimanjaro on the Marangu Route (to Horombo Hut, no summit pressure), four days of safari in Tarangire, the Serengeti and the Ngorongoro Crater, and a Maasai village visit to finish. Mountain, wildlife and culture — ideal for travellers who want it all without a full summit climb.",
+    highlights: [
+      "Two days hiking Kilimanjaro's Marangu Route to Horombo Hut (3,720 m)",
+      "Tarangire's elephants and a full day in the Serengeti",
+      "Game drive on the floor of the Ngorongoro Crater",
+      "Maasai village cultural visit",
+      "A trek, a safari and culture in a single week",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Moshi / Arusha",
+        description:
+          "Welcomed at Kilimanjaro International Airport and transferred to your hotel at the foot of Kilimanjaro. A welcome dinner and a briefing on the days ahead.",
+        meals: "Dinner",
+        accommodation: "Hotel, Moshi or Arusha",
+      },
+      {
+        day: 2,
+        title: "Marangu Gate to Mandara Hut",
+        description:
+          "Drive to Marangu Gate, register, and hike through Kilimanjaro's lush rainforest to Mandara Hut (2,700 m), with a short walk to the Maundi Crater for sweeping views.",
+        altitudeStart: 1870,
+        altitudeEnd: 2700,
+        hours: "4–5 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mandara Hut (mountain hut)",
+      },
+      {
+        day: 3,
+        title: "Mandara to Horombo Hut & back to Arusha",
+        description:
+          "Trek through heath and moorland to Horombo Hut (3,720 m) for views of Mawenzi and Kibo, then descend to Marangu Gate and transfer to Arusha for a hot shower and a comfortable lodge.",
+        altitudeStart: 2700,
+        altitudeEnd: 3720,
+        hours: "6–7 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range lodge, Arusha",
+      },
+      {
+        day: 4,
+        title: "Safari Begins — Tarangire National Park",
+        description:
+          "Drive to Tarangire for a full-day game drive among massive elephant herds and ancient baobabs, with lions, zebra and abundant birdlife, and a scenic picnic lunch.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp or lodge near Tarangire",
+      },
+      {
+        day: 5,
+        title: "Full Day in the Serengeti",
+        description:
+          "A sunrise game drive and full day across the Serengeti plains — predators, plains game and, in season, the Great Migration — finishing with a campfire evening under the stars.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp, Serengeti",
+      },
+      {
+        day: 6,
+        title: "Serengeti to the Ngorongoro Crater",
+        description:
+          "A final Serengeti morning drive en route to Ngorongoro, descending into the crater for a picnic lunch by the hippo pool and game viewing among the Big Five. Overnight at a lodge on the crater rim.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro crater rim",
+      },
+      {
+        day: 7,
+        title: "Maasai Village & Departure",
+        description:
+          "A morning Maasai village visit to learn about their customs and way of life, then transfer to Arusha with an optional lunch and souvenir stop before your departure flight.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Six nights in mid-range lodges, camps and a Kilimanjaro mountain hut",
+      "All meals from dinner on Day 1 to breakfast on Day 7",
+      "Kilimanjaro hiking fees, permits and hut stay",
+      "Game drives in a 4x4 with a professional guide; all park and crater fees",
+      "Maasai village cultural visit",
+      "All airport transfers and transport between parks",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended; trekking cover advised)",
+      "Optional hot air balloon safari ($500 per person)",
+      "Tips, souvenirs and items of a personal nature",
+    ],
+    faqs: [
+      {
+        question: "Do we summit Kilimanjaro on this trip?",
+        answer:
+          "No — the Kilimanjaro portion is a two-day hike to Horombo Hut (3,720 m), a real taste of the mountain without the summit commitment. For Uhuru Peak, see our full 6–9 day Kilimanjaro climbs.",
+      },
+      {
+        question: "Who is this trip best for?",
+        answer:
+          "Travellers who want variety in one week — a mountain hike, the headline safari parks and authentic Maasai culture — without dedicating the whole trip to a summit climb.",
+      },
+      {
+        question: "Can it be upgraded or extended?",
+        answer:
+          "Yes — upgrade lodges, add a balloon safari, extend the Serengeti, or finish on a Zanzibar beach. Ombeni will tailor it on WhatsApp.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+    oldUrl:
+      "/booking/7-day-safari-adventure-marangu-route-hike-northern-circuit-safari-maasai-cultural-experience-northern-circuit/",
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // HONEYMOON & ROMANCE — themed safaris/combos (tag: "honeymoon").
+  // Surfaced together on /honeymoon; each keeps its safari detail route.
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: "7-day-ultimate-honeymoon",
+    destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti", "Zanzibar"],
+    category: "safari",
+    tags: ["honeymoon"],
+    title: "7-Day Ultimate Honeymoon – Safari & Zanzibar",
+    shortName: "7-Day Honeymoon",
+    days: 7,
+    priceFromUSD: 0,
+    priceNote: "Private luxury honeymoon — per-person pricing on request.",
+    tier: ["comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "A luxury honeymoon that blends adventure and romance: private game drives in Tarangire, the Ngorongoro Crater and the Serengeti — with a sunrise balloon flight and champagne breakfast — then a flight to a Zanzibar beach resort for sunset dhow cruises and couples' spa days. Candlelit bush dinners, special honeymoon touches and handpicked lodges throughout.",
+    highlights: [
+      "Private game drives with romantic sundowners and bush dinners",
+      "Sunrise hot air balloon safari over the Serengeti with champagne",
+      "Couples' spa treatments and candlelit dinners",
+      "Luxury Zanzibar beach resort with a sunset dhow cruise",
+      "VIP welcome and personalised honeymoon surprises",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "A VIP welcome at Kilimanjaro International Airport and a private transfer to your lodge in Arusha. A romantic dinner under the stars with a special honeymoon setup.",
+        meals: "Dinner",
+        accommodation: "Luxury lodge, Arusha (Arusha Coffee Lodge or similar)",
+      },
+      {
+        day: 2,
+        title: "Tarangire National Park",
+        description:
+          "Private transfer to Tarangire for an exclusive game drive focused on its great elephant herds, with a gourmet picnic lunch. Sundowners over the baobab-studded landscape, then a private candlelit dinner at camp.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Luxury tented camp near Tarangire",
+      },
+      {
+        day: 3,
+        title: "Ngorongoro Crater",
+        description:
+          "A scenic drive to Ngorongoro with a Maasai village visit en route, then a private game drive on the crater floor among the Big Five. Unwind with a couples' spa treatment and dinner overlooking the crater.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro rim",
+      },
+      {
+        day: 4,
+        title: "Fly to the Serengeti",
+        description:
+          "Fly to the Serengeti for a private game drive focused on the Great Migration or the Big Five, a luxury bush picnic, and a romantic sundowner followed by a private bush dinner under the stars.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Luxury lodge or tented camp, Serengeti",
+      },
+      {
+        day: 5,
+        title: "Serengeti — Balloon Safari",
+        description:
+          "An early hot air balloon safari over the Serengeti with a champagne breakfast on landing, then more private game viewing for lions and cheetahs. A private dinner on your terrace or a couples' massage to end the day.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Luxury lodge or tented camp, Serengeti",
+      },
+      {
+        day: 6,
+        title: "Fly to Zanzibar — Beach Escape",
+        description:
+          "Fly to Zanzibar and transfer to a luxury beachfront resort. A private beach lunch and time to swim in the turquoise water, then a sunset dhow cruise with champagne and canapés and a romantic resort dinner.",
+        meals: "Breakfast, dinner",
+        accommodation: "Luxury beach resort, Zanzibar (The Residence or similar)",
+      },
+      {
+        day: 7,
+        title: "Zanzibar — Relaxation & Departure",
+        description:
+          "A leisurely breakfast and a final couples' spa treatment or water activities like snorkelling, then a private transfer to the airport for your departure flight.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Private transfers and internal flights (Serengeti, Zanzibar)",
+      "Mid-range to luxury lodges and a Zanzibar beach resort",
+      "Private 4x4 game drives with a professional guide",
+      "Romantic touches — bush dinners, sundowners, honeymoon setups",
+      "Park and conservation fees and meals as listed",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Optional balloon safari surcharge where applicable and add-ons",
+      "Tips, drinks and items of a personal nature",
+    ],
+    faqs: [
+      {
+        question: "Can you arrange special honeymoon touches?",
+        answer:
+          "Yes — rose-petal decorations, private candlelit dinners, couples' massages, a sunset horseback ride on the beach and personalised gifts can all be arranged. Tell Ombeni it's your honeymoon and he'll set it up.",
+      },
+      {
+        question: "Is the balloon safari included?",
+        answer:
+          "A sunrise balloon flight with champagne breakfast is part of the planned Serengeti experience; depending on the package tier it may carry a surcharge. We'll confirm when we quote.",
+      },
+      {
+        question: "Can we adjust the safari/beach balance?",
+        answer:
+          "Absolutely — lengthen the Serengeti or the Zanzibar beach days, or upgrade lodges. It's a private trip built around you.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+    oldUrl: "/booking/7-days-in-paradise-with-trust-tours-and-safaris-company-your-ultimate-honeymoon-haven/",
+  },
+
+  {
+    slug: "10-day-honeymoon-migration",
+    destinations: ["Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
+    category: "safari",
+    tags: ["honeymoon"],
+    title: "10-Day Honeymoon Safari – Tracking the Great Migration",
+    shortName: "10-Day Honeymoon Migration",
+    days: 10,
+    priceFromUSD: 0,
+    priceNote: "Private luxury honeymoon safari — per-person pricing on request.",
+    tier: ["comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Celebrate your love in the heart of the Great Migration: ten days through Tarangire, Lake Manyara, the Ngorongoro Crater and deep into the Serengeti — central plains, big-cat country and the northern Mara crossings — with luxury tented camps, romantic sundowners, private bush dinners and a balloon safari. Intimate, unhurried and tailored to couples.",
+    highlights: [
+      "Follows the path of the Great Migration across the Serengeti",
+      "Northern Serengeti Mara River crossings (season dependent)",
+      "Sunrise balloon safari and champagne bush breakfast",
+      "Couples' spa, private bush dinners and sundowners for two",
+      "Luxury tented camps and lodges throughout",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport by your private guide and transferred to a serene lodge outside Arusha. A candlelit dinner and a toast to the start of your honeymoon.",
+        meals: "Dinner",
+        accommodation: "Luxury lodge, Arusha",
+      },
+      {
+        day: 2,
+        title: "Tarangire National Park",
+        description:
+          "Drive to Tarangire — towering baobabs and Tanzania's largest elephant concentration — tracking elephant, giraffe and big cats, with a romantic picnic over the Tarangire River and a sundowner just for two.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Romantic tented camp near Tarangire",
+      },
+      {
+        day: 3,
+        title: "Lake Manyara National Park",
+        description:
+          "A leisurely game drive in Lake Manyara — tree-climbing lions, flamingos and forested lakeshore — then unwind at a Rift Valley lodge with an optional couples' spa treatment.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge with lake or escarpment views",
+      },
+      {
+        day: 4,
+        title: "Ngorongoro Crater",
+        description:
+          "Descend into the Ngorongoro Crater for a game drive among the densest wildlife in Africa — black rhino, lion and hippo — with a gourmet picnic lunch and a sunset toast from a luxury lodge on the rim.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Luxury lodge on the crater rim",
+      },
+      {
+        day: 5,
+        title: "Into the Central Serengeti",
+        description:
+          "Travel through the Ngorongoro Highlands into the central Serengeti, with an afternoon game drive, then settle into a luxury tented camp where lanterns glow and the savannah sets a dreamy tone.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Luxury tented camp, central Serengeti",
+      },
+      {
+        day: 6,
+        title: "Full Day in the Serengeti",
+        description:
+          "A sunrise game drive for predators on the move, quiet time together at camp, then an afternoon among the Big Five and the great herds — capped by a private bush dinner under the stars.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Luxury tented camp, central Serengeti",
+      },
+      {
+        day: 7,
+        title: "Northern Serengeti — The Migration",
+        description:
+          "Journey north to track the Great Migration, with dramatic Mara River crossings in season as the herds brave the crocodile-filled waters. Overnight at a remote migration-hotspot camp.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Luxury migration camp, northern Serengeti",
+      },
+      {
+        day: 8,
+        title: "Serengeti Balloon Safari",
+        description:
+          "An early hot air balloon safari over the plains (optional) with a champagne bush breakfast, then game drives or romantic downtime at camp — a couples' massage or a private bush lunch in untouched nature.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Luxury camp, northern Serengeti",
+      },
+      {
+        day: 9,
+        title: "Fly Back to Arusha",
+        description:
+          "A final morning game drive, then a scenic bush flight back to Arusha and a relaxing afternoon at a charming lodge — time to reflect, shop for souvenirs and enjoy a celebratory dinner.",
+        meals: "Breakfast, dinner",
+        accommodation: "Boutique lodge, Arusha",
+      },
+      {
+        day: 10,
+        title: "Departure",
+        description:
+          "A leisurely breakfast and, time permitting, a craft market or coffee-estate visit before your private transfer to Kilimanjaro International Airport.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "All ground transfers and domestic flights",
+      "Private 4x4 safari vehicle with pop-up roof and a professional guide",
+      "Mid- to high-end lodges and luxury tented camps",
+      "Park and conservation fees and all meals as listed",
+      "Romantic bush dinners, sundowners and special honeymoon touches",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Optional balloon safari surcharge and personal expenses",
+      "Tips and gratuities for guides and staff",
+    ],
+    faqs: [
+      {
+        question: "When are the Mara River crossings?",
+        answer:
+          "Typically July–October in the northern Serengeti. Timing shifts with the rains, so tell Ombeni your dates and he'll place your northern nights for the best chance of a crossing.",
+      },
+      {
+        question: "How private is this honeymoon?",
+        answer:
+          "Fully private — your own vehicle, guide and tailored pace, with intimate experiences like private bush dinners and sundowners for two throughout.",
+      },
+      {
+        question: "Can we add Zanzibar at the end?",
+        answer:
+          "Yes — many couples finish on the beach. We'll add the flights and resort and book it as one trip. Just ask.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+    oldUrl: "/booking/tanzania-honeymoon-safari-tracking-the-great-migration/",
+  },
+
+  {
+    slug: "20-day-honeymoon-tanzania-zanzibar",
+    destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti", "Lake Natron", "Zanzibar"],
+    category: "safari",
+    tags: ["honeymoon"],
+    title: "20-Day Tanzania & Zanzibar Honeymoon Adventure",
+    shortName: "20-Day Honeymoon",
+    days: 20,
+    priceFromUSD: 8750,
+    priceNote:
+      "Per person, sharing. From $8,750 mid-range / $14,450 luxury. Includes Flying Doctors evacuation cover.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The ultimate once-in-a-lifetime honeymoon: ten days across Tanzania's wilderness — Arusha NP, Tarangire, the Ngorongoro Crater, the Serengeti migration and the surreal Lake Natron — then ten days unwinding on Zanzibar's beaches with Stone Town, spice farms, Jozani Forest and Mnemba snorkelling. Romance, adventure and island bliss, with mid-range or luxury options throughout.",
+    highlights: [
+      "Ten days of safari plus ten days on the Zanzibar coast",
+      "Great Migration in the Serengeti and the Big Five in Ngorongoro",
+      "Lake Natron's flamingos, waterfalls and volcanic scenery",
+      "Stone Town, spice farm, Jozani Forest and Mnemba snorkelling",
+      "Flying Doctors evacuation cover and handpicked romantic stays",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport and transferred to a romantic lodge in Arusha to relax among lush gardens before the adventure begins.",
+        meals: "Dinner",
+        accommodation: "Mid-range or luxury hotel, Arusha",
+      },
+      {
+        day: 2,
+        title: "Arusha National Park — Walking Safari",
+        description:
+          "Ease in with a guided walking safari in Arusha National Park — giraffe, zebra and monkeys — an optional canoe on Momella Lake and a picnic lunch in the wild.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury hotel, Arusha",
+      },
+      {
+        day: 3,
+        title: "Tarangire National Park",
+        description:
+          "A full-day game drive in Tarangire among huge elephant herds and baobabs, with lions, leopards and migratory birds, ending with a candlelit dinner under the stars.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury lodge near Tarangire",
+      },
+      {
+        day: 4,
+        title: "Mto wa Mbu Cultural Tour & Karatu",
+        description:
+          "A guided cultural tour of the multicultural village of Mto wa Mbu — local cuisine, banana farms and artisans — then on to the highland town of Karatu.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury lodge, Karatu",
+      },
+      {
+        day: 5,
+        title: "Ngorongoro Crater",
+        description:
+          "A full-day game drive on the Ngorongoro Crater floor — high chances of the Big Five in a single day — with a picnic lunch beside a hippo pool.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury lodge, Karatu",
+      },
+      {
+        day: 6,
+        title: "Drive to the Central Serengeti",
+        description:
+          "Travel into the Serengeti with game viewing en route and an evening game drive before settling into a romantic safari tent.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury tented camp, Serengeti",
+      },
+      {
+        day: 7,
+        title: "Serengeti — Track the Migration",
+        description:
+          "A full day across the central (and possibly northern) Serengeti following the Great Migration — epic herds, predator action and sunsets — with romantic bush lunches and private dinners.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury tented camp, Serengeti",
+      },
+      {
+        day: 8,
+        title: "Serengeti — Full Day Safari",
+        description:
+          "Another full day chasing the migration and the Big Five across the plains, your guide positioning you for the best wildlife and light.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury tented camp, Serengeti",
+      },
+      {
+        day: 9,
+        title: "Serengeti to Lake Natron",
+        description:
+          "Journey to the remote, surreal landscapes of Lake Natron — flamingos and volcanic scenery — with a guided walk to nearby waterfalls.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury camp, Lake Natron",
+      },
+      {
+        day: 10,
+        title: "Lake Natron to Arusha",
+        description:
+          "A scenic drive back to Arusha to rest, review your safari photos and prepare for the island half of your honeymoon.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range or luxury hotel, Arusha",
+      },
+      {
+        day: 11,
+        title: "Fly to Zanzibar",
+        description:
+          "A short flight to Zanzibar and a transfer to your east-coast resort for ocean views and swaying palms. (Zanzibar nights and some meals per the package tier.)",
+        meals: "Breakfast, dinner",
+        accommodation: "Mid-range or luxury beach resort, Zanzibar",
+      },
+      {
+        day: 12,
+        title: "Stone Town & Sunset Dhow Cruise",
+        description:
+          "A private guided tour of historic Stone Town — markets, landmarks and ancient alleys — then a romantic sunset dhow cruise on the Indian Ocean.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beach resort, Zanzibar",
+      },
+      {
+        day: 13,
+        title: "Spice Farm & Jozani Forest",
+        description:
+          "Visit a Zanzibar spice farm to taste the island's famous spices, then Jozani Forest to see the rare red colobus monkeys in their natural habitat.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Beach resort, Zanzibar",
+      },
+      {
+        day: 14,
+        title: "Beach Relaxation",
+        description:
+          "A day at leisure on white-sand beaches — swim, snorkel or paddleboard — with an optional beach massage and a private dinner on the sand.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beach resort, Zanzibar",
+      },
+      {
+        day: 15,
+        title: "Mnemba Island Snorkelling",
+        description:
+          "A boat trip to the Mnemba Atoll for world-class snorkelling among coral reefs and tropical fish, with a seafood lunch aboard or on a secluded beach.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Beach resort, Zanzibar",
+      },
+      {
+        day: 16,
+        title: "Leisure by the Ocean",
+        description:
+          "A free day for honeymoon pampering or optional diving, kite surfing or a fishing-village visit — at the pace you like.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beach resort, Zanzibar",
+      },
+      {
+        day: 17,
+        title: "Leisure by the Ocean",
+        description:
+          "More time to relax and enjoy the tranquillity and beauty of your resort and the Indian Ocean.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beach resort, Zanzibar",
+      },
+      {
+        day: 18,
+        title: "Leisure by the Ocean",
+        description:
+          "A final full beach day — spa, water sports or simply soaking up paradise together.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beach resort, Zanzibar",
+      },
+      {
+        day: 19,
+        title: "Farewell Dinner & Cultural Drumming",
+        description:
+          "On your final night, a romantic candlelit dinner followed by a live cultural drumming performance — a last toast in paradise.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beach resort, Zanzibar",
+      },
+      {
+        day: 20,
+        title: "Departure",
+        description:
+          "After breakfast, a transfer to Zanzibar International Airport for your flight home, carrying memories of an unforgettable honeymoon.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "All airport transfers in Tanzania and Zanzibar, plus the Arusha–Zanzibar flight",
+      "Private 4x4 Land Cruiser with pop-up roof and an English-speaking guide",
+      "All park entry and conservation fees",
+      "Accommodation as listed (mid-range or luxury) and meals as specified",
+      "All cultural tours, walking safari, dhow cruise and excursions mentioned",
+      "Flying Doctors emergency medical evacuation cover",
+    ],
+    excluded: [
+      "International flights and Tanzania visa ($50pp)",
+      "Travel and health insurance",
+      "Optional balloon safari in the Serengeti ($590pp)",
+      "Alcoholic drinks, gratuities and personal expenses",
+    ],
+    faqs: [
+      {
+        question: "Is 20 days too long?",
+        answer:
+          "It's designed as a complete honeymoon — ten days of safari and ten days of beach, with rest days built in so it never feels rushed. We can shorten either half if you prefer; just ask Ombeni.",
+      },
+      {
+        question: "What's the difference between mid-range and luxury?",
+        answer:
+          "The route and private guiding are the same; the difference is the lodges, camps and resorts. Mid-range is from $8,750pp and luxury from $14,450pp at premium properties.",
+      },
+      {
+        question: "Are honeymoon extras included?",
+        answer:
+          "Romantic touches like candlelit dinners and a farewell drumming night are built in; spa treatments and some beach extras are arranged on request. Tell us it's your honeymoon and we'll make it special.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+    oldUrl: "/booking/20-day-tanzania-zanzibar-honeymoon-safari-adventure/",
+  },
+
+  {
+    slug: "7-day-zanzibar-honeymoon",
+    destinations: ["Zanzibar"],
+    category: "zanzibar",
+    tags: ["honeymoon"],
+    title: "7-Day Zanzibar Honeymoon – Beaches, Spice & Romance",
+    shortName: "7-Day Zanzibar Honeymoon",
+    days: 7,
+    priceFromUSD: 0,
+    priceNote: "Mid-range Zanzibar honeymoon — per-person pricing on request.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "A romantic week on the Spice Island, blending relaxation, adventure and culture: white-sand beaches and turquoise water, historic Stone Town, a spice tour, the Nakupenda sandbank, Jozani Forest, Mnemba snorkelling and couples' spa days. Carefully paced for newlyweds, with optional sunset dhow cruises and beach dinners.",
+    highlights: [
+      "Stone Town tour and a Zanzibar spice farm",
+      "Nakupenda sandbank with a seafood BBQ",
+      "Jozani Forest red colobus monkeys and lunch at The Rock",
+      "Mnemba Island snorkelling with dolphins",
+      "Couples' spa day and romantic beachside dinners",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Zanzibar",
+        description:
+          "Met at Abeid Amani Karume International Airport and transferred to your mid-range beachfront hotel. Relax on the beach and enjoy a welcome dinner.",
+        meals: "Dinner",
+        accommodation: "Beachfront hotel, Zanzibar",
+      },
+      {
+        day: 2,
+        title: "Stone Town & Spice Tour",
+        description:
+          "A guided tour of historic Stone Town — architecture, markets and culture — then a spice farm to taste and learn about Zanzibar's famous spices, with dinner at a local restaurant.",
+        meals: "Breakfast, dinner",
+        accommodation: "Hotel, Stone Town",
+      },
+      {
+        day: 3,
+        title: "Nakupenda Beach Excursion",
+        description:
+          "A full-day trip to the Nakupenda sandbank near Stone Town for snorkelling, swimming and a seafood BBQ lunch, then back to relax at your hotel.",
+        meals: "Breakfast, lunch",
+        accommodation: "Hotel, Stone Town",
+      },
+      {
+        day: 4,
+        title: "Jozani Forest & The Rock",
+        description:
+          "Visit Jozani Forest to see the rare red colobus monkeys and mangrove boardwalks, then a memorable lunch at The Rock Restaurant, perched on a rock in the ocean. Transfer to a beachfront resort.",
+        meals: "Breakfast, lunch",
+        accommodation: "Beachfront resort, Zanzibar",
+      },
+      {
+        day: 5,
+        title: "Mnemba Island & Water Activities",
+        description:
+          "An excursion to Mnemba Island for snorkelling in crystal-clear water with a chance of dolphins, then beach time or water sports like kayaking and paddleboarding, and a fresh seafood dinner.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beachfront resort, Zanzibar",
+      },
+      {
+        day: 6,
+        title: "Relaxation Day",
+        description:
+          "A relaxed day with an optional couples' spa treatment, a stroll to nearby markets, or simply unwinding by the beach, ending with a romantic beachside dinner.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beachfront resort, Zanzibar",
+      },
+      {
+        day: 7,
+        title: "Departure",
+        description:
+          "A leisurely breakfast and a final walk on the beach before your private transfer to the airport for departure.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Private airport and activity transfers",
+      "6 nights' mid-range beachfront and Stone Town accommodation",
+      "Daily breakfast plus meals as specified",
+      "Stone Town and spice tours, Nakupenda, Jozani and Mnemba excursions",
+      "Professional English-speaking local guides",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Optional add-ons (sunset dhow cruise, horse riding, village tour)",
+      "Tips, drinks and items of a personal nature",
+    ],
+    faqs: [
+      {
+        question: "Is this a good standalone honeymoon?",
+        answer:
+          "Yes — it's a complete week of beach, culture and romance on Zanzibar. Many couples also pair it with a few safari days beforehand; we can add those and the flights as one trip.",
+      },
+      {
+        question: "Can you arrange romantic extras?",
+        answer:
+          "Of course — sunset dhow cruises, private beach dinners, couples' spa treatments and honeymoon room setups. Tell Ombeni it's your honeymoon when booking.",
+      },
+      {
+        question: "When is the best time to visit Zanzibar?",
+        answer:
+          "June–October and December–February are the driest, sunniest months. The long rains (April–May) are quieter and greener but wetter.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "9-day-honeymoon-northern",
+    destinations: ["Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
+    category: "safari",
+    tags: ["honeymoon"],
+    title: "9-Day Honeymoon Safari – Northern Tanzania",
+    shortName: "9-Day Honeymoon Safari",
+    days: 9,
+    priceFromUSD: 0,
+    priceNote: "Private mid-range honeymoon safari — per-person pricing on request.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "A romantic nine-day safari through northern Tanzania for couples: Tarangire, Lake Manyara, the Ngorongoro Crater and three days in the Serengeti — central plains, big cats and the northern Mara — with candlelit dinners, sundowners for two and a Maasai-highlands finale. Intimate lodges and a private vehicle throughout.",
+    highlights: [
+      "Three days in the Serengeti, including the northern Mara",
+      "Full game drive in the Ngorongoro Crater — black rhino country",
+      "Lake Manyara's tree-climbing lions and flamingos",
+      "Candlelit bush dinners and sundowners for two",
+      "Maasai village visit in the Ngorongoro Highlands",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "A warm welcome at Kilimanjaro International Airport and transfer to a charming lodge in Arusha. A romantic dinner and a safari briefing, with a toast to your new journey together.",
+        meals: "Dinner",
+        accommodation: "Mid-range lodge, Arusha",
+      },
+      {
+        day: 2,
+        title: "Tarangire National Park",
+        description:
+          "A morning and afternoon game drive in Tarangire among large elephant herds and ancient baobabs, with a picnic lunch and a private dinner under the stars by the campfire.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp near Tarangire",
+      },
+      {
+        day: 3,
+        title: "Lake Manyara National Park",
+        description:
+          "A lakeside game drive for hippos, flamingos and tree-climbing lions, the groundwater forest for elephants and baboons, then a romantic sunset dinner at a Rift Valley escarpment lodge.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Rift Valley escarpment",
+      },
+      {
+        day: 4,
+        title: "Ngorongoro Crater",
+        description:
+          "Descend into the crater — the 'Garden of Eden' — for the Big Five including elusive black rhino, with a picnic lunch at the hippo pool, then a private dinner at a romantic lodge on the crater rim.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro rim",
+      },
+      {
+        day: 5,
+        title: "Central Serengeti — Seronera",
+        description:
+          "Journey into the Serengeti and the Seronera Valley, famed for big cats, with an afternoon game drive and a candlelit dinner under a dazzling, unpolluted night sky.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp, central Serengeti",
+      },
+      {
+        day: 6,
+        title: "Full Day in the Serengeti",
+        description:
+          "A sunrise game drive for predators in action, quiet time together, then a full day exploring the plains — and, in season, the Great Migration — with a private dinner to follow.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range tented camp, central Serengeti",
+      },
+      {
+        day: 7,
+        title: "Northern Serengeti — The Mara",
+        description:
+          "Head to the remote northern Serengeti, famous for the dramatic Mara River crossings in season, with a picnic in the wilderness and a fireside evening at a remote camp.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mid-range camp, northern Serengeti",
+      },
+      {
+        day: 8,
+        title: "Serengeti to the Ngorongoro Highlands",
+        description:
+          "A final Serengeti game drive, then the scenic drive into the cooler highlands, with an optional nature walk or Maasai village visit and a romantic dinner in the peaceful highland air.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Ngorongoro Highlands",
+      },
+      {
+        day: 9,
+        title: "Departure",
+        description:
+          "A leisurely breakfast and free time, then a transfer back to Arusha for a farewell lunch before your departure flight.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Eight nights in mid-range lodges and romantic tented camps",
+      "All meals from dinner on Day 1, with private dining and picnic lunches",
+      "Daily game drives in a private 4x4 with a professional guide",
+      "All park and Ngorongoro Crater fees",
+      "Guided bush walks, Maasai village visit and sundowners",
+      "All airport transfers and transport between parks",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Optional balloon safari and personal expenses",
+      "Tips and gratuities for guides and staff",
+    ],
+    faqs: [
+      {
+        question: "How romantic is this safari really?",
+        answer:
+          "It's built for couples — private vehicle and guide, intimate camps, candlelit and private bush dinners, and sundowners for two. Tell Ombeni it's your honeymoon and he'll add special touches.",
+      },
+      {
+        question: "Will we see the migration?",
+        answer:
+          "In season, yes — northern Mara crossings around July–October, the calving plains December–March. The Serengeti and Ngorongoro hold abundant wildlife year-round.",
+      },
+      {
+        question: "Can we finish on the beach?",
+        answer:
+          "Absolutely — add a Zanzibar stay and we'll arrange the flights and book it as one honeymoon.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "13-day-romance-honeymoon",
+    destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti", "Zanzibar"],
+    category: "safari",
+    tags: ["honeymoon"],
+    title: "13-Day Romance Honeymoon – Safari & Zanzibar",
+    shortName: "13-Day Romance Honeymoon",
+    days: 13,
+    priceFromUSD: 5646,
+    priceNote:
+      "Per person, all-inclusive. From $5,646 (tented camps) / $6,599 (luxury lodges). Includes the Serengeti–Zanzibar flight.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The 'Days of Romance' honeymoon: eight days of safari — Arusha NP, Tarangire, the Ngorongoro Crater and three days in the Serengeti among the Great Migration and Big Five — then five days on Zanzibar with Stone Town, a spice tour, Prison Island tortoises and swimming with dolphins. The perfect balance of adventure and beachfront bliss.",
+    highlights: [
+      "Three days in the Serengeti for the Great Migration and Big Five",
+      "Arusha NP, Tarangire and a full day in the Ngorongoro Crater",
+      "Optional sunrise balloon safari over the Serengeti",
+      "Zanzibar: Stone Town, spice tour and Prison Island tortoises",
+      "Swim with dolphins and special honeymoon dinners",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport and transferred to your Arusha lodge to relax, with a safari briefing and a romantic welcome dinner.",
+        meals: "Dinner",
+        accommodation: "Lodge or hotel, Arusha",
+      },
+      {
+        day: 2,
+        title: "Arusha National Park",
+        description:
+          "A full-day game drive in Arusha National Park — Mount Meru views, the Momela Lakes and a waterfall — with a picnic lunch, then back to the lodge for the evening.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or hotel, Arusha",
+      },
+      {
+        day: 3,
+        title: "Arusha to Tarangire National Park",
+        description:
+          "Drive to Tarangire and check into a safari lodge, then an afternoon game drive among great elephant herds and baobabs, with sundowner drinks and a romantic dinner.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Safari lodge near Tarangire",
+      },
+      {
+        day: 4,
+        title: "Tarangire to the Ngorongoro Crater Rim",
+        description:
+          "An early game drive in Tarangire, then the scenic drive to the Ngorongoro Conservation Area and a lodge on the crater rim, with an afternoon at leisure and a candlelit dinner.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro rim",
+      },
+      {
+        day: 5,
+        title: "Ngorongoro Crater",
+        description:
+          "Descend into the crater for a full-day game drive with a picnic lunch among its dense wildlife and dramatic landscapes, then a relaxing evening and dinner on the rim.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge on the Ngorongoro rim",
+      },
+      {
+        day: 6,
+        title: "Ngorongoro to the Serengeti",
+        description:
+          "Drive to the Serengeti with an optional stop at Olduvai Gorge, check into a tented camp or lodge, and enjoy an afternoon game drive followed by a romantic dinner under the stars.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp or lodge, Serengeti",
+      },
+      {
+        day: 7,
+        title: "Serengeti — Balloon & Game Drives",
+        description:
+          "An optional sunrise hot air balloon safari, then full-day game drives across the plains, ending with a special honeymoon dinner in a private setting.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp or lodge, Serengeti",
+      },
+      {
+        day: 8,
+        title: "Full Day in the Serengeti",
+        description:
+          "Another full day of game drives across the savannah and a picnic lunch, with time to soak up the wilderness before a relaxed evening and dinner at the lodge.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Tented camp or lodge, Serengeti",
+      },
+      {
+        day: 9,
+        title: "Serengeti to Zanzibar",
+        description:
+          "A morning game drive en route to the airstrip, then fly from the Serengeti to Zanzibar and transfer to a beachfront resort for an afternoon at leisure and a romantic sunset dinner on the beach.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beachfront resort, Zanzibar",
+      },
+      {
+        day: 10,
+        title: "Zanzibar Beach Relaxation",
+        description:
+          "A full day at leisure — swim, relax by the pool, or take optional water activities like snorkelling, diving or a dhow cruise — with dinner at the resort.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beachfront resort, Zanzibar",
+      },
+      {
+        day: 11,
+        title: "Stone Town & Spice Tour",
+        description:
+          "A guided tour of UNESCO-listed Stone Town and an aromatic spice tour into Zanzibar's history of the spice trade, then back to the resort for dinner.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beachfront resort, Zanzibar",
+      },
+      {
+        day: 12,
+        title: "Prison Island & Swimming with Dolphins",
+        description:
+          "A boat trip to Prison Island for the giant tortoises and snorkelling, then a dolphin excursion with the chance to swim alongside them, and a final romantic dinner at the resort.",
+        meals: "Breakfast, dinner",
+        accommodation: "Beachfront resort, Zanzibar",
+      },
+      {
+        day: 13,
+        title: "Departure",
+        description:
+          "A leisurely breakfast and a relaxed morning — beach or spa — before your transfer to Zanzibar International Airport for departure.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Private transfers and transport in a 4x4 safari vehicle",
+      "Professional English-speaking driver/guide",
+      "Accommodation in lodges, tented camps and beachfront resorts",
+      "All meals as specified and park entry fees",
+      "Flight from the Serengeti to Zanzibar",
+      "Romantic dinners, honeymoon arrangements and Zanzibar guided tours",
+    ],
+    excluded: [
+      "International flights to and from Tanzania",
+      "Travel insurance (recommended for all travellers)",
+      "Optional balloon safari ($550 per person)",
+      "Tips, drinks, souvenirs and personal expenses",
+    ],
+    faqs: [
+      {
+        question: "Why is it called 'Days of Romance'?",
+        answer:
+          "It's Ombeni's signature honeymoon — a balanced blend of safari adventure and Zanzibar beach time with romantic touches throughout. The day-by-day runs to 13 days including travel and departure.",
+      },
+      {
+        question: "What's the difference between the two price tiers?",
+        answer:
+          "The route is the same; the difference is accommodation. From $5,646pp uses comfortable tented camps; from $6,599pp uses luxury lodges and resorts.",
+      },
+      {
+        question: "Is the balloon safari included?",
+        answer:
+          "It's optional at $550 per person on the Serengeti day. Let Ombeni know if you'd like it added.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
   // ─────────────────────────────────────────────────────────────────
   // ZANZIBAR — standalone beach escapes (Wave 2, from Ombeni's PDFs).
   // ─────────────────────────────────────────────────────────────────
@@ -1365,6 +3610,7 @@ export const packages: TripPackage[] = [
     slug: "4-day-zanzibar-escape",
     destinations: ["Zanzibar"],
     category: "zanzibar",
+    tags: ["honeymoon"],
     title: "4-Day Zanzibar Escape – Stone Town, Mnemba & Sea Turtles",
     shortName: "4-Day Zanzibar",
     days: 4,
@@ -1460,6 +3706,7 @@ export const packages: TripPackage[] = [
     slug: "5-day-zanzibar-escape",
     destinations: ["Zanzibar"],
     category: "zanzibar",
+    tags: ["honeymoon"],
     title: "5-Day Zanzibar Beach & Culture Escape",
     shortName: "5-Day Zanzibar",
     days: 5,
@@ -2415,6 +4662,7 @@ export const packages: TripPackage[] = [
     slug: "4-day-balloon-safari-serengeti-ngorongoro",
     destinations: ["Serengeti", "Ngorongoro"],
     category: "safari",
+    tags: ["honeymoon"],
     title: "4-Day Balloon Safari – Serengeti & Ngorongoro Crater",
     shortName: "4-Day Balloon Safari",
     days: 4,
@@ -2723,6 +4971,1034 @@ export const packages: TripPackage[] = [
     ],
     bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
     oldUrl: "/booking/3-days-mount-meru-climb-2/",
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // OL DOINYO LENGAI — "Mountain of God" active volcano treks (Wave 4).
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: "2-day-ol-doinyo-lengai-climb",
+    destinations: ["Arusha", "Lake Natron", "Ol Doinyo Lengai"],
+    category: "trekking",
+    difficulty: "Challenging",
+    title: "2-Day Ol Doinyo Lengai Climb – Mountain of God",
+    shortName: "2-Day Lengai Climb",
+    days: 2,
+    priceFromUSD: 450,
+    priceNote:
+      "Per person. From $450 budget / $750–1,050 mid-range / $1,200–1,800 luxury. Plus local climbing fee (~$70–100pp) and TAWA fee (~$20pp).",
+    tier: ["budget", "mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "A short, intense adventure to the summit of Ol Doinyo Lengai (2,962 m), the only active carbonatite volcano on Earth and sacred to the Maasai as the 'Mountain of God'. Drive into the Great Rift Valley to Lake Natron, then climb beneath the stars from midnight to reach the crater rim at sunrise — panoramas across Lake Natron, the Rift Valley, Mount Meru and even Kilimanjaro on clear mornings.",
+    highlights: [
+      "Summit the world's only active carbonatite volcano",
+      "Midnight ascent beneath the stars to a sunrise summit",
+      "Views over Lake Natron, the Great Rift Valley and Mount Meru",
+      "Maasai mountain guides who know the volcano intimately",
+      "Dramatic Rift Valley drive past volcanic landscapes",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arusha to Lake Natron — Summit Preparation",
+        description:
+          "Depart Arusha early and travel 5–6 hours north through the Great Rift Valley, past Maasai villages and volcanic scenery, to Lake Natron with Ol Doinyo Lengai rising from the valley floor. Lunch at the lodge, an afternoon to relax, explore the lakeshore or visit a Maasai community, then an early dinner and a few hours' rest before waking around 11 PM for the climb.",
+        meals: "Lunch, dinner",
+        accommodation: "Lodge or camp, Lake Natron",
+      },
+      {
+        day: 2,
+        title: "Summit Ol Doinyo Lengai, Return to Arusha",
+        description:
+          "Around midnight, begin the steep 4–7 hour ascent with experienced Maasai guides, reaching the summit at dawn for one of East Africa's most spectacular sunrises over Lake Natron, the Rift Valley escarpment, Mount Meru and the active volcanic craters. Descend to the base, transfer to the lodge for a shower and brunch, then drive back to Arusha, arriving in the late afternoon.",
+        altitudeStart: 1000,
+        altitudeEnd: 2962,
+        hours: "4–7 hours up",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Private transport and a professional driver-guide",
+      "Local Maasai mountain guide and climbing support",
+      "One night's accommodation (budget, mid-range or luxury)",
+      "Meals as per the itinerary and drinking water",
+      "Government taxes",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Local village climbing fee (~$70–100pp) and TAWA fee (~$20pp)",
+      "Travel insurance (trekking cover advised)",
+      "Tips for guides and staff, plus personal expenses",
+    ],
+    faqs: [
+      {
+        question: "How difficult is the climb?",
+        answer:
+          "Challenging — a steep ascent of roughly 1,600 m over a short distance to 2,962 m, taking 4–7 hours up, started around midnight without much sleep. No technical skills are needed, but good fitness and a no-quit mindset help. Guides set a manageable pace.",
+      },
+      {
+        question: "Why does the climb start at midnight?",
+        answer:
+          "To summit for sunrise and to avoid the extreme daytime heat of the Lake Natron basin, which can soar. You're usually back at the lodge by early afternoon.",
+      },
+      {
+        question: "Can I add a safari or the waterfalls?",
+        answer:
+          "Yes — the 3-day version adds the Ngare Sero waterfalls and a flamingo walk, and our 5-day combo pairs the climb with a Serengeti and Ngorongoro safari. Ask Ombeni on WhatsApp.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "3-day-ol-doinyo-lengai-hike",
+    destinations: ["Arusha", "Lake Natron", "Ol Doinyo Lengai"],
+    category: "trekking",
+    difficulty: "Challenging",
+    title: "3-Day Ol Doinyo Lengai Volcano Hike – Mountain of God",
+    shortName: "3-Day Lengai Hike",
+    days: 3,
+    priceFromUSD: 650,
+    priceNote:
+      "Per person. From $650 budget / $950–1,350 mid-range / $1,500–2,200 luxury. Plus local climbing fee (~$70–100pp) and TAWA fee (~$20pp).",
+    tier: ["budget", "mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The fuller Ol Doinyo Lengai experience: the Ngare Sero waterfalls, the flamingo-filled shores of Lake Natron, Maasai culture and a thrilling overnight summit climb of the 'Mountain of God' (2,962 m). Three days in one of Tanzania's wildest, most remote corners, far from the safari crowds.",
+    highlights: [
+      "Midnight summit of Ol Doinyo Lengai for a sunrise over the Rift Valley",
+      "Ngare Sero Waterfalls — swim beneath cascades in a hidden canyon",
+      "Lake Natron flamingo walk and Maasai cultural encounters",
+      "The only active carbonatite volcano on Earth",
+      "Remote, off-the-beaten-path adventure with Maasai guides",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arusha to Lake Natron & Ngare Sero Waterfalls",
+        description:
+          "Drive 5–6 hours north from Arusha through the Great Rift Valley, with views of Mount Meru, the Ngorongoro Highlands and Maasai settlements, to Lake Natron. After lunch overlooking Ol Doinyo Lengai, walk to the hidden Ngare Sero Waterfalls — wading through a narrow canyon to swim beneath the falls — then a sunset over the lake and dinner at the lodge.",
+        meals: "Lunch, dinner",
+        accommodation: "Lodge or camp, Lake Natron",
+      },
+      {
+        day: 2,
+        title: "Midnight Summit Climb of Ol Doinyo Lengai",
+        description:
+          "Wake around 11 PM for tea and snacks, then transfer to the base and begin the steep climb shortly after midnight. With Maasai guides, ascend 4–7 hours to reach the summit at dawn for panoramas over Lake Natron, the Rift Valley, Mount Meru and Kilimanjaro on clear mornings. Descend to the lodge for a hot lunch, a shower and an afternoon to recover by the pool.",
+        altitudeStart: 1000,
+        altitudeEnd: 2962,
+        hours: "4–7 hours up",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge or camp, Lake Natron",
+      },
+      {
+        day: 3,
+        title: "Lake Natron Flamingo Walk, Return to Arusha",
+        description:
+          "After a leisurely breakfast, a guided walk along the shores of Lake Natron — one of East Africa's most important breeding grounds for Lesser Flamingos, its waters glowing red and pink — with an optional Maasai village visit. After lunch, the scenic drive back to Arusha, arriving in the late afternoon.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Private transport and a professional driver-guide",
+      "Local Maasai mountain guide and climbing permits",
+      "Two nights' accommodation (budget, mid-range or luxury)",
+      "All meals on the trip, the Ngare Sero waterfall excursion and flamingo walk",
+      "Lake Natron activities, drinking water and government taxes",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Local village climbing fee (~$70–100pp) and TAWA fee (~$20pp)",
+      "Travel insurance (trekking cover advised)",
+      "Tips for guides and staff, plus personal expenses",
+    ],
+    faqs: [
+      {
+        question: "How is this different from the 2-day climb?",
+        answer:
+          "The 3-day adds the Ngare Sero waterfalls on arrival and a Lake Natron flamingo walk on the final day, plus a more relaxed recovery afternoon after the summit — a fuller experience of the region, not just the climb.",
+      },
+      {
+        question: "How hard is the summit climb?",
+        answer:
+          "Challenging — about 1,600 m of ascent over a short, steep distance to 2,962 m, taking 4–7 hours up from a midnight start. No technical climbing, but it's a real physical and mental test; the guides pace it to your group.",
+      },
+      {
+        question: "When is the best time to go?",
+        answer:
+          "June–October and December–March are best for clearer, cooler conditions. The basin is extremely hot, which is why the climb is done overnight year-round.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "7-day-ol-doinyo-lengai-expedition",
+    destinations: ["Arusha", "Lake Natron", "Ol Doinyo Lengai"],
+    category: "trekking",
+    difficulty: "Challenging",
+    title: "7-Day Ol Doinyo Lengai Expedition – Mountain of God",
+    shortName: "7-Day Lengai Expedition",
+    days: 7,
+    priceFromUSD: 1250,
+    priceNote:
+      "Per person (2026 rates). From $1,250 budget / $1,750–2,350 mid-range / $2,800–4,200 luxury. Plus local climbing fee (~$70–100pp) and TAWA fee (~$20pp).",
+    tier: ["budget", "mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The ultimate 'Mountain of God' expedition: a week in the remote Lake Natron wilderness with Ngare Sero waterfalls, flamingo flats, deep Maasai cultural immersion, a Rift Valley acclimatization hike and a midnight summit of Ol Doinyo Lengai — followed by a relaxed recovery day. An off-the-beaten-path journey few travellers ever take.",
+    highlights: [
+      "A properly paced expedition with an acclimatization hike before the summit",
+      "Midnight summit of Ol Doinyo Lengai (2,962 m) for sunrise",
+      "Ngare Sero Waterfalls and the flamingo shores of Lake Natron",
+      "Deep Maasai cultural encounters and a recovery day",
+      "The only active carbonatite volcano on Earth, far from the crowds",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport and transferred to your Arusha hotel. Depending on arrival time, relax or attend a detailed briefing on the expedition ahead.",
+        meals: "Dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 2,
+        title: "Arusha to Lake Natron",
+        description:
+          "After breakfast, travel through the scenic Great Rift Valley to the remote wilderness of Lake Natron, with views of volcanic mountains, Maasai settlements and endless savannah. Arrive in the afternoon for leisure as Ol Doinyo Lengai glows against the sunset.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Camp or lodge, Lake Natron",
+      },
+      {
+        day: 3,
+        title: "Ngare Sero Waterfalls & Lake Natron",
+        description:
+          "A guided walk to the Ngare Sero Waterfalls, hidden in a spectacular canyon of cool streams and towering rock walls, then the flamingo-filled shores of Lake Natron in the afternoon and a cultural visit to a traditional Maasai village.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Camp or lodge, Lake Natron",
+      },
+      {
+        day: 4,
+        title: "Acclimatization Hike & Rift Valley",
+        description:
+          "A scenic acclimatization hike along the Rift Valley escarpment, with panoramic views over Lake Natron and the volcanic formations toward the Kenyan border. The afternoon is free to rest, hydrate and prepare gear, with a special early dinner before the summit night.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Camp or lodge, Lake Natron",
+      },
+      {
+        day: 5,
+        title: "Midnight Summit Climb of Ol Doinyo Lengai",
+        description:
+          "Transfer to the base around 11 PM and start the climb after midnight. A steep 5–7 hour ascent under the stars with local guides reaches the summit for sunrise — views over Lake Natron, the Rift Valley, the Ngorongoro Highlands, Mount Meru and distant Kilimanjaro. Explore the volcanic crater, then descend to the lodge for a shower, a hot meal and rest.",
+        altitudeStart: 1000,
+        altitudeEnd: 2962,
+        hours: "5–7 hours up",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Camp or lodge, Lake Natron",
+      },
+      {
+        day: 6,
+        title: "Recovery & Cultural Day",
+        description:
+          "A relaxed recovery day after the summit: choose from Maasai cultural tours, a Lake Natron flamingo walk, photography excursions, nature walks or traditional Maasai dance. A farewell dinner in the evening.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Camp or lodge, Lake Natron",
+      },
+      {
+        day: 7,
+        title: "Lake Natron to Arusha — Departure",
+        description:
+          "After breakfast, drive back to Arusha through the spectacular Rift Valley, arriving in the afternoon for airport transfers or onward safari arrangements.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Airport transfers and private transport",
+      "Professional driver-guide and local Maasai mountain guides",
+      "Six nights' accommodation (budget, mid-range or luxury)",
+      "All meals as per the itinerary and drinking water",
+      "Lake Natron activities, Ngare Sero waterfalls and Maasai cultural experiences",
+      "Government taxes",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Local village climbing fee (~$70–100pp) and TAWA fee (~$20pp)",
+      "Travel insurance (trekking cover advised)",
+      "Tips for guides and staff, plus personal expenses",
+    ],
+    faqs: [
+      {
+        question: "Why is this expedition seven days?",
+        answer:
+          "It builds in time to acclimatize and explore — waterfalls, flamingos, Maasai culture and a Rift Valley acclimatization hike before the summit, plus a recovery day after. It's the most comfortable, immersive way to experience Ol Doinyo Lengai and Lake Natron.",
+      },
+      {
+        question: "How hard is the summit night?",
+        answer:
+          "Challenging — a steep 5–7 hour climb from midnight to 2,962 m. The earlier acclimatization hike and rest day help; no technical skills are needed, just fitness and determination.",
+      },
+      {
+        question: "Can it be combined with a safari?",
+        answer:
+          "Yes — add a northern-circuit safari before or after, or see our 5-day Safari & Lengai combo. Ombeni can build it as one trip on WhatsApp.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // MOUNT MERU & KILIMANJARO DAY HIKE — more trekking options (Wave 5).
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: "4-day-mount-meru",
+    destinations: ["Mount Meru", "Arusha"],
+    category: "trekking",
+    difficulty: "Challenging",
+    title: "4-Day Mount Meru Climb – Momela Route",
+    shortName: "4-Day Mount Meru",
+    days: 4,
+    priceFromUSD: 725,
+    priceNote:
+      "From $725 per person, all-inclusive. Includes the armed park ranger required in Arusha National Park.",
+    tier: ["budget", "mid-range"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "A four-day climb of Mount Meru (4,566 m), Tanzania's second-highest peak and the ideal Kilimanjaro warm-up. The extra night over the three-day version means a more relaxed pace and better acclimatization — hut-to-hut through Arusha National Park with an armed ranger, past buffalo and giraffe, up the dramatic crater-rim ridge to a sunrise on Socialist Peak facing Kilimanjaro.",
+    highlights: [
+      "Better acclimatization than the 3-day, with an extra night high on the mountain",
+      "Wildlife on the lower slopes — buffalo, giraffe, colobus monkeys",
+      "Dramatic ridge walk along the crater rim",
+      "Sunrise on Socialist Peak (4,566 m) facing Kilimanjaro",
+      "Ideal high-altitude prep before a Kilimanjaro climb",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Momela Gate to Miriakamba Hut",
+        description:
+          "Drive to Arusha National Park and register at Momela Gate, then hike about 10 km with an armed ranger through open grassland — cape buffalo, giraffe and warthog — and montane forest (lunch near the Fig Tree Arch) to Miriakamba Hut, with views into the U-shaped Meru crater.",
+        altitudeStart: 1500,
+        altitudeEnd: 2514,
+        hours: "4–7 hours",
+        meals: "Lunch, dinner",
+        accommodation: "Miriakamba Hut",
+      },
+      {
+        day: 2,
+        title: "Miriakamba to Saddle Hut + Little Meru",
+        description:
+          "A steeper climb through montane forest over Elephant Ridge to Saddle Hut, reached by lunch. In the afternoon, an optional 1–2 hour walk up Little Meru (3,820 m) for superb views and acclimatization before an early night.",
+        altitudeStart: 2514,
+        altitudeEnd: 3570,
+        hours: "3–5 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Saddle Hut",
+      },
+      {
+        day: 3,
+        title: "Summit Socialist Peak, return to Saddle Hut",
+        description:
+          "A pre-dawn start (~1:30 am) up to Rhino Point and along the ash-and-rock crater rim — some scrambling — to Socialist Peak (4,566 m) for sunrise, with the crater cliffs, ash cone and Kilimanjaro above the clouds. Descend to Saddle Hut for brunch and a restful afternoon.",
+        altitudeStart: 3570,
+        altitudeEnd: 4566,
+        hours: "8–10 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Saddle Hut",
+      },
+      {
+        day: 4,
+        title: "Saddle Hut to Momela Gate, return to Arusha",
+        description:
+          "Descend through forest and grassland — more wildlife along the way — to Miriakamba and on to Momela Gate, where you receive your summit certificate. Transfer back to your Arusha hotel.",
+        altitudeStart: 3570,
+        altitudeEnd: 1500,
+        hours: "4–6 hours",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "All Arusha National Park fees (non-resident) and rescue fee",
+      "Armed park ranger (required) and a professional mountain guide",
+      "Porterage and hut accommodation on the mountain",
+      "All meals on the trek and 2 litres of drinking water per day",
+      "Trekking equipment (sleeping bag excluded) and all transfers",
+      "Flying Doctors evacuation cover and government taxes",
+    ],
+    excluded: [
+      "International flights and roundtrip airport transfer",
+      "Personal climbing gear, sleeping bag and bath towels",
+      "Accommodation before and after the trek",
+      "Tips for guide and crew (guideline ~$30 per day)",
+    ],
+    faqs: [
+      {
+        question: "How is the 4-day different from the 3-day Mount Meru?",
+        answer:
+          "The 4-day adds a night so you summit on day 3 and descend on day 4, rather than summiting and descending on the same final day. The gentler pace aids acclimatization — a great choice before Kilimanjaro.",
+      },
+      {
+        question: "Why is an armed ranger required?",
+        answer:
+          "Mount Meru is inside Arusha National Park, home to buffalo, elephant and giraffe on the lower slopes. Park rules require an armed ranger with every group, alongside your Trust Tours mountain guide.",
+      },
+      {
+        question: "Is Mount Meru good preparation for Kilimanjaro?",
+        answer:
+          "It's the best warm-up there is — the altitude profile and distances acclimatize you well, and climbing Meru a few days before Kilimanjaro measurably improves your summit chances.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "5-day-mount-meru",
+    destinations: ["Mount Meru", "Arusha"],
+    category: "trekking",
+    difficulty: "Challenging",
+    title: "5-Day Mount Meru Climb – Comfort, with Rivertrees Lodge",
+    shortName: "5-Day Mount Meru",
+    days: 5,
+    priceFromUSD: 0,
+    priceNote:
+      "Comfort climb with Rivertrees Country Inn lodge nights — per-person pricing on request.",
+    tier: ["mid-range", "comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The most relaxed way to climb Mount Meru (4,566 m): bookended by nights at the historic Rivertrees Country Inn in the foothills, with a gentle hut-to-hut ascent of the Momela Route through Arusha National Park. Wildlife on the lower slopes, the dramatic crater-rim ridge and a sunrise summit facing Kilimanjaro — at a comfortable pace, ideal as a Kilimanjaro warm-up.",
+    highlights: [
+      "Lodge nights at the historic Rivertrees Country Inn before and after",
+      "Relaxed, well-acclimatized pace over five days",
+      "Wildlife with an armed ranger on the lower slopes",
+      "Optional Little Meru (3,820 m) acclimatization hike",
+      "Sunrise on Socialist Peak (4,566 m) facing Kilimanjaro",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival — Rivertrees Country Inn",
+        description:
+          "Met at Kilimanjaro International Airport and transferred (~45 min) to Rivertrees Country Inn, a former coffee farm in the foothills of Mount Meru with gardens, a stream and a pool. Relax and prepare for the climb.",
+        meals: "Dinner",
+        accommodation: "Rivertrees Country Inn, Arusha",
+      },
+      {
+        day: 2,
+        title: "Momela Gate to Miriakamba Hut",
+        description:
+          "Register at Momela Gate and hike with an armed ranger through open grassland and montane forest — buffalo, giraffe and warthog, past the Fig Tree Arch — to Miriakamba Hut, with views into the Meru crater.",
+        altitudeStart: 1500,
+        altitudeEnd: 2515,
+        hours: "4–7 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Miriakamba Hut",
+      },
+      {
+        day: 3,
+        title: "Miriakamba to Saddle Hut + Little Meru",
+        description:
+          "A shorter, steeper climb through glades and Elephant Ridge to Saddle Hut by lunch, with good views into the crater. An optional afternoon hike up Little Meru (3,820 m) aids acclimatization.",
+        altitudeStart: 2515,
+        altitudeEnd: 3570,
+        hours: "3–4 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Saddle Hut",
+      },
+      {
+        day: 4,
+        title: "Summit Socialist Peak, return to Saddle Hut",
+        description:
+          "An early start (~2 am) up through bushes to bare rock and ash, via Rhino Point along the crater rim to Socialist Peak (4,566 m) for sunrise — typically 5–6 hours up and 2–3 down. Hot lunch and overnight back at Saddle Hut.",
+        altitudeStart: 3570,
+        altitudeEnd: 4566,
+        hours: "7–9 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Saddle Hut",
+      },
+      {
+        day: 5,
+        title: "Descend to Momela Gate, return to Rivertrees",
+        description:
+          "Descend from Saddle Hut via Miriakamba (hot lunch) to Momela Gate to collect your summit certificate, then transfer back to Rivertrees Country Inn for a shower and a relaxing final evening.",
+        altitudeStart: 3570,
+        altitudeEnd: 1500,
+        hours: "4–6 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Rivertrees Country Inn, Arusha",
+      },
+    ],
+    included: [
+      "All Arusha National Park fees (non-resident) and rescue fee",
+      "Armed park ranger and a professional mountain guide",
+      "Lodge nights at Rivertrees Country Inn before and after the climb",
+      "Porterage, hut accommodation and all meals on the mountain",
+      "Trekking equipment (sleeping bag excluded) and all transfers",
+      "Flying Doctors evacuation cover and government taxes",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Personal climbing gear and sleeping bag",
+      "Tips for guide and crew (guideline ~$30 per day)",
+      "Alcoholic drinks and items of a personal nature",
+    ],
+    faqs: [
+      {
+        question: "Why choose the 5-day over the 4-day Meru?",
+        answer:
+          "The 5-day adds comfortable lodge nights at Rivertrees Country Inn before and after, plus a gentler overall pace — the most relaxed and best-acclimatized way to climb Meru, especially as Kilimanjaro prep.",
+      },
+      {
+        question: "How hard is the summit?",
+        answer:
+          "Challenging — a pre-dawn climb with some rock scrambling along the crater rim to 4,566 m, roughly 5–6 hours up. No technical skills are needed, but good fitness helps.",
+      },
+      {
+        question: "Can I combine it with Kilimanjaro or a safari?",
+        answer:
+          "Yes — many climbers do Meru a few days before Kilimanjaro, or add a northern-circuit safari. Ombeni arranges it as one trip.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
+  },
+
+  {
+    slug: "kilimanjaro-day-trip-marangu",
+    destinations: ["Kilimanjaro"],
+    category: "trekking",
+    difficulty: "Moderate",
+    title: "Kilimanjaro Day Trip – Marangu Route Rainforest Hike",
+    shortName: "Kilimanjaro Day Trip",
+    days: 1,
+    priceFromUSD: 385,
+    priceNote: "Per person. A day hike to Mandara Hut and back — no overnight or summit.",
+    tier: ["budget"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "A taste of Kilimanjaro in a single day: hike the lower Marangu Route ('Coca-Cola Route') through the mountain's lush rainforest to Mandara Hut (2,700 m) and back. Perfect if you're short on time or want a Kilimanjaro experience without a multi-day climb — blue and colobus monkeys, exotic birds, and a glimpse of the snow-capped peak on a clear day.",
+    highlights: [
+      "Hike Kilimanjaro's UNESCO-listed rainforest in a day",
+      "Reach Mandara Hut (2,700 m), the first climbers' camp",
+      "Blue and colobus monkeys and Hartlaub's turaco",
+      "Optional short hike to the Maundi Crater for views",
+      "Certificate of participation — and inspiration to return for the summit",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Marangu Gate to Mandara Hut & back",
+        description:
+          "Early pick-up from your Moshi or Arusha hotel (~6 am) and a scenic drive to Marangu Gate (1,870 m). Register, meet your guide and hike up through dense rainforest to Mandara Hut (2,700 m) by late morning — monkeys, birds and forest views, with a packed lunch and an optional walk to the Maundi Crater. Descend to the gate for your certificate, then return to your hotel by late afternoon.",
+        altitudeStart: 1870,
+        altitudeEnd: 2700,
+        hours: "5–6 hours hiking",
+        meals: "Lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Hotel pick-up and drop-off in Moshi or Arusha",
+      "Kilimanjaro National Park entry fees and permits",
+      "Professional English-speaking guide",
+      "Packed lunch and bottled water",
+      "Certificate of participation",
+    ],
+    excluded: [
+      "Accommodation and meals outside the day trip",
+      "Tanzania visa and travel insurance",
+      "Tips for your guide",
+      "Personal hiking gear",
+    ],
+    faqs: [
+      {
+        question: "Do we summit Kilimanjaro on this trip?",
+        answer:
+          "No — this is a one-day rainforest hike to Mandara Hut and back, a taste of the mountain rather than a summit climb. For Uhuru Peak, see our 6–9 day Kilimanjaro routes.",
+      },
+      {
+        question: "How fit do I need to be?",
+        answer:
+          "It's a moderate day hike on a well-maintained trail with a gentle gradient, suitable for most fitness levels — great for families and casual hikers.",
+      },
+      {
+        question: "What should I bring?",
+        answer:
+          "Comfortable hiking shoes, layered clothing for changing temperatures, a small backpack, sunscreen, a hat, water and a camera.",
+      },
+    ],
+    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct", "Dec"],
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // CULTURAL TOURS — community & heritage journeys (Wave 6).
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: "5-day-cultural-tour",
+    destinations: ["Arusha", "Lake Manyara", "Ngorongoro"],
+    category: "cultural",
+    title: "5-Day Tanzania Cultural Tour – Maasai, Hadzabe & Coffee",
+    shortName: "5-Day Cultural Tour",
+    days: 5,
+    priceFromUSD: 0,
+    priceNote: "Private cultural tour — per-person pricing on request.",
+    tier: ["mid-range"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Five days meeting the people of northern Tanzania: the multicultural village of Mto wa Mbu, a Maasai boma, the Hadzabe hunter-gatherers and Datoga blacksmiths of Lake Eyasi, and the coffee farms of Karatu. Cooking classes, traditional dances, a hunt with bow and arrow and a bean-to-cup coffee tour — an immersive, respectful journey beyond the safari.",
+    highlights: [
+      "Mto wa Mbu village walk and a Tanzanian cooking class",
+      "Maasai boma — cattle herding, beadwork and the adumu dance",
+      "Hadzabe hunter-gatherers and Datoga blacksmiths at Lake Eyasi",
+      "Karatu coffee plantation tour, from bean to cup",
+      "Authentic community visits with an expert local guide",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport and transferred to Arusha, gateway to the northern circuit. An afternoon at the local market and Cultural Heritage Centre, then a traditional Tanzanian dinner — nyama choma, ugali and tropical fruits.",
+        meals: "Dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 2,
+        title: "Mto wa Mbu Village",
+        description:
+          "A guided walking tour of Mto wa Mbu, a village of over 120 ethnic groups near Lake Manyara — banana and rice farms and bustling markets — then a hands-on cooking class preparing local dishes with a host family, followed by the communal meal.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge near Lake Manyara",
+      },
+      {
+        day: 3,
+        title: "Maasai Cultural Experience",
+        description:
+          "A day with the Maasai: welcomed into a boma to learn about cattle herding and intricate beadwork, the deep significance of livestock, and a vibrant adumu (jumping dance) performance, with a discussion of Maasai history and modern life.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge near the Maasai lands",
+      },
+      {
+        day: 4,
+        title: "Hadzabe & Datoga at Lake Eyasi",
+        description:
+          "An early start to join the Hadzabe — one of Africa's last hunter-gatherer tribes — on a bow-and-arrow hunt and foraging walk, then the Datoga blacksmiths to watch tools and jewellery forged by hand. A traditional barbecue back at the lodge.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge near Lake Eyasi",
+      },
+      {
+        day: 5,
+        title: "Karatu Coffee & Departure",
+        description:
+          "A morning coffee-plantation tour in Karatu — roasting and grinding your own cup — and a visit to a local school or community project, then transfer back to Arusha for your departure.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "All transfers and transport in a 4x4 with a professional guide",
+      "Full-board accommodation throughout (breakfast, lunch, dinner)",
+      "Entry fees to all cultural sites and villages",
+      "Guided village tours, cooking class, Hadzabe and Datoga visits",
+      "Coffee plantation tour and traditional dance performances",
+      "Drinking water and government taxes",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Tips, souvenirs and items of a personal nature",
+      "Optional activities not mentioned",
+    ],
+    faqs: [
+      {
+        question: "Is this respectful to the communities visited?",
+        answer:
+          "Yes — visits are arranged with the communities, entry fees support them directly, and your guide provides context so the experience is genuine and respectful rather than a performance.",
+      },
+      {
+        question: "Can I combine it with a safari?",
+        answer:
+          "Absolutely — the route passes the gateways to the northern parks, so it pairs naturally with Tarangire, the Serengeti or Ngorongoro. Ombeni will build it as one trip.",
+      },
+      {
+        question: "When is the best time to go?",
+        answer:
+          "Year-round. The dry months (June–October) make village travel easiest, but the cultural experiences run in every season.",
+      },
+    ],
+    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct", "Dec"],
+    oldUrl: "/booking/cultural-tours/",
+  },
+
+  {
+    slug: "8-day-cultural-tour",
+    destinations: ["Arusha", "Mount Meru", "Kilimanjaro"],
+    category: "cultural",
+    title: "8-Day Cultural Heritage Tour – Mulala, Maasai, Chagga & Hot Springs",
+    shortName: "8-Day Cultural Tour",
+    days: 8,
+    priceFromUSD: 0,
+    priceNote: "Private cultural tour — per-person pricing on request.",
+    tier: ["mid-range"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "An eight-day immersion in northern Tanzania's living cultures and natural wonders: the women-run farms of Mulala village, the Kikuletwa hot springs, a full Maasai cultural day, the Materuni waterfalls and Chagga coffee on Kilimanjaro's slopes, the Maasai Steppe livestock markets, and a walking safari in Arusha National Park.",
+    highlights: [
+      "Mulala village — women-led farming, dairy and crafts",
+      "Kikuletwa Hot Springs swim beneath Kilimanjaro",
+      "Full Maasai cultural day — dance, beadwork and boma life",
+      "Materuni Waterfalls and a Chagga coffee tour",
+      "Walking safari in Arusha National Park",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at the airport and transferred to Arusha for an orientation on the journey ahead, an afternoon walking tour of the markets and Cultural Heritage Centre, and a traditional Tanzanian dinner.",
+        meals: "Dinner",
+        accommodation: "Lodge, Arusha",
+      },
+      {
+        day: 2,
+        title: "Mulala Village — Farming & Craft",
+        description:
+          "A day with the women-run Mulala community in the foothills of Mount Meru: traditional farming, milking and butter-making, then a craft workshop weaving baskets and beaded jewellery, supporting women's empowerment.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Arusha",
+      },
+      {
+        day: 3,
+        title: "Kikuletwa Hot Springs",
+        description:
+          "Drive past views of Kilimanjaro to the Kikuletwa Hot Springs, a palm-fringed oasis of crystal-clear, naturally heated water — a morning swim and a relaxed picnic lunch in the savannah.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Arusha",
+      },
+      {
+        day: 4,
+        title: "Maasai Cultural Day",
+        description:
+          "A full day in a Maasai village — a warriors' welcome dance, cattle-herding traditions, a beadwork session and a traditional lunch — ending with campfire storytelling under the stars.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge near the Maasai lands",
+      },
+      {
+        day: 5,
+        title: "Materuni Waterfalls & Chagga Coffee",
+        description:
+          "To the Chagga villages on Kilimanjaro's slopes: a hike through banana and coffee plantations to the Materuni Waterfall for a swim, then a traditional Chagga coffee experience from picking to roasting over an open fire.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Moshi",
+      },
+      {
+        day: 6,
+        title: "Maasai Steppe & Local Markets",
+        description:
+          "Visit the Maasai Steppe and a lively livestock market where herders trade cattle and goods, then a Maasai boma to learn about manyatta homes, family life and traditions.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Arusha",
+      },
+      {
+        day: 7,
+        title: "Arusha National Park & Community Project",
+        description:
+          "A walking safari in Arusha National Park — giraffe, zebra and buffalo on foot with a ranger — then a visit to a community project (school or women's group) to see how tourism supports local development. A farewell dinner.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Arusha",
+      },
+      {
+        day: 8,
+        title: "Departure",
+        description:
+          "A leisurely morning and, time permitting, a final stroll for souvenirs before your transfer to the airport.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "7 nights' full-board mid-range lodge accommodation",
+      "Private 4x4 with pop-up roof and a professional English-speaking guide",
+      "All park, village entry fees and community-project contributions",
+      "Cultural visits — Maasai, Chagga, Mulala — with hands-on activities",
+      "Materuni waterfalls, coffee tour, hot springs and a walking safari",
+      "Drinking water throughout",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel insurance (recommended for all travellers)",
+      "Tips, souvenirs and items of a personal nature",
+      "Optional activities not mentioned",
+    ],
+    faqs: [
+      {
+        question: "How is this different from the 5-day cultural tour?",
+        answer:
+          "The 8-day adds Mulala village, the Kikuletwa hot springs, the Materuni waterfalls and Chagga coffee, the Maasai Steppe markets and an Arusha NP walking safari — a broader, more relaxed cultural and nature immersion.",
+      },
+      {
+        question: "Is it physically demanding?",
+        answer:
+          "Mostly gentle — village walks, a waterfall hike and an easy walking safari. Suitable for most fitness levels; tell us of any needs and we'll adjust.",
+      },
+      {
+        question: "Does it support local communities?",
+        answer:
+          "Yes — visits, entry fees and community-project contributions go directly to the villages and initiatives you experience.",
+      },
+    ],
+    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct", "Dec"],
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // PARAMOTORING — aerial adventures over Tanzania (Wave 6).
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: "3-day-paramotoring-arusha-kilimanjaro",
+    destinations: ["Arusha", "Mount Meru", "Kilimanjaro"],
+    category: "paramotoring",
+    title: "3-Day Paramotoring Adventure – Arusha & Mount Kilimanjaro",
+    shortName: "3-Day Paramotoring",
+    days: 3,
+    priceFromUSD: 0,
+    priceNote:
+      "Per person — pricing on request. Flights are weather-dependent and flown at dawn and dusk.",
+    tier: ["comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "Three days soaring over northern Tanzania on a paramotor: glide above Arusha's coffee farms and the volcanic ridges of Mount Meru, over the Momella Lakes and Ngurdoto Crater, and toward the snow-capped crown of Kilimanjaro. Flown in the calm, golden hours of dawn and dusk, with a luxury base at the Sheraton Arusha — for first-time flyers and seasoned adventurers alike.",
+    highlights: [
+      "Paramotor flights over Mount Meru, Momella Lakes and Ngurdoto Crater",
+      "A morning flight toward Kilimanjaro and the Amboseli plains",
+      "Sunset flights over the Moshi region and Kilimanjaro",
+      "Calm dawn and dusk flying for the best light and conditions",
+      "Luxury base at the Sheraton Arusha",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival & Introductory Flight",
+        description:
+          "Arrive at Kilimanjaro International Airport, met by your guide and transferred to the Sheraton Arusha. Settle in with an introductory flight and briefing, then dinner — Arusha's 1,400 m elevation gives a refreshing climate for your first evening.",
+        meals: "Lunch, dinner",
+        accommodation: "Sheraton Hotel, Arusha",
+      },
+      {
+        day: 2,
+        title: "Arusha National Park & Mount Meru",
+        description:
+          "A dawn transfer for a ~6 am flight over Arusha National Park and Mount Meru — lush forests, volcanic craters and the Momella Lakes with their flamingos. An evening flight over the serene Ngurdoto Crater, the 'Crater of Life', as the sun sets over Meru.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Sheraton Hotel, Arusha",
+      },
+      {
+        day: 3,
+        title: "Mount Kilimanjaro & Surrounding Plains",
+        description:
+          "A morning flight toward Kilimanjaro's southern slopes and the vast plains toward Amboseli — the snow-capped peak (when visible) and wildlife grazing below. A final sunset flight over the Moshi region with Kilimanjaro silhouetted against the sky.",
+        meals: "Breakfast, lunch",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Paramotoring flights as per the itinerary with experienced pilots",
+      "Accommodation at the Sheraton Arusha",
+      "All transfers to and from launch sites and the airport",
+      "Meals as specified and drinking water",
+      "Safety briefing and equipment",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel and adventure-sports insurance",
+      "Tips and personal expenses",
+      "Flights missed due to weather (rescheduled where possible)",
+    ],
+    faqs: [
+      {
+        question: "Do I need experience to fly?",
+        answer:
+          "No — flights are flown in tandem with experienced pilots, so first-timers are welcome. Seasoned flyers can discuss solo options with the team.",
+      },
+      {
+        question: "What if the weather is bad?",
+        answer:
+          "Paramotoring is weather-dependent and flown only in safe, calm conditions (dawn and dusk). If a flight can't go ahead it's rescheduled where possible.",
+      },
+      {
+        question: "Can it be extended with a safari?",
+        answer:
+          "Yes — see our 12-day paramotoring safari, which adds Tarangire, Ngorongoro, Lake Natron and the Serengeti, or we can add game drives to this trip.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Jan", "Feb", "Mar"],
+  },
+
+  {
+    slug: "12-day-paramotoring-safari",
+    destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti", "Ol Doinyo Lengai", "Lake Natron"],
+    category: "paramotoring",
+    title: "12-Day Paramotoring Safari & Location Discovery",
+    shortName: "12-Day Paramotoring Safari",
+    days: 12,
+    priceFromUSD: 0,
+    priceNote:
+      "Per person — pricing on request. Aerial flights are weather-dependent; game drives run regardless.",
+    tier: ["comfort"],
+    heroImage: "",
+    gallery: [],
+    summary:
+      "The ultimate aerial safari: twelve days combining paramotor flights and 4x4 game drives across northern Tanzania — Mount Meru and Kilimanjaro, Tarangire, the Ngorongoro Crater, the active Ol Doinyo Lengai volcano and Lake Natron, and the Serengeti's endless plains. See the Great Migration, baobabs and calderas from the sky, then meet the wildlife on the ground.",
+    highlights: [
+      "Paramotor flights over Meru, Kilimanjaro, Ngorongoro and the Serengeti",
+      "Sunrise flight over Ol Doinyo Lengai and the pink flats of Lake Natron",
+      "Big Five game drives in Tarangire, Ngorongoro and the Serengeti",
+      "The Great Migration from the air and the ground (in season)",
+      "Handpicked lodges and a balanced mix of adventure and rest",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Arusha",
+        description:
+          "Met at Kilimanjaro International Airport with an introductory paramotor flight, then transferred to your Arusha hotel to relax and recharge ahead of the adventure.",
+        meals: "Dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 2,
+        title: "Mount Meru & Kilimanjaro Zone Flights",
+        description:
+          "Dawn and dusk flights over Mount Meru, the Momella Lakes and toward Kilimanjaro, taking in the volcanic ridges, forests and waterfalls of the region from the air.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 3,
+        title: "Tarangire National Park",
+        description:
+          "Explore Tarangire by 4x4 and, from the surrounding ridges, by paramotor — elephant herds, baobabs and the silver thread of the Tarangire River from above. Overnight near Karatu.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Karatu",
+      },
+      {
+        day: 4,
+        title: "Ngorongoro Crater & Highlands",
+        description:
+          "A scenic flight near the Ngorongoro rim for surreal views over the caldera, then a game drive on the crater floor among lions, rhinos, elephants and buffalo.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Karatu",
+      },
+      {
+        day: 5,
+        title: "Ol Doinyo Lengai & Lake Natron",
+        description:
+          "A bucket-list sunrise flight near the active Ol Doinyo Lengai volcano and the pink salt flats of Lake Natron, with flamingos and hidden waterfalls below, plus time to explore Natron on the ground.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Camp near Lake Natron",
+      },
+      {
+        day: 6,
+        title: "Journey to the Serengeti",
+        description:
+          "Travel into the legendary Serengeti, home of the Great Migration, with an afternoon game drive as an introduction to the endless plains.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Kubukubu Tented Lodge, Serengeti",
+      },
+      {
+        day: 7,
+        title: "Serengeti — Full-Day Safari & Dawn Flight",
+        description:
+          "A dawn paramotor flight over the Seronera plains as the wilderness awakens, then a full day of game viewing — lions, cheetahs and the migration herds.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Kubukubu Tented Lodge, Serengeti",
+      },
+      {
+        day: 8,
+        title: "Serengeti — Grumeti & Seronera",
+        description:
+          "Morning and evening flights tracing the Grumeti River and the Seronera grasslands — riverine forest, hippos and golden plains — between game drives.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Kubukubu Tented Lodge, Serengeti",
+      },
+      {
+        day: 9,
+        title: "Serengeti Farewell to Karatu",
+        description:
+          "A final Serengeti morning drive, then the journey back toward Karatu for a relaxed evening in a cosy lodge.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Lodge, Karatu",
+      },
+      {
+        day: 10,
+        title: "Return to Arusha",
+        description:
+          "A leisurely drive back to Arusha with optional stops at local markets or cultural sites for souvenirs and reflection.",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 11,
+        title: "Free Day in Arusha",
+        description:
+          "A rest day — relax at the hotel, arrange a spa treatment, or explore Arusha's cafes and craft shops before your journey home.",
+        meals: "Breakfast, dinner",
+        accommodation: "Hotel, Arusha",
+      },
+      {
+        day: 12,
+        title: "Departure",
+        description:
+          "Breakfast at the hotel and, depending on your flight, free time before your private transfer to Kilimanjaro International Airport.",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "Paramotoring flights as per the itinerary with experienced pilots",
+      "Private 4x4 game drives with a professional guide",
+      "Handpicked lodge and camp accommodation",
+      "All park, crater and conservation fees",
+      "Meals as specified, drinking water and all transfers",
+      "Safety briefings and flight equipment",
+    ],
+    excluded: [
+      "International flights and Tanzania visa fees",
+      "Travel and adventure-sports insurance",
+      "Tips, souvenirs and personal expenses",
+      "Flights missed due to weather (rescheduled where possible)",
+    ],
+    faqs: [
+      {
+        question: "Are the flights guaranteed every day?",
+        answer:
+          "Flights are weather-dependent and flown only in safe, calm conditions at dawn and dusk; the ground safari runs regardless, so you always have a full programme.",
+      },
+      {
+        question: "Do I need flying experience?",
+        answer:
+          "No — flights are tandem with experienced pilots, suitable for beginners. The game drives need no special fitness.",
+      },
+      {
+        question: "When is the best time for this trip?",
+        answer:
+          "June–October for stable flying and the northern migration; December–March for the Ndutu calving and greener landscapes. Mornings offer the calmest air and best light.",
+      },
+    ],
+    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
   },
 ];
 
