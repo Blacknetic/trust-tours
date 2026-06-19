@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import Reveal from "@/components/Reveal";
 
 /* Why-you-should-trust-us band. Light-themed because the award badge is a
@@ -43,7 +43,7 @@ export default function WhyTrustUs({
               boxShadow: "0 18px 40px -22px rgba(74,41,18,0.4)",
             }}
           >
-            <Image
+            <Photo
               src="/Nominee-of-the-year.jpeg"
               alt="World Travel Awards 2023 nominee — Tanzania's Leading Safari Company"
               width={96}

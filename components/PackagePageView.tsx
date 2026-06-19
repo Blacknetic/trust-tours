@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import type { TripPackage } from "@/data/packages";
 import { packageImage } from "@/data/images";
 import TripJsonLd from "@/components/TripJsonLd";
@@ -89,7 +89,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
         }}
       >
         {heroImg && (
-          <Image
+          <Photo
             src={heroImg}
             alt={pkg.title}
             fill
@@ -296,7 +296,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                       className="relative aspect-[4/3] rounded-xl overflow-hidden"
                       style={{ background: "var(--snow)" }}
                     >
-                      <Image
+                      <Photo
                         src={src}
                         alt={`${pkg.shortName} — photo ${i + 1}`}
                         fill

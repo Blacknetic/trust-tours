@@ -6,6 +6,12 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 2678400, // 31 days
+    // Our widest image is a 100vw hero; nothing needs the 2048/3840 variants
+    // Next generates by default. Trimming the ladder means fewer (and faster)
+    // on-demand transforms and a smaller optimizer cache.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    // Allowed `quality` values — gallery tiles ship at 70, everything else 75.
+    qualities: [70, 75],
   },
   async redirects() {
     return [

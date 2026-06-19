@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import type { Metadata } from "next";
 import { getPackage } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
@@ -78,7 +78,7 @@ export default function HomePage() {
             className="hero-ken-burns absolute left-0 right-0"
             style={{ top: "-9%", height: "118%" }}
           >
-            <Image
+            <Photo
               src="/images/kilimanjaro-hero.jpg"
               alt=""
               fill
@@ -236,7 +236,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center">
           <Reveal className="mx-auto w-56 md:w-full">
             <div className="wipe relative aspect-square rounded-2xl overflow-hidden">
-              <Image
+              <Photo
                 src="/images/ombeni-portrait.jpg"
                 alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
                 fill

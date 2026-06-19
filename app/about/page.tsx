@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import CTABand from "@/components/CTABand";
 import WhyTrustUs from "@/components/WhyTrustUs";
 
@@ -91,7 +91,7 @@ export default function AboutPage() {
       {/* ── Ombeni ────────────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-[320px_1fr] gap-10 md:gap-16 items-start">
         <div className="relative aspect-[4/5] rounded-2xl overflow-hidden w-64 md:w-full mx-auto">
-          <Image
+          <Photo
             src="/images/ombeni-portrait.jpg"
             alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
             fill
@@ -173,7 +173,7 @@ export default function AboutPage() {
                 className="relative aspect-[4/3] rounded-xl overflow-hidden"
                 style={{ background: "var(--snow)" }}
               >
-                <Image
+                <Photo
                   src={p.src}
                   alt={p.alt}
                   fill

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import { byCategory } from "@/data/packages";
 import KilimanjaroFilter from "@/components/KilimanjaroFilter";
 import CTABand from "@/components/CTABand";
@@ -18,7 +18,7 @@ export default function KilimanjaroListingPage() {
     <>
       {/* ── Page header — INTERIM camp photo (swap for a hi-res hero) ── */}
       <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: "var(--forest)" }}>
-        <Image
+        <Photo
           src="/images/kilimanjaro-hero.jpg"
           alt=""
           fill

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import Reveal from "@/components/Reveal";
 import WaypointEyebrow from "@/components/WaypointEyebrow";
 
@@ -107,7 +107,7 @@ export default function SummitWall() {
           <Reveal delay={120} className="shrink-0">
             <div className="flex items-center gap-4">
               <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0">
-                <Image
+                <Photo
                   src="/images/wall/wta-nominee-2023.jpeg"
                   alt="World Travel Awards 2023 nominee — Tanzania's Leading Safari Company"
                   fill
@@ -139,11 +139,12 @@ export default function SummitWall() {
                 className={`card-lift photo-zoom group relative overflow-hidden rounded-xl md:rounded-2xl ${tile.ratio}`}
               >
                 <div className="wipe absolute inset-0">
-                  <Image
+                  <Photo
                     src={tile.src}
                     alt={tile.alt}
                     fill
                     loading="lazy"
+                    quality={70}
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover"
                   />

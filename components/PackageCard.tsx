@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import type { TripPackage } from "@/data/packages";
 import { packageImage } from "@/data/images";
 
@@ -70,7 +70,7 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
         style={{ background: PLACEHOLDER[pkg.category] }}
       >
         {img && (
-          <Image
+          <Photo
             src={img}
             alt={pkg.shortName}
             fill
