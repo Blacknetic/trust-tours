@@ -15,6 +15,13 @@ import SummitWall from "@/components/SummitWall";
 import TripFinder from "@/components/TripFinder";
 import PillLink from "@/components/PillLink";
 import SoaringBirds from "@/components/SoaringBirds";
+import GuideStrip from "@/components/GuideStrip";
+import { getGuide } from "@/data/guides";
+
+// Flagship pillar guides featured on the homepage.
+const HOME_GUIDES = ["climbing-kilimanjaro-guide", "tanzania-safari-guide", "best-time-to-visit-tanzania"]
+  .map(getGuide)
+  .filter((g): g is NonNullable<typeof g> => Boolean(g));
 
 export const metadata: Metadata = {
   title: "Kilimanjaro Climbs & Tanzania Safaris",
@@ -474,6 +481,15 @@ export default function HomePage() {
             ))}
           </ol>
         </div>
+      </section>
+
+      {/* ── Plan with confidence: featured guides ─────────────────── */}
+      <section className="py-16 md:py-24" style={{ background: "var(--snow)" }}>
+        <GuideStrip
+          guides={HOME_GUIDES}
+          title="Plan with confidence"
+          subtitle="Free, no-fluff travel guides from the people who run the trips."
+        />
       </section>
 
       {/* ── CTA band ──────────────────────────────────────────────── */}

@@ -3,6 +3,8 @@ import Photo from "@/components/Photo";
 import { byCategory } from "@/data/packages";
 import KilimanjaroFilter from "@/components/KilimanjaroFilter";
 import CTABand from "@/components/CTABand";
+import GuideStrip from "@/components/GuideStrip";
+import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
   title: "Kilimanjaro Climbing Routes & Prices",
@@ -68,6 +70,13 @@ export default function KilimanjaroListingPage() {
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
         <KilimanjaroFilter climbs={climbs} />
       </section>
+
+      <GuideStrip
+        guides={guidesForCategory("kilimanjaro")}
+        title="Read before you climb"
+        subtitle="Free, honest guides on routes, training, altitude and cost."
+        className="pb-16 md:pb-24"
+      />
 
       <CTABand
         eyebrow="Not sure which route?"

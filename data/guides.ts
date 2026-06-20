@@ -6,13 +6,46 @@ export type GuideTopic =
   | "Kilimanjaro"
   | "Safari"
   | "Zanzibar"
+  | "Trekking"
+  | "Culture & Adventure"
   | "Planning"
   | "Health & Safety";
+
+// A named animated SVG explainer rendered inline in an article. Each kind is a
+// self-contained drawing in <GuideDiagram>; they illustrate evergreen geographic
+// facts (zones, route shapes), never invented statistics.
+export type DiagramKind =
+  | "acclimatization" // "climb high, sleep low" sawtooth profile
+  | "climate-zones" // Kilimanjaro's five ecological zones
+  | "route-profiles" // elevation shape of the main routes, side by side
+  | "days-vs-success" // why more days → better acclimatization (conceptual, no %)
+  | "summit-night" // the timeline of summit night
+  | "migration-map" // the Great Migration's clockwise yearly loop
+  | "safari-day" // the daily rhythm of a safari day
+  | "zanzibar-map"; // Zanzibar island orientation — beaches & highlights
+
+export interface GuideTable {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+  // 0-based column to visually emphasise (e.g. the recommended option).
+  highlightCol?: number;
+}
+
+export interface GuideCallout {
+  tone?: "tip" | "warning" | "info"; // default "tip"
+  label?: string;
+  text: string;
+}
 
 export interface GuideSection {
   heading?: string;
   paragraphs?: string[];
   bullets?: string[];
+  // Rich blocks — render in order after the prose/bullets within a section.
+  table?: GuideTable;
+  callout?: GuideCallout;
+  diagram?: DiagramKind;
 }
 
 export interface Guide {
@@ -30,6 +63,10 @@ export interface Guide {
   faqs?: { question: string; answer: string }[];
   // Conversion: the main booking page this guide should funnel to (diamond → money page).
   primaryCta: { label: string; href: string };
+  // Drop an extra inline CTA after this 0-based section index (mid-article hook).
+  inlineCtaAfter?: number;
+  // Show the licence/trust strip below the intro (default on for money guides).
+  trustStrip?: boolean;
   relatedGuides?: string[]; // guide slugs — lateral interlinking
   relatedPackages?: string[]; // package slugs — link down to bookable trips
 }
@@ -456,14 +493,3134 @@ export const guides: Guide[] = [
       "3-day-safari-tarangire-manyara-ngorongoro",
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────
+  // WAVE 1 — KILIMANJARO HUB
+  // ───────────────────────────────────────────────────────────────────
+  {
+    slug: "climbing-kilimanjaro-guide",
+    title: "Climbing Kilimanjaro: The Complete Guide",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Everything that actually decides whether you stand on the Roof of Africa — routes, days, fitness, altitude, cost and timing — in one honest read.",
+    updated: "2026-06-20",
+    readMinutes: 12,
+    keyTakeaway:
+      "Kilimanjaro is a 5,895 m walk-up — no ropes or technical climbing — but it is a serious high-altitude trek. The people who summit aren't the fittest; they're the ones who give their body enough days to acclimatize, on a well-supported route, in the right season. Get those four things right and the mountain is within reach for most reasonably fit travellers.",
+    intro:
+      "Mount Kilimanjaro is the highest mountain in Africa and the tallest free-standing mountain on Earth, rising straight off the plains of northern Tanzania to 5,895 m. You don't need ropes, crampons or climbing experience to reach the top — it's a walk, not a technical climb. What you do need is a smart plan. This guide walks you through the five things that decide your climb, in the order you'll actually think about them: how the mountain works, how to choose a route, why acclimatization matters more than fitness, what summit night is really like, and what it costs to do it properly.",
+    primaryCta: { label: "Compare all Kilimanjaro routes", href: "/kilimanjaro" },
+    trustStrip: true,
+    inlineCtaAfter: 3,
+    sections: [
+      {
+        heading: "Kilimanjaro in one minute",
+        paragraphs: [
+          "Kilimanjaro sits just south of the equator near the town of Moshi, in Tanzania. It's a dormant volcano with three cones — Kibo (the one you summit), Mawenzi and Shira — and the true summit, Uhuru Peak, sits on Kibo's crater rim at 5,895 m above sea level.",
+          "Because there's no technical climbing, success is almost entirely about altitude. The air at the summit holds roughly half the oxygen you breathe at sea level, and how well you cope depends on how slowly you go up. That single idea — go slowly, give your body time — runs through every decision on this page.",
+        ],
+        callout: {
+          tone: "info",
+          text: "There are seven established routes up Kilimanjaro, but most travellers climb one of four: Machame, Lemosho, Marangu or the Northern Circuit. We'll compare them below.",
+        },
+      },
+      {
+        heading: "Five climates in one climb",
+        paragraphs: [
+          "One of the strange joys of Kilimanjaro is that you walk through five distinct ecological zones on the way up — the equivalent of travelling from the equator to the Arctic in under a week. You start in farmland and rainforest, pass through heath and moorland, cross a high-altitude desert, and finish on a glaciated arctic summit.",
+          "Each zone gets thinner, colder and drier than the last. Packing for the climb means packing for all of them at once, from humid jungle to sub-zero summit night.",
+        ],
+        diagram: "climate-zones",
+      },
+      {
+        heading: "How many days do you need?",
+        paragraphs: [
+          "Climbs run from five to nine days. The number of days is really a measure of how much time you give your body to acclimatize — and it's the strongest predictor of whether you'll summit. Five-day climbs have the lowest success rates; eight- and nine-day climbs have the highest.",
+          "Our honest recommendation for most people is seven days or more. The extra day or two costs more and means more hiking, but it dramatically improves both your odds and your enjoyment.",
+        ],
+        bullets: [
+          "5–6 days — budget and time-saving, but a real risk of altitude sickness and turning back",
+          "7 days — the sweet spot on routes like Machame; strong success rates",
+          "8–9 days — the best acclimatization (Lemosho, Northern Circuit) and the highest success rates",
+        ],
+      },
+      {
+        heading: "Choosing your route",
+        paragraphs: [
+          "Routes differ in length, scenery, how busy they are, and — most importantly — how well they let you acclimatize. Here's how the four most popular routes compare.",
+        ],
+        table: {
+          headers: ["Route", "Days", "Acclimatization", "Scenery", "Crowds", "Best for"],
+          rows: [
+            ["Marangu", "5–6", "Lower", "Good", "Busy", "Huts, not tents; tighter budgets"],
+            ["Machame", "6–7", "Very good", "Excellent", "Busy", "First-timers wanting the classic climb"],
+            ["Lemosho", "7–8", "Excellent", "Excellent", "Quieter", "Best balance of success and scenery"],
+            ["Northern Circuit", "8–9", "Best", "Excellent", "Quietest", "Highest success; time to spare"],
+          ],
+          caption: "Rongai (6–7 days, approaching from the dry north) is a good fifth option in the wetter months.",
+        },
+        diagram: "route-profiles",
+      },
+      {
+        heading: "Why acclimatization beats fitness",
+        paragraphs: [
+          "This is the part most first-timers get backwards. Fitness helps you enjoy the walk and recover each day, but it does not protect you from altitude sickness — strong, young, fit climbers turn back every week because they went up too fast.",
+          "Good routes are built around a principle called 'climb high, sleep low': you hike up to a high point during the day, then descend to sleep at a lower altitude. Each high point tells your body to adapt; each lower night lets it recover. Do this over enough days and your body quietly builds the extra red blood cells it needs.",
+        ],
+        diagram: "acclimatization",
+        callout: {
+          tone: "tip",
+          text: "The guides' mantra is 'pole pole' — Swahili for 'slowly, slowly'. Walking frustratingly slowly on the lower days is not laziness; it's the single most effective thing you can do to summit.",
+        },
+      },
+      {
+        heading: "Summit night, honestly",
+        paragraphs: [
+          "Summit night is the hardest part of the climb and worth understanding before you commit. You'll typically be woken around 11 pm, and set off by headtorch into the cold and dark so that you reach the crater rim around sunrise. It's six or seven hours of slow, steep switchbacks in temperatures that can fall well below freezing, on the least oxygen of the whole trip.",
+          "Then the sky lightens, you reach Stella Point on the rim, and a final gentle hour along the crater brings you to Uhuru Peak — the highest point in Africa. After photos, you descend the same day to a lower camp, because the best cure for altitude is to lose height.",
+        ],
+        diagram: "summit-night",
+      },
+      {
+        heading: "How fit do you need to be?",
+        paragraphs: [
+          "You don't need to be an athlete, but you should be comfortable hiking for six to eight hours on consecutive days. The best preparation is simply walking — long, hilly day-hikes with a daypack, ideally back-to-back on weekends, in the months before your climb.",
+          "If you can do a full day on the hills, sleep, and get up and do it again without dreading it, you're in good shape for Kilimanjaro. We cover this in detail in our training guide.",
+        ],
+      },
+      {
+        heading: "What it costs — and why very cheap is a red flag",
+        paragraphs: [
+          "A properly run Kilimanjaro climb is not cheap, because a lot of it is fixed: national park fees, a full crew of guides, porters and cooks, quality tents and food, and safety equipment. Our climbs start from $1,580 per person, with the exact price depending on the route, the number of days and your group size.",
+          "Be wary of bargain-basement prices. The savings almost always come out of the parts you can't see — underpaid and overloaded porters, skimped food, fewer days, or thinner safety margins. On a high-altitude mountain, those are exactly the wrong corners to cut.",
+        ],
+        table: {
+          caption: "What separates a safe operator from a suspiciously cheap one.",
+          highlightCol: 1,
+          headers: ["", "Done properly", "Suspiciously cheap"],
+          rows: [
+            ["Days on the mountain", "7+ for good acclimatization", "5 to cut cost"],
+            ["Crew", "Licensed guides, fair porter loads & pay", "Overloaded, underpaid porters"],
+            ["Safety", "Daily health checks, oxygen, evacuation plan", "Little or none"],
+            ["Food & gear", "Hot meals, quality 4-season tents", "Minimal, worn equipment"],
+          ],
+        },
+      },
+      {
+        heading: "When to climb",
+        paragraphs: [
+          "Kilimanjaro can be climbed year-round, but the two dry seasons are far more comfortable and reliable: January to mid-March, and June to October. These months bring clearer skies, better views and easier trails.",
+          "The long rains (late March to May) and the short rains (November) mean wetter, muddier trekking and more cloud — quieter and cheaper, but harder going. We break this down month by month in our 'best time to climb' guide.",
+        ],
+      },
+      {
+        heading: "Climbing with Trust Tours",
+        paragraphs: [
+          "We're a small, licensed operator based in Arusha (TALA Class A, License No. 014216), and we run our own crews — we drive, cook and guide every climb ourselves rather than handing you to a subcontractor. That means daily health checks, fair treatment of our porters, and a founder, Ombeni, you can message directly while you plan.",
+          "The best next step is to pick a route. Use the comparison page below, or just message us with your dates and we'll tell you honestly which route fits your time, budget and experience.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can a beginner climb Kilimanjaro?",
+        answer:
+          "Yes. Kilimanjaro is a non-technical trek, so beginners with reasonable fitness regularly summit. The key is choosing enough days to acclimatize and walking slowly. No prior climbing experience is required.",
+      },
+      {
+        question: "How dangerous is it?",
+        answer:
+          "The main risk is altitude sickness, which is why route choice, pace and a watchful crew matter so much. Climbing with a licensed operator that does daily health checks, carries oxygen and has an evacuation plan keeps the risk low for healthy travellers.",
+      },
+      {
+        question: "Do I need a guide to climb Kilimanjaro?",
+        answer:
+          "Yes — Tanzania law requires every climber to go with a licensed operator and registered guides. You cannot climb independently.",
+      },
+      {
+        question: "What's the success rate?",
+        answer:
+          "It depends almost entirely on the number of days. Short five-day climbs have low success rates; seven-, eight- and nine-day climbs are far more successful. See our dedicated success-rate guide for the full picture.",
+      },
+    ],
+    relatedGuides: [
+      "best-kilimanjaro-route",
+      "how-long-to-climb-kilimanjaro",
+      "kilimanjaro-success-rate",
+      "kilimanjaro-training-and-fitness",
+      "altitude-sickness-on-kilimanjaro",
+    ],
+    relatedPackages: [
+      "7-day-machame-route",
+      "8-day-lemosho-route",
+      "9-day-northern-circuit",
+      "6-day-marangu-route",
+    ],
+  },
+
+  {
+    slug: "best-kilimanjaro-route",
+    title: "Which Kilimanjaro Route Is Best?",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Machame, Lemosho, Marangu or the Northern Circuit? An honest comparison of acclimatization, scenery, crowds and cost — and who each one suits.",
+    updated: "2026-06-20",
+    readMinutes: 9,
+    keyTakeaway:
+      "For most first-time climbers, the 7-day Machame or 8-day Lemosho routes are the best choice — both have excellent 'climb high, sleep low' acclimatization, stunning scenery and strong success rates. Choose Marangu if you want huts or a tighter budget, and the Northern Circuit if you want the very highest summit odds and the quietest trails.",
+    intro:
+      "There's no single 'best' route up Kilimanjaro — there's the route that's best for you, given your time, budget, and how much you want to stack the odds in your favour. The good news is that the choice mostly comes down to one thing that matters above all others: how well the route lets you acclimatize. Here's how the four most popular routes really compare.",
+    primaryCta: { label: "Compare all Kilimanjaro routes", href: "/kilimanjaro" },
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "The one factor that matters most",
+        paragraphs: [
+          "Before scenery or crowds, judge a route on acclimatization — how gradually it gains height and whether it follows the 'climb high, sleep low' pattern. A route that climbs slowly and lets you sleep lower than the day's high point will get more people to the top, full stop.",
+          "That's why the longer routes (Lemosho, Northern Circuit) and the well-profiled 7-day Machame outperform short, fast climbs. Length isn't about hiking more for its own sake — it's about giving your body the days it needs.",
+        ],
+        diagram: "route-profiles",
+      },
+      {
+        heading: "The four routes, side by side",
+        paragraphs: [
+          "Here's the honest comparison. 'Acclimatization' is the column to weight most heavily if summiting matters to you.",
+        ],
+        table: {
+          headers: ["Route", "Days", "Acclimatization", "Scenery", "Crowds", "Sleep"],
+          rows: [
+            ["Marangu", "5–6", "Lower", "Good", "Busy", "Huts"],
+            ["Machame", "6–7", "Very good", "Excellent", "Busy", "Tents"],
+            ["Lemosho", "7–8", "Excellent", "Excellent", "Quieter", "Tents"],
+            ["Northern Circuit", "8–9", "Best", "Excellent", "Quietest", "Tents"],
+          ],
+        },
+      },
+      {
+        heading: "Machame — the classic",
+        paragraphs: [
+          "Nicknamed the 'Whiskey Route', Machame is the most popular path up the mountain for good reason: a beautiful southern approach through rainforest, the dramatic Barranco Wall, and a profile that acclimatizes you well — especially over seven days. It's busier than Lemosho, but it's the classic Kilimanjaro experience and our most-booked climb.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "If you do Machame, do the 7-day version, not the 6-day. That extra acclimatization day is one of the cheapest ways to buy yourself a better shot at the summit.",
+        },
+      },
+      {
+        heading: "Lemosho — the best all-rounder",
+        paragraphs: [
+          "Lemosho approaches from the remote western side, starting quieter before it joins the Machame trail higher up. Over seven or eight days it offers arguably the best balance on the mountain: superb acclimatization, the finest scenery, and fewer people on the early days. If you want one recommendation for a first climb and budget allows, this is it.",
+        ],
+      },
+      {
+        heading: "Marangu — huts and budget",
+        paragraphs: [
+          "Marangu is the only route with sleeping huts rather than tents, which appeals to some travellers, and it's often the cheapest option. But it's also a there-and-back route with a less ideal acclimatization profile, so success rates are lower — particularly on the rushed five-day version. Choose the six-day Marangu if you want huts, and treat five days as a real gamble.",
+        ],
+      },
+      {
+        heading: "Northern Circuit — the highest odds",
+        paragraphs: [
+          "The longest route on the mountain loops around the quiet northern slopes over eight or nine days. All that time at altitude gives it the best acclimatization and the highest success rates of any route, on the most peaceful trails. The trade-off is cost and time — but if summiting is your priority and you can spare the days, nothing beats it.",
+        ],
+      },
+      {
+        heading: "So which should you choose?",
+        bullets: [
+          "First climb, want the classic: 7-day Machame",
+          "Best balance of success and scenery: 8-day Lemosho",
+          "Prefer huts or a tighter budget: 6-day Marangu",
+          "Want the highest odds and the quietest trails: 9-day Northern Circuit",
+        ],
+        paragraphs: [
+          "Still unsure? Tell us your dates, budget and hiking background and we'll recommend the honest best fit — not just the most expensive one.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Which Kilimanjaro route has the highest success rate?",
+        answer:
+          "The Northern Circuit, because its eight to nine days give the best acclimatization. Lemosho and the 7-day Machame also have strong success rates. Short five-day climbs have the lowest.",
+      },
+      {
+        question: "Which route is best for beginners?",
+        answer:
+          "The 7-day Machame or 8-day Lemosho. Both are non-technical, acclimatize you well and suit first-timers with reasonable fitness.",
+      },
+      {
+        question: "What is the easiest route up Kilimanjaro?",
+        answer:
+          "Marangu is often called the easiest because of its gentler gradient and hut accommodation, but its acclimatization profile is weaker, so it isn't the easiest on which to actually summit. 'Easiest to summit' usually means the route with the most days.",
+      },
+    ],
+    relatedGuides: [
+      "climbing-kilimanjaro-guide",
+      "how-long-to-climb-kilimanjaro",
+      "kilimanjaro-success-rate",
+      "altitude-sickness-on-kilimanjaro",
+    ],
+    relatedPackages: [
+      "7-day-machame-route",
+      "8-day-lemosho-route",
+      "6-day-marangu-route",
+      "9-day-northern-circuit",
+    ],
+  },
+
+  {
+    slug: "kilimanjaro-success-rate",
+    title: "What Are Your Odds of Summiting Kilimanjaro?",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Why the number of days on the mountain — not your fitness — is the single biggest factor in reaching Uhuru Peak.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "Your odds of summiting Kilimanjaro depend overwhelmingly on how many days you spend acclimatizing. Rushed five-day climbs have low success rates; seven-, eight- and nine-day climbs reach the top far more often. Fitness helps, but acclimatization — and an attentive crew — is what gets you to Uhuru Peak.",
+    intro:
+      "Everyone wants the number: what are my chances of standing on the summit? The honest answer is that there's no single figure, because it depends almost entirely on choices you control — chiefly how many days you give yourself. Here's what actually moves the odds, and what you can do to put them in your favour.",
+    primaryCta: { label: "Compare Kilimanjaro routes by success", href: "/kilimanjaro" },
+    sections: [
+      {
+        heading: "Days matter more than anything",
+        paragraphs: [
+          "The strongest pattern in Kilimanjaro statistics is simple: the more days you spend ascending gradually, the more likely you are to summit. Older industry estimates have long put short five-day climbs around a 25–30% success rate, against roughly 85% or higher for eight-day climbs. Treat those figures as illustrative rather than exact — but the direction is beyond doubt.",
+          "The reason is acclimatization. Extra days let your body adapt to thin air, which is the thing that actually stops most people — not tired legs.",
+        ],
+        diagram: "days-vs-success",
+      },
+      {
+        heading: "Why fit people still fail",
+        paragraphs: [
+          "Altitude doesn't care how fast you can run. Some very fit climbers actually struggle more, because their fitness tempts them to climb too quickly. Going slowly — 'pole pole' — and following a climb-high-sleep-low profile is what protects you.",
+        ],
+        diagram: "acclimatization",
+        callout: {
+          tone: "warning",
+          text: "The biggest single mistake that ends climbs is going up too fast — whether by booking too few days or by walking too quickly on the lower slopes. Both are avoidable.",
+        },
+      },
+      {
+        heading: "What else moves your odds",
+        bullets: [
+          "Route choice — longer, better-profiled routes summit more often",
+          "Pace — disciplined slow walking on the early days",
+          "Hydration and eating — even when altitude kills your appetite",
+          "An attentive crew — daily health checks catch problems early",
+          "Sensible use of altitude medication if your doctor advises it",
+        ],
+      },
+      {
+        heading: "How we help you summit",
+        paragraphs: [
+          "We bias every decision toward getting you to the top safely: recommending enough days, setting a genuinely slow pace, checking your oxygen and pulse daily, and carrying emergency oxygen. We'd rather talk you into one more day than watch you turn back on summit night.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the overall success rate on Kilimanjaro?",
+        answer:
+          "There's no single official figure, and it varies hugely by the number of days. Short climbs succeed far less often than long ones. The most reliable way to raise your odds is to choose a seven-day-or-longer itinerary.",
+      },
+      {
+        question: "Does fitness affect my chances?",
+        answer:
+          "Fitness helps you enjoy the trek and recover each day, but it does not prevent altitude sickness. Acclimatization — driven by days and pace — is the dominant factor.",
+      },
+    ],
+    relatedGuides: [
+      "best-kilimanjaro-route",
+      "how-long-to-climb-kilimanjaro",
+      "altitude-sickness-on-kilimanjaro",
+      "kilimanjaro-training-and-fitness",
+    ],
+    relatedPackages: ["9-day-northern-circuit", "8-day-lemosho-route", "7-day-machame-route"],
+  },
+
+  {
+    slug: "kilimanjaro-training-and-fitness",
+    title: "How to Train for Kilimanjaro",
+    topic: "Kilimanjaro",
+    excerpt:
+      "You don't need to be an athlete — but you do need to train. A practical plan to get walk-fit for the Roof of Africa.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "To climb Kilimanjaro you should be able to hike comfortably for six to eight hours on consecutive days. The best training is hiking itself — long, hilly walks with a daypack, built up over two to three months — supported by some cardio and leg strength. You don't need to be an athlete; you need endurance and resilience.",
+    intro:
+      "Kilimanjaro is a walk, not a climb — but it's a long walk, day after day, at altitude. The fitter you are, the more you'll enjoy it and the easier each day feels. The good news is that training for it is refreshingly simple: the single best preparation is to go hiking. Here's how to be ready.",
+    primaryCta: { label: "See our Kilimanjaro climbs", href: "/kilimanjaro" },
+    sections: [
+      {
+        heading: "What 'fit enough' actually means",
+        paragraphs: [
+          "Forget summit-day heroics for a moment. The real test is repetition: can you hike for six to eight hours, sleep, and get up and do it again the next morning — for up to a week? If you can comfortably do a full hilly day-hike and feel ready to repeat it, you're in good shape for Kilimanjaro.",
+        ],
+        callout: {
+          tone: "info",
+          text: "No amount of fitness prevents altitude sickness — that's down to days and pace. Train so you can enjoy the walk, not because fitness alone gets you to the top.",
+        },
+      },
+      {
+        heading: "The best training is hiking",
+        paragraphs: [
+          "If you do one thing, do this: go on long hikes, on hills, carrying the daypack you'll use on the mountain. Build up the distance and elevation gain over time, and try to do back-to-back hiking days at weekends to mimic the consecutive days on Kilimanjaro.",
+        ],
+        bullets: [
+          "Start 8–12 weeks out and build gradually",
+          "Walk hilly terrain, not just flat ground",
+          "Carry a 5–7 kg daypack to get used to the load",
+          "Do back-to-back days (Saturday and Sunday) to train recovery",
+          "Break in your hiking boots well before the trip",
+        ],
+      },
+      {
+        heading: "Round it out with cardio and legs",
+        paragraphs: [
+          "Between hikes, build your aerobic base with anything that raises your heart rate for a sustained period — running, cycling, swimming, the stair machine. Add some simple leg and core strength (squats, lunges, step-ups) to protect your knees on the long descents, which surprise people with how tiring they are.",
+        ],
+      },
+      {
+        heading: "A simple 8-week build",
+        bullets: [
+          "Weeks 1–2: 2–3 cardio sessions + one shorter hike each week",
+          "Weeks 3–5: longer weekend hikes with a daypack; add leg strength twice a week",
+          "Weeks 6–7: back-to-back weekend hikes on hills; keep midweek cardio",
+          "Week 8: taper — one easy hike, rest, and arrive fresh",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How fit do I need to be to climb Kilimanjaro?",
+        answer:
+          "Fit enough to hike six to eight hours a day on consecutive days. You don't need to be an athlete or a runner — endurance and the ability to recover overnight matter more than raw speed or strength.",
+      },
+      {
+        question: "Can I climb Kilimanjaro without training?",
+        answer:
+          "It's strongly discouraged. While the route is non-technical, the long days and altitude make it genuinely demanding. A couple of months of hiking-focused training makes the climb far more enjoyable and reduces the chance of injury and exhaustion.",
+      },
+      {
+        question: "How long should I train for?",
+        answer:
+          "Most people benefit from two to three months of focused preparation. If you already hike regularly, you may need less; if you're starting from a low base, give yourself longer.",
+      },
+    ],
+    relatedGuides: [
+      "climbing-kilimanjaro-guide",
+      "kilimanjaro-success-rate",
+      "altitude-sickness-on-kilimanjaro",
+      "best-kilimanjaro-route",
+    ],
+    relatedPackages: ["7-day-machame-route", "3-day-mount-meru-momela", "8-day-lemosho-route"],
+  },
+
+  {
+    slug: "how-much-to-climb-kilimanjaro",
+    title: "How Much Does It Cost to Climb Kilimanjaro?",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Where the money actually goes, why rock-bottom prices are a warning sign, and what a fair, safe climb really costs.",
+    updated: "2026-06-20",
+    readMinutes: 8,
+    keyTakeaway:
+      "A properly run Kilimanjaro climb typically costs somewhere in the low-to-mid thousands of US dollars per person, and ours start from $1,580. A large, fixed chunk of that is non-negotiable — national park fees, a full crew, food and safety gear — so prices far below the norm almost always mean corners cut on days, crew welfare or safety.",
+    intro:
+      "Kilimanjaro is one of those trips where the cheapest quote is rarely the best decision. A lot of the cost is fixed by the national park and by the simple economics of supporting you on a high mountain for a week, so when a price looks too good to be true, the savings are coming from somewhere — usually the parts you can't see until you're already up there. Here's exactly where the money goes.",
+    primaryCta: { label: "See our Kilimanjaro climbs & prices", href: "/kilimanjaro" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "Where your money actually goes",
+        paragraphs: [
+          "Roughly speaking, the cost of a climb breaks into national park fees, your crew's wages and food, equipment, transport and logistics, and the operator's margin. Park fees alone are a substantial daily charge set by the Tanzanian authorities — they're the same whether you book budget or luxury, which is why no honest operator can be truly cheap.",
+        ],
+        table: {
+          caption: "The main ingredients in any Kilimanjaro price.",
+          headers: ["Cost", "What it covers"],
+          rows: [
+            ["Park fees", "Daily conservation, camping/hut and rescue fees set by the park"],
+            ["Crew", "Guides, porters and cooks — wages, food and park fees for each"],
+            ["Food & equipment", "Hot meals, tents, kitchen, tables, safety gear"],
+            ["Transport & logistics", "Airport transfers, gate transport, planning and admin"],
+            ["Days on the mountain", "Each extra day adds park and crew cost — but buys success"],
+          ],
+        },
+      },
+      {
+        heading: "What's usually included — and what isn't",
+        paragraphs: [
+          "Our climb prices cover the things you need to get up and down safely. A few personal costs sit outside any operator's package and are worth budgeting for separately.",
+        ],
+        bullets: [
+          "Included: park fees, licensed guides, full porter and cook crew, camping equipment, all meals on the mountain, airport transfers and pre/post arrangements",
+          "Usually extra: international flights, Tanzania visa, travel insurance, personal hiking gear, and tips for the crew",
+          "Tips are a genuine and expected cost — budget for them on top of the climb price",
+        ],
+        callout: {
+          tone: "info",
+          text: "Tipping the crew is customary on Kilimanjaro and is not included in the climb price. We'll give you clear, fair guidance on amounts before you go so there are no awkward surprises at the gate.",
+        },
+      },
+      {
+        heading: "Why very cheap is a red flag",
+        paragraphs: [
+          "Because so much of the cost is fixed, a price well below the market can only be reached by cutting things that matter: fewer days (hurting your odds and your safety), underpaying or overloading porters, skimping on food, or thinning out the safety margin. On a mountain where altitude is the main danger, those are exactly the wrong savings.",
+          "A fair price isn't about luxury — it's about a climb that's run safely and treats its crew properly. That's the standard we hold ourselves to.",
+        ],
+        table: {
+          caption: "What separates a safe operator from a suspiciously cheap one.",
+          highlightCol: 1,
+          headers: ["", "Done properly", "Suspiciously cheap"],
+          rows: [
+            ["Days", "7+ for acclimatization", "5 to cut cost"],
+            ["Porters", "Fair loads & wages", "Overloaded, underpaid"],
+            ["Safety", "Health checks, oxygen, evacuation plan", "Little or none"],
+            ["Food", "Hot, plentiful meals", "Minimal"],
+          ],
+        },
+      },
+      {
+        heading: "How to lower the cost sensibly",
+        bullets: [
+          "Climb in a small group rather than solo — fixed costs are shared",
+          "Travel in the quieter (wetter) shoulder months if you don't mind the weather",
+          "Bring your own broken-in gear instead of renting everything",
+          "Choose a route that fits your budget — but never cut days below a safe minimum",
+        ],
+        paragraphs: [
+          "Tell us your budget and dates and we'll show you the most cost-effective safe option — not just the cheapest number.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Why is climbing Kilimanjaro so expensive?",
+        answer:
+          "Because a large share of the cost is fixed: high national park fees charged per day, plus the wages, food and park fees for a full crew of guides, porters and cooks supporting you for a week. These costs apply no matter how budget your trip is.",
+      },
+      {
+        question: "Are tips included in the price?",
+        answer:
+          "No. Tipping the mountain crew is customary and expected, and sits on top of the climb price. We give every climber clear guidance on fair amounts beforehand.",
+      },
+      {
+        question: "Is it worth paying more for a longer climb?",
+        answer:
+          "Almost always, yes. Each extra day improves acclimatization and your chance of summiting. Paying for one more day is one of the best-value decisions you can make on Kilimanjaro.",
+      },
+    ],
+    relatedGuides: [
+      "climbing-kilimanjaro-guide",
+      "best-kilimanjaro-route",
+      "kilimanjaro-success-rate",
+      "tipping-in-tanzania",
+    ],
+    relatedPackages: ["6-day-marangu-route", "7-day-machame-route", "8-day-lemosho-route"],
+  },
+
+  {
+    slug: "best-time-to-climb-kilimanjaro",
+    title: "The Best Time to Climb Kilimanjaro",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Month by month — the two dry seasons that give the clearest skies, the rains to plan around, and the trade-offs of a full-moon summit.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "The best months to climb Kilimanjaro are January to mid-March and June to October — Tanzania's two dry seasons, with the clearest skies and most comfortable trekking. You can climb year-round, but the long rains (late March–May) and short rains (November) make for wetter, quieter, cheaper climbs.",
+    intro:
+      "Kilimanjaro is climbable every month of the year, but your experience changes a lot with the seasons. The mountain has two dry windows that are far more comfortable and reliable, and two rainy spells that are wetter and harder but quieter and cheaper. Here's how to pick your month.",
+    primaryCta: { label: "Plan your climb dates", href: "/kilimanjaro" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "The two best windows",
+        paragraphs: [
+          "There are two prime seasons. January to mid-March is warmer and generally clear, often with fewer climbers than the mid-year peak and a good chance of fresh snow up high. June to October is the long dry season — the busiest and most reliable window, with cool, clear conditions ideal for trekking.",
+          "Both deliver the two things that make a climb enjoyable: stable weather and big views. If you have flexibility, these are the months to target.",
+        ],
+        table: {
+          caption: "Kilimanjaro through the year at a glance.",
+          headers: ["Period", "Conditions", "Verdict"],
+          rows: [
+            ["Jan – mid-Mar", "Warm, mostly clear, possible snow up high", "Excellent — quieter peak"],
+            ["Late Mar – May", "Long rains: wet, muddy, cloudy", "Avoid if you can"],
+            ["Jun – Oct", "Dry season: cool and clear", "Best & most reliable"],
+            ["November", "Short rains: showery, variable", "Quiet & cheaper, but wetter"],
+            ["December", "Improving, festive-season busy", "Good, book ahead"],
+          ],
+        },
+      },
+      {
+        heading: "Climbing in the rains",
+        paragraphs: [
+          "You can still summit during the rainy months, and some people like the solitude and lower prices. But expect muddier trails, slippery rock, more cloud and fewer views. If you go, lean toward routes that approach from the drier northern side, like Rongai, which sees less rain.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Whatever the season, summit night is below freezing year-round. Good cold-weather gear matters every month — see our packing guide.",
+        },
+      },
+      {
+        heading: "Should you climb at full moon?",
+        paragraphs: [
+          "Summit night happens in the dark, so a full moon lights up the glaciers and the path beautifully and is a popular choice. The trade-off is that full-moon dates are busier and book up early. A clear, moonless night, on the other hand, gives extraordinary stars on the way up. Neither is 'better' — it's a preference, and we can time your climb for either.",
+        ],
+      },
+      {
+        heading: "When to book",
+        paragraphs: [
+          "For the peak windows — especially June to October and around the December holidays — book well ahead to secure your dates and crew. If you're flexible, tell us the rough time of year and we'll suggest the best-value departure.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the best month to climb Kilimanjaro?",
+        answer:
+          "September is often singled out as ideal — dry, clear and stable — but the whole June-to-October window and January to mid-March are all excellent. The best month is the one in a dry season that fits your schedule.",
+      },
+      {
+        question: "Can you climb Kilimanjaro in the rainy season?",
+        answer:
+          "Yes, climbs run year-round. The long rains (late March–May) and short rains (November) mean wetter, muddier conditions and more cloud, but also fewer people and lower prices. Drier northern routes like Rongai cope best.",
+      },
+      {
+        question: "Is it cold at the summit?",
+        answer:
+          "Yes — summit night is well below freezing in every season, and wind chill makes it feel colder. Proper insulated clothing is essential whenever you climb.",
+      },
+    ],
+    relatedGuides: [
+      "climbing-kilimanjaro-guide",
+      "best-kilimanjaro-route",
+      "kilimanjaro-packing-list",
+      "best-time-to-visit-tanzania",
+    ],
+    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "9-day-northern-circuit"],
+  },
+
+  {
+    slug: "kilimanjaro-packing-list",
+    title: "Kilimanjaro Packing List: What to Bring",
+    topic: "Kilimanjaro",
+    excerpt:
+      "From humid rainforest to a sub-zero summit — how to pack in layers for all five of Kilimanjaro's climate zones.",
+    updated: "2026-06-20",
+    readMinutes: 9,
+    keyTakeaway:
+      "Pack Kilimanjaro in layers, because you'll cross five climate zones from humid rainforest to an arctic summit. The essentials: a warm insulated jacket and sleeping bag for summit night, a waterproof shell, broken-in boots, sun protection, and a head-torch. Bring less of everything else — porters carry your duffel, but loads are limited and fair.",
+    intro:
+      "The trick to packing for Kilimanjaro is realising you're packing for several climates at once. You'll start in warm, humid rainforest and finish on a freezing, wind-blasted summit, so the whole system is about layers you can add and shed. Here's what you actually need — and what you can leave at home.",
+    primaryCta: { label: "See our Kilimanjaro climbs", href: "/kilimanjaro" },
+    sections: [
+      {
+        heading: "Pack for five climates",
+        paragraphs: [
+          "Over the climb you'll pass through five ecological zones, each colder and thinner than the last. That's why layering beats any single 'warm coat' — you'll be peeling layers off in the forest and piling every one back on for summit night.",
+        ],
+        diagram: "climate-zones",
+      },
+      {
+        heading: "The layering system",
+        bullets: [
+          "Base layers — moisture-wicking tops and bottoms (not cotton)",
+          "Mid layers — fleece or light down for warmth",
+          "Insulated jacket — a proper warm down/synthetic jacket for summit night",
+          "Waterproof shell — breathable jacket and over-trousers for rain and wind",
+          "Hiking trousers and shorts/convertibles for the lower, warmer days",
+        ],
+      },
+      {
+        heading: "Footwear and the summit-night kit",
+        bullets: [
+          "Well-broken-in waterproof hiking boots (never brand-new)",
+          "Several pairs of wool/synthetic hiking socks",
+          "Warm hat, buff/neck gaiter, and insulated gloves plus liner gloves",
+          "Head-torch with spare batteries — essential for the midnight summit start",
+          "Insulated, season-appropriate sleeping bag (rated for well below freezing)",
+        ],
+        callout: {
+          tone: "warning",
+          text: "Two things make or break summit night: a genuinely warm insulated jacket and a cold-rated sleeping bag. Don't under-spec these — the summit is below freezing every month of the year.",
+        },
+      },
+      {
+        heading: "Day pack, health and extras",
+        bullets: [
+          "A 25–35 L daypack for what you carry each day (water, layers, snacks, camera)",
+          "Hydration bladder and/or bottles — aim for plenty of water capacity",
+          "High-SPF sunscreen, SPF lip balm and good sunglasses — UV is fierce at altitude",
+          "Personal first-aid kit, any prescribed altitude medication, and toiletries",
+          "Trekking poles (a real help on the long, knee-jarring descents)",
+          "Snacks you love, wet wipes, and a power bank for devices",
+        ],
+      },
+      {
+        heading: "What porters carry — and packing smart",
+        paragraphs: [
+          "Your main bag is carried by a porter in a duffel, while you walk with just your daypack — but porter loads are weight-limited for their welfare, so pack disciplined and light. A common limit is around 15 kg for your duffel; check the exact figure with us before you fly.",
+          "We'll send you a full, personalised checklist once you book, and we can advise on what to rent in Arusha versus bring from home so you don't over-buy.",
+        ],
+        callout: {
+          tone: "info",
+          text: "You don't have to own everything. Bulky items like down jackets, sleeping bags and poles can be rented locally in good condition — ask us and we'll arrange it.",
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: "What should I not forget for Kilimanjaro?",
+        answer:
+          "The three things people most regret skimping on are a warm insulated jacket, a cold-rated sleeping bag, and a reliable head-torch for summit night. Broken-in boots and proper sun protection come a close fourth.",
+      },
+      {
+        question: "How much weight can I bring?",
+        answer:
+          "A porter carries your main duffel, but loads are limited for their welfare — commonly around 15 kg. You carry a daypack yourself. Pack light and versatile; we'll confirm the exact limit for your climb.",
+      },
+      {
+        question: "Can I rent gear in Tanzania?",
+        answer:
+          "Yes. Down jackets, sleeping bags, poles and other bulky items can be rented in good condition in Arusha, which saves buying kit you'll rarely use again. We can arrange rentals for you.",
+      },
+    ],
+    relatedGuides: [
+      "climbing-kilimanjaro-guide",
+      "best-time-to-climb-kilimanjaro",
+      "altitude-sickness-on-kilimanjaro",
+      "kilimanjaro-training-and-fitness",
+    ],
+    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "6-day-marangu-route"],
+  },
+
+  {
+    slug: "machame-route",
+    title: "The Machame Route: Kilimanjaro's Classic Climb",
+    topic: "Kilimanjaro",
+    excerpt:
+      "The 'Whiskey Route' — scenic, sociable and well-profiled for acclimatization. Why it's the most popular way up Kilimanjaro.",
+    updated: "2026-06-20",
+    readMinutes: 8,
+    keyTakeaway:
+      "The Machame Route is the most popular path up Kilimanjaro: a beautiful southern approach through rainforest, the dramatic Barranco Wall, and a strong 'climb high, sleep low' profile. Done over seven days it acclimatizes you well and has high success rates — the classic choice for a first climb.",
+    intro:
+      "If you picture a classic Kilimanjaro climb, you're probably picturing Machame. Nicknamed the 'Whiskey Route' for its bolder character, it's the most-trekked path on the mountain — and our most-booked climb — thanks to gorgeous scenery, a sociable trail and an acclimatization profile that gets a lot of people to the top. Here's what to expect.",
+    primaryCta: { label: "View the 7-Day Machame climb", href: "/kilimanjaro/7-day-machame-route" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "Why Machame is so popular",
+        paragraphs: [
+          "Machame earns its popularity. It approaches from the lush south, climbing through dense rainforest before opening onto the Shira Plateau and the high alpine desert beneath Kibo. The scenery is varied and dramatic — including the famous Barranco Wall, a fun, non-technical scramble that's a highlight for many climbers.",
+          "Just as important, its profile naturally follows 'climb high, sleep low', which is exactly what your body needs to acclimatize.",
+        ],
+        diagram: "acclimatization",
+      },
+      {
+        heading: "How long it takes",
+        paragraphs: [
+          "Machame can be done in six or seven days, and the difference matters. The seven-day version adds a crucial acclimatization day that noticeably improves your odds and your enjoyment — it's the version we recommend and run as our flagship climb.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Choose 7-day Machame over 6-day. That single extra acclimatization day is one of the cheapest, most effective ways to boost your summit chances.",
+        },
+      },
+      {
+        heading: "The trail, day by day",
+        paragraphs: [
+          "From Machame Gate you climb through rainforest to Machame Camp, then up to the Shira Plateau. The middle days take you to Lava Tower (around 4,600 m) before descending to sleep at Barranco — the textbook acclimatization move — followed by the Barranco Wall and traverses to Karanga and Barafu, the base for your summit push.",
+          "You can see the full elevation profile and every day's detail on the climb page.",
+        ],
+        diagram: "summit-night",
+      },
+      {
+        heading: "Who it suits",
+        bullets: [
+          "First-time climbers wanting the classic Kilimanjaro experience",
+          "Trekkers who value scenery and a lively trail",
+          "Anyone comfortable sleeping in tents (Machame is camping-only)",
+          "People happy to share a popular route rather than seek solitude",
+        ],
+        paragraphs: [
+          "If you'd prefer quieter trails with even better acclimatization, look at Lemosho or the Northern Circuit instead.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is the Machame Route hard?",
+        answer:
+          "It's a challenging trek but non-technical — no climbing skills needed. The Barranco Wall is a fun scramble rather than a danger. The hardest part, as on every route, is summit night, which is why the 7-day profile helps so much.",
+      },
+      {
+        question: "How long is the Machame Route?",
+        answer:
+          "Around 62 km round trip, typically done in six or seven days. We recommend seven days for better acclimatization and a higher chance of summiting.",
+      },
+      {
+        question: "Do you sleep in tents or huts on Machame?",
+        answer:
+          "Tents. Machame is a camping route — our crew sets up and breaks camp each day, including a mess tent and hot meals. If you'd rather sleep in huts, the Marangu Route is the alternative.",
+      },
+    ],
+    relatedGuides: [
+      "best-kilimanjaro-route",
+      "lemosho-route",
+      "climbing-kilimanjaro-guide",
+      "kilimanjaro-success-rate",
+    ],
+    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "9-day-northern-circuit"],
+  },
+
+  {
+    slug: "lemosho-route",
+    title: "The Lemosho Route: The Best All-Rounder",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Remote, quiet and scenically superb, with excellent acclimatization — arguably the best balance of success and beauty on the mountain.",
+    updated: "2026-06-20",
+    readMinutes: 8,
+    keyTakeaway:
+      "The Lemosho Route approaches Kilimanjaro from the remote west, starting quietly before joining the Machame trail higher up. Over seven to eight days it offers excellent acclimatization, the finest scenery on the mountain and fewer crowds early on — making it our top pick for travellers who want the best balance of summit success and beauty.",
+    intro:
+      "If we had to recommend one route to a first-time climber with a little time and budget, it would often be Lemosho. It takes the best of Machame's scenery and acclimatization profile, but starts on the wild, quiet western side of the mountain — so your first days are peaceful before the trails converge higher up. Here's why it's such a strong all-rounder.",
+    primaryCta: { label: "View the 8-Day Lemosho climb", href: "/kilimanjaro/8-day-lemosho-route" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "A quieter, wilder start",
+        paragraphs: [
+          "Lemosho begins on the remote western flank, crossing the Shira Plateau with a real sense of wilderness and often wildlife in the lower forest. Because fewer operators start here, your first days are noticeably quieter than on Machame — before the two routes merge for the southern traverse and summit approach.",
+        ],
+        diagram: "route-profiles",
+      },
+      {
+        heading: "Excellent acclimatization",
+        paragraphs: [
+          "Spread over seven or eight days, Lemosho gives your body more time and a textbook climb-high-sleep-low profile, including the Lava Tower and Barranco sequence. That's why it posts some of the best success rates on the mountain outside the Northern Circuit.",
+        ],
+        diagram: "acclimatization",
+        callout: {
+          tone: "tip",
+          text: "The 8-day Lemosho is the version we recommend — the extra day pushes acclimatization and success rates higher still.",
+        },
+      },
+      {
+        heading: "The scenery payoff",
+        paragraphs: [
+          "Many guides quietly consider Lemosho the most beautiful route on Kilimanjaro: remote moorland, sweeping plateau views, dramatic ridgelines and the same iconic Barranco Wall as Machame. You get the highlights of the classic route, plus solitude on the approach.",
+        ],
+      },
+      {
+        heading: "Who it suits",
+        bullets: [
+          "Travellers who want the best balance of success, scenery and quiet",
+          "First-timers who can spare seven or eight days",
+          "Photographers and anyone prioritising landscape over budget",
+          "Climbers happy with tents (Lemosho is camping-only)",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Lemosho better than Machame?",
+        answer:
+          "They share much of the upper mountain, but Lemosho starts quieter and a day longer, giving slightly better acclimatization and more solitude — at a somewhat higher cost. For many first-timers it's the better choice if the budget and days allow.",
+      },
+      {
+        question: "How many days is the Lemosho Route?",
+        answer:
+          "Usually seven or eight days. We recommend the eight-day version for the best acclimatization and the highest chance of reaching Uhuru Peak.",
+      },
+      {
+        question: "Is Lemosho good for beginners?",
+        answer:
+          "Yes. It's non-technical and its generous profile suits first-time high-altitude trekkers with reasonable fitness particularly well.",
+      },
+    ],
+    relatedGuides: [
+      "best-kilimanjaro-route",
+      "machame-route",
+      "northern-circuit-route",
+      "kilimanjaro-success-rate",
+    ],
+    relatedPackages: ["8-day-lemosho-route", "9-day-northern-circuit", "7-day-machame-route"],
+  },
+
+  {
+    slug: "marangu-route",
+    title: "The Marangu Route: The Hut Route",
+    topic: "Kilimanjaro",
+    excerpt:
+      "The only route with sleeping huts and the classic budget option — plus the honest trade-offs in acclimatization and success.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "Marangu is the only Kilimanjaro route with sleeping huts rather than tents, and it's often the most affordable. But it's a there-and-back route with a less ideal acclimatization profile, so success rates are lower — especially on the rushed five-day version. Choose the six-day Marangu if you want huts; treat five days as a real gamble.",
+    intro:
+      "Marangu — nicknamed the 'Coca-Cola Route' — is the oldest and best-known path up Kilimanjaro, and the only one where you sleep in huts instead of tents. That comfort and its lower price make it appealing, but it comes with genuine trade-offs worth understanding before you book. Here's the honest picture.",
+    primaryCta: { label: "View the 6-Day Marangu climb", href: "/kilimanjaro/6-day-marangu-route" },
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "What makes Marangu different",
+        paragraphs: [
+          "Two things set Marangu apart. First, you sleep in shared dormitory-style huts with bunk beds, which some climbers prefer to camping — especially in wetter months. Second, it's the only route that ascends and descends by the same path, so you see the same scenery twice rather than a full traverse.",
+        ],
+      },
+      {
+        heading: "The acclimatization trade-off",
+        paragraphs: [
+          "Marangu's profile climbs more directly and doesn't follow 'climb high, sleep low' as well as Machame or Lemosho. That means lower success rates on average — and the standard five-day itinerary is particularly rushed. Adding the sixth day for an acclimatization stop at Horombo makes a real difference.",
+        ],
+        diagram: "acclimatization",
+        callout: {
+          tone: "warning",
+          text: "Avoid the 5-day Marangu if summiting matters to you. The 6-day version, with its extra acclimatization day, is far more sensible.",
+        },
+      },
+      {
+        heading: "When Marangu makes sense",
+        bullets: [
+          "You strongly prefer a bed and solid shelter over a tent",
+          "You're climbing in a wetter season and want to stay out of the rain",
+          "Budget is a primary concern and you'll take the six-day version",
+          "You're short on time but understand the lower odds",
+        ],
+        paragraphs: [
+          "If acclimatization and scenery matter more than huts, Machame or Lemosho will serve you better for a similar level of effort.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Marangu the easiest route up Kilimanjaro?",
+        answer:
+          "It has a gentler gradient and hut accommodation, so it feels easier underfoot — but its weaker acclimatization profile means it isn't the easiest route on which to actually summit. 'Easiest to summit' usually means the route with the most days.",
+      },
+      {
+        question: "How many days does Marangu take?",
+        answer:
+          "Five or six days. We strongly recommend the six-day version, which adds an acclimatization day and meaningfully improves your chance of reaching the summit.",
+      },
+      {
+        question: "Do you really sleep in huts?",
+        answer:
+          "Yes — Marangu uses shared dormitory huts with bunk beds and mattresses at each camp, plus communal dining huts. It's the only Kilimanjaro route set up this way.",
+      },
+    ],
+    relatedGuides: [
+      "best-kilimanjaro-route",
+      "machame-route",
+      "climbing-kilimanjaro-guide",
+      "how-much-to-climb-kilimanjaro",
+    ],
+    relatedPackages: ["6-day-marangu-route", "7-day-machame-route", "8-day-lemosho-route"],
+  },
+
+  {
+    slug: "northern-circuit-route",
+    title: "The Northern Circuit: Highest Success, Quietest Trails",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Kilimanjaro's longest route loops the remote north over nine days — the best acclimatization and the highest summit odds on the mountain.",
+    updated: "2026-06-20",
+    readMinutes: 8,
+    keyTakeaway:
+      "The Northern Circuit is the longest route on Kilimanjaro, looping around the quiet northern slopes over eight to nine days. All that time at altitude gives it the best acclimatization and the highest success rates of any route, on the most peaceful trails. The trade-off is more cost and more days.",
+    intro:
+      "If your priority is simply to summit — and you can spare the days — nothing on Kilimanjaro beats the Northern Circuit. It's the newest and longest route, swinging around the remote northern side of the mountain that most climbers never see, and giving your body the maximum time to adapt. Here's what makes it special.",
+    primaryCta: { label: "View the 9-Day Northern Circuit climb", href: "/kilimanjaro/9-day-northern-circuit" },
+    trustStrip: true,
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Why it has the highest success rates",
+        paragraphs: [
+          "Acclimatization is a function of time, and the Northern Circuit gives you more of it than any other route — typically nine days, with a long, gradual ascent and plenty of climb-high-sleep-low. That extra time is precisely why it posts the best summit statistics on the mountain.",
+        ],
+        diagram: "days-vs-success",
+      },
+      {
+        heading: "Solitude and 360° views",
+        paragraphs: [
+          "Because it loops around the rarely-trekked northern slopes, the Northern Circuit is the quietest route on Kilimanjaro. You'll often have the trail to yourself for long stretches, with sweeping views across the plains toward Kenya before you rejoin the busier southern approach for the summit. It's the connoisseur's route.",
+        ],
+        diagram: "route-profiles",
+      },
+      {
+        heading: "The trade-offs",
+        paragraphs: [
+          "More days means more cost and more time off work, and it's a lot of walking — this is a big, committing trek. But you get the highest odds, the most gradual and comfortable acclimatization, and the quietest, wildest experience available on the mountain.",
+        ],
+        callout: {
+          tone: "info",
+          text: "If summiting is non-negotiable for you — a once-in-a-lifetime trip, a charity climb, or you simply don't want to gamble — the Northern Circuit is the route that stacks the odds most in your favour.",
+        },
+      },
+      {
+        heading: "Who it suits",
+        bullets: [
+          "Climbers who want the very best chance of reaching the summit",
+          "Anyone who values solitude and untouched scenery",
+          "Travellers who can commit eight or nine days on the mountain",
+          "Those happy to invest more for the strongest acclimatization",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Does the Northern Circuit have the highest success rate?",
+        answer:
+          "Yes. Its eight-to-nine-day length gives the best acclimatization of any Kilimanjaro route, which translates into the highest summit success rates on the mountain.",
+      },
+      {
+        question: "How long is the Northern Circuit?",
+        answer:
+          "It's the longest route on Kilimanjaro, usually climbed over nine days, covering roughly 90 km as it loops around the northern slopes.",
+      },
+      {
+        question: "Is the Northern Circuit worth the extra cost?",
+        answer:
+          "If maximising your chance of summiting and enjoying quiet trails matters to you, yes. The extra days buy better acclimatization and a more comfortable, less crowded climb.",
+      },
+    ],
+    relatedGuides: [
+      "best-kilimanjaro-route",
+      "lemosho-route",
+      "kilimanjaro-success-rate",
+      "climbing-kilimanjaro-guide",
+    ],
+    relatedPackages: ["9-day-northern-circuit", "8-day-lemosho-route", "7-day-machame-route"],
+  },
+
+  {
+    slug: "kilimanjaro-and-mount-meru",
+    title: "Climb Mount Meru First: The Smart Acclimatization Trick",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Why climbing 4,566 m Mount Meru a few days before Kilimanjaro is one of the best ways to boost your summit odds.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Climbing Mount Meru (4,566 m) a few days before Kilimanjaro pre-acclimatizes your body to altitude, which can meaningfully improve your Kilimanjaro summit chances. Meru is a stunning, wildlife-rich trek in its own right — making it both a brilliant warm-up and a highlight of the trip.",
+    intro:
+      "Here's a tactic experienced climbers swear by: don't make Kilimanjaro your first taste of altitude. Tanzania's second-highest mountain, Meru, rises to 4,566 m just an hour away — and climbing it a few days before Kilimanjaro gives your body a head start on acclimatization. It's also a magnificent trek in its own right. Here's how the combination works.",
+    primaryCta: { label: "View the Mount Meru climb", href: "/trekking/3-day-mount-meru-momela" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "How pre-acclimatization helps",
+        paragraphs: [
+          "Spending time at high altitude before Kilimanjaro lets your body begin adapting — building the physiological changes that help you cope with thin air — before the main event. Arriving at Kilimanjaro's gate already partly acclimatized means you handle the climb's higher camps better and summit night with more in reserve.",
+          "Meru's 4,566 m summit is high enough to give a genuine acclimatization benefit, while leaving you a sensible rest day or two before starting Kilimanjaro.",
+        ],
+        diagram: "acclimatization",
+      },
+      {
+        heading: "Meru is a destination, not just a warm-up",
+        paragraphs: [
+          "Mount Meru is one of the most beautiful treks in Tanzania. The route climbs through Arusha National Park, where you walk — accompanied by an armed ranger — past giraffe, buffalo and other wildlife in the lower forest, before a spectacular knife-edge ridge to the summit at dawn, with Kilimanjaro floating above the clouds in the distance.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Leave a rest day or two between summiting Meru and starting Kilimanjaro. You want the acclimatization benefit without arriving at Kilimanjaro tired.",
+        },
+      },
+      {
+        heading: "Planning the combination",
+        bullets: [
+          "Climb Meru over three or four days, then rest one to two days",
+          "Start Kilimanjaro already partly acclimatized",
+          "Allow enough total time — roughly a fortnight for both with rest",
+          "Talk to us about sequencing flights, transfers and crews smoothly",
+        ],
+        paragraphs: [
+          "We can package Meru and Kilimanjaro together with the right spacing — message us with your dates and we'll build the ideal schedule.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Should I climb Mount Meru before Kilimanjaro?",
+        answer:
+          "If you have the time, it's an excellent idea. Meru's altitude pre-acclimatizes you, which can improve your Kilimanjaro summit chances, and it's a wonderful trek in its own right. Leave a rest day or two in between.",
+      },
+      {
+        question: "How high is Mount Meru?",
+        answer:
+          "Mount Meru reaches 4,566 m at Socialist Peak — high enough to give a real acclimatization benefit ahead of Kilimanjaro's 5,895 m summit.",
+      },
+      {
+        question: "How long do I need for both mountains?",
+        answer:
+          "Plan for roughly two weeks: three to four days on Meru, one to two rest days, then your Kilimanjaro climb. We'll help you build a schedule that fits your dates.",
+      },
+    ],
+    relatedGuides: [
+      "climbing-kilimanjaro-guide",
+      "kilimanjaro-success-rate",
+      "best-kilimanjaro-route",
+      "altitude-sickness-on-kilimanjaro",
+    ],
+    relatedPackages: ["3-day-mount-meru-momela", "4-day-mount-meru", "7-day-machame-route"],
+  },
+
+  // ───────────────────────────────────────────────────────────────────
+  // WAVE 2 — SAFARI HUB
+  // ───────────────────────────────────────────────────────────────────
+  {
+    slug: "tanzania-safari-guide",
+    title: "Tanzania Safari: The Complete Guide",
+    topic: "Safari",
+    excerpt:
+      "Where to go, when to travel, what a day looks like and what it costs — everything you need to plan a northern Tanzania safari.",
+    updated: "2026-06-20",
+    readMinutes: 11,
+    keyTakeaway:
+      "A classic Tanzania safari follows the northern circuit — Tarangire, Lake Manyara, the Ngorongoro Crater and the Serengeti — usually over five to nine days. The Serengeti hosts the Great Migration year-round in different areas, the dry season (June–October) offers the easiest wildlife viewing, and the calving season (January–February) is a spectacular alternative. Most travellers see the Big Five.",
+    intro:
+      "Northern Tanzania is, for many people, the greatest safari destination on Earth — home to the Serengeti, the Ngorongoro Crater and the Great Migration. But a brilliant safari is a planned safari: the right parks, in the right season, over the right number of days. This guide pulls together everything that matters so you can picture your trip and plan it well.",
+    primaryCta: { label: "Browse all our safaris", href: "/safaris" },
+    trustStrip: true,
+    inlineCtaAfter: 3,
+    sections: [
+      {
+        heading: "The northern circuit in a nutshell",
+        paragraphs: [
+          "Most Tanzania safaris run through four headline parks in the north, each with its own character: Tarangire for its elephants and baobabs, Lake Manyara for its forest, flamingos and tree-climbing lions, the Ngorongoro Crater for its astonishing density of wildlife, and the vast Serengeti for big cats and the Migration.",
+          "You can sample these over a short trip or string them together over a week or more. The longer you go, the deeper into the Serengeti you reach — which is where the Migration and the best big-cat action usually are.",
+        ],
+        table: {
+          caption: "The four northern parks at a glance.",
+          headers: ["Park", "Famous for", "Good for"],
+          rows: [
+            ["Tarangire", "Elephant herds, baobab trees", "Dry-season game, fewer crowds"],
+            ["Lake Manyara", "Flamingos, tree-climbing lions", "A scenic half/full day"],
+            ["Ngorongoro", "Big Five in a crater", "Guaranteed density, one epic day"],
+            ["Serengeti", "Big cats, the Migration", "The main event — give it time"],
+          ],
+        },
+      },
+      {
+        heading: "Follow the Great Migration",
+        paragraphs: [
+          "The Great Migration isn't a single event you can miss — it's a continuous, year-round loop of around two million wildebeest and zebra around the Serengeti–Mara ecosystem. The question isn't whether you'll see it, but where the herds will be when you travel.",
+          "Calving happens in the southern Serengeti and Ndutu around January–February; the herds move north and west through the middle of the year; and the dramatic Mara River crossings happen in the north around July–September.",
+        ],
+        diagram: "migration-map",
+      },
+      {
+        heading: "When to go",
+        paragraphs: [
+          "Tanzania is a year-round destination, but the dry season — June to October — offers the easiest game viewing, as thinner vegetation and shrinking water sources concentrate animals and make them easier to spot. The green season (November to May) is lush, quieter and cheaper, with the calving spectacle as its highlight.",
+          "We break the timing down in detail in our migration and best-time guides.",
+        ],
+      },
+      {
+        heading: "What a safari day feels like",
+        paragraphs: [
+          "Game drives are timed around dawn and dusk, when animals are active and the light is magical, with the hot middle of the day for resting. You travel in a 4x4 with a pop-up roof, your guide reading tracks and radioing sightings, with picnic lunches or returns to camp in between.",
+        ],
+        diagram: "safari-day",
+      },
+      {
+        heading: "What it costs",
+        paragraphs: [
+          "Safari prices are driven by park fees (which are significant and fixed), your style of accommodation, the season, and your group size. Like Kilimanjaro, a large chunk is non-negotiable, so very cheap safaris usually mean rushed routes or thin service. Our safaris span budget to comfort tiers — tell us your budget and we'll match it honestly.",
+        ],
+      },
+      {
+        heading: "The Big Five and beyond",
+        paragraphs: [
+          "Northern Tanzania is one of the best places on the planet to see the Big Five — lion, leopard, elephant, buffalo and rhino — with the Ngorongoro Crater offering perhaps the single best chance of a clean sweep, including the rare black rhino. Beyond them you'll meet cheetah, giraffe, hippo, vast herds of plains game and hundreds of bird species.",
+        ],
+      },
+      {
+        heading: "Planning yours with Trust Tours",
+        paragraphs: [
+          "We're an Arusha-based, licensed operator (TALA Class A, No. 014216) running our own vehicles and guides — the people who actually drive you are part of our team. Browse our safaris below, or message Ombeni with your dates, budget and must-sees and we'll design the route around you.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How many days do you need for a Tanzania safari?",
+        answer:
+          "Three to four days gives a great taste of the nearer parks; five to seven days lets you reach the Serengeti properly and follow the Migration; eight or more allows a relaxed, in-depth trip. More days mean deeper access and better sightings.",
+      },
+      {
+        question: "Will I see the Big Five?",
+        answer:
+          "Very likely across a northern-circuit safari, especially with the Ngorongoro Crater included — it offers one of the best chances of seeing all five, including the elusive black rhino. Nothing in nature is guaranteed, but the odds here are excellent.",
+      },
+      {
+        question: "Is a Tanzania safari safe?",
+        answer:
+          "Yes. You're with an experienced guide at all times, viewing wildlife from a vehicle, and the parks are well managed. Follow your guide's instructions and a safari is a very safe way to experience wild Africa.",
+      },
+    ],
+    relatedGuides: [
+      "best-time-great-migration",
+      "serengeti-guide",
+      "ngorongoro-crater-guide",
+      "how-much-tanzania-safari-cost",
+      "what-to-expect-on-safari",
+    ],
+    relatedPackages: [
+      "7-day-great-migration-safari",
+      "5-day-northern-safari",
+      "8-day-great-migration-safari",
+    ],
+  },
+
+  {
+    slug: "best-time-great-migration",
+    title: "Where Is the Great Migration Each Month?",
+    topic: "Safari",
+    excerpt:
+      "A month-by-month guide to the wildebeest migration — calving in the south, the Mara River crossings in the north, and everything in between.",
+    updated: "2026-06-20",
+    readMinutes: 8,
+    keyTakeaway:
+      "The Great Migration moves in a year-round loop. Calving is in the southern Serengeti and Ndutu in January–February; the herds drift north and west from March to June; the famous Mara River crossings happen in the north around July–September; and they return south from October to December. Plan your dates around the part of the cycle you most want to see.",
+    intro:
+      "There's a myth that you can 'miss' the Great Migration. You can't — the herds are always somewhere in the Serengeti–Mara ecosystem, moving in a great clockwise loop driven by the rains. What changes month to month is where they are and what they're doing. Here's the cycle, so you can time your safari for the spectacle you most want.",
+    primaryCta: { label: "See our migration safaris", href: "/safaris" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "The migration is a loop, not a date",
+        paragraphs: [
+          "Around two million wildebeest, plus zebra and gazelle, follow fresh grass around the ecosystem in a continuous cycle. Picture a giant clock: wherever the calendar lands, the herds are at a different point on the loop.",
+        ],
+        diagram: "migration-map",
+      },
+      {
+        heading: "Month by month",
+        table: {
+          caption: "Where to find the herds through the year (weather shifts timings slightly each season).",
+          headers: ["Months", "Where", "The spectacle"],
+          rows: [
+            ["Jan–Feb", "Southern Serengeti & Ndutu", "Calving — thousands of births, big predator action"],
+            ["Mar–May", "Central Serengeti, moving north", "Massing columns; quieter green season"],
+            ["Jun–Jul", "Western corridor & Grumeti", "Building herds, early river drama"],
+            ["Aug–Sep", "Northern Serengeti & Mara", "Mara River crossings — the iconic scenes"],
+            ["Oct–Dec", "Returning south", "Long columns heading back to calving grounds"],
+          ],
+        },
+      },
+      {
+        heading: "Calving season (Jan–Feb)",
+        paragraphs: [
+          "In the south, hundreds of thousands of calves are born within a few weeks. It's one of nature's great events — and because newborns draw lions, cheetah and hyena, the predator sightings are extraordinary. It's also low season, so it's quieter and better value than the crossings.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Want drama without the August crowds? Calving season (Jan–Feb) in Ndutu delivers nonstop births and predator action at a fraction of the peak-season bustle.",
+        },
+      },
+      {
+        heading: "The Mara River crossings (Jul–Sep)",
+        paragraphs: [
+          "The crossings are the migration's most famous moment: huge herds plunging through crocodile-filled rivers in the north. They're unforgettable, but unpredictable and busy — you need time, patience and a bit of luck, since the herds cross when they choose. A few days in the right area maximises your chances.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the best time to see the Great Migration?",
+        answer:
+          "It depends what you want. For river crossings, aim for July–September in the north. For calving and predator action, January–February in the south. The herds are present year-round; only the location and the spectacle change.",
+      },
+      {
+        question: "Can you guarantee seeing a river crossing?",
+        answer:
+          "No honest operator can — the wildebeest cross when conditions move them, not on a schedule. Travelling in the crossing season, to the right area, with a few days' flexibility, gives you the best possible chance.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "calving-season-guide",
+      "serengeti-guide",
+      "how-much-tanzania-safari-cost",
+    ],
+    relatedPackages: [
+      "7-day-great-migration-safari",
+      "8-day-great-migration-safari",
+      "10-day-serengeti-calving-safari",
+    ],
+  },
+
+  {
+    slug: "serengeti-guide",
+    title: "Serengeti National Park: A Visitor's Guide",
+    topic: "Safari",
+    excerpt:
+      "Tanzania's flagship park — endless plains, the Great Migration and the finest big-cat viewing in Africa.",
+    updated: "2026-06-20",
+    readMinutes: 8,
+    keyTakeaway:
+      "The Serengeti is Tanzania's largest and most famous national park — roughly 14,750 km² of plains, woodland and rivers. It hosts the Great Migration year-round and offers arguably Africa's best big-cat viewing. Different regions shine in different seasons, so where you stay should follow where the herds and the action are.",
+    intro:
+      "The name means 'endless plains' in Maasai, and that's exactly what the Serengeti delivers — a horizon-to-horizon grassland that hosts the greatest concentration of large mammals on Earth. It's the heart of any northern Tanzania safari and the stage for the Great Migration. Here's how to make the most of it.",
+    primaryCta: { label: "See Serengeti safaris", href: "/safaris" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "What makes the Serengeti special",
+        paragraphs: [
+          "At around 14,750 km², the Serengeti is vast and varied — short-grass plains in the south, wooded hills and rocky kopjes in the centre, and rivers in the north and west. That variety supports enormous numbers of lion, cheetah and leopard, alongside elephant, giraffe, hippo and endless plains game.",
+          "It's one of the few places where you can watch a cheetah hunt across open grassland or find a leopard draped in a riverine tree — the big-cat viewing is world-class.",
+        ],
+      },
+      {
+        heading: "Where to go, and when",
+        paragraphs: [
+          "The Serengeti's regions take turns in the spotlight as the Migration moves through. Matching your base to the season is the single biggest factor in a great Serengeti safari.",
+        ],
+        diagram: "migration-map",
+      },
+      {
+        heading: "Regions in brief",
+        bullets: [
+          "Southern Serengeti & Ndutu — calving season (Jan–Feb), open predator-rich plains",
+          "Central Serengeti (Seronera) — superb year-round big-cat viewing, always worth it",
+          "Western Corridor — Grumeti river drama in the middle of the year",
+          "Northern Serengeti — the Mara River crossings (Jul–Sep), remote and quieter",
+        ],
+        callout: {
+          tone: "info",
+          text: "Short on time? The central Seronera area has excellent resident wildlife all year, so it's the safest single base if your dates don't line up with the herds.",
+        },
+      },
+      {
+        heading: "Getting there",
+        paragraphs: [
+          "Most safaris drive into the Serengeti via the Ngorongoro highlands, taking in the crater and Olduvai Gorge on the way — a spectacular overland route. For the far north or to save time, you can fly into one of the park's airstrips and start your game drives immediately. We can plan either approach.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How many days should I spend in the Serengeti?",
+        answer:
+          "At least two full days to do it justice, and three or more if you're following the Migration or visiting the remote north. The park is huge, so more time means deeper access and better sightings.",
+      },
+      {
+        question: "Is the Serengeti good year-round?",
+        answer:
+          "Yes. The Migration is always somewhere in the ecosystem, and the central region has outstanding resident wildlife in every season. The best region to base in simply shifts through the year.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "best-time-great-migration",
+      "ngorongoro-crater-guide",
+      "calving-season-guide",
+    ],
+    relatedPackages: [
+      "7-day-great-migration-safari",
+      "5-day-northern-safari",
+      "6-day-northern-safari",
+    ],
+  },
+
+  {
+    slug: "ngorongoro-crater-guide",
+    title: "Ngorongoro Crater: A Visitor's Guide",
+    topic: "Safari",
+    excerpt:
+      "The world's largest intact volcanic caldera — and possibly the best single day of wildlife viewing anywhere on Earth.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "The Ngorongoro Crater is a vast, intact volcanic caldera around 600 m deep with a 260 km² floor, home to an exceptional density of wildlife including all of the Big Five. It offers perhaps the best chance in Africa to see lion, elephant, buffalo and the rare black rhino in a single day, making it a highlight of almost every northern Tanzania safari.",
+    intro:
+      "If the Serengeti is about scale, the Ngorongoro Crater is about density. This collapsed volcano forms a natural amphitheatre whose grassy floor, lake and forest support an astonishing concentration of animals year-round. For many travellers, a day in the crater is the single most memorable day of their safari. Here's what to expect.",
+    primaryCta: { label: "See safaris with Ngorongoro", href: "/safaris" },
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "A wildlife amphitheatre",
+        paragraphs: [
+          "The crater is the world's largest intact volcanic caldera — roughly 600 m deep, with a floor of about 260 km². Because its walls are steep, much of the wildlife stays year-round, giving you an unusually reliable, concentrated spectacle: large lion prides, big elephant bulls, buffalo, hippo, flamingo-dotted soda lakes and the rare black rhino.",
+        ],
+      },
+      {
+        heading: "Your best shot at the Big Five",
+        paragraphs: [
+          "Few places offer a better chance to see all of the Big Five in one day. Lion, elephant and buffalo are common, leopard live in the rim forests, and the crater is one of the most reliable places in Tanzania to spot the critically endangered black rhino out on the floor.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Descend early. Gates open at dawn, and arriving first means soft light, active predators and the floor to yourself before the day's vehicles arrive.",
+        },
+      },
+      {
+        heading: "How a crater visit works",
+        paragraphs: [
+          "You stay on the forested rim (or nearby) and descend a steep access road to the floor for a half or full day of game driving, usually with a picnic lunch by the hippo pool. Most safaris pair the crater with Tarangire and the Serengeti, as it sits right on the route between them.",
+        ],
+      },
+      {
+        heading: "More than wildlife",
+        paragraphs: [
+          "The wider Ngorongoro Conservation Area is unusual in that Maasai herders live and graze cattle alongside the wildlife, and nearby Olduvai Gorge is one of the most important early-human fossil sites in the world. Many safaris add a cultural visit or a stop at Olduvai on the way through.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is the Ngorongoro Crater worth it?",
+        answer:
+          "Absolutely. The density and variety of wildlife — including a strong chance of the Big Five in a single day — make it one of the highlights of any Tanzania safari, and a near-essential stop on the northern circuit.",
+      },
+      {
+        question: "How long do you spend in the crater?",
+        answer:
+          "Typically a half to full day on the crater floor. Game viewing is concentrated, so even a half day is rewarding, but a full day lets you explore the different habitats and maximise rhino chances.",
+      },
+      {
+        question: "Can you see rhino in Ngorongoro?",
+        answer:
+          "Yes — the crater is one of the most reliable places in Tanzania to see the rare black rhino, usually out on the open floor. Binoculars help, as they're often at a distance.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "serengeti-guide",
+      "tarangire-guide",
+      "what-to-expect-on-safari",
+    ],
+    relatedPackages: [
+      "2-day-tarangire-ngorongoro",
+      "3-day-safari-tarangire-manyara-ngorongoro",
+      "5-day-northern-safari",
+    ],
+  },
+
+  {
+    slug: "tarangire-guide",
+    title: "Tarangire National Park: A Visitor's Guide",
+    topic: "Safari",
+    excerpt:
+      "Giant baobabs, huge elephant herds and a fraction of the crowds — northern Tanzania's underrated gem.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Tarangire is famous for its enormous elephant herds and ancient baobab trees, set along the life-giving Tarangire River. It's at its best in the dry season (June–October), when wildlife concentrates around the river, and it's far quieter than the Serengeti or Ngorongoro — making it a rewarding first or last stop on a northern safari.",
+    intro:
+      "Often overlooked in the rush to the Serengeti, Tarangire rewards everyone who stops. It has the highest concentration of elephants in northern Tanzania, a landscape studded with giant baobab trees, and a river that draws wildlife from miles around in the dry months — all with a fraction of the visitors. Here's why it's worth a day or two.",
+    primaryCta: { label: "See safaris with Tarangire", href: "/safaris" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Elephants and baobabs",
+        paragraphs: [
+          "Tarangire is elephant country — herds here are among the largest in Tanzania, and in the dry season you can watch dozens at a time around the river. The park's signature look comes from its ancient baobabs, the swollen 'upside-down trees' that can live for over a thousand years and give the landscape a primeval feel.",
+        ],
+      },
+      {
+        heading: "When to visit",
+        paragraphs: [
+          "Tarangire shines in the dry season, roughly June to October, when the Tarangire River becomes a magnet and animals concentrate around it — elephant, buffalo, zebra, wildebeest, lion and more. In the green season wildlife disperses and it's quieter, though the birdlife is superb year-round, with hundreds of species recorded.",
+        ],
+        callout: {
+          tone: "info",
+          text: "Tarangire makes an excellent first day of a northern safari — a gentler, quieter introduction before the bigger names, and a great place to warm up your camera.",
+        },
+      },
+      {
+        heading: "What you'll see",
+        bullets: [
+          "The biggest elephant herds in the region",
+          "Lion, and occasionally tree-climbing pythons and leopard",
+          "Giraffe, zebra, wildebeest, eland and other plains game",
+          "Outstanding birdlife — a paradise for birdwatchers",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Tarangire worth visiting?",
+        answer:
+          "Yes — especially in the dry season. Its elephant herds, baobab scenery and low crowds make it a standout, and it pairs naturally with Lake Manyara and Ngorongoro on the northern circuit.",
+      },
+      {
+        question: "How long do you need in Tarangire?",
+        answer:
+          "A half to full day suits most itineraries, though keen photographers and birders happily spend longer. It's often combined with nearby parks in a single trip.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "lake-manyara-guide",
+      "ngorongoro-crater-guide",
+      "what-to-expect-on-safari",
+    ],
+    relatedPackages: [
+      "3-day-safari-tarangire-manyara-ngorongoro",
+      "5-day-northern-safari",
+      "6-day-northern-safari",
+    ],
+  },
+
+  {
+    slug: "lake-manyara-guide",
+    title: "Lake Manyara National Park: A Visitor's Guide",
+    topic: "Safari",
+    excerpt:
+      "Tree-climbing lions, flocks of flamingos and lush groundwater forest — a compact, scenic park beneath the Rift Valley wall.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Lake Manyara is a compact, beautiful park beneath the Rift Valley escarpment, known for its groundwater forest, large troops of baboons, flamingos on the soda lake and famous tree-climbing lions. It makes an excellent half-day stop on the way to or from Ngorongoro and the Serengeti.",
+    intro:
+      "Small but lush, Lake Manyara packs a surprising variety into a short visit. Pressed between the dramatic Rift Valley wall and a shallow soda lake, it shifts from dense groundwater forest to open floodplain in a matter of minutes — and it's one of the few places where lions famously lounge in the trees. It's a perfect scenic interlude on a northern safari.",
+    primaryCta: { label: "See safaris with Lake Manyara", href: "/safaris" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "A lot in a little space",
+        paragraphs: [
+          "Manyara's charm is its variety. You enter through shady groundwater forest alive with blue monkeys and big troops of baboons, then emerge to open grassland and the lakeshore, where elephant, giraffe, buffalo, hippo and zebra gather. The backdrop of the Rift Valley escarpment makes it one of the most scenic parks in the north.",
+        ],
+      },
+      {
+        heading: "Tree-climbing lions and flamingos",
+        paragraphs: [
+          "Manyara is famous for two sights: lions that rest up in the branches of acacia trees — unusual behaviour seen in only a few places — and, when conditions are right, great pink drifts of flamingos and other waterbirds on the soda lake. Birdlife in general is exceptional here.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Tree-climbing lions and big flamingo flocks are special but not guaranteed — both depend on the day and the season. Treat them as a bonus on top of a lovely, easy park.",
+        },
+      },
+      {
+        heading: "How it fits your trip",
+        paragraphs: [
+          "Lake Manyara sits right on the road between Tarangire and Ngorongoro, so it's usually visited as a half or full day en route, rather than as a destination in itself. It's a gentle, rewarding way to break the drive and add another habitat to your safari.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Lake Manyara worth visiting?",
+        answer:
+          "Yes, as part of a wider northern circuit. It's scenic and varied, with forest, lake and escarpment in one compact park, and the chance of tree-climbing lions and flamingos. It's usually a half-day stop rather than a standalone trip.",
+      },
+      {
+        question: "Can you always see flamingos at Lake Manyara?",
+        answer:
+          "No — flamingo numbers vary hugely with water levels and season. Sometimes the lake is pink with them; other times they're sparse. Their presence is a seasonal bonus, not a certainty.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "tarangire-guide",
+      "ngorongoro-crater-guide",
+      "what-to-expect-on-safari",
+    ],
+    relatedPackages: [
+      "3-day-safari-tarangire-manyara-ngorongoro",
+      "9-day-northern-tanzania-safari",
+      "6-day-northern-safari",
+    ],
+  },
+
+  {
+    slug: "how-much-tanzania-safari-cost",
+    title: "How Much Does a Tanzania Safari Cost?",
+    topic: "Safari",
+    excerpt:
+      "What drives the price, what's included, and why a bargain safari can cost you the experience.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "Tanzania safari prices are driven mainly by park fees (high and fixed), your accommodation style, the season and your group size. A large share of the cost is non-negotiable, so very cheap safaris usually mean rushed routes, long drives and minimal service. Our safaris span budget to comfort tiers to fit different budgets without cutting the things that matter.",
+    intro:
+      "Safari pricing can look confusing — quotes for the 'same' trip vary widely — but it comes down to a few clear factors. Once you understand them, it's easy to see where your money goes and why the cheapest quote isn't always the trip you actually want. Here's the honest breakdown.",
+    primaryCta: { label: "See safaris across every budget", href: "/safaris" },
+    trustStrip: true,
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "What drives the price",
+        paragraphs: [
+          "Four things move a safari's cost more than anything else. Park and conservation fees are set by the authorities and are substantial — charged per person, per day — and they're the same no matter how budget your trip is. The rest is accommodation, season and group size.",
+        ],
+        table: {
+          caption: "The main levers on a safari price.",
+          headers: ["Factor", "Effect on price"],
+          rows: [
+            ["Park fees", "High and fixed — a big share of any safari, every day"],
+            ["Accommodation", "Budget camping → mid lodge → luxury can multiply the cost"],
+            ["Season", "Peak (Jun–Oct, Dec) costs more than green season"],
+            ["Group size", "More people share fixed vehicle/guide costs — cheaper per head"],
+            ["Days & parks", "More days and remoter parks add fees and logistics"],
+          ],
+        },
+      },
+      {
+        heading: "What's usually included",
+        bullets: [
+          "Included: park fees, 4x4 with pop-up roof and guide, accommodation, meals as specified, drinking water on drives, transfers",
+          "Usually extra: international flights, visa, travel insurance, tips, drinks and personal items",
+          "Optional add-ons: balloon safaris, cultural visits, fly-in segments and private vehicles",
+        ],
+        callout: {
+          tone: "info",
+          text: "Tipping your guide (and camp staff) is customary and sits outside the safari price. We'll suggest fair amounts so you can budget for it in advance.",
+        },
+      },
+      {
+        heading: "Why very cheap is a false economy",
+        paragraphs: [
+          "Because park fees are fixed, the only way to hit a rock-bottom price is to cut elsewhere: cramming long drives to spend fewer nights inside the parks, packing vehicles full, using distant budget accommodation, or rushing the route. You can end up spending more time driving than watching wildlife.",
+          "A fair price buys you time in the right places with an experienced guide — which is the whole point of a safari.",
+        ],
+      },
+      {
+        heading: "Getting the best value",
+        bullets: [
+          "Travel in a small group to share fixed costs",
+          "Consider green-season travel for lower rates and lush scenery",
+          "Be clear about your priorities so the route is built around them",
+          "Choose the accommodation tier that fits — we run budget to comfort",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Why are Tanzania safaris expensive?",
+        answer:
+          "Mainly because national park and conservation fees are high and charged per person per day, on top of the cost of a guide, 4x4, accommodation and logistics. These fixed costs apply to every safari regardless of how budget the trip is.",
+      },
+      {
+        question: "What's the cheapest way to do a safari?",
+        answer:
+          "Budget camping safaris in a shared group during the green season are the most affordable. We can build a cost-effective trip that still gives you real time in the parks — the key is not cutting so deep that you spend the trip driving.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "best-time-great-migration",
+      "what-to-expect-on-safari",
+      "tanzania-vs-kenya-safari",
+    ],
+    relatedPackages: [
+      "5-day-northern-safari",
+      "3-day-safari-tarangire-manyara-ngorongoro",
+      "7-day-great-migration-safari",
+    ],
+  },
+
+  {
+    slug: "what-to-expect-on-safari",
+    title: "What to Expect on a Tanzania Safari",
+    topic: "Safari",
+    excerpt:
+      "The rhythm of a safari day, what the vehicles and lodges are like, and how game drives actually work.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "A safari day is built around dawn and dusk game drives, when wildlife is most active, with the hot middle of the day for resting. You travel in a 4x4 with a pop-up roof and a guide, staying in anything from tented camps to lodges. It's comfortable, awe-inspiring and surprisingly restful — not roughing it.",
+    intro:
+      "If you've never been, a safari can be hard to picture. Is it luxurious or rugged? Busy or relaxing? The honest answer is that it's wonderfully simple: you wake early, head out to find animals while it's cool, and rest when they do. Here's what a day really looks like, and what to expect from the vehicles, food and lodges.",
+    primaryCta: { label: "Find your safari", href: "/safaris" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "The rhythm of a safari day",
+        paragraphs: [
+          "Game viewing follows the animals, and the animals follow the temperature. You'll be up before dawn for the morning drive — the best light and the most active predators — then return for brunch and rest through the heat, before heading out again as the day cools. It's an early start, but you settle into the rhythm fast.",
+        ],
+        diagram: "safari-day",
+      },
+      {
+        heading: "The vehicle and your guide",
+        paragraphs: [
+          "You'll explore in a sturdy 4x4 with a pop-up roof, so you can stand and get clear views and photographs. Your guide is the heart of the experience — reading tracks, spotting camouflaged animals you'd never see, explaining behaviour, and staying in radio contact with other guides to find the best sightings. A great guide turns a good safari into an unforgettable one.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Bring binoculars and a zoom lens if you can. So much of a safari happens at a distance, and they transform what you actually see.",
+        },
+      },
+      {
+        heading: "Where you'll stay and eat",
+        paragraphs: [
+          "Accommodation ranges from comfortable tented camps — proper beds and en-suite bathrooms under canvas — to lodges with pools and views. 'Camping' on safari is far more comfortable than it sounds. Meals are generous and varied, often a cooked breakfast, picnic or buffet lunch, and a hearty dinner, with dietary needs easily catered for.",
+        ],
+      },
+      {
+        heading: "Practical bits",
+        bullets: [
+          "Drives can be bumpy — it's affectionately called the 'African massage'",
+          "Dress in neutral layers: cool mornings warm up fast",
+          "Wifi and signal are patchy in the parks — embrace the disconnection",
+          "You view wildlife from the vehicle and follow your guide's lead at all times",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is a safari comfortable or roughing it?",
+        answer:
+          "Far more comfortable than most people expect. Even budget tented camps have real beds and bathrooms, meals are plentiful, and you spend the days in a well-equipped 4x4. You can make it as comfortable or as adventurous as you like.",
+      },
+      {
+        question: "How early do safari days start?",
+        answer:
+          "Usually before dawn, around 5:30–6:00, to catch the best light and the most active wildlife. You rest during the hot midday hours, so the early start is balanced by downtime later.",
+      },
+      {
+        question: "What should I wear on safari?",
+        answer:
+          "Neutral, earth-toned layers — mornings are cool and midday is hot. Avoid bright colours and, on walking activities, very dark blue and black. A hat, sunglasses and sunscreen are essentials.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "tanzania-safari-packing-list",
+      "how-much-tanzania-safari-cost",
+      "best-time-great-migration",
+    ],
+    relatedPackages: [
+      "5-day-northern-safari",
+      "7-day-great-migration-safari",
+      "4-day-arusha-tarangire-manyara-ngorongoro",
+    ],
+  },
+
+  {
+    slug: "calving-season-guide",
+    title: "Calving Season: The Migration's Best-Kept Secret",
+    topic: "Safari",
+    excerpt:
+      "January and February in the southern Serengeti — hundreds of thousands of births, nonstop predator action, and far fewer crowds.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Calving season runs roughly January to February in the southern Serengeti and Ndutu, when hundreds of thousands of wildebeest give birth within a few weeks. The abundance of newborns draws intense predator activity, making it one of the most dramatic — and least crowded — times to witness the Great Migration.",
+    intro:
+      "Everyone's heard of the Mara River crossings, but ask a safari guide for their secret favourite and many will say calving season. For a few weeks at the start of the year, the southern Serengeti becomes a vast nursery, and the sheer concentration of new life — and the predators it attracts — makes for some of the most extraordinary wildlife viewing anywhere. Here's why it deserves a spot on your list.",
+    primaryCta: { label: "See calving-season safaris", href: "/safaris" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "A nursery on the plains",
+        paragraphs: [
+          "Around January and February, the herds gather on the mineral-rich short-grass plains of the southern Serengeti and Ndutu to give birth. Hundreds of thousands of calves arrive in a tight window — wildebeest can synchronise births so that the plains are suddenly full of wobbly newborns finding their feet within minutes.",
+        ],
+        diagram: "migration-map",
+      },
+      {
+        heading: "Why the predators love it",
+        paragraphs: [
+          "All that vulnerable young prey draws lion, cheetah, hyena and more, so calving season offers some of the most concentrated predator action of the year. It's nature at its most raw and dramatic — and, because the herds are gathered on open plains, the sightings are often easier and closer than at other times.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Calving season is low season for crowds and prices but high season for drama — arguably the best-value way to see the Migration at its most intense.",
+        },
+      },
+      {
+        heading: "Planning a calving safari",
+        paragraphs: [
+          "Calving is centred on Ndutu and the southern Serengeti, so your safari should be based there in January–February. Because it's the green season, the landscapes are lush and photogenic, and it pairs beautifully with the Ngorongoro Crater nearby. We run several calving-focused safaris — message us for the best dates.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "When is calving season in the Serengeti?",
+        answer:
+          "Roughly January to February, in the southern Serengeti and the Ndutu area. Exact timing shifts a little each year with the rains, but the peak is usually within those weeks.",
+      },
+      {
+        question: "Is calving season better than the river crossings?",
+        answer:
+          "It's different. The crossings (Jul–Sep) are iconic but busy and unpredictable. Calving (Jan–Feb) offers nonstop births and predator action on open plains, with fewer crowds and lower prices. Many guides quietly prefer it.",
+      },
+    ],
+    relatedGuides: [
+      "best-time-great-migration",
+      "serengeti-guide",
+      "tanzania-safari-guide",
+      "ngorongoro-crater-guide",
+    ],
+    relatedPackages: [
+      "6-day-calving-safari",
+      "5-day-ndutu-migration-safari",
+      "10-day-serengeti-calving-safari",
+    ],
+  },
+
+  {
+    slug: "tanzania-vs-kenya-safari",
+    title: "Tanzania vs Kenya: Which Safari Is Right for You?",
+    topic: "Safari",
+    excerpt:
+      "Two of Africa's greatest safari countries compared — scenery, wildlife, crowds, cost and the Migration.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "Tanzania and Kenya share the same Migration ecosystem and both offer world-class safaris. Tanzania has the larger, wilder parks (Serengeti, Ngorongoro) and a year-round Migration; Kenya's Masai Mara is more compact with famously dense big-cat viewing and the dramatic crossings in peak season. Many travellers find combining both — or a Tanzania-led trip — gives the best of each.",
+    intro:
+      "Tanzania and Kenya are the two titans of East African safari, and travellers often agonise over which to choose. The good news is there's no wrong answer — they share the same great ecosystem and both deliver superb wildlife. But they do have different characters, and the right pick depends on what you want. Here's an honest comparison.",
+    primaryCta: { label: "See our Tanzania & Kenya safaris", href: "/safaris" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Same ecosystem, two characters",
+        paragraphs: [
+          "The Serengeti (Tanzania) and the Masai Mara (Kenya) are two halves of one ecosystem, and the Great Migration flows between them. Tanzania's parks are larger, wilder and feel more remote; Kenya's Mara is smaller and more concentrated, which can mean superb, close-up big-cat sightings — and more vehicles at a kill.",
+        ],
+        table: {
+          caption: "Tanzania and Kenya, side by side.",
+          headers: ["", "Tanzania", "Kenya"],
+          rows: [
+            ["Headline park", "Serengeti — vast & wild", "Masai Mara — compact & dense"],
+            ["The Migration", "Year-round in the ecosystem", "Crossings Jul–Oct in the Mara"],
+            ["Crowds", "More space, can feel remote", "Excellent density, busier hotspots"],
+            ["Also famous for", "Ngorongoro Crater, Kilimanjaro", "Amboseli elephants, Rift lakes"],
+            ["Crater / Big Five", "Ngorongoro is unmatched", "Strong, spread across reserves"],
+          ],
+        },
+      },
+      {
+        heading: "Choose Tanzania if…",
+        bullets: [
+          "You want the biggest, wildest parks and a sense of space",
+          "You want the Ngorongoro Crater and a year-round Migration",
+          "You'd like to combine safari with Kilimanjaro or Zanzibar",
+          "Calving season (Jan–Feb) appeals as much as the crossings",
+        ],
+      },
+      {
+        heading: "Choose Kenya if…",
+        bullets: [
+          "You want famously dense, close-up big-cat viewing in the Mara",
+          "Your priority is the river crossings in the classic Mara setting",
+          "You're short on time and want a compact, action-packed trip",
+          "Amboseli's elephants beneath Kilimanjaro are on your list",
+        ],
+        callout: {
+          tone: "info",
+          text: "Can't choose? You don't have to. We run trips that combine both countries — and even bush-and-beach itineraries adding Zanzibar — so you can experience the best of each.",
+        },
+      },
+      {
+        heading: "Our take",
+        paragraphs: [
+          "As a Tanzania-based operator we're naturally biased, but here's our honest view: Tanzania's scale, the Ngorongoro Crater and the year-round Migration make it our pick for a first East African safari, with Zanzibar and Kilimanjaro easy to add. If the Mara crossings are your dream, a combined trip gives you both. Tell us your priorities and we'll build the right route.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Tanzania or Kenya better for safari?",
+        answer:
+          "Both are excellent and share the same Migration ecosystem. Tanzania offers larger, wilder parks and the Ngorongoro Crater; Kenya's Masai Mara offers compact, dense viewing and famous crossings. The 'better' choice depends on your priorities — and you can combine both.",
+      },
+      {
+        question: "Can you visit both Tanzania and Kenya in one trip?",
+        answer:
+          "Yes. Combined itineraries are popular and we run several, letting you experience the Serengeti and the Masai Mara — and add Zanzibar's beaches — in a single journey.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "best-time-great-migration",
+      "how-much-tanzania-safari-cost",
+      "serengeti-guide",
+    ],
+    relatedPackages: [
+      "10-day-kenya-safari",
+      "9-day-beach-city-bush",
+      "7-day-great-migration-safari",
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────
+  // WAVE 3 — ZANZIBAR HUB
+  // ───────────────────────────────────────────────────────────────────
+  {
+    slug: "zanzibar-travel-guide",
+    title: "Zanzibar: The Complete Travel Guide",
+    topic: "Zanzibar",
+    excerpt:
+      "Spice-island history, powder-white beaches and turquoise water — how to plan the perfect end to a Tanzania trip.",
+    updated: "2026-06-20",
+    readMinutes: 9,
+    keyTakeaway:
+      "Zanzibar is a tropical archipelago off Tanzania's coast, famous for white-sand beaches, the historic UNESCO-listed Stone Town, and its spice and Swahili heritage. The north (Nungwi, Kendwa) has the best swimming beaches, the east is for kitesurfing and lagoons, and the dry seasons (June–October and December–February) are ideal. It's the perfect beach finale to a safari or climb.",
+    intro:
+      "After the dust of a safari or the effort of Kilimanjaro, there's no better reward than Zanzibar. This Indian Ocean archipelago blends barefoot beach luxury with a thousand years of trading history — winding stone alleys, spice farms, dhow sails on the horizon. Here's everything you need to plan it, from where to stay to when to go.",
+    primaryCta: { label: "Browse Zanzibar trips", href: "/zanzibar" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "Where everything is",
+        paragraphs: [
+          "Zanzibar's main island (Unguja) is small enough to cross in a couple of hours, but each coast has a different character. Knowing the lay of the land is the key to choosing where to base yourself.",
+        ],
+        diagram: "zanzibar-map",
+      },
+      {
+        heading: "Choosing your beach",
+        paragraphs: [
+          "The north — Nungwi and Kendwa — has the island's best swimming beaches, with deep water at all tides and a lively scene. The east coast (Paje, Jambiani) has dreamy turquoise lagoons and is the kitesurfing capital, though low tide pulls the sea far out. The west holds Stone Town and spectacular sunsets.",
+        ],
+        table: {
+          caption: "Zanzibar's coasts at a glance.",
+          headers: ["Area", "Best for", "Note"],
+          rows: [
+            ["Nungwi / Kendwa (N)", "Swimming, nightlife, boat trips", "Least affected by tides"],
+            ["Paje / Jambiani (E)", "Kitesurfing, lagoons, calm vibe", "Big tidal range"],
+            ["Stone Town (W)", "History, culture, sunsets", "Not a beach base"],
+            ["Mnemba area (NE)", "Snorkelling & diving", "Atoll offshore"],
+          ],
+        },
+      },
+      {
+        heading: "Beyond the beach",
+        paragraphs: [
+          "Zanzibar rewards curiosity. Wander Stone Town's UNESCO-listed maze of coral-stone houses and carved doors; tour a spice farm to taste cloves, vanilla and nutmeg straight from the tree; snorkel the coral gardens of Mnemba; or meet the rare red colobus monkeys in Jozani Forest. We can add any of these to a beach stay.",
+        ],
+      },
+      {
+        heading: "When to go",
+        paragraphs: [
+          "Zanzibar is best in the dry seasons: June to October, and December to February. The long rains (March to May) are the wettest and quietest, with some hotels closing. The island is warm year-round, so it's mainly about avoiding the heaviest rain.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Zanzibar pairs beautifully with a northern safari or a Kilimanjaro climb — bush or mountain first, then unwind on the beach. We build these bush-and-beach trips all the time.",
+        },
+      },
+      {
+        heading: "Practical tips",
+        bullets: [
+          "Zanzibar is a semi-autonomous, predominantly Muslim region — dress modestly away from the beach and in Stone Town",
+          "A short flight or ferry connects it to the mainland and safari circuit",
+          "Tides matter on the east coast — check them if swimming is a priority",
+          "The Swahili food, especially fresh seafood, is a highlight in itself",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How many days should I spend in Zanzibar?",
+        answer:
+          "Three to four nights is a great beach finale to a safari; five to seven lets you combine beach time with Stone Town, a spice tour and snorkelling. Honeymooners and beach-lovers happily stay longer.",
+      },
+      {
+        question: "Which part of Zanzibar is best?",
+        answer:
+          "For swimming and a lively scene, the north (Nungwi/Kendwa). For lagoons and kitesurfing, the east (Paje/Jambiani). For history and culture, base near Stone Town. Many trips combine Stone Town with a northern or eastern beach.",
+      },
+      {
+        question: "Is Zanzibar safe for tourists?",
+        answer:
+          "Yes. Zanzibar is a popular, welcoming destination. Take normal precautions, dress respectfully given local customs, and you'll find it relaxed and friendly.",
+      },
+    ],
+    relatedGuides: [
+      "best-beaches-zanzibar",
+      "stone-town-guide",
+      "things-to-do-zanzibar",
+      "best-time-to-visit-zanzibar",
+    ],
+    relatedPackages: ["5-day-zanzibar-escape", "8-day-zanzibar-tour", "7-day-tanzania-zanzibar"],
+  },
+
+  {
+    slug: "best-beaches-zanzibar",
+    title: "The Best Beaches in Zanzibar",
+    topic: "Zanzibar",
+    excerpt:
+      "From the deep-water swimming of Nungwi to the kitesurf lagoons of Paje — how to pick the right stretch of sand.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Zanzibar's best beaches depend on what you want. Nungwi and Kendwa in the north have the finest swimming and least tidal change; Paje and Jambiani in the east are kitesurfing and lagoon paradises; Matemwe is quiet and close to Mnemba's reefs. Tides shape the experience, so choose your coast to match your priorities.",
+    intro:
+      "'Best beach' on Zanzibar isn't one place — it's the one that fits how you want to spend your days. The biggest factor most people don't expect is the tide: some beaches stay swimmable all day, while others empty out dramatically at low water. Here's how to choose.",
+    primaryCta: { label: "See beach trips", href: "/zanzibar" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Match the beach to your bearings",
+        paragraphs: [
+          "North for swimming, east for lagoons and wind sports, north-east for reefs. Get oriented first, then pick.",
+        ],
+        diagram: "zanzibar-map",
+      },
+      {
+        heading: "The north — Nungwi & Kendwa",
+        paragraphs: [
+          "These are the postcard beaches and the best for swimming, because the tidal range is smaller and the water stays deep enough all day. Nungwi is livelier with bars and boat trips; neighbouring Kendwa is a touch more relaxed and famous for its sunsets and full-moon parties.",
+        ],
+      },
+      {
+        heading: "The east — Paje, Jambiani & Bwejuu",
+        paragraphs: [
+          "The east coast has impossibly turquoise lagoons protected by an offshore reef, and steady winds that make Paje one of the world's great kitesurfing spots. The trade-off is a big tidal range: at low tide the sea retreats far out, revealing sandbars, seaweed farms and starfish — beautiful, but not always swimmable.",
+        ],
+        callout: {
+          tone: "info",
+          text: "On the east coast, a hotel with a pool is worth having for low-tide hours — or simply plan beach swims around the tide tables.",
+        },
+      },
+      {
+        heading: "Quieter corners",
+        bullets: [
+          "Matemwe (NE) — laid-back, with easy access to Mnemba's snorkelling",
+          "Pongwe — sheltered, calm and very peaceful",
+          "Kizimkazi (S) — base for dolphin trips",
+          "Pemba Island — wild, remote and superb for diving, for the adventurous",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Which Zanzibar beach is best for swimming?",
+        answer:
+          "Nungwi and Kendwa in the north, because their smaller tidal range keeps the water deep and swimmable throughout the day. Many east-coast beaches are stunning but go far out at low tide.",
+      },
+      {
+        question: "What is the tide situation in Zanzibar?",
+        answer:
+          "The east coast has a large tidal range, so the sea retreats a long way at low tide; the north is much less affected. If all-day swimming straight off the beach matters to you, the north is the safer bet.",
+      },
+    ],
+    relatedGuides: [
+      "zanzibar-travel-guide",
+      "best-time-to-visit-zanzibar",
+      "things-to-do-zanzibar",
+      "stone-town-guide",
+    ],
+    relatedPackages: ["5-day-zanzibar-escape", "4-day-zanzibar-escape", "8-day-zanzibar-tour"],
+  },
+
+  {
+    slug: "stone-town-guide",
+    title: "Stone Town: A Visitor's Guide",
+    topic: "Zanzibar",
+    excerpt:
+      "Carved doors, spice markets and a thousand years of Swahili history in Zanzibar's UNESCO-listed old city.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Stone Town is the historic heart of Zanzibar and a UNESCO World Heritage Site — a labyrinth of coral-stone buildings, carved wooden doors, bazaars and waterfront history reflecting Swahili, Arab, Indian and European influences. A half to full day exploring it, ideally with a guide, is a highlight of any Zanzibar trip.",
+    intro:
+      "Before the beaches, give Zanzibar's soul a day. Stone Town is a living museum of the Swahili coast — a maze of narrow lanes where the scents of spice and the sea mingle, ornate doors hint at the merchants who once lived behind them, and the call to prayer drifts over rooftops at dusk. Here's how to experience it.",
+    primaryCta: { label: "See trips including Stone Town", href: "/zanzibar" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Why it's special",
+        paragraphs: [
+          "Stone Town earned its UNESCO listing as one of the best-preserved Swahili trading towns in the world. For centuries it was a hub of the spice and, painfully, the slave trade, and that crossroads history shows in its architecture — Arab, Indian, Persian and European influences fused into something unique. Getting lost in its alleys is part of the magic.",
+        ],
+      },
+      {
+        heading: "What to see",
+        bullets: [
+          "The famous carved doors — each one a status symbol of its original owner",
+          "The Old Fort and House of Wonders on the waterfront",
+          "The former slave market and Anglican cathedral, a sobering, important visit",
+          "Darajani Market for spices, fruit and everyday island life",
+          "Forodhani Gardens at dusk for the lively street-food night market",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Go with a local guide for at least the first couple of hours. The lanes are a maze, and the stories behind the doors and buildings bring the place alive in a way wandering alone can't.",
+        },
+      },
+      {
+        heading: "Spice tours and beyond",
+        paragraphs: [
+          "Stone Town is the launch point for Zanzibar's famous spice-farm tours, where you'll see, smell and taste cloves, cinnamon, vanilla and nutmeg growing — the crops that made the island rich. It's also where boats leave for Prison Island and its giant tortoises. Most travellers pair a night or two here with their beach stay.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Stone Town worth visiting?",
+        answer:
+          "Yes — it's the cultural and historical heart of Zanzibar and a UNESCO site. Even a half day of wandering its lanes, seeing the carved doors and visiting the market and waterfront is hugely rewarding.",
+      },
+      {
+        question: "How long do you need in Stone Town?",
+        answer:
+          "A half to full day covers the highlights; a night lets you enjoy the Forodhani night market and a sunset. Many people combine one or two nights in Stone Town with a beach stay elsewhere on the island.",
+      },
+    ],
+    relatedGuides: [
+      "zanzibar-travel-guide",
+      "things-to-do-zanzibar",
+      "best-beaches-zanzibar",
+      "best-time-to-visit-zanzibar",
+    ],
+    relatedPackages: ["8-day-zanzibar-tour", "4-day-zanzibar-escape", "5-day-zanzibar-escape"],
+  },
+
+  {
+    slug: "things-to-do-zanzibar",
+    title: "Things to Do in Zanzibar (Beyond the Beach)",
+    topic: "Zanzibar",
+    excerpt:
+      "Spice farms, snorkelling at Mnemba, the red colobus of Jozani, sunset dhow cruises and more.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Beyond its beaches, Zanzibar offers spice-farm tours, world-class snorkelling and diving around Mnemba Atoll, the red colobus monkeys of Jozani Forest, historic Stone Town, sunset dhow cruises and dolphin trips. A few well-chosen excursions turn a beach holiday into a richer island experience.",
+    intro:
+      "Zanzibar is more than a beach — though the beaches are wonderful. Between swims, the island offers a surprising range of things to do, from tasting spices on a working farm to snorkelling some of the Indian Ocean's best reefs. Here are the experiences worth building into your trip.",
+    primaryCta: { label: "See Zanzibar trips", href: "/zanzibar" },
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "On the water",
+        bullets: [
+          "Snorkel or dive Mnemba Atoll — coral gardens, turtles and dolphins",
+          "Take a sunset dhow cruise on a traditional sailing boat",
+          "Visit a sandbank for a private picnic at low tide",
+          "Go dolphin-watching off Kizimkazi in the south",
+          "Kitesurf the steady winds of the east coast at Paje",
+        ],
+      },
+      {
+        heading: "On land",
+        bullets: [
+          "Tour a spice farm — taste cloves, vanilla, cinnamon and nutmeg",
+          "Explore UNESCO-listed Stone Town and its carved doors",
+          "Meet the rare red colobus monkeys in Jozani Forest",
+          "Visit Prison Island's giant Aldabra tortoises",
+          "Swim in the magical Kuza or Maalum natural caves",
+        ],
+        callout: {
+          tone: "info",
+          text: "Most excursions are half-day trips, so you can mix one adventure with one lazy beach day at a time — the ideal Zanzibar rhythm.",
+        },
+      },
+      {
+        heading: "Taste the island",
+        paragraphs: [
+          "Zanzibar's Swahili cuisine is a destination in itself — fresh seafood, coconut curries, and street food at Stone Town's Forodhani night market. A cooking class or a guided food walk is a delicious way to understand the island's trading history through its flavours.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is Zanzibar best known for?",
+        answer:
+          "White-sand beaches, the historic Stone Town, its spice heritage (it's part of the 'Spice Islands'), and excellent snorkelling and diving — especially around Mnemba Atoll.",
+      },
+      {
+        question: "Is there anything to do in Zanzibar besides the beach?",
+        answer:
+          "Plenty. Spice tours, Stone Town's history, Jozani Forest's red colobus monkeys, dolphin trips, sunset dhow cruises and superb diving all add depth to a beach holiday.",
+      },
+    ],
+    relatedGuides: [
+      "zanzibar-travel-guide",
+      "stone-town-guide",
+      "best-beaches-zanzibar",
+      "best-time-to-visit-zanzibar",
+    ],
+    relatedPackages: ["8-day-zanzibar-tour", "5-day-zanzibar-escape", "7-day-tanzania-zanzibar"],
+  },
+
+  {
+    slug: "best-time-to-visit-zanzibar",
+    title: "The Best Time to Visit Zanzibar",
+    topic: "Zanzibar",
+    excerpt:
+      "When to find sunshine, calm seas and the best value — and which months to plan around.",
+    updated: "2026-06-20",
+    readMinutes: 5,
+    keyTakeaway:
+      "The best time to visit Zanzibar is during the dry seasons: June to October and December to February, with warm, sunny days and calm seas. The long rains (March to May) are the wettest and quietest — cheaper, but some hotels close. Zanzibar is warm year-round, so timing is mainly about avoiding the heaviest rain.",
+    intro:
+      "Zanzibar sits just south of the equator, so it's warm and tropical all year — the real question is rain. The island has two dry windows that are ideal for a beach holiday, and two rainier spells to plan around. Here's how the year breaks down.",
+    primaryCta: { label: "Plan your Zanzibar dates", href: "/zanzibar" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Zanzibar through the year",
+        table: {
+          caption: "Warm year-round — the differences are rain and crowds.",
+          headers: ["Period", "Conditions", "Verdict"],
+          rows: [
+            ["Jun – Oct", "Dry, sunny, pleasant breeze", "Peak — excellent"],
+            ["Nov", "Short rains: brief showers", "Good value, mostly fine"],
+            ["Dec – Feb", "Hot, dry, festive", "Excellent — book ahead"],
+            ["Mar – May", "Long rains: wettest", "Quiet & cheap, some closures"],
+          ],
+        },
+      },
+      {
+        heading: "Matching Zanzibar to your safari",
+        paragraphs: [
+          "The good news for bush-and-beach trips is that Zanzibar's best months overlap neatly with prime safari season. June to October works wonderfully for a dry-season safari followed by the beach, and the December–February window pairs the calving-season safari with warm island days.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Even in the rainy season, Zanzibar often gets sunny spells between showers — and the lower prices and empty beaches tempt some travellers. Just pack for the odd downpour.",
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the rainy season in Zanzibar?",
+        answer:
+          "The long rains run roughly March to May (the wettest period), with shorter rains around November. The dry seasons — June to October and December to February — are the most reliable for a beach holiday.",
+      },
+      {
+        question: "Is Zanzibar good to visit year-round?",
+        answer:
+          "Largely yes, as it's warm all year. The dry seasons are best for sun and calm seas, while the long rains are quieter and cheaper but wetter, with some hotels closing.",
+      },
+    ],
+    relatedGuides: [
+      "zanzibar-travel-guide",
+      "best-beaches-zanzibar",
+      "best-time-to-visit-tanzania",
+      "things-to-do-zanzibar",
+    ],
+    relatedPackages: ["5-day-zanzibar-escape", "7-day-tanzania-zanzibar", "8-day-zanzibar-tour"],
+  },
+
+  // ───────────────────────────────────────────────────────────────────
+  // WAVE 3 — PLANNING HUB
+  // ───────────────────────────────────────────────────────────────────
+  {
+    slug: "tanzania-travel-guide",
+    title: "Planning a Trip to Tanzania: The Complete Guide",
+    topic: "Planning",
+    excerpt:
+      "Safari, summit and sea — how to combine Tanzania's headline experiences into one well-planned trip.",
+    updated: "2026-06-20",
+    readMinutes: 10,
+    keyTakeaway:
+      "Tanzania offers three world-class experiences — a Serengeti safari, climbing Kilimanjaro, and the beaches of Zanzibar — and many travellers combine them. Plan around the dry seasons (June–October and December–February), allow enough days for each element, and sort visas, vaccinations and insurance in advance. A typical rich trip runs 7–14 days.",
+    intro:
+      "Few countries pack as much into one destination as Tanzania: the greatest wildlife show on Earth, the highest mountain in Africa, and an Indian Ocean spice island — often within a single trip. That richness is wonderful, but it needs planning. This guide ties together the big decisions so your trip flows.",
+    primaryCta: { label: "Find your Tanzania trip", href: "/search" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "The three great experiences",
+        paragraphs: [
+          "Most Tanzania trips are built around one or more of three pillars: a northern-circuit safari (Serengeti, Ngorongoro and more), climbing Kilimanjaro, and relaxing on Zanzibar. They combine naturally — the classic 'summit, safari and sea' — because they're all reachable from the same northern hub around Arusha and Kilimanjaro airport.",
+        ],
+        bullets: [
+          "Safari — the Serengeti, Ngorongoro Crater and the Great Migration",
+          "Kilimanjaro — the Roof of Africa, a 5–9 day trek",
+          "Zanzibar — beaches, Stone Town and spice heritage",
+        ],
+      },
+      {
+        heading: "How long do you need?",
+        paragraphs: [
+          "It depends how much you combine. A focused safari or a Zanzibar stay works in under a week; a Kilimanjaro climb alone needs about a week; and a full safari-plus-beach or climb-plus-safari trip is best over ten days to two weeks. Don't rush — Tanzania rewards giving each element enough time.",
+        ],
+        table: {
+          caption: "Rough time to allow (excluding international flights).",
+          headers: ["Trip", "Days"],
+          rows: [
+            ["Short safari", "3–5 days"],
+            ["Classic safari", "6–8 days"],
+            ["Kilimanjaro climb", "6–9 days"],
+            ["Safari + Zanzibar", "8–12 days"],
+            ["Climb + safari + beach", "14+ days"],
+          ],
+        },
+      },
+      {
+        heading: "When to go",
+        paragraphs: [
+          "Tanzania's dry seasons — June to October and December to February — are the sweet spot for almost everything: the easiest safari viewing, the most comfortable climbing, and the sunniest beaches. The green season (roughly March to May) is lush, quiet and cheaper, with the calving-season safari as a major draw.",
+        ],
+      },
+      {
+        heading: "The essentials to sort",
+        bullets: [
+          "Visa — most visitors need one; easy to arrange online or on arrival",
+          "Vaccinations — check recommended jabs; yellow fever if arriving from a risk country",
+          "Malaria — Tanzania is a malaria area; take precautions and prophylaxis",
+          "Travel insurance — essential, and must cover high altitude for Kilimanjaro",
+          "Flights — most land at Kilimanjaro International Airport (JRO)",
+        ],
+        callout: {
+          tone: "info",
+          text: "We have dedicated guides on visas, vaccinations, malaria and insurance — see the 'keep reading' links below to go deeper on each.",
+        },
+      },
+      {
+        heading: "Building it with Trust Tours",
+        paragraphs: [
+          "As a licensed, Arusha-based operator (TALA Class A, No. 014216) running our own crews, we can stitch all three experiences into one seamless trip — handling transfers, timing and logistics so you just enjoy it. Use the trip finder below, or message Ombeni with your dates and wishlist and we'll design it around you.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can you do a safari, Kilimanjaro and Zanzibar in one trip?",
+        answer:
+          "Yes — it's a classic combination, and very doable because all three are reachable from the same northern hub. Allow around two weeks to enjoy each properly. We build these 'summit, safari and sea' itineraries regularly.",
+      },
+      {
+        question: "When is the best time to visit Tanzania?",
+        answer:
+          "The dry seasons — June to October and December to February — suit safari, climbing and beach alike. The green season (March–May) is quieter and cheaper, with calving-season safari as a highlight.",
+      },
+      {
+        question: "What do I need to enter Tanzania?",
+        answer:
+          "A passport valid for at least six months, a visa (available online or on arrival for most nationalities), and proof of yellow fever vaccination if arriving from a risk country. Check the latest requirements before you travel.",
+      },
+    ],
+    relatedGuides: [
+      "best-time-to-visit-tanzania",
+      "tanzania-visa-and-passport-requirements",
+      "combine-kilimanjaro-safari-zanzibar",
+      "how-to-choose-tour-operator",
+      "is-tanzania-safe",
+    ],
+    relatedPackages: [
+      "12-day-kilimanjaro-safari-culture",
+      "7-day-tanzania-zanzibar",
+      "7-day-great-migration-safari",
+    ],
+  },
+
+  {
+    slug: "combine-kilimanjaro-safari-zanzibar",
+    title: "How to Combine Kilimanjaro, Safari & Zanzibar",
+    topic: "Planning",
+    excerpt:
+      "Summit, safari and sea in one trip — the ideal order, how long to allow, and why it works so well.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "Kilimanjaro, a northern safari and Zanzibar combine beautifully because they all sit near the same northern hub. The ideal order is climb first (while you're fresh), then safari, then unwind on Zanzibar's beaches. Allow around two weeks. It's the ultimate Tanzania trip — effort, wonder and reward in sequence.",
+    intro:
+      "If you're going all the way to Tanzania, why choose just one of its wonders? The country's three signature experiences — climbing Kilimanjaro, a Serengeti safari, and the beaches of Zanzibar — fit together into one unforgettable journey. Here's how to sequence and plan the ultimate 'summit, safari and sea'.",
+    primaryCta: { label: "See the 12-Day Kili, Safari & Culture trip", href: "/safaris/12-day-kilimanjaro-safari-culture" },
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "Why it works",
+        paragraphs: [
+          "All three experiences radiate from the same corner of northern Tanzania — Kilimanjaro and its international airport, the safari parks a few hours west, and Zanzibar a short hop off the coast. That geography makes combining them far easier than it sounds, with minimal backtracking.",
+        ],
+      },
+      {
+        heading: "The ideal order",
+        paragraphs: [
+          "Climb first, while your legs and enthusiasm are fresh and before any beach relaxation saps your drive. Follow it with a safari — a gentler, awe-filled few days that double as recovery — and finish on Zanzibar, where you can soothe tired muscles on a beach with a cocktail. Effort, wonder, reward, in that order.",
+        ],
+        bullets: [
+          "1. Kilimanjaro — tackle the challenge first, fresh",
+          "2. Safari — wonder and recovery in the Serengeti and Ngorongoro",
+          "3. Zanzibar — rest and celebrate on the beach",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Build in a rest day after Kilimanjaro before the safari. You'll appreciate the lie-in, and it smooths the transition from mountain to bush.",
+        },
+      },
+      {
+        heading: "How long to allow",
+        paragraphs: [
+          "For all three without rushing, plan for around two weeks: roughly a week on Kilimanjaro, three to four safari days, and three or four nights on Zanzibar, plus a rest day. If time is tight, you can shorten the climb route or trim beach nights — but each element really deserves its space.",
+        ],
+      },
+      {
+        heading: "Let us handle the joins",
+        paragraphs: [
+          "The trick to a combined trip is seamless logistics — transfers, internal flights, timing and crews all lining up. That's exactly what we do. Tell us your dates and which of the three matter most, and we'll build a trip that flows from summit to sea.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Should I climb Kilimanjaro before or after safari?",
+        answer:
+          "Before. Climb while you're fresh and motivated, then enjoy the safari as a gentler, recovery-friendly experience, and finish relaxing on Zanzibar. A rest day between the climb and safari is well worth including.",
+      },
+      {
+        question: "How long do I need for Kilimanjaro, safari and Zanzibar?",
+        answer:
+          "Around two weeks lets you enjoy all three without rushing — about a week climbing, three to four days on safari, and three to four nights on the beach, plus a rest day.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-travel-guide",
+      "climbing-kilimanjaro-guide",
+      "tanzania-safari-guide",
+      "zanzibar-travel-guide",
+    ],
+    relatedPackages: [
+      "12-day-kilimanjaro-safari-culture",
+      "7-day-tanzania-zanzibar",
+      "10-day-safari-zanzibar-adventure",
+    ],
+  },
+
+  {
+    slug: "tanzania-honeymoon-guide",
+    title: "A Tanzania Honeymoon: Safari & Beach Romance",
+    topic: "Planning",
+    excerpt:
+      "Big-cat sunsets and barefoot beaches — how to plan a honeymoon that's adventurous and indulgent in equal measure.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "A Tanzania honeymoon classically pairs a romantic safari — private game drives, candlelit dinners, sunsets over the Serengeti — with the beaches of Zanzibar. Allow around 8–12 days, travel in the dry season for the best of both, and lean into the special touches: bush-and-beach, balloon safaris and ocean-view suites.",
+    intro:
+      "For couples who want a honeymoon that's both thrilling and indulgent, Tanzania is hard to beat: shared wonder on safari by day, intimacy under vast skies by night, then days of barefoot beach bliss on Zanzibar. Here's how to plan a honeymoon that balances adventure and romance.",
+    primaryCta: { label: "See honeymoon trips", href: "/honeymoon" },
+    trustStrip: true,
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "The classic shape: bush then beach",
+        paragraphs: [
+          "The honeymoon formula that rarely disappoints is safari first, beach second: the shared adventure and awe of the Serengeti and Ngorongoro, followed by the slow, romantic indulgence of a Zanzibar beach to celebrate and unwind. It's variety and pacing in perfect balance.",
+        ],
+      },
+      {
+        heading: "Romantic touches to add",
+        bullets: [
+          "A sunrise hot-air balloon safari over the Serengeti with champagne breakfast",
+          "Private game drives and a private vehicle, just the two of you",
+          "Bush dinners under the stars and sundowners over the plains",
+          "An ocean-view or honeymoon suite on Zanzibar's north coast",
+          "A sunset dhow cruise and a private sandbank picnic",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Mention you're on honeymoon when you book — we'll arrange thoughtful extras and the most romantic rooms and timings to make it feel special.",
+        },
+      },
+      {
+        heading: "When to go and how long",
+        paragraphs: [
+          "Travel in the dry seasons (June–October or December–February) for the best safari viewing and sunniest beaches. Allow eight to twelve days: three to four on safari, four or more on Zanzibar, with the flexibility to add Kilimanjaro for the truly adventurous couple.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Tanzania good for a honeymoon?",
+        answer:
+          "Wonderfully so. The combination of a romantic safari and Zanzibar's beaches offers both adventure and indulgence, with plenty of intimate, special-occasion touches like balloon safaris, private game drives and ocean-view suites.",
+      },
+      {
+        question: "How long should a Tanzania honeymoon be?",
+        answer:
+          "Around 8–12 days works beautifully — a few days on safari followed by several nights on Zanzibar. Couples wanting to add Kilimanjaro should allow closer to two weeks.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-travel-guide",
+      "zanzibar-travel-guide",
+      "tanzania-safari-guide",
+      "best-time-to-visit-tanzania",
+    ],
+    relatedPackages: [
+      "7-day-ultimate-honeymoon",
+      "10-day-honeymoon-migration",
+      "7-day-zanzibar-honeymoon",
+    ],
+  },
+
+  {
+    slug: "how-to-choose-tour-operator",
+    title: "How to Choose a Tanzania Tour Operator",
+    topic: "Planning",
+    excerpt:
+      "How to tell a safe, legitimate operator from a risky one — the licences, practices and questions that matter.",
+    updated: "2026-06-20",
+    readMinutes: 8,
+    keyTakeaway:
+      "Choose a Tanzania operator that is properly licensed (in Tanzania, a TALA licence), transparent about what's included, serious about safety, and fair to its crew. Be wary of suspiciously low prices, vague itineraries and operators who dodge questions. The right operator is the single biggest factor in a safe, enjoyable trip.",
+    intro:
+      "Your operator matters more than almost any other choice you'll make. They decide your safety on the mountain, the quality of your safari guide, how their crew is treated, and whether the trip you booked is the trip you get. With so many operators out there, here's how to separate the trustworthy from the risky.",
+    primaryCta: { label: "Why travellers choose Trust Tours", href: "/about" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "Check the licence",
+        paragraphs: [
+          "In Tanzania, legitimate operators hold a TALA licence (Tanzania Tourist Agent Licence) issued by the tourism authorities. Ask for the licence number and category — a real operator will share it readily. For reference, Trust Tours holds a Class A TALA licence, No. 014216.",
+        ],
+        callout: {
+          tone: "warning",
+          text: "If an operator can't or won't give you a licence number, walk away. Unlicensed operators leave you with no protection if something goes wrong.",
+        },
+      },
+      {
+        heading: "Be wary of very cheap prices",
+        paragraphs: [
+          "Because park fees and core costs are fixed, a price far below the market can only be reached by cutting corners — fewer days, underpaid and overloaded porters, thin safety margins, or a route that's more driving than wildlife. On Kilimanjaro especially, those cuts can be dangerous. A fair price isn't a luxury; it's what a safe, ethical trip actually costs.",
+        ],
+      },
+      {
+        heading: "Ask about safety and crew welfare",
+        bullets: [
+          "Kilimanjaro: daily health checks, emergency oxygen, a clear evacuation plan",
+          "Fair porter loads, pay and treatment (a real ethical issue on the mountain)",
+          "Experienced, licensed, English-speaking guides",
+          "Well-maintained 4x4s with good safety records",
+          "Clear, written itineraries with no vague 'extras to be confirmed'",
+        ],
+      },
+      {
+        heading: "Look for transparency and real reviews",
+        paragraphs: [
+          "Good operators answer questions directly, put inclusions and exclusions in writing, and have genuine reviews you can read. Talking to a real person — ideally the people who'll actually run your trip — tells you a lot. With us, you plan directly with Ombeni, the founder and lead guide, not a faceless call centre.",
+        ],
+      },
+      {
+        heading: "Questions worth asking",
+        bullets: [
+          "What's your TALA licence number and category?",
+          "Exactly what's included — and what isn't?",
+          "Who guides the trip, and what are their qualifications?",
+          "On Kilimanjaro, what safety equipment and procedures do you carry?",
+          "How do you treat and pay your porters and crew?",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I know if a Tanzania tour operator is legitimate?",
+        answer:
+          "Ask for their TALA licence number and category, check that inclusions are in writing, read genuine reviews, and see how directly they answer your questions. Legitimate, licensed operators are transparent; risky ones are vague or evasive.",
+      },
+      {
+        question: "Why should I avoid the cheapest operator?",
+        answer:
+          "Core costs like park fees are fixed, so rock-bottom prices usually mean cutting days, safety or crew welfare. Especially on Kilimanjaro, those cuts can be unsafe. Choose fair value over the lowest number.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-travel-guide",
+      "how-much-to-climb-kilimanjaro",
+      "how-much-tanzania-safari-cost",
+      "tipping-in-tanzania",
+    ],
+    relatedPackages: ["7-day-machame-route", "7-day-great-migration-safari", "5-day-northern-safari"],
+  },
+
+  {
+    slug: "tipping-in-tanzania",
+    title: "Tipping in Tanzania: Safari & Kilimanjaro",
+    topic: "Planning",
+    excerpt:
+      "Who to tip, roughly how much, and how it works — so you can budget for it and avoid awkwardness.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Tipping is customary and genuinely important in Tanzania, especially for safari guides and Kilimanjaro crews, for whom tips are a meaningful part of their income. It's not included in your trip price, so budget for it separately. We give every traveller clear, fair guidance on amounts before they go.",
+    intro:
+      "Tipping can feel awkward when you don't know the norms — too little feels mean, too much feels naive. In Tanzania, tips are a customary and significant part of how guides and mountain crews earn, so it's worth understanding before you travel. Here's a practical, no-stress guide.",
+    primaryCta: { label: "Plan your trip with us", href: "/about" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Why tipping matters here",
+        paragraphs: [
+          "For safari guides and especially Kilimanjaro porters, guides and cooks, tips are an expected and important supplement to their wages — a real recognition of hard work that genuinely matters to the people who make your trip special. It's customary, not optional, and budgeting for it is part of planning your trip properly.",
+        ],
+        callout: {
+          tone: "info",
+          text: "Tips are not included in your trip price. Set the money aside in advance — ideally in clean US dollars or Tanzanian shillings — so it's ready at the end.",
+        },
+      },
+      {
+        heading: "How it works on Kilimanjaro",
+        paragraphs: [
+          "On the mountain you tip the whole crew — guides, assistant guides, cooks and porters — usually pooled and handed over at a small ceremony on the last day. Because crews are large, the total adds up, so it's best thought of as a per-day, per-crew budget. We'll give you a clear recommended range based on your specific climb and crew size before you go.",
+        ],
+      },
+      {
+        heading: "How it works on safari",
+        paragraphs: [
+          "On safari you typically tip your driver-guide (the person who makes or breaks the experience) and leave something for camp or lodge staff. A daily guideline per guest is the easiest way to think about it. Again, we'll suggest fair figures so there's no guesswork.",
+        ],
+      },
+      {
+        heading: "Other situations",
+        bullets: [
+          "Restaurants — rounding up or roughly 10% is appreciated where service isn't included",
+          "Hotel porters and housekeeping — a small note is kind",
+          "Zanzibar drivers and excursion guides — a modest tip for good service",
+          "Carry small denominations to make tipping easy",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How much should I tip on Kilimanjaro?",
+        answer:
+          "Tips are usually budgeted per day and shared among the whole crew, so the total depends on the length of your climb and crew size. Rather than quote a figure that may be out of date, we give every climber a clear, fair recommended range before departure.",
+      },
+      {
+        question: "Is tipping expected in Tanzania?",
+        answer:
+          "Yes. Tipping safari guides and Kilimanjaro crews is customary and an important part of their income. It's separate from your trip price, so budget for it in advance.",
+      },
+      {
+        question: "What currency should I tip in?",
+        answer:
+          "US dollars (in clean, newer notes) or Tanzanian shillings are both fine. Bring a range of small denominations so you can tip easily and accurately.",
+      },
+    ],
+    relatedGuides: [
+      "how-to-choose-tour-operator",
+      "how-much-to-climb-kilimanjaro",
+      "how-much-tanzania-safari-cost",
+      "tanzania-travel-guide",
+    ],
+    relatedPackages: ["7-day-machame-route", "5-day-northern-safari", "7-day-great-migration-safari"],
+  },
+
+  // ───────────────────────────────────────────────────────────────────
+  // WAVE 3 — HEALTH & SAFETY HUB
+  // ───────────────────────────────────────────────────────────────────
+  {
+    slug: "malaria-in-tanzania",
+    title: "Malaria in Tanzania: What You Need to Know",
+    topic: "Health & Safety",
+    excerpt:
+      "Tanzania is a malaria area — here's how to protect yourself with prophylaxis, repellent and simple precautions.",
+    updated: "2026-06-20",
+    readMinutes: 5,
+    keyTakeaway:
+      "Tanzania, including Zanzibar, is a malaria-risk area, so protection is important: take antimalarial medication prescribed by your doctor, use insect repellent, sleep under nets and cover up at dusk. Risk is lower at Kilimanjaro's high altitude but present elsewhere. Always seek personalised medical advice before you travel.",
+    intro:
+      "Malaria is a real but very manageable risk in Tanzania, and it shouldn't put you off — millions visit safely every year. The key is sensible preparation: the right medication and a few simple habits to avoid mosquito bites. Here's a clear overview, though your doctor's advice always comes first.",
+    primaryCta: { label: "Plan your safari", href: "/safaris" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Is there malaria in Tanzania?",
+        paragraphs: [
+          "Yes. Mainland Tanzania and Zanzibar are malaria-risk areas, with mosquitoes most active between dusk and dawn. The risk is generally lower at high altitude — for example on the upper slopes of Kilimanjaro — but you should assume risk in the parks, on the coast and on Zanzibar.",
+        ],
+        callout: {
+          tone: "warning",
+          text: "This is general information, not medical advice. Visit your doctor or a travel clinic four to six weeks before you travel for prophylaxis suited to you and the latest guidance.",
+        },
+      },
+      {
+        heading: "How to protect yourself",
+        bullets: [
+          "Take antimalarial tablets exactly as prescribed — before, during and after your trip",
+          "Use insect repellent (DEET or equivalent) on exposed skin at dusk and after dark",
+          "Wear long sleeves and trousers in the evenings",
+          "Sleep under a mosquito net and/or in screened, air-conditioned rooms",
+          "Consider permethrin-treated clothing for extra protection",
+        ],
+      },
+      {
+        heading: "Know the symptoms",
+        paragraphs: [
+          "Malaria symptoms — fever, chills, headache, body aches — can appear from a week after exposure up to months later, even after you've returned home. If you develop a fever during or after your trip, seek medical attention promptly and tell the doctor you've been in a malaria area. Treated early, malaria is very manageable.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need malaria tablets for Tanzania?",
+        answer:
+          "For most travellers, yes — Tanzania and Zanzibar are malaria areas. The right medication depends on your health and itinerary, so get a prescription and advice from your doctor or a travel clinic before you go.",
+      },
+      {
+        question: "Is there malaria on Kilimanjaro?",
+        answer:
+          "Risk is low at the high altitudes of the climb itself, as mosquitoes don't thrive up there, but the lower slopes, towns and the rest of Tanzania do carry risk. Take precautions for the trip as a whole.",
+      },
+      {
+        question: "Is there malaria in Zanzibar?",
+        answer:
+          "Yes, Zanzibar is a malaria-risk area, so the same precautions — prophylaxis, repellent and nets — apply on the islands as on the mainland.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-vaccinations",
+      "tanzania-travel-guide",
+      "is-tanzania-safe",
+      "travel-insurance-tanzania",
+    ],
+    relatedPackages: ["5-day-northern-safari", "7-day-tanzania-zanzibar", "7-day-great-migration-safari"],
+  },
+
+  {
+    slug: "is-tanzania-safe",
+    title: "Is Tanzania Safe for Tourists?",
+    topic: "Health & Safety",
+    excerpt:
+      "An honest look at safety on safari, on Kilimanjaro and in towns — and the simple precautions that keep trips trouble-free.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Tanzania is a popular, generally safe destination for tourists, with millions visiting each year. On safari and Kilimanjaro you're with professional guides throughout. As anywhere, use common-sense precautions in towns, look after valuables, follow your guide's wildlife instructions, and prepare for health risks like malaria. A reputable operator makes a big difference.",
+    intro:
+      "Safety is a natural concern when planning a trip to East Africa, and it deserves an honest answer rather than either scaremongering or glossing over. The short version: Tanzania is a well-trodden, welcoming destination, and the vast majority of visits are completely trouble-free. Here's a realistic look, area by area.",
+    primaryCta: { label: "Plan a safe, guided trip", href: "/safaris" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "On safari and Kilimanjaro",
+        paragraphs: [
+          "These are the safest parts of your trip, because you're with professionals the whole time. On safari you view wildlife from a vehicle with an experienced guide who knows how to keep a respectful distance. On Kilimanjaro, the main risk is altitude — managed by choosing enough days, going slowly, and climbing with a crew that does daily health checks and carries oxygen.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Wildlife is wild — the golden rule is simply to follow your guide's instructions at all times. Do that and a safari is remarkably safe.",
+        },
+      },
+      {
+        heading: "In towns and cities",
+        paragraphs: [
+          "Arusha, Moshi and Stone Town are used to visitors and generally relaxed, but as in any city, petty theft can happen. Use common sense: don't flash expensive items, keep valuables in a hotel safe, use arranged transport at night, and stay aware in crowded markets. Your guide and hotel can advise on any areas to avoid.",
+        ],
+        bullets: [
+          "Keep passports and spare cash in the hotel safe",
+          "Use your operator's transfers rather than hailing rides at night",
+          "Be discreet with phones and cameras in busy public areas",
+          "Dress modestly in Stone Town and other Muslim-majority areas",
+        ],
+      },
+      {
+        heading: "Health and nature",
+        paragraphs: [
+          "The practical risks are more about health than crime: malaria, sun and altitude. Take antimalarials, drink bottled or purified water, use sun protection, and respect the altitude on Kilimanjaro. Good travel insurance that covers your activities — including high altitude if you're climbing — is essential.",
+        ],
+      },
+      {
+        heading: "Why your operator matters",
+        paragraphs: [
+          "A reputable, licensed operator is one of your best safety assurances — well-maintained vehicles, experienced guides, sound mountain safety procedures and reliable logistics. It's a major reason to choose carefully rather than simply going for the cheapest quote.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Tanzania safe to visit?",
+        answer:
+          "Generally yes. It's a popular destination visited safely by huge numbers of tourists each year. On safari and Kilimanjaro you're with professional guides; in towns, normal city precautions apply. Health risks like malaria need preparation, and a reputable operator adds an important layer of safety.",
+      },
+      {
+        question: "Is it safe to go on safari?",
+        answer:
+          "Yes. You view wildlife from a vehicle with an experienced guide and follow their instructions, which keeps safaris very safe. Serious incidents are rare when you travel with a professional operator.",
+      },
+      {
+        question: "Is Zanzibar safe?",
+        answer:
+          "Yes, Zanzibar is a popular, welcoming destination. Take normal precautions with valuables, dress respectfully given local customs, and use arranged transport at night.",
+      },
+    ],
+    relatedGuides: [
+      "malaria-in-tanzania",
+      "tanzania-vaccinations",
+      "travel-insurance-tanzania",
+      "tanzania-travel-guide",
+    ],
+    relatedPackages: ["5-day-northern-safari", "7-day-great-migration-safari", "7-day-machame-route"],
+  },
+
+  {
+    slug: "travel-insurance-tanzania",
+    title: "Travel Insurance for Tanzania (and Kilimanjaro)",
+    topic: "Health & Safety",
+    excerpt:
+      "Why insurance is essential, and the one thing Kilimanjaro climbers must check: high-altitude cover.",
+    updated: "2026-06-20",
+    readMinutes: 5,
+    keyTakeaway:
+      "Comprehensive travel insurance is essential for Tanzania, and for Kilimanjaro it must specifically cover trekking to high altitude (above 4,000–6,000 m) and emergency evacuation. Always check that your policy includes your exact activities, medical care, evacuation and trip cancellation — and carry the details with you.",
+    intro:
+      "Travel insurance is the easy-to-overlook essential that you really don't want to skip for Tanzania — and for Kilimanjaro it comes with one specific catch that catches people out. Here's what to look for so you're properly covered.",
+    primaryCta: { label: "See our Kilimanjaro climbs", href: "/kilimanjaro" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Why you need it",
+        paragraphs: [
+          "Good insurance protects you against the things that can go wrong far from home: medical treatment, emergency evacuation, trip cancellation or curtailment, and lost baggage. Medical care and especially evacuation can be very expensive without cover, which is why we consider insurance a non-negotiable part of any Tanzania trip.",
+        ],
+      },
+      {
+        heading: "The Kilimanjaro catch: altitude cover",
+        paragraphs: [
+          "This is the one that trips people up. Many standard travel policies exclude trekking above a certain altitude — and Kilimanjaro reaches 5,895 m. You must check that your policy specifically covers high-altitude trekking to the height of Uhuru Peak, including emergency evacuation from the mountain. A policy that doesn't is effectively useless if something happens up high.",
+        ],
+        callout: {
+          tone: "warning",
+          text: "Before you climb, confirm in writing that your insurance covers trekking to 6,000 m and helicopter/mountain evacuation. Don't assume a standard policy does — many don't.",
+        },
+      },
+      {
+        heading: "What a good policy covers",
+        bullets: [
+          "Emergency medical treatment and hospital care",
+          "Emergency evacuation and repatriation",
+          "High-altitude trekking to Uhuru Peak (for Kilimanjaro)",
+          "Trip cancellation and curtailment",
+          "Lost, stolen or delayed baggage",
+          "Your specific activities — safari, diving, kitesurfing, etc.",
+        ],
+      },
+      {
+        heading: "Practical tips",
+        bullets: [
+          "Buy insurance when you book, so cancellation cover starts early",
+          "Read the activity exclusions, not just the headline cover",
+          "Carry your policy number and emergency line with you on the trip",
+          "Declare any pre-existing medical conditions honestly",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need travel insurance for Kilimanjaro?",
+        answer:
+          "Yes, and it must specifically cover high-altitude trekking up to Kilimanjaro's summit height (around 6,000 m) plus emergency evacuation. Many standard policies exclude high-altitude trekking, so check carefully and get it in writing.",
+      },
+      {
+        question: "What should travel insurance for Tanzania cover?",
+        answer:
+          "Emergency medical care, evacuation and repatriation, trip cancellation, baggage, and all your planned activities. Climbers additionally need explicit high-altitude trekking cover.",
+      },
+    ],
+    relatedGuides: [
+      "altitude-sickness-on-kilimanjaro",
+      "climbing-kilimanjaro-guide",
+      "tanzania-vaccinations",
+      "is-tanzania-safe",
+    ],
+    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "5-day-northern-safari"],
+  },
+
+  // ───────────────────────────────────────────────────────────────────
+  // WAVE 4 — TREKKING & ADVENTURE SPOKES
+  // ───────────────────────────────────────────────────────────────────
+  {
+    slug: "mount-meru-climb-guide",
+    title: "Climbing Mount Meru: Tanzania's Underrated Giant",
+    topic: "Trekking",
+    excerpt:
+      "A 4,566 m volcano through a wildlife-rich national park — a spectacular climb in its own right, and the smartest warm-up for Kilimanjaro.",
+    updated: "2026-06-20",
+    readMinutes: 7,
+    keyTakeaway:
+      "Mount Meru (4,566 m) is Tanzania's second-highest mountain and one of its finest treks — a 3-to-4-day climb through Arusha National Park, past giraffe and buffalo, to a dramatic knife-edge summit ridge. It's a wonderful objective on its own and an ideal acclimatization climb before Kilimanjaro.",
+    intro:
+      "Overshadowed by its giant neighbour, Mount Meru is one of Tanzania's best-kept secrets — a strikingly beautiful volcano that rewards climbers with wildlife on the lower slopes, a knife-edge summit ridge, and a sunrise view of Kilimanjaro floating above the clouds. Whether as a standalone adventure or a warm-up for Kili, here's why it deserves your attention.",
+    primaryCta: { label: "View the Mount Meru climb", href: "/trekking/3-day-mount-meru-momela" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "A climb through a national park",
+        paragraphs: [
+          "What sets Meru apart is that it rises through Arusha National Park, so the lower slopes are alive with wildlife. You walk — accompanied by an armed ranger — past giraffe, buffalo, warthog and colobus monkeys, something no other major trek in the region offers. The route climbs through forest and moorland to the crater rim and along an exhilarating ridge to Socialist Peak at 4,566 m.",
+        ],
+      },
+      {
+        heading: "The smart acclimatization warm-up",
+        paragraphs: [
+          "Meru's altitude makes it an excellent pre-acclimatization climb before Kilimanjaro. Summiting Meru a few days before you start Kili gives your body a real head start on adapting to thin air, which can meaningfully improve your Kilimanjaro summit chances. Leave a rest day or two in between so you arrive at Kili's gate adapted, not tired.",
+        ],
+        diagram: "acclimatization",
+        callout: {
+          tone: "tip",
+          text: "Climbing Meru then Kilimanjaro is one of the best ways to boost your odds on the big mountain. Allow roughly two weeks for the pair, with rest days between.",
+        },
+      },
+      {
+        heading: "What to expect",
+        bullets: [
+          "3–4 days, sleeping in mountain huts (not tents)",
+          "An armed ranger accompanies you through the wildlife zones",
+          "A pre-dawn summit push along a dramatic crater rim",
+          "Sunrise views of Kilimanjaro across the plains",
+          "Far fewer climbers than Kilimanjaro — often blissfully quiet",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How hard is Mount Meru?",
+        answer:
+          "It's a challenging trek — shorter than Kilimanjaro but steep, with a long summit day along an exposed ridge. Reasonable hiking fitness is needed. Many find it tougher per day than Kili, but hugely rewarding.",
+      },
+      {
+        question: "Should I climb Mount Meru before Kilimanjaro?",
+        answer:
+          "If you have the time, it's an excellent idea. Meru's altitude pre-acclimatizes you, improving your Kilimanjaro summit chances, and it's a superb trek in its own right. Leave a rest day or two between the two climbs.",
+      },
+      {
+        question: "How high is Mount Meru?",
+        answer:
+          "Mount Meru reaches 4,566 m at Socialist Peak, making it Tanzania's second-highest mountain after Kilimanjaro.",
+      },
+    ],
+    relatedGuides: [
+      "kilimanjaro-and-mount-meru",
+      "climbing-kilimanjaro-guide",
+      "kilimanjaro-training-and-fitness",
+      "best-time-to-climb-kilimanjaro",
+    ],
+    relatedPackages: ["3-day-mount-meru-momela", "4-day-mount-meru", "5-day-mount-meru"],
+  },
+
+  {
+    slug: "ol-doinyo-lengai-guide",
+    title: "Ol Doinyo Lengai: Climbing the Mountain of God",
+    topic: "Trekking",
+    excerpt:
+      "A steep, surreal overnight climb up the Maasai's sacred active volcano — for adventurers who want something truly wild.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Ol Doinyo Lengai is an active volcano in northern Tanzania, sacred to the Maasai as the 'Mountain of God'. Climbing it is a steep, demanding overnight ascent — usually starting around midnight to reach the summit at sunrise — rewarded by views over the Rift Valley and Lake Natron. It's a raw, off-the-beaten-track adventure for fit, experienced hikers.",
+    intro:
+      "For travellers who want something far beyond the usual circuit, Ol Doinyo Lengai delivers. This perfect cone rising from the Rift Valley is an active volcano — the only one on Earth that erupts uniquely cool, black 'natrocarbonatite' lava — and a sacred mountain to the Maasai. Climbing it is tough, surreal and unforgettable. Here's what's involved.",
+    primaryCta: { label: "View the Ol Doinyo Lengai climb", href: "/trekking/2-day-ol-doinyo-lengai-climb" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "The Mountain of God",
+        paragraphs: [
+          "Ol Doinyo Lengai means 'Mountain of God' in the Maasai language, and it holds deep spiritual significance for the Maasai who live in its shadow. It's an active volcano, and its summit crater is an otherworldly landscape of grey ash cones and lava — utterly unlike anywhere else in Tanzania.",
+        ],
+      },
+      {
+        heading: "A demanding overnight climb",
+        paragraphs: [
+          "This is not a casual hike. The ascent is steep and relentless — often loose underfoot — and is usually tackled overnight, setting off around midnight to reach the summit for sunrise before the sun makes the climb brutally hot. Good fitness and a head for steep ground are essential. The reward is dawn over the Rift Valley, the soda flats of Lake Natron shimmering far below.",
+        ],
+        callout: {
+          tone: "warning",
+          text: "Lengai is genuinely strenuous and the terrain is steep and loose. It suits fit, experienced hikers comfortable with a tough overnight ascent — not a first trek.",
+        },
+      },
+      {
+        heading: "Combine it with the Rift Valley",
+        paragraphs: [
+          "Lengai pairs naturally with the wild landscapes around it: Lake Natron and its flamingos, ancient hominin footprints, waterfalls in the escarpment, and Maasai culture. Many adventurers fold the climb into a longer northern itinerary, or add a safari afterwards. We can build it into a wider trip however you like.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How difficult is climbing Ol Doinyo Lengai?",
+        answer:
+          "Very challenging. It's a steep, sustained climb on loose ground, usually done overnight to summit at sunrise. It demands good fitness and determination, and is best suited to experienced hikers.",
+      },
+      {
+        question: "Is Ol Doinyo Lengai safe to climb?",
+        answer:
+          "It's an active volcano, so activity is monitored and climbs run when conditions allow, with experienced local guides. The main challenge is the physically demanding terrain. As with any volcano, you climb with expert guidance and follow their lead.",
+      },
+      {
+        question: "Why is it called the Mountain of God?",
+        answer:
+          "'Ol Doinyo Lengai' means 'Mountain of God' in the Maasai language. The volcano is sacred to the Maasai people who live around its base in the Rift Valley.",
+      },
+    ],
+    relatedGuides: [
+      "mount-meru-climb-guide",
+      "tanzania-cultural-tours-guide",
+      "tanzania-safari-guide",
+      "is-tanzania-safe",
+    ],
+    relatedPackages: [
+      "2-day-ol-doinyo-lengai-climb",
+      "3-day-ol-doinyo-lengai-hike",
+      "5-day-safari-lengai",
+    ],
+  },
+
+  {
+    slug: "tanzania-cultural-tours-guide",
+    title: "Tanzania Cultural Tours: Meeting the People",
+    topic: "Culture & Adventure",
+    excerpt:
+      "Spend time with the Maasai, the ancient Hadzabe hunter-gatherers and the Chagga — respectful, authentic encounters beyond the wildlife.",
+    updated: "2026-06-20",
+    readMinutes: 6,
+    keyTakeaway:
+      "Tanzania's cultural tours offer authentic encounters with its peoples — the pastoralist Maasai, the Hadzabe (one of the world's last hunter-gatherer tribes), the Chagga of Kilimanjaro's slopes and others. Done respectfully, they add real depth to a safari or climb, supporting communities and revealing a side of Tanzania the parks can't.",
+    intro:
+      "Tanzania's wildlife is world-famous, but its people are just as remarkable — over 120 ethnic groups, each with its own traditions. A cultural tour, done thoughtfully, turns a wildlife holiday into a richer human story, and channels tourism income directly to local communities. Here's what these experiences involve.",
+    primaryCta: { label: "See cultural tours", href: "/cultural" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "Who you can meet",
+        bullets: [
+          "The Maasai — iconic pastoralist warriors of the northern plains",
+          "The Hadzabe — one of the last true hunter-gatherer peoples on Earth, near Lake Eyasi",
+          "The Datoga — skilled pastoralists and blacksmiths",
+          "The Chagga — farmers of Kilimanjaro's fertile slopes, with rich coffee traditions",
+          "Local communities around Arusha and Mulala for village and farm life",
+        ],
+      },
+      {
+        heading: "What the experiences are like",
+        paragraphs: [
+          "A good cultural visit is a genuine exchange, not a performance: joining a Hadzabe hunting walk at dawn, learning how the Maasai herd and live, grinding and brewing Chagga coffee, or sharing a meal in a village. The emphasis is on understanding daily life and traditions first-hand, guided by members of the community themselves.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Cultural tourism is at its best when it's respectful and community-led. We work with communities directly, so your visit benefits them — ask, listen, and always ask before taking photos.",
+        },
+      },
+      {
+        heading: "How it fits your trip",
+        paragraphs: [
+          "Cultural visits slot easily into a safari or a stay around Arusha, either as a half-day add-on or as the focus of a dedicated cultural tour. They pair especially well with the Lake Eyasi and Ngorongoro areas, where the Hadzabe, Datoga and Maasai live close to the safari circuit.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Are Tanzania cultural tours authentic or touristy?",
+        answer:
+          "It depends entirely on how they're run. Community-led visits that focus on genuine daily life — joining a hunt, learning herding or farming, sharing food — are authentic and rewarding. We work directly with communities to keep the experience real and respectful.",
+      },
+      {
+        question: "Who are the Hadzabe?",
+        answer:
+          "The Hadzabe are one of the world's last remaining hunter-gatherer peoples, living near Lake Eyasi in northern Tanzania. Visiting them, and joining a morning hunt, is a rare window into a way of life that has changed little for millennia.",
+      },
+      {
+        question: "Can I combine a cultural tour with a safari?",
+        answer:
+          "Yes, very easily. Cultural visits to the Maasai, Hadzabe and others fit naturally alongside the northern safari circuit, and we regularly build them into safari itineraries.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-safari-guide",
+      "ol-doinyo-lengai-guide",
+      "tanzania-travel-guide",
+      "what-to-expect-on-safari",
+    ],
+    relatedPackages: ["5-day-cultural-tour", "8-day-cultural-tour", "7-day-photography-cultural-safari"],
+  },
+
+  {
+    slug: "paramotoring-tanzania-guide",
+    title: "Paramotoring in Tanzania: Flying Over Kilimanjaro",
+    topic: "Culture & Adventure",
+    excerpt:
+      "See the plains, the wildlife and the Roof of Africa from the air — a rare powered-paragliding adventure for the bold.",
+    updated: "2026-06-20",
+    readMinutes: 5,
+    keyTakeaway:
+      "Paramotoring — powered paragliding — offers a thrilling bird's-eye view of Tanzania's landscapes, from the plains around Arusha to the slopes of Kilimanjaro. It's a rare, specialist adventure for travellers wanting something completely different, run with experienced pilots and equipment.",
+    intro:
+      "For the adventurous traveller who's done the safari and wants a totally fresh perspective, paramotoring is about as special as it gets: drifting low over the African landscape under a paraglider wing with a motor on your back, with Kilimanjaro on the horizon. It's a niche, unforgettable way to experience Tanzania from above. Here's what it's about.",
+    primaryCta: { label: "See paramotoring adventures", href: "/paramotoring" },
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "What is paramotoring?",
+        paragraphs: [
+          "Paramotoring is powered paragliding — you fly under a soft paraglider wing using a lightweight motor and propeller worn as a backpack, allowing you to take off, climb and stay aloft from open ground. It combines the serenity of gliding with the freedom of powered flight, low and slow over the landscape.",
+        ],
+      },
+      {
+        heading: "Flying Tanzania's skies",
+        paragraphs: [
+          "Imagine the plains, villages and wildlife of northern Tanzania unrolling beneath you, with the snows of Kilimanjaro glinting in the distance — a perspective almost no visitor ever gets. Flights are run from suitable sites around Arusha and the Kilimanjaro region, timed for the calm, golden hours of early morning and late afternoon.",
+        ],
+        callout: {
+          tone: "info",
+          text: "Paramotoring is a specialist activity flown with experienced pilots and proper equipment, weather-dependent for safety. It's ideal as a standout highlight within a wider Tanzania trip.",
+        },
+      },
+      {
+        heading: "Who it's for",
+        paragraphs: [
+          "This is for the adventurous — travellers who love a thrill and a unique story to tell. No prior flying experience is needed for tandem-style adventures with a qualified pilot, while longer expeditions suit those who want to go deeper into the sport. Tell us your appetite and we'll match the right adventure.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need experience to go paramotoring in Tanzania?",
+        answer:
+          "Not for guided tandem-style adventures with a qualified pilot — they handle the flying. Longer expeditions suit those wanting a deeper experience of the sport. We'll match the adventure to your level.",
+      },
+      {
+        question: "Is paramotoring safe?",
+        answer:
+          "It's an adventure activity flown with experienced pilots, proper equipment and strict attention to weather, which is the main factor in when flights run. As with any aerial sport, you follow your pilot's guidance closely.",
+      },
+    ],
+    relatedGuides: [
+      "tanzania-travel-guide",
+      "climbing-kilimanjaro-guide",
+      "tanzania-safari-guide",
+      "is-tanzania-safe",
+    ],
+    relatedPackages: ["3-day-paramotoring-arusha-kilimanjaro", "12-day-paramotoring-safari"],
+  },
 ];
 
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug);
+
+// Maps a trip category (data/packages.ts) to the guide topics most relevant to
+// it, so any package page can surface the right reading without hand-curation.
+const CATEGORY_TO_TOPICS: Record<string, GuideTopic[]> = {
+  kilimanjaro: ["Kilimanjaro"],
+  safari: ["Safari"],
+  zanzibar: ["Zanzibar"],
+  trekking: ["Trekking", "Kilimanjaro"],
+  cultural: ["Culture & Adventure"],
+  paramotoring: ["Culture & Adventure"],
+};
+
+// Guides relevant to a trip category. Array order puts pillar guides first, so
+// the default slice returns the strongest, broadest reads.
+export function guidesForCategory(category: string, limit = 3): Guide[] {
+  const topics = CATEGORY_TO_TOPICS[category] ?? [];
+  return guides.filter((g) => topics.includes(g.topic)).slice(0, limit);
+}
 
 export const GUIDE_TOPICS: GuideTopic[] = [
   "Kilimanjaro",
   "Safari",
   "Zanzibar",
+  "Trekking",
+  "Culture & Adventure",
   "Planning",
   "Health & Safety",
 ];

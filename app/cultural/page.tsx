@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { byCategory } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
+import GuideStrip from "@/components/GuideStrip";
+import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
   title: "Tanzania Cultural Tours – Maasai, Hadzabe, Chagga & More",
@@ -53,6 +55,13 @@ export default function CulturalListingPage() {
           ))}
         </div>
       </section>
+
+      <GuideStrip
+        guides={guidesForCategory("cultural")}
+        title="Read before you go"
+        subtitle="Meet the Maasai, Hadzabe and Chagga — what cultural tours are really like."
+        className="pb-16 md:pb-24"
+      />
 
       <CTABand
         eyebrow="Travel with meaning"

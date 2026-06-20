@@ -43,7 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const guideRoutes: MetadataRoute.Sitemap = guides.map((g) => ({
     url: `${BASE}/guides/${g.slug}`,
-    lastModified: now,
+    // Real content date is a stronger freshness signal than build time.
+    lastModified: new Date(g.updated),
     changeFrequency: "monthly",
     priority: 0.6,
   }));

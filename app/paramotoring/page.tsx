@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { byCategory } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
+import GuideStrip from "@/components/GuideStrip";
+import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
   title: "Paramotoring in Tanzania – Fly over Kilimanjaro & the Serengeti",
@@ -53,6 +55,13 @@ export default function ParamotoringListingPage() {
           ))}
         </div>
       </section>
+
+      <GuideStrip
+        guides={guidesForCategory("paramotoring")}
+        title="Read before you fly"
+        subtitle="What paramotoring in Tanzania actually involves."
+        className="pb-16 md:pb-24"
+      />
 
       <CTABand
         eyebrow="A whole new perspective"

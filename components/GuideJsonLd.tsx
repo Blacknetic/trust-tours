@@ -16,6 +16,9 @@ export default function GuideJsonLd({ guide }: { guide: Guide }) {
     headline: guide.title,
     description: guide.excerpt,
     abstract: guide.keyTakeaway,
+    articleSection: guide.topic,
+    // Per-guide 1200×630 social card (app/guides/[slug]/opengraph-image.tsx).
+    image: [`${SITE}/guides/${guide.slug}/opengraph-image`],
     datePublished: guide.updated,
     dateModified: guide.updated,
     author: { "@type": "Organization", name: "Trust Tours & Safaris" },

@@ -8,6 +8,8 @@ import MobileCTABar from "@/components/MobileCTABar";
 import ElevationJourney from "@/components/ElevationJourney";
 import BookingCard from "@/components/BookingCard";
 import CTABand from "@/components/CTABand";
+import GuideStrip from "@/components/GuideStrip";
+import { guidesForCategory } from "@/data/guides";
 
 const SITE_URL = "https://trusttourstz.com";
 const WA = "255785938860";
@@ -75,6 +77,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}`;
   const pageUrl = `${SITE_URL}${lex.basePath}/${pkg.slug}`;
   const heroImg = packageImage(pkg);
+  const planningGuides = guidesForCategory(pkg.category);
 
   return (
     <>
@@ -372,6 +375,14 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
           </aside>
         </div>
       </div>
+
+      {/* ── Plan-with-confidence: relevant travel guides ──────── */}
+      <GuideStrip
+        guides={planningGuides}
+        title="Read before you go"
+        subtitle="Free, no-fluff guides from the people who run the trips."
+        className="pb-16 md:pb-20"
+      />
 
       {/* ── Bottom CTA band ───────────────────────────────────── */}
       <CTABand

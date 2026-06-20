@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { packages } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
+import GuideStrip from "@/components/GuideStrip";
+import { getGuide } from "@/data/guides";
 
 export const metadata: Metadata = {
   title: "Tanzania Honeymoon Safaris & Zanzibar Romance",
@@ -16,6 +18,10 @@ export default function HoneymoonListingPage() {
   const trips = packages
     .filter((p) => p.tags?.includes("honeymoon"))
     .sort((a, b) => a.days - b.days);
+
+  const honeymoonGuides = ["tanzania-honeymoon-guide", "zanzibar-travel-guide", "best-time-to-visit-tanzania"]
+    .map(getGuide)
+    .filter((g): g is NonNullable<typeof g> => Boolean(g));
 
   return (
     <>
@@ -59,6 +65,13 @@ export default function HoneymoonListingPage() {
           ))}
         </div>
       </section>
+
+      <GuideStrip
+        guides={honeymoonGuides}
+        title="Read before you go"
+        subtitle="Planning a romantic safari-and-beach trip in Tanzania."
+        className="pb-16 md:pb-24"
+      />
 
       <CTABand
         eyebrow="Your love story, our home"

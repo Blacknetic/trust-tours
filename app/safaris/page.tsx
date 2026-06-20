@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { byCategory } from "@/data/packages";
+import Link from "next/link";
+import { SAFARI_CATEGORIES, bySafariCategory } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
+import GuideStrip from "@/components/GuideStrip";
+import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Tanzania Safari Packages & Prices",
+  title: "Tanzania Safaris – Big Five, Migration, Honeymoon, Cultural & Paramotoring",
   alternates: { canonical: "/safaris" },
   description:
-    "Private Tanzania safaris with Trust Tours: Serengeti, Ngorongoro Crater, Tarangire and the Great Migration — plus safari & Zanzibar beach combinations.",
+    "Every Trust Tours safari in one place: Big Five game drives, Great Migration & calving-season trips, romantic honeymoons, immersive cultural tours and paramotoring over the Serengeti.",
 };
 
 export default function SafarisListingPage() {
-  const safaris = byCategory("safari");
-
   return (
     <>
       {/* ── Page header ───────────────────────────────────────── */}
@@ -36,24 +37,81 @@ export default function SafarisListingPage() {
             Tanzania Safaris
           </h1>
           <p
-            className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
+            className="text-base leading-relaxed mb-8"
+            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "62ch" }}
           >
-            Private game drives in a 4x4 with pop-up roof across northern
-            Tanzania&apos;s big three parks — timed to the Great Migration when you
-            travel July to September. Add Zanzibar to finish on the beach.
+            Every safari we run, sorted into five clear journeys. Whether you&apos;re
+            chasing the Big Five, following the Great Migration, celebrating a
+            honeymoon, meeting Tanzania&apos;s communities or flying over it all on a
+            paramotor — start with the category that fits, then make it yours.
           </p>
+
+          {/* Category jump pills */}
+          <div className="flex flex-wrap gap-2.5">
+            {SAFARI_CATEGORIES.map((c) => (
+              <Link
+                key={c.id}
+                href={c.href}
+                className="px-4 py-2 rounded-full text-sm font-semibold transition-opacity hover:opacity-90"
+                style={{ background: "var(--gold)", color: "var(--ink)" }}
+              >
+                {c.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── Safari cards ──────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {safaris.map((pkg) => (
-            <PackageCard key={pkg.slug} pkg={pkg} />
-          ))}
-        </div>
-      </section>
+      {/* ── One section per safari category ───────────────────── */}
+      {SAFARI_CATEGORIES.map((cat) => {
+        const trips = bySafariCategory(cat.id);
+        if (trips.length === 0) return null;
+        return (
+          <section
+            key={cat.id}
+            id={cat.id}
+            className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20 scroll-mt-24"
+          >
+            <div className="mb-8 md:mb-10 max-w-3xl">
+              <p
+                className="text-xs font-semibold tracking-widest uppercase mb-2"
+                style={{ color: "var(--gold)" }}
+              >
+                {cat.tagline}
+              </p>
+              <h2
+                className="text-3xl md:text-4xl font-extrabold mb-3"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  color: "var(--forest)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {cat.label}
+              </h2>
+              <p
+                className="text-base leading-relaxed"
+                style={{ color: "rgba(74,41,18,0.75)" }}
+              >
+                {cat.blurb}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {trips.map((pkg) => (
+                <PackageCard key={pkg.slug} pkg={pkg} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+
+      <GuideStrip
+        guides={guidesForCategory("safari")}
+        title="Read before you go"
+        subtitle="Migration timing, the parks, costs and what a safari day is really like."
+        className="pb-16 md:pb-24"
+      />
 
       <CTABand
         eyebrow="Custom trips welcome"

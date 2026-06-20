@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { byCategory } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
+import GuideStrip from "@/components/GuideStrip";
+import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
   title: "Zanzibar Beach Holidays & Tours",
@@ -55,6 +57,13 @@ export default function ZanzibarListingPage() {
           ))}
         </div>
       </section>
+
+      <GuideStrip
+        guides={guidesForCategory("zanzibar")}
+        title="Read before you go"
+        subtitle="Beaches, Stone Town and the best time to visit — the island, explained."
+        className="pb-16 md:pb-24"
+      />
 
       <CTABand
         eyebrow="Safari + beach welcome"

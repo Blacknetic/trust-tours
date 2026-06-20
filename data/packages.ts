@@ -726,7 +726,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing, group of 2+. From $2,200 budget / $2,800 mid-range camps and lodges.",
     tier: ["budget", "mid-range"],
-    heroImage: "/images/safari-acacia-sunset.jpg",
+    heroImage: "/images/migration-river-crossing.jpg",
     gallery: [
       "/images/gallery/safari/safari-2023-01-07-1.jpg",
       "/images/gallery/safari/safari-2023-01-07-25.jpg",
@@ -4670,7 +4670,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing, midrange. Includes a sunrise hot air balloon flight.",
     tier: ["mid-range", "comfort"],
-    heroImage: "/images/safari-sunset-acacia.jpg",
+    heroImage: "/images/balloon-safari.jpg",
     gallery: [
       "/images/gallery/safari/safari-2023-01-07-5.jpg",
       "/images/gallery/safari/safari-2023-01-07-1.jpg",
@@ -6007,3 +6007,111 @@ export const getPackage = (slug: string) =>
 
 export const byCategory = (c: TripPackage["category"]) =>
   packages.filter((p) => p.category === c);
+
+// ─────────────────────────────────────────────────────────────────
+// SAFARIS UMBRELLA — the five public-facing safari categories.
+// Every safari-type itinerary lives in exactly ONE of these buckets.
+// This is a pure classification layer over `packages`; it never changes
+// a trip's `category` or its detail URL (those drive routing/SEO).
+//
+// Assignment rules (first match wins, so each trip lands in one bucket):
+//   1. honeymoon  — any trip tagged "honeymoon" (romance wins over theme)
+//   2. cultural   — category "cultural"
+//   3. paramotoring — category "paramotoring"
+//   4. migration  — safari trips built around the Great Migration / calving
+//                    season (slug listed in MIGRATION_SAFARI_SLUGS)
+//   5. big-five   — every other safari trip (general game-drive circuits)
+// ─────────────────────────────────────────────────────────────────
+export type SafariCategoryId =
+  | "big-five"
+  | "migration"
+  | "honeymoon"
+  | "cultural"
+  | "paramotoring";
+
+// Safari-category trips centred on the migration or calving season.
+// Honeymoon-tagged trips are intentionally excluded (they go to Honeymoon).
+const MIGRATION_SAFARI_SLUGS = new Set<string>([
+  "7-day-great-migration-safari",
+  "8-day-great-migration-safari",
+  "7-day-photography-cultural-safari",
+  "11-day-bird-photography-safari",
+  "10-day-serengeti-calving-safari",
+  "6-day-calving-safari",
+  "4-day-private-ndutu-calving-safari",
+  "5-day-ndutu-migration-safari",
+  // NOTE: 10-day-kenya-safari (broad Kenya parks circuit) and
+  // 3-day-serengeti-balloon-zanzibar (Zanzibar add-on, no migration focus)
+  // intentionally live in Big Five, not Migration.
+]);
+
+// Returns the single safari-umbrella bucket a trip belongs to, or null
+// for trips that don't belong under Safaris at all (kilimanjaro, trekking,
+// pure zanzibar beach trips without a honeymoon tag).
+export const safariCategoryOf = (p: TripPackage): SafariCategoryId | null => {
+  if (p.tags?.includes("honeymoon")) return "honeymoon";
+  if (p.category === "cultural") return "cultural";
+  if (p.category === "paramotoring") return "paramotoring";
+  if (p.category === "safari") {
+    return MIGRATION_SAFARI_SLUGS.has(p.slug) ? "migration" : "big-five";
+  }
+  return null;
+};
+
+export const bySafariCategory = (id: SafariCategoryId) =>
+  packages
+    .filter((p) => safariCategoryOf(p) === id)
+    .sort((a, b) => a.days - b.days);
+
+// Display metadata for each bucket — consumed by the nav dropdown and the
+// /safaris landing page so labels/order/copy stay in one place.
+export interface SafariCategoryMeta {
+  id: SafariCategoryId;
+  label: string;
+  href: string; // landing anchor or dedicated page
+  tagline: string;
+  blurb: string;
+}
+
+export const SAFARI_CATEGORIES: SafariCategoryMeta[] = [
+  {
+    id: "big-five",
+    label: "Big Five Safari",
+    href: "/safaris#big-five",
+    tagline: "Lion · Leopard · Elephant · Buffalo · Rhino",
+    blurb:
+      "Classic private game drives across Tarangire, Lake Manyara, the Ngorongoro Crater and the Serengeti — the surest way to see Africa's Big Five.",
+  },
+  {
+    id: "migration",
+    label: "Migration Safari",
+    href: "/safaris#migration",
+    tagline: "River crossings · Calving season · Endless herds",
+    blurb:
+      "Timed to the Great Migration and the Ndutu calving season — follow the wildebeest and zebra across the Serengeti plains and into the Maasai Mara.",
+  },
+  {
+    id: "honeymoon",
+    label: "Honeymoon",
+    href: "/honeymoon",
+    tagline: "Romance · Safari · Indian Ocean",
+    blurb:
+      "Private safaris paired with the white sands of Zanzibar — candlelit bush dinners, sunrise balloon flights and sundowners for two.",
+  },
+  {
+    id: "cultural",
+    label: "Cultural",
+    href: "/cultural",
+    tagline: "Maasai · Hadzabe · Chagga · Datoga",
+    blurb:
+      "Meet the people of Tanzania — herd with the Maasai, hunt with the Hadzabe at Lake Eyasi and roast coffee with the Chagga on Kilimanjaro's slopes.",
+  },
+  {
+    id: "paramotoring",
+    label: "Paramotoring",
+    href: "/paramotoring",
+    tagline: "Kilimanjaro · Rift Valley · Serengeti — from the air",
+    blurb:
+      "See Tanzania as almost no one does — glide on a paramotor over Kilimanjaro, the Great Rift Valley and the wildlife-dotted Serengeti plains.",
+  },
+];

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { byCategory } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
+import GuideStrip from "@/components/GuideStrip";
+import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
   title: "Tanzania Trekking – Kilimanjaro, Mount Meru & Ol Doinyo Lengai",
@@ -66,6 +68,13 @@ export default function TrekkingListingPage() {
           ))}
         </div>
       </section>
+
+      <GuideStrip
+        guides={guidesForCategory("trekking")}
+        title="Read before you go"
+        subtitle="Mount Meru, Ol Doinyo Lengai, and how trekking pairs with Kilimanjaro."
+        className="pb-16 md:pb-24"
+      />
 
       <CTABand
         eyebrow="Not sure which trek?"

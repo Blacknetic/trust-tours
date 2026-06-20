@@ -2,7 +2,8 @@
 // If a package sets its own heroImage we use it; otherwise we pick from a
 // library keyed by the trip's destinations (then category), varying by a hash
 // of the slug so cards alternate instead of all showing the same picture.
-import type { TripPackage, Destination } from "@/data/packages";
+import type { TripPackage, Destination, SafariCategoryId } from "@/data/packages";
+import { safariCategoryOf } from "@/data/packages";
 
 const I = (n: string) => `/images/${n}`;
 
@@ -50,6 +51,33 @@ const BY_CATEGORY: Record<TripPackage["category"], string[]> = {
 
 const HONEYMOON = [I("honeymoon.jpg"), I("honeymoon-2.jpg"), I("honeymoon-3.jpg"), I("honeymoon-4.jpg")];
 
+// Tightly curated, on-theme pools for the five Safaris-umbrella categories.
+// These take precedence over the destination match so a Big Five trip never
+// shows a wildebeest crossing and a Migration trip never shows a lone lion.
+const BY_SAFARI_CATEGORY: Record<SafariCategoryId, string[]> = {
+  "big-five": [
+    I("safari-lion-pride.jpg"),
+    I("safari-leopard.jpg"),
+    I("ngorongoro-rhino.jpg"),
+    I("safari-hippo.jpg"),
+    I("tarangire-giraffes.jpg"),
+    I("safari-giraffes.jpg"),
+    I("serengeti-cheetah.jpg"),
+  ],
+  migration: [
+    I("migration-river-crossing.jpg"),
+    I("migration-herds.jpg"),
+    I("zebra-wildebeest.jpg"),
+    I("ndutu-calving.jpg"),
+    I("serengeti-plains.jpg"),
+  ],
+  honeymoon: HONEYMOON,
+  cultural: [I("maasai-dance.jpg"), I("maasai-dance-2.jpg"), I("wall/client-with-hadzabe.jpg")],
+  // No real paramotor photo in the library yet — balloon/aerial shots are the
+  // closest on-theme stand-ins. TODO: swap in paramotor imagery when available.
+  paramotoring: [I("aerial-balloon.jpg"), I("balloon-safari.jpg")],
+};
+
 function hash(s: string): number {
   let h = 0;
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
@@ -59,6 +87,14 @@ function hash(s: string): number {
 /** A relevant hero/card image for a package — the trip's own, or a smart match. */
 export function packageImage(pkg: TripPackage): string {
   if (pkg.heroImage) return pkg.heroImage;
+
+  // Safari-umbrella trips draw from their category's curated pool first, so the
+  // photo always matches the category the trip is filed under.
+  const safariCat = safariCategoryOf(pkg);
+  if (safariCat) {
+    const catPool = BY_SAFARI_CATEGORY[safariCat];
+    return catPool[hash(pkg.slug) % catPool.length];
+  }
 
   const pool: string[] = [];
   if (pkg.tags?.includes("honeymoon")) pool.push(...HONEYMOON);

@@ -6,8 +6,87 @@ import PackageCard from "@/components/PackageCard";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTABand from "@/components/CTABand";
 import GuideJsonLd from "@/components/GuideJsonLd";
+import GuideDiagram from "@/components/GuideDiagram";
+import TrustStrip from "@/components/TrustStrip";
+import type { GuideTable, GuideCallout } from "@/data/guides";
 
 const BORDER = "rgba(26, 26, 22,0.08)";
+
+const CALLOUT_TONES: Record<NonNullable<GuideCallout["tone"]>, { bar: string; label: string }> = {
+  tip: { bar: "var(--forest)", label: "Tip" },
+  warning: { bar: "var(--sunset)", label: "Important" },
+  info: { bar: "var(--gold)", label: "Good to know" },
+};
+
+function Callout({ callout }: { callout: GuideCallout }) {
+  const tone = CALLOUT_TONES[callout.tone ?? "tip"];
+  return (
+    <div
+      className="rounded-xl p-4 md:p-5 my-6"
+      style={{ background: "var(--snow)", borderLeft: `4px solid ${tone.bar}` }}
+    >
+      <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: tone.bar }}>
+        {callout.label ?? tone.label}
+      </p>
+      <p className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.9 }}>
+        {callout.text}
+      </p>
+    </div>
+  );
+}
+
+function ComparisonTable({ table }: { table: GuideTable }) {
+  return (
+    <figure className="my-7 -mx-4 md:mx-0 overflow-x-auto">
+      <table className="w-full border-collapse text-sm min-w-[34rem]">
+        <thead>
+          <tr>
+            {table.headers.map((h, i) => (
+              <th
+                key={i}
+                className="text-left font-bold px-3 py-2.5 align-bottom"
+                style={{
+                  color: i === table.highlightCol ? "var(--paper)" : "var(--ink)",
+                  background: i === table.highlightCol ? "var(--forest)" : "transparent",
+                  borderBottom: "2px solid rgba(26,26,22,0.12)",
+                  fontFamily: "var(--font-display)",
+                }}
+              >
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row, r) => (
+            <tr key={r}>
+              {row.map((cell, c) => (
+                <td
+                  key={c}
+                  className="px-3 py-2.5 align-top leading-relaxed"
+                  style={{
+                    color: "var(--ink)",
+                    opacity: c === 0 ? 1 : 0.82,
+                    fontWeight: c === 0 ? 600 : 400,
+                    background: c === table.highlightCol ? "rgba(74,41,18,0.05)" : "transparent",
+                    borderBottom: "1px solid rgba(26,26,22,0.07)",
+                  }}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {table.caption && (
+        <figcaption className="text-xs mt-2 px-4 md:px-0" style={{ color: "var(--ink)", opacity: 0.5 }}>
+          {table.caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
 
 export default function GuideView({ guide }: { guide: Guide }) {
   const related = (guide.relatedPackages ?? [])
@@ -80,38 +159,65 @@ export default function GuideView({ guide }: { guide: Guide }) {
         {/* Primary CTA — funnel to the matching booking page */}
         <Link
           href={guide.primaryCta.href}
-          className="inline-flex items-center gap-2 mb-10 px-6 py-3 rounded-full text-sm font-semibold transition-opacity hover:opacity-90"
+          className="inline-flex items-center gap-2 mb-8 px-6 py-3 rounded-full text-sm font-semibold transition-opacity hover:opacity-90"
           style={{ background: "var(--gold)", color: "var(--ink)" }}
         >
           {guide.primaryCta.label} →
         </Link>
 
+        {/* Credibility strip (money guides) */}
+        {guide.trustStrip && <TrustStrip />}
+
         {guide.sections.map((s, i) => (
-          <section key={i} className="mb-9">
-            {s.heading && (
-              <h2
-                className="text-2xl font-extrabold mb-4"
-                style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+          <div key={i}>
+            <section className="mb-9">
+              {s.heading && (
+                <h2
+                  className="text-2xl font-extrabold mb-4"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+                >
+                  {s.heading}
+                </h2>
+              )}
+              {s.paragraphs?.map((p, j) => (
+                <p key={j} className="text-base leading-relaxed mb-4" style={{ color: "var(--ink)", opacity: 0.85 }}>
+                  {p}
+                </p>
+              ))}
+              {s.bullets && (
+                <ul className="space-y-2.5 mt-2">
+                  {s.bullets.map((b, j) => (
+                    <li key={j} className="flex items-start gap-3">
+                      <span className="mt-1 flex-shrink-0 font-bold" style={{ color: "var(--gold)" }}>›</span>
+                      <span className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.85 }}>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {s.table && <ComparisonTable table={s.table} />}
+              {s.diagram && <GuideDiagram kind={s.diagram} />}
+              {s.callout && <Callout callout={s.callout} />}
+            </section>
+
+            {/* Inline mid-article CTA */}
+            {guide.inlineCtaAfter === i && (
+              <div
+                className="rounded-2xl p-5 md:p-6 mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+                style={{ background: "var(--snow)", border: "1px solid var(--border, rgba(26,26,22,0.08))" }}
               >
-                {s.heading}
-              </h2>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--ink)", opacity: 0.85, maxWidth: "42ch" }}>
+                  Got a question while you read? Ombeni answers personally — usually within a few hours.
+                </p>
+                <Link
+                  href={guide.primaryCta.href}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-opacity hover:opacity-90"
+                  style={{ background: "var(--gold)", color: "var(--ink)" }}
+                >
+                  {guide.primaryCta.label} →
+                </Link>
+              </div>
             )}
-            {s.paragraphs?.map((p, j) => (
-              <p key={j} className="text-base leading-relaxed mb-4" style={{ color: "var(--ink)", opacity: 0.85 }}>
-                {p}
-              </p>
-            ))}
-            {s.bullets && (
-              <ul className="space-y-2.5 mt-2">
-                {s.bullets.map((b, j) => (
-                  <li key={j} className="flex items-start gap-3">
-                    <span className="mt-1 flex-shrink-0 font-bold" style={{ color: "var(--gold)" }}>›</span>
-                    <span className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.85 }}>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
+          </div>
         ))}
 
         {/* FAQs */}
