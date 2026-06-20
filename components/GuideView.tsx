@@ -1,16 +1,40 @@
 import Link from "next/link";
-import type { Guide } from "@/data/guides";
+import type { Guide, GuideTopic } from "@/data/guides";
 import { getGuide } from "@/data/guides";
 import { getPackage } from "@/data/packages";
+import Photo from "@/components/Photo";
 import PackageCard from "@/components/PackageCard";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTABand from "@/components/CTABand";
 import GuideJsonLd from "@/components/GuideJsonLd";
 import GuideDiagram from "@/components/GuideDiagram";
 import TrustStrip from "@/components/TrustStrip";
+import Reveal from "@/components/Reveal";
+import Parallax from "@/components/Parallax";
+import ScrollProgressSpine from "@/components/ScrollProgressSpine";
 import type { GuideTable, GuideCallout } from "@/data/guides";
 
 const BORDER = "rgba(26, 26, 22,0.08)";
+
+// Per-topic hero photo for the article header. A guide's own `image` overrides
+// this; otherwise the topic decides which on-theme shot sits behind the title.
+const TOPIC_HERO: Record<GuideTopic, string> = {
+  Kilimanjaro: "/images/kilimanjaro-hero.jpg",
+  Safari: "/images/serengeti-plains.jpg",
+  Zanzibar: "/images/zanzibar-beach.jpg",
+  Trekking: "/images/meru-hero.jpg",
+  "Culture & Adventure": "/images/maasai-dance.jpg",
+  Planning: "/images/kilimanjaro-plains.jpg",
+  "Health & Safety": "/images/wall/kilimanjaro-summit-night.jpg",
+};
+
+// Pre-computed drifting light-dust motes (deterministic so SSR/CSR match).
+const DUST = Array.from({ length: 10 }, (_, i) => ({
+  left: `${(i * 9.7 + 5) % 100}%`,
+  duration: `${10 + ((i * 7) % 9)}s`,
+  delay: `${(i * 1.9) % 8}s`,
+  scale: 0.6 + ((i * 3) % 7) / 6,
+}));
 
 const CALLOUT_TONES: Record<NonNullable<GuideCallout["tone"]>, { bar: string; label: string }> = {
   tip: { bar: "var(--forest)", label: "Tip" },
@@ -102,14 +126,63 @@ export default function GuideView({ guide }: { guide: Guide }) {
     month: "long",
   });
 
+  const hero = guide.image ?? TOPIC_HERO[guide.topic];
+
   return (
     <>
       <GuideJsonLd guide={guide} />
+      <ScrollProgressSpine />
 
-      {/* ── Header ────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20" style={{ background: "var(--forest)" }}>
-        <div className="max-w-3xl mx-auto px-4 md:px-6">
-          <nav aria-label="Breadcrumb" className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.95)" }}>
+      {/* ── Header — parallax topic photo, fading copy ────────── */}
+      <section className="relative flex items-end min-h-[58vh] overflow-hidden">
+        <Parallax speed={0.16} className="absolute inset-0">
+          <div
+            className="hero-ken-burns absolute left-0 right-0"
+            style={{ top: "-9%", height: "118%" }}
+          >
+            <Photo src={hero} alt="" fill priority sizes="100vw" className="object-cover" />
+          </div>
+        </Parallax>
+
+        {/* Dark wash — heavier at the base where the title sits */}
+        <div
+          className="absolute inset-0"
+          aria-hidden="true"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(26,26,22,0.55) 0%, rgba(26,26,22,0.35) 40%, rgba(13,19,13,0.86) 100%)",
+          }}
+        />
+        {/* Slow gold sheen drift */}
+        <div
+          className="absolute inset-0 hero-gradient-shift"
+          aria-hidden="true"
+          style={{
+            background:
+              "linear-gradient(120deg, rgba(138,90,50,0.16), rgba(26,26,22,0) 45%, rgba(110,59,31,0.12) 80%)",
+          }}
+        />
+        {/* Drifting gold light-dust */}
+        <div className="light-dust" aria-hidden="true">
+          {DUST.map((d, i) => (
+            <span
+              key={i}
+              style={{
+                left: d.left,
+                animationDuration: d.duration,
+                animationDelay: d.delay,
+                transform: `scale(${d.scale})`,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="relative z-10 w-full max-w-3xl mx-auto px-4 md:px-6 py-14 md:py-20">
+          <nav
+            aria-label="Breadcrumb"
+            className="fade-up text-xs mb-5"
+            style={{ color: "rgba(255,255,255,0.95)" }}
+          >
             <Link href="/" className="hover:opacity-80 transition-opacity">Home</Link>
             <span className="mx-2" aria-hidden="true">›</span>
             <Link href="/guides" className="hover:opacity-80 transition-opacity">Guides</Link>
@@ -117,11 +190,14 @@ export default function GuideView({ guide }: { guide: Guide }) {
             <span style={{ color: "rgba(255,255,255,0.95)" }}>{guide.topic}</span>
           </nav>
 
-          <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--gold)" }}>
+          <p
+            className="fade-up fade-up-2 text-sm font-semibold tracking-widest uppercase mb-3"
+            style={{ color: "var(--gold)" }}
+          >
             {guide.topic}
           </p>
           <h1
-            className="text-3xl md:text-5xl font-extrabold mb-4"
+            className="fade-up fade-up-2 text-3xl md:text-5xl font-extrabold mb-4"
             style={{
               fontFamily: "var(--font-display)",
               color: "var(--paper)",
@@ -131,7 +207,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
           >
             {guide.title}
           </h1>
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
+          <p className="fade-up fade-up-3 text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
             {guide.readMinutes} min read · Updated {updated}
           </p>
         </div>
@@ -140,17 +216,19 @@ export default function GuideView({ guide }: { guide: Guide }) {
       {/* ── Article body ──────────────────────────────────────── */}
       <article className="max-w-3xl mx-auto px-4 md:px-6 py-10 md:py-14">
         {/* Direct-answer box (AEO snippet) */}
-        <div
-          className="rounded-2xl p-5 md:p-6 mb-8"
-          style={{ background: "var(--snow)", borderLeft: "4px solid var(--gold)" }}
-        >
-          <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--gold)" }}>
-            The short answer
-          </p>
-          <p className="text-base md:text-lg leading-relaxed" style={{ color: "var(--ink)" }}>
-            {guide.keyTakeaway}
-          </p>
-        </div>
+        <Reveal>
+          <div
+            className="rounded-2xl p-5 md:p-6 mb-8"
+            style={{ background: "var(--snow)", borderLeft: "4px solid var(--gold)" }}
+          >
+            <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--gold)" }}>
+              The short answer
+            </p>
+            <p className="text-base md:text-lg leading-relaxed" style={{ color: "var(--ink)" }}>
+              {guide.keyTakeaway}
+            </p>
+          </div>
+        </Reveal>
 
         <p className="text-lg leading-relaxed mb-7" style={{ color: "var(--ink)" }}>
           {guide.intro}
@@ -170,6 +248,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
 
         {guide.sections.map((s, i) => (
           <div key={i}>
+            <Reveal>
             <section className="mb-9">
               {s.heading && (
                 <h2
@@ -198,6 +277,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
               {s.diagram && <GuideDiagram kind={s.diagram} />}
               {s.callout && <Callout callout={s.callout} />}
             </section>
+            </Reveal>
 
             {/* Inline mid-article CTA */}
             {guide.inlineCtaAfter === i && (
@@ -222,15 +302,17 @@ export default function GuideView({ guide }: { guide: Guide }) {
 
         {/* FAQs */}
         {guide.faqs && guide.faqs.length > 0 && (
-          <section className="pt-6 mt-4 border-t" style={{ borderColor: BORDER }}>
-            <h2
-              className="text-2xl font-extrabold mb-6"
-              style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-            >
-              Frequently Asked Questions
-            </h2>
-            <FAQAccordion faqs={guide.faqs} />
-          </section>
+          <Reveal>
+            <section className="pt-6 mt-4 border-t" style={{ borderColor: BORDER }}>
+              <h2
+                className="text-2xl font-extrabold mb-6"
+                style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+              >
+                Frequently Asked Questions
+              </h2>
+              <FAQAccordion faqs={guide.faqs} />
+            </section>
+          </Reveal>
         )}
 
         {/* Bottom inline CTA */}
