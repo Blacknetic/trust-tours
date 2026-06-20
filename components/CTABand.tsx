@@ -32,7 +32,7 @@ export default function CTABand({ eyebrow, title, subtitle, ctaLabel, waMessage 
       {subtitle && (
         <p
           className="text-sm mb-8 mx-auto"
-          style={{ color: "rgba(255,255,255,0.65)", maxWidth: "44ch" }}
+          style={{ color: "rgba(255,255,255,0.95)", maxWidth: "44ch" }}
         >
           {subtitle}
         </p>

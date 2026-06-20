@@ -24,7 +24,7 @@ function Card({ t }: { t: Testimonial }) {
       </p>
       <blockquote
         className="text-sm leading-relaxed flex-1 mb-5"
-        style={{ color: "rgba(255,255,255,0.74)" }}
+        style={{ color: "rgba(255,255,255,0.95)" }}
       >
         &ldquo;{t.quote}&rdquo;
       </blockquote>
@@ -40,7 +40,7 @@ function Card({ t }: { t: Testimonial }) {
           <span className="block text-sm font-semibold truncate" style={{ color: "var(--paper)" }}>
             {t.name}
           </span>
-          <span className="block text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <span className="block text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
             {t.context} · {t.source}
           </span>
         </span>

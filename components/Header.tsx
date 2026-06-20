@@ -7,7 +7,15 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 type NavLink = { href: string; label: string };
-type NavGroup = { label: string; match: string[]; children: NavLink[] };
+type NavSection = { label: string; children: NavLink[] };
+// A group renders as a hover/tap dropdown. It lists either a flat set of
+// `children` (Trekking, Safaris) or topic `sections` (Guides) — same panel.
+type NavGroup = {
+  label: string;
+  match: string[];
+  children?: NavLink[];
+  sections?: NavSection[];
+};
 type NavItem = NavLink | NavGroup;
 
 const NAV: NavItem[] = [
@@ -34,12 +42,71 @@ const NAV: NavItem[] = [
     ],
   },
   { href: "/zanzibar", label: "Zanzibar" },
-  { href: "/guides", label: "Guides" },
+  {
+    label: "Guides",
+    match: ["/guides"],
+    sections: [
+      {
+        label: "Kilimanjaro",
+        children: [
+          { href: "/guides/climbing-kilimanjaro-guide", label: "Climbing Kilimanjaro" },
+          { href: "/guides/best-kilimanjaro-route", label: "Best route" },
+          { href: "/guides/kilimanjaro-packing-list", label: "Packing list" },
+        ],
+      },
+      {
+        label: "Safari",
+        children: [
+          { href: "/guides/tanzania-safari-guide", label: "Safari guide" },
+          { href: "/guides/best-time-great-migration", label: "Great Migration timing" },
+          { href: "/guides/serengeti-guide", label: "Serengeti" },
+        ],
+      },
+      {
+        label: "Zanzibar",
+        children: [
+          { href: "/guides/zanzibar-travel-guide", label: "Zanzibar guide" },
+          { href: "/guides/best-beaches-zanzibar", label: "Best beaches" },
+          { href: "/guides/stone-town-guide", label: "Stone Town" },
+        ],
+      },
+      {
+        label: "Trekking",
+        children: [
+          { href: "/guides/mount-meru-climb-guide", label: "Mount Meru" },
+          { href: "/guides/ol-doinyo-lengai-guide", label: "Ol Doinyo Lengai" },
+        ],
+      },
+      {
+        label: "Planning",
+        children: [
+          { href: "/guides/tanzania-travel-guide", label: "Tanzania travel guide" },
+          { href: "/guides/best-time-to-visit-tanzania", label: "Best time to visit" },
+          { href: "/guides/how-to-choose-tour-operator", label: "Choosing an operator" },
+        ],
+      },
+      {
+        label: "Health & Safety",
+        children: [
+          { href: "/guides/altitude-sickness-on-kilimanjaro", label: "Altitude sickness" },
+          { href: "/guides/tanzania-vaccinations", label: "Vaccinations" },
+          { href: "/guides/is-tanzania-safe", label: "Is Tanzania safe?" },
+        ],
+      },
+      {
+        label: "Culture & Adventure",
+        children: [
+          { href: "/guides/tanzania-cultural-tours-guide", label: "Cultural tours" },
+          { href: "/guides/paramotoring-tanzania-guide", label: "Paramotoring" },
+        ],
+      },
+    ],
+  },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
-const isGroup = (item: NavItem): item is NavGroup => "children" in item;
+const isGroup = (item: NavItem): item is NavGroup => "match" in item;
 
 const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
   "Hi Ombeni! I'd like to plan a Tanzania trip with Trust Tours & Safaris."
@@ -126,25 +193,72 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.15, ease: "easeOut" }}
-                        className="absolute left-0 top-full pt-2 z-50"
+                        className={`absolute top-full pt-2 z-50 ${
+                          item.sections ? "right-0" : "left-0"
+                        }`}
                       >
                         <div
-                          className="min-w-[200px] rounded-xl overflow-hidden shadow-lg py-1"
+                          className="rounded-xl overflow-hidden shadow-lg"
                           style={{ background: "var(--paper)", border: "1px solid rgba(74,41,18,0.14)" }}
                         >
-                          {item.children.map((c) => (
-                            <Link
-                              key={c.href}
-                              href={c.href}
-                              onClick={() => setMenu(null)}
-                              className="block px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[rgba(74,41,18,0.06)]"
-                              style={{
-                                color: pathname.startsWith(c.href) ? "var(--gold)" : "var(--forest)",
-                              }}
-                            >
-                              {c.label}
-                            </Link>
-                          ))}
+                          {item.sections ? (
+                            // Grouped-by-topic menu (Guides) — same panel, two columns.
+                            <div className="grid grid-cols-2 gap-x-6 gap-y-4 p-4 w-[480px] max-w-[92vw]">
+                              {item.sections.map((sec) => (
+                                <div key={sec.label}>
+                                  <p
+                                    className="px-2 pb-1 text-[0.7rem] font-bold uppercase tracking-wider"
+                                    style={{ color: "rgba(74,41,18,0.5)" }}
+                                  >
+                                    {sec.label}
+                                  </p>
+                                  {sec.children.map((c) => (
+                                    <Link
+                                      key={c.href}
+                                      href={c.href}
+                                      onClick={() => setMenu(null)}
+                                      className="block px-2 py-1.5 text-sm font-semibold rounded-md transition-colors hover:bg-[rgba(74,41,18,0.06)]"
+                                      style={{
+                                        color: pathname.startsWith(c.href) ? "var(--gold)" : "var(--forest)",
+                                      }}
+                                    >
+                                      {c.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              ))}
+                              <div
+                                className="col-span-2 pt-3 mt-1"
+                                style={{ borderTop: "1px solid rgba(74,41,18,0.12)" }}
+                              >
+                                <Link
+                                  href="/guides"
+                                  onClick={() => setMenu(null)}
+                                  className="block px-2 text-sm font-bold transition-opacity hover:opacity-80"
+                                  style={{ color: "var(--gold)" }}
+                                >
+                                  All guides →
+                                </Link>
+                              </div>
+                            </div>
+                          ) : (
+                            // Flat menu (Trekking, Safaris) — unchanged.
+                            <div className="min-w-[200px] py-1">
+                              {item.children?.map((c) => (
+                                <Link
+                                  key={c.href}
+                                  href={c.href}
+                                  onClick={() => setMenu(null)}
+                                  className="block px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[rgba(74,41,18,0.06)]"
+                                  style={{
+                                    color: pathname.startsWith(c.href) ? "var(--gold)" : "var(--forest)",
+                                  }}
+                                >
+                                  {c.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     )}
@@ -228,20 +342,58 @@ export default function Header() {
                   >
                     {item.label}
                   </p>
-                  {item.children.map((c) => (
-                    <Link
-                      key={c.href}
-                      href={c.href}
-                      onClick={() => setOpen(false)}
-                      className="block py-3 pl-3 text-base font-semibold transition-colors"
-                      style={{
-                        borderBottom: "1px solid rgba(74,41,18,0.1)",
-                        color: pathname.startsWith(c.href) ? "var(--gold)" : "var(--forest)",
-                      }}
-                    >
-                      {c.label}
-                    </Link>
-                  ))}
+                  {item.sections ? (
+                    // Grouped-by-topic (Guides): topic sub-labels + links, then All guides.
+                    <>
+                      {item.sections.map((sec) => (
+                        <div key={sec.label}>
+                          <p
+                            className="pt-2 pb-0.5 pl-3 text-[0.7rem] font-semibold uppercase tracking-wider"
+                            style={{ color: "rgba(74,41,18,0.4)" }}
+                          >
+                            {sec.label}
+                          </p>
+                          {sec.children.map((c) => (
+                            <Link
+                              key={c.href}
+                              href={c.href}
+                              onClick={() => setOpen(false)}
+                              className="block py-2.5 pl-5 text-base font-semibold transition-colors"
+                              style={{
+                                borderBottom: "1px solid rgba(74,41,18,0.1)",
+                                color: pathname.startsWith(c.href) ? "var(--gold)" : "var(--forest)",
+                              }}
+                            >
+                              {c.label}
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                      <Link
+                        href="/guides"
+                        onClick={() => setOpen(false)}
+                        className="block py-3 pl-3 text-base font-bold"
+                        style={{ color: "var(--gold)" }}
+                      >
+                        All guides →
+                      </Link>
+                    </>
+                  ) : (
+                    item.children?.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        onClick={() => setOpen(false)}
+                        className="block py-3 pl-3 text-base font-semibold transition-colors"
+                        style={{
+                          borderBottom: "1px solid rgba(74,41,18,0.1)",
+                          color: pathname.startsWith(c.href) ? "var(--gold)" : "var(--forest)",
+                        }}
+                      >
+                        {c.label}
+                      </Link>
+                    ))
+                  )}
                 </div>
               ) : (
                 <Link

@@ -97,7 +97,7 @@ function Field({
         <label
           htmlFor={id}
           className="text-[11px] font-semibold uppercase tracking-wide"
-          style={{ color: "var(--ink)", opacity: 0.5 }}
+          style={{ color: "var(--ink)" }}
         >
           {label}
         </label>

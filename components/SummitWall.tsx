@@ -96,7 +96,7 @@ export default function SummitWall() {
             >
               These are our climbers. These are our summits.
             </h2>
-            <p className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.7 }}>
+            <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
               Not stock photos — our own guests, guides and crew, on the mountain and in
               the bush. Every season we take people to the roof of Africa and back, and
               we keep the pictures to prove it.
@@ -119,7 +119,7 @@ export default function SummitWall() {
                 <p className="text-sm font-semibold" style={{ color: "var(--ink)" }}>
                   World Travel Awards 2023 Nominee
                 </p>
-                <p className="text-xs" style={{ color: "var(--ink)", opacity: 0.6 }}>
+                <p className="text-xs" style={{ color: "var(--ink)" }}>
                   Tanzania&rsquo;s Leading Safari Company · TALA Licensed Agent No. 014216
                 </p>
               </div>

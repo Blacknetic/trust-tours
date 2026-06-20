@@ -40,7 +40,7 @@ export default function TrekkingListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "62ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "62ch" }}
           >
             Beyond Kilimanjaro, Tanzania has some of Africa&apos;s most rewarding
             climbs — the wildlife-rich slopes of Mount Meru and the sacred,

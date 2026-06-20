@@ -28,7 +28,7 @@ function Callout({ callout }: { callout: GuideCallout }) {
       <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: tone.bar }}>
         {callout.label ?? tone.label}
       </p>
-      <p className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.9 }}>
+      <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
         {callout.text}
       </p>
     </div>
@@ -80,7 +80,7 @@ function ComparisonTable({ table }: { table: GuideTable }) {
         </tbody>
       </table>
       {table.caption && (
-        <figcaption className="text-xs mt-2 px-4 md:px-0" style={{ color: "var(--ink)", opacity: 0.5 }}>
+        <figcaption className="text-xs mt-2 px-4 md:px-0" style={{ color: "var(--ink)" }}>
           {table.caption}
         </figcaption>
       )}
@@ -109,12 +109,12 @@ export default function GuideView({ guide }: { guide: Guide }) {
       {/* ── Header ────────────────────────────────────────────── */}
       <section className="py-14 md:py-20" style={{ background: "var(--forest)" }}>
         <div className="max-w-3xl mx-auto px-4 md:px-6">
-          <nav aria-label="Breadcrumb" className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <nav aria-label="Breadcrumb" className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.95)" }}>
             <Link href="/" className="hover:opacity-80 transition-opacity">Home</Link>
             <span className="mx-2" aria-hidden="true">›</span>
             <Link href="/guides" className="hover:opacity-80 transition-opacity">Guides</Link>
             <span className="mx-2" aria-hidden="true">›</span>
-            <span style={{ color: "rgba(255,255,255,0.8)" }}>{guide.topic}</span>
+            <span style={{ color: "rgba(255,255,255,0.95)" }}>{guide.topic}</span>
           </nav>
 
           <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--gold)" }}>
@@ -131,7 +131,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
           >
             {guide.title}
           </h1>
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
             {guide.readMinutes} min read · Updated {updated}
           </p>
         </div>
@@ -180,7 +180,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
                 </h2>
               )}
               {s.paragraphs?.map((p, j) => (
-                <p key={j} className="text-base leading-relaxed mb-4" style={{ color: "var(--ink)", opacity: 0.85 }}>
+                <p key={j} className="text-base leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
                   {p}
                 </p>
               ))}
@@ -189,7 +189,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
                   {s.bullets.map((b, j) => (
                     <li key={j} className="flex items-start gap-3">
                       <span className="mt-1 flex-shrink-0 font-bold" style={{ color: "var(--gold)" }}>›</span>
-                      <span className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.85 }}>{b}</span>
+                      <span className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>{b}</span>
                     </li>
                   ))}
                 </ul>
@@ -205,7 +205,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
                 className="rounded-2xl p-5 md:p-6 mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
                 style={{ background: "var(--snow)", border: "1px solid var(--border, rgba(26,26,22,0.08))" }}
               >
-                <p className="text-sm leading-relaxed" style={{ color: "var(--ink)", opacity: 0.85, maxWidth: "42ch" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--ink)", maxWidth: "42ch" }}>
                   Got a question while you read? Ombeni answers personally — usually within a few hours.
                 </p>
                 <Link

@@ -47,7 +47,7 @@ export default function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
             <div style={{ overflow: "hidden" }}>
               <p
                 className="pb-5 text-sm leading-relaxed"
-                style={{ color: "var(--ink)", opacity: 0.72, maxWidth: "65ch" }}
+                style={{ color: "var(--ink)", maxWidth: "65ch" }}
               >
                 {faq.answer}
               </p>

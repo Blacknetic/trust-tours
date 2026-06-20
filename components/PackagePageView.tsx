@@ -115,7 +115,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
           <nav
             aria-label="Breadcrumb"
             className="text-xs mb-5"
-            style={{ color: "rgba(255,255,255,0.5)" }}
+            style={{ color: "rgba(255,255,255,0.95)" }}
           >
             <Link href="/" className="hover:opacity-80 transition-opacity">Home</Link>
             <span className="mx-2" aria-hidden="true">›</span>
@@ -123,7 +123,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
               {lex.crumb}
             </Link>
             <span className="mx-2" aria-hidden="true">›</span>
-            <span style={{ color: "rgba(255,255,255,0.8)" }}>{pkg.shortName}</span>
+            <span style={{ color: "rgba(255,255,255,0.95)" }}>{pkg.shortName}</span>
           </nav>
 
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
@@ -152,25 +152,25 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
             <div className="md:text-right flex-shrink-0">
               {pkg.priceFromUSD > 0 ? (
                 <>
-                  <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>From</p>
+                  <p className="text-sm" style={{ color: "rgba(255,255,255,0.95)" }}>From</p>
                   <p
                     className="text-5xl font-extrabold leading-none"
                     style={{ fontFamily: "var(--font-display)", color: "var(--sunset)" }}
                   >
                     ${pkg.priceFromUSD.toLocaleString()}
                   </p>
-                  <p className="text-xs mt-1.5" style={{ color: "rgba(255,255,255,0.5)" }}>
+                  <p className="text-xs mt-1.5" style={{ color: "rgba(255,255,255,0.95)" }}>
                     per person
                   </p>
                   <p
                     className="text-xs mt-1 mb-5 md:ml-auto"
-                    style={{ color: "rgba(255,255,255,0.4)", maxWidth: "30ch" }}
+                    style={{ color: "rgba(255,255,255,0.95)", maxWidth: "30ch" }}
                   >
                     {pkg.priceNote}
                   </p>
                 </>
               ) : (
-                <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.55)" }}>
+                <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.95)" }}>
                   Price on request
                 </p>
               )}
@@ -270,7 +270,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                           <li
                             key={i}
                             className="flex items-start gap-3 text-sm"
-                            style={{ color: "var(--ink)", opacity: 0.72 }}
+                            style={{ color: "var(--ink)" }}
                           >
                             <span className="mt-0.5 flex-shrink-0" style={{ color: "var(--sunset)" }}>✕</span>
                             {item}
@@ -321,7 +321,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 >
                   Frequently Asked Questions
                 </h2>
-                <p className="text-sm mb-8" style={{ color: "var(--ink)", opacity: 0.5 }}>
+                <p className="text-sm mb-8" style={{ color: "var(--ink)" }}>
                   Still have questions? Ask Ombeni directly on WhatsApp.
                 </p>
                 <FAQAccordion faqs={pkg.faqs} />
@@ -352,7 +352,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                       <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
                         &ldquo;{r.text}&rdquo;
                       </p>
-                      <footer className="text-xs" style={{ color: "var(--ink)", opacity: 0.5 }}>
+                      <footer className="text-xs" style={{ color: "var(--ink)" }}>
                         <cite className="not-italic font-semibold">{r.author}</cite>
                         {" — "}{r.source}
                       </footer>

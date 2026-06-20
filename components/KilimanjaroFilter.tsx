@@ -23,7 +23,7 @@ export default function KilimanjaroFilter({ climbs }: { climbs: TripPackage[] })
     <>
       {/* Filter controls */}
       <div className="flex flex-wrap items-center gap-2 mb-4">
-        <span className="text-sm font-semibold mr-1" style={{ color: "var(--ink)", opacity: 0.6 }}>
+        <span className="text-sm font-semibold mr-1" style={{ color: "var(--ink)" }}>
           Choose by difficulty:
         </span>
         {options.map((lvl) => {
@@ -38,7 +38,7 @@ export default function KilimanjaroFilter({ climbs }: { climbs: TripPackage[] })
               style={
                 on
                   ? { background: "var(--gold)", color: "var(--ink)" }
-                  : { background: "var(--snow)", color: "var(--ink)", opacity: 0.85 }
+                  : { background: "var(--snow)", color: "var(--ink)" }
               }
             >
               {lvl}
@@ -48,7 +48,7 @@ export default function KilimanjaroFilter({ climbs }: { climbs: TripPackage[] })
       </div>
 
       {/* Legend for the card ratings */}
-      <p className="text-xs mb-8" style={{ color: "var(--ink)", opacity: 0.5 }}>
+      <p className="text-xs mb-8" style={{ color: "var(--ink)" }}>
         <span style={{ color: "var(--gold)" }}>▲▲▲</span> Effort = physical difficulty ·{" "}
         Summit = likelihood of reaching the top. Longer routes are gentler day-to-day and
         summit more often.

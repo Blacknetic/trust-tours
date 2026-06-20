@@ -47,7 +47,7 @@ export default function HoneymoonListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "62ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "62ch" }}
           >
             Celebrate your love with a private safari and the white sands of
             Zanzibar — candlelit bush dinners, sunrise balloon flights, couples&apos;

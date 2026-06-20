@@ -56,7 +56,7 @@ export default function KilimanjaroListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "60ch" }}
           >
             Four routes to the roof of Africa, each with licensed guides, a full
             porter and cook crew, and twice-daily health checks. Longer routes

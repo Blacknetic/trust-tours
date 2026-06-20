@@ -38,7 +38,7 @@ export default function SafarisListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed mb-8"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "62ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "62ch" }}
           >
             Every safari we run, sorted into five clear journeys. Whether you&apos;re
             chasing the Big Five, following the Great Migration, celebrating a

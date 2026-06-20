@@ -53,6 +53,9 @@ export interface Guide {
   title: string;
   topic: GuideTopic;
   excerpt: string;
+  // Optional hero image for the /guides explorer detail panel. When unset the
+  // explorer falls back to a per-topic image, so this is purely an override.
+  image?: string;
   updated: string; // ISO date
   readMinutes: number;
   // AEO: a one-paragraph direct answer to the page's primary question, shown in a

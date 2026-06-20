@@ -39,7 +39,7 @@ export default function ZanzibarListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "60ch" }}
           >
             White sand, turquoise water and the history of the Spice Island —
             UNESCO-listed Stone Town, spice farms, Mnemba&apos;s coral reefs and the

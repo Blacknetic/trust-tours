@@ -91,7 +91,7 @@ export default async function SearchPage({
           </h1>
           <p
             className="text-base leading-relaxed mb-8"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "55ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "55ch" }}
           >
             Pick what matters to you. Don&apos;t see the exact trip? Every Trust
             Tours itinerary is private and custom-built — message Ombeni and
@@ -115,7 +115,7 @@ export default async function SearchPage({
               : "No exact match — let's build one"}
           </h2>
           {criteria.length > 0 && (
-            <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.6 }}>
+            <p className="text-sm" style={{ color: "var(--ink)" }}>
               {criteria.join(" · ")} ·{" "}
               <Link href="/search" className="underline" style={{ color: "var(--forest)" }}>
                 clear
@@ -163,7 +163,7 @@ export default async function SearchPage({
             >
               We don&apos;t have that one off-the-shelf — yet.
             </p>
-            <p className="text-base mb-7" style={{ color: "var(--ink)", opacity: 0.75 }}>
+            <p className="text-base mb-7" style={{ color: "var(--ink)" }}>
               No fixed package matches{criteria.length ? ` “${criteria.join(", ")}”` : " that"},
               but that&apos;s exactly what we do best. Send Ombeni your idea on
               WhatsApp and we&apos;ll build a private itinerary and quote around it,

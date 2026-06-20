@@ -37,7 +37,7 @@ export default function TrustStrip() {
             >
               {p.head}
             </p>
-            <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+            <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.95)" }}>
               {p.sub}
             </p>
           </div>

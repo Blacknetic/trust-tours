@@ -183,7 +183,7 @@ export default function HomePage() {
           </p>
           <p
             className="fade-up fade-up-4 text-base mb-10"
-            style={{ color: "rgba(255,255,255,0.72)", maxWidth: "50ch", lineHeight: 1.6 }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "50ch", lineHeight: 1.6 }}
           >
             A small Arusha-based crew, led by Ombeni. We drive, we cook, we
             guide — from the moment you land to your summit certificate or your
@@ -213,7 +213,7 @@ export default function HomePage() {
           <div className="fade-up fade-up-4 mt-10 max-w-4xl">
             <p
               className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-              style={{ color: "rgba(255,255,255,0.7)" }}
+              style={{ color: "rgba(255,255,255,0.95)" }}
             >
               Or find your trip
             </p>
@@ -228,7 +228,7 @@ export default function HomePage() {
         >
           <span
             className="text-xs font-semibold tracking-[0.25em] uppercase"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "rgba(255,255,255,0.95)" }}
           >
             Begin the journey
           </span>
@@ -278,7 +278,7 @@ export default function HomePage() {
             <p className="text-sm font-bold" style={{ color: "var(--ink)" }}>
               Ombeni
             </p>
-            <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.55 }}>
+            <p className="text-sm" style={{ color: "var(--ink)" }}>
               Founder &amp; lead guide, Trust Tours &amp; Safaris — Arusha, Tanzania
             </p>
             <Link
@@ -315,7 +315,7 @@ export default function HomePage() {
               >
                 Choose your way to the summit
               </h2>
-              <p className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.7 }}>
+              <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
                 Every route up Kilimanjaro trades one thing for another — scenery
                 for solitude, an extra day for better odds at the top. Whichever
                 you choose, you climb with a guide who has stood on Uhuru Peak
@@ -359,7 +359,7 @@ export default function HomePage() {
               >
                 Meet Tanzania&rsquo;s wild north
               </h2>
-              <p className="text-base leading-relaxed" style={{ color: "var(--ink)", opacity: 0.7 }}>
+              <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
                 From the elephants of Tarangire to a million wildebeest thundering
                 across the Serengeti, your days on safari are spent in a 4x4 with
                 a guide who knows where the animals move and when. Tell us how
@@ -414,7 +414,7 @@ export default function HomePage() {
           >
             In their own words
           </h2>
-          <p className="text-sm mb-12" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="text-sm mb-12" style={{ color: "rgba(255,255,255,0.95)" }}>
             Independent five-star reviews from TripAdvisor.
           </p>
         </Reveal>
@@ -473,7 +473,7 @@ export default function HomePage() {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.66)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.95)" }}>
                     {step.body}
                   </p>
                 </li>

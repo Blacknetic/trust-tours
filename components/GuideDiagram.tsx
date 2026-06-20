@@ -36,7 +36,7 @@ function Frame({
       </figcaption>
       {children}
       {caption && (
-        <p className="text-xs mt-4 leading-relaxed" style={{ color: INK, opacity: 0.55 }}>
+        <p className="text-xs mt-4 leading-relaxed" style={{ color: INK }}>
           {caption}
         </p>
       )}
@@ -175,7 +175,7 @@ function RouteProfiles({ reduced }: { reduced: boolean }) {
                 transition={{ delay: 0.2 + i * 0.1, duration: 1.1, ease: "easeInOut" }}
               />
             </svg>
-            <p className="text-xs mt-1" style={{ color: INK, opacity: 0.5 }}>{r.note}</p>
+            <p className="text-xs mt-1" style={{ color: INK }}>{r.note}</p>
           </motion.div>
         ))}
       </div>
@@ -208,13 +208,13 @@ function DaysVsSuccess({ reduced }: { reduced: boolean }) {
               viewport={{ once: true, margin: "-10%" }}
               transition={{ delay: i * 0.12, duration: 0.7, ease: "easeOut" }}
             />
-            <span className="text-xs mt-2 font-semibold" style={{ color: INK, opacity: 0.6 }}>
+            <span className="text-xs mt-2 font-semibold" style={{ color: INK }}>
               {b.label}
             </span>
           </div>
         ))}
       </div>
-      <div className="flex justify-between text-xs mt-1" style={{ color: INK, opacity: 0.45 }}>
+      <div className="flex justify-between text-xs mt-1" style={{ color: INK }}>
         <span>lower summit chance</span>
         <span>higher summit chance →</span>
       </div>
@@ -262,7 +262,7 @@ function SummitNight({ reduced }: { reduced: boolean }) {
                 {" — "}
                 {s.place}
               </span>
-              <span className="text-xs font-mono whitespace-nowrap" style={{ color: INK, opacity: 0.5 }}>
+              <span className="text-xs font-mono whitespace-nowrap" style={{ color: INK }}>
                 {s.alt}
               </span>
             </div>
@@ -397,7 +397,7 @@ function SafariDay({ reduced }: { reduced: boolean }) {
                 {s.place}
               </span>
               {s.tag && (
-                <span className="text-xs whitespace-nowrap" style={{ color: INK, opacity: 0.4 }}>
+                <span className="text-xs whitespace-nowrap" style={{ color: INK }}>
                   {s.tag}
                 </span>
               )}

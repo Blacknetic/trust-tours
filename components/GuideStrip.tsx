@@ -29,7 +29,7 @@ export default function GuideStrip({
             {title}
           </h2>
           {subtitle && (
-            <p className="text-sm mt-1.5" style={{ color: "var(--ink)", opacity: 0.6 }}>
+            <p className="text-sm mt-1.5" style={{ color: "var(--ink)" }}>
               {subtitle}
             </p>
           )}
@@ -51,7 +51,7 @@ export default function GuideStrip({
             className="card-lift group flex flex-col h-full rounded-2xl p-6 transition-colors"
             style={{ border: "1px solid rgb(26 26 22 / 0.08)", background: "#fff" }}
           >
-            <span className="text-xs font-semibold mb-3" style={{ color: "var(--ink)", opacity: 0.45 }}>
+            <span className="text-xs font-semibold mb-3" style={{ color: "var(--ink)" }}>
               {g.topic} · {g.readMinutes} min read
             </span>
             <h3
@@ -60,7 +60,7 @@ export default function GuideStrip({
             >
               {g.title}
             </h3>
-            <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: "var(--ink)", opacity: 0.65 }}>
+            <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: "var(--ink)" }}>
               {g.excerpt}
             </p>
             <span

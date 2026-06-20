@@ -100,7 +100,7 @@ export default function ElevationJourney({ itinerary }: Props) {
 
   if (itinerary.length === 0) {
     return (
-      <p className="text-sm py-8 italic" style={{ color: "var(--ink)", opacity: 0.5 }}>
+      <p className="text-sm py-8 italic" style={{ color: "var(--ink)" }}>
         {/* TODO: pull full itinerary from old site before it goes offline */}
         Full day-by-day itinerary coming soon. Contact us on WhatsApp for the complete plan.
       </p>
@@ -125,7 +125,7 @@ export default function ElevationJourney({ itinerary }: Props) {
             >
               Route profile
             </p>
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
               {itinerary.length} days · {totalKm > 0 ? `${totalKm} km` : `${summit.alt.toLocaleString()} m`}
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function ElevationJourney({ itinerary }: Props) {
               className="flex items-center justify-between mt-3 pt-3"
               style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}
             >
-              <span className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
+              <span className="text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
                 Day {itinerary[activeIdx].day} · {activePoint.label}
               </span>
               <span
@@ -229,7 +229,7 @@ export default function ElevationJourney({ itinerary }: Props) {
               </h3>
               <p
                 className="text-sm leading-relaxed mb-3"
-                style={{ color: "var(--ink)", opacity: 0.7, maxWidth: "58ch" }}
+                style={{ color: "var(--ink)", maxWidth: "58ch" }}
               >
                 {day.description}
               </p>
@@ -262,7 +262,7 @@ export default function ElevationJourney({ itinerary }: Props) {
                 )}
               </div>
 
-              <p className="text-xs" style={{ color: "var(--ink)", opacity: 0.42 }}>
+              <p className="text-xs" style={{ color: "var(--ink)" }}>
                 {day.meals} · {day.accommodation}
               </p>
             </div>

@@ -38,7 +38,7 @@ export default function CulturalListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "62ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "62ch" }}
           >
             Go beyond the safari and meet the people of Tanzania — herd cattle with
             the Maasai, hunt with the Hadzabe and watch the Datoga blacksmiths at

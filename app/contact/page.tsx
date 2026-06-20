@@ -38,7 +38,7 @@ export default function ContactPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "60ch" }}
           >
             WhatsApp is fastest — you&apos;ll chat with Ombeni directly. Prefer
             email? Use the form and we&apos;ll get back to you.
@@ -68,7 +68,7 @@ export default function ContactPage() {
             >
               +255 785 938 860
             </p>
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+            <p className="text-sm" style={{ color: "rgba(255,255,255,0.95)" }}>
               Tap to open a chat with Ombeni →
             </p>
           </a>
@@ -79,7 +79,7 @@ export default function ContactPage() {
           >
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-2"
-              style={{ color: "var(--forest)", opacity: 0.6 }}
+              style={{ color: "var(--forest)" }}
             >
               Email
             </p>
@@ -98,14 +98,14 @@ export default function ContactPage() {
           >
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-2"
-              style={{ color: "var(--forest)", opacity: 0.6 }}
+              style={{ color: "var(--forest)" }}
             >
               Office
             </p>
             <p className="text-base font-semibold" style={{ color: "var(--ink)" }}>
               Arusha, Tanzania
             </p>
-            <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.55 }}>
+            <p className="text-sm" style={{ color: "var(--ink)" }}>
               Tanzania
             </p>
             {/* TODO: street address + Google Maps embed once confirmed with Ombeni */}
@@ -117,7 +117,7 @@ export default function ContactPage() {
           >
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-3"
-              style={{ color: "var(--forest)", opacity: 0.6 }}
+              style={{ color: "var(--forest)" }}
             >
               Follow along
             </p>
@@ -133,7 +133,7 @@ export default function ContactPage() {
           >
             Send an inquiry
           </h2>
-          <p className="text-sm mb-8" style={{ color: "var(--ink)", opacity: 0.6 }}>
+          <p className="text-sm mb-8" style={{ color: "var(--ink)" }}>
             Tell us what you&apos;re dreaming about and we&apos;ll send a free
             day-by-day itinerary priced for your group.
           </p>

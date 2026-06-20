@@ -38,7 +38,7 @@ export default function ParamotoringListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "62ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "62ch" }}
           >
             See Tanzania as almost no one does — from the air. Glide on a paramotor
             over Mount Meru and Kilimanjaro, the Great Rift Valley, the active Ol

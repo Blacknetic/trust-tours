@@ -52,14 +52,14 @@ export default function BookingCard({ packageTitle, priceFromUSD, priceNote }: P
     >
       {priceFromUSD > 0 ? (
         <div className="mb-6">
-          <p className="text-xs" style={{ color: "var(--ink)", opacity: 0.5 }}>From</p>
+          <p className="text-xs" style={{ color: "var(--ink)" }}>From</p>
           <p
             className="text-4xl font-extrabold leading-none"
             style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
           >
             ${priceFromUSD.toLocaleString()}
           </p>
-          <p className="text-xs mt-1.5" style={{ color: "var(--ink)", opacity: 0.5 }}>per person</p>
+          <p className="text-xs mt-1.5" style={{ color: "var(--ink)" }}>per person</p>
         </div>
       ) : (
         <p className="text-xl font-semibold mb-6" style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}>
@@ -72,7 +72,7 @@ export default function BookingCard({ packageTitle, priceFromUSD, priceNote }: P
           <label
             htmlFor="bc-month"
             className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-            style={{ color: "var(--ink)", opacity: 0.6 }}
+            style={{ color: "var(--ink)" }}
           >
             When?
           </label>
@@ -92,7 +92,7 @@ export default function BookingCard({ packageTitle, priceFromUSD, priceNote }: P
         <div>
           <span
             className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-            style={{ color: "var(--ink)", opacity: 0.6 }}
+            style={{ color: "var(--ink)" }}
           >
             Group size
           </span>
@@ -135,7 +135,7 @@ export default function BookingCard({ packageTitle, priceFromUSD, priceNote }: P
       </a>
 
       {priceNote && (
-        <p className="text-xs mt-3 leading-relaxed" style={{ color: "var(--ink)", opacity: 0.45 }}>
+        <p className="text-xs mt-3 leading-relaxed" style={{ color: "var(--ink)" }}>
           {priceNote}
         </p>
       )}

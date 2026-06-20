@@ -5,7 +5,9 @@
    Swap tokens here when the logo/brand evolves; nothing else changes.
 ──────────────────────────────────────────────────────────────────── */
 :root {
-  --ink: #1a1a16;     /* warm near-black — body text + darkest surfaces */
+  --ink: #0a0a0a;     /* DEEP BLACK — body text + darkest surfaces. Client wants
+                         text crisp deep-black only, not the old warm near-black
+                         (#1a1a16) which read greyish once faded with opacity. */
   --paper: #ffffff;   /* PURE WHITE — primary light surface + the white in the
                          brown & white brand. (Was warm bone #f7f3ea; client
                          wants true white, not cream.) Also used as near-white
@@ -44,6 +46,15 @@
   /* next/font injects these CSS vars via className on <html> */
   --font-display: var(--font-fraunces);
   --font-body: var(--font-albert);
+
+  /* ── Type scale — nudged up "a bit" site-wide ────────────────────────
+     Each step is ~1px larger than the Tailwind default so every text-xs…
+     text-lg reads more comfortably without losing the editorial hierarchy.
+     Line-heights stay on Tailwind's proportional ratios automatically. */
+  --text-xs: 0.8125rem;   /* 13px (was 12px) */
+  --text-sm: 0.9375rem;   /* 15px (was 14px) */
+  --text-base: 1.0625rem; /* 17px (was 16px) */
+  --text-lg: 1.1875rem;   /* 19px (was 18px) */
 }
 
 /* ─── Dawn-to-dusk journey palette ─────────────────────────────────
@@ -329,6 +340,18 @@ p {
   box-shadow: 0 22px 50px -18px rgba(26, 26, 22, 0.45), 0 0 0 1px rgba(138, 90, 50, 0.5);
 }
 
+/* ── Soft card hover — slight lift + soft shadow ONLY (no gold edge) ──
+   Used by the title-only Guides cards. Deliberately lighter than .card-lift
+   (which also draws a gold edge ring). Reduced-motion removes the lift below. */
+.card-hover-soft {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+.card-hover-soft:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -20px rgba(26, 26, 22, 0.4);
+}
+
 /* ── Step number badges ignite as their step reveals ─────────────── */
 .step-badge {
   transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease, color 0.5s ease;
@@ -432,6 +455,8 @@ p {
   .trail-spine::before { height: 100% !important; }
   .photo-zoom:hover img,
   .photo-zoom:focus-within img { transform: none !important; }
+  /* Keep the soft shadow on hover but drop the lift (motion) */
+  .card-hover-soft:hover { transform: none !important; }
   .light-dust { display: none !important; }
   .bird-flight { display: none !important; }
   .tw-caret { display: none !important; }

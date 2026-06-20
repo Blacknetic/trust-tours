@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { guides, GUIDE_TOPICS } from "@/data/guides";
 import CTABand from "@/components/CTABand";
+import GuideCard from "@/components/GuideCard";
 
 export const metadata: Metadata = {
   title: "Tanzania Travel Guides – Kilimanjaro, Safari & Zanzibar Tips",
@@ -34,7 +34,7 @@ export default function GuidesListingPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "62ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "62ch" }}
           >
             Straight answers from people who run the trips — when to come, how long
             to climb Kilimanjaro, staying healthy at altitude, visas, vaccinations
@@ -48,7 +48,7 @@ export default function GuidesListingPage() {
           const items = guides.filter((g) => g.topic === topic);
           if (items.length === 0) return null;
           return (
-            <div key={topic} className="mb-12">
+            <div key={topic} className="mb-12 last:mb-0">
               <h2
                 className="text-sm font-semibold tracking-widest uppercase mb-5"
                 style={{ color: "var(--gold)" }}
@@ -57,37 +57,7 @@ export default function GuidesListingPage() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {items.map((g) => (
-                  <Link
-                    key={g.slug}
-                    href={`/guides/${g.slug}`}
-                    className="card-lift group flex flex-col h-full rounded-2xl p-6 transition-colors"
-                    style={{ border: "1px solid rgb(26 26 22 / 0.08)", background: "#fff" }}
-                  >
-                    <span
-                      className="text-xs font-semibold mb-3"
-                      style={{ color: "var(--ink)", opacity: 0.45 }}
-                    >
-                      {g.readMinutes} min read
-                    </span>
-                    <h3
-                      className="text-lg font-extrabold mb-2 leading-snug"
-                      style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-                    >
-                      {g.title}
-                    </h3>
-                    <p
-                      className="text-sm leading-relaxed mb-4 flex-1"
-                      style={{ color: "var(--ink)", opacity: 0.65 }}
-                    >
-                      {g.excerpt}
-                    </p>
-                    <span
-                      className="text-sm font-semibold whitespace-nowrap transition-transform duration-200 group-hover:translate-x-1"
-                      style={{ color: "var(--forest)" }}
-                    >
-                      Read guide →
-                    </span>
-                  </Link>
+                  <GuideCard key={g.slug} guide={g} />
                 ))}
               </div>
             </div>

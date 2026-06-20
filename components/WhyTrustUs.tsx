@@ -84,7 +84,7 @@ export default function WhyTrustUs({
                   >
                     {p.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--ink)", opacity: 0.65 }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--ink)" }}>
                     {p.body}
                   </p>
                 </div>

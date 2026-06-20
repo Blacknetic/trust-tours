@@ -52,7 +52,7 @@ export default function ReviewsPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "60ch" }}
           >
             Every review here was written by a real traveller on an independent
             platform. We link the trip each one took so you can read it in
@@ -80,7 +80,7 @@ export default function ReviewsPage() {
               <p className="text-sm leading-relaxed mb-5 flex-1" style={{ color: "var(--ink)" }}>
                 &ldquo;{r.text}&rdquo;
               </p>
-              <footer className="text-xs" style={{ color: "var(--ink)", opacity: 0.55 }}>
+              <footer className="text-xs" style={{ color: "var(--ink)" }}>
                 <cite className="not-italic font-semibold">{r.author}</cite>
                 {" — "}{r.source}
                 <br />
@@ -97,7 +97,7 @@ export default function ReviewsPage() {
         </div>
 
         {reviews.length < 3 && (
-          <p className="text-sm mt-10" style={{ color: "var(--ink)", opacity: 0.5, maxWidth: "60ch" }}>
+          <p className="text-sm mt-10" style={{ color: "var(--ink)", maxWidth: "60ch" }}>
             More reviews are being added as we collect them from TripAdvisor and
             Google. Want a reference? Ask Ombeni on WhatsApp — he&apos;ll connect
             you with past climbers happy to share their experience.
@@ -120,7 +120,7 @@ export default function ReviewsPage() {
           >
             Read our reviews — or leave your own
           </h2>
-          <p className="text-sm mb-8 mx-auto" style={{ color: "var(--ink)", opacity: 0.6, maxWidth: "52ch" }}>
+          <p className="text-sm mb-8 mx-auto" style={{ color: "var(--ink)", maxWidth: "52ch" }}>
             Travelled with us? A few words on any of these platforms helps the
             next traveller plan with confidence.
           </p>

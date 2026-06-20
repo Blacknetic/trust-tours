@@ -58,7 +58,7 @@ export default function AboutPage() {
           </h1>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)", maxWidth: "60ch" }}
+            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "60ch" }}
           >
             Since 2008, Trust Tours &amp; Safaris has guided travellers to the
             roof of Africa and across the plains of Tanzania — always from our
@@ -78,7 +78,7 @@ export default function AboutPage() {
                 </dt>
                 <dd
                   className="text-xs md:text-sm mt-1 leading-snug"
-                  style={{ color: "rgba(255,255,255,0.7)" }}
+                  style={{ color: "rgba(255,255,255,0.95)" }}
                 >
                   {c.label}
                 </dd>
@@ -122,7 +122,7 @@ export default function AboutPage() {
               meeting the travellers who book it, and standing on the summit
               beside them.
             </p>
-            <p style={{ maxWidth: "60ch", opacity: 0.75 }}>
+            <p style={{ maxWidth: "60ch" }}>
               Around him is a close team of Tanzanian guides, drivers and cooks who
               return season after season. It&apos;s why a Trust Tours trip feels
               the same whether it&apos;s your first or your fifth — and why so much
@@ -151,7 +151,7 @@ export default function AboutPage() {
                 >
                   {v.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--ink)", opacity: 0.65 }}>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--ink)" }}>
                   {v.body}
                 </p>
               </div>

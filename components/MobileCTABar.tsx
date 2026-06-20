@@ -25,7 +25,7 @@ export default function MobileCTABar({ priceFromUSD, packageTitle }: Props) {
         <div className="flex-shrink-0">
           {priceFromUSD > 0 ? (
             <>
-              <p className="text-xs leading-none mb-0.5" style={{ color: "var(--ink)", opacity: 0.5 }}>
+              <p className="text-xs leading-none mb-0.5" style={{ color: "var(--ink)" }}>
                 From
               </p>
               <p
@@ -34,12 +34,12 @@ export default function MobileCTABar({ priceFromUSD, packageTitle }: Props) {
               >
                 ${priceFromUSD.toLocaleString()}
               </p>
-              <p className="text-xs leading-none mt-0.5" style={{ color: "var(--ink)", opacity: 0.45 }}>
+              <p className="text-xs leading-none mt-0.5" style={{ color: "var(--ink)" }}>
                 per person
               </p>
             </>
           ) : (
-            <p className="text-sm font-medium" style={{ color: "var(--ink)", opacity: 0.6 }}>
+            <p className="text-sm font-medium" style={{ color: "var(--ink)" }}>
               Price on request
             </p>
           )}

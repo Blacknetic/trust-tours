@@ -55,7 +55,7 @@ export default function InquiryForm() {
         >
           Asante! Your inquiry is on its way.
         </p>
-        <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.65 }}>
+        <p className="text-sm" style={{ color: "var(--ink)" }}>
           We typically reply within a day. For a faster answer, message us on
           WhatsApp.
         </p>
