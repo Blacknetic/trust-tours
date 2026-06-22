@@ -3,6 +3,7 @@ import { Fraunces, Albert_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import CrispChat from "@/components/CrispChat";
 import { SOCIAL_LINKS } from "@/data/social";
 import { jsonLd } from "@/lib/json-ld";
 import "./globals.css";
@@ -76,6 +77,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <CrispChat />
       </body>
     </html>
   );

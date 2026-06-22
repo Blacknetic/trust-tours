@@ -59,10 +59,18 @@ export default function KilimanjaroListingPage() {
             style={{ color: "rgba(255,255,255,0.95)", maxWidth: "60ch" }}
           >
             Four routes to the roof of Africa, each with licensed guides, a full
-            porter and cook crew, and twice-daily health checks. Longer routes
-            mean better acclimatization and higher summit success — we&apos;ll help
+            porter and cook crew, and twice-daily health checks. These are
+            private climbs — your own party, your own dates. Longer routes mean
+            better acclimatization and higher summit success, and we&apos;ll help
             you pick the right one for your fitness and budget.
           </p>
+          <a
+            href="/kilimanjaro/groups"
+            className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full text-sm font-semibold transition-opacity hover:opacity-90"
+            style={{ background: "var(--gold)", color: "var(--ink)" }}
+          >
+            Travelling solo or on a budget? Join a group departure →
+          </a>
         </div>
       </section>
 

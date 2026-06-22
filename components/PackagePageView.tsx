@@ -203,24 +203,6 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
               </p>
             </section>
 
-            {/* Highlights */}
-            <section className="py-10 border-b" style={{ borderColor: BORDER }}>
-              <h2
-                className="text-2xl font-extrabold mb-7"
-                style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
-              >
-                Highlights
-              </h2>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
-                {pkg.highlights.map((h, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex-shrink-0 font-bold" style={{ color: "var(--gold)" }}>✓</span>
-                    <span className="text-sm leading-relaxed" style={{ color: "var(--ink)" }}>{h}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
             {/* Itinerary + Elevation Journey */}
             <section className="py-10 border-b" style={{ borderColor: BORDER }}>
               <h2

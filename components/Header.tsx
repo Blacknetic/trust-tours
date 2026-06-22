@@ -13,17 +13,51 @@ type NavSection = { label: string; children: NavLink[] };
 type NavGroup = {
   label: string;
   match: string[];
+  align?: "left" | "right"; // which edge the dropdown panel anchors to
   children?: NavLink[];
   sections?: NavSection[];
+  footer?: NavLink; // optional "see all" link under a sectioned panel
 };
 type NavItem = NavLink | NavGroup;
 
 const NAV: NavItem[] = [
   {
+    label: "Kilimanjaro",
+    match: ["/kilimanjaro"],
+    align: "left",
+    sections: [
+      {
+        label: "Private climbs",
+        children: [
+          { href: "/kilimanjaro/7-day-machame-route", label: "7-Day Machame" },
+          { href: "/kilimanjaro/8-day-lemosho-route", label: "8-Day Lemosho" },
+          { href: "/kilimanjaro/6-day-marangu-route", label: "6-Day Marangu" },
+          { href: "/kilimanjaro/6-day-umbwe-route", label: "6-Day Umbwe" },
+          { href: "/kilimanjaro/9-day-northern-circuit", label: "9-Day Northern Circuit" },
+        ],
+      },
+      {
+        label: "Group departures",
+        children: [
+          { href: "/kilimanjaro/groups", label: "Browse all departures" },
+          { href: "/kilimanjaro/groups", label: "Join a team · $200 deposit" },
+        ],
+      },
+      {
+        label: "Plan your climb",
+        children: [
+          { href: "/guides/climbing-kilimanjaro-guide", label: "Climbing guide" },
+          { href: "/guides/best-kilimanjaro-route", label: "Best route" },
+          { href: "/guides/kilimanjaro-packing-list", label: "Packing list" },
+        ],
+      },
+    ],
+    footer: { href: "/kilimanjaro", label: "All Kilimanjaro climbs →" },
+  },
+  {
     label: "Trekking",
-    match: ["/kilimanjaro", "/trekking", "/ol-doinyo-lengai"],
+    match: ["/trekking", "/ol-doinyo-lengai"],
     children: [
-      { href: "/kilimanjaro", label: "Climb Kilimanjaro" },
       { href: "/trekking/3-day-mount-meru-momela", label: "Mount Meru" },
       { href: "/ol-doinyo-lengai", label: "Ol Doinyo Lengai" },
       { href: "/trekking", label: "All treks →" },
@@ -45,6 +79,8 @@ const NAV: NavItem[] = [
   {
     label: "Guides",
     match: ["/guides"],
+    align: "right",
+    footer: { href: "/guides", label: "All guides →" },
     sections: [
       {
         label: "Kilimanjaro",
@@ -194,7 +230,7 @@ export default function Header() {
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.15, ease: "easeOut" }}
                         className={`absolute top-full pt-2 z-50 ${
-                          item.sections ? "right-0" : "left-0"
+                          item.align === "right" ? "right-0" : "left-0"
                         }`}
                       >
                         <div
@@ -227,19 +263,21 @@ export default function Header() {
                                   ))}
                                 </div>
                               ))}
-                              <div
-                                className="col-span-2 pt-3 mt-1"
-                                style={{ borderTop: "1px solid rgba(74,41,18,0.12)" }}
-                              >
-                                <Link
-                                  href="/guides"
-                                  onClick={() => setMenu(null)}
-                                  className="block px-2 text-sm font-bold transition-opacity hover:opacity-80"
-                                  style={{ color: "var(--gold)" }}
+                              {item.footer && (
+                                <div
+                                  className="col-span-2 pt-3 mt-1"
+                                  style={{ borderTop: "1px solid rgba(74,41,18,0.12)" }}
                                 >
-                                  All guides →
-                                </Link>
-                              </div>
+                                  <Link
+                                    href={item.footer.href}
+                                    onClick={() => setMenu(null)}
+                                    className="block px-2 text-sm font-bold transition-opacity hover:opacity-80"
+                                    style={{ color: "var(--gold)" }}
+                                  >
+                                    {item.footer.label}
+                                  </Link>
+                                </div>
+                              )}
                             </div>
                           ) : (
                             // Flat menu (Trekking, Safaris) — unchanged.
@@ -369,14 +407,16 @@ export default function Header() {
                           ))}
                         </div>
                       ))}
-                      <Link
-                        href="/guides"
-                        onClick={() => setOpen(false)}
-                        className="block py-3 pl-3 text-base font-bold"
-                        style={{ color: "var(--gold)" }}
-                      >
-                        All guides →
-                      </Link>
+                      {item.footer && (
+                        <Link
+                          href={item.footer.href}
+                          onClick={() => setOpen(false)}
+                          className="block py-3 pl-3 text-base font-bold"
+                          style={{ color: "var(--gold)" }}
+                        >
+                          {item.footer.label}
+                        </Link>
+                      )}
                     </>
                   ) : (
                     item.children?.map((c) => (

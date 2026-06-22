@@ -214,7 +214,7 @@ export const packages: TripPackage[] = [
         question:
           "What is the summit success rate on the 7-day Machame Route?",
         answer:
-          "Industry data puts 7-day Machame success around 85–90%, well above the 5-day routes. The extra day at altitude is the single biggest factor. (Confirm Trust Tours' own number with Ombeni.)",
+          "On our 7-day Machame itinerary, climbers reach the summit at rates of about 85–93% — well above the 60–70% typical of rushed 5-day routes. The extra acclimatisation day at altitude is the single biggest factor.",
       },
       {
         question: "When is the best time to climb Kilimanjaro?",
@@ -232,8 +232,8 @@ export const packages: TripPackage[] = [
           "Yes — most of our climbers add a 3–5 day Serengeti and Ngorongoro safari afterwards. We handle everything as one trip with one price.",
       },
     ],
-    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    summitSuccessRate: "ASK_OMBENI",
+    bestMonths: ["Jan", "Feb", "Mar", "Jun", "Jul", "Aug", "Sep", "Oct"],
+    summitSuccessRate: "85–93% (7-day)",
     reviewSnippets: [
       {
         author: "Robin V",
@@ -713,6 +713,153 @@ export const packages: TripPackage[] = [
     ],
     bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct"],
     oldUrl: "/booking/CONFIRM/",
+  },
+
+  {
+    slug: "6-day-umbwe-route",
+    destinations: ["Kilimanjaro"],
+    category: "kilimanjaro",
+    effort: 5,
+    summitChance: 3,
+    difficulty: "Tough",
+    title: "6-Day Kilimanjaro Climb – Umbwe Route",
+    shortName: "6-Day Umbwe",
+    days: 6,
+    priceFromUSD: 1900,
+    priceNote:
+      "Per person, sharing, mid-range tented. From $1,900 for larger groups, up to ~$3,000 for 1–2 climbers, depending on group size and season.",
+    tier: ["mid-range"],
+    // INTERIM hero — reuses an existing Kilimanjaro shot; replace with an Umbwe ridgeline photo.
+    heroImage: "/images/kilimanjaro-kibo-from-trail.jpg",
+    gallery: [],
+    summary:
+      "Umbwe is Kilimanjaro's steepest, most direct ascent — a bold ridge climb for fit, experienced trekkers and tight groups who want the boldest path to the summit. This 6-day version builds in a rest day at Barranco to acclimatise before the Barranco Wall and summit push to Uhuru Peak at 5,895 m.",
+    highlights: [
+      "The mountain's most direct and dramatic route — quiet gate, fewer climbers",
+      "Steep, ancient ridge forest and outstanding open ridgeline views",
+      "Acclimatisation rest day at Barranco to protect summit success",
+      "The famous Barranco Wall scramble onto the Southern Circuit",
+      "Built for fit, experienced hikers and corporate/expedition groups",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arusha to Umbwe Gate, trek to Umbwe Cave Camp",
+        description:
+          "A short drive to the quiet Umbwe Gate, then straight into a steep, ancient ridge forest — narrow trail with hands-on-root scrambling in places. Camp just above the treeline with the first open views of Kibo.",
+        altitudeStart: 1640,
+        altitudeEnd: 2850,
+        distanceKm: 8,
+        hours: "5–7 hours",
+        meals: "Lunch, dinner",
+        accommodation: "Umbwe Cave Camp (tents)",
+      },
+      {
+        day: 2,
+        title: "Umbwe Cave Camp to Barranco Camp",
+        description:
+          "Leave the forest for the Umbwe's signature open ridgeline, with steep drops, giant senecios and sweeping views. Arrive early at Barranco beneath the Breach Wall for an afternoon health check and a briefing on the Wall.",
+        altitudeStart: 2850,
+        altitudeEnd: 3950,
+        distanceKm: 6,
+        hours: "4–6 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Barranco Camp (tents)",
+      },
+      {
+        day: 3,
+        title: "Acclimatisation day at Barranco",
+        description:
+          "The strategic heart of the itinerary. A short 'climb high, sleep low' walk to about 4,200 m and back, with rest, hydration and full health monitoring — the single biggest investment in summit night.",
+        altitudeStart: 3950,
+        altitudeEnd: 4200,
+        distanceKm: 4,
+        hours: "2–3 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Barranco Camp (tents)",
+      },
+      {
+        day: 4,
+        title: "Barranco Camp to Barafu via the Barranco Wall",
+        description:
+          "Scramble the 257 m Barranco Wall — hands and feet, no ropes — onto the Southern Circuit, lunch in the Karanga Valley, then the final climb to the windswept high camp at Barafu. Early dinner and sleep before the midnight start.",
+        altitudeStart: 3950,
+        altitudeEnd: 4673,
+        distanceKm: 10,
+        hours: "6–8 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Barafu Camp (tents)",
+      },
+      {
+        day: 5,
+        title: "Summit night — Uhuru Peak, descend to Mweka",
+        description:
+          "Depart around midnight by headlamp up the scree to Stella Point on the crater rim for sunrise, then the final traverse to Uhuru Peak, 5,895 m — the roof of Africa. Descend all the way to Mweka Camp.",
+        altitudeStart: 4673,
+        altitudeEnd: 5895,
+        distanceKm: 17,
+        hours: "12–15 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Mweka Camp (tents)",
+      },
+      {
+        day: 6,
+        title: "Mweka Camp to Mweka Gate, return to Arusha",
+        description:
+          "An easy forest descent to Mweka Gate, where your summit certificates and the tipping ceremony with your crew await. Transfer back to Arusha by early afternoon — tired, triumphant and at sea level again.",
+        altitudeStart: 3100,
+        altitudeEnd: 1640,
+        distanceKm: 10,
+        hours: "3–4 hours",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "All Kilimanjaro National Park entry, conservation and rescue fees, VAT and taxes",
+      "Certified senior guide and qualified assistant guides (1 per 4 climbers)",
+      "Professional mountain chef and full KPAP-compliant porter team",
+      "Quality dome tents (two-share), private group dining tent and toilet tent",
+      "All meals on the mountain, hot drinks throughout, and sleeping mats",
+      "Road transfers to/from your Arusha hotel, pre-climb briefing and gear check",
+      "Emergency oxygen and daily pulse-oximetry checks for every climber",
+    ],
+    excluded: [
+      "International flights to Kilimanjaro (JRO) and Tanzania visa",
+      "Travel and medical insurance (required — must cover trekking to 6,000 m)",
+      "Personal trekking gear and sleeping bag (hire in Arusha from $20–30)",
+      "Tips for the mountain crew (budget roughly $60–90 per climber)",
+      "Personal expenses and souvenirs",
+    ],
+    faqs: [
+      {
+        question: "Who is the Umbwe Route right for?",
+        answer:
+          "Fit, experienced hikers who have done multi-day mountain treks before — and groups who want the most direct, most challenging ascent. It is not a good choice for a first big trek or for anyone with a history of altitude sickness. If you're unsure, contact us and we'll give an honest recommendation.",
+      },
+      {
+        question: "How hard is the Umbwe Route compared with Machame?",
+        answer:
+          "Harder. Umbwe is the steepest, most direct route on the mountain, gaining altitude faster than any other. The Day 1 forest involves genuine scrambling, and the Barranco Wall on Day 4 is a hands-and-feet scramble (no ropes needed). The Day 3 rest day at Barranco is what makes the 6-day version responsible.",
+      },
+      {
+        question: "What summit success rate can a group expect?",
+        answer:
+          "With proper fitness preparation, full guide coverage and the built-in acclimatisation day, groups consistently achieve summit success rates of about 75–88% on the 6-day Umbwe.",
+      },
+      {
+        question: "How large can an Umbwe group be?",
+        answer:
+          "We recommend a maximum of 8 climbers per group because of the narrow ridgeline and the technical Barranco Wall. For groups of 9–16 we run two guide teams. Itineraries can be customised for corporate teams, charity expeditions and clubs.",
+      },
+      {
+        question: "When is the best time to climb the Umbwe Route?",
+        answer:
+          "January–March and June–October. June–October is peak season with the finest, clearest conditions. April–May (the long rains) is not recommended on Umbwe — wet rock and root make the steep forest ridge genuinely hazardous.",
+      },
+    ],
+    bestMonths: ["Jan", "Feb", "Mar", "Jun", "Jul", "Aug", "Sep", "Oct"],
+    summitSuccessRate: "75–88% (6-day, with acclimatisation day)",
   },
 
   {

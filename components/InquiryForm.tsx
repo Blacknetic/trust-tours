@@ -19,7 +19,13 @@ const inputStyle: React.CSSProperties = {
   color: "var(--ink)",
 };
 
-export default function InquiryForm() {
+interface InquiryFormProps {
+  // Pre-fills the message box (e.g. a chosen group departure) and the submit label.
+  defaultMessage?: string;
+  submitLabel?: string;
+}
+
+export default function InquiryForm({ defaultMessage, submitLabel }: InquiryFormProps = {}) {
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -146,6 +152,7 @@ export default function InquiryForm() {
           name="message"
           rows={5}
           required
+          defaultValue={defaultMessage}
           placeholder="Which trip interests you? Any dates in mind?"
           className="w-full rounded-xl px-4 py-3 text-sm resize-y"
           style={inputStyle}
@@ -172,7 +179,7 @@ export default function InquiryForm() {
         className="w-full sm:w-auto px-8 py-4 rounded-full text-ink font-semibold text-base transition-opacity hover:opacity-90 disabled:opacity-50"
         style={{ background: "var(--gold)" }}
       >
-        {status === "sending" ? "Sending…" : "Get a free itinerary"}
+        {status === "sending" ? "Sending…" : (submitLabel ?? "Get a free itinerary")}
       </button>
     </form>
   );

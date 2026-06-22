@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { packages, type TripPackage } from "@/data/packages";
 import { guides } from "@/data/guides";
+import { upcomingDepartures } from "@/data/departures";
 
 const BASE = "https://trusttourstz.com";
 
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/kilimanjaro`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/kilimanjaro/groups`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/safaris`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/zanzibar`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/trekking`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
@@ -49,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...packageRoutes, ...guideRoutes];
+  const departureRoutes: MetadataRoute.Sitemap = upcomingDepartures().map((d) => ({
+    url: `${BASE}/kilimanjaro/groups/${d.id}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...packageRoutes, ...guideRoutes, ...departureRoutes];
 }

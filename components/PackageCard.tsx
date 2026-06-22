@@ -61,7 +61,7 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
   return (
     <Link
       href={href}
-      className="card-lift group relative flex flex-col h-full rounded-2xl hover:z-30"
+      className="card-lift group flex flex-col h-full rounded-2xl"
       style={{ border: "1px solid rgb(26 26 22 / 0.08)", background: "#fff" }}
     >
       {/* Image area — real photo when available, brand gradient otherwise */}
@@ -151,39 +151,6 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
           </span>
         </div>
       </div>
-
-      {/* Hover fold — a drop-down panel (like the nav menu) revealing the trip
-          highlights. Pure CSS group-hover, so the card stays a server component.
-          On touch there's no hover, so the card simply opens the itinerary. */}
-      {pkg.highlights && pkg.highlights.length > 0 && (
-        <div className="pointer-events-none absolute inset-x-0 top-full z-30 origin-top scale-y-0 pt-2 opacity-0 transition duration-200 ease-out group-hover:pointer-events-auto group-hover:scale-y-100 group-hover:opacity-100">
-          <div
-            className="overflow-hidden rounded-xl p-4 shadow-lg"
-            style={{ background: "var(--paper)", border: "1px solid rgba(74,41,18,0.14)" }}
-          >
-            <p
-              className="mb-2.5 text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "var(--gold)" }}
-            >
-              Trip highlights
-            </p>
-            <ul className="flex flex-col gap-1.5">
-              {pkg.highlights.slice(0, 5).map((h) => (
-                <li
-                  key={h}
-                  className="flex gap-2 text-sm leading-snug"
-                  style={{ color: "var(--ink)" }}
-                >
-                  <span aria-hidden style={{ color: "var(--gold)" }}>
-                    ▸
-                  </span>
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
     </Link>
   );
 }
