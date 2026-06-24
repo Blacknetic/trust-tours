@@ -69,8 +69,7 @@ export default function ZanzibarListingPage() {
         eyebrow="Safari + beach welcome"
         title="Add Zanzibar to your Tanzania trip"
         subtitle="Finish a safari or Kilimanjaro climb on the beach — tell us your dates and we'll arrange the flights and book it as one trip."
-        ctaLabel="Plan my Zanzibar trip on WhatsApp"
-        waMessage="Hi Ombeni! I'm interested in a Zanzibar beach holiday. Can you share options?"
+        tripType="zanzibar"
       />
     </>
   );

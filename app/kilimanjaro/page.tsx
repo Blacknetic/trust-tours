@@ -90,8 +90,7 @@ export default function KilimanjaroListingPage() {
         eyebrow="Not sure which route?"
         title="Ask Ombeni which route fits you"
         subtitle="Tell us your dates, group size and hiking experience — we'll recommend a route and send a day-by-day plan."
-        ctaLabel="Get route advice on WhatsApp"
-        waMessage="Hi Ombeni! I want to climb Kilimanjaro but I'm not sure which route to pick. Can you help?"
+        tripType="kilimanjaro"
       />
     </>
   );

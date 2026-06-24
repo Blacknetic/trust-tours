@@ -117,8 +117,7 @@ export default function SafarisListingPage() {
         eyebrow="Custom trips welcome"
         title="Build your own safari with Ombeni"
         subtitle="Every safari is private — tell us your dates, budget and must-sees and we'll shape the trip around them."
-        ctaLabel="Plan my safari on WhatsApp"
-        waMessage="Hi Ombeni! I'm interested in a Tanzania safari. Can you share options?"
+        tripType="safari"
       />
     </>
   );

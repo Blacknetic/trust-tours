@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const WA = "255785938860";
+import { useQuote } from "@/components/QuoteModal";
 
 const MONTHS = [
   "Flexible", "January", "February", "March", "April", "May", "June",
@@ -22,24 +21,20 @@ interface Props {
   packageTitle: string;
   priceFromUSD: number;
   priceNote: string;
+  tripType?: "kilimanjaro" | "safari" | "zanzibar";
 }
 
 /**
  * Desktop sticky booking card. Quick inquiry fields (travel month + group
- * size) prefill a WhatsApp message — no backend. Mobile uses MobileCTABar
+ * size) pre-fill the Request-a-quote modal. Mobile uses MobileCTABar
  * instead, so this is rendered inside a `hidden lg:block` aside.
  */
-export default function BookingCard({ packageTitle, priceFromUSD, priceNote }: Props) {
+export default function BookingCard({ packageTitle, priceFromUSD, priceNote, tripType }: Props) {
+  const { openQuote } = useQuote();
   const [month, setMonth] = useState("Flexible");
   const [group, setGroup] = useState(2);
 
   const groupLabel = `${group}${group === GROUP_MAX ? "+" : ""}`;
-  const msg =
-    `Hi Ombeni! I'm interested in the ${packageTitle}. ` +
-    `Travel month: ${month === "Flexible" ? "flexible" : month} · ` +
-    `Group size: ${groupLabel}. ` +
-    `Can you send me the itinerary and pricing?`;
-  const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
 
   return (
     <div
@@ -124,15 +119,21 @@ export default function BookingCard({ packageTitle, priceFromUSD, priceNote }: P
         </div>
       </div>
 
-      <a
-        href={waUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block text-center px-6 py-3.5 rounded-full text-ink font-semibold text-sm transition-opacity hover:opacity-90"
+      <button
+        type="button"
+        onClick={() =>
+          openQuote({
+            tripType,
+            tripName: packageTitle,
+            travelMonth: month,
+            groupSize: groupLabel,
+          })
+        }
+        className="block w-full text-center px-6 py-3.5 rounded-full text-ink font-semibold text-sm transition-opacity hover:opacity-90"
         style={{ background: "var(--gold)" }}
       >
-        Plan on WhatsApp
-      </a>
+        Request a quote
+      </button>
 
       {priceNote && (
         <p className="text-xs mt-3 leading-relaxed" style={{ color: "var(--ink)" }}>

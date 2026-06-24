@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { useQuote } from "@/components/QuoteModal";
 
 type NavLink = { href: string; label: string };
 type NavSection = { label: string; children: NavLink[] };
@@ -33,6 +34,7 @@ const NAV: NavItem[] = [
           { href: "/kilimanjaro/8-day-lemosho-route", label: "8-Day Lemosho" },
           { href: "/kilimanjaro/6-day-marangu-route", label: "6-Day Marangu" },
           { href: "/kilimanjaro/6-day-umbwe-route", label: "6-Day Umbwe" },
+          { href: "/kilimanjaro/6-day-rongai-route", label: "6-Day Rongai" },
           { href: "/kilimanjaro/9-day-northern-circuit", label: "9-Day Northern Circuit" },
         ],
       },
@@ -144,11 +146,8 @@ const NAV: NavItem[] = [
 
 const isGroup = (item: NavItem): item is NavGroup => "match" in item;
 
-const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
-  "Hi Ombeni! I'd like to plan a Tanzania trip with Trust Tours & Safaris."
-)}`;
-
 export default function Header() {
+  const { openQuote } = useQuote();
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<string | null>(null);
   const pathname = usePathname();
@@ -317,15 +316,14 @@ export default function Header() {
               </Link>
             );
           })}
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => openQuote()}
             className="ml-2 px-4 py-2 rounded-full text-ink text-sm font-semibold transition-opacity hover:opacity-90"
             style={{ background: "var(--gold)" }}
           >
-            Plan on WhatsApp
-          </a>
+            Request a quote
+          </button>
         </nav>
 
         {/* Mobile hamburger */}
@@ -450,16 +448,17 @@ export default function Header() {
                 </Link>
               )
             )}
-            <a
-              href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="block mt-4 text-center px-4 py-3 rounded-full text-ink text-sm font-semibold transition-opacity hover:opacity-90"
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openQuote();
+              }}
+              className="block w-full mt-4 text-center px-4 py-3 rounded-full text-ink text-sm font-semibold transition-opacity hover:opacity-90"
               style={{ background: "var(--gold)" }}
             >
-              Plan on WhatsApp
-            </a>
+              Request a quote
+            </button>
           </motion.nav>
         )}
       </AnimatePresence>

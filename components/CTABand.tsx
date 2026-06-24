@@ -1,16 +1,21 @@
-const WA = "255785938860";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 
 interface Props {
   eyebrow: string;
   title: string;
   subtitle?: string;
-  ctaLabel: string;
-  waMessage: string;
+  /** Visible button label. Defaults to "Request a quote". */
+  quoteLabel?: string;
+  /** Pre-selects the trip type in the quote form when known. */
+  tripType?: "kilimanjaro" | "safari" | "zanzibar";
+  /** Pre-fills the specific trip name (e.g. on a package page). */
+  tripName?: string;
+  /** @deprecated legacy props — kept so existing call sites still compile. */
+  ctaLabel?: string;
+  waMessage?: string;
 }
 
-export default function CTABand({ eyebrow, title, subtitle, ctaLabel, waMessage }: Props) {
-  const url = `https://wa.me/${WA}?text=${encodeURIComponent(waMessage)}`;
-
+export default function CTABand({ eyebrow, title, subtitle, quoteLabel, tripType, tripName }: Props) {
   return (
     <section className="py-16 text-center px-4" style={{ background: "var(--forest)" }}>
       <p
@@ -37,15 +42,10 @@ export default function CTABand({ eyebrow, title, subtitle, ctaLabel, waMessage 
           {subtitle}
         </p>
       )}
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-ink font-semibold text-base transition-opacity hover:opacity-90"
-        style={{ background: "var(--gold)" }}
-      >
-        {ctaLabel}
-      </a>
+      <RequestQuoteButton
+        label={quoteLabel ?? "Request a quote"}
+        context={{ tripType, tripName, heading: title }}
+      />
     </section>
   );
 }

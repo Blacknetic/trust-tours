@@ -228,7 +228,12 @@ export default async function JoinDeparturePage({ params }: Props) {
             {BALANCE_DUE_DAYS} days before departure. We&apos;ll confirm availability and send payment
             details within a day.
           </div>
-          <InquiryForm defaultMessage={formMsg} submitLabel={full ? "Join the waitlist" : "Request my spot"} />
+          <InquiryForm
+            defaultTripType="kilimanjaro"
+            tripName={`${dep.route.name} · ${formatDateRange(dep)}`}
+            defaultMessage={formMsg}
+            submitLabel={full ? "Join the waitlist" : "Request my spot"}
+          />
           <p className="text-sm mt-5" style={{ color: "var(--ink)" }}>
             Prefer to chat?{" "}
             <a href={waUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline" style={{ color: "var(--forest)" }}>
@@ -253,8 +258,7 @@ export default async function JoinDeparturePage({ params }: Props) {
         eyebrow="Not the right date?"
         title="See all Kilimanjaro group departures"
         subtitle="Browse every upcoming guaranteed departure, or ask us to set one up for your dates."
-        ctaLabel="Ask about group departures on WhatsApp"
-        waMessage="Hi Ombeni! Can you tell me about your upcoming Kilimanjaro group departures?"
+        tripType="kilimanjaro"
       />
     </>
   );

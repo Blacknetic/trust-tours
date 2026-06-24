@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { packages, type Destination } from "@/data/packages";
+import { packages } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import TripFinder from "@/components/TripFinder";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 
 export const metadata: Metadata = {
   title: "Find Your Trip",
@@ -11,8 +12,6 @@ export const metadata: Metadata = {
     "Find your Tanzania trip with Trust Tours & Safaris — filter Kilimanjaro climbs, safaris, Mount Meru treks and Zanzibar escapes by destination, type and travel month.",
   robots: { index: false }, // results pages shouldn't be indexed
 };
-
-const WA = "255785938860";
 
 const TYPE_LABELS: Record<string, string> = {
   kilimanjaro: "Kilimanjaro climb",
@@ -61,17 +60,15 @@ export default async function SearchPage({
   if (month) criteria.push(`best in ${month}`);
   if (group) criteria.push(`${group} travellers`);
 
-  // Pre-filled WhatsApp message for the no-match fallback (and as a CTA).
-  const waBits = [
-    destination && `to ${destination}`,
-    type && `(${TYPE_LABELS[type] ?? type})`,
-    month && `around ${month}`,
-    group && `for ${group} travellers`,
-  ].filter(Boolean);
-  const waMsg = `Hi Ombeni! I'm looking for a Tanzania trip${
-    waBits.length ? " " + waBits.join(" ") : ""
-  }. Can you put something together for me?`;
-  const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}`;
+  // Map the searched trip type onto the quote form's three buckets.
+  const quoteTripType: "kilimanjaro" | "safari" | "zanzibar" | undefined =
+    type === "zanzibar"
+      ? "zanzibar"
+      : type === "kilimanjaro" || type === "trekking"
+        ? "kilimanjaro"
+        : type === "safari"
+          ? "safari"
+          : undefined;
 
   return (
     <>
@@ -140,15 +137,12 @@ export default async function SearchPage({
                 Want any of these tailored to your exact dates, budget or group?
                 We customise everything.
               </p>
-              <a
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm whitespace-nowrap transition-opacity hover:opacity-90 flex-shrink-0"
-                style={{ background: "var(--forest)", color: "var(--paper)" }}
-              >
-                Plan on WhatsApp
-              </a>
+              <RequestQuoteButton
+                label="Request a quote"
+                variant="gold"
+                className="flex-shrink-0 whitespace-nowrap"
+                context={{ tripType: quoteTripType }}
+              />
             </div>
           </>
         ) : (
@@ -165,19 +159,15 @@ export default async function SearchPage({
             </p>
             <p className="text-base mb-7" style={{ color: "var(--ink)" }}>
               No fixed package matches{criteria.length ? ` “${criteria.join(", ")}”` : " that"},
-              but that&apos;s exactly what we do best. Send Ombeni your idea on
-              WhatsApp and we&apos;ll build a private itinerary and quote around it,
-              usually within a day.
+              but that&apos;s exactly what we do best. Request a quote with your
+              idea and we&apos;ll build a private itinerary around it, usually
+              within a day.
             </p>
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-opacity hover:opacity-90"
-              style={{ background: "var(--forest)", color: "var(--paper)" }}
-            >
-              Plan this trip on WhatsApp
-            </a>
+            <RequestQuoteButton
+              label="Request a quote"
+              variant="gold"
+              context={{ tripType: quoteTripType }}
+            />
             <p className="mt-6 text-sm">
               <Link href="/search" className="underline" style={{ color: "var(--forest)" }}>
                 Clear filters

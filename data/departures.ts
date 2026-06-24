@@ -11,11 +11,11 @@
 //   • Past departures (endISO before today) auto-hide via upcomingDepartures().
 //
 // Only routes that have a matching package are scheduled, so every "Join" page
-// has a real itinerary to show: Lemosho, Machame, Marangu, Northern Circuit.
+// has a real itinerary to show: Lemosho, Machame, Marangu, Rongai, Northern Circuit.
 
 import { getPackage, type TripPackage } from "@/data/packages";
 
-export type RouteKey = "lemosho" | "machame" | "marangu" | "northern";
+export type RouteKey = "lemosho" | "machame" | "marangu" | "rongai" | "northern";
 export type DepartureStatus = "open" | "filling" | "full";
 
 export interface RouteMeta {
@@ -30,10 +30,11 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
   lemosho: { key: "lemosho", name: "Lemosho Route", packageSlug: "8-day-lemosho-route", accent: "#4a2912" },
   machame: { key: "machame", name: "Machame Route", packageSlug: "7-day-machame-route", accent: "#6e3b1f" },
   marangu: { key: "marangu", name: "Marangu Route", packageSlug: "6-day-marangu-route", accent: "#8a5a32" },
+  rongai: { key: "rongai", name: "Rongai Route", packageSlug: "6-day-rongai-route", accent: "#7a4a28" },
   northern: { key: "northern", name: "Northern Circuit", packageSlug: "9-day-northern-circuit", accent: "#2a1f0e" },
 };
 
-export const ROUTE_ORDER: RouteKey[] = ["lemosho", "machame", "marangu", "northern"];
+export const ROUTE_ORDER: RouteKey[] = ["lemosho", "machame", "marangu", "rongai", "northern"];
 
 // Reservation terms (from the group-departures brief).
 export const DEPOSIT_USD = 200;
@@ -95,6 +96,13 @@ const SEED: Seed[] = [
   ["marangu", "2026-12-20", "2026-12-25", 1600, 12, "open"],
   ["marangu", "2027-01-10", "2027-01-15", 1450, 12, "open"],
   ["marangu", "2027-02-07", "2027-02-12", 1450, 12, "open"],
+  // RONGAI — 6 days (quiet northern approach; also runs in the long rains)
+  ["rongai", "2026-07-06", "2026-07-11", 1850, 12, "open"],
+  ["rongai", "2026-08-03", "2026-08-08", 1900, 12, "filling"],
+  ["rongai", "2026-09-07", "2026-09-12", 1850, 12, "open"],
+  ["rongai", "2026-10-05", "2026-10-10", 1750, 12, "open"],
+  ["rongai", "2027-01-11", "2027-01-16", 1750, 12, "open"],
+  ["rongai", "2027-02-08", "2027-02-13", 1750, 12, "open"],
   // NORTHERN CIRCUIT — 9 days
   ["northern", "2026-07-03", "2026-07-11", 3400, 8, "filling"],
   ["northern", "2026-08-01", "2026-08-09", 3500, 8, "filling"],

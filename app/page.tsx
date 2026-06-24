@@ -16,6 +16,7 @@ import TripFinder from "@/components/TripFinder";
 import PillLink from "@/components/PillLink";
 import SoaringBirds from "@/components/SoaringBirds";
 import GuideStrip from "@/components/GuideStrip";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 import { getGuide } from "@/data/guides";
 
 // Flagship pillar guides featured on the homepage.
@@ -28,10 +29,6 @@ export const metadata: Metadata = {
   description:
     "Climb Kilimanjaro or track the Great Migration with Trust Tours & Safaris — an Arusha-based operator led by Ombeni. From $1,580. Plan your trip on WhatsApp.",
 };
-
-const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
-  "Hi Ombeni! I'd like to plan a Tanzania trip with Trust Tours & Safaris."
-)}`;
 
 // Featured trios for the homepage — a deliberate spread (popular / scenic /
 // classic) so visitors see range, not three near-identical options.
@@ -191,21 +188,23 @@ export default function HomePage() {
           </p>
 
           <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-4">
-            <a
-              href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-center px-8 py-4 rounded-full text-ink font-semibold text-base transition-transform duration-200 hover:-translate-y-0.5"
-              style={{ background: "var(--gold)" }}
-            >
-              Plan my trip on WhatsApp
-            </a>
+            <RequestQuoteButton
+              label="Request a free quote"
+              context={{ heading: "Plan your Tanzania trip" }}
+            />
             <Link
               href="/kilimanjaro"
               className="btn-fill text-center px-8 py-4 rounded-full font-semibold text-base transition-colors hover:text-white"
               style={{ border: "2px solid rgba(255,255,255,0.45)", color: "var(--paper)" }}
             >
               View Kilimanjaro routes
+            </Link>
+            <Link
+              href="/kilimanjaro/groups"
+              className="btn-fill text-center px-8 py-4 rounded-full font-semibold text-base transition-colors hover:text-white"
+              style={{ border: "2px solid rgba(255,255,255,0.45)", color: "var(--paper)" }}
+            >
+              Join a group
             </Link>
           </div>
 

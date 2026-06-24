@@ -863,6 +863,148 @@ export const packages: TripPackage[] = [
   },
 
   {
+    slug: "6-day-rongai-route",
+    destinations: ["Kilimanjaro"],
+    category: "kilimanjaro",
+    effort: 3,
+    summitChance: 4,
+    difficulty: "Moderate",
+    title: "6-Day Kilimanjaro Climb – Rongai Route",
+    shortName: "6-Day Rongai",
+    days: 6,
+    priceFromUSD: 1800,
+    priceNote:
+      "Per person, sharing, mid-range tented. From $1,800 for larger groups, up to ~$2,800 for 1–2 climbers, depending on group size and season.",
+    tier: ["mid-range"],
+    // INTERIM hero — open moorland shot fits the Rongai's northern approach; replace with a Rongai-specific photo.
+    heroImage: "/images/kilimanjaro-plains.jpg",
+    gallery: [],
+    summary:
+      "Rongai is Kilimanjaro's only northern approach — the quiet, drier route that climbs in from the Kenya side through open moorland that most climbers never see. This 6-day version adds a crucial acclimatisation day at Second Cave, meaningfully improving your odds of reaching Uhuru Peak at 5,895 m on a steady, manageable gradient ideal for first-time climbers.",
+    highlights: [
+      "The only route up Kilimanjaro from the northern, Kenya side",
+      "Far fewer crowds than the busy southern Machame and Marangu routes",
+      "Drier approach — the best choice during the April–May long rains",
+      "Acclimatisation rest day at Second Cave to protect summit success",
+      "Open moorland views of the Amboseli basin and, on clear days, Mount Kenya",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arusha to Rongai Gate, trek to First Cave Camp",
+        description:
+          "A scenic 5–6 hour drive north around the mountain to the quiet Rongai Gate, then a gentle first climb through pine plantation and native rainforest — colobus monkeys overhead — to First Cave Camp, just above the treeline with your first open view of the summit.",
+        altitudeStart: 1950,
+        altitudeEnd: 2600,
+        distanceKm: 7.5,
+        hours: "3–4 hours",
+        meals: "Lunch, dinner",
+        accommodation: "First Cave Camp (tents)",
+      },
+      {
+        day: 2,
+        title: "First Cave Camp to Second Cave Camp",
+        description:
+          "One of the finest days on the route, crossing open heath and moorland of giant heather and lobelia with Kibo rising ahead. Second Cave sits on open moorland with views to the Kenyan plains, followed by a short 'climb high, sleep low' acclimatisation walk to about 3,700 m.",
+        altitudeStart: 2600,
+        altitudeEnd: 3450,
+        distanceKm: 8.5,
+        hours: "4–5 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Second Cave Camp (tents)",
+      },
+      {
+        day: 3,
+        title: "Acclimatisation day at Second Cave",
+        description:
+          "The strategic heart of the itinerary. A short walk up to Kikelewa Cave (about 3,600 m) and back gives your body extra altitude exposure before returning to sleep low, with rest, hydration, health monitoring and a full pre-summit briefing — the single biggest investment in summit night.",
+        altitudeStart: 3450,
+        altitudeEnd: 3600,
+        distanceKm: 4,
+        hours: "2–3 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Second Cave Camp (tents)",
+      },
+      {
+        day: 4,
+        title: "Second Cave Camp to Kibo Huts / School Hut",
+        description:
+          "Leave the moorland for Kilimanjaro's stark alpine desert — a vast rust-coloured plain of volcanic scree beneath the crater wall, with rare views of the northern icefields. Arrive early at the high camp, eat an early dinner and rest before the 11pm summit start.",
+        altitudeStart: 3450,
+        altitudeEnd: 4750,
+        distanceKm: 9,
+        hours: "5–7 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Kibo Huts / School Hut Area (tents)",
+      },
+      {
+        day: 5,
+        title: "Summit night — Uhuru Peak, descend to 3,100 m",
+        description:
+          "Wake at 11pm for the steep, thin-aired climb by headlamp up the northern approach to Gilman's Point (5,685 m) on the crater rim, then the final traverse to Uhuru Peak, 5,895 m — the roof of Africa — for sunrise. A long descent all the way down to camp at around 3,100 m.",
+        altitudeStart: 4750,
+        altitudeEnd: 5895,
+        distanceKm: 16,
+        hours: "12–14 hours",
+        meals: "Breakfast, lunch, dinner",
+        accommodation: "Horombo / Mweka area (tents)",
+      },
+      {
+        day: 6,
+        title: "Final descent to Mweka Gate, return to Arusha",
+        description:
+          "A leisurely final descent through lush montane forest to Mweka Gate, where your summit certificate and the tipping ceremony with your crew await. Transfer back to your Arusha hotel — tired, triumphant and at sea level again.",
+        altitudeStart: 3100,
+        altitudeEnd: 1800,
+        distanceKm: 10,
+        hours: "3–4 hours",
+        meals: "Breakfast",
+        accommodation: "—",
+      },
+    ],
+    included: [
+      "All Kilimanjaro National Park entry, conservation and rescue fees, VAT and taxes",
+      "Certified senior guide and qualified assistant guides (1 per 4 climbers)",
+      "Professional mountain chef and full porter team",
+      "Quality dome tents (two-share), private group dining tent and toilet tent",
+      "All meals on the mountain, hot drinks throughout, and sleeping mats",
+      "Road transfers to/from your Arusha hotel, pre-climb briefing and gear check",
+      "Emergency oxygen and daily pulse-oximetry checks for every climber",
+    ],
+    excluded: [
+      "International flights to Kilimanjaro (JRO) and Tanzania visa",
+      "Travel and medical insurance (required — must cover trekking to 6,000 m)",
+      "Personal trekking gear and sleeping bag (hire in Arusha from $20–30)",
+      "Tips for the mountain crew (budget roughly $250–350 per climber)",
+      "Alcoholic and other personal-nature expenses",
+    ],
+    faqs: [
+      {
+        question: "Is the Rongai Route good for beginners?",
+        answer:
+          "Yes. Rongai is one of the most accessible routes on Kilimanjaro — the gradient is steady rather than steep and the terrain is straightforward. Combined with a 6-day itinerary that includes an acclimatisation day, it's an excellent choice for first-time climbers with a moderate fitness level.",
+      },
+      {
+        question: "How does Rongai compare to Machame?",
+        answer:
+          "Machame is more dramatic — steeper terrain, the Barranco Wall scramble and more spectacular forest. Rongai is more gradual and quieter, with a drier northern approach and open moorland scenery. Both reach the summit via the crater rim, but Machame is more physically demanding while Rongai is more serene and private.",
+      },
+      {
+        question: "What is the success rate on the 6-day Rongai?",
+        answer:
+          "With an experienced operator and proper acclimatisation, the 6-day Rongai achieves summit success rates of roughly 80–88%. The dedicated acclimatisation day at Second Cave on Day 3 is a significant contributor to that figure.",
+      },
+      {
+        question: "When is the best time to climb the Rongai Route?",
+        answer:
+          "January–March and June–October offer the finest conditions. Because the northern approach stays comparatively dry, Rongai is also the recommended alternative to the southern routes during the April–May long rains.",
+      },
+    ],
+    bestMonths: ["Jan", "Feb", "Mar", "Jun", "Jul", "Aug", "Sep", "Oct"],
+    summitSuccessRate: "80–88% (6-day, with acclimatisation day)",
+  },
+
+  {
     slug: "7-day-great-migration-safari",
     destinations: ["Tarangire", "Serengeti", "Ngorongoro"],
     category: "safari",

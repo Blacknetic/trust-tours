@@ -80,8 +80,7 @@ export default function TrekkingListingPage() {
         eyebrow="Not sure which trek?"
         title="Plan your Tanzania trek with Ombeni"
         subtitle="Tell us your dates, fitness and whether you want to pair a trek with a safari — we'll recommend the right mountain and send a day-by-day plan."
-        ctaLabel="Get trek advice on WhatsApp"
-        waMessage="Hi Ombeni! I'm interested in trekking in Tanzania (Mount Meru / Ol Doinyo Lengai / Kilimanjaro). Can you help?"
+        tripType="kilimanjaro"
       />
     </>
   );

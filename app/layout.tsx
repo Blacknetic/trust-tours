@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CrispChat from "@/components/CrispChat";
+import QuoteModalProvider from "@/components/QuoteModal";
 import { SOCIAL_LINKS } from "@/data/social";
 import { jsonLd } from "@/lib/json-ld";
 import "./globals.css";
@@ -73,9 +74,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLd(ORG_JSON_LD) }}
         />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <QuoteModalProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </QuoteModalProvider>
         <WhatsAppButton />
         <CrispChat />
       </body>

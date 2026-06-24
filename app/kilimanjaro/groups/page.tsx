@@ -223,8 +223,7 @@ export default function GroupDeparturesPage() {
         eyebrow="Ready to join your group?"
         title="The roof of Africa is waiting"
         subtitle="Tell us which departure suits you — we'll confirm availability and send deposit details within a day."
-        ctaLabel="Ask about group departures on WhatsApp"
-        waMessage="Hi Ombeni! I'd like to join a Kilimanjaro group departure. Can you help me pick a date and route?"
+        tripType="kilimanjaro"
       />
     </>
   );

@@ -1,15 +1,15 @@
 "use client";
 
+import { useQuote } from "@/components/QuoteModal";
+
 interface Props {
   priceFromUSD: number;
   packageTitle: string;
+  tripType?: "kilimanjaro" | "safari" | "zanzibar";
 }
 
-const WA = "255785938860";
-
-export default function MobileCTABar({ priceFromUSD, packageTitle }: Props) {
-  const msg = `Hi Ombeni! I'm interested in the ${packageTitle}. Can you send me the itinerary and pricing?`;
-  const url = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+export default function MobileCTABar({ priceFromUSD, packageTitle, tripType }: Props) {
+  const { openQuote } = useQuote();
 
   return (
     <div
@@ -44,15 +44,14 @@ export default function MobileCTABar({ priceFromUSD, packageTitle }: Props) {
             </p>
           )}
         </div>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={() => openQuote({ tripType, tripName: packageTitle })}
           className="flex-1 text-center py-3.5 rounded-full text-ink font-semibold text-sm transition-opacity hover:opacity-90"
           style={{ background: "var(--gold)" }}
         >
-          Plan on WhatsApp
-        </a>
+          Request a quote
+        </button>
       </div>
     </div>
   );

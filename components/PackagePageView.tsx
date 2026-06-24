@@ -9,10 +9,10 @@ import ElevationJourney from "@/components/ElevationJourney";
 import BookingCard from "@/components/BookingCard";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 import { guidesForCategory } from "@/data/guides";
 
 const SITE_URL = "https://trusttourstz.com";
-const WA = "255785938860";
 
 // Category-specific wording so one template serves climbs, safaris and treks.
 const LEXICON: Record<
@@ -73,8 +73,13 @@ const BORDER = "rgba(26, 26, 22,0.08)";
 
 export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   const lex = LEXICON[pkg.category];
-  const waMsg = `Hi Ombeni! I'm interested in the ${pkg.title}. Can you send me the itinerary and pricing?`;
-  const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}`;
+  // Map the package category onto the quote form's three trip-type buckets.
+  const quoteTripType: "kilimanjaro" | "safari" | "zanzibar" =
+    pkg.category === "zanzibar"
+      ? "zanzibar"
+      : pkg.category === "kilimanjaro" || pkg.category === "trekking"
+        ? "kilimanjaro"
+        : "safari";
   const pageUrl = `${SITE_URL}${lex.basePath}/${pkg.slug}`;
   const heroImg = packageImage(pkg);
   const planningGuides = guidesForCategory(pkg.category);
@@ -174,15 +179,12 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                   Price on request
                 </p>
               )}
-              <a
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-ink font-semibold text-sm transition-opacity hover:opacity-90"
-                style={{ background: "var(--gold)" }}
-              >
-                Plan on WhatsApp
-              </a>
+              <RequestQuoteButton
+                label="Request a quote"
+                variant="gold"
+                className="hidden md:inline-flex"
+                context={{ tripType: quoteTripType, tripName: pkg.title }}
+              />
             </div>
           </div>
         </div>
@@ -352,6 +354,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 packageTitle={pkg.title}
                 priceFromUSD={pkg.priceFromUSD}
                 priceNote={pkg.priceNote}
+                tripType={quoteTripType}
               />
             </div>
           </aside>
@@ -371,12 +374,13 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
         eyebrow={lex.readyLine}
         title={`Plan your ${pkg.shortName} with Ombeni`}
         subtitle={pkg.priceNote}
-        ctaLabel="Get a free itinerary on WhatsApp"
-        waMessage={waMsg}
+        quoteLabel="Get a free quote"
+        tripType={quoteTripType}
+        tripName={pkg.title}
       />
 
       {/* Mobile sticky CTA — sits above the global WhatsApp button */}
-      <MobileCTABar priceFromUSD={pkg.priceFromUSD} packageTitle={pkg.title} />
+      <MobileCTABar priceFromUSD={pkg.priceFromUSD} packageTitle={pkg.title} tripType={quoteTripType} />
     </>
   );
 }
