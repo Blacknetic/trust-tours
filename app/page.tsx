@@ -83,7 +83,7 @@ export default function HomePage() {
             style={{ top: "-9%", height: "118%" }}
           >
             <Photo
-              src="/images/kilimanjaro-hero.jpg"
+              src="/images/kili-sunrise-hero.jpg"
               alt=""
               fill
               priority

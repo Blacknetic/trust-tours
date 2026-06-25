@@ -119,7 +119,7 @@ export default function AboutPage() {
             style={{ top: "-9%", height: "118%" }}
           >
             <Photo
-              src="/images/kilimanjaro-hero.jpg"
+              src="/images/about-hero.jpg"
               alt=""
               fill
               priority
@@ -345,8 +345,8 @@ export default function AboutPage() {
             <Reveal>
               <div className="wipe relative aspect-[4/5] rounded-2xl overflow-hidden photo-zoom card-lift">
                 <Photo
-                  src="/images/kilimanjaro-trekkers.jpg"
-                  alt="Trust Tours guides and climbers on the trail up Kilimanjaro"
+                  src="/images/about/we-run-it.jpg"
+                  alt="Trust Tours guests boarding a domestic flight, with logistics handled end to end"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -503,8 +503,8 @@ export default function AboutPage() {
             <Reveal delay={120}>
               <div className="wipe relative aspect-[4/5] rounded-2xl overflow-hidden photo-zoom">
                 <Photo
-                  src="/images/wall/kilimanjaro-summit-night.jpg"
-                  alt="A Trust Tours line of climbers on the Kilimanjaro summit push at night"
+                  src="/images/about/summit.jpg"
+                  alt="Trust Tours climbers and guide celebrating with the Tanzanian flag at a summit sign"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -522,8 +522,8 @@ export default function AboutPage() {
             <Reveal>
               <div className="wipe relative aspect-[5/4] rounded-2xl overflow-hidden photo-zoom card-lift">
                 <Photo
-                  src="/images/wall/team-with-clients.jpg"
-                  alt="The Trust Tours crew celebrating with a group of climbers"
+                  src="/images/about/crew.jpg"
+                  alt="Five Trust Tours guides in branded polo shirts at a safari lodge"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -581,22 +581,29 @@ export default function AboutPage() {
               Real people, real summits, real plains
             </h2>
             <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
-              Not stock photos — our own guests, guides and crew, on the mountain
-              and in the bush.
+              Not stock photos — our own guides and crew, our branded Land Cruisers
+              lined up and ready, the international groups we host every season, and
+              the school visits we run between trips. This is the actual operation.
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {[
-              { src: "/images/gallery/safari/safari-2023-01-07-15.jpg", alt: "Ombeni with travellers on a Trust Tours safari" },
-              { src: "/images/wall/meru-summit-sign.jpg", alt: "Trust Tours climbers at the Mount Meru summit sign" },
-              { src: "/images/gallery/safari/safari-fb-img-1453367302817.jpg", alt: "Maasai village cultural visit" },
-              { src: "/images/safari-leopard.jpg", alt: "Leopard on a Tanzania safari" },
-              { src: "/images/kilimanjaro-kibo-from-trail.jpg", alt: "Kilimanjaro seen from the trail" },
-              { src: "/images/gallery/safari/safari-2023-01-07-5.jpg", alt: "Acacia sunset on the savanna" },
+              { src: "/images/about/fleet-crew.jpg", alt: "Three Trust Tours guides with the branded Land Cruiser fleet", caption: "Our crew and the fleet", span: true },
+              { src: "/images/about/fleet-lineup.jpg", alt: "Six Trust Tours Land Cruisers lined up on the roadside", caption: "Branded 4x4s, ready to roll" },
+              { src: "/images/about/group-rim.jpg", alt: "A large international group with the crew at the Ngorongoro Crater rim", caption: "An international group at the crater", span: true },
+              { src: "/images/about/baobab-group.jpg", alt: "Guests and guides gathered with the vehicles under a baobab", caption: "Gathered under a baobab" },
+              { src: "/images/about/giving-back.jpg", alt: "Trust Tours guests and crew handing school supplies to local children", caption: "Giving back to the community", span: true },
+              { src: "/images/about/certificates.jpg", alt: "Guides and a guest celebrating with a summit certificate", caption: "Certificates and celebrations" },
+              { src: "/images/about/crater-road.jpg", alt: "Two Trust Tours Land Cruisers on the Ngorongoro Crater road", caption: "On the crater road" },
+              { src: "/images/about/station-group.jpg", alt: "A full tour group with their guides before heading into the bush", caption: "Ready for the bush" },
+              { src: "/images/about/banner-group.jpg", alt: "A group holding the Trust Tours Mount Kilimanjaro banner", caption: "Lifetime experience" },
+              { src: "/images/about/community.jpg", alt: "A guide handing out backpacks and supplies at a local school", caption: "School supplies, delivered" },
+              { src: "/images/about/camp.jpg", alt: "A Trust Tours guide celebrating at a Kilimanjaro camp", caption: "Camp celebrations" },
+              { src: "/images/about/art-gallery.jpg", alt: "A guest with a Trust Tours vehicle at the African Art Gallery in Arusha", caption: "Stops along the way" },
             ].map((p, i) => (
-              <Reveal key={p.src} delay={(i % 3) * 90}>
-                <figure className="card-lift photo-zoom relative aspect-[4/3] rounded-xl md:rounded-2xl overflow-hidden">
+              <Reveal key={p.src} delay={(i % 4) * 90} className={p.span ? "col-span-2" : ""}>
+                <figure className="card-lift photo-zoom group relative aspect-[4/3] rounded-xl md:rounded-2xl overflow-hidden">
                   <div className="wipe absolute inset-0">
                     <Photo
                       src={p.src}
@@ -604,10 +611,19 @@ export default function AboutPage() {
                       fill
                       loading="lazy"
                       quality={70}
-                      sizes="(max-width: 768px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 50vw, 25vw"
                       className="object-cover"
                     />
                   </div>
+                  <figcaption
+                    className="absolute inset-x-0 bottom-0 p-3 md:p-4 text-white text-xs md:text-sm font-medium translate-y-1 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                    style={{
+                      background:
+                        "linear-gradient(0deg, rgba(26,26,22,0.82) 0%, rgba(26,26,22,0) 100%)",
+                    }}
+                  >
+                    {p.caption}
+                  </figcaption>
                 </figure>
               </Reveal>
             ))}

@@ -261,7 +261,7 @@ export const packages: TripPackage[] = [
     priceNote: "Per person, sharing, group of 2+.",
     tier: ["mid-range"],
     // INTERIM low-res photo from Ombeni's archive — replace with a hi-res shot.
-    heroImage: "/Kilimanjaro/FB_IMG_1453367302817.jpg",
+    heroImage: "/images/packages/9-day-northern-circuit.jpg",
     gallery: [],
     summary:
       "The Northern Circuit is Kilimanjaro's longest and quietest route, circling the mountain's remote northern slopes with the highest summit success rate of any route thanks to nine days of acclimatization.",
@@ -443,7 +443,7 @@ export const packages: TripPackage[] = [
       "Per person, sharing, midrange services, group of 2+. Final price depends on group size and season.",
     tier: ["mid-range"],
     // INTERIM low-res photo from Ombeni's archive — replace with a hi-res shot.
-    heroImage: "/Kilimanjaro/FB_IMG_1482843312910.jpg",
+    heroImage: "",
     gallery: [],
     summary:
       "Lemosho approaches Kilimanjaro from the remote west, crossing the wild Shira Plateau before joining the southern circuit to Uhuru Peak. Eight days of gradual 'climb high, sleep low' ascent gives it one of the best acclimatization profiles — and success rates — on the mountain, with quiet trails on the early days.",
@@ -593,8 +593,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing, hut accommodation. From $1,580 for groups of 5+, $1,690 for 1–4 climbers.",
     tier: ["budget"],
-    // INTERIM low-res photo from Ombeni's archive — replace with a hi-res shot.
-    heroImage: "/Kilimanjaro/Kilimanjaro-kibo.jpg",
+    heroImage: "/images/packages/6-day-marangu-route.jpg",
     gallery: [],
     summary:
       "Marangu — the 'Coca-Cola Route' — is the only path on Kilimanjaro with comfortable hut accommodation and the most affordable way to attempt the summit. This 6-day version adds an extra acclimatization day at Horombo, raising your chances of reaching Uhuru Peak on the gentlest gradients of any route.",
@@ -729,8 +728,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing, mid-range tented. From $1,900 for larger groups, up to ~$3,000 for 1–2 climbers, depending on group size and season.",
     tier: ["mid-range"],
-    // INTERIM hero — reuses an existing Kilimanjaro shot; replace with an Umbwe ridgeline photo.
-    heroImage: "/images/kilimanjaro-kibo-from-trail.jpg",
+    heroImage: "",
     gallery: [],
     summary:
       "Umbwe is Kilimanjaro's steepest, most direct ascent — a bold ridge climb for fit, experienced trekkers and tight groups who want the boldest path to the summit. This 6-day version builds in a rest day at Barranco to acclimatise before the Barranco Wall and summit push to Uhuru Peak at 5,895 m.",
@@ -876,8 +874,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing, mid-range tented. From $1,800 for larger groups, up to ~$2,800 for 1–2 climbers, depending on group size and season.",
     tier: ["mid-range"],
-    // INTERIM hero — open moorland shot fits the Rongai's northern approach; replace with a Rongai-specific photo.
-    heroImage: "/images/kilimanjaro-plains.jpg",
+    heroImage: "",
     gallery: [],
     summary:
       "Rongai is Kilimanjaro's only northern approach — the quiet, drier route that climbs in from the Kenya side through open moorland that most climbers never see. This 6-day version adds a crucial acclimatisation day at Second Cave, meaningfully improving your odds of reaching Uhuru Peak at 5,895 m on a steady, manageable gradient ideal for first-time climbers.",
@@ -1393,7 +1390,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, double sharing. From $2,890 (4-star) / $3,999 (premium). Includes all internal flights.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/9-day-beach-city-bush.jpg",
     gallery: [],
     summary:
       "The ultimate East Africa sampler: white-sand Zanzibar and historic Stone Town, a Dar es Salaam city tour, a game drive in Arusha's parks, and Kenya's legendary Maasai Mara. Beach, city and bush across Tanzania and Kenya in nine days, with all the internal flights and transfers handled for you.",
@@ -1663,7 +1660,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing (minimum 3). From $3,410 mid-range / $4,106 luxury, all-inclusive.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/9-day-northern-tanzania-safari.jpg",
     gallery: [],
     summary:
       "Nine unhurried days across the whole northern circuit — Tarangire, Lake Manyara, the Ngorongoro Crater and three days deep in the Serengeti, from the big-cat Seronera Valley to the Mara crossings of the north — finishing with a Maasai village visit in the Ngorongoro Highlands. A 'Comfort' or 'Classic' itinerary for travellers who want time to take it all in.",
@@ -2471,7 +2468,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing, mid-range. Includes round-trip flights from Zanzibar and the hot air balloon safari.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/3-day-serengeti-balloon-zanzibar.jpg",
     gallery: [],
     summary:
       "The perfect safari add-on to a Zanzibar beach holiday: fly straight from the island to the Serengeti for two nights of game drives and a dawn hot air balloon flight with a champagne bush breakfast, then fly back to the coast. Three action-packed days with the flights, balloon and all meals included.",
@@ -3139,7 +3136,7 @@ export const packages: TripPackage[] = [
     priceFromUSD: 0,
     priceNote: "Private luxury honeymoon safari — per-person pricing on request.",
     tier: ["comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/10-day-honeymoon-migration.jpg",
     gallery: [],
     summary:
       "Celebrate your love in the heart of the Great Migration: ten days through Tarangire, Lake Manyara, the Ngorongoro Crater and deep into the Serengeti — central plains, big-cat country and the northern Mara crossings — with luxury tented camps, romantic sundowners, private bush dinners and a balloon safari. Intimate, unhurried and tailored to couples.",
@@ -3278,7 +3275,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing. From $8,750 mid-range / $14,450 luxury. Includes Flying Doctors evacuation cover.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/20-day-honeymoon-tanzania-zanzibar.jpg",
     gallery: [],
     summary:
       "The ultimate once-in-a-lifetime honeymoon: ten days across Tanzania's wilderness — Arusha NP, Tarangire, the Ngorongoro Crater, the Serengeti migration and the surreal Lake Natron — then ten days unwinding on Zanzibar's beaches with Stone Town, spice farms, Jozani Forest and Mnemba snorkelling. Romance, adventure and island bliss, with mid-range or luxury options throughout.",
@@ -3497,7 +3494,7 @@ export const packages: TripPackage[] = [
     priceFromUSD: 0,
     priceNote: "Mid-range Zanzibar honeymoon — per-person pricing on request.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/7-day-zanzibar-honeymoon.jpg",
     gallery: [],
     summary:
       "A romantic week on the Spice Island, blending relaxation, adventure and culture: white-sand beaches and turquoise water, historic Stone Town, a spice tour, the Nakupenda sandbank, Jozani Forest, Mnemba snorkelling and couples' spa days. Carefully paced for newlyweds, with optional sunset dhow cruises and beach dinners.",
@@ -3741,7 +3738,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, all-inclusive. From $5,646 (tented camps) / $6,599 (luxury lodges). Includes the Serengeti–Zanzibar flight.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/13-day-romance-honeymoon.jpg",
     gallery: [],
     summary:
       "The 'Days of Romance' honeymoon: eight days of safari — Arusha NP, Tarangire, the Ngorongoro Crater and three days in the Serengeti among the Great Migration and Big Five — then five days on Zanzibar with Stone Town, a spice tour, Prison Island tortoises and swimming with dolphins. The perfect balance of adventure and beachfront bliss.",
@@ -3907,7 +3904,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing. From $1,708 mid-range / $2,204 luxury beachfront. Includes a one-way flight to Zanzibar.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/4-day-zanzibar-escape.jpg",
     gallery: [],
     summary:
       "A short, romantic taste of the Spice Island: historic Stone Town and a sunset dhow cruise, an aromatic spice tour and the Nakupenda sandbank, the coral reefs and dolphins of Mnemba Island, and a morning with green sea turtles at Baraka. Four days designed for honeymooners and anyone wanting a quick island getaway or a post-safari unwind.",
@@ -4003,7 +4000,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing. From $1,708 mid-range / $2,804 luxury beachfront.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/5-day-zanzibar-escape.jpg",
     gallery: [],
     summary:
       "Five days of the best of the Spice Island: historic Stone Town, an aromatic spice tour, the coral reefs of Mnemba Island and the white sandbank of Nakupenda. A relaxed blend of culture, ocean adventure and beach time — ideal as a standalone trip or a post-safari unwind.",
@@ -4555,7 +4552,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing, mid-range lodges, group of 2+. Great value for a five-day, four-park safari.",
     tier: ["mid-range"],
-    heroImage: "",
+    heroImage: "/images/packages/5-day-arusha-serengeti-cultural.jpg",
     gallery: [],
     summary:
       "A five-day safari that mixes wildlife with culture: a walking safari in Arusha National Park, the elephants and baobabs of Tarangire, the Big Five in the Ngorongoro Crater, a full day in the Serengeti, and a Maasai village visit to finish. Four parks plus a cultural encounter, all round-trip from Arusha — exceptional value for the breadth it covers.",
@@ -4850,7 +4847,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing. From $2,625 mid-range / $3,855 luxury. Available year-round.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
+    heroImage: "/images/packages/6-day-northern-safari.jpg",
     gallery: [],
     summary:
       "A well-paced six-day loop through four of northern Tanzania's headline parks — Tarangire, two full days in the Serengeti, the Ngorongoro Crater and a tranquil Lake Manyara finale. Available year-round, it catches the migration river crossings (July–October) or the calving season (December–March), with resident wildlife in every season.",

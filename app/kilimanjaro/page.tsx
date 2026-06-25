@@ -21,7 +21,7 @@ export default function KilimanjaroListingPage() {
       {/* ── Page header — INTERIM camp photo (swap for a hi-res hero) ── */}
       <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: "var(--forest)" }}>
         <Photo
-          src="/images/kilimanjaro-hero.jpg"
+          src="/images/kilimanjaro-page-hero.jpg"
           alt=""
           fill
           priority
