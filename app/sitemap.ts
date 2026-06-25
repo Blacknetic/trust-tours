@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/reviews`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/cancellation-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const packageRoutes: MetadataRoute.Sitemap = packages.map((pkg) => ({

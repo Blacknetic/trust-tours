@@ -193,6 +193,7 @@ export default function Footer() {
             <Link href="/guides" className="transition-colors hover:text-white" style={{ color: "inherit" }}>Guides</Link>
             <Link href="/reviews" className="transition-colors hover:text-white" style={{ color: "inherit" }}>Reviews</Link>
             <Link href="/contact" className="transition-colors hover:text-white" style={{ color: "inherit" }}>Contact</Link>
+            <Link href="/cancellation-policy" className="transition-colors hover:text-white" style={{ color: "inherit" }}>Cancellation Policy</Link>
           </div>
         </div>
       </div>
