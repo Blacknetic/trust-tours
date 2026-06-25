@@ -243,7 +243,7 @@ export default function HomePage() {
           <Reveal className="mx-auto w-56 md:w-full">
             <div className="wipe relative aspect-square rounded-2xl overflow-hidden">
               <Photo
-                src="/images/ombeni-portrait.jpg"
+                src="/images/founder-ombeni.jpg"
                 alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
                 fill
                 loading="eager"

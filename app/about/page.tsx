@@ -280,7 +280,7 @@ export default function AboutPage() {
           <Reveal className="mx-auto w-64 md:w-full">
             <div className="wipe relative aspect-[4/5] rounded-2xl overflow-hidden photo-zoom">
               <Photo
-                src="/images/ombeni-portrait.jpg"
+                src="/images/founder-ombeni.jpg"
                 alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
                 fill
                 sizes="(max-width: 768px) 256px, 340px"
