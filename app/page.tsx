@@ -83,7 +83,7 @@ export default function HomePage() {
             style={{ top: "-9%", height: "118%" }}
           >
             <Photo
-              src="/images/home-hero.jpg"
+              src="/Kilimanjaro/FB_IMG_1443037536150.jpg"
               alt=""
               fill
               priority
