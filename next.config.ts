@@ -50,6 +50,42 @@ const nextConfig: NextConfig = {
         destination: "/safaris",
         permanent: true,
       },
+
+      // ─── Legacy /tours/* custom-post-type. WordPress served every trip under
+      // both /booking/… and /tours/…; the /tours sitemap was never harvested, so
+      // none of it was redirected and every /tours/* URL currently 404s.
+      //
+      // Exact 1:1 upgrades for the high-value Kilimanjaro route pages so they land
+      // on the precise detail page instead of the /kilimanjaro listing. Old slugs
+      // used the plural "N-days-<route>" form; any slug we guess wrong simply falls
+      // through to the keyword catch-all below (→ /kilimanjaro), so these are pure
+      // upside with no risk. Confirmed-from-index slugs plus likely plural variants.
+      { source: "/tours/9-days-northern-circuit", destination: "/kilimanjaro/9-day-northern-circuit", permanent: true },
+      { source: "/tours/8-days-lemosho-route", destination: "/kilimanjaro/8-day-lemosho-route", permanent: true },
+      { source: "/tours/7-days-machame-route", destination: "/kilimanjaro/7-day-machame-route", permanent: true },
+      { source: "/tours/6-days-machame-route", destination: "/kilimanjaro/7-day-machame-route", permanent: true },
+      { source: "/tours/6-days-marangu-route", destination: "/kilimanjaro/6-day-marangu-route", permanent: true },
+      { source: "/tours/5-days-marangu-route", destination: "/kilimanjaro/6-day-marangu-route", permanent: true },
+      { source: "/tours/6-days-umbwe-route", destination: "/kilimanjaro/6-day-umbwe-route", permanent: true },
+      { source: "/tours/6-days-rongai-route", destination: "/kilimanjaro/6-day-rongai-route", permanent: true },
+      //
+      // Keyword catch-alls guarantee no /tours/* URL 404s even where we can't map
+      // it precisely. Order matters — first match wins, so route most specific first.
+      { source: "/tours/:slug(.*meru.*)", destination: "/trekking/3-day-mount-meru-momela", permanent: true },
+      { source: "/tours/:slug(.*ol-doinyo.*|.*lengai.*)", destination: "/trekking/2-day-ol-doinyo-lengai-climb", permanent: true },
+      { source: "/tours/:slug(.*paramotor.*|.*paraglid.*|.*flying.*)", destination: "/paramotoring", permanent: true },
+      {
+        source:
+          "/tours/:slug(.*kilimanjaro.*|.*machame.*|.*lemosho.*|.*marangu.*|.*rongai.*|.*umbwe.*|.*northern-circuit.*)",
+        destination: "/kilimanjaro",
+        permanent: true,
+      },
+      { source: "/tours/:slug(.*honeymoon.*)", destination: "/honeymoon", permanent: true },
+      { source: "/tours/:slug(.*zanzibar.*)", destination: "/zanzibar", permanent: true },
+      { source: "/tours/:slug(.*cultural.*|.*maasai.*)", destination: "/cultural", permanent: true },
+      // Everything else under /tours/* → best-match fallback (safaris listing).
+      { source: "/tours/:slug*", destination: "/safaris", permanent: true },
+
       // Old category/taxonomy pages
       { source: "/kilimanjaro-mountain", destination: "/kilimanjaro", permanent: true },
       { source: "/tanzania-safaris", destination: "/safaris", permanent: true },
@@ -57,6 +93,16 @@ const nextConfig: NextConfig = {
       { source: "/destinations", destination: "/safaris", permanent: true },
       { source: "/ba_type/:slug*", destination: "/safaris", permanent: true },
       { source: "/accommodation", destination: "/safaris", permanent: true },
+      // Bare WordPress taxonomy/page slugs still in Google's index (the /booking/
+      // variants are handled above; these bare ones 404'd until now).
+      { source: "/cultural-tours", destination: "/cultural", permanent: true },
+      { source: "/trust-tours-and-safaris-company", destination: "/about", permanent: true },
+      // Root-level legacy blog/itinerary posts (WP served some itineraries as
+      // top-level posts). Scoped to EXACT slugs only — a root wildcard would
+      // shadow real routes like /about or /contact. Add more here as GSC surfaces
+      // them; best-match category per the redirect policy.
+      { source: "/7-day-northern-tanzania-midrange-safari-itinerary", destination: "/safaris", permanent: true },
+      { source: "/7-days-safaris-and-zanzibar-holiday", destination: "/safaris", permanent: true },
       // NOTE: /zanzibar is now a real listing page — no redirect (its old Google
       // authority now lands on the dedicated section).
     ];
