@@ -56,6 +56,9 @@ export const metadata: Metadata = {
   description:
     "Tanzania's trusted safari operator. Climb Kilimanjaro, track the Great Migration, explore Ngorongoro Crater. Led by Ombeni — fully licensed, plan on WhatsApp.",
   alternates: { canonical: "/" },
+  verification: {
+    google: "9IOWur01z2YBwGvWn67xt020CY7G1dZUX5EF91-562I",
+  },
   openGraph: {
     siteName: "Trust Tours & Safaris",
     locale: "en_US",
