@@ -16,7 +16,7 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
       tourOperator: {
         "@type": "TouristInformationCenter",
         name: "Trust Tours & Safaris",
-        url: "https://trusttourstz.com",
+        url: "https://www.trusttourstz.com",
         telephone: "+255785938860",
         address: {
           "@type": "PostalAddress",
@@ -35,12 +35,12 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
     {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://trusttourstz.com" },
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.trusttourstz.com" },
         {
           "@type": "ListItem",
           position: 2,
           name: pkg.category.charAt(0).toUpperCase() + pkg.category.slice(1),
-          item: `https://trusttourstz.com/${pkg.category}`,
+          item: `https://www.trusttourstz.com/${pkg.category}`,
         },
         { "@type": "ListItem", position: 3, name: pkg.title, item: pageUrl },
       ],

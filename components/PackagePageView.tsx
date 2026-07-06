@@ -12,7 +12,7 @@ import GuideStrip from "@/components/GuideStrip";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import { guidesForCategory } from "@/data/guides";
 
-const SITE_URL = "https://trusttourstz.com";
+const SITE_URL = "https://www.trusttourstz.com";
 
 // Category-specific wording so one template serves climbs, safaris and treks.
 const LEXICON: Record<

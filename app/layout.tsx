@@ -15,8 +15,8 @@ const ORG_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
   name: "Trust Tours & Safaris",
-  url: "https://trusttourstz.com",
-  logo: "https://trusttourstz.com/Logo.jpeg",
+  url: "https://www.trusttourstz.com",
+  logo: "https://www.trusttourstz.com/Logo.jpeg",
   telephone: "+255785938860",
   address: {
     "@type": "PostalAddress",
@@ -48,7 +48,7 @@ const albert = Albert_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://trusttourstz.com"),
+  metadataBase: new URL("https://www.trusttourstz.com"),
   title: {
     default: "Trust Tours & Safaris — Kilimanjaro Climbs & Tanzania Safaris",
     template: "%s | Trust Tours & Safaris",

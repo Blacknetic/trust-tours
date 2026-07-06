@@ -223,6 +223,188 @@ export const guides: Guide[] = [
   },
 
   {
+    slug: "when-to-visit-tanzania-month-by-month",
+    title: "When Is the Best Time to Visit Tanzania? A Month-by-Month Guide",
+    topic: "Planning",
+    excerpt:
+      "There's no bad month for Tanzania — only the perfect one for what you want to see. A month-by-month, activity-by-activity breakdown.",
+    updated: "2026-07-06",
+    readMinutes: 10,
+    keyTakeaway:
+      "Tanzania is a year-round destination with a tropical climate, so the 'best' month depends on what you're chasing. June–October is peak safari season with the Mara River crossings; January–February is the southern Serengeti calving season — dramatic and better value; November–December is the green short-rains season; and March–May, the long rains, are the quietest and cheapest but the trickiest for first-timers.",
+    intro:
+      "Tanzania sits just south of the Equator, so it's warm and welcoming in every season — there's genuinely no bad time to visit. What changes through the year is the rain, and rain decides where the animals gather, which roads are passable, and how busy the parks are. Get the timing right for what you want to see — the Great Migration, the calving season, Kilimanjaro's clear skies or Zanzibar's calm seas — and the trip becomes unforgettable. Here's the honest, month-by-month picture.",
+    primaryCta: { label: "Browse safari packages", href: "/safaris" },
+    trustStrip: true,
+    inlineCtaAfter: 3,
+    relatedGuides: [
+      "best-time-to-visit-tanzania",
+      "best-time-great-migration",
+      "calving-season-guide",
+      "best-time-to-climb-kilimanjaro",
+      "best-time-to-visit-zanzibar",
+    ],
+    sections: [
+      {
+        heading: "Tanzania at a glance: two seasons",
+        paragraphs: [
+          "Tanzania has one dry season and one wet season, but the wet season splits into two distinct spells with very different characters — the short rains and the long rains. Knowing where each falls is the key to picking your month.",
+        ],
+        table: {
+          caption: "The Tanzanian year in four windows.",
+          headers: ["Season", "Months", "What to expect"],
+          rows: [
+            ["Dry season", "June–October", "Golden savannah, peak wildlife, Great Migration river crossings"],
+            ["Short rains (Vuli)", "November–December", "Brief afternoon showers, lush green landscapes, fewer crowds"],
+            ["Warm dry spell", "January–February", "Hot days, calving season, excellent birdwatching"],
+            ["Long rains (Masika)", "March–May", "Heavy rainfall, some remote camps closed, green but challenging"],
+          ],
+        },
+      },
+      {
+        heading: "The dry season (June–October): peak safari",
+        paragraphs: [
+          "This is the window most travellers choose, and once you understand why it's hard to argue against. When the rains stop, the vegetation thins, rivers and waterholes shrink, and every animal must move to the remaining water. You don't have to go looking for wildlife — it comes to you. Lions rest near rivers, elephants gather in huge herds at waterholes, and the Great Migration thunders north through the Serengeti.",
+          "It's also the busiest and priciest season, so the exact month matters. Here's how the five dry-season months differ.",
+        ],
+        bullets: [
+          "June — the dry season has just begun; parks are still fresh and green and crowds haven't peaked. Comfortable days (around 25–30°C) and early Migration action along the western Serengeti and Grumeti River.",
+          "July — arguably the single best safari month. The country has dried out, game viewing is at its most concentrated, and the Migration reaches the northern Serengeti for the Mara River crossings. The driest month, so fewer mosquitoes — good for families.",
+          "August — peak season in full swing. The Mara crossings continue, temperatures are ideal, and Serengeti-plus-Zanzibar combos are at their finest. Premium camps sell out a year ahead — book early.",
+          "September — a guide favourite: crowds thin but weather and game viewing stay superb. Crossings continue, Tarangire's elephant concentrations peak, and it's one of the best months on Kilimanjaro.",
+          "October — the dry season winds down. Early October is still excellent; by late month the short rains freshen the landscape and the herds begin heading south into the central Serengeti.",
+        ],
+        callout: {
+          tone: "tip",
+          label: "Our pick",
+          text: "June and September are the sweet-spot months — near-peak wildlife without the absolute peak-season prices and crowds.",
+        },
+      },
+      {
+        heading: "The calving season (January–February): the best-kept secret",
+        paragraphs: [
+          "Here's what many first-time visitors don't know: January and February deliver some of the most dramatic wildlife of the whole year — at lower prices and with fewer crowds. In the southern Serengeti and the Ndutu plains, around half a million wildebeest calves are born in just a few weeks.",
+          "You watch a calf take its first wobbly steps — and almost immediately the predators close in. Lions, cheetahs, leopards and hyenas are all drawn to the abundance, so the density of action is extraordinary. February is also one of the best birdwatching months, as migratory species arrive from Europe and Asia. For value without compromise, it's hard to beat.",
+        ],
+        diagram: "migration-map",
+      },
+      {
+        heading: "The short rains (November–December): green-season value",
+        paragraphs: [
+          "The 'Vuli' short rains arrive from November into December, but don't let the word 'rains' put you off — these are usually brief afternoon and evening showers, not all-day downpours. Mornings are clear, the light is golden, and the landscapes turn vivid green almost overnight.",
+        ],
+        bullets: [
+          "Lower prices across lodges, camps and flights",
+          "Fewer crowds in the national parks",
+          "Spectacular photography — green landscapes and dramatic skies",
+          "Whale sharks arrive off Mafia Island in November",
+          "Migratory birds in abundance across the northern circuit",
+        ],
+        callout: {
+          tone: "info",
+          text: "Late December is an exception to the quiet: the festive season brings a surge in family and honeymoon travel, so some premium lodges fill up again. The wildebeest have moved south for calving, and Zanzibar's diving visibility improves as the seas clear.",
+        },
+      },
+      {
+        heading: "The long rains (March–May): for the adventurous",
+        paragraphs: [
+          "March, April and May bring the Masika — the long rains — and this is honestly the season most first-timers should avoid. Roads in remote parks can become impassable, some specialist camps close, and the rain can be heavy and persistent rather than a passing shower.",
+          "That said, there are real rewards for the flexible, budget-minded or experienced traveller: some of the lowest prices of the year, the Ngorongoro Crater at its dramatic best, still-good game viewing in the accessible parks, chimpanzee viewing possible in Mahale, and a genuine sense of having the wild to yourself. If budget leads and you're open-minded, it can be made to work — but if it's your first trip or you have a specific must-see, choose the dry or calving season instead.",
+        ],
+      },
+      {
+        heading: "Best time by activity",
+        paragraphs: [
+          "If you're building your trip around one experience, here's when each is at its peak.",
+        ],
+        table: {
+          headers: ["Experience", "Best window", "Notes"],
+          rows: [
+            ["Great Migration — river crossings", "July–September", "Mara River crossings in the northern Serengeti — the famous spectacle"],
+            ["Great Migration — calving", "January–February", "Southern Serengeti / Ndutu; intense predator action"],
+            ["Big-5 & general game viewing", "June–October", "Animals concentrated at water; Jan–Feb an excellent alternative"],
+            ["Mount Kilimanjaro", "Jan–March & June–October", "Clear skies, dry trails; avoid April–May"],
+            ["Zanzibar beach", "July–September", "Dry, sunny, calm seas; Dec–Feb also excellent"],
+            ["Diving & snorkelling", "October–February", "Best visibility; whale sharks at Mafia Oct–Nov"],
+            ["Birdwatching", "November–April", "Migratory species present, breeding plumage"],
+            ["Honeymoon", "June–October", "Perfect for safari and beach in one trip"],
+          ],
+        },
+      },
+      {
+        heading: "Best time by park",
+        paragraphs: [
+          "Tanzania's parks don't all peak at the same time — one reason a well-planned route can chase the best conditions across a single trip.",
+        ],
+        table: {
+          headers: ["Destination", "Peak time", "Notes"],
+          rows: [
+            ["Serengeti", "Year-round, best Jun–Oct", "Follow the Migration; different zones peak in different months"],
+            ["Ngorongoro Crater", "Year-round", "Mating season April–May; always spectacular"],
+            ["Tarangire", "June–October", "Elephant herds most impressive in the dry season"],
+            ["Lake Manyara", "Jun–Oct game; Nov–May birds", "Flamingos and pelicans present in the wet season"],
+            ["Ruaha", "June–October", "Remote and exclusive; closes in the rains"],
+            ["Nyerere (Selous)", "June–October", "Best game viewing; some areas flood in the rains"],
+            ["Mahale Mountains", "April–October", "Chimpanzee tracking; roads difficult in the rains"],
+            ["Zanzibar", "July–September", "Beach-and-safari combo at its best"],
+            ["Kilimanjaro", "Jan–Mar & Jun–Oct", "Avoid April–May"],
+          ],
+        },
+      },
+      {
+        heading: "A note on booking ahead",
+        paragraphs: [
+          "For peak season (July–September), don't leave it late. The top Serengeti camps — especially those overlooking the Mara River crossings — can book out six to twelve months ahead, and travellers who wait are sometimes left without their first choice.",
+        ],
+        bullets: [
+          "Peak season (July–September): book 6–10 months ahead",
+          "Calving season (Jan–Feb) and the festive period (late December): 4–6 months ahead",
+          "Shoulder and green season (November, June): 2–4 months is usually enough, though earlier is always better",
+        ],
+      },
+      {
+        heading: "Our recommendation: three windows for most travellers",
+        paragraphs: [
+          "After guiding visitors from Europe, the US and beyond through every season, these are the three windows we recommend most often:",
+        ],
+        bullets: [
+          "July–September — the ultimate all-round trip, with the Migration at its most dramatic and Zanzibar at its finest. The classic Tanzania holiday.",
+          "January–February — the calving season: extraordinary predator sightings, lower prices and thinner crowds. Our pick for first-timers chasing maximum value without missing the action.",
+          "June — peak-season quality without peak-season prices. The sweet spot, and our personal favourite month.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the overall best time to visit Tanzania?",
+        answer:
+          "June to October — the dry season — is the best all-round window, with concentrated wildlife, the Mara River crossings and ideal conditions for both Kilimanjaro and Zanzibar. But January–February (calving season) is a superb, better-value alternative.",
+      },
+      {
+        question: "When is the cheapest time to visit Tanzania?",
+        answer:
+          "The long rains of March to May bring the lowest prices of the year, followed by the November short rains. You trade some access and reliability for quiet parks and real savings.",
+      },
+      {
+        question: "When can I see the Great Migration river crossings?",
+        answer:
+          "The dramatic Mara River crossings in the northern Serengeti happen mainly from July to September. For the calving season in the southern Serengeti, come in January–February; for the Grumeti crossings, June–July.",
+      },
+      {
+        question: "Is it worth visiting during the rainy season?",
+        answer:
+          "It can be, if you're flexible. The green short rains (Nov–Dec) still offer excellent wildlife with fewer crowds and lush scenery. The long rains (Mar–May) are best left to experienced or budget-focused travellers, as some remote camps close and roads can flood.",
+      },
+    ],
+    relatedPackages: [
+      "7-day-great-migration-safari",
+      "10-day-serengeti-calving-safari",
+      "5-day-northern-safari",
+      "5-day-zanzibar-escape",
+    ],
+  },
+
+  {
     slug: "tanzania-visa-and-passport-requirements",
     title: "Tanzania Visa & Passport Requirements",
     topic: "Planning",

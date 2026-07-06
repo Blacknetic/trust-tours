@@ -1,6 +1,6 @@
 import type { Guide } from "@/data/guides";
 
-const SITE = "https://trusttourstz.com";
+const SITE = "https://www.trusttourstz.com";
 
 /**
  * Structured data for guide pages so search engines and answer engines

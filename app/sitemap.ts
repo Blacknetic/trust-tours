@@ -3,7 +3,7 @@ import { packages, type TripPackage } from "@/data/packages";
 import { guides } from "@/data/guides";
 import { upcomingDepartures } from "@/data/departures";
 
-const BASE = "https://trusttourstz.com";
+const BASE = "https://www.trusttourstz.com";
 
 // Category → URL segment for package detail pages.
 const categoryPath: Record<TripPackage["category"], string> = {
