@@ -2,7 +2,26 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { packages } from "@/data/packages";
 import { REVIEW_LINKS } from "@/data/social";
+import { AGGREGATE_RATING } from "@/data/reviews-meta";
+import { jsonLd } from "@/lib/json-ld";
 import CTABand from "@/components/CTABand";
+
+// AggregateRating attached to the site-wide organisation (shared @id) so answer
+// engines and search read a single, verifiable trust signal. The same numbers
+// are shown on-page below, which is what keeps this markup within Google's
+// "rating must be visible on the page" guidance.
+const RATING_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "@id": "https://www.trusttourstz.com/#organization",
+  name: "Trust Tours & Safaris",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: AGGREGATE_RATING.ratingValue,
+    reviewCount: AGGREGATE_RATING.reviewCount,
+    bestRating: AGGREGATE_RATING.bestRating,
+  },
+};
 
 export const metadata: Metadata = {
   title: "Reviews — What Our Travellers Say",
@@ -30,6 +49,10 @@ export default function ReviewsPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(RATING_JSON_LD) }}
+      />
       {/* ── Page header ───────────────────────────────────────── */}
       <section className="py-16 md:py-20" style={{ background: "var(--forest)" }}>
         <div className="max-w-7xl mx-auto px-4 md:px-6">
@@ -58,6 +81,30 @@ export default function ReviewsPage() {
             platform. We link the trip each one took so you can read it in
             context.
           </p>
+
+          {/* Visible aggregate — the on-page anchor for the AggregateRating
+              structured data (keeps the markup within Google's guidelines). */}
+          <a
+            href={AGGREGATE_RATING.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-7 inline-flex items-center gap-3 rounded-full px-5 py-2.5 transition-colors"
+            style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}
+          >
+            <span
+              className="flex gap-0.5 text-lg leading-none"
+              style={{ color: "var(--gold)" }}
+              aria-hidden="true"
+            >
+              {[...Array(AGGREGATE_RATING.bestRating)].map((_, s) => (
+                <span key={s}>★</span>
+              ))}
+            </span>
+            <span className="text-sm font-semibold" style={{ color: "var(--paper)" }}>
+              {AGGREGATE_RATING.ratingValue.toFixed(1)} from{" "}
+              {AGGREGATE_RATING.reviewCount} reviews on {AGGREGATE_RATING.source}
+            </span>
+          </a>
         </div>
       </section>
 

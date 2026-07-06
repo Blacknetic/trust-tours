@@ -14,6 +14,9 @@ import "./globals.css";
 const ORG_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
+  // Stable entity id so per-page schema (e.g. the /reviews aggregateRating)
+  // attaches to this same organisation rather than creating a duplicate.
+  "@id": "https://www.trusttourstz.com/#organization",
   name: "Trust Tours & Safaris",
   url: "https://www.trusttourstz.com",
   logo: "https://www.trusttourstz.com/Logo.jpeg",

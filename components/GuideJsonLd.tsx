@@ -1,4 +1,5 @@
 import type { Guide } from "@/data/guides";
+import { jsonLd } from "@/lib/json-ld";
 
 const SITE = "https://www.trusttourstz.com";
 
@@ -62,7 +63,7 @@ export default function GuideJsonLd({ guide }: { guide: Guide }) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(obj) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(obj) }}
         />
       ))}
     </>
