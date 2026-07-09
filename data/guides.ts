@@ -3801,11 +3801,11 @@ export function guidesForCategory(category: string, limit = 3): Guide[] {
 }
 
 export const GUIDE_TOPICS: GuideTopic[] = [
+  "Planning",
+  "Health & Safety",
   "Kilimanjaro",
   "Safari",
   "Zanzibar",
   "Trekking",
   "Culture & Adventure",
-  "Planning",
-  "Health & Safety",
 ];
