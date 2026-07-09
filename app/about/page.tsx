@@ -120,7 +120,7 @@ export default function AboutPage() {
           >
             <Photo
               src="/images/about-hero.jpg"
-              alt=""
+              alt="Trust Tours & Safaris guides and guests on a Tanzania adventure"
               fill
               priority
               sizes="100vw"

@@ -117,7 +117,7 @@ export default function GroupDeparturesPage() {
       <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: "var(--forest)" }}>
         <Photo
           src="/images/kilimanjaro-hero.jpg"
-          alt=""
+          alt="Mount Kilimanjaro's snow-capped peak rising above the Tanzanian plains"
           fill
           priority
           sizes="100vw"

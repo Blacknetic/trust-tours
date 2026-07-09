@@ -140,7 +140,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
             className="hero-ken-burns absolute left-0 right-0"
             style={{ top: "-9%", height: "118%" }}
           >
-            <Photo src={hero} alt="" fill priority sizes="100vw" className="object-cover" />
+            <Photo src={hero} alt={guide.title} fill priority sizes="100vw" className="object-cover" />
           </div>
         </Parallax>
 

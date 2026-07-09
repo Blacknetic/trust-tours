@@ -22,7 +22,7 @@ export default function KilimanjaroListingPage() {
       <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: "var(--forest)" }}>
         <Photo
           src="/images/kilimanjaro-page-hero.jpg"
-          alt=""
+          alt="Climbers at a high-altitude camp on Mount Kilimanjaro, Tanzania"
           fill
           priority
           sizes="100vw"

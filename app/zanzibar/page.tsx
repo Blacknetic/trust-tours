@@ -54,7 +54,7 @@ export default function ZanzibarListingPage() {
         <div className="hero-ken-burns absolute inset-0">
           <Photo
             src="/images/zanzibar/hero.jpg"
-            alt=""
+            alt="Traditional dhow sailing off a turquoise Zanzibar beach"
             fill
             priority
             sizes="100vw"

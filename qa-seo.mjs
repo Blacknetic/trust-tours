@@ -10,13 +10,13 @@ const urlCount = (smText.match(/<url>/g) || []).length;
 ok(sm.status === 200, `sitemap.xml 200 (status ${sm.status})`);
 ok(urlCount >= 16, `sitemap has ${urlCount} <url> entries (expect 6 static + 12 packages = 18)`);
 ok(smText.includes("/kilimanjaro/8-day-lemosho-route"), "sitemap includes a package slug");
-ok(smText.includes("https://trusttourstz.com/"), "sitemap uses absolute prod URLs");
+ok(smText.includes("https://www.trusttourstz.com/"), "sitemap uses absolute prod URLs");
 
 // robots.txt
 const rb = await fetch(`${BASE}/robots.txt`);
 const rbText = await rb.text();
 ok(rb.status === 200, `robots.txt 200 (status ${rb.status})`);
-ok(/Sitemap:\s*https:\/\/trusttourstz\.com\/sitemap\.xml/.test(rbText), "robots points to sitemap");
+ok(/Sitemap:\s*https:\/\/www\.trusttourstz\.com\/sitemap\.xml/.test(rbText), "robots points to sitemap");
 ok(/Disallow:\s*\/api\//.test(rbText), "robots disallows /api/");
 
 // OG image

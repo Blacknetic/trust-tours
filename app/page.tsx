@@ -84,7 +84,7 @@ export default function HomePage() {
           >
             <Photo
               src="/Kilimanjaro/FB_IMG_1443037536150.jpg"
-              alt=""
+              alt="Sunrise over the snow-capped summit of Mount Kilimanjaro in Tanzania"
               fill
               priority
               sizes="100vw"

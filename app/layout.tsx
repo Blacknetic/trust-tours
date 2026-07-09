@@ -61,6 +61,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   verification: {
     google: "9IOWur01z2YBwGvWn67xt020CY7G1dZUX5EF91-562I",
+    // Bing Webmaster Tools site verification. Renders <meta name="msvalidate.01">.
+    // TODO: paste the token from bing.com/webmasters (Add site → Meta tag option),
+    // then verify. Until this is a real token, remove it or Bing verify will fail.
+    other: { "msvalidate.01": "REPLACE_WITH_BING_WEBMASTER_TOKEN" },
   },
   openGraph: {
     siteName: "Trust Tours & Safaris",
