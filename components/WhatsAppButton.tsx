@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { packages } from "@/data/packages";
+import { trackEvent } from "@/lib/gtag";
 
 const WA_NUMBER = "255785938860";
 
@@ -73,10 +74,7 @@ export default function WhatsAppButton() {
 
   function send() {
     const message = text.trim() || defaultMessage(pathname);
-    const w = window as typeof window & { gtag?: (...args: unknown[]) => void };
-    if (typeof w.gtag === "function") {
-      w.gtag("event", "whatsapp_click", { page_slug: pathname });
-    }
+    trackEvent("whatsapp_click", { page_slug: pathname });
     window.open(
       `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`,
       "_blank",

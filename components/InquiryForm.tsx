@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { COUNTRIES } from "@/data/countries";
+import { trackEvent } from "@/lib/gtag";
 
 const WA = "255785938860";
 
@@ -118,6 +119,11 @@ export default function InquiryForm({
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("sent");
+      trackEvent("inquiry_submit", {
+        trip_type: data.tripType,
+        preferred_contact: data.preferred,
+        trip_name: data.tripName,
+      });
       form.reset();
 
       // Hand the pre-opened tab the WhatsApp summary (or fall back to a fresh

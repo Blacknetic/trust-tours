@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CrispChat from "@/components/CrispChat";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import QuoteModalProvider from "@/components/QuoteModal";
 import { SOCIAL_LINKS } from "@/data/social";
 import { jsonLd } from "@/lib/json-ld";
@@ -91,6 +92,7 @@ export default function RootLayout({
         </QuoteModalProvider>
         <WhatsAppButton />
         <CrispChat />
+        <GoogleAnalytics />
       </body>
     </html>
   );
