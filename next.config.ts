@@ -91,6 +91,9 @@ const nextConfig: NextConfig = {
       { source: "/tanzania-safaris", destination: "/safaris", permanent: true },
       { source: "/mount-meru-trekking", destination: "/trekking/3-day-mount-meru-momela", permanent: true },
       { source: "/destinations", destination: "/safaris", permanent: true },
+      // Old per-country destination pages (e.g. /destinations/netherlands) —
+      // still crawled per GA4 404 data (Jul 2026).
+      { source: "/destinations/:slug*", destination: "/safaris", permanent: true },
       { source: "/ba_type/:slug*", destination: "/safaris", permanent: true },
       { source: "/accommodation", destination: "/safaris", permanent: true },
       // Bare WordPress taxonomy/page slugs still in Google's index (the /booking/
@@ -103,6 +106,8 @@ const nextConfig: NextConfig = {
       // them; best-match category per the redirect policy.
       { source: "/7-day-northern-tanzania-midrange-safari-itinerary", destination: "/safaris", permanent: true },
       { source: "/7-days-safaris-and-zanzibar-holiday", destination: "/safaris", permanent: true },
+      // Truncated /zanzibar link circulating in the wild (GA4 404 data, Jul 2026).
+      { source: "/zanzib", destination: "/zanzibar", permanent: true },
       // NOTE: /zanzibar is now a real listing page — no redirect (its old Google
       // authority now lands on the dedicated section).
     ];

@@ -442,7 +442,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing, midrange services, group of 2+. Final price depends on group size and season.",
     tier: ["mid-range"],
-    heroImage: "/Photo-Album-2/Kilimanajro-.jpg",
+    heroImage: "/images/lemosho-route-hero.jpg",
     gallery: [],
     summary:
       "Lemosho approaches Kilimanjaro from the remote west, crossing the wild Shira Plateau before joining the southern circuit to Uhuru Peak. Eight days of gradual 'climb high, sleep low' ascent gives it one of the best acclimatization profiles — and success rates — on the mountain, with quiet trails on the early days.",
