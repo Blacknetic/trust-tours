@@ -1,16 +1,8 @@
 import Link from "next/link";
 import Photo from "@/components/Photo";
 import type { TripPackage } from "@/data/packages";
+import { packagePath } from "@/data/packages";
 import { packageImage } from "@/data/images";
-
-const BASE_PATH: Record<TripPackage["category"], string> = {
-  kilimanjaro: "/kilimanjaro",
-  safari: "/safaris",
-  trekking: "/trekking",
-  zanzibar: "/zanzibar",
-  cultural: "/cultural",
-  paramotoring: "/paramotoring",
-};
 
 // Brand-token gradients per category — used as a fallback when a package has
 // no real photo yet (pkg.heroImage === ""), and as the tint behind every image.
@@ -55,7 +47,7 @@ function MountainRating({ label, value }: { label: string; value: number }) {
 }
 
 export default function PackageCard({ pkg }: { pkg: TripPackage }) {
-  const href = `${BASE_PATH[pkg.category]}/${pkg.slug}`;
+  const href = packagePath(pkg);
   const img = packageImage(pkg);
 
   return (

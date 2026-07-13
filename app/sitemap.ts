@@ -1,19 +1,9 @@
 import type { MetadataRoute } from "next";
-import { packages, type TripPackage } from "@/data/packages";
+import { packages, packagePath } from "@/data/packages";
 import { guides } from "@/data/guides";
 import { upcomingDepartures } from "@/data/departures";
 
 const BASE = "https://www.trusttourstz.com";
-
-// Category → URL segment for package detail pages.
-const categoryPath: Record<TripPackage["category"], string> = {
-  kilimanjaro: "kilimanjaro",
-  safari: "safaris",
-  zanzibar: "zanzibar",
-  trekking: "trekking",
-  cultural: "cultural",
-  paramotoring: "paramotoring",
-};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -37,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const packageRoutes: MetadataRoute.Sitemap = packages.map((pkg) => ({
-    url: `${BASE}/${categoryPath[pkg.category]}/${pkg.slug}`,
+    url: `${BASE}${packagePath(pkg)}`,
     lastModified: now,
     changeFrequency: "monthly",
     // Fully-priced products rank above "coming soon" stubs (priceFromUSD 0).

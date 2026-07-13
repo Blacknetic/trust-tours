@@ -23,11 +23,30 @@ const ORG_JSON_LD = {
   url: "https://www.trusttourstz.com",
   logo: "https://www.trusttourstz.com/Logo.jpeg",
   telephone: "+255785938860",
+  email: "info@trusttourstz.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Arusha",
     addressCountry: "TZ",
   },
+  // Arusha, Tanzania — the operating base for all trips.
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -3.3869,
+    longitude: 36.6830,
+  },
+  foundingDate: "2008",
+  priceRange: "$1,580–$2,200 per person",
+  award: [
+    "World Travel Awards nominee 2023",
+    "World Travel Awards nominee 2024",
+  ],
+  areaServed: [
+    { "@type": "Country", name: "Tanzania" },
+    { "@type": "AdministrativeArea", name: "Kilimanjaro" },
+    { "@type": "AdministrativeArea", name: "Serengeti" },
+    { "@type": "AdministrativeArea", name: "Zanzibar" },
+  ],
   sameAs: [
     ...SOCIAL_LINKS.map((s) => s.href),
     "https://www.safaribookings.com/p3691",

@@ -75,6 +75,22 @@ export interface TripPackage {
   tags?: string[];
 }
 
+// Category → URL segment for package detail routes. Single source of truth —
+// consumed by the sitemap, package cards and ItemList schema so the path logic
+// lives in exactly one place.
+export const CATEGORY_PATH: Record<TripPackage["category"], string> = {
+  kilimanjaro: "kilimanjaro",
+  safari: "safaris",
+  zanzibar: "zanzibar",
+  trekking: "trekking",
+  cultural: "cultural",
+  paramotoring: "paramotoring",
+};
+
+// Root-relative canonical path to a package's detail page, e.g. "/kilimanjaro/7-day-machame-route".
+export const packagePath = (pkg: TripPackage): string =>
+  `/${CATEGORY_PATH[pkg.category]}/${pkg.slug}`;
+
 export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   // FLAGSHIP — fully written. Template for all others.

@@ -4,6 +4,7 @@ import { byCategory } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
+import ItemListJsonLd from "@/components/ItemListJsonLd";
 import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function TrekkingListingPage() {
 
   return (
     <>
+      <ItemListJsonLd packages={treks} name="Tanzania Trekking & Mountain Climbs" />
       {/* ── Page header ───────────────────────────────────────── */}
       <section className="py-16 md:py-20" style={{ background: "var(--forest)" }}>
         <div className="max-w-7xl mx-auto px-4 md:px-6">

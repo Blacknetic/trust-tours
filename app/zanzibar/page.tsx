@@ -3,6 +3,7 @@ import { byCategory } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
+import ItemListJsonLd from "@/components/ItemListJsonLd";
 import { guidesForCategory } from "@/data/guides";
 import Photo from "@/components/Photo";
 import Reveal from "@/components/Reveal";
@@ -49,6 +50,7 @@ export default function ZanzibarListingPage() {
 
   return (
     <>
+      <ItemListJsonLd packages={escapes} name="Zanzibar Beach Holidays" />
       {/* ── Page header — turquoise dhow hero ─────────────────── */}
       <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: "var(--forest)" }}>
         <div className="hero-ken-burns absolute inset-0">

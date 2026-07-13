@@ -4,6 +4,7 @@ import { byCategory } from "@/data/packages";
 import KilimanjaroFilter from "@/components/KilimanjaroFilter";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
+import ItemListJsonLd from "@/components/ItemListJsonLd";
 import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function KilimanjaroListingPage() {
 
   return (
     <>
+      <ItemListJsonLd packages={climbs} name="Kilimanjaro Climbing Routes" />
       {/* ── Page header — INTERIM camp photo (swap for a hi-res hero) ── */}
       <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: "var(--forest)" }}>
         <Photo
