@@ -1,0 +1,128 @@
+keyword,intent,cluster,target_url,page_status,gsc_impressions,priority,market_notes
+best kilimanjaro route,informational,Kilimanjaro Routes,/guides/best-kilimanjaro-route,existing (pillar D15),,1,Highest-intent info query in niche; the cluster hub
+kilimanjaro routes compared,informational,Kilimanjaro Routes,/guides/best-kilimanjaro-route,existing (pillar D15),,1,Secondary target for the pillar
+which kilimanjaro route is best,informational,Kilimanjaro Routes,/guides/best-kilimanjaro-route,existing (pillar D15),,2,Long-tail into pillar
+machame route,informational,Kilimanjaro Routes,/guides/machame-route,existing (upgrade D16),,1,Highest-volume single-route keyword
+machame route 7 days,commercial,Kilimanjaro Routes,/kilimanjaro/7-day-machame-route,existing,,1,Transactional; best-selling climb
+machame route success rate,informational,Kilimanjaro Routes,/guides/machame-route,existing (upgrade D16),,2,
+lemosho route,informational,Kilimanjaro Routes,/guides/lemosho-route,existing (upgrade D17),,1,
+lemosho route 8 days,commercial,Kilimanjaro Routes,/kilimanjaro/8-day-lemosho-route,existing,,1,
+machame vs lemosho,informational,Kilimanjaro Routes,/guides/machame-vs-lemosho,new (D17),,1,Near-transactional comparison intent
+marangu route,informational,Kilimanjaro Routes,/guides/marangu-route,existing,,2,Budget/huts route
+marangu route 6 days,commercial,Kilimanjaro Routes,/kilimanjaro/6-day-marangu-route,existing,,2,
+northern circuit route,informational,Kilimanjaro Routes,/guides/northern-circuit-route,existing,,2,Highest success-rate route
+northern circuit 9 days,commercial,Kilimanjaro Routes,/kilimanjaro/9-day-northern-circuit,existing,,2,
+rongai route,informational,Kilimanjaro Routes,/kilimanjaro/6-day-rongai-route,existing,,3,Thin content; route page only
+umbwe route,informational,Kilimanjaro Routes,/kilimanjaro/6-day-umbwe-route,existing,,3,Hardest/steep route
+kilimanjaro success rate,informational,Kilimanjaro Routes,/guides/kilimanjaro-success-rate,existing (upgrade D18),,1,Link-worthy data asset
+kilimanjaro summit success rate by route,informational,Kilimanjaro Routes,/guides/kilimanjaro-success-rate,existing (upgrade D18),,2,
+how much does it cost to climb kilimanjaro,commercial,Kilimanjaro Planning,/guides/how-much-to-climb-kilimanjaro,existing (upgrade D19),,1,Link-worthy cost transparency asset
+kilimanjaro cost,commercial,Kilimanjaro Planning,/guides/how-much-to-climb-kilimanjaro,existing (upgrade D19),,1,
+climb mount kilimanjaro,commercial,Kilimanjaro Planning,/kilimanjaro,existing,105,1,Top real GSC query (105 impr); category page
+climb kilimanjaro guide,informational,Kilimanjaro Planning,/guides/climbing-kilimanjaro-guide,existing,40,1,Real GSC query (40 impr)
+climbing kilimanjaro,informational,Kilimanjaro Planning,/guides/climbing-kilimanjaro-guide,existing,,1,
+how long to climb kilimanjaro,informational,Kilimanjaro Planning,/guides/how-long-to-climb-kilimanjaro,existing,,2,
+best time to climb kilimanjaro,informational,Kilimanjaro Planning,/guides/best-time-to-climb-kilimanjaro,existing (upgrade D25),,1,Month-by-month; booking-window intent
+kilimanjaro in january,informational,Kilimanjaro Planning,/guides/best-time-to-climb-kilimanjaro,existing (upgrade D25),,3,One page captures all month long-tails
+kilimanjaro training,informational,Kilimanjaro Planning,/guides/kilimanjaro-training-and-fitness,existing,,2,
+kilimanjaro fitness,informational,Kilimanjaro Planning,/guides/kilimanjaro-training-and-fitness,existing,,3,
+kilimanjaro packing list,informational,Kilimanjaro Planning,/guides/kilimanjaro-packing-list,existing,,2,Common blogger-cited topic
+altitude sickness kilimanjaro,informational,Kilimanjaro Planning,/guides/altitude-sickness-on-kilimanjaro,existing,,2,
+climbing kilimanjaro for beginners,informational,Kilimanjaro Planning,/guides/climbing-kilimanjaro-for-beginners,new (D24),,1,Widest top-of-funnel entry
+can a beginner climb kilimanjaro,informational,Kilimanjaro Planning,/guides/climbing-kilimanjaro-for-beginners,new (D24),,2,
+kilimanjaro group climb,transactional,Kilimanjaro Planning,/kilimanjaro/groups,existing,,1,Seasonal transactional; group departures
+join kilimanjaro group,transactional,Kilimanjaro Planning,/kilimanjaro/groups,existing,,2,
+kilimanjaro group vs private,informational,Kilimanjaro Planning,/guides/kilimanjaro-group-vs-private,new (D20),,2,Feeds group departure pages
+climb mount meru,commercial,Trekking,/trekking/3-day-mount-meru-momela,existing,96,1,2nd-biggest real GSC query (96 impr)
+climb mount meru in tanzania,commercial,Trekking,/trekking/3-day-mount-meru-momela,existing,37,1,Real GSC query (37 impr)
+mount meru trekking,commercial,Trekking,/trekking/3-day-mount-meru-momela,existing,,1,Old WP URL redirected here
+mount meru climb guide,informational,Trekking,/guides/mount-meru-climb-guide,existing,,2,Acclimatization-before-Kili angle
+kilimanjaro and mount meru,informational,Trekking,/guides/kilimanjaro-and-mount-meru,existing,,2,
+ol doinyo lengai climb,commercial,Trekking,/trekking,existing,,3,Active volcano; niche
+ol doinyo lengai guide,informational,Trekking,/guides/ol-doinyo-lengai-guide,existing,,3,
+tanzania safari,commercial,Safari Planning,/safaris,existing,,1,Head term; category page
+tanzania safari packages,transactional,Safari Planning,/safaris,existing,,1,
+tanzania safari cost,commercial,Safari Planning,/guides/how-much-tanzania-safari-cost,existing (upgrade D34),,1,Highest-volume safari commercial query
+how much does a tanzania safari cost,commercial,Safari Planning,/guides/how-much-tanzania-safari-cost,existing (upgrade D34),,1,
+tanzania safari guide,informational,Safari Planning,/guides/tanzania-safari-guide,existing,,2,
+what to expect on safari,informational,Safari Planning,/guides/what-to-expect-on-safari,existing,,3,
+best time to visit tanzania,informational,Safari Planning,/guides/best-time-to-visit-tanzania,existing (rescope D45),,1,Decision-focused primary
+tanzania weather by month,informational,Safari Planning,/guides/when-to-visit-tanzania-month-by-month,existing (rescope D45),,2,Companion to best-time (resolve cannibalization)
+great migration by month,informational,Safari Planning,/guides/best-time-great-migration,existing (upgrade D46),,1,Link-worthy migration-map asset
+where is the great migration now,informational,Safari Planning,/guides/best-time-great-migration,existing (upgrade D46),,2,
+serengeti great migration,informational,Safari Planning,/guides/best-time-great-migration,existing (upgrade D46),,2,
+calving season safari,commercial,Safari Planning,/safaris/10-day-serengeti-calving-safari,existing,,2,Dec-Mar booking window
+serengeti calving season safari,commercial,Safari Planning,/safaris/10-day-serengeti-calving-safari,existing,,2,
+serengeti guide,informational,Safari Planning,/guides/serengeti-guide,existing,,2,
+ngorongoro crater safari,commercial,Safari Planning,/guides/ngorongoro-crater-guide,existing,,2,
+tarangire safari,informational,Safari Planning,/guides/tarangire-guide,existing,,3,
+tanzania vs kenya safari,informational,Safari Planning,/guides/tanzania-vs-kenya-safari,existing (upgrade D38),,1,You run both; rare unbiased credibility
+great migration safari,commercial,Safari Planning,/safaris/7-day-great-migration-safari,existing,,1,
+tanzania family safari,commercial,Safari Planning,/guides/tanzania-family-safari,new (D53),,2,Market-wide gap; multi-person tickets
+safari with kids tanzania,informational,Safari Planning,/guides/tanzania-family-safari,new (D53),,3,
+luxury tanzania safari,commercial,Safari Planning,/safaris/5-day-luxury-fly-safari,existing,,2,Least price-sensitive segment
+private tanzania safari,commercial,Safari Planning,/safaris,existing,,2,Every safari is private - differentiator
+kilimanjaro safari zanzibar package,transactional,Combos & Itineraries,/guides/combine-kilimanjaro-safari-zanzibar,existing (pillar D43),,1,Highest-ticket combo; little competition
+tanzania climb safari beach itinerary,informational,Combos & Itineraries,/guides/combine-kilimanjaro-safari-zanzibar,existing (pillar D43),,2,
+tanzania itinerary 10 days,informational,Combos & Itineraries,/guides/tanzania-itinerary,new (D44),,1,How independent planners search
+2 weeks in tanzania,informational,Combos & Itineraries,/guides/tanzania-itinerary,new (D44),,2,
+one week tanzania,informational,Combos & Itineraries,/guides/tanzania-itinerary,new (D44),,2,
+safari from zanzibar,commercial,Combos & Itineraries,/guides/safari-from-zanzibar,new (D47),,1,High-intent impulse from beach tourists
+zanzibar day safari,commercial,Combos & Itineraries,/guides/safari-from-zanzibar,new (D47),,2,
+tanzania and zanzibar honeymoon,commercial,Combos & Itineraries,/honeymoon,existing,,1,Least price-sensitive; 6 products
+tanzania honeymoon safari,commercial,Combos & Itineraries,/guides/tanzania-honeymoon-guide,existing (upgrade D48),,1,
+honeymoon safari tanzania,commercial,Combos & Itineraries,/honeymoon,existing,,2,
+best time to visit zanzibar,informational,Zanzibar,/guides/best-time-to-visit-zanzibar,existing,49,1,Real GSC query (49 impr)
+best time to go to zanzibar,informational,Zanzibar,/guides/best-time-to-visit-zanzibar,existing,41,1,Real GSC query (41 impr)
+zanzibar travel guide,informational,Zanzibar,/guides/zanzibar-travel-guide,existing,,2,
+best beaches zanzibar,informational,Zanzibar,/guides/best-beaches-zanzibar,existing (refresh D49),,2,Nungwi vs Paje area queries
+nungwi vs paje,informational,Zanzibar,/guides/best-beaches-zanzibar,existing (refresh D49),,3,UK/DE beach-extension audience
+things to do in zanzibar,informational,Zanzibar,/guides/things-to-do-zanzibar,existing,,3,
+stone town guide,informational,Zanzibar,/guides/stone-town-guide,existing,,3,
+zanzibar beach holiday,commercial,Zanzibar,/zanzibar,existing,,2,UK phrasing 'holiday'
+zanzibar packages,transactional,Zanzibar,/zanzibar,existing,,2,
+licensed tanzania tour operator,commercial,Trust & Direct-Booking,/guides/why-book-direct,new (D29),,1,The anti-OTA argument; no OTA can compete
+book safari direct vs viator,commercial,Trust & Direct-Booking,/guides/why-book-direct,new (D29),,1,
+how to choose a tanzania tour operator,informational,Trust & Direct-Booking,/guides/how-to-choose-tour-operator,existing (upgrade D30),,1,
+tala license tanzania,informational,Trust & Direct-Booking,/guides/how-to-choose-tour-operator,existing (upgrade D30),,2,Definitional resource for trust criterion
+how to verify tanzania tour operator,informational,Trust & Direct-Booking,/guides/how-to-choose-tour-operator,existing (upgrade D30),,2,
+is tanzania safe,informational,Trust & Direct-Booking,/guides/is-tanzania-safe,existing (upgrade D35),,1,Where hesitant high-value travelers decide
+is tanzania safe for tourists 2026,informational,Trust & Direct-Booking,/guides/is-tanzania-safe,existing (upgrade D35),,2,
+tanzania tour operator,commercial,Trust & Direct-Booking,/about,existing,,2,SafariBookings ranks here too
+tanzania travel company,commercial,Trust & Direct-Booking,/,existing,,2,
+tanzania visa requirements,informational,Practical & Logistics,/guides/tanzania-visa-and-passport-requirements,existing,,2,High-volume planning query
+tanzania visa,informational,Practical & Logistics,/guides/tanzania-visa-and-passport-requirements,existing,,2,
+tanzania vaccinations,informational,Practical & Logistics,/guides/tanzania-vaccinations,existing,,2,
+malaria in tanzania,informational,Practical & Logistics,/guides/malaria-in-tanzania,existing,,2,
+tipping in tanzania,informational,Practical & Logistics,/guides/tipping-in-tanzania,existing,,3,
+travel insurance tanzania,informational,Practical & Logistics,/guides/travel-insurance-tanzania,existing,,3,
+tanzania safari packing list,informational,Practical & Logistics,/guides/tanzania-safari-packing-list,existing,,2,
+tanzania travel guide,informational,Practical & Logistics,/guides/tanzania-travel-guide,existing,,2,
+tanzania park fees 2026,informational,Practical & Logistics,/guides/tanzania-park-fees,new (D67),,1,Most-linked page type in niche
+serengeti entrance fee,informational,Practical & Logistics,/guides/tanzania-park-fees,new (D67),,2,
+tanzania cultural tours,commercial,Cultural & Niche,/cultural,existing,,2,
+maasai village tour,informational,Cultural & Niche,/guides/tanzania-cultural-tours-guide,existing,,3,
+paramotoring tanzania,commercial,Cultural & Niche,/paramotoring,existing,,3,Unique differentiator; low volume
+trust tours,brand,Brand & Local,/,existing,5,1,Top brand query (3 clicks); protect
+trust tours and safaris,brand,Brand & Local,/,existing,,1,
+trust tours and travels,brand,Brand & Local,/,existing,2,2,Real GSC brand variant
+travel agency near me,local,Brand & Local,/,existing,2,3,Local intent; GBP is the lever not the site
+travel agents near me,local,Brand & Local,/,existing,1,3,Same - Google Business Profile territory
+how hard is it to climb kilimanjaro,informational,Kilimanjaro Planning,/guides/climbing-kilimanjaro-guide,existing,,2,Difficulty framing for beginners
+uhuru peak,informational,Kilimanjaro Planning,/guides/climbing-kilimanjaro-guide,existing,,3,The summit; brand-adjacent info
+kilimanjaro altitude,informational,Kilimanjaro Planning,/guides/altitude-sickness-on-kilimanjaro,existing,,3,
+mount meru vs kilimanjaro,informational,Trekking,/guides/mount-meru-climb-guide,existing,,2,Acclimatization comparison
+mount meru 4 days,commercial,Trekking,/trekking/4-day-mount-meru,existing,,3,
+big five tanzania,informational,Safari Planning,/safaris,existing,,2,Big Five safari bucket
+ndutu safari,commercial,Safari Planning,/safaris/5-day-ndutu-migration-safari,existing,,3,Calving-season location
+serengeti balloon safari,commercial,Safari Planning,/safaris/4-day-balloon-safari-serengeti-ngorongoro,existing,,3,Premium add-on
+budget tanzania safari,commercial,Safari Planning,/safaris,existing,,3,Reframe via cost-transparency guide
+tanzania photographic safari,commercial,Safari Planning,/safaris/7-day-photography-cultural-safari,existing,,3,
+7 day tanzania itinerary,informational,Combos & Itineraries,/guides/tanzania-itinerary,new (D44),,2,
+14 day tanzania itinerary,informational,Combos & Itineraries,/guides/tanzania-itinerary,new (D44),,2,
+zanzibar honeymoon,commercial,Zanzibar,/zanzibar/7-day-zanzibar-honeymoon,existing,,2,
+mnemba island snorkeling,informational,Zanzibar,/guides/things-to-do-zanzibar,existing,,3,
+hadzabe tribe,informational,Cultural & Niche,/guides/tanzania-cultural-tours-guide,existing,,3,Lake Eyasi hunter-gatherers
+chagga coffee tour,informational,Cultural & Niche,/guides/tanzania-cultural-tours-guide,existing,,3,Kilimanjaro slopes cultural add-on
+getting to tanzania,informational,Practical & Logistics,/guides/tanzania-travel-guide,existing,,3,Flights via JRO/Kilimanjaro airport
+kilimanjaro airport transfer,informational,Practical & Logistics,/guides/tanzania-travel-guide,existing,,3,JRO logistics

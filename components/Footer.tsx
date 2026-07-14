@@ -158,7 +158,6 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              {/* TODO: confirm email address with Ombeni */}
               <a href="mailto:info@trusttourstz.com" className="transition-colors hover:text-white" style={{ color: "inherit" }}>
                 info@trusttourstz.com
               </a>
