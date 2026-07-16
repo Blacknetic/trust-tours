@@ -1,0 +1,47 @@
+url,cluster,verdict,plan_day,gsc_signal,reason
+/guides/how-much-to-climb-kilimanjaro,Kilimanjaro,UPGRADE,D19,~342 impr (top guide),Highest-demand guide + link-worthy cost-transparency asset
+/guides/best-kilimanjaro-route,Kilimanjaro,UPGRADE,D15,~6 impr,PILLAR - the cluster hub everything links into
+/guides/climbing-kilimanjaro-guide,Kilimanjaro,UPGRADE,D24-adj,~45 impr,Top-of-funnel hub; feeds beginners guide
+/guides/machame-route,Kilimanjaro,UPGRADE,D16,~13 impr,Highest-volume single route; feeds best-seller
+/guides/lemosho-route,Kilimanjaro,UPGRADE,D17,,Feeds 8-day Lemosho; paired with new machame-vs-lemosho
+/guides/kilimanjaro-success-rate,Kilimanjaro,UPGRADE,D18,,Link-worthy per-route stats table
+/guides/best-time-to-climb-kilimanjaro,Kilimanjaro,UPGRADE,D25,,Month-by-month; captures all 'kilimanjaro in {month}' long-tails
+/guides/mount-meru-climb-guide,Trekking,UPGRADE,D21-adj,~96 impr (proven),Real demand; acclimatization-before-Kili angle
+/guides/how-much-tanzania-safari-cost,Safari,UPGRADE,D34,,Highest-volume safari commercial query + cost transparency
+/guides/best-time-great-migration,Safari,UPGRADE,D46,,Link-worthy migration-map asset; sells migration safaris
+/guides/tanzania-vs-kenya-safari,Safari,UPGRADE,D38,,Big comparison volume; you run both = rare credibility
+/guides/best-time-to-visit-tanzania,Safari,UPGRADE,D45,~196 impr cluster,Primary decision page (rescope vs the month-by-month twin)
+/guides/combine-kilimanjaro-safari-zanzibar,Combos,UPGRADE,D43,,PILLAR - highest-ticket combo cluster hub
+/guides/tanzania-honeymoon-guide,Combos,UPGRADE,D48,~7 impr,Least price-sensitive segment; funnels 6 honeymoon products
+/guides/best-time-to-visit-zanzibar,Zanzibar,UPGRADE,D49-adj,49+41 impr (proven),Strong real demand; pair with beaches refresh
+/guides/best-beaches-zanzibar,Zanzibar,UPGRADE,D49,,Area-comparison (Nungwi vs Paje) for beach-extension audience
+/guides/how-to-choose-tour-operator,Trust,UPGRADE,D30,,Becomes the TALA-licensing verification resource
+/guides/is-tanzania-safe,Trust,UPGRADE,D35,,Where hesitant high-value travelers decide to book at all
+/guides/when-to-visit-tanzania-month-by-month,Safari,MERGE,D45,,Cannibalizes best-time-to-visit-tanzania - merge or clearly rescope
+/guides/kilimanjaro-and-mount-meru,Trekking,MERGE,D74-review,,Overlaps mount-meru-climb-guide; merge unless it earns distinct impressions
+/guides/lake-manyara-guide,Safari,KEEP,,,Thin but a real park; keep as supporting under safari cluster
+/guides/kilimanjaro-training-and-fitness,Kilimanjaro,KEEP,,,Solid supporting; internal-link into pillar (D21)
+/guides/kilimanjaro-packing-list,Kilimanjaro,KEEP,,,Blogger-cited; supporting
+/guides/altitude-sickness-on-kilimanjaro,Kilimanjaro,KEEP,,,Supporting; link into pillar
+/guides/how-long-to-climb-kilimanjaro,Kilimanjaro,KEEP,,,Supporting
+/guides/marangu-route,Kilimanjaro,KEEP,,,Route guide; link from pillar
+/guides/northern-circuit-route,Kilimanjaro,KEEP,,,Route guide; link from pillar
+/guides/tanzania-safari-guide,Safari,KEEP,,,Cluster hub; light refresh only
+/guides/serengeti-guide,Safari,KEEP,,,Park guide; supporting
+/guides/ngorongoro-crater-guide,Safari,KEEP,,,Park guide; supporting
+/guides/tarangire-guide,Safari,KEEP,,,Park guide; supporting
+/guides/what-to-expect-on-safari,Safari,KEEP,,,Top-of-funnel supporting
+/guides/calving-season-guide,Safari,KEEP,D80,,Seasonal refresh for Dec-Mar booking window
+/guides/zanzibar-travel-guide,Zanzibar,KEEP,,,Cluster hub; supporting
+/guides/stone-town-guide,Zanzibar,KEEP,,,Supporting
+/guides/things-to-do-zanzibar,Zanzibar,KEEP,,,Supporting
+/guides/tanzania-travel-guide,Practical,KEEP,,,Broad hub; supporting
+/guides/tanzania-visa-and-passport-requirements,Practical,KEEP,,,Evergreen high-value; keep current
+/guides/tanzania-vaccinations,Practical,KEEP,,,Evergreen; cross-link from safety
+/guides/malaria-in-tanzania,Practical,KEEP,,,Evergreen; cross-link from safety
+/guides/tipping-in-tanzania,Practical,KEEP,,,Evergreen supporting
+/guides/travel-insurance-tanzania,Practical,KEEP,,~20 impr,Evergreen; cross-link from safety
+/guides/tanzania-safari-packing-list,Practical,KEEP,,,Evergreen; ensure www canonical (non-www variant was crawled)
+/guides/ol-doinyo-lengai-guide,Trekking,KEEP,,,Niche supporting
+/guides/tanzania-cultural-tours-guide,Cultural,KEEP,,,Niche supporting
+/guides/paramotoring-tanzania-guide,Cultural,KEEP,,,Unique differentiator; low volume
