@@ -1,0 +1,53 @@
+url,category,price_usd,days,status,primary_keyword,cannibalization_group,note
+/kilimanjaro/7-day-machame-route,kilimanjaro,2180,7,priced,machame route 7 days,,Best-selling climb; route is unique
+/kilimanjaro/8-day-lemosho-route,kilimanjaro,2180,8,priced,lemosho route 8 days,,
+/kilimanjaro/9-day-northern-circuit,kilimanjaro,2497,9,priced,kilimanjaro northern circuit,,Highest summit success
+/kilimanjaro/6-day-marangu-route,kilimanjaro,1580,6,priced,marangu route 6 days,,Cheapest entry ($1580) - budget anchor
+/kilimanjaro/6-day-rongai-route,kilimanjaro,1800,6,priced,rongai route kilimanjaro,,
+/kilimanjaro/6-day-umbwe-route,kilimanjaro,1900,6,priced,umbwe route kilimanjaro,,
+/trekking/3-day-mount-meru-momela,trekking,645,3,priced,mount meru climb,mount-meru,PRIMARY - ranks 96 impr in GSC
+/trekking/4-day-mount-meru,trekking,725,4,priced,4 day mount meru climb,mount-meru,Duration variant
+/trekking/5-day-mount-meru,trekking,0,5,STUB,mount meru comfort climb,mount-meru,$0 stub + variant
+/trekking/3-day-ol-doinyo-lengai-hike,trekking,650,3,priced,ol doinyo lengai hike,ol-doinyo-lengai,PRIMARY for Lengai
+/trekking/2-day-ol-doinyo-lengai-climb,trekking,450,2,priced,ol doinyo lengai 2 day climb,ol-doinyo-lengai,Duration variant
+/trekking/7-day-ol-doinyo-lengai-expedition,trekking,1250,7,priced,ol doinyo lengai expedition,ol-doinyo-lengai,Duration variant
+/trekking/kilimanjaro-day-trip-marangu,trekking,385,1,priced,kilimanjaro day trip,,Unique - day hike
+/safaris/2-day-tarangire-ngorongoro,safari,576,2,priced,2 day tanzania safari,classic-northern,Cheapest safari ($576) - budget anchor
+/safaris/3-day-safari-tarangire-manyara-ngorongoro,safari,1460,3,priced,3 day tanzania safari,classic-northern,
+/safaris/4-day-arusha-tarangire-manyara-ngorongoro,safari,2218,4,priced,4 day tanzania safari,classic-northern,
+/safaris/5-day-northern-safari,safari,2125,5,priced,5 day serengeti safari,classic-northern,Classic Big Five
+/safaris/6-day-northern-safari,safari,2625,6,priced,6 day tanzania safari,classic-northern,
+/safaris/9-day-northern-tanzania-safari,safari,3410,9,priced,9 day tanzania safari,classic-northern,
+/safaris/5-day-arusha-serengeti-cultural,safari,1955,5,priced,tanzania safari and culture,,Cultural angle differentiates
+/safaris/5-day-luxury-fly-safari,safari,2499,5,priced,luxury tanzania safari,,Luxury/fly-out angle - own term
+/safaris/7-day-northern-circuit-safari,safari,3210,7,priced,northern circuit safari,,Unique term (not the Kili climb)
+/safaris/7-day-photography-cultural-safari,safari,3100,7,priced,tanzania photography safari,,
+/safaris/11-day-bird-photography-safari,safari,4314,11,priced,tanzania bird photography safari,,Niche - most expensive safari
+/safaris/7-day-great-migration-safari,safari,2200,7,priced,great migration safari,great-migration,PRIMARY - best-priced entry ($2200)
+/safaris/8-day-great-migration-safari,safari,3250,8,priced,8 day great migration safari,great-migration,Duration variant
+/safaris/6-day-calving-safari,safari,2350,6,priced,calving season safari,calving,PRIMARY - only priced calving trip
+/safaris/5-day-ndutu-migration-safari,safari,3760,5,priced,ndutu calving safari,calving,Location variant
+/safaris/4-day-private-ndutu-calving-safari,safari,0,4,STUB,private calving season safari,calving,$0 stub + variant
+/safaris/10-day-serengeti-calving-safari,safari,0,10,STUB,10 day calving migration safari,calving,$0 stub + variant
+/safaris/4-day-balloon-safari-serengeti-ngorongoro,safari,2218,4,priced,serengeti balloon safari,balloon,PRIMARY
+/safaris/3-day-serengeti-balloon-zanzibar,safari,2228,3,priced,serengeti balloon safari from zanzibar,balloon,From-Zanzibar variant
+/safaris/5-day-safari-lengai,safari,1450,5,priced,safari and ol doinyo lengai,,Safari+volcano combo
+/safaris/10-day-kenya-safari,safari,0,10,STUB,kenya safari 10 days,,$0 stub - you run both countries
+/safaris/7-day-tanzania-zanzibar,safari,2879,7,priced,tanzania safari and zanzibar,,Bush+beach combo
+/safaris/12-day-kilimanjaro-safari-culture,safari,2750,12,priced,kilimanjaro safari zanzibar package,,Flagship combo (climb+safari+culture)
+/safaris/10-day-safari-zanzibar-adventure,safari,4890,10,priced,safari and zanzibar adventure,,Premium bush-to-beach
+/safaris/9-day-beach-city-bush,safari,2890,9,priced,zanzibar tanzania kenya safari,,The 1 real page stuck not-indexed - needs internal links
+/safaris/7-day-kilimanjaro-hike-safari,safari,2210,7,priced,kilimanjaro hike and safari,,Climb+safari combo
+/safaris/13-day-romance-honeymoon,safari,5646,13,priced,tanzania honeymoon safari,honeymoon,PRIMARY - priced flagship
+/safaris/20-day-honeymoon-tanzania-zanzibar,safari,8750,20,priced,20 day tanzania zanzibar honeymoon,honeymoon,Longest/most premium
+/safaris/7-day-ultimate-honeymoon,safari,0,7,STUB,7 day tanzania honeymoon,honeymoon,$0 stub + variant
+/safaris/10-day-honeymoon-migration,safari,0,10,STUB,honeymoon migration safari,honeymoon,$0 stub + variant
+/safaris/9-day-honeymoon-northern,safari,0,9,STUB,northern tanzania honeymoon safari,honeymoon,$0 stub + variant
+/zanzibar/7-day-zanzibar-honeymoon,zanzibar,0,7,STUB,zanzibar honeymoon,honeymoon,$0 stub + variant
+/zanzibar/4-day-zanzibar-escape,zanzibar,1708,4,priced,zanzibar beach holiday,zanzibar-escape,PRIMARY (UK phrasing 'holiday')
+/zanzibar/5-day-zanzibar-escape,zanzibar,1708,5,priced,zanzibar beach and culture,zanzibar-escape,Culture variant
+/zanzibar/8-day-zanzibar-tour,zanzibar,2500,8,priced,zanzibar tour 8 days,,Longer stay
+/cultural/5-day-cultural-tour,cultural,0,5,STUB,tanzania cultural tour,cultural,PRIMARY (+$0 stub)
+/cultural/8-day-cultural-tour,cultural,0,8,STUB,tanzania cultural heritage tour,cultural,$0 stub + variant
+/paramotoring/3-day-paramotoring-arusha-kilimanjaro,paramotoring,0,3,STUB,paramotoring tanzania,paramotoring,PRIMARY (+$0 stub)
+/paramotoring/12-day-paramotoring-safari,paramotoring,0,12,STUB,paramotoring safari tanzania,paramotoring,$0 stub + variant
