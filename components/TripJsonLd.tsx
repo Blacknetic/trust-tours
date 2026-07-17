@@ -1,5 +1,9 @@
 import type { TripPackage } from "@/data/packages";
+import { CATEGORY_PATH } from "@/data/packages";
+import { packageImage } from "@/data/images";
 import { jsonLd } from "@/lib/json-ld";
+
+const BASE = "https://www.trusttourstz.com";
 
 interface Props {
   pkg: TripPackage;
@@ -7,6 +11,11 @@ interface Props {
 }
 
 export default function TripJsonLd({ pkg, pageUrl }: Props) {
+  // Category label/URL for breadcrumbs. The URL segment differs from the raw
+  // category for safari ("safari" -> "/safaris"), so always go through CATEGORY_PATH.
+  const categorySegment = CATEGORY_PATH[pkg.category];
+  const categoryName =
+    categorySegment.charAt(0).toUpperCase() + categorySegment.slice(1);
   const graph: object[] = [
     {
       "@type": "TouristTrip",
@@ -39,13 +48,15 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
         {
           "@type": "ListItem",
           position: 2,
-          name: pkg.category.charAt(0).toUpperCase() + pkg.category.slice(1),
-          item: `https://www.trusttourstz.com/${pkg.category}`,
+          name: categoryName,
+          item: `${BASE}/${categorySegment}`,
         },
         { "@type": "ListItem", position: 3, name: pkg.title, item: pageUrl },
       ],
     },
   ];
+
+  const image = packageImage(pkg);
 
   if (pkg.priceFromUSD > 0) {
     graph.push({
@@ -53,6 +64,10 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
       "@id": `${pageUrl}#product`,
       name: pkg.title,
       description: pkg.summary,
+      // Google requires `image` for Product — without it the page is ineligible
+      // for Product rich results (and therefore for review stars).
+      ...(image && { image: `${BASE}${image}` }),
+      brand: { "@type": "Brand", name: "Trust Tours & Safaris" },
       offers: {
         "@type": "Offer",
         price: pkg.priceFromUSD,
