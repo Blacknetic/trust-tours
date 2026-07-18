@@ -1295,6 +1295,7 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "8-day-great-migration-safari",
+    heroImage: "/images/safari-hippo.jpg",
     seoTitle: "8-Day Migration Safari — from $3,250 · Trust Tours",
     metaDescription:
       "Extra days in the Serengeti timed to the Great Migration river crossings. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $3,250 pp, private and direct.",
@@ -1307,7 +1308,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing. From $3,250 (3-star) / $3,950 (4-star lodges & camps). Best July–October for the Mara crossings.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "Eight days built around the Great Migration river crossings: Tarangire's elephants and baobabs, a full day in the Ngorongoro Crater, and three days deep in the Serengeti tracking the herds toward the Mara River. Small private groups, a 4x4 with pop-up roof, and 4-star lodges and tented camps (3-star option available).",
@@ -1554,6 +1554,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "10-day-kenya-safari",
+    heroImage: "/images/kenya-safari.jpg",
     destinations: ["Kenya"],
     category: "safari",
     title: "10-Day Kenya Safari – Amboseli, Lake Naivasha & the Maasai Mara",
@@ -1562,7 +1563,6 @@ export const packages: TripPackage[] = [
     priceFromUSD: 0,
     priceNote: "Private Kenya safari — per-person pricing on request.",
     tier: ["mid-range"],
-    heroImage: "",
     gallery: [],
     summary:
       "A ten-day journey through Kenya's headline parks: elephant-rich Amboseli beneath Mount Kilimanjaro, the lakes and walking trails of Naivasha, and the world-famous Maasai Mara for the Big Five and the Great Migration — finishing with Nairobi's giraffe centre, elephant orphanage and Karen Blixen heritage. Wildlife, landscapes and culture across the best of Kenya.",
@@ -1701,7 +1701,7 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing (minimum 3). From $3,410 mid-range / $4,106 luxury, all-inclusive.",
     tier: ["mid-range", "comfort"],
-    heroImage: "/images/packages/9-day-northern-tanzania-safari.jpg",
+    heroImage: "/images/northern-tanzania-safari.jpg",
     gallery: [],
     summary:
       "Nine unhurried days across the whole northern circuit — Tarangire, Lake Manyara, the Ngorongoro Crater and three days deep in the Serengeti, from the big-cat Seronera Valley to the Mara crossings of the north — finishing with a Maasai village visit in the Ngorongoro Highlands. A 'Comfort' or 'Classic' itinerary for travellers who want time to take it all in.",
@@ -2243,6 +2243,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "7-day-photography-cultural-safari",
+    heroImage: "/images/maasai-dance.jpg",
     destinations: ["Arusha", "Tarangire", "Serengeti", "Ngorongoro"],
     category: "safari",
     title: "7-Day Great Migration, Photography & Cultural Safari",
@@ -2252,7 +2253,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person. From $3,100 mid-range / $4,750 luxury (varies by group size and migration season).",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "A safari built for photographers and culture-seekers: golden-hour game drives through Tarangire, the Serengeti migration and the Ngorongoro Crater, paired with deep cultural immersion among the Hadzabe and Datoga peoples of Lake Eyasi and a Maasai village. Timed drives, expert photography guidance and authentic tribal encounters.",
@@ -2357,6 +2357,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "11-day-bird-photography-safari",
+    heroImage: "/images/safari-birds.jpg",
     destinations: ["Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
     category: "safari",
     title: "11-Day Bird Photography & Great Migration Safari",
@@ -2366,7 +2367,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing. From $4,314 mid-range / $5,939 luxury, all-inclusive.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "Eleven days for birders and photographers: the full Northern Circuit — Tarangire, Lake Manyara, the Ngorongoro Crater and five days in the Serengeti — timed to the Great Migration and built around the region's spectacular birdlife, from lovebirds and bustards to crowned cranes, fish eagles and Goliath herons. Mid-range lodges and tented camps throughout.",
@@ -2690,6 +2690,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "10-day-safari-zanzibar-adventure",
+    heroImage: "/images/safari-zanzibar-adventure.jpg",
     seoTitle: "Safari & Zanzibar Adventure, 10 Days — $4,890",
     metaDescription:
       "Bush-to-beach adventure: a northern-circuit safari paired with Zanzibar. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $4,890 pp, no OTA markup.",
@@ -2702,7 +2703,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, double sharing. From $4,890 (4-star) / $5,999 (5-star). Includes the flight from the safari to Zanzibar.",
     tier: ["comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "The complete bush-to-beach escape: six days on the classic northern circuit — Tarangire, the Ngorongoro Crater and the Serengeti — then a flight to Zanzibar for four days of Stone Town, spice farms, Mnemba's reefs and the white sands of the Indian Ocean. A 'Comfort' (4-star) or 'Classic' (5-star) itinerary with the internal flight and all activities arranged.",
@@ -2833,6 +2833,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "5-day-safari-lengai",
+    heroImage: "/images/safari-gazelle.jpg",
     destinations: ["Tarangire", "Serengeti", "Ngorongoro", "Lake Natron", "Ol Doinyo Lengai"],
     category: "safari",
     title: "5-Day Safari & Ol Doinyo Lengai Volcano Adventure",
@@ -2842,7 +2843,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person. From $1,450 budget / $2,350 mid-range / $3,800+ luxury. Plus local climbing & TAWA fees (~$90–120pp). Available year-round.",
     tier: ["budget", "mid-range", "comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "Wildlife and volcano in one trip: game drives in Tarangire and the Serengeti, the Big Five in the Ngorongoro Crater, and a thrilling midnight climb of Ol Doinyo Lengai — the only active carbonatite volcano on Earth — for a sunrise over Lake Natron and the Great Rift Valley. A rare blend of safari, culture and real adventure.",
@@ -4691,6 +4691,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "5-day-luxury-fly-safari",
+    heroImage: "/images/luxury-fly-safari.jpg",
     destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
     category: "safari",
     title: "5-Day Luxury Safari – Tarangire, Ngorongoro & Serengeti (fly-out)",
@@ -4700,7 +4701,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, sharing. From $2,499 mid-range / $3,666 luxury. Includes the scenic return flight from the Serengeti.",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "A private, upmarket take on the classic northern circuit — Tarangire, the Ngorongoro Crater and the Serengeti — staying at hand-picked lodges and finishing with a scenic flight back from the Serengeti rather than the long drive. Available in mid-range or luxury, it's an easy, comfortable way to see Tanzania's headline parks in five days.",
@@ -4789,6 +4789,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "5-day-ndutu-migration-safari",
+    heroImage: "/images/safari-elephant.jpg",
     destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
     category: "safari",
     title: "5-Day Calving-Season Safari – Tarangire, Ngorongoro & Ndutu",
@@ -4798,7 +4799,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person, all-inclusive. From $3,760 standard / $4,599 luxury lodges. Reduced rate for kids 14–16 (from $2,795).",
     tier: ["mid-range", "comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "Five days built around the Great Migration's calving season on the Ndutu plains. From Tarangire's elephant herds and a full day inside the Ngorongoro Crater, you head into the southern Serengeti for two days at Ndutu, where thousands of wildebeest and zebra give birth and the predators gather. Morning, afternoon and full-day drives in a 4x4 with pop-up roof.",
