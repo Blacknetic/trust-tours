@@ -5314,6 +5314,7 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "2-day-ol-doinyo-lengai-climb",
+    heroImage: "/images/ol-doinyo-lengai-2day.jpg",
     destinations: ["Arusha", "Lake Natron", "Ol Doinyo Lengai"],
     category: "trekking",
     difficulty: "Challenging",
@@ -5324,7 +5325,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person. From $450 budget / $750–1,050 mid-range / $1,200–1,800 luxury. Plus local climbing fee (~$70–100pp) and TAWA fee (~$20pp).",
     tier: ["budget", "mid-range", "comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "A short, intense adventure to the summit of Ol Doinyo Lengai (2,962 m), the only active carbonatite volcano on Earth and sacred to the Maasai as the 'Mountain of God'. Drive into the Great Rift Valley to Lake Natron, then climb beneath the stars from midnight to reach the crater rim at sunrise — panoramas across Lake Natron, the Rift Valley, Mount Meru and even Kilimanjaro on clear mornings.",
@@ -5476,6 +5476,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "7-day-ol-doinyo-lengai-expedition",
+    heroImage: "/images/ol-doinyo-lengai-expedition.jpg",
     destinations: ["Arusha", "Lake Natron", "Ol Doinyo Lengai"],
     category: "trekking",
     difficulty: "Challenging",
@@ -5486,7 +5487,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person (2026 rates). From $1,250 budget / $1,750–2,350 mid-range / $2,800–4,200 luxury. Plus local climbing fee (~$70–100pp) and TAWA fee (~$20pp).",
     tier: ["budget", "mid-range", "comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "The ultimate 'Mountain of God' expedition: a week in the remote Lake Natron wilderness with Ngare Sero waterfalls, flamingo flats, deep Maasai cultural immersion, a Rift Valley acclimatization hike and a midnight summit of Ol Doinyo Lengai — followed by a relaxed recovery day. An off-the-beaten-path journey few travellers ever take.",
@@ -6185,6 +6185,7 @@ export const packages: TripPackage[] = [
 
   {
     slug: "12-day-paramotoring-safari",
+    heroImage: "/images/aerial-balloon.jpg",
     destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti", "Ol Doinyo Lengai", "Lake Natron"],
     category: "paramotoring",
     title: "12-Day Paramotoring Safari & Location Discovery",
@@ -6194,7 +6195,6 @@ export const packages: TripPackage[] = [
     priceNote:
       "Per person — pricing on request. Aerial flights are weather-dependent; game drives run regardless.",
     tier: ["comfort"],
-    heroImage: "",
     gallery: [],
     summary:
       "The ultimate aerial safari: twelve days combining paramotor flights and 4x4 game drives across northern Tanzania — Mount Meru and Kilimanjaro, Tarangire, the Ngorongoro Crater, the active Ol Doinyo Lengai volcano and Lake Natron, and the Serengeti's endless plains. See the Great Migration, baobabs and calderas from the sky, then meet the wildlife on the ground.",
