@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { byCategory, getPackage } from "@/data/packages";
+import { packageMetadata } from "@/lib/package-meta";
 import PackagePageView from "@/components/PackagePageView";
 
 interface Props {
@@ -16,16 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pkg = getPackage(slug);
   if (!pkg) return {};
 
-  const title = `${pkg.shortName} – Tanzania Paramotoring`;
-  const description = pkg.summary.slice(0, 155);
-  const canonical = `/paramotoring/${pkg.slug}`;
-
-  return {
-    title,
-    description,
-    alternates: { canonical },
-    openGraph: { title, description, type: "website", url: canonical },
-  };
+  return packageMetadata(pkg);
 }
 
 export default async function ParamotoringPage({ params }: Props) {

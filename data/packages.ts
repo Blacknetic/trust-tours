@@ -73,6 +73,11 @@ export interface TripPackage {
   // Cross-cutting themes (e.g. "honeymoon") — power themed listing pages like
   // /honeymoon without changing a trip's primary category/route.
   tags?: string[];
+  // SEO overrides for the money pages (Day 12). When unset, generateMetadata
+  // falls back to the shortName-based title and a summary excerpt. Keep the
+  // rendered <title> ≤60 chars and the description ≤160.
+  seoTitle?: string;
+  metaDescription?: string;
 }
 
 // Category → URL segment for package detail routes. Single source of truth —
@@ -97,6 +102,9 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "7-day-machame-route",
+    seoTitle: "Machame Route, 7 Days — from $2,180 · Trust Tours",
+    metaDescription:
+      "Kilimanjaro's most popular route, with a climb-high-sleep-low profile for higher summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,180 pp.",
     destinations: ["Kilimanjaro"],
     category: "kilimanjaro",
     effort: 4,
@@ -265,6 +273,9 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "9-day-northern-circuit",
+    seoTitle: "Northern Circuit, 9 Days — from $2,497 · Trust Tours",
+    metaDescription:
+      "Kilimanjaro's longest, quietest route — and the highest summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,497 pp, no OTA markup.",
     destinations: ["Kilimanjaro"],
     category: "kilimanjaro",
     effort: 4,
@@ -446,6 +457,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "8-day-lemosho-route",
+    seoTitle: "Lemosho Route, 8 Days — from $2,180 · Trust Tours",
+    metaDescription:
+      "Crosses the wild Shira Plateau — the best acclimatisation and summit rates on Kilimanjaro. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,180 pp, direct.",
     destinations: ["Kilimanjaro"],
     category: "kilimanjaro",
     effort: 3,
@@ -596,6 +610,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "6-day-marangu-route",
+    seoTitle: "Marangu Route, 6 Days — from $1,580 · Trust Tours",
+    metaDescription:
+      "The only hut-based Kilimanjaro route and our most affordable climb. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $1,580 pp, book direct.",
     destinations: ["Kilimanjaro"],
     category: "kilimanjaro",
     effort: 3,
@@ -1018,6 +1035,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "7-day-great-migration-safari",
+    seoTitle: "Great Migration Safari, 7 Days — from $2,200",
+    metaDescription:
+      "Private Great Migration safari across Tarangire, Serengeti & Ngorongoro. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,200 pp, no OTA markup.",
     destinations: ["Tarangire", "Serengeti", "Ngorongoro"],
     category: "safari",
     title: "7-Day Great Migration Safari – Tarangire, Serengeti & Ngorongoro",
@@ -1148,6 +1168,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "7-day-tanzania-zanzibar",
+    seoTitle: "Tanzania Safari + Zanzibar, 7 Days — $2,879",
+    metaDescription:
+      "Big Five safari then Zanzibar's beaches — bush to beach, done right. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,879 pp, book direct.",
     destinations: ["Ngorongoro", "Serengeti", "Zanzibar"],
     category: "safari",
     title: "7-Day Tanzania Safari & Zanzibar Beach Escape",
@@ -1272,6 +1295,9 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "8-day-great-migration-safari",
+    seoTitle: "8-Day Migration Safari — from $3,250 · Trust Tours",
+    metaDescription:
+      "Extra days in the Serengeti timed to the Great Migration river crossings. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $3,250 pp, private and direct.",
     destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
     category: "safari",
     title: "8-Day Great Migration Safari – Tarangire, Ngorongoro & Serengeti",
@@ -1935,6 +1961,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "12-day-kilimanjaro-safari-culture",
+    seoTitle: "Kilimanjaro + Safari + Culture, 12 Days — $2,750",
+    metaDescription:
+      "Climb Kilimanjaro, safari the Serengeti and meet the Maasai in one trip. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,750 pp, book direct.",
     destinations: ["Kilimanjaro", "Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
     category: "safari",
     title: "12-Day Tanzania Adventure – Kilimanjaro Trek, Safari & Culture",
@@ -2661,6 +2690,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "10-day-safari-zanzibar-adventure",
+    seoTitle: "Safari & Zanzibar Adventure, 10 Days — $4,890",
+    metaDescription:
+      "Bush-to-beach adventure: a northern-circuit safari paired with Zanzibar. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $4,890 pp, no OTA markup.",
     destinations: ["Tarangire", "Ngorongoro", "Serengeti", "Zanzibar"],
     category: "safari",
     title: "10-Day Safari & Zanzibar Adventure – Bush to Beach",
@@ -3743,6 +3775,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "13-day-romance-honeymoon",
+    seoTitle: "Tanzania Honeymoon Safari, 13 Days — $5,646",
+    metaDescription:
+      "Private safari and Zanzibar beaches for two — 13 days of romance. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $5,646 pp, book direct.",
     destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti", "Zanzibar"],
     category: "safari",
     tags: ["honeymoon"],
