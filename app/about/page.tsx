@@ -12,7 +12,14 @@ export const metadata: Metadata = {
   title: "About Us — Meet Ombeni & the Team",
   alternates: { canonical: "/about" },
   description:
-    "Trust Tours & Safaris is a small, licensed tour operator based in Arusha, Tanzania, led by founder Ombeni. We drive, we cook, we guide — every trip, our own crew.",
+    "Trust Tours & Safaris is a TALA-licensed tour operator in Arusha, Tanzania, led by founder Ombeni since 2008. Owner-led private trips, 5.0★ on TripAdvisor.",
+  openGraph: {
+    title: "About Us — Meet Ombeni & the Team | Trust Tours & Safaris",
+    description:
+      "Trust Tours & Safaris is a TALA-licensed tour operator in Arusha, Tanzania, led by founder Ombeni since 2008. Owner-led private trips, 5.0★ on TripAdvisor.",
+    type: "website",
+    url: "/about",
+  },
 };
 
 // Confirmed company facts (from Trust Tours' own site + Ombeni).

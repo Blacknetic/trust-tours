@@ -42,7 +42,14 @@ export const metadata: Metadata = {
   title: "Zanzibar Beach Holidays & Tours",
   alternates: { canonical: "/zanzibar" },
   description:
-    "Zanzibar beach holidays with Trust Tours: Stone Town, spice farms, Mnemba snorkelling and the white sands of Nungwi, Paje and Kendwa — standalone or paired with a safari.",
+    "Zanzibar beach holidays — Stone Town, Mnemba snorkelling and the white sands of Nungwi, Paje & Kendwa. TALA-licensed, owner-led, 5.0★ TripAdvisor. Book direct.",
+  openGraph: {
+    title: "Zanzibar Beach Holidays & Tours | Trust Tours & Safaris",
+    description:
+      "Zanzibar beach holidays — Stone Town, Mnemba snorkelling and the white sands of Nungwi, Paje & Kendwa. TALA-licensed, owner-led, 5.0★ TripAdvisor. Book direct.",
+    type: "website",
+    url: "/zanzibar",
+  },
 };
 
 export default function ZanzibarListingPage() {

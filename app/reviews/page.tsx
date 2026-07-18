@@ -27,7 +27,14 @@ export const metadata: Metadata = {
   title: "Reviews — What Our Travellers Say",
   alternates: { canonical: "/reviews" },
   description:
-    "Read what climbers and safari-goers say about travelling with Trust Tours & Safaris — independent reviews from TripAdvisor and Google.",
+    "Independent 5.0★ reviews from climbers and safari-goers who travelled with Trust Tours & Safaris — a TALA-licensed, owner-led operator in Arusha, Tanzania.",
+  openGraph: {
+    title: "Reviews — What Our Travellers Say | Trust Tours & Safaris",
+    description:
+      "Independent 5.0★ reviews from climbers and safari-goers who travelled with Trust Tours & Safaris — a TALA-licensed, owner-led operator in Arusha, Tanzania.",
+    type: "website",
+    url: "/reviews",
+  },
 };
 
 const BASE_PATH: Record<string, string> = {

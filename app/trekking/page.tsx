@@ -8,10 +8,17 @@ import ItemListJsonLd from "@/components/ItemListJsonLd";
 import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Tanzania Trekking – Kilimanjaro, Mount Meru & Ol Doinyo Lengai",
+  title: "Tanzania Trekking & Mountain Climbs",
   alternates: { canonical: "/trekking" },
   description:
-    "Trek Tanzania with Trust Tours: climb Kilimanjaro, acclimatise on Mount Meru, or summit the active Ol Doinyo Lengai volcano (Mountain of God) above Lake Natron.",
+    "Trek Tanzania — climb Kilimanjaro, acclimatise on Mount Meru, or summit the active Ol Doinyo Lengai volcano. TALA-licensed, owner-led, 5.0★ TripAdvisor.",
+  openGraph: {
+    title: "Tanzania Trekking & Mountain Climbs | Trust Tours & Safaris",
+    description:
+      "Trek Tanzania — climb Kilimanjaro, acclimatise on Mount Meru, or summit the active Ol Doinyo Lengai volcano. TALA-licensed, owner-led, 5.0★ TripAdvisor.",
+    type: "website",
+    url: "/trekking",
+  },
 };
 
 export default function TrekkingListingPage() {

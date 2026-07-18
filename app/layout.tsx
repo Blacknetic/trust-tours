@@ -74,11 +74,11 @@ const albert = Albert_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.trusttourstz.com"),
   title: {
-    default: "Trust Tours & Safaris — Kilimanjaro Climbs & Tanzania Safaris",
+    default: "Kilimanjaro Climbs & Tanzania Safaris — Trust Tours",
     template: "%s | Trust Tours & Safaris",
   },
   description:
-    "Tanzania's trusted safari operator. Climb Kilimanjaro, track the Great Migration, explore Ngorongoro Crater. Led by Ombeni — fully licensed, plan on WhatsApp.",
+    "TALA-licensed, owner-led Tanzania operator in Arusha. Climb Kilimanjaro, track the Great Migration, explore Ngorongoro, relax in Zanzibar. 5.0★ TripAdvisor.",
   alternates: { canonical: "/" },
   verification: {
     google: "9IOWur01z2YBwGvWn67xt020CY7G1dZUX5EF91-562I",

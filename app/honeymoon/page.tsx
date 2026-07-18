@@ -7,10 +7,17 @@ import ItemListJsonLd from "@/components/ItemListJsonLd";
 import { getGuide } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Tanzania Honeymoon Safaris & Zanzibar Romance",
+  title: "Tanzania Honeymoon Safaris",
   alternates: { canonical: "/honeymoon" },
   description:
-    "Romantic Tanzania honeymoons with Trust Tours: private safaris, balloon flights and candlelit bush dinners, paired with Zanzibar beaches — from short escapes to a 20-day adventure.",
+    "Tanzania honeymoon safaris paired with Zanzibar beaches — private, romantic and tailor-made. TALA-licensed, owner-led, 5.0★ TripAdvisor. Plan on WhatsApp.",
+  openGraph: {
+    title: "Tanzania Honeymoon Safaris | Trust Tours & Safaris",
+    description:
+      "Tanzania honeymoon safaris paired with Zanzibar beaches — private, romantic and tailor-made. TALA-licensed, owner-led, 5.0★ TripAdvisor. Plan on WhatsApp.",
+    type: "website",
+    url: "/honeymoon",
+  },
 };
 
 export default function HoneymoonListingPage() {

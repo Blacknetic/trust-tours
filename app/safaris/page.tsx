@@ -8,10 +8,17 @@ import ItemListJsonLd from "@/components/ItemListJsonLd";
 import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Tanzania Safaris – Big Five, Migration, Honeymoon, Cultural & Paramotoring",
+  title: "Tanzania Safari Packages & Tours",
   alternates: { canonical: "/safaris" },
   description:
-    "Every Trust Tours safari in one place: Big Five game drives, Great Migration & calving-season trips, romantic honeymoons, immersive cultural tours and paramotoring over the Serengeti.",
+    "Private Tanzania safaris — Big Five, the Great Migration, calving season and safari-beach combos. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $1,580 pp.",
+  openGraph: {
+    title: "Tanzania Safari Packages & Tours | Trust Tours & Safaris",
+    description:
+      "Private Tanzania safaris — Big Five, the Great Migration, calving season and safari-beach combos. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $1,580 pp.",
+    type: "website",
+    url: "/safaris",
+  },
 };
 
 export default function SafarisListingPage() {

@@ -7,10 +7,17 @@ import ItemListJsonLd from "@/components/ItemListJsonLd";
 import { guidesForCategory } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Tanzania Cultural Tours – Maasai, Hadzabe, Chagga & More",
+  title: "Tanzania Cultural Tours",
   alternates: { canonical: "/cultural" },
   description:
-    "Immersive Tanzania cultural tours with Trust Tours: Maasai villages, the Hadzabe and Datoga of Lake Eyasi, Mto wa Mbu, Chagga coffee farms, waterfalls and hot springs.",
+    "Immersive Tanzania cultural tours — meet the Maasai, Hadzabe, Datoga and Chagga, led by local guides. TALA-licensed, owner-led operator, 5.0★ TripAdvisor.",
+  openGraph: {
+    title: "Tanzania Cultural Tours | Trust Tours & Safaris",
+    description:
+      "Immersive Tanzania cultural tours — meet the Maasai, Hadzabe, Datoga and Chagga, led by local guides. TALA-licensed, owner-led operator, 5.0★ TripAdvisor.",
+    type: "website",
+    url: "/cultural",
+  },
 };
 
 export default function CulturalListingPage() {

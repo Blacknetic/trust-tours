@@ -11,7 +11,14 @@ export const metadata: Metadata = {
   title: "Kilimanjaro Climbing Routes & Prices",
   alternates: { canonical: "/kilimanjaro" },
   description:
-    "Compare Kilimanjaro routes with Trust Tours: Machame, Lemosho, Marangu and Northern Circuit. From $1,580 per person with licensed guides and full crew.",
+    "Compare Kilimanjaro routes — Machame, Lemosho, Marangu, Northern Circuit. TALA-licensed, owner-led, 5.0★ TripAdvisor. Private climbs from $1,580 per person.",
+  openGraph: {
+    title: "Kilimanjaro Climbing Routes & Prices | Trust Tours & Safaris",
+    description:
+      "Compare Kilimanjaro routes — Machame, Lemosho, Marangu, Northern Circuit. TALA-licensed, owner-led, 5.0★ TripAdvisor. Private climbs from $1,580 per person.",
+    type: "website",
+    url: "/kilimanjaro",
+  },
 };
 
 export default function KilimanjaroListingPage() {

@@ -6,7 +6,14 @@ export const metadata: Metadata = {
   title: "Contact Us — Plan Your Trip",
   alternates: { canonical: "/contact" },
   description:
-    "Message Trust Tours & Safaris on WhatsApp (+255 785 938 860) or send an inquiry — tell us your dates and group size and get a free day-by-day itinerary.",
+    "Message Trust Tours & Safaris on WhatsApp (+255 785 938 860) or send an inquiry. TALA-licensed, owner-led — founder Ombeni replies within a day. Free itinerary.",
+  openGraph: {
+    title: "Contact Us — Plan Your Trip | Trust Tours & Safaris",
+    description:
+      "Message Trust Tours & Safaris on WhatsApp (+255 785 938 860) or send an inquiry. TALA-licensed, owner-led — founder Ombeni replies within a day. Free itinerary.",
+    type: "website",
+    url: "/contact",
+  },
 };
 
 const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(
