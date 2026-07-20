@@ -14,6 +14,33 @@ import Parallax from "@/components/Parallax";
 import ScrollProgressSpine from "@/components/ScrollProgressSpine";
 import type { GuideTable, GuideCallout } from "@/data/guides";
 
+// Render lightweight [label](/path) links inside guide prose as inline <Link>s.
+// In-body contextual links pass more weight than the related-cards below, so
+// pillar/cluster guides use them to point at route guides and tour pages.
+function renderProse(text: string): React.ReactNode {
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const out: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  let k = 0;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    out.push(
+      <Link
+        key={k++}
+        href={m[2]}
+        className="font-semibold underline decoration-1 underline-offset-2 hover:opacity-80"
+        style={{ color: "var(--gold)" }}
+      >
+        {m[1]}
+      </Link>,
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out.length === 1 ? out[0] : out;
+}
+
 const BORDER = "rgba(26, 26, 22,0.08)";
 
 // Per-topic hero photo for the article header. A guide's own `image` overrides
@@ -53,7 +80,7 @@ function Callout({ callout }: { callout: GuideCallout }) {
         {callout.label ?? tone.label}
       </p>
       <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
-        {callout.text}
+        {renderProse(callout.text)}
       </p>
     </div>
   );
@@ -225,13 +252,13 @@ export default function GuideView({ guide }: { guide: Guide }) {
               The short answer
             </p>
             <p className="text-base md:text-lg leading-relaxed" style={{ color: "var(--ink)" }}>
-              {guide.keyTakeaway}
+              {renderProse(guide.keyTakeaway)}
             </p>
           </div>
         </Reveal>
 
         <p className="text-lg leading-relaxed mb-7" style={{ color: "var(--ink)" }}>
-          {guide.intro}
+          {renderProse(guide.intro)}
         </p>
 
         {/* Primary CTA — funnel to the matching booking page */}
@@ -260,7 +287,7 @@ export default function GuideView({ guide }: { guide: Guide }) {
               )}
               {s.paragraphs?.map((p, j) => (
                 <p key={j} className="text-base leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
-                  {p}
+                  {renderProse(p)}
                 </p>
               ))}
               {s.bullets && (

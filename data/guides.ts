@@ -845,80 +845,124 @@ export const guides: Guide[] = [
 
   {
     slug: "best-kilimanjaro-route",
-    title: "Which Kilimanjaro Route Is Best?",
+    title: "Best Kilimanjaro Route, Compared",
     topic: "Kilimanjaro",
     excerpt:
-      "Machame, Lemosho, Marangu or the Northern Circuit? An honest comparison of acclimatization, scenery, crowds and cost — and who each one suits.",
-    updated: "2026-06-20",
-    readMinutes: 9,
+      "All 7 Kilimanjaro routes compared — success rates, scenery, crowds and cost, and which one suits you. Honest advice from a TALA-licensed, owner-led operator.",
+    updated: "2026-07-20",
+    readMinutes: 12,
     keyTakeaway:
-      "For most first-time climbers, the 7-day Machame or 8-day Lemosho routes are the best choice — both have excellent 'climb high, sleep low' acclimatization, stunning scenery and strong success rates. Choose Marangu if you want huts or a tighter budget, and the Northern Circuit if you want the very highest summit odds and the quietest trails.",
+      "For most first-time climbers the 7-day Machame or 8-day Lemosho routes are the best choice — both acclimatise you well with a 'climb high, sleep low' profile, have superb scenery and strong summit rates. Pick Marangu for huts or a tighter budget, Rongai for the dry-season northern approach, and the Northern Circuit for the highest summit odds and the quietest trails. Umbwe and the Western Breach are steep, expert-only lines. Above all, choose more days: the single biggest factor in reaching Uhuru Peak is how gradually a route lets you gain height.",
     intro:
-      "There's no single 'best' route up Kilimanjaro — there's the route that's best for you, given your time, budget, and how much you want to stack the odds in your favour. The good news is that the choice mostly comes down to one thing that matters above all others: how well the route lets you acclimatize. Here's how the four most popular routes really compare.",
-    primaryCta: { label: "Compare all Kilimanjaro routes", href: "/kilimanjaro" },
+      "There's no single 'best' route up Kilimanjaro — there's the route that's best for you, given your time, budget and how much you want to stack the odds in your favour. Kilimanjaro has seven established routes, and the choice mostly comes down to one thing that matters more than scenery or price: how well the route lets you acclimatise. This guide compares all seven honestly — what each is like, who it suits, its realistic summit rate and cost — so you can pick with your eyes open. When you're ready, see dates and prices for every route on our [Kilimanjaro climbs page](/kilimanjaro).",
+    primaryCta: { label: "See Kilimanjaro climbs & prices", href: "/kilimanjaro" },
     inlineCtaAfter: 2,
     sections: [
       {
-        heading: "The one factor that matters most",
+        heading: "The one factor that decides your summit: acclimatisation",
         paragraphs: [
-          "Before scenery or crowds, judge a route on acclimatization — how gradually it gains height and whether it follows the 'climb high, sleep low' pattern. A route that climbs slowly and lets you sleep lower than the day's high point will get more people to the top, full stop.",
-          "That's why the longer routes (Lemosho, Northern Circuit) and the well-profiled 7-day Machame outperform short, fast climbs. Length isn't about hiking more for its own sake — it's about giving your body the days it needs.",
+          "Before scenery, crowds or cost, judge a route on acclimatisation — how gradually it gains height and whether it follows the 'climb high, sleep low' pattern, where you push up to a high point during the day and then descend to sleep lower. A route that does this well will get far more people to the summit than a short, fast climb up the same mountain.",
+          "That's why the longer routes — Lemosho, Rongai and the Northern Circuit — and the well-profiled 7-day Machame outperform rushed five- and six-day climbs. Extra days aren't about hiking more for its own sake; they're about giving your body the time it needs to adjust to thinning air. If you take one thing from this guide, take this: on Kilimanjaro, more days almost always means a better chance of standing on the roof of Africa.",
         ],
         diagram: "route-profiles",
       },
       {
-        heading: "The four routes, side by side",
+        heading: "All 7 Kilimanjaro routes at a glance",
         paragraphs: [
-          "Here's the honest comparison. 'Acclimatization' is the column to weight most heavily if summiting matters to you.",
+          "Here's the honest comparison. Weight the 'summit rate' and 'acclimatisation' columns most heavily if reaching the top is your priority. The rates below are operator estimates for the standard number of days on each route — the extra-day versions score higher.",
         ],
         table: {
-          headers: ["Route", "Days", "Acclimatization", "Scenery", "Crowds", "Sleep"],
+          caption:
+            "Summit rates are Trust Tours operator estimates and vary with fitness, weather and the number of days chosen. Distances are approximate return trips.",
+          headers: ["Route", "Days", "Distance", "Summit rate (est.)", "Scenery", "Crowds", "Sleep"],
           rows: [
-            ["Marangu", "5–6", "Lower", "Good", "Busy", "Huts"],
-            ["Machame", "6–7", "Very good", "Excellent", "Busy", "Tents"],
-            ["Lemosho", "7–8", "Excellent", "Excellent", "Quieter", "Tents"],
-            ["Northern Circuit", "8–9", "Best", "Excellent", "Quietest", "Tents"],
+            ["Machame", "6–7", "62 km", "85% (7-day)", "Excellent", "Busy", "Tents"],
+            ["Lemosho", "7–8", "70 km", "90% (8-day)", "Excellent", "Quieter", "Tents"],
+            ["Northern Circuit", "8–9", "90 km", "95%+", "Excellent", "Quietest", "Tents"],
+            ["Marangu", "5–6", "72 km", "65% (6-day)", "Good", "Busy", "Huts"],
+            ["Rongai", "6–7", "73 km", "80% (7-day)", "Good", "Quiet", "Tents"],
+            ["Umbwe", "6", "53 km", "70%", "Dramatic", "Very quiet", "Tents"],
+            ["Shira", "7–8", "56 km", "85%", "Excellent", "Quiet", "Tents"],
           ],
+          highlightCol: 3,
+        },
+        callout: {
+          tone: "info",
+          text: "These are our own estimates from years of guiding on the mountain — for the full breakdown by route and duration, see our [Kilimanjaro success rate guide](/guides/kilimanjaro-success-rate).",
         },
       },
       {
-        heading: "Machame — the classic",
+        heading: "Machame — the classic (and our most-booked)",
         paragraphs: [
-          "Nicknamed the 'Whiskey Route', Machame is the most popular path up the mountain for good reason: a beautiful southern approach through rainforest, the dramatic Barranco Wall, and a profile that acclimatizes you well — especially over seven days. It's busier than Lemosho, but it's the classic Kilimanjaro experience and our most-booked climb.",
+          "Nicknamed the 'Whiskey Route', Machame is the most popular path up the mountain for good reason: a beautiful southern approach through rainforest, the thrilling scramble up the Barranco Wall, and a profile that acclimatises you well — especially over seven days. It's busier than Lemosho, but it's the definitive Kilimanjaro experience and our most-booked climb.",
+          "Do the seven-day version, not the six. That extra acclimatisation day is one of the cheapest ways to buy yourself a better shot at Uhuru Peak. See the full itinerary in our [Machame route guide](/guides/machame-route), or go straight to dates and pricing for the [7-day Machame climb](/kilimanjaro/7-day-machame-route).",
         ],
         callout: {
           tone: "tip",
-          text: "If you do Machame, do the 7-day version, not the 6-day. That extra acclimatization day is one of the cheapest ways to buy yourself a better shot at the summit.",
+          text: "First time at altitude and want the classic route? The 7-day Machame is the one we recommend most often.",
         },
       },
       {
         heading: "Lemosho — the best all-rounder",
         paragraphs: [
-          "Lemosho approaches from the remote western side, starting quieter before it joins the Machame trail higher up. Over seven or eight days it offers arguably the best balance on the mountain: superb acclimatization, the finest scenery, and fewer people on the early days. If you want one recommendation for a first climb and budget allows, this is it.",
+          "Lemosho approaches from the remote western side, starting quietly across the Shira Plateau before joining the Machame trail higher up. Over seven or eight days it offers arguably the best balance on the mountain: superb acclimatisation, the finest scenery, and far fewer people on the early days. If you want one recommendation for a first climb and the budget allows, this is it.",
+          "The eight-day version has the highest summit rate of any mainstream route bar the Northern Circuit. Read the day-by-day in our [Lemosho route guide](/guides/lemosho-route), or see the [8-day Lemosho climb](/kilimanjaro/8-day-lemosho-route).",
+        ],
+      },
+      {
+        heading: "Northern Circuit — the highest summit odds",
+        paragraphs: [
+          "The longest route on the mountain loops right around the quiet northern slopes over eight or nine days. All that time at altitude gives it the best acclimatisation and the highest success rates of anything on Kilimanjaro, on the most peaceful trails you'll find. The trade-off is cost and time — but if summiting is your absolute priority and you can spare the days, nothing beats it.",
+          "It's also the best choice if you've struggled at altitude before. See the [Northern Circuit route guide](/guides/northern-circuit-route) or the [9-day Northern Circuit climb](/kilimanjaro/9-day-northern-circuit).",
         ],
       },
       {
         heading: "Marangu — huts and budget",
         paragraphs: [
-          "Marangu is the only route with sleeping huts rather than tents, which appeals to some travellers, and it's often the cheapest option. But it's also a there-and-back route with a less ideal acclimatization profile, so success rates are lower — particularly on the rushed five-day version. Choose the six-day Marangu if you want huts, and treat five days as a real gamble.",
+          "Marangu is the only route with sleeping huts rather than tents, which appeals to some travellers, and it's often the most affordable option. But it's a there-and-back route with a less ideal acclimatisation profile, so summit rates are lower — particularly on the rushed five-day version. Choose the six-day Marangu if you specifically want huts, and treat five days as a real gamble.",
+          "More on the trade-offs in our [Marangu route guide](/guides/marangu-route), or see the [6-day Marangu climb](/kilimanjaro/6-day-marangu-route). If budget is the deciding factor, read our honest breakdown of [what a Kilimanjaro climb really costs](/guides/how-much-to-climb-kilimanjaro) before you book the cheapest quote you find.",
         ],
       },
       {
-        heading: "Northern Circuit — the highest odds",
+        heading: "Rongai — the quiet northern approach",
         paragraphs: [
-          "The longest route on the mountain loops around the quiet northern slopes over eight or nine days. All that time at altitude gives it the best acclimatization and the highest success rates of any route, on the most peaceful trails. The trade-off is cost and time — but if summiting is your priority and you can spare the days, nothing beats it.",
+          "Rongai is the only route that climbs Kilimanjaro from the north, near the Kenyan border, and it's the driest of them all — which makes it the smart pick in the wetter months of April, May and November. It's a gentler, quieter trail than Machame, with a genuine wilderness feel and good chances of wildlife on the lower slopes, though its scenery is a touch less varied.",
+          "Over seven days it acclimatises well and summits reliably. See dates for the [6-day Rongai climb](/kilimanjaro/6-day-rongai-route).",
+        ],
+      },
+      {
+        heading: "Umbwe — the short, steep test",
+        paragraphs: [
+          "Umbwe is the hardest of the standard routes: short, direct and brutally steep, gaining height so fast that acclimatisation suffers and summit rates fall. It rewards very fit, altitude-experienced climbers with solitude and drama, but it's the wrong choice for a first Kilimanjaro. Only consider it if you've been high before and know how your body copes.",
+          "If that's you, see the [6-day Umbwe climb](/kilimanjaro/6-day-umbwe-route). If it isn't, pick Machame or Lemosho instead.",
+        ],
+      },
+      {
+        heading: "Shira and the Western Breach — for experienced climbers",
+        paragraphs: [
+          "Shira is an older variant of the Lemosho approach that starts higher, driving you to around 3,500 m on the first day — which can trigger altitude symptoms early, so it suits climbers who already acclimatise well. The Western Breach, meanwhile, is a steep, rockfall-exposed alternative to the standard summit night: exhilarating, but with real objective risk. Neither is a first-timer's route, and we'll only recommend them when your experience genuinely warrants it.",
+        ],
+      },
+      {
+        heading: "What every Trust Tours climb includes — whatever route you pick",
+        paragraphs: [
+          "The route matters, but so does who runs it. Every Kilimanjaro climb we operate — from the budget Marangu to the Northern Circuit — runs with our own mountain guides (never subcontracted), a full porter and cook crew, quality four-season tents and mess gear, and twice-daily health checks with pulse oximetry so we catch altitude problems early. We carry emergency oxygen and a stretcher on every climb.",
+          "We take porter welfare seriously too: fair wages, proper meals and enforced luggage limits so no one carries more than they should. It's the part of a Kilimanjaro climb you can't see in a price quote, and it's exactly where the cheapest operators cut corners. Choose your operator as carefully as your route.",
         ],
       },
       {
         heading: "So which should you choose?",
         bullets: [
-          "First climb, want the classic: 7-day Machame",
-          "Best balance of success and scenery: 8-day Lemosho",
-          "Prefer huts or a tighter budget: 6-day Marangu",
-          "Want the highest odds and the quietest trails: 9-day Northern Circuit",
+          "First climb, want the classic: the 7-day Machame",
+          "Best balance of success, scenery and quiet: the 8-day Lemosho",
+          "Highest summit odds, or struggled at altitude before: the 9-day Northern Circuit",
+          "Prefer huts or a tighter budget: the 6-day Marangu",
+          "Climbing in the rains (Apr, May, Nov): Rongai's dry northern approach",
+          "Very fit and altitude-experienced, want a challenge: Umbwe",
         ],
         paragraphs: [
-          "Still unsure? Tell us your dates, budget and hiking background and we'll recommend the honest best fit — not just the most expensive one.",
+          "Travelling solo or on a budget and happy to share the mountain? Our fixed-date [group Kilimanjaro climbs](/kilimanjaro/groups) run the best routes at a lower per-person price.",
+          "Still unsure? Tell us your dates, budget and hiking background and we'll recommend the honest best fit — not just the most expensive one. As a TALA-licensed, owner-led operator, every climb runs with our own guides, full crew and twice-daily health checks.",
         ],
       },
     ],
@@ -926,30 +970,44 @@ export const guides: Guide[] = [
       {
         question: "Which Kilimanjaro route has the highest success rate?",
         answer:
-          "The Northern Circuit, because its eight to nine days give the best acclimatization. Lemosho and the 7-day Machame also have strong success rates. Short five-day climbs have the lowest.",
+          "The Northern Circuit, because its eight to nine days give the best acclimatisation — summit rates are estimated at 95% or higher. The 8-day Lemosho and 7-day Machame also score strongly. Short five-day climbs have the lowest success rates.",
       },
       {
-        question: "Which route is best for beginners?",
+        question: "Which Kilimanjaro route is best for beginners?",
         answer:
-          "The 7-day Machame or 8-day Lemosho. Both are non-technical, acclimatize you well and suit first-timers with reasonable fitness.",
+          "The 7-day Machame or 8-day Lemosho. Both are non-technical, acclimatise you well and suit first-timers with reasonable fitness. Avoid Umbwe and the five-day Marangu as a first climb.",
       },
       {
         question: "What is the easiest route up Kilimanjaro?",
         answer:
-          "Marangu is often called the easiest because of its gentler gradient and hut accommodation, but its acclimatization profile is weaker, so it isn't the easiest on which to actually summit. 'Easiest to summit' usually means the route with the most days.",
+          "Marangu is often called the easiest because of its gentler gradient and hut accommodation, but its weaker acclimatisation profile means it isn't the easiest on which to actually summit. The 'easiest to summit' route is usually the one with the most days, such as Lemosho or the Northern Circuit.",
+      },
+      {
+        question: "How many days do I need to climb Kilimanjaro?",
+        answer:
+          "Seven days is the sweet spot for most climbers — long enough to acclimatise properly without adding unnecessary cost. Six days can work on well-profiled routes for fit hikers; five days is rushed and we don't recommend it. Eight or nine days (Lemosho, Northern Circuit) give the best odds of all.",
+      },
+      {
+        question: "Which Kilimanjaro route is cheapest?",
+        answer:
+          "Marangu and the shorter five- to six-day climbs are usually the cheapest, because fewer days means lower park and crew costs. But the cheapest climb is a false economy if it lowers your summit chances or cuts corners on crew welfare — read our guide to what a Kilimanjaro climb really costs before deciding on price alone.",
       },
     ],
     relatedGuides: [
-      "climbing-kilimanjaro-guide",
-      "how-long-to-climb-kilimanjaro",
+      "machame-route",
+      "lemosho-route",
+      "marangu-route",
+      "northern-circuit-route",
       "kilimanjaro-success-rate",
-      "altitude-sickness-on-kilimanjaro",
+      "how-long-to-climb-kilimanjaro",
     ],
     relatedPackages: [
       "7-day-machame-route",
       "8-day-lemosho-route",
-      "6-day-marangu-route",
       "9-day-northern-circuit",
+      "6-day-marangu-route",
+      "6-day-rongai-route",
+      "6-day-umbwe-route",
     ],
   },
 
