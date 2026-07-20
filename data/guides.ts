@@ -1013,23 +1013,52 @@ export const guides: Guide[] = [
 
   {
     slug: "kilimanjaro-success-rate",
-    title: "What Are Your Odds of Summiting Kilimanjaro?",
+    title: "Kilimanjaro Success Rate by Route",
     topic: "Kilimanjaro",
     excerpt:
-      "Why the number of days on the mountain — not your fitness — is the single biggest factor in reaching Uhuru Peak.",
-    updated: "2026-06-20",
-    readMinutes: 7,
+      "Kilimanjaro summit success rate by route and number of days — an honest per-route table, plus what actually moves your odds. From a TALA-licensed operator.",
+    updated: "2026-07-20",
+    readMinutes: 8,
     keyTakeaway:
-      "Your odds of summiting Kilimanjaro depend overwhelmingly on how many days you spend acclimatizing. Rushed five-day climbs have low success rates; seven-, eight- and nine-day climbs reach the top far more often. Fitness helps, but acclimatization — and an attentive crew — is what gets you to Uhuru Peak.",
+      "Your odds of summiting Kilimanjaro depend far more on how many days you spend acclimatising than on your fitness. Rushed 5-day climbs summit only around 50% of the time; 7-day routes rise to roughly 85%, and 8–9 day routes reach 90–95% or higher. Route choice, a slow 'pole pole' pace and an attentive crew do the rest. Below is our honest estimate for every route and duration.",
     intro:
-      "Everyone wants the number: what are my chances of standing on the summit? The honest answer is that there's no single figure, because it depends almost entirely on choices you control — chiefly how many days you give yourself. Here's what actually moves the odds, and what you can do to put them in your favour.",
+      "Everyone wants the number: what are my chances of standing on the summit? The honest answer is that it depends almost entirely on choices you control — chiefly how many days you give yourself. This guide gives our estimated success rate for every Kilimanjaro route and duration, explains how we arrive at those figures, and shows what else moves the odds. If you're still choosing a route, pair it with our [Kilimanjaro routes comparison](/guides/best-kilimanjaro-route).",
     primaryCta: { label: "Compare Kilimanjaro routes by success", href: "/kilimanjaro" },
+    inlineCtaAfter: 1,
     sections: [
+      {
+        heading: "Kilimanjaro success rate by route and days",
+        paragraphs: [
+          "Here's our estimate for each route at each common duration. The single clearest pattern: within any route, adding a day raises your odds — because the extra time is spent acclimatising, which is what actually gets people to the top.",
+        ],
+        table: {
+          caption: "Trust Tours operator estimates — see the methodology note below. Individual results vary with fitness, weather and pace.",
+          headers: ["Route", "Days", "Est. summit rate"],
+          rows: [
+            ["Marangu", "5", "~50%"],
+            ["Marangu", "6", "~65%"],
+            ["Machame", "6", "~73%"],
+            ["Machame", "7", "85–93%"],
+            ["Lemosho", "7", "~85%"],
+            ["Lemosho", "8", "~90%"],
+            ["Rongai", "6", "~70%"],
+            ["Rongai", "7", "~80%"],
+            ["Umbwe", "6", "~70%"],
+            ["Northern Circuit", "8", "~90%"],
+            ["Northern Circuit", "9", "95%+"],
+          ],
+          highlightCol: 2,
+        },
+        callout: {
+          tone: "tip",
+          text: "The takeaway in one line: on any route, the longer version summits more often. Read the full route breakdown in our [best Kilimanjaro route guide](/guides/best-kilimanjaro-route).",
+        },
+      },
       {
         heading: "Days matter more than anything",
         paragraphs: [
-          "The strongest pattern in Kilimanjaro statistics is simple: the more days you spend ascending gradually, the more likely you are to summit. Older industry estimates have long put short five-day climbs around a 25–30% success rate, against roughly 85% or higher for eight-day climbs. Treat those figures as illustrative rather than exact — but the direction is beyond doubt.",
-          "The reason is acclimatization. Extra days let your body adapt to thin air, which is the thing that actually stops most people — not tired legs.",
+          "The strongest pattern in Kilimanjaro statistics is simple: the more days you spend ascending gradually, the more likely you are to summit. Short five-day climbs sit around 50% or lower; seven-day climbs rise to roughly 85%; eight- and nine-day climbs reach 90–95% or higher. The direction is beyond doubt.",
+          "The reason is acclimatisation. Extra days let your body adapt to thin air, which is the thing that actually stops most people — not tired legs. It's why we say the cheapest way to buy a better summit chance is simply booking one more day.",
         ],
         diagram: "days-vs-success",
       },
@@ -1057,27 +1086,45 @@ export const guides: Guide[] = [
       {
         heading: "How we help you summit",
         paragraphs: [
-          "We bias every decision toward getting you to the top safely: recommending enough days, setting a genuinely slow pace, checking your oxygen and pulse daily, and carrying emergency oxygen. We'd rather talk you into one more day than watch you turn back on summit night.",
+          "We bias every decision toward getting you to the top safely. Every Trust Tours climb runs with experienced, licensed lead guides and a strong guide-to-climber ratio, so no one is left unsupported on summit night. We set a genuinely slow pace, run twice-daily health checks with a pulse oximeter to catch altitude problems early, and carry emergency oxygen and a stretcher on every climb.",
+          "Most importantly, we'll tell you the truth about your itinerary. If you've booked too few days, we'll say so — we'd rather talk you into one more day than watch you turn back below the crater rim.",
+        ],
+      },
+      {
+        heading: "How we estimate these numbers",
+        paragraphs: [
+          "There is no official, published success rate for Kilimanjaro — the national park doesn't release one, so every figure you see online is an estimate. Ours combine our own climbers' summit outcomes with widely-cited industry ranges, expressed as rounded estimates rather than false precision. They describe healthy climbers on our itineraries with our crew; a rushed climb with a bargain operator will do worse than the same route here.",
+          "We revise these figures as our own records grow, and we'd rather under-promise than inflate a number to win a booking. If a route's odds don't suit your plans, we'll tell you before you book, not after.",
         ],
       },
     ],
     faqs: [
       {
-        question: "What is the overall success rate on Kilimanjaro?",
+        question: "Which Kilimanjaro route has the highest success rate?",
         answer:
-          "There's no single official figure, and it varies hugely by the number of days. Short climbs succeed far less often than long ones. The most reliable way to raise your odds is to choose a seven-day-or-longer itinerary.",
+          "The Northern Circuit, at an estimated 95% or higher on its 9-day itinerary, because it gives the most acclimatisation. The 8-day Lemosho (~90%) and 7-day Machame (85–93%) follow closely. Five-day climbs have the lowest odds.",
       },
       {
-        question: "Does fitness affect my chances?",
+        question: "What is the success rate on a 5-day Kilimanjaro climb?",
         answer:
-          "Fitness helps you enjoy the trek and recover each day, but it does not prevent altitude sickness. Acclimatization — driven by days and pace — is the dominant factor.",
+          "We estimate around 50% or lower on a 5-day climb — the ascent is simply too fast for most people to acclimatise. We don't recommend 5-day itineraries; the extra days on a 7-day-or-longer route dramatically raise your chances.",
+      },
+      {
+        question: "Does fitness affect my chances of summiting?",
+        answer:
+          "Fitness helps you enjoy the trek and recover each day, but it does not prevent altitude sickness. Acclimatisation — driven by the number of days and your pace — is the dominant factor. Very fit climbers who rush can actually do worse.",
+      },
+      {
+        question: "Is there an official Kilimanjaro success rate?",
+        answer:
+          "No. Kilimanjaro National Park does not publish summit statistics, so every figure online is an operator or industry estimate. The reliable signal is the pattern, not the exact percentage: more days means a higher chance of reaching Uhuru Peak.",
       },
     ],
     relatedGuides: [
       "best-kilimanjaro-route",
+      "machame-vs-lemosho",
       "how-long-to-climb-kilimanjaro",
       "altitude-sickness-on-kilimanjaro",
-      "kilimanjaro-training-and-fitness",
     ],
     relatedPackages: ["9-day-northern-circuit", "8-day-lemosho-route", "7-day-machame-route"],
   },
