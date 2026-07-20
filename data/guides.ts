@@ -1444,16 +1444,16 @@ export const guides: Guide[] = [
 
   {
     slug: "machame-route",
-    title: "The Machame Route: Kilimanjaro's Classic Climb",
+    title: "Machame Route: The 7-Day Climb",
     topic: "Kilimanjaro",
     excerpt:
-      "The 'Whiskey Route' — scenic, sociable and well-profiled for acclimatization. Why it's the most popular way up Kilimanjaro.",
-    updated: "2026-06-20",
-    readMinutes: 8,
+      "The 7-day Machame is Kilimanjaro's most popular route — a day-by-day guide with the real summit success rate, cost and who it suits. TALA-licensed, owner-led.",
+    updated: "2026-07-20",
+    readMinutes: 9,
     keyTakeaway:
-      "The Machame Route is the most popular path up Kilimanjaro: a beautiful southern approach through rainforest, the dramatic Barranco Wall, and a strong 'climb high, sleep low' profile. Done over seven days it acclimatizes you well and has high success rates — the classic choice for a first climb.",
+      "The Machame Route — the 'Whiskey Route' — is the most popular path up Kilimanjaro: a scenic southern approach through rainforest, the famous Barranco Wall, and a strong 'climb high, sleep low' profile. Climb it over seven days, not six: the extra acclimatisation day lifts the estimated summit rate to around 85–93%, versus roughly 73% on the rushed six-day version. Our [7-day Machame climb](/kilimanjaro/7-day-machame-route) starts from $2,180 per person.",
     intro:
-      "If you picture a classic Kilimanjaro climb, you're probably picturing Machame. Nicknamed the 'Whiskey Route' for its bolder character, it's the most-trekked path on the mountain — and our most-booked climb — thanks to gorgeous scenery, a sociable trail and an acclimatization profile that gets a lot of people to the top. Here's what to expect.",
+      "If you picture a classic Kilimanjaro climb, you're probably picturing Machame. Nicknamed the 'Whiskey Route' for its bolder character, it's the most-trekked path on the mountain — and our most-booked climb — thanks to gorgeous scenery, a sociable trail and an acclimatisation profile that gets a lot of people to the top. This guide walks the route day by day, compares the six- and seven-day versions, and gives you the honest success rate and cost. If you're still weighing routes, start with our [Kilimanjaro routes comparison](/guides/best-kilimanjaro-route).",
     primaryCta: { label: "View the 7-Day Machame climb", href: "/kilimanjaro/7-day-machame-route" },
     trustStrip: true,
     inlineCtaAfter: 2,
@@ -1462,42 +1462,81 @@ export const guides: Guide[] = [
         heading: "Why Machame is so popular",
         paragraphs: [
           "Machame earns its popularity. It approaches from the lush south, climbing through dense rainforest before opening onto the Shira Plateau and the high alpine desert beneath Kibo. The scenery is varied and dramatic — including the famous Barranco Wall, a fun, non-technical scramble that's a highlight for many climbers.",
-          "Just as important, its profile naturally follows 'climb high, sleep low', which is exactly what your body needs to acclimatize.",
+          "Just as important, its profile naturally follows 'climb high, sleep low', which is exactly what your body needs to acclimatise. On day three you climb to Lava Tower at around 4,600 m and then descend to sleep more than 600 m lower at Barranco — the textbook acclimatisation move that Machame builds in by design.",
         ],
         diagram: "acclimatization",
       },
       {
-        heading: "How long it takes",
+        heading: "6-day vs 7-day Machame: why the extra day matters",
         paragraphs: [
-          "Machame can be done in six or seven days, and the difference matters. The seven-day version adds a crucial acclimatization day that noticeably improves your odds and your enjoyment — it's the version we recommend and run as our flagship climb.",
+          "Machame can be climbed in six or seven days, and the difference is bigger than it looks. The seven-day version adds an extra night at Karanga Camp — a genuine acclimatisation day before summit night — while the six-day version pushes straight through. That one day noticeably improves both your odds and your enjoyment.",
         ],
+        table: {
+          caption: "Summit rates are Trust Tours operator estimates and vary with fitness, weather and pace.",
+          headers: ["Version", "Days on mountain", "Extra acclimatisation day", "Est. summit rate"],
+          rows: [
+            ["6-day Machame", "6", "No", "~73%"],
+            ["7-day Machame", "7", "Yes — night at Karanga", "85–93%"],
+          ],
+          highlightCol: 3,
+        },
         callout: {
           tone: "tip",
-          text: "Choose 7-day Machame over 6-day. That single extra acclimatization day is one of the cheapest, most effective ways to boost your summit chances.",
+          text: "Choose the 7-day Machame over the 6-day. That single extra acclimatisation day is one of the cheapest, most effective ways to boost your summit chances — see the numbers in our [Kilimanjaro success rate guide](/guides/kilimanjaro-success-rate).",
         },
       },
       {
-        heading: "The trail, day by day",
+        heading: "The Machame route, day by day (7 days)",
         paragraphs: [
-          "From Machame Gate you climb through rainforest to Machame Camp, then up to the Shira Plateau. The middle days take you to Lava Tower (around 4,600 m) before descending to sleep at Barranco — the textbook acclimatization move — followed by the Barranco Wall and traverses to Karanga and Barafu, the base for your summit push.",
-          "You can see the full elevation profile and every day's detail on the climb page.",
+          "Here's the full seven-day itinerary we run, with approximate sleeping altitudes. Notice day three: you climb high to Lava Tower and drop back down to sleep — the acclimatisation engine of the whole route.",
         ],
+        table: {
+          caption: "Approximate sleeping altitudes on our 7-day Machame climb.",
+          headers: ["Day", "Route", "Sleep altitude"],
+          rows: [
+            ["1", "Machame Gate → Machame Camp", "2,835 m"],
+            ["2", "Machame Camp → Shira Cave Camp", "3,750 m"],
+            ["3", "Shira → Lava Tower (4,600 m) → Barranco", "3,960 m"],
+            ["4", "Barranco Wall → Karanga Camp", "3,995 m"],
+            ["5", "Karanga → Barafu Base Camp", "4,673 m"],
+            ["6", "Summit — Uhuru Peak (5,895 m) → Mweka", "3,068 m"],
+            ["7", "Mweka Camp → Mweka Gate", "Finish"],
+          ],
+        },
         diagram: "summit-night",
       },
       {
-        heading: "Who it suits",
+        heading: "What the Machame route costs",
+        paragraphs: [
+          "Our [7-day Machame climb](/kilimanjaro/7-day-machame-route) starts from $2,180 per person, all-inclusive of park and rescue fees, licensed guides, a full porter and cook crew, tents and mess gear, meals on the mountain, and airport transfers. It's not the cheapest quote you'll find online — and that's the point.",
+          "A Kilimanjaro climb priced far below this usually cuts corners you can't see: underpaid porters, thin safety margins, fewer guides. For an honest, itemised breakdown of where the money actually goes — park fees, crew wages, food — read our guide to [what it really costs to climb Kilimanjaro](/guides/how-much-to-climb-kilimanjaro).",
+        ],
+      },
+      {
+        heading: "Who the Machame route suits",
         bullets: [
           "First-time climbers wanting the classic Kilimanjaro experience",
-          "Trekkers who value scenery and a lively trail",
+          "Trekkers who value varied scenery and a lively, sociable trail",
           "Anyone comfortable sleeping in tents (Machame is camping-only)",
-          "People happy to share a popular route rather than seek solitude",
+          "Reasonably fit hikers happy to share a popular route rather than seek solitude",
         ],
         paragraphs: [
-          "If you'd prefer quieter trails with even better acclimatization, look at Lemosho or the Northern Circuit instead.",
+          "If you'd prefer quieter trails with even better acclimatisation, look at the [Lemosho route](/guides/lemosho-route) or the Northern Circuit instead. If you want huts rather than tents, consider Marangu.",
+        ],
+      },
+      {
+        heading: "Climbing Machame as a group",
+        paragraphs: [
+          "Travelling solo or on a budget? You don't have to book a private climb. We run fixed-date [group Kilimanjaro departures](/kilimanjaro/groups) on the Machame route, which share the crew cost across the group and bring the per-person price down — with the same guides, safety standards and twice-daily health checks as our private climbs.",
         ],
       },
     ],
     faqs: [
+      {
+        question: "What is the Machame route success rate?",
+        answer:
+          "We estimate around 85–93% on the 7-day Machame and roughly 73% on the rushed 6-day version. The gap comes almost entirely from the extra acclimatisation day. Rates vary with fitness, weather and pace — see our Kilimanjaro success rate guide for the full picture.",
+      },
       {
         question: "Is the Machame Route hard?",
         answer:
@@ -1506,19 +1545,19 @@ export const guides: Guide[] = [
       {
         question: "How long is the Machame Route?",
         answer:
-          "Around 62 km round trip, typically done in six or seven days. We recommend seven days for better acclimatization and a higher chance of summiting.",
+          "Around 62 km round trip, typically done in six or seven days. We recommend seven days for better acclimatisation and a higher chance of summiting.",
       },
       {
         question: "Do you sleep in tents or huts on Machame?",
         answer:
-          "Tents. Machame is a camping route — our crew sets up and breaks camp each day, including a mess tent and hot meals. If you'd rather sleep in huts, the Marangu Route is the alternative.",
+          "Tents. Machame is a camping route — our crew sets up and breaks camp each day, including a mess tent and hot meals. If you'd rather sleep in huts, the Marangu Route is the only alternative.",
       },
     ],
     relatedGuides: [
       "best-kilimanjaro-route",
       "lemosho-route",
-      "climbing-kilimanjaro-guide",
       "kilimanjaro-success-rate",
+      "how-much-to-climb-kilimanjaro",
     ],
     relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "9-day-northern-circuit"],
   },
