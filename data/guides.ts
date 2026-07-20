@@ -1564,16 +1564,16 @@ export const guides: Guide[] = [
 
   {
     slug: "lemosho-route",
-    title: "The Lemosho Route: The Best All-Rounder",
+    title: "Lemosho Route: The 8-Day Climb",
     topic: "Kilimanjaro",
     excerpt:
-      "Remote, quiet and scenically superb, with excellent acclimatization — arguably the best balance of success and beauty on the mountain.",
-    updated: "2026-06-20",
-    readMinutes: 8,
+      "The 8-day Lemosho is Kilimanjaro's best all-rounder — remote, scenic, superb for acclimatisation. Day-by-day, success rate and cost. TALA-licensed operator.",
+    updated: "2026-07-20",
+    readMinutes: 9,
     keyTakeaway:
-      "The Lemosho Route approaches Kilimanjaro from the remote west, starting quietly before joining the Machame trail higher up. Over seven to eight days it offers excellent acclimatization, the finest scenery on the mountain and fewer crowds early on — making it our top pick for travellers who want the best balance of summit success and beauty.",
+      "The Lemosho Route approaches Kilimanjaro from the remote west, starting quietly before joining the Machame trail higher up. Over eight days it offers excellent acclimatisation — an estimated ~90% summit rate — the finest scenery on the mountain, and fewer crowds early on. It's our top pick for travellers who want the best balance of summit success and beauty. Our [8-day Lemosho climb](/kilimanjaro/8-day-lemosho-route) starts from $2,180 per person.",
     intro:
-      "If we had to recommend one route to a first-time climber with a little time and budget, it would often be Lemosho. It takes the best of Machame's scenery and acclimatization profile, but starts on the wild, quiet western side of the mountain — so your first days are peaceful before the trails converge higher up. Here's why it's such a strong all-rounder.",
+      "If we had to recommend one route to a first-time climber with a little time and budget, it would often be Lemosho. It takes the best of Machame's scenery and acclimatisation profile, but starts on the wild, quiet western side of the mountain — so your first days are peaceful before the trails converge higher up. This guide covers the route day by day, its honest success rate and cost, and how it compares to the classic. Weighing it against Machame? See our [Machame vs Lemosho comparison](/guides/machame-vs-lemosho).",
     primaryCta: { label: "View the 8-Day Lemosho climb", href: "/kilimanjaro/8-day-lemosho-route" },
     trustStrip: true,
     inlineCtaAfter: 2,
@@ -1581,20 +1581,48 @@ export const guides: Guide[] = [
       {
         heading: "A quieter, wilder start",
         paragraphs: [
-          "Lemosho begins on the remote western flank, crossing the Shira Plateau with a real sense of wilderness and often wildlife in the lower forest. Because fewer operators start here, your first days are noticeably quieter than on Machame — before the two routes merge for the southern traverse and summit approach.",
+          "Lemosho begins on the remote western flank at Londorossi Gate, crossing the Shira Plateau with a real sense of wilderness and often wildlife in the lower forest. Because fewer operators start here, your first days are noticeably quieter than on Machame — before the two routes merge for the southern traverse and summit approach.",
         ],
         diagram: "route-profiles",
       },
       {
-        heading: "Excellent acclimatization",
+        heading: "Excellent acclimatisation",
         paragraphs: [
-          "Spread over seven or eight days, Lemosho gives your body more time and a textbook climb-high-sleep-low profile, including the Lava Tower and Barranco sequence. That's why it posts some of the best success rates on the mountain outside the Northern Circuit.",
+          "Spread over eight days, Lemosho gives your body more time and a textbook climb-high-sleep-low profile — including the Lava Tower and Barranco sequence, where you climb to around 4,600 m and drop back down to sleep. That's why it posts some of the best success rates on the mountain outside the Northern Circuit: we estimate around 90% on the 8-day version.",
         ],
         diagram: "acclimatization",
         callout: {
           tone: "tip",
-          text: "The 8-day Lemosho is the version we recommend — the extra day pushes acclimatization and success rates higher still.",
+          text: "The 8-day Lemosho is the version we recommend — the extra day over a 7-day itinerary pushes acclimatisation and success rates higher still. See the numbers in our [Kilimanjaro success rate guide](/guides/kilimanjaro-success-rate).",
         },
+      },
+      {
+        heading: "The Lemosho route, day by day (8 days)",
+        paragraphs: [
+          "Here's the full eight-day itinerary we run, with approximate sleeping altitudes. Day four is the acclimatisation engine — climb high to Lava Tower, sleep lower at Barranco.",
+        ],
+        table: {
+          caption: "Approximate sleeping altitudes on our 8-day Lemosho climb.",
+          headers: ["Day", "Route", "Sleep altitude"],
+          rows: [
+            ["1", "Londorossi Gate → Mti Mkubwa (Big Tree)", "2,780 m"],
+            ["2", "Mti Mkubwa → Shira 1 Camp", "3,505 m"],
+            ["3", "Shira 1 → Shira 2 Camp", "3,900 m"],
+            ["4", "Shira 2 → Lava Tower (4,600 m) → Barranco", "3,960 m"],
+            ["5", "Barranco Wall → Karanga Camp", "3,995 m"],
+            ["6", "Karanga → Barafu Base Camp", "4,673 m"],
+            ["7", "Summit — Uhuru Peak (5,895 m) → Mweka", "3,068 m"],
+            ["8", "Mweka Camp → Mweka Gate → Arusha", "Finish"],
+          ],
+        },
+        diagram: "summit-night",
+      },
+      {
+        heading: "What the Lemosho route costs",
+        paragraphs: [
+          "Our [8-day Lemosho climb](/kilimanjaro/8-day-lemosho-route) starts from $2,180 per person, all-inclusive of park and rescue fees, licensed guides, a full porter and cook crew, tents and mess gear, meals on the mountain, and airport transfers. You get an extra day on the mountain versus a 7-day route without an extra-day surcharge.",
+          "As always, be wary of quotes far below this: the cheapest climbs cut corners on crew welfare and safety you can't see in the price. For the honest, itemised breakdown, read [what it really costs to climb Kilimanjaro](/guides/how-much-to-climb-kilimanjaro).",
+        ],
       },
       {
         heading: "The scenery payoff",
@@ -1606,9 +1634,12 @@ export const guides: Guide[] = [
         heading: "Who it suits",
         bullets: [
           "Travellers who want the best balance of success, scenery and quiet",
-          "First-timers who can spare seven or eight days",
-          "Photographers and anyone prioritising landscape over budget",
+          "First-timers who can spare eight days",
+          "Photographers and anyone prioritising landscape",
           "Climbers happy with tents (Lemosho is camping-only)",
+        ],
+        paragraphs: [
+          "Short on days or want the busier, classic experience? The [7-day Machame route](/guides/machame-route) is the natural alternative — and our [Machame vs Lemosho guide](/guides/machame-vs-lemosho) settles the choice.",
         ],
       },
     ],
@@ -1616,12 +1647,17 @@ export const guides: Guide[] = [
       {
         question: "Is Lemosho better than Machame?",
         answer:
-          "They share much of the upper mountain, but Lemosho starts quieter and a day longer, giving slightly better acclimatization and more solitude — at a somewhat higher cost. For many first-timers it's the better choice if the budget and days allow.",
+          "They share much of the upper mountain, but Lemosho starts quieter and a day longer, giving slightly better acclimatisation and more solitude. At Trust Tours both start from $2,180, so for many first-timers Lemosho is the better choice if you can spare the extra day. See our full Machame vs Lemosho comparison.",
+      },
+      {
+        question: "What is the Lemosho route success rate?",
+        answer:
+          "We estimate around 90% on the 8-day Lemosho — among the highest of any mainstream route, thanks to its generous acclimatisation profile. Rates vary with fitness, weather and pace.",
       },
       {
         question: "How many days is the Lemosho Route?",
         answer:
-          "Usually seven or eight days. We recommend the eight-day version for the best acclimatization and the highest chance of reaching Uhuru Peak.",
+          "Usually seven or eight days. We recommend and run the eight-day version for the best acclimatisation and the highest chance of reaching Uhuru Peak.",
       },
       {
         question: "Is Lemosho good for beginners?",
@@ -1632,10 +1668,108 @@ export const guides: Guide[] = [
     relatedGuides: [
       "best-kilimanjaro-route",
       "machame-route",
-      "northern-circuit-route",
+      "machame-vs-lemosho",
       "kilimanjaro-success-rate",
     ],
-    relatedPackages: ["8-day-lemosho-route", "9-day-northern-circuit", "7-day-machame-route"],
+    relatedPackages: ["8-day-lemosho-route", "7-day-machame-route", "9-day-northern-circuit"],
+  },
+  {
+    slug: "machame-vs-lemosho",
+    title: "Machame vs Lemosho: Which Route?",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Machame or Lemosho? An honest side-by-side on days, crowds, acclimatisation, success rate and cost — which Kilimanjaro route to pick. TALA-licensed operator.",
+    updated: "2026-07-20",
+    readMinutes: 8,
+    keyTakeaway:
+      "Machame and Lemosho share the same spectacular upper mountain, so the choice comes down to the first few days. Pick the 7-day Machame if you want the classic, sociable route and a day less on the mountain. Pick the 8-day Lemosho if you want a quieter, wilder start, the best scenery and slightly better acclimatisation. At Trust Tours both start from $2,180 per person, so this is a decision about experience, not price — and for first-timers who can spare the extra day, we lean Lemosho.",
+    intro:
+      "It's the most common decision our climbers face: Machame or Lemosho? The good news is there's no wrong answer — both are superb, non-technical routes that merge high on the mountain and finish the same way. The differences are all in the first half of the climb, and they're real. Here's the honest side-by-side, from an operator that runs both every season.",
+    primaryCta: { label: "See both climbs & prices", href: "/kilimanjaro" },
+    trustStrip: true,
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "The quick verdict",
+        paragraphs: [
+          "If you want the classic Kilimanjaro experience, a lively trail and one less day on the mountain, choose the [7-day Machame route](/guides/machame-route). If you'd rather start away from the crowds, get the finest scenery and a touch more acclimatisation, choose the [8-day Lemosho route](/guides/lemosho-route). For a first-timer who can spare the extra day and wants to maximise their summit odds, we usually nudge towards Lemosho.",
+        ],
+      },
+      {
+        heading: "Machame vs Lemosho, side by side",
+        paragraphs: [
+          "Both routes are camping-only, non-technical and share the Lava Tower, Barranco Wall and southern summit approach. Here's where they differ.",
+        ],
+        table: {
+          caption: "Summit rates are Trust Tours operator estimates; both prices are our current 'from' rates per person.",
+          headers: ["", "Machame (7-day)", "Lemosho (8-day)"],
+          rows: [
+            ["Days on mountain", "7", "8"],
+            ["Start side", "South", "Remote west"],
+            ["Early-day crowds", "Busier", "Quieter"],
+            ["Acclimatisation", "Very good", "Excellent"],
+            ["Est. summit rate", "85–93%", "~90%"],
+            ["Scenery", "Excellent", "Arguably the best"],
+            ["Price (from)", "$2,180", "$2,180"],
+          ],
+          highlightCol: 2,
+        },
+      },
+      {
+        heading: "Where they're identical",
+        paragraphs: [
+          "From the Shira Plateau upwards, Machame and Lemosho are essentially the same climb. Both cross to Lava Tower at around 4,600 m, descend to Barranco, scramble the Barranco Wall, and stage their summit push from Barafu before the pre-dawn climb to Uhuru Peak. The descent to Mweka Gate is shared too. So whichever you pick, the hardest and most spectacular parts of the mountain are the same.",
+        ],
+      },
+      {
+        heading: "Where they differ — the first few days",
+        paragraphs: [
+          "Machame starts on the busy southern side and climbs straight into rainforest; it's sociable and scenic from the off, but you'll share the trail. Lemosho starts further west at Londorossi Gate, crossing the wild Shira Plateau over an extra day — quieter, more remote, and with that extra night doing real acclimatisation work before the routes converge.",
+          "That extra Lemosho day is the crux of the decision. It buys you a gentler altitude profile and more solitude, which is why we estimate its 8-day success rate at around 90%. Machame answers with the 7-day version at an estimated 85–93% — very close, at one day less.",
+        ],
+      },
+      {
+        heading: "So which should you choose?",
+        bullets: [
+          "Choose Machame (7-day) if: you want the classic route, don't mind crowds, and prefer one less day on the mountain",
+          "Choose Lemosho (8-day) if: you want a quiet, wild start, the best scenery, and the extra acclimatisation day",
+          "First climb, maximising summit odds, extra day available: lean Lemosho",
+          "Tighter on time, want the iconic experience: Machame",
+        ],
+        paragraphs: [
+          "Still torn? Tell us your dates, fitness and how you feel about crowds versus solitude, and we'll give you an honest recommendation — we run both routes every season, so we've no reason to push one over the other.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Which has a higher success rate, Machame or Lemosho?",
+        answer:
+          "They're very close. We estimate around 90% on the 8-day Lemosho and 85–93% on the 7-day Machame. Lemosho's extra day gives it a slight edge in acclimatisation, but a well-run 7-day Machame summits reliably too.",
+      },
+      {
+        question: "Is Lemosho worth the extra day over Machame?",
+        answer:
+          "For most first-timers, yes — if you can spare the day. The extra night improves acclimatisation and gives you a quieter, more scenic start. At Trust Tours both start from $2,180, so you're paying with time rather than money.",
+      },
+      {
+        question: "Which is cheaper, Machame or Lemosho?",
+        answer:
+          "At Trust Tours our 7-day Machame and 8-day Lemosho both start from $2,180 per person — you get the extra Lemosho day without an extra-day surcharge. Elsewhere, a longer route often costs more.",
+      },
+      {
+        question: "Which route is better for beginners?",
+        answer:
+          "Both suit beginners with reasonable fitness — they're non-technical. Lemosho's gentler, longer profile makes it marginally kinder for a first high-altitude climb, but the 7-day Machame is a very popular and successful first Kilimanjaro too.",
+      },
+    ],
+    relatedGuides: [
+      "machame-route",
+      "lemosho-route",
+      "best-kilimanjaro-route",
+      "kilimanjaro-success-rate",
+    ],
+    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "9-day-northern-circuit"],
   },
 
   {
