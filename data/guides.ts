@@ -1378,6 +1378,7 @@ export const guides: Guide[] = [
     relatedGuides: [
       "climbing-kilimanjaro-guide",
       "best-kilimanjaro-route",
+      "kilimanjaro-group-vs-private",
       "kilimanjaro-success-rate",
       "tipping-in-tanzania",
     ],
@@ -1676,6 +1677,7 @@ export const guides: Guide[] = [
       "lemosho-route",
       "kilimanjaro-success-rate",
       "how-much-to-climb-kilimanjaro",
+      "kilimanjaro-group-vs-private",
     ],
     relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "9-day-northern-circuit"],
   },
@@ -1885,9 +1887,165 @@ export const guides: Guide[] = [
       "machame-route",
       "lemosho-route",
       "best-kilimanjaro-route",
-      "kilimanjaro-success-rate",
+      "kilimanjaro-group-vs-private",
     ],
     relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "9-day-northern-circuit"],
+  },
+
+  {
+    slug: "kilimanjaro-group-vs-private",
+    title: "Kilimanjaro Group vs Private Climb",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Join a scheduled Kilimanjaro group climb or book a private one? Honest cost difference, real trade-offs and who should pick which. TALA-licensed operator.",
+    updated: "2026-07-22",
+    readMinutes: 7,
+    keyTakeaway:
+      "A group climb is cheaper and more sociable but runs on fixed dates and a shared pace. A private climb costs more per person and moves entirely on your schedule. The price gap is real but smaller than most people expect: on our 7-day Machame, a private climb is $2,700 per person for one or two climbers and falls to $2,300 once you are five or more, so a private climb for a group of friends already costs close to a scheduled departure. Solo travellers and couples on a budget should join a group. Families, tight schedules and anyone worried about being held to someone else's pace should go private.",
+    intro:
+      "Once climbers settle on a route, this is the next question: join a scheduled group departure, or book the mountain privately? Both get you to Uhuru Peak with the same guides and the same safety kit — what changes is the price, the calendar and who sets the pace. Here is the honest comparison from an operator that runs both every season.",
+    primaryCta: { label: "See scheduled group departures", href: "/kilimanjaro/groups" },
+    trustStrip: true,
+    inlineCtaAfter: 1,
+    sections: [
+      {
+        heading: "The quick verdict",
+        paragraphs: [
+          "Join a group departure if you are climbing solo or as a couple, your dates are flexible, and the lowest per-person price matters most. Book privately if you are travelling with family, need a specific week, want the itinerary adjusted around you, or simply do not want to walk with strangers for a week. If you already have four or five friends coming, book privately — at that group size the per-person price has fallen close to a scheduled departure and you keep full control.",
+        ],
+      },
+      {
+        heading: "Group vs private, side by side",
+        paragraphs: [
+          "Everything below the line is identical: the same licensed senior guides, the same twice-daily health checks, the same emergency oxygen, the same food. The differences are logistical, not qualitative.",
+        ],
+        table: {
+          caption: "Both options are run by the same guide teams to the same safety standard.",
+          headers: ["", "Group departure", "Private climb"],
+          rows: [
+            ["Dates", "Fixed, published in advance", "Any date you choose"],
+            ["Who is with you", "Up to 8–12 climbers", "Only your own party"],
+            ["Pace", "Set by the group", "Set by you"],
+            ["Price per person", "Lowest", "Falls as your party grows"],
+            ["Itinerary changes", "Not possible", "Extra acclimatisation day, rest day, add-ons"],
+            ["Best for", "Solo travellers, couples, flexible dates", "Families, fixed dates, nervous first-timers"],
+          ],
+          highlightCol: 1,
+        },
+      },
+      {
+        heading: "The cost difference, in real numbers",
+        paragraphs: [
+          "The single biggest misunderstanding about Kilimanjaro pricing is that the per-person price is fixed. It is not. Park fees, guides, porters and camp logistics are shared across your party, so the more of you there are, the less each person pays. Here is how that works on our private climbs.",
+        ],
+        table: {
+          caption: "Per person, sharing. Private climbs, current rates. Park and rescue fees included.",
+          headers: ["Route", "1–2 climbers", "3–4 climbers", "5+ climbers"],
+          rows: [
+            ["7-day Machame", "$2,700", "$2,530", "$2,300"],
+            ["8-day Lemosho", "$3,050", "$2,880", "$2,620"],
+            ["6-day Marangu", "$2,240", "$2,130", "$1,950"],
+            ["6-day Rongai", "$2,360", "$2,240", "$2,070"],
+          ],
+          highlightCol: 3,
+        },
+      },
+      {
+        paragraphs: [
+          "Read that table across, not down. A solo climber on [Machame](/guides/machame-route) pays $2,700; five friends on the same route pay $2,300 each. That $400 gap is the whole economic argument for group climbing — a scheduled departure simply extends the same logic to strangers, spreading the cost across up to a dozen people instead of five.",
+          "It also means the decision changes with your party size. Climbing alone, the saving from joining a group is meaningful. Arriving with four friends, you are already near the bottom of the price ladder, and paying a little more to keep the mountain to yourselves is usually worth it. For a full breakdown of where the money actually goes, see [how much it costs to climb Kilimanjaro](/guides/how-much-to-climb-kilimanjaro).",
+        ],
+        callout: {
+          tone: "info",
+          text: "Scheduled departure prices vary by date — peak-season weeks cost more than shoulder-season ones. Current dates and prices are on the [group departures calendar](/kilimanjaro/groups). A $200 deposit holds your spot, with the balance due 60 days before you fly.",
+        },
+      },
+      {
+        heading: "Where a group climb wins",
+        bullets: [
+          "Price. Sharing logistics across up to 12 climbers is the cheapest legitimate way up Kilimanjaro.",
+          "Solo travellers. Most group spots are booked by people travelling alone, so nobody is the odd one out.",
+          "Morale on summit night. The hardest eight hours of the climb are easier in a group that has spent five days becoming a team.",
+          "Guaranteed departures. Published dates run whether or not the group fills, so your trip does not depend on other people booking.",
+        ],
+        paragraphs: [
+          "The camaraderie is not a marketing line. Summit night starts around midnight in the cold and the dark, and the thing that most often carries a struggling climber to the crater rim is the group around them. Climbers who join a departure alone routinely finish the week with people they still travel with years later.",
+        ],
+      },
+      {
+        heading: "Where a private climb wins",
+        bullets: [
+          "Your dates. No waiting for a departure that fits your annual leave or your flights.",
+          "Your pace. Slower is better at altitude, and on a private climb slow is always allowed.",
+          "Itinerary control. Add an acclimatisation day, start a day earlier, or bolt on a safari or Zanzibar leg without negotiating.",
+          "Families and mixed abilities. A teenager, a parent and a very fit sibling can all climb together at the pace the slowest needs.",
+          "Privacy. Some people simply do not want to share a dining tent with strangers for a week, and that is a perfectly good reason.",
+        ],
+        paragraphs: [
+          "Pace deserves the most weight. Altitude does not care about fitness, and the climbers who summit are usually the ones who walked slowly enough to acclimatise — the reasoning behind the numbers in our [Kilimanjaro success rate guide](/guides/kilimanjaro-success-rate). On a private climb, your guide sets the pace around you and nobody else. In a group, a strong walker will occasionally be held back and a slower walker will occasionally feel pushed, which good guides manage but cannot eliminate.",
+        ],
+      },
+      {
+        heading: "What does not change either way",
+        paragraphs: [
+          "Whichever you book, you get licensed senior guides with hundreds of ascents, assistant guides scaled to party size, a mountain chef, the full porter team, quality tents, twice-daily pulse and oxygen-saturation checks, emergency oxygen carried on every climb, and park and rescue fees included in the quoted price. We do not run a cheaper tier of guiding for group departures. The safety standard is the same because it is the only standard we have.",
+          "Route choice is also independent of this decision. We schedule group departures on Lemosho, Machame, Marangu, Rongai and the Northern Circuit, and we run any route privately on any date. If you are still choosing, start with [which Kilimanjaro route to climb](/guides/best-kilimanjaro-route) or the [Machame versus Lemosho comparison](/guides/machame-vs-lemosho).",
+        ],
+      },
+      {
+        heading: "How to decide in one minute",
+        bullets: [
+          "Climbing solo or as a couple, dates flexible: join a group departure.",
+          "Four or more of you travelling together: book privately — you are already near the lowest price.",
+          "Fixed week of annual leave that no departure matches: book privately.",
+          "Family with mixed ages or fitness: book privately.",
+          "First high-altitude climb and worried about pace: book privately, and add the extra acclimatisation day.",
+          "Lowest possible price is the deciding factor: join a group departure in shoulder season.",
+        ],
+        paragraphs: [
+          "If you are between the two, send us your dates and party size and we will price both and tell you honestly which we would book in your position. We run both every season, so we gain nothing by steering you.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is a Kilimanjaro group climb cheaper than a private climb?",
+        answer:
+          "Yes, per person. A group departure shares park fees, guides, porters and camp logistics across up to 8–12 climbers, so the per-person cost is the lowest we offer. But a private climb also gets cheaper as your own party grows: our 7-day Machame is $2,700 per person for one or two climbers and $2,300 for a group of five or more, so a private climb for friends is closer to a group price than most people expect.",
+      },
+      {
+        question: "How many people are in a Kilimanjaro group climb?",
+        answer:
+          "Our scheduled departures cap at 8–12 climbers depending on the route. Larger groups are split into separate guide teams so leadership, health monitoring and personal attention never drop.",
+      },
+      {
+        question: "Can I join a Kilimanjaro group climb as a solo traveller?",
+        answer:
+          "Yes, and most group spots are booked by solo travellers. You can request a private tent for single occupancy on tented routes for a small supplement. Group departures are the easiest and cheapest way to climb Kilimanjaro alone without actually being alone.",
+      },
+      {
+        question: "Do group climbs have a lower success rate than private climbs?",
+        answer:
+          "Not meaningfully. Success on Kilimanjaro is driven by route length and walking pace, not by group size. A private climb makes it slightly easier to walk at your own ideal pace, which is why we suggest it for anyone nervous about altitude, but a well-run group departure on a longer route summits reliably.",
+      },
+      {
+        question: "What if no group departure matches my dates?",
+        answer:
+          "Then book privately — we run any route on any date. Alternatively, tell us the week you want and we will let you know if a departure is being added near it. Scheduled departures are published well in advance on our group departures page.",
+      },
+      {
+        question: "How do I reserve a spot on a group departure?",
+        answer:
+          "Pick a date on the group departures page and send us your details. We confirm availability and email payment instructions, usually within a day. A $200 deposit holds your place and the balance is due 60 days before departure.",
+      },
+    ],
+    relatedGuides: [
+      "how-much-to-climb-kilimanjaro",
+      "best-kilimanjaro-route",
+      "machame-vs-lemosho",
+      "kilimanjaro-success-rate",
+    ],
+    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "6-day-marangu-route"],
   },
 
   {

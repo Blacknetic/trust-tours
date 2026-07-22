@@ -201,6 +201,14 @@ export default function GroupDeparturesPage() {
           <a href="/kilimanjaro" className="font-semibold underline" style={{ color: "var(--forest)" }}>
             See private climbs
           </a>
+          . Not sure which suits you?{" "}
+          <a
+            href="/guides/kilimanjaro-group-vs-private"
+            className="font-semibold underline"
+            style={{ color: "var(--forest)" }}
+          >
+            Read our group vs private comparison
+          </a>
           .
         </p>
         <DepartureCalendar departures={departures} routes={routes} months={months} />
