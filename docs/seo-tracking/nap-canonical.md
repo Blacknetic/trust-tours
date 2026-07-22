@@ -31,13 +31,15 @@ There are **at least two GBP listings**, which splits reviews and weakens local 
 
 **Two problems with Listing B's name:** it breaks Google's real-world-name policy (**suspension risk**) and it doesn't match our canonical name. Rename only **after** verification — renaming mid-verification tends to fail.
 
-**Order of operations:**
-1. **Ask Ombeni: which Google account created the original listing?** If he has it → he adds us as Manager, no verification needed. Fastest path by far.
-2. Otherwise use **"Request access"** on Listing B (owner has ~7 days to respond).
-3. If verifying: try **video verification** under "More options" before postcard — postcard to Tanzania is slow/unreliable; video is usually days.
-4. Audit **all** duplicates (Maps search for name variants) → record review count, address, claimed status.
-5. Pick the canonical listing (normally most reviews + longest history), request a **merge** of the others, then rename to `Trust Tours & Safaris`.
-6. Only then run Day 22 optimisation — don't invest photos/posts/Q&A in a listing that may be merged away.
+**RESOLVED 2026-07-22 — Listing A is canonical.** It is verified and tied to Ombeni's professional email, so we legitimately own and control it. Day 22 optimisation runs on Listing A. Its low review count is a solvable problem; not owning a verified listing was not.
+
+**Listing B — do not pursue by postcard.** Postcard to Tanzania is slow and unreliable, and winning it would only lead to merging it into A anyway. Report it instead:
+1. Maps → the listing → **Suggest an edit → Close or remove → duplicate** (point at Listing A).
+2. **Business Redressal Complaint Form** — Google's official spam tool; keyword-stuffed names are explicitly covered. Stronger lever.
+- ⚠️ Only file as a duplicate if it is genuinely the same business at the same address. If it carries a meaningful number of reviews, reassess before reporting.
+- Likely origin: the same prior SEO vendor behind the spam backlinks (fake-testimonial network naming trusttourstz.com).
+
+**Still to do:** confirm no third listing (the New York phantom), then keep all surfaces on the canonical NAP above.
 
 ## External profiles — match against the table above
 
