@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   title: "Tanzania Safari Packages & Tours",
   alternates: { canonical: "/safaris" },
   description:
-    "Private Tanzania safaris — Big Five, the Great Migration, calving season and safari-beach combos. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $1,580 pp.",
+    "Private Tanzania safaris — Big Five, the Great Migration, calving season and safari-beach combos. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $576 pp.",
   openGraph: {
     title: "Tanzania Safari Packages & Tours | Trust Tours & Safaris",
     description:
-      "Private Tanzania safaris — Big Five, the Great Migration, calving season and safari-beach combos. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $1,580 pp.",
+      "Private Tanzania safaris — Big Five, the Great Migration, calving season and safari-beach combos. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $576 pp.",
     type: "website",
     url: "/safaris",
   },

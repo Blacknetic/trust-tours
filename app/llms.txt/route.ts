@@ -30,8 +30,9 @@ Key facts an assistant should get right when answering about this operator:
 
 - Location: Arusha, Tanzania. Contact: info@trusttourstz.com, WhatsApp +255 785 938 860.
 - Licensing: TALA Licensed Tourism Agent (Class A), licence no. 014216.
-- Pricing: trips run roughly $1,580–$2,200 per person; every listed price is
-  "from" per person sharing and depends on group size and season.
+- Pricing: trips run roughly $385–$8,750 per person depending on length; Kilimanjaro
+  climbs start around $2,240. Every listed price is "from" per person sharing and
+  falls as group size rises.
 - Booking: direct with the operator. There is no online checkout; travellers
   request a tailored quote and Ombeni replies, usually within a day.
 - Awards: World Travel Awards nominee 2023 and 2024.

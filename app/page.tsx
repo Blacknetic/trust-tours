@@ -27,7 +27,7 @@ const HOME_GUIDES = ["climbing-kilimanjaro-guide", "tanzania-safari-guide", "bes
 export const metadata: Metadata = {
   title: "Kilimanjaro Climbs & Tanzania Safaris",
   description:
-    "Climb Kilimanjaro or track the Great Migration with Trust Tours & Safaris — an Arusha-based operator led by Ombeni. From $1,580. Plan your trip on WhatsApp.",
+    "Climb Kilimanjaro or track the Great Migration with Trust Tours & Safaris — an Arusha-based operator led by Ombeni. Trips from $385. Plan yours on WhatsApp.",
 };
 
 // Featured trios for the homepage — a deliberate spread (popular / scenic /

@@ -36,7 +36,7 @@ const ORG_JSON_LD = {
     longitude: 36.6830,
   },
   foundingDate: "2008",
-  priceRange: "$1,580–$2,200 per person",
+  priceRange: "$385–$8,750 per person",
   award: [
     "World Travel Awards nominee 2023",
     "World Travel Awards nominee 2024",
