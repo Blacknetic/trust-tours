@@ -88,7 +88,7 @@ export const guides: Guide[] = [
     primaryCta: { label: "Compare all Kilimanjaro routes", href: "/kilimanjaro" },
     relatedGuides: [
       "best-kilimanjaro-route",
-      "how-much-does-it-cost-to-climb-kilimanjaro",
+      "how-much-to-climb-kilimanjaro",
       "altitude-sickness-on-kilimanjaro",
     ],
     intro:
@@ -98,7 +98,7 @@ export const guides: Guide[] = [
         heading: "The short answer",
         paragraphs: [
           "Kilimanjaro is a 'walk-up' mountain — there's no technical climbing. How long it takes is dictated by acclimatization: the more days you spend gaining altitude slowly, the better your chances of standing on the Roof of Africa.",
-          "Trekkers who do the mountain in 5 days have the lowest success rate. Those who take 8 or 9 days have a far better chance of summiting and a more enjoyable, less exhausting climb.",
+          "Trekkers who do the mountain in 5 days have the [lowest success rate](/guides/kilimanjaro-success-rate). Those who take 8 or 9 days have a far better chance of summiting and a more enjoyable, less exhausting climb.",
         ],
       },
       {
@@ -110,6 +110,9 @@ export const guides: Guide[] = [
       },
       {
         heading: "How long each route takes",
+        paragraphs: [
+          "Each of the seven established routes runs to a different length, and the number of days is largely fixed by the shape of the mountain on that side. Our [full route comparison](/guides/best-kilimanjaro-route) goes into the detail; here is the short version.",
+        ],
         bullets: [
           "Marangu Route — 5–6 days (the only hut route; we recommend the 6-day version)",
           "Umbwe Route — 6 days (steep and direct)",
@@ -123,13 +126,14 @@ export const guides: Guide[] = [
         heading: "Is a 5–6 day climb worth the risk?",
         paragraphs: [
           "You can climb Kilimanjaro in 5 or 6 days, and people choose shorter climbs to save money, time, or days of hiking. But a rushed ascent raises the chance of altitude sickness, fatigue and turning back — sometimes on day 3, after you've already paid for the whole trip.",
-          "A shorter climb only really makes sense if you've recently been at high altitude (for example a successful Mount Meru or Mount Kenya climb gives useful pre-acclimatization) or you're an experienced high-altitude climber confident in how your body adjusts.",
+          "A shorter climb only really makes sense if you've recently been at high altitude — [climbing Mount Meru first](/guides/kilimanjaro-and-mount-meru) is the classic way to buy yourself that pre-acclimatisation — or you're an experienced high-altitude climber confident in how your body adjusts.",
         ],
       },
       {
         heading: "How long does the descent take?",
         paragraphs: [
           "Descending from Uhuru Peak to the finish gate takes about two days — typically a long summit-day descent to a final camp, then 4–6 hours down the next morning depending on the route.",
+          "Once you have settled on a length, the next question is usually price, since every extra day adds park fees and crew wages — see [what it costs to climb Kilimanjaro](/guides/how-much-to-climb-kilimanjaro), or browse [all our Kilimanjaro climbs](/kilimanjaro) by duration.",
         ],
       },
     ],
@@ -165,7 +169,7 @@ export const guides: Guide[] = [
       "The best time to visit Tanzania is June to October — the dry season, ideal for both safari game viewing and climbing Kilimanjaro. For the Serengeti calving season go January–March; for the Mara River crossings, August–October.",
     primaryCta: { label: "Browse safari packages", href: "/safaris" },
     relatedGuides: [
-      "how-much-does-a-tanzania-safari-cost",
+      "how-much-tanzania-safari-cost",
       "tanzania-safari-packing-list",
       "how-long-to-climb-kilimanjaro",
     ],
@@ -616,7 +620,7 @@ export const guides: Guide[] = [
     relatedGuides: [
       "best-time-to-visit-tanzania",
       "tanzania-vaccinations",
-      "how-much-does-a-tanzania-safari-cost",
+      "how-much-tanzania-safari-cost",
     ],
     intro:
       "Pack light, in neutral colours, and in layers. Tanzanian days are warm but mornings, evenings and the highlands (Ngorongoro, the Serengeti) get cool, so you'll want to add and shed layers through the day. Here's a practical checklist.",
@@ -706,7 +710,7 @@ export const guides: Guide[] = [
         ],
         callout: {
           tone: "info",
-          text: "There are seven established routes up Kilimanjaro, but most travellers climb one of four: Machame, Lemosho, Marangu or the Northern Circuit. We'll compare them below.",
+          text: "There are seven established routes up Kilimanjaro, but most travellers climb one of four: [Machame](/guides/machame-route), [Lemosho](/guides/lemosho-route), [Marangu](/guides/marangu-route) or the [Northern Circuit](/guides/northern-circuit-route). We'll compare them below.",
         },
       },
       {
@@ -770,13 +774,13 @@ export const guides: Guide[] = [
         heading: "How fit do you need to be?",
         paragraphs: [
           "You don't need to be an athlete, but you should be comfortable hiking for six to eight hours on consecutive days. The best preparation is simply walking — long, hilly day-hikes with a daypack, ideally back-to-back on weekends, in the months before your climb.",
-          "If you can do a full day on the hills, sleep, and get up and do it again without dreading it, you're in good shape for Kilimanjaro. We cover this in detail in our training guide.",
+          "If you can do a full day on the hills, sleep, and get up and do it again without dreading it, you're in good shape for Kilimanjaro. We cover this in detail in our [Kilimanjaro training guide](/guides/kilimanjaro-training-and-fitness), and what to carry is in the [packing list](/guides/kilimanjaro-packing-list).",
         ],
       },
       {
         heading: "What it costs — and why very cheap is a red flag",
         paragraphs: [
-          "A properly run Kilimanjaro climb is not cheap, because a lot of it is fixed: national park fees, a full crew of guides, porters and cooks, quality tents and food, and safety equipment. Our climbs start from $2,240 per person, with the exact price depending on the route, the number of days and your group size.",
+          "A properly run Kilimanjaro climb is not cheap, because a lot of it is fixed: national park fees, a full crew of guides, porters and cooks, quality tents and food, and safety equipment. Our climbs start from $2,240 per person, with the exact price depending on the route, the number of days and your group size — the [full cost breakdown](/guides/how-much-to-climb-kilimanjaro) shows where every dollar goes, and [joining a group departure](/guides/kilimanjaro-group-vs-private) is the cheapest legitimate way up.",
           "Be wary of bargain-basement prices. The savings almost always come out of the parts you can't see — underpaid and overloaded porters, skimped food, fewer days, or thinner safety margins. On a high-altitude mountain, those are exactly the wrong corners to cut.",
         ],
         table: {
@@ -795,14 +799,14 @@ export const guides: Guide[] = [
         heading: "When to climb",
         paragraphs: [
           "Kilimanjaro can be climbed year-round, but the two dry seasons are far more comfortable and reliable: January to mid-March, and June to October. These months bring clearer skies, better views and easier trails.",
-          "The long rains (late March to May) and the short rains (November) mean wetter, muddier trekking and more cloud — quieter and cheaper, but harder going. We break this down month by month in our 'best time to climb' guide.",
+          "The long rains (late March to May) and the short rains (November) mean wetter, muddier trekking and more cloud — quieter and cheaper, but harder going. We break this down month by month in our [best time to climb Kilimanjaro](/guides/best-time-to-climb-kilimanjaro) guide.",
         ],
       },
       {
         heading: "Climbing with Trust Tours",
         paragraphs: [
           "We're a small, licensed operator based in Arusha (TALA Class A, License No. 014216), and we run our own crews — we drive, cook and guide every climb ourselves rather than handing you to a subcontractor. That means daily health checks, fair treatment of our porters, and a founder, Ombeni, you can message directly while you plan.",
-          "The best next step is to pick a route. Use the comparison page below, or just message us with your dates and we'll tell you honestly which route fits your time, budget and experience.",
+          "The best next step is to pick a route. Start with [which Kilimanjaro route to climb](/guides/best-kilimanjaro-route), browse [all our climbs and prices](/kilimanjaro), or just message us with your dates and we'll tell you honestly which route fits your time, budget and experience.",
         ],
       },
     ],
@@ -1094,6 +1098,7 @@ export const guides: Guide[] = [
         heading: "How we estimate these numbers",
         paragraphs: [
           "There is no official, published success rate for Kilimanjaro — the national park doesn't release one, so every figure you see online is an estimate. Ours combine our own climbers' summit outcomes with widely-cited industry ranges, expressed as rounded estimates rather than false precision. They describe healthy climbers on our itineraries with our crew; a rushed climb with a bargain operator will do worse than the same route here.",
+          "Route by route, the detail is in our guides to [Machame](/guides/machame-route), [Lemosho](/guides/lemosho-route), [Marangu](/guides/marangu-route) and the [Northern Circuit](/guides/northern-circuit-route) — the last of which posts the best odds on the mountain.",
           "We revise these figures as our own records grow, and we'd rather under-promise than inflate a number to win a booking. If a route's odds don't suit your plans, we'll tell you before you book, not after.",
         ],
       },
@@ -1146,17 +1151,17 @@ export const guides: Guide[] = [
       {
         heading: "What 'fit enough' actually means",
         paragraphs: [
-          "Forget summit-day heroics for a moment. The real test is repetition: can you hike for six to eight hours, sleep, and get up and do it again the next morning — for up to a week? If you can comfortably do a full hilly day-hike and feel ready to repeat it, you're in good shape for Kilimanjaro.",
+          "Forget summit-day heroics for a moment. The real test is repetition: can you hike for six to eight hours, sleep, and get up and do it again the next morning — for up to a week? If you can comfortably do a full hilly day-hike and feel ready to repeat it, you're in good shape for Kilimanjaro. How many days that means in practice depends on your route — see [how long it takes to climb Kilimanjaro](/guides/how-long-to-climb-kilimanjaro).",
         ],
         callout: {
           tone: "info",
-          text: "No amount of fitness prevents altitude sickness — that's down to days and pace. Train so you can enjoy the walk, not because fitness alone gets you to the top.",
+          text: "No amount of fitness prevents [altitude sickness](/guides/altitude-sickness-on-kilimanjaro) — that's down to days and pace. Train so you can enjoy the walk, not because fitness alone gets you to the top.",
         },
       },
       {
         heading: "The best training is hiking",
         paragraphs: [
-          "If you do one thing, do this: go on long hikes, on hills, carrying the daypack you'll use on the mountain. Build up the distance and elevation gain over time, and try to do back-to-back hiking days at weekends to mimic the consecutive days on Kilimanjaro.",
+          "If you do one thing, do this: go on long hikes, on hills, carrying the daypack you'll use on the mountain. Build up the distance and elevation gain over time, and try to do back-to-back hiking days at weekends to mimic the consecutive days on Kilimanjaro. Train in the boots and daypack you plan to bring — our [Kilimanjaro packing list](/guides/kilimanjaro-packing-list) covers what those should be.",
         ],
         bullets: [
           "Start 8–12 weeks out and build gradually",
@@ -1170,6 +1175,7 @@ export const guides: Guide[] = [
         heading: "Round it out with cardio and legs",
         paragraphs: [
           "Between hikes, build your aerobic base with anything that raises your heart rate for a sustained period — running, cycling, swimming, the stair machine. Add some simple leg and core strength (squats, lunges, step-ups) to protect your knees on the long descents, which surprise people with how tiring they are.",
+          "If you want a genuine dress rehearsal rather than a gym plan, [climbing Mount Meru before Kilimanjaro](/guides/kilimanjaro-and-mount-meru) tests your legs and pre-acclimatises you at the same time. Otherwise, pick a route with enough days built in — see [which Kilimanjaro route to climb](/guides/best-kilimanjaro-route).",
         ],
       },
       {
@@ -1354,6 +1360,7 @@ export const guides: Guide[] = [
           "Choose a route that fits your budget — but never cut days below a safe minimum",
         ],
         paragraphs: [
+          "The two biggest levers on your final price are the route you pick — compare them in [which Kilimanjaro route to climb](/guides/best-kilimanjaro-route) — and how many of you are climbing, since [joining a group departure](/guides/kilimanjaro-group-vs-private) shares the fixed costs across more people.",
           "Tell us your budget and dates and we'll show you the most cost-effective safe option — not just the cheapest number.",
         ],
       },
@@ -1421,11 +1428,11 @@ export const guides: Guide[] = [
       {
         heading: "Climbing in the rains",
         paragraphs: [
-          "You can still summit during the rainy months, and some people like the solitude and lower prices. But expect muddier trails, slippery rock, more cloud and fewer views. If you go, lean toward routes that approach from the drier northern side, like Rongai, which sees less rain.",
+          "You can still summit during the rainy months, and some people like the solitude and lower prices. But expect muddier trails, slippery rock, more cloud and fewer views. If you go, lean toward routes that approach from the drier northern side, like the [6-day Rongai route](/kilimanjaro/6-day-rongai-route), which sees less rain. [Marangu](/guides/marangu-route) is also worth a look in the wet, since you sleep in huts rather than tents.",
         ],
         callout: {
           tone: "tip",
-          text: "Whatever the season, summit night is below freezing year-round. Good cold-weather gear matters every month — see our packing guide.",
+          text: "Whatever the season, summit night is below freezing year-round. Good cold-weather gear matters every month — see our [Kilimanjaro packing list](/guides/kilimanjaro-packing-list).",
         },
       },
       {
@@ -1437,7 +1444,7 @@ export const guides: Guide[] = [
       {
         heading: "When to book",
         paragraphs: [
-          "For the peak windows — especially June to October and around the December holidays — book well ahead to secure your dates and crew. If you're flexible, tell us the rough time of year and we'll suggest the best-value departure.",
+          "For the peak windows — especially June to October and around the December holidays — book well ahead to secure your dates and crew. Our [scheduled group departures](/kilimanjaro/groups) are published months in advance and are the cheapest way to climb in peak season; if you'd rather set your own dates, browse [all our Kilimanjaro climbs](/kilimanjaro). Season also moves the price, so it's worth reading [what a climb costs](/guides/how-much-to-climb-kilimanjaro) before you lock a month.",
         ],
       },
     ],
@@ -1484,7 +1491,7 @@ export const guides: Guide[] = [
       {
         heading: "Pack for five climates",
         paragraphs: [
-          "Over the climb you'll pass through five ecological zones, each colder and thinner than the last. That's why layering beats any single 'warm coat' — you'll be peeling layers off in the forest and piling every one back on for summit night.",
+          "Over the climb you'll pass through five ecological zones, each colder and thinner than the last. That's why layering beats any single 'warm coat' — you'll be peeling layers off in the forest and piling every one back on for summit night. Our [complete guide to climbing Kilimanjaro](/guides/climbing-kilimanjaro-guide) explains how the zones work; how cold it gets depends on when you go, covered in [the best time to climb](/guides/best-time-to-climb-kilimanjaro).",
         ],
         diagram: "climate-zones",
       },
@@ -1526,8 +1533,8 @@ export const guides: Guide[] = [
       {
         heading: "What porters carry — and packing smart",
         paragraphs: [
-          "Your main bag is carried by a porter in a duffel, while you walk with just your daypack — but porter loads are weight-limited for their welfare, so pack disciplined and light. A common limit is around 15 kg for your duffel; check the exact figure with us before you fly.",
-          "We'll send you a full, personalised checklist once you book, and we can advise on what to rent in Arusha versus bring from home so you don't over-buy.",
+          "Your main bag is carried by a porter in a duffel, while you walk with just your daypack — but porter loads are weight-limited for their welfare, so pack disciplined and light. A common limit is around 15 kg for your duffel; check the exact figure with us before you fly. Fair porter treatment is one of the things a properly priced climb pays for — see [what a Kilimanjaro climb actually costs](/guides/how-much-to-climb-kilimanjaro).",
+          "We'll send you a full, personalised checklist once you book, and we can advise on what to rent in Arusha versus bring from home so you don't over-buy. Still choosing? Compare [all our Kilimanjaro routes and prices](/kilimanjaro), and train for the load with our [Kilimanjaro fitness guide](/guides/kilimanjaro-training-and-fitness).",
         ],
         callout: {
           tone: "info",
@@ -1818,7 +1825,7 @@ export const guides: Guide[] = [
       {
         heading: "Machame vs Lemosho, side by side",
         paragraphs: [
-          "Both routes are camping-only, non-technical and share the Lava Tower, Barranco Wall and southern summit approach. Here's where they differ.",
+          "Both routes are camping-only, non-technical and share the Lava Tower, Barranco Wall and southern summit approach. Here's where they differ. If neither convinces you, the [full route comparison](/guides/best-kilimanjaro-route) covers all seven, and the [9-day Northern Circuit](/guides/northern-circuit-route) beats both on summit odds.",
         ],
         table: {
           caption: "Summit rates are Trust Tours operator estimates; both prices are our current 'from' rates per person.",
@@ -2066,18 +2073,18 @@ export const guides: Guide[] = [
       {
         heading: "What makes Marangu different",
         paragraphs: [
-          "Two things set Marangu apart. First, you sleep in shared dormitory-style huts with bunk beds, which some climbers prefer to camping — especially in wetter months. Second, it's the only route that ascends and descends by the same path, so you see the same scenery twice rather than a full traverse.",
+          "Two things set Marangu apart. First, you sleep in shared dormitory-style huts with bunk beds, which some climbers prefer to camping — especially in wetter months, so it pairs well with the seasons covered in [the best time to climb Kilimanjaro](/guides/best-time-to-climb-kilimanjaro). Second, it's the only route that ascends and descends by the same path, so you see the same scenery twice rather than a full traverse. See how it stacks up against the rest in our [Kilimanjaro route comparison](/guides/best-kilimanjaro-route).",
         ],
       },
       {
         heading: "The acclimatization trade-off",
         paragraphs: [
-          "Marangu's profile climbs more directly and doesn't follow 'climb high, sleep low' as well as Machame or Lemosho. That means lower success rates on average — and the standard five-day itinerary is particularly rushed. Adding the sixth day for an acclimatization stop at Horombo makes a real difference.",
+          "Marangu's profile climbs more directly and doesn't follow 'climb high, sleep low' as well as [Machame](/guides/machame-route) or [Lemosho](/guides/lemosho-route). That means [lower success rates](/guides/kilimanjaro-success-rate) on average — and the standard five-day itinerary is particularly rushed. Adding the sixth day for an acclimatization stop at Horombo makes a real difference.",
         ],
         diagram: "acclimatization",
         callout: {
           tone: "warning",
-          text: "Avoid the 5-day Marangu if summiting matters to you. The 6-day version, with its extra acclimatization day, is far more sensible.",
+          text: "Avoid the 5-day Marangu if summiting matters to you. The [6-day version](/kilimanjaro/6-day-marangu-route), with its extra acclimatization day, is far more sensible.",
         },
       },
       {
@@ -2089,7 +2096,7 @@ export const guides: Guide[] = [
           "You're short on time but understand the lower odds",
         ],
         paragraphs: [
-          "If acclimatization and scenery matter more than huts, Machame or Lemosho will serve you better for a similar level of effort.",
+          "If acclimatization and scenery matter more than huts, the [7-day Machame](/kilimanjaro/7-day-machame-route) or [8-day Lemosho](/kilimanjaro/8-day-lemosho-route) will serve you better for a similar level of effort — our [Machame vs Lemosho comparison](/guides/machame-vs-lemosho) weighs those two against each other. Marangu is usually the cheapest of the three; [what a climb costs](/guides/how-much-to-climb-kilimanjaro) explains why.",
         ],
       },
     ],
@@ -2138,25 +2145,25 @@ export const guides: Guide[] = [
       {
         heading: "Why it has the highest success rates",
         paragraphs: [
-          "Acclimatization is a function of time, and the Northern Circuit gives you more of it than any other route — typically nine days, with a long, gradual ascent and plenty of climb-high-sleep-low. That extra time is precisely why it posts the best summit statistics on the mountain.",
+          "Acclimatization is a function of time, and the Northern Circuit gives you more of it than any other route — typically nine days, with a long, gradual ascent and plenty of climb-high-sleep-low. That extra time is precisely why it posts the [best summit statistics](/guides/kilimanjaro-success-rate) on the mountain, and why [how long you climb for](/guides/how-long-to-climb-kilimanjaro) matters more than how fit you are.",
         ],
         diagram: "days-vs-success",
       },
       {
         heading: "Solitude and 360° views",
         paragraphs: [
-          "Because it loops around the rarely-trekked northern slopes, the Northern Circuit is the quietest route on Kilimanjaro. You'll often have the trail to yourself for long stretches, with sweeping views across the plains toward Kenya before you rejoin the busier southern approach for the summit. It's the connoisseur's route.",
+          "Because it loops around the rarely-trekked northern slopes, the Northern Circuit is the quietest route on Kilimanjaro. You'll often have the trail to yourself for long stretches, with sweeping views across the plains toward Kenya before you rejoin the busier southern approach — the one [Machame](/guides/machame-route) and [Lemosho](/guides/lemosho-route) climbers use — for the summit. It's the connoisseur's route, and our [full route comparison](/guides/best-kilimanjaro-route) shows exactly where it sits against the rest.",
         ],
         diagram: "route-profiles",
       },
       {
         heading: "The trade-offs",
         paragraphs: [
-          "More days means more cost and more time off work, and it's a lot of walking — this is a big, committing trek. But you get the highest odds, the most gradual and comfortable acclimatization, and the quietest, wildest experience available on the mountain.",
+          "More days means more cost and more time off work, and it's a lot of walking — this is a big, committing trek. But you get the highest odds, the most gradual and comfortable acclimatization, and the quietest, wildest experience available on the mountain. See [what a Kilimanjaro climb costs](/guides/how-much-to-climb-kilimanjaro) for how the extra days price up.",
         ],
         callout: {
           tone: "info",
-          text: "If summiting is non-negotiable for you — a once-in-a-lifetime trip, a charity climb, or you simply don't want to gamble — the Northern Circuit is the route that stacks the odds most in your favour.",
+          text: "If summiting is non-negotiable for you — a once-in-a-lifetime trip, a charity climb, or you simply don't want to gamble — the [9-day Northern Circuit](/kilimanjaro/9-day-northern-circuit) is the route that stacks the odds most in your favour.",
         },
       },
       {
@@ -2214,18 +2221,18 @@ export const guides: Guide[] = [
         heading: "How pre-acclimatization helps",
         paragraphs: [
           "Spending time at high altitude before Kilimanjaro lets your body begin adapting — building the physiological changes that help you cope with thin air — before the main event. Arriving at Kilimanjaro's gate already partly acclimatized means you handle the climb's higher camps better and summit night with more in reserve.",
-          "Meru's 4,566 m summit is high enough to give a genuine acclimatization benefit, while leaving you a sensible rest day or two before starting Kilimanjaro.",
+          "Meru's 4,566 m summit is high enough to give a genuine acclimatization benefit, while leaving you a sensible rest day or two before starting Kilimanjaro. It is the same principle that makes longer Kilimanjaro routes work — see [how long it takes to climb Kilimanjaro](/guides/how-long-to-climb-kilimanjaro) and our guide to [altitude sickness on Kilimanjaro](/guides/altitude-sickness-on-kilimanjaro).",
         ],
         diagram: "acclimatization",
       },
       {
         heading: "Meru is a destination, not just a warm-up",
         paragraphs: [
-          "Mount Meru is one of the most beautiful treks in Tanzania. The route climbs through Arusha National Park, where you walk — accompanied by an armed ranger — past giraffe, buffalo and other wildlife in the lower forest, before a spectacular knife-edge ridge to the summit at dawn, with Kilimanjaro floating above the clouds in the distance.",
+          "Mount Meru is one of the most beautiful treks in Tanzania. The route climbs through Arusha National Park, where you walk — accompanied by an armed ranger — past giraffe, buffalo and other wildlife in the lower forest, before a spectacular knife-edge ridge to the summit at dawn, with Kilimanjaro floating above the clouds in the distance. We run it as a [3-day climb](/trekking/3-day-mount-meru-momela) from $645 per person, or a more relaxed [4-day version](/trekking/4-day-mount-meru) from $725 — both include the armed ranger the park requires.",
         ],
         callout: {
           tone: "tip",
-          text: "Leave a rest day or two between summiting Meru and starting Kilimanjaro. You want the acclimatization benefit without arriving at Kilimanjaro tired.",
+          text: "Leave a rest day or two between summiting Meru and starting Kilimanjaro. You want the acclimatization benefit without arriving at Kilimanjaro tired — our [Kilimanjaro training guide](/guides/kilimanjaro-training-and-fitness) covers building the endurance for back-to-back mountains.",
         },
       },
       {
@@ -2237,7 +2244,7 @@ export const guides: Guide[] = [
           "Talk to us about sequencing flights, transfers and crews smoothly",
         ],
         paragraphs: [
-          "We can package Meru and Kilimanjaro together with the right spacing — message us with your dates and we'll build the ideal schedule.",
+          "We can package Meru and Kilimanjaro together with the right spacing — message us with your dates and we'll build the ideal schedule. Pick your Kilimanjaro route first from [our route comparison](/guides/best-kilimanjaro-route) or browse [all Kilimanjaro climbs](/kilimanjaro); with Meru behind you, a shorter route becomes a far more reasonable bet.",
         ],
       },
     ],
