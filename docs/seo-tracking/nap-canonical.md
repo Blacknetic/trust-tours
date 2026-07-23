@@ -45,7 +45,7 @@ There are **at least two GBP listings**, which splits reviews and weakens local 
 
 Tick each once its Name / phone / website match the canonical values exactly. Owner task (off-repo).
 
-- [ ] **Google Business Profile** — name, phone, website, category (Tour Operator). *(Deep optimization is Day 22.)*
+- [ ] **Google Business Profile** — name, phone, website, category (Tour Operator). *(Day 22 paste-ready optimisation brief written: [gbp-optimization-day22.md](./gbp-optimization-day22.md). Awaiting Ombeni to set hours + upload 15 photos, then it's 100% complete.)*
 - [ ] **TripAdvisor** — listing shows as "Trust Tours And Safaris Company Tanzania"; ensure phone + website link match. [profile](https://www.tripadvisor.com/Attraction_Review-g297913-d13170128-Reviews-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html)
 - [ ] **SafariBookings** (profile p3691) — company name, phone, website. *(Full optimization is Day 23.)*
 - [ ] **Facebook** — page name, About phone/email, website button.
