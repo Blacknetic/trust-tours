@@ -49,6 +49,9 @@ const ORG_JSON_LD = {
   ],
   sameAs: [
     ...SOCIAL_LINKS.map((s) => s.href),
+    // YouTube channel — listed on the verified Google Business Profile but not
+    // rendered as a footer icon, so it lives here rather than in SOCIAL_LINKS.
+    "https://www.youtube.com/channel/UCVmG90HUjOZOj3l_wQq9uXw",
     "https://www.safaribookings.com/p3691",
     "https://www.tripadvisor.com/Attraction_Review-g297913-d13170128-Reviews-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html",
   ],

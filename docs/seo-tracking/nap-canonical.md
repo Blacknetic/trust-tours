@@ -33,13 +33,16 @@ There are **at least two GBP listings**, which splits reviews and weakens local 
 
 **RESOLVED 2026-07-22 — Listing A is canonical.** It is verified and tied to Ombeni's professional email, so we legitimately own and control it. Day 22 optimisation runs on Listing A. Its low review count is a solvable problem; not owning a verified listing was not.
 
-**Listing B — do not pursue by postcard.** Postcard to Tanzania is slow and unreliable, and winning it would only lead to merging it into A anyway. Report it instead:
-1. Maps → the listing → **Suggest an edit → Close or remove → duplicate** (point at Listing A).
-2. **Business Redressal Complaint Form** — Google's official spam tool; keyword-stuffed names are explicitly covered. Stronger lever.
-- ⚠️ Only file as a duplicate if it is genuinely the same business at the same address. If it carries a meaningful number of reviews, reassess before reporting.
-- Likely origin: the same prior SEO vendor behind the spam backlinks (fake-testimonial network naming trusttourstz.com).
+**RESOLVED 2026-07-23 — merge requested.** Both listings turned out to be inside Ombeni's own GBP account. Google had already auto-flagged Listing B with status **"Duplicate"** (so it was suppressed, not showing publicly). A **merge into Listing A has been requested** — no postcard, no Redressal form needed. Google folds B's data into A; wait a few days to a couple of weeks. The keyword-stuffed name dies with the merge.
 
-**Still to do:** confirm no third listing (the New York phantom), then keep all surfaces on the canonical NAP above.
+**Canonical listing (A) details captured from GBP:**
+- Shop code: `1255112648873848 8675`
+- Address on the profile: **Njia Ya Ngome, Arusha CBD** — *this is the street address we've been missing. Pending Ombeni's confirmation, propagate it to `/contact`, the `TravelAgency` schema and this file.*
+- Custom short name: `trust-tours-and-safaris-tanzania` — **keep it** (deletion is irreversible; no upside).
+
+**"Fahari travels"** (verified, Summit Center, Arusha) in the same account = a **former client Ombeni dropped**, not spam. Action: remove himself as manager so it's off his dashboard. Not urgent.
+
+**New York phantom:** no third listing appeared in the account view; treat the seolium/usacityyp NY data as stale third-party scrape, not a real GBP listing.
 
 ## External profiles — match against the table above
 
@@ -51,5 +54,13 @@ Tick each once its Name / phone / website match the canonical values exactly. Ow
 - [ ] **Facebook** — page name, About phone/email, website button.
 - [ ] **Instagram / X / TikTok / LinkedIn** — bio website link = `https://www.trusttourstz.com`.
 
-### Known issue to fix (Day 41)
-Social links in `data/social.ts` are share/tracking URLs, not canonical profile URLs (LinkedIn is an activity permalink with UTM params; TikTok/Facebook/Instagram are share links). Replace with clean profile URLs when doing the Day 41 directory/profile sweep, and update the org `sameAs` array to match.
+### Social profile URLs — RESOLVED 2026-07-23 (was a Day 41 item)
+The verified GBP "Social profiles" panel gave us Google's own canonical URLs, so `data/social.ts` was cleaned early:
+- Instagram → `https://www.instagram.com/trust.tours.safaristanzania/` (was `?igsh=` share link)
+- Facebook → `https://www.facebook.com/Trust.Tours.Safaris.Tanzania` (was `/share/1D6QCmgBpe/`)
+- TikTok → `https://www.tiktok.com/@trusttourstanzania` (was `vm.tiktok.com` redirect)
+- LinkedIn → `https://www.linkedin.com/company/trust-tours-safaris-company-tanzania` (was an activity permalink with UTM)
+- X → `https://x.com/TrustSafaris` (already clean)
+- YouTube → `https://www.youtube.com/channel/UCVmG90HUjOZOj3l_wQq9uXw` added to the org `sameAs` in `app/layout.tsx` (not a footer icon).
+
+These feed the `sameAs` entity array, so the site→social connection is now consistent with what Google already knows.

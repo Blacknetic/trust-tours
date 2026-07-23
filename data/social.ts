@@ -14,12 +14,12 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     key: "instagram",
     label: "Instagram",
-    href: "https://www.instagram.com/trust.tours.safaristanzania?igsh=MTI2OTZpdndqbjQ4cA==",
+    href: "https://www.instagram.com/trust.tours.safaristanzania/",
   },
   {
     key: "facebook",
     label: "Facebook",
-    href: "https://www.facebook.com/share/1D6QCmgBpe/",
+    href: "https://www.facebook.com/Trust.Tours.Safaris.Tanzania",
   },
   {
     key: "x",
@@ -29,12 +29,12 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     key: "tiktok",
     label: "TikTok",
-    href: "https://vm.tiktok.com/ZS9jxJBHBv9FN-MqS1w/",
+    href: "https://www.tiktok.com/@trusttourstanzania",
   },
   {
     key: "linkedin",
     label: "LinkedIn",
-    href: "https://www.linkedin.com/feed/update/urn:li:activity:7461304930042167296?utm_source=share&utm_medium=member_android&rcm=ACoAAAzRDiwBVOs1gv4B0oYEFwfgp2LncL5ZebQ",
+    href: "https://www.linkedin.com/company/trust-tours-safaris-company-tanzania",
   },
 ];
 
