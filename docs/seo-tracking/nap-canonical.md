@@ -50,7 +50,7 @@ Tick each once its Name / phone / website match the canonical values exactly. Ow
 
 - [ ] **Google Business Profile** — name, phone, website, category (Tour Operator). *(Day 22 paste-ready optimisation brief written: [gbp-optimization-day22.md](./gbp-optimization-day22.md). Awaiting Ombeni to set hours + upload 15 photos, then it's 100% complete.)*
 - [ ] **TripAdvisor** — listing shows as "Trust Tours And Safaris Company Tanzania"; ensure phone + website link match. [profile](https://www.tripadvisor.com/Attraction_Review-g297913-d13170128-Reviews-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html)
-- [ ] **SafariBookings** (profile p3691) — company name, phone, website. *(Full optimization is Day 23.)*
+- [ ] **SafariBookings** (profile p3691) — company name, phone, website. *(Day 23 paste-ready pack written: [safaribookings-optimization-day23.md](./safaribookings-optimization-day23.md) — description, 8 price-matched tours, photo list, 3 review invites. Awaiting Ombeni.)*
 - [ ] **Facebook** — page name, About phone/email, website button.
 - [ ] **Instagram / X / TikTok / LinkedIn** — bio website link = `https://www.trusttourstz.com`.
 
