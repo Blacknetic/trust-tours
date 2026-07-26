@@ -25,15 +25,19 @@ function renderProse(text: string): React.ReactNode {
   let k = 0;
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) out.push(text.slice(last, m.index));
+    const cls = "font-semibold underline decoration-1 underline-offset-2 hover:opacity-80";
+    // In-page anchor links (#month) render as plain <a> so they scroll rather
+    // than route; everything else is an internal <Link>.
     out.push(
-      <Link
-        key={k++}
-        href={m[2]}
-        className="font-semibold underline decoration-1 underline-offset-2 hover:opacity-80"
-        style={{ color: "var(--gold)" }}
-      >
-        {m[1]}
-      </Link>,
+      m[2].startsWith("#") ? (
+        <a key={k++} href={m[2]} className={cls} style={{ color: "var(--gold)" }}>
+          {m[1]}
+        </a>
+      ) : (
+        <Link key={k++} href={m[2]} className={cls} style={{ color: "var(--gold)" }}>
+          {m[1]}
+        </Link>
+      ),
     );
     last = m.index + m[0].length;
   }
@@ -42,6 +46,12 @@ function renderProse(text: string): React.ReactNode {
 }
 
 const BORDER = "rgba(26, 26, 22,0.08)";
+
+// Deterministic heading slug so a guide's own prose can jump-link to a section
+// (e.g. a month-by-month table of contents → each month heading).
+function slugifyHeading(h: string): string {
+  return h.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
 
 // Per-topic hero photo for the article header. A guide's own `image` overrides
 // this; otherwise the topic decides which on-theme shot sits behind the title.
@@ -279,7 +289,8 @@ export default function GuideView({ guide }: { guide: Guide }) {
             <section className="mb-9">
               {s.heading && (
                 <h2
-                  className="text-2xl font-extrabold mb-4"
+                  id={slugifyHeading(s.heading)}
+                  className="text-2xl font-extrabold mb-4 scroll-mt-24"
                   style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
                 >
                   {s.heading}

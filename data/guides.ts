@@ -1524,54 +1524,126 @@ export const guides: Guide[] = [
     title: "The Best Time to Climb Kilimanjaro",
     topic: "Kilimanjaro",
     excerpt:
-      "Month by month — the two dry seasons that give the clearest skies, the rains to plan around, and the trade-offs of a full-moon summit.",
-    updated: "2026-06-20",
-    readMinutes: 7,
+      "The best time to climb Kilimanjaro, month by month — conditions, crowds and a verdict for every month, plus the dry seasons to target and the rains to avoid.",
+    updated: "2026-07-26",
+    readMinutes: 10,
     keyTakeaway:
-      "The best months to climb Kilimanjaro are January to mid-March and June to October — Tanzania's two dry seasons, with the clearest skies and most comfortable trekking. You can climb year-round, but the long rains (late March–May) and short rains (November) make for wetter, quieter, cheaper climbs.",
+      "The best months to climb Kilimanjaro are January to mid-March and June to October — Tanzania's two dry seasons, with the clearest skies and most comfortable trekking. September is the single most reliable month; August is the busiest; April is the wettest and hardest. You can climb year-round, though the long rains (late March–May) and short rains (November) mean wetter, quieter, cheaper climbs. Use the month-by-month guide below to match your travel window to conditions.",
     intro:
-      "Kilimanjaro is climbable every month of the year, but your experience changes a lot with the seasons. The mountain has two dry windows that are far more comfortable and reliable, and two rainy spells that are wetter and harder but quieter and cheaper. Here's how to pick your month.",
+      "Kilimanjaro is climbable every month of the year, but your experience changes a lot with the season. There are two dry windows that are far more comfortable and reliable, and two rainy spells that are wetter and harder but quieter and cheaper. Below is an honest month-by-month breakdown — conditions, crowds and a verdict for each — so you can match your travel dates to the mountain.",
     primaryCta: { label: "Plan your climb dates", href: "/kilimanjaro" },
-    inlineCtaAfter: 1,
+    inlineCtaAfter: 8,
     sections: [
       {
-        heading: "The two best windows",
+        heading: "The two best seasons at a glance",
         paragraphs: [
-          "There are two prime seasons. January to mid-March is warmer and generally clear, often with fewer climbers than the mid-year peak and a good chance of fresh snow up high. June to October is the long dry season — the busiest and most reliable window, with cool, clear conditions ideal for trekking.",
-          "Both deliver the two things that make a climb enjoyable: stable weather and big views. If you have flexibility, these are the months to target.",
+          "There are two prime seasons. January to mid-March is warmer and generally clear, often with fewer climbers than the mid-year peak and a good chance of fresh snow up high. June to October is the long dry season — the busiest and most reliable window, with cool, clear conditions ideal for trekking. Both deliver the two things that make a climb enjoyable: stable weather and big views.",
+          "The two rainy spells — the long rains from late March to May and the short rains in November — are wetter, cloudier and muddier, but far quieter and cheaper. They're climbable, but best suited to the determined, and to drier routes.",
         ],
         table: {
           caption: "Kilimanjaro through the year at a glance.",
           headers: ["Period", "Conditions", "Verdict"],
           rows: [
             ["Jan – mid-Mar", "Warm, mostly clear, possible snow up high", "Excellent — quieter peak"],
-            ["Late Mar – May", "Long rains: wet, muddy, cloudy", "Avoid if you can"],
+            ["Late Mar – May", "Long rains: wet, muddy, cloudy", "Hardest — avoid if you can"],
             ["Jun – Oct", "Dry season: cool and clear", "Best & most reliable"],
             ["November", "Short rains: showery, variable", "Quiet & cheaper, but wetter"],
-            ["December", "Improving, festive-season busy", "Good, book ahead"],
+            ["December", "Improving, festive-season busy", "Good — book ahead"],
           ],
+        },
+        callout: {
+          tone: "info",
+          text: "Summit night is below freezing in every month — roughly −7°C to −18°C at Uhuru Peak before wind chill. What changes month to month isn't the summit cold but the rain, cloud and crowds lower down. Pack for deep cold whenever you climb — see our [Kilimanjaro packing list](/guides/kilimanjaro-packing-list).",
         },
       },
       {
-        heading: "Climbing in the rains",
+        heading: "Jump to your month",
         paragraphs: [
-          "You can still summit during the rainy months, and some people like the solitude and lower prices. But expect muddier trails, slippery rock, more cloud and fewer views. If you go, lean toward routes that approach from the drier northern side, like the [6-day Rongai route](/kilimanjaro/6-day-rongai-route), which sees less rain. [Marangu](/guides/marangu-route) is also worth a look in the wet, since you sleep in huts rather than tents.",
+          "Jump to a month: [January](#january) · [February](#february) · [March](#march) · [April](#april) · [May](#may) · [June](#june) · [July](#july) · [August](#august) · [September](#september) · [October](#october) · [November](#november) · [December](#december).",
         ],
-        callout: {
-          tone: "tip",
-          text: "Whatever the season, summit night is below freezing year-round. Good cold-weather gear matters every month — see our [Kilimanjaro packing list](/guides/kilimanjaro-packing-list).",
-        },
+      },
+      {
+        heading: "January",
+        paragraphs: [
+          "January sits in the short dry season and is one of the best months to climb. Days are warm and generally clear, skies are big, and there's often fresh snow on the summit for those postcard photos. Crowds are moderate — busier than the rains but far quieter than August. Verdict: excellent, and a great choice if you want dry-season conditions without peak-season crowds.",
+        ],
+      },
+      {
+        heading: "February",
+        paragraphs: [
+          "February is often the warmest, clearest and driest month of all — many guides quietly rate it their favourite. Visibility is superb, the trails are dry, and crowds stay moderate. Verdict: one of the very best months to climb, with an excellent balance of conditions and comparative quiet.",
+        ],
+      },
+      {
+        heading: "March",
+        paragraphs: [
+          "Early March is still firmly in the dry window and excellent — warm, clear and quiet. The catch is the back half: the long rains usually build from around the third week, bringing cloud and mud. Verdict: very good in the first two weeks, increasingly wet after that. If you're eyeing March, aim early.",
+        ],
+      },
+      {
+        heading: "April",
+        paragraphs: [
+          "April is the peak of the long rains and the wettest, most challenging month on the mountain — expect muddy trails, slippery rock, heavy cloud and limited views. On the upside, you'll have the mountain almost to yourself and prices are at their lowest. If you go, favour the drier northern approach of the [6-day Rongai route](/kilimanjaro/6-day-rongai-route) or the hut-based [Marangu route](/guides/marangu-route). Verdict: the hardest month — for the determined and well-prepared only.",
+        ],
+      },
+      {
+        heading: "May",
+        paragraphs: [
+          "May is still wet, especially in the first half, as the long rains ease toward month's end. The mountain is green, quiet and cheap, and late May can start to clear. It shares April's trade-offs in gentler form. Verdict: challenging but improving — again, lean toward [Rongai](/kilimanjaro/6-day-rongai-route) for the drier side of the mountain.",
+        ],
+      },
+      {
+        heading: "June",
+        paragraphs: [
+          "June opens the long dry season. The very start of the month can still feel damp as the rains clear, but conditions dry and stabilise quickly, and by mid-June you're into reliable trekking weather. Crowds begin to build toward the summer peak. Verdict: good and improving through the month — an excellent, slightly quieter alternative to July and August.",
+        ],
+      },
+      {
+        heading: "July",
+        paragraphs: [
+          "July is peak season: dry, cool, stable and reliable, with the best chance of clear summit mornings. The trade-off is company — the popular routes are busy and the best dates book up early. Verdict: excellent conditions, one of the safest bets of the year — just reserve your climb well ahead.",
+        ],
+      },
+      {
+        heading: "August",
+        paragraphs: [
+          "August is the peak of the peak — the driest, most reliable and most crowded month, with prices at their highest. Conditions are as good as Kilimanjaro gets; you'll just share the trail. Verdict: superb weather, maximum crowds. If you climb in August, book months in advance, and consider joining a [scheduled group departure](/kilimanjaro/groups) to lock in a date.",
+        ],
+      },
+      {
+        heading: "September",
+        paragraphs: [
+          "September is, for many, the single best month to climb Kilimanjaro. It keeps the dry, clear, stable conditions of the peak season while the August crowds start to thin — the ideal blend of great weather and a little more breathing room. Verdict: the sweet spot. If your schedule is flexible, this is the month we'd point you to first.",
+        ],
+      },
+      {
+        heading: "October",
+        paragraphs: [
+          "October is the dry season's strong finish — clear and settled through most of the month, with crowds easing further. Toward the end, the short rains can begin to appear, so the earlier weeks are the safer pick. Verdict: excellent, especially in the first half; a quieter, cheaper alternative to the mid-summer peak.",
+        ],
+      },
+      {
+        heading: "November",
+        paragraphs: [
+          "November brings the short rains — typically afternoon showers and more cloud rather than all-day downpours, with mornings often clear. It's quiet and cheaper, and perfectly climbable with the right expectations. The drier northern [Rongai route](/kilimanjaro/6-day-rongai-route) copes best. Verdict: a wetter shoulder month — fine for flexible, budget-minded climbers who don't mind some rain.",
+        ],
+      },
+      {
+        heading: "December",
+        paragraphs: [
+          "Early December still sees short-rain showers, but conditions improve steadily through the month, and by the festive season the weather is often good. Demand spikes over Christmas and New Year, so dates and crews book up fast. Verdict: good and improving, with a busy, celebratory feel late in the month — book well ahead for the holidays.",
+        ],
       },
       {
         heading: "Should you climb at full moon?",
         paragraphs: [
-          "Summit night happens in the dark, so a full moon lights up the glaciers and the path beautifully and is a popular choice. The trade-off is that full-moon dates are busier and book up early. A clear, moonless night, on the other hand, gives extraordinary stars on the way up. Neither is 'better' — it's a preference, and we can time your climb for either.",
+          "Summit night happens in the dark, so a full moon lights up the glaciers and the path beautifully and is a popular choice — worth timing your climb around if the views matter most to you. The trade-off is that full-moon dates are busier and book up early. A clear, moonless night, on the other hand, gives extraordinary stars on the way up. Neither is 'better' — it's a preference, and we can time your climb for either.",
         ],
       },
       {
         heading: "When to book",
         paragraphs: [
-          "For the peak windows — especially June to October and around the December holidays — book well ahead to secure your dates and crew. Our [scheduled group departures](/kilimanjaro/groups) are published months in advance and are the cheapest way to climb in peak season; if you'd rather set your own dates, browse [all our Kilimanjaro climbs](/kilimanjaro). Season also moves the price, so it's worth reading [what a climb costs](/guides/how-much-to-climb-kilimanjaro) before you lock a month.",
+          "For the peak windows — especially July to October and around the December holidays — book well ahead to secure your dates and crew. Our [scheduled group departures](/kilimanjaro/groups) are published months in advance and are the cheapest way to climb in peak season; if you'd rather set your own dates, browse [all our Kilimanjaro climbs](/kilimanjaro). Season also moves the price, so it's worth reading [what a climb costs](/guides/how-much-to-climb-kilimanjaro) before you lock a month — and if you're still choosing a route, start with our [route comparison](/guides/best-kilimanjaro-route).",
         ],
       },
     ],
@@ -1579,17 +1651,32 @@ export const guides: Guide[] = [
       {
         question: "What is the best month to climb Kilimanjaro?",
         answer:
-          "September is often singled out as ideal — dry, clear and stable — but the whole June-to-October window and January to mid-March are all excellent. The best month is the one in a dry season that fits your schedule.",
+          "September is the single most reliable month — dry, clear and stable, with the August crowds beginning to thin. February is a close rival for the clearest, driest conditions. In truth the whole June-to-October window and January to mid-March are all excellent; the best month is the one in a dry season that fits your schedule.",
+      },
+      {
+        question: "Can you climb Kilimanjaro in April?",
+        answer:
+          "Yes, but April is the wettest and most challenging month — the peak of the long rains, with muddy trails, cloud and limited views. You'll have the mountain to yourself and pay the lowest prices, but you need to be well prepared. If you climb in April, choose a drier northern route like Rongai, or the hut-based Marangu route.",
+      },
+      {
+        question: "Is January a good time to climb Kilimanjaro?",
+        answer:
+          "Yes — January falls in the short dry season and is one of the best months. Expect warm, mostly clear days, a good chance of fresh summit snow, and moderate crowds that are lighter than the mid-year peak. It's an excellent choice for dry conditions without August-level company.",
+      },
+      {
+        question: "What is the busiest month on Kilimanjaro?",
+        answer:
+          "August, followed by July and September. These peak dry-season months have the best, most reliable weather, which is exactly why they draw the most climbers and the highest prices. If you want great conditions with fewer people, aim for late September, October, or January to February.",
       },
       {
         question: "Can you climb Kilimanjaro in the rainy season?",
         answer:
-          "Yes, climbs run year-round. The long rains (late March–May) and short rains (November) mean wetter, muddier conditions and more cloud, but also fewer people and lower prices. Drier northern routes like Rongai cope best.",
+          "Yes, climbs run year-round. The long rains (late March–May) and short rains (November) mean wetter, muddier conditions and more cloud, but also far fewer people and lower prices. Drier northern routes like Rongai cope best, and good waterproof gear is essential.",
       },
       {
-        question: "Is it cold at the summit?",
+        question: "Is it cold at the summit whatever the month?",
         answer:
-          "Yes — summit night is well below freezing in every season, and wind chill makes it feel colder. Proper insulated clothing is essential whenever you climb.",
+          "Yes. Summit night is well below freezing in every month — roughly −7°C to −18°C at Uhuru Peak before wind chill. The summit cold barely changes across the year; what changes is the rain, cloud and crowds lower down. Proper insulated clothing is essential whenever you climb.",
       },
     ],
     relatedGuides: [
