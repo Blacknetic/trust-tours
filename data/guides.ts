@@ -81,7 +81,7 @@ export const guides: Guide[] = [
     topic: "Kilimanjaro",
     excerpt:
       "Five to nine days — and why the longer routes reach the summit far more often.",
-    updated: "2026-06-19",
+    updated: "2026-07-26",
     readMinutes: 6,
     keyTakeaway:
       "Climbing Kilimanjaro takes 5 to 9 days. The longer routes (7–9 days) reach the summit far more often because they give your body time to acclimatize to the altitude — the single biggest factor in success.",
@@ -692,7 +692,7 @@ export const guides: Guide[] = [
     topic: "Kilimanjaro",
     excerpt:
       "Everything that actually decides whether you stand on the Roof of Africa — routes, days, fitness, altitude, cost and timing — in one honest read.",
-    updated: "2026-06-20",
+    updated: "2026-07-26",
     readMinutes: 12,
     keyTakeaway:
       "Kilimanjaro is a 5,895 m walk-up — no ropes or technical climbing — but it is a serious high-altitude trek. The people who summit aren't the fittest; they're the ones who give their body enough days to acclimatize, on a well-supported route, in the right season. Get those four things right and the mountain is within reach for most reasonably fit travellers.",
@@ -1266,7 +1266,7 @@ export const guides: Guide[] = [
     topic: "Kilimanjaro",
     excerpt:
       "You don't need to be an athlete — but you do need to train. A practical plan to get walk-fit for the Roof of Africa.",
-    updated: "2026-06-20",
+    updated: "2026-07-26",
     readMinutes: 7,
     keyTakeaway:
       "To climb Kilimanjaro you should be able to hike comfortably for six to eight hours on consecutive days. The best training is hiking itself — long, hilly walks with a daypack, built up over two to three months — supported by some cardio and leg strength. You don't need to be an athlete; you need endurance and resilience.",
@@ -1694,7 +1694,7 @@ export const guides: Guide[] = [
     topic: "Kilimanjaro",
     excerpt:
       "From humid rainforest to a sub-zero summit — how to pack in layers for all five of Kilimanjaro's climate zones.",
-    updated: "2026-06-20",
+    updated: "2026-07-26",
     readMinutes: 9,
     keyTakeaway:
       "Pack Kilimanjaro in layers, because you'll cross five climate zones from humid rainforest to an arctic summit. The essentials: a warm insulated jacket and sleeping bag for summit night, a waterproof shell, broken-in boots, sun protection, and a head-torch. Bring less of everything else — porters carry your duffel, but loads are limited and fair.",
@@ -2275,7 +2275,7 @@ export const guides: Guide[] = [
     topic: "Kilimanjaro",
     excerpt:
       "The only route with sleeping huts and the classic budget option — plus the honest trade-offs in acclimatization and success.",
-    updated: "2026-06-20",
+    updated: "2026-07-26",
     readMinutes: 7,
     keyTakeaway:
       "Marangu is the only Kilimanjaro route with sleeping huts rather than tents, and it's often the most affordable. But it's a there-and-back route with a less ideal acclimatization profile, so success rates are lower — especially on the rushed five-day version. Choose the six-day Marangu if you want huts; treat five days as a real gamble.",
@@ -2346,7 +2346,7 @@ export const guides: Guide[] = [
     topic: "Kilimanjaro",
     excerpt:
       "Kilimanjaro's longest route loops the remote north over nine days — the best acclimatization and the highest summit odds on the mountain.",
-    updated: "2026-06-20",
+    updated: "2026-07-26",
     readMinutes: 8,
     keyTakeaway:
       "The Northern Circuit is the longest route on Kilimanjaro, looping around the quiet northern slopes over eight to nine days. All that time at altitude gives it the best acclimatization and the highest success rates of any route, on the most peaceful trails. The trade-off is more cost and more days.",
@@ -2422,7 +2422,7 @@ export const guides: Guide[] = [
     topic: "Kilimanjaro",
     excerpt:
       "Why climbing 4,566 m Mount Meru a few days before Kilimanjaro is one of the best ways to boost your summit odds.",
-    updated: "2026-06-20",
+    updated: "2026-07-26",
     readMinutes: 6,
     keyTakeaway:
       "Climbing Mount Meru (4,566 m) a few days before Kilimanjaro pre-acclimatizes your body to altitude, which can meaningfully improve your Kilimanjaro summit chances. Meru is a stunning, wildlife-rich trek in its own right — making it both a brilliant warm-up and a highlight of the trip.",
