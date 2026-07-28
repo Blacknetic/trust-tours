@@ -258,13 +258,6 @@ export const packages: TripPackage[] = [
     ],
     bestMonths: ["Jan", "Feb", "Mar", "Jun", "Jul", "Aug", "Sep", "Oct"],
     summitSuccessRate: "85–93% (7-day)",
-    reviewSnippets: [
-      {
-        author: "Robin V",
-        text: "We hiked to the top of Kilimanjaro — Ombeni arranged everything. 10/10 would recommend.",
-        source: "TripAdvisor, Oct 2023",
-      },
-    ],
     oldUrl: "/booking/CONFIRM-OLD-SLUG/",
   },
 
@@ -273,6 +266,9 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "9-day-northern-circuit",
+    reviewSnippets: [
+      { author: "Andreea J", text: "I did the 9-day Northern Circuit up Kilimanjaro as a solo traveller. The climb was absolutely fabulous — the team was amazing and made me feel so comfortable and taken care of.", source: "Google" },
+    ],
     seoTitle: "Northern Circuit, 9 Days — from $2,497 · Trust Tours",
     metaDescription:
       "Kilimanjaro's longest, quietest route — and the highest summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,497 pp, no OTA markup.",
@@ -457,6 +453,10 @@ export const packages: TripPackage[] = [
 
   {
     slug: "8-day-lemosho-route",
+    reviewSnippets: [
+      { author: "Robin Van Rompaey", text: "We hiked to the top of Kilimanjaro on the Lemosho route, and were so happy about how perfectly everything was arranged. 10/10 would recommend.", source: "Google" },
+      { author: "Richard Lee", text: "Went on the 8-day Lemosho trek. Excellent team of porters, and the camp crew took care of us so well from dawn till dusk — the small details make a huge difference.", source: "Google" },
+    ],
     seoTitle: "Lemosho Route, 8 Days — from $3,050 · Trust Tours",
     metaDescription:
       "Crosses the wild Shira Plateau — the best acclimatisation and summit rates on Kilimanjaro. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $3,050 pp, direct.",
@@ -1035,6 +1035,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "7-day-great-migration-safari",
+    reviewSnippets: [
+      { author: "Julieth Nathaniel", text: "Trust Tours made our Kilimanjaro trek and Serengeti safari unforgettable. Professional guides, excellent service, and seamless logistics ensured an amazing experience. Truly the best.", source: "Google" },
+    ],
     seoTitle: "Great Migration Safari, 7 Days — from $2,200",
     metaDescription:
       "Private Great Migration safari across Tarangire, Serengeti & Ngorongoro. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,200 pp, no OTA markup.",
@@ -4141,6 +4144,10 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "2-day-tarangire-ngorongoro",
+    reviewSnippets: [
+      { author: "Andreas Galanakis", text: "We went to Tarangire National Park with Trust Tours. Our guide Ombeni did a great job arranging our day trip — a unique experience. I strongly recommend them for your next trip in Tanzania.", source: "Google" },
+      { author: "victor Fainzilber", text: "Trust Tours were very professional throughout — the payment, the timings, and the professionalism of the driver and guide. We were very pleased and would definitely recommend Mr Ombeni and his company.", source: "Google" },
+    ],
     destinations: ["Tarangire", "Ngorongoro"],
     category: "safari",
     title: "2-Day Tanzania Safari – Tarangire & Ngorongoro Crater",
@@ -5597,6 +5604,10 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "4-day-mount-meru",
+    reviewSnippets: [
+      { author: "Irina D", text: "A wonderful, well-organized 4-day Mt Meru trip from start to finish — an encouraging guide, a phenomenal cook, and porters carrying the gear, with real care to keep me safe and minimize altitude sickness.", source: "Google" },
+      { author: "Evaline Mshina", text: "The guides Jonas and Samuel did an excellent job leading our way up Mt Meru and to the Kilimanjaro summit. They meet the client needs and give the extra confidence you need.", source: "Google" },
+    ],
     destinations: ["Mount Meru", "Arusha"],
     category: "trekking",
     difficulty: "Challenging",
