@@ -59,6 +59,20 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
   const image = packageImage(pkg);
 
   if (pkg.priceFromUSD > 0) {
+    // Item-level Review objects, mapped from the real review snippets shown on
+    // the page (components/PackagePageView.tsx) so the markup reflects visible
+    // content. These are what earn star snippets on the tour page in search —
+    // deliberately per-Product; the org-level AggregateRating stays only on
+    // /reviews and is not sprayed sitewide.
+    const reviews = (pkg.reviewSnippets ?? []).slice(0, 3).map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.author },
+      reviewBody: r.text,
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+      // "TripAdvisor, Oct 2023" → publisher "TripAdvisor".
+      publisher: { "@type": "Organization", name: r.source.split(",")[0].trim() },
+    }));
+
     graph.push({
       "@type": "Product",
       "@id": `${pageUrl}#product`,
@@ -68,6 +82,7 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
       // for Product rich results (and therefore for review stars).
       ...(image && { image: `${BASE}${image}` }),
       brand: { "@type": "Brand", name: "Trust Tours & Safaris" },
+      ...(reviews.length > 0 && { review: reviews }),
       offers: {
         "@type": "Offer",
         price: pkg.priceFromUSD,
