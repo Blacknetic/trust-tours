@@ -3027,6 +3027,7 @@ export const guides: Guide[] = [
     ],
     relatedGuides: [
       "tanzania-safari-guide",
+      "book-direct-vs-ota",
       "best-time-great-migration",
       "what-to-expect-on-safari",
       "tanzania-vs-kenya-safari",
@@ -3867,6 +3868,122 @@ export const guides: Guide[] = [
   },
 
   {
+    slug: "book-direct-vs-ota",
+    title: "Why Book Direct, Not Through an OTA",
+    topic: "Planning",
+    excerpt:
+      "Book a Tanzania safari or Kilimanjaro climb direct with a licensed operator, or through an OTA like Viator? The honest cost difference — and how to verify any operator.",
+    updated: "2026-07-26",
+    readMinutes: 8,
+    keyTakeaway:
+      "When you book a Tanzania safari or Kilimanjaro climb through an online travel agent (OTA) like Viator or GetYourGuide, a local operator still runs the entire trip — the OTA just takes a commission, usually 15–25%, for the introduction. Booking direct with a licensed operator means the same trip without that markup, and you deal with the people actually on the ground: the owner answers your questions, changes to the itinerary are easy, and there's no middleman between you and your guide in an emergency. The one thing you must do either way is verify the operator is real and licensed — a two-minute check we walk through below.",
+    intro:
+      "Every Tanzania safari and Kilimanjaro climb is run by a local, on-the-ground operator — the company with the vehicles, the guides and the licence. The only question is whether you reach that operator directly, or through an online travel agent (OTA) that takes a cut for the introduction. This is an honest look at what that choice actually costs you, what it gets you, and — most importantly — how to make sure whoever you book with is legitimate. We're a direct operator, so we have a stake in this; we've tried to be straight about when each option makes sense.",
+    primaryCta: { label: "Get a direct quote", href: "/contact" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "What you're actually paying for on an OTA",
+        paragraphs: [
+          "OTAs like Viator, GetYourGuide and TripAdvisor Experiences don't run safaris or climbs themselves. They're marketplaces: they list trips from local operators, take the booking, and pass it to the operator who does the real work. For that introduction they charge a commission — commonly 15–25% of the trip price — which is built into the price you pay.",
+          "That means on a $3,000 safari, somewhere between $450 and $750 can be going to the platform rather than the mountain, the parks or the crew. You're not getting a different, better-run trip for that money — you're getting the same operator you could have reached directly, plus a marketing fee. The trip itself is identical, because the same local company delivers it either way.",
+        ],
+        callout: {
+          tone: "info",
+          text: "This isn't a knock on OTAs — they're useful for discovering operators and they add a layer of buyer protection. The point is simply to know what the markup is and decide whether it's worth it to you.",
+        },
+      },
+      {
+        heading: "Who really runs your trip (either way)",
+        paragraphs: [
+          "Here's the part most first-time travellers don't realise: whether you book through an OTA or direct, the company meeting you at the airport, driving the Land Cruiser and guiding you up Kilimanjaro is the same kind of local, licensed Tanzanian operator. The OTA never sets foot in the Serengeti. So the quality of your trip depends entirely on that operator — not on the platform you found them through.",
+          "Which flips the usual logic: the platform's brand isn't protecting you nearly as much as it feels like it is. What protects you is the operator being competent, licensed and reachable. That's why the verification checklist further down matters more than whether there's a big-name marketplace logo on the checkout page.",
+        ],
+      },
+      {
+        heading: "What booking direct actually gets you",
+        bullets: [
+          "The real price — no 15–25% platform commission on top of the trip",
+          "The owner on WhatsApp — you plan with the person responsible, not a call centre",
+          "A tailored itinerary — extra acclimatisation day, a rest day, a Zanzibar add-on, changed with one message",
+          "No middleman in an emergency — if weather or health changes the plan, you're talking to the people on the ground, not a support ticket in another timezone",
+          "A relationship — the same operator for your next trip, and honest advice because they're not hiding behind a platform",
+        ],
+        paragraphs: [
+          "The practical upshot is that the same budget buys you either a lower price or a better trip when you book direct — the commission becomes an extra day, better camps, or simply money back in your pocket. And because you're dealing with the operator directly, the itinerary is genuinely yours to shape, which matters a lot on a trip like this. If you're weighing operators, our guide to [choosing a Tanzania tour operator](/guides/how-to-choose-tour-operator) goes deeper.",
+        ],
+      },
+      {
+        heading: "When an OTA does make sense — the honest version",
+        paragraphs: [
+          "We'd be lying if we said never use an OTA. If you value the platform's buyer-protection and dispute process over price, or you're booking a small, cheap add-on and don't want to email an operator, an OTA is convenient. Some travellers also feel safer paying a familiar brand the first time they book in an unfamiliar country — and that peace of mind has real value.",
+          "The catch is that the peace of mind is partly an illusion, because the operator still has to be good — and you can get the same confidence by spending two minutes verifying the operator yourself. Do that, and booking direct gives you everything the OTA does, minus the markup.",
+        ],
+      },
+      {
+        heading: "How to verify any Tanzania operator is legitimate",
+        paragraphs: [
+          "This is the checklist that makes booking direct safe. It works on any operator — including us — and if a company fails it, walk away no matter where you found them. Screenshot this and run it before you pay anyone.",
+        ],
+        bullets: [
+          "License number published: A real Tanzanian operator holds a TALA licence (Tourism Agents Licensing Authority) and will publish the number. No number, or vague 'fully licensed' with nothing to check — red flag.",
+          "Independent reviews cross-check: Find them on TripAdvisor and/or SafariBookings, not just their own website. Consistent name, real reviews over time, and a rating you can verify on the platform itself.",
+          "A physical address and real phone: A genuine operator has an office in Arusha, Moshi or similar — a findable address and a phone/WhatsApp that a human answers, not just a contact form.",
+          "Price sanity: If a Kilimanjaro climb or safari is far below the going rate, ask what's cut. Park and rescue fees alone are fixed and high; a price below them is impossible without skipping something — days, permits, porter pay or safety.",
+          "Direct, specific answers: Ask a detailed question (guide-to-climber ratio, what's included, emergency plan). A real operator answers precisely and quickly. Evasive or copy-paste answers are a warning.",
+          "Named, reachable owner or manager: You can find out who runs the company and reach them. Faceless operations that won't put a name to the business are a risk.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "The TALA licence is the single strongest signal — we explain exactly how to check one, and what Class A means, in our guide to [verifying a Tanzania operator's licence](/guides/how-to-choose-tour-operator).",
+        },
+      },
+      {
+        heading: "Verifying us — hold us to the same checklist",
+        paragraphs: [
+          "We ask you to run that checklist on us before you book. Here's our side of it: we're a TALA Licensed Tourism Agent, Class A, licence number 014216, operating from Arusha since 2008. You can read our reviews independently — 5.0 from 97 reviews on TripAdvisor, plus our Google profile — not just on this site. We run our own vehicles, guides and mountain crews rather than subcontracting, we publish real prices, and the founder, Ombeni, answers travellers directly on WhatsApp while they plan.",
+          "That's the whole case for booking direct: the same trip an OTA would sell you, run by the same kind of local operator, without the commission — provided you've checked the operator is real. Do the two-minute check, then talk to whoever passes it. If that's us, [tell us your dates and we'll build the trip around you](/contact).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is it cheaper to book a Tanzania safari direct or through Viator?",
+        answer:
+          "Usually direct. OTAs like Viator and GetYourGuide add a commission of roughly 15–25% to the operator's price for the introduction. Booking direct with the same operator removes that markup, so the same budget buys either a lower price or a better trip. The trip itself is identical because the same local operator runs it either way.",
+      },
+      {
+        question: "Are Viator and GetYourGuide safaris run by the platform itself?",
+        answer:
+          "No. OTAs are marketplaces — they list and sell trips but never operate them. A local, licensed Tanzanian operator runs every safari and climb, whether you book through the platform or directly. The quality of your trip depends on that operator, not the platform you found them through.",
+      },
+      {
+        question: "How do I know a Tanzania tour operator is legitimate?",
+        answer:
+          "Check six things: a published TALA licence number, independent reviews on TripAdvisor/SafariBookings, a real Arusha address and phone, prices that aren't impossibly below park fees, specific answers to detailed questions, and a named, reachable owner. Any operator that fails these is a risk, regardless of where you found them.",
+      },
+      {
+        question: "What is a TALA licence?",
+        answer:
+          "TALA is Tanzania's Tourism Agents Licensing Authority. A licensed operator holds a TALA licence and can give you its number to verify. Class A is the full tour-operator category. A published, checkable licence number is the strongest single sign an operator is legitimate — we're TALA Class A, No. 014216.",
+      },
+      {
+        question: "Is it safe to book a Tanzania trip directly with an operator?",
+        answer:
+          "Yes, if you verify the operator first. Booking direct is how most experienced Tanzania travellers book. The safety comes from checking the operator is licensed, independently reviewed and reachable — not from an OTA's logo. Once you've done that two-minute check, direct booking gives you everything an OTA does without the commission.",
+      },
+    ],
+    relatedGuides: [
+      "how-to-choose-tour-operator",
+      "tanzania-safari-guide",
+      "how-much-tanzania-safari-cost",
+      "is-tanzania-safe",
+    ],
+    relatedPackages: ["5-day-northern-safari", "7-day-great-migration-safari", "7-day-machame-route"],
+  },
+
+  {
     slug: "how-to-choose-tour-operator",
     title: "How to Choose a Tanzania Tour Operator",
     topic: "Planning",
@@ -3938,6 +4055,7 @@ export const guides: Guide[] = [
       },
     ],
     relatedGuides: [
+      "book-direct-vs-ota",
       "tanzania-travel-guide",
       "how-much-to-climb-kilimanjaro",
       "how-much-tanzania-safari-cost",
