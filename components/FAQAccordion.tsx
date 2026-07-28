@@ -1,9 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { FAQ } from "@/data/packages";
 
-export default function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
+// An FAQ may optionally carry a link to its full guide (used by /faq). Existing
+// callers pass plain FAQ[] and render exactly as before.
+type FAQItem = FAQ & { href?: string; hrefLabel?: string };
+
+export default function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
@@ -46,11 +51,21 @@ export default function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
           >
             <div style={{ overflow: "hidden" }}>
               <p
-                className="pb-5 text-sm leading-relaxed"
+                className="text-sm leading-relaxed"
                 style={{ color: "var(--ink)", maxWidth: "65ch" }}
               >
                 {faq.answer}
               </p>
+              {faq.href && (
+                <Link
+                  href={faq.href}
+                  className="inline-block mt-2 text-sm font-semibold hover:opacity-80"
+                  style={{ color: "var(--gold)" }}
+                >
+                  {faq.hrefLabel ?? "Read the full guide"} →
+                </Link>
+              )}
+              <div className="pb-5" aria-hidden="true" />
             </div>
           </dd>
         </div>

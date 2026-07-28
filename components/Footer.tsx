@@ -190,6 +190,7 @@ export default function Footer() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/about" className="transition-colors hover:text-white" style={{ color: "inherit" }}>About</Link>
             <Link href="/guides" className="transition-colors hover:text-white" style={{ color: "inherit" }}>Guides</Link>
+            <Link href="/faq" className="transition-colors hover:text-white" style={{ color: "inherit" }}>FAQ</Link>
             <Link href="/reviews" className="transition-colors hover:text-white" style={{ color: "inherit" }}>Reviews</Link>
             <Link href="/contact" className="transition-colors hover:text-white" style={{ color: "inherit" }}>Contact</Link>
             <Link href="/cancellation-policy" className="transition-colors hover:text-white" style={{ color: "inherit" }}>Cancellation Policy</Link>
