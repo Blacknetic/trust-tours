@@ -3985,73 +3985,126 @@ export const guides: Guide[] = [
 
   {
     slug: "how-to-choose-tour-operator",
-    title: "How to Choose a Tanzania Tour Operator",
+    title: "Verify a Tanzania Operator's Licence",
     topic: "Planning",
     excerpt:
-      "How to tell a safe, legitimate operator from a risky one — the licences, practices and questions that matter.",
-    updated: "2026-06-20",
-    readMinutes: 8,
+      "How to verify a Tanzania tour operator is licensed: what TALA is, what Class A means, how to check a licence number, and the red flags to watch for.",
+    updated: "2026-07-26",
+    readMinutes: 9,
     keyTakeaway:
-      "Choose a Tanzania operator that is properly licensed (in Tanzania, a TALA licence), transparent about what's included, serious about safety, and fair to its crew. Be wary of suspiciously low prices, vague itineraries and operators who dodge questions. The right operator is the single biggest factor in a safe, enjoyable trip.",
+      "To verify a Tanzania tour operator is legitimate, ask for its TALA licence number and category and check the company name matches. TALA — the Tourism Agents Licensing Authority — is Tanzania's official operator register, and Class A is the full tour-operator licence. A real operator gives you its number instantly; the red flags are no published licence number, prices below the fixed park fees, and no physical address. Run the five-step check below on any operator before you pay — including us: we're TALA Class A, No. 014216.",
     intro:
-      "Your operator matters more than almost any other choice you'll make. They decide your safety on the mountain, the quality of your safari guide, how their crew is treated, and whether the trip you booked is the trip you get. With so many operators out there, here's how to separate the trustworthy from the risky.",
-    primaryCta: { label: "Why travellers choose Trust Tours", href: "/about" },
+      "The single strongest sign a Tanzania tour operator is legitimate is a TALA licence you can actually check. It's also the step most travellers skip, because nobody explains what TALA is or how to verify one. This guide fixes that: what the licence is, what the categories mean, exactly how to ask for and check a number, the red flags that should stop you, and a worked example using our own licence so you can see the whole process end to end. Run it on any operator — us included.",
+    primaryCta: { label: "Talk to a licensed operator", href: "/contact" },
     trustStrip: true,
     inlineCtaAfter: 2,
     sections: [
       {
-        heading: "Check the licence",
+        heading: "What a TALA licence actually is",
         paragraphs: [
-          "In Tanzania, legitimate operators hold a TALA licence (Tanzania Tourist Agent Licence) issued by the tourism authorities. Ask for the licence number and category — a real operator will share it readily. For reference, Trust Tours holds a Class A TALA licence, No. 014216.",
+          "TALA stands for the Tourism Agents Licensing Authority — the body under Tanzania's Ministry of Natural Resources and Tourism that licenses tour operators and travel agents. To legally run safaris or Kilimanjaro climbs in Tanzania, a company must hold a valid TALA licence. It is the official register of who is allowed to operate, and it's the baseline every legitimate operator clears.",
+          "Because it's a legal requirement, a genuine operator treats its licence number as a credential to show off, not a secret. That's what makes it such a useful filter: asking for it costs you nothing and instantly separates real companies from the fly-by-night operations that appear each high season and vanish. If you only do one verification step, do this one — then, if you'd like the fuller picture, our guide on [why to book direct rather than through an OTA](/guides/book-direct-vs-ota) explains why a verified operator matters more than the platform you book on.",
+        ],
+      },
+      {
+        heading: "Licence categories — what Class A means",
+        paragraphs: [
+          "TALA issues licences by category, according to what the business is permitted to do. The category you want your operator to hold is the full tour-operator licence — Class A — which covers running safaris and mountain climbs, providing vehicles and guiding, the complete service you're buying. Other categories cover narrower activities like ticketing or travel-agency services.",
+          "So it's not enough to hear 'we're licensed' — ask for the category too. An operator running your Serengeti safari or Kilimanjaro climb should hold the Class A tour-operator licence. For reference, ours is Class A, licence number 014216.",
         ],
         callout: {
-          tone: "warning",
-          text: "If an operator can't or won't give you a licence number, walk away. Unlicensed operators leave you with no protection if something goes wrong.",
+          tone: "info",
+          text: "Class matters because a company licensed only as a travel agent isn't licensed to operate the trip itself — it would be subcontracting to someone else. When you book direct with a Class A operator, the licensed company is the one actually running your trip.",
         },
       },
       {
-        heading: "Be wary of very cheap prices",
+        heading: "How to ask for and check a licence number",
         paragraphs: [
-          "Because park fees and core costs are fixed, a price far below the market can only be reached by cutting corners — fewer days, underpaid and overloaded porters, thin safety margins, or a route that's more driving than wildlife. On Kilimanjaro especially, those cuts can be dangerous. A fair price isn't a luxury; it's what a safe, ethical trip actually costs.",
+          "The check itself is quick. Here's the whole process:",
         ],
-      },
-      {
-        heading: "Ask about safety and crew welfare",
         bullets: [
-          "Kilimanjaro: daily health checks, emergency oxygen, a clear evacuation plan",
-          "Fair porter loads, pay and treatment (a real ethical issue on the mountain)",
-          "Experienced, licensed, English-speaking guides",
-          "Well-maintained 4x4s with good safety records",
-          "Clear, written itineraries with no vague 'extras to be confirmed'",
+          "Ask directly: 'What is your TALA licence number and category?' A legitimate operator answers immediately, in writing, without hesitation.",
+          "Check the name matches: the licence is issued to a company name — confirm it matches the business you're actually dealing with (website, invoices, bank details). A mismatch is a warning.",
+          "Ask to see the certificate: real operators are happy to send a photo or scan of the TALA certificate showing the number, category and validity.",
+          "Cross-reference independently: confirm the same company appears on TripAdvisor and/or SafariBookings under the same name, with a history of genuine reviews.",
+          "If in doubt, verify with the authority: you can contact the Tanzania tourism authorities to confirm a licence is current. Few travellers need to go this far, but the option exists — which is exactly why the number matters.",
         ],
+        callout: {
+          tone: "warning",
+          text: "The test isn't just whether they have a number — it's how they react to being asked. Instant and open is the sign of a real operator. Evasive, annoyed or 'we'll send it later' and never do is your answer.",
+        },
       },
       {
-        heading: "Look for transparency and real reviews",
+        heading: "The red flags",
         paragraphs: [
-          "Good operators answer questions directly, put inclusions and exclusions in writing, and have genuine reviews you can read. Talking to a real person — ideally the people who'll actually run your trip — tells you a lot. With us, you plan directly with Ombeni, the founder and lead guide, not a faceless call centre.",
+          "If an operator shows any of these, treat it as a serious warning — no matter how polished the website or how good the price looks.",
+        ],
+        bullets: [
+          "No licence number published or given when asked — the single biggest red flag",
+          "A price far below the fixed costs — park and rescue fees alone are high and non-negotiable, so a quote beneath them is impossible without cutting days, permits, crew pay or safety (see [what a Kilimanjaro climb really costs](/guides/how-much-to-climb-kilimanjaro))",
+          "No physical address — a real operator has a findable office in Arusha, Moshi or similar",
+          "No independent reviews — nothing on TripAdvisor or SafariBookings, only testimonials on their own site",
+          "Evasive answers — vague inclusions, no written itinerary, or dodged questions about safety and crew",
+          "No named, reachable owner — you can't find out who actually runs the company",
         ],
       },
       {
-        heading: "Questions worth asking",
-        bullets: [
-          "What's your TALA licence number and category?",
-          "Exactly what's included — and what isn't?",
-          "Who guides the trip, and what are their qualifications?",
-          "On Kilimanjaro, what safety equipment and procedures do you carry?",
-          "How do you treat and pay your porters and crew?",
+        heading: "A worked example — verifying us",
+        paragraphs: [
+          "Rather than ask you to take our word for it, here's the same check run on Trust Tours, step by step, so you can see what a pass looks like:",
         ],
+        bullets: [
+          "Licence number & category: TALA Licensed Tourism Agent, Class A, No. 014216 — published, not hidden.",
+          "Name match: the licence, this website, our profiles and our invoices all read Trust Tours & Safaris.",
+          "Independent reviews: 5.0 from 97 reviews on TripAdvisor, plus our Google Business Profile — verifiable off our own site.",
+          "Physical presence: an office in Arusha and a WhatsApp line a human answers, not just a form.",
+          "Price sanity: we publish real 'from' prices that sit above the fixed park fees, and explain what they include.",
+          "Named owner: the founder, Ombeni, plans your trip with you directly and answers questions himself.",
+        ],
+      },
+      {
+        heading: "The five-step check, to keep",
+        paragraphs: [
+          "Screenshot this and run it on any operator — including us — before you pay:",
+        ],
+        bullets: [
+          "1. Ask for the TALA licence number and category (want: Class A).",
+          "2. Confirm the licensed company name matches who you're dealing with.",
+          "3. Cross-check independent reviews on TripAdvisor / SafariBookings.",
+          "4. Confirm a real address, a reachable human, and prices above park fees.",
+          "5. Ask a specific question and judge whether the answer is direct.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Pass an operator on all five and you can book direct with confidence — the licence is doing the work an OTA's brand only appears to. When you're ready, [tell us your dates and we'll build the trip around you](/contact).",
+        },
       },
     ],
     faqs: [
       {
-        question: "How do I know if a Tanzania tour operator is legitimate?",
+        question: "What is a TALA licence?",
         answer:
-          "Ask for their TALA licence number and category, check that inclusions are in writing, read genuine reviews, and see how directly they answer your questions. Legitimate, licensed operators are transparent; risky ones are vague or evasive.",
+          "TALA — the Tourism Agents Licensing Authority — is the Tanzanian body that licenses tour operators and travel agents under the Ministry of Natural Resources and Tourism. To legally run safaris or Kilimanjaro climbs, a company must hold a valid TALA licence. The licence number is the official proof an operator is registered and allowed to operate.",
       },
       {
-        question: "Why should I avoid the cheapest operator?",
+        question: "How do I check if a Tanzania tour operator is licensed?",
         answer:
-          "Core costs like park fees are fixed, so rock-bottom prices usually mean cutting days, safety or crew welfare. Especially on Kilimanjaro, those cuts can be unsafe. Choose fair value over the lowest number.",
+          "Ask for their TALA licence number and category and confirm the company name on the licence matches who you're dealing with. A legitimate operator gives the number instantly and will send the certificate. Cross-check them on TripAdvisor or SafariBookings, and if you want certainty, verify the licence with the Tanzanian tourism authorities.",
+      },
+      {
+        question: "What is a Class A TALA licence?",
+        answer:
+          "Class A is the full tour-operator category of the TALA licence — it permits running safaris and mountain climbs, providing vehicles and guiding. It's the category you want your operator to hold, because a company licensed only as a travel agent isn't licensed to operate the trip itself. Trust Tours holds Class A, No. 014216.",
+      },
+      {
+        question: "What are the red flags of an unlicensed or risky operator?",
+        answer:
+          "The biggest is no licence number when you ask. Others: a price below the fixed park and rescue fees, no physical address, no independent reviews (only testimonials on their own site), evasive answers or no written itinerary, and no named, reachable owner. Any of these should stop you, however good the website looks.",
+      },
+      {
+        question: "Is Trust Tours a licensed Tanzania operator?",
+        answer:
+          "Yes. Trust Tours & Safaris is a TALA Licensed Tourism Agent, Class A, licence number 014216, operating from Arusha since 2008. You can verify us independently — 5.0 from 97 reviews on TripAdvisor and our Google Business Profile — and we publish real prices and put you in direct contact with the founder.",
       },
     ],
     relatedGuides: [
