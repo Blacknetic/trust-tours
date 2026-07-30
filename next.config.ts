@@ -110,6 +110,26 @@ const nextConfig: NextConfig = {
       { source: "/zanzib", destination: "/zanzibar", permanent: true },
       // NOTE: /zanzibar is now a real listing page — no redirect (its old Google
       // authority now lands on the dedicated section).
+
+      // ── Meaningful legacy URLs from the GSC 404 drilldown (2026-07-30) ──────
+      // Surgical only: these are old WordPress URLs with a clear new home. The
+      // rest of that report (an old Tribe events calendar, WooCommerce
+      // /product|/product-category, theme /gva_template|/case, taxonomy and
+      // fbclid variants) is genuinely dead and is left to 404 by design — mass
+      // redirecting junk to /safaris would create soft-404s.
+      { source: "/kilimanjaro-trekking", destination: "/kilimanjaro", permanent: true },
+      { source: "/tanzania-safari", destination: "/safaris", permanent: true },
+      { source: "/zanzibar-beach", destination: "/zanzibar", permanent: true },
+      { source: "/tours-list-view", destination: "/safaris", permanent: true },
+      { source: "/tours-list-view/:rest*", destination: "/safaris", permanent: true },
+      { source: "/7-days-machame-route", destination: "/kilimanjaro/7-day-machame-route", permanent: true },
+      { source: "/kilimanjaro-altitude-sickness", destination: "/guides/altitude-sickness-on-kilimanjaro", permanent: true },
+      { source: "/kilimanjaro-tipping-guide-2", destination: "/guides/tipping-in-tanzania", permanent: true },
+      { source: "/international-flight-routes-to-tanzania", destination: "/guides/tanzania-travel-guide", permanent: true },
+      { source: "/cancellations-and-refunds-information", destination: "/cancellation-policy", permanent: true },
+      { source: "/book-online", destination: "/contact", permanent: true },
+      { source: "/work-with-us", destination: "/about", permanent: true },
+      { source: "/home", destination: "/", permanent: true },
     ];
   },
 };
