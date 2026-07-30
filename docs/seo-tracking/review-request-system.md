@@ -8,10 +8,10 @@ It also feeds the website directly: a great new review gets its best line added 
 
 **2–3 days after each trip ends** (they're home, buzzing, photos sorted), send one message with a one-tap link. That's it. Same for every trip, every time.
 
-## The one-tap links (already live)
+## The one-tap links (tested 2026-07-30)
 
-- **Google review (one tap):** https://g.page/r/Cep6ldGSRjD_EB0/review
-- **TripAdvisor:** https://www.tripadvisor.com/UserReviewEdit-g297913-d13170128-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html
+- **Google review (one tap):** https://g.page/r/Cep6ldGSRjD_EB0/review — ✅ tested: opens the Google "write a review" dialog directly.
+- **TripAdvisor:** https://www.tripadvisor.com/UserReviewEdit-g297913-d13170128-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html — opens TripAdvisor's review-writing page. (Click once in a browser to confirm on your account; automated tools get blocked by TripAdvisor, which is normal.)
 
 Lead with **Google** — it's the fastest for the traveller and the most valuable for the business. Offer TripAdvisor as the second option in email.
 
@@ -24,9 +24,13 @@ If you have 2 minutes, a quick Google review would mean the world to our small, 
 
 https://g.page/r/Cep6ldGSRjD_EB0/review
 
+And if you have a favourite photo or two from the trip, adding them to your review makes it come alive — future travellers love seeing the real thing. 📸
+
 Asante sana, and karibu tena (welcome back any time)!
 — Ombeni, Trust Tours & Safaris
 ```
+
+**Why the photo ask matters:** reviews *with photos* rank higher on Google, get shown more often, and are the single most persuasive thing a nervous first-timer sees. Always ask — it costs the traveller nothing and doubles the value of every review.
 
 ## Email template
 
@@ -46,7 +50,8 @@ other travellers choose with confidence.
   • Google (one tap):   https://g.page/r/Cep6ldGSRjD_EB0/review
   • TripAdvisor:         https://www.tripadvisor.com/UserReviewEdit-g297913-d13170128-Trust_Tours_And_Safaris_Company_Tanzania-Arusha_Arusha_Region.html
 
-Even a sentence or two is wonderful. Thank you again — karibu tena.
+Even a sentence or two is wonderful — and if you can attach a photo or
+two from the trip, even better. Thank you again — karibu tena.
 
 Warm regards,
 Ombeni
