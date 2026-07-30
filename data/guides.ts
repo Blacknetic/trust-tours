@@ -2953,76 +2953,136 @@ export const guides: Guide[] = [
 
   {
     slug: "how-much-tanzania-safari-cost",
-    title: "How Much Does a Tanzania Safari Cost?",
+    title: "How Much a Tanzania Safari Costs",
     topic: "Safari",
     excerpt:
-      "What drives the price, what's included, and why a bargain safari can cost you the experience.",
-    updated: "2026-06-20",
-    readMinutes: 7,
+      "What a Tanzania safari really costs — per-day price bands, itemised park fees, what's included, and why the cheapest quote is the most expensive mistake.",
+    updated: "2026-07-30",
+    readMinutes: 10,
     keyTakeaway:
-      "Tanzania safari prices are driven mainly by park fees (high and fixed), your accommodation style, the season and your group size. A large share of the cost is non-negotiable, so very cheap safaris usually mean rushed routes, long drives and minimal service. Our safaris span budget to comfort tiers to fit different budgets without cutting the things that matter.",
+      "A Tanzania safari typically costs around $300–$500 per person per day for a mid-range private trip, more for luxury and less for longer trips or bigger groups. Our safaris start from $576 for a 2-day trip and run from about $1,460 for a 3-day up to $3,600+ for a 5-day luxury fly-in. The reason there's a floor is park fees: national-park and Ngorongoro fees are set by the authorities, charged per person per day, and can be $60–$80 a day before you've paid for a vehicle, guide, fuel, food or a bed. That fixed floor is why a quote far below the market is impossible without cutting something — days, park time, crew pay or safety.",
     intro:
-      "Safari pricing can look confusing — quotes for the 'same' trip vary widely — but it comes down to a few clear factors. Once you understand them, it's easy to see where your money goes and why the cheapest quote isn't always the trip you actually want. Here's the honest breakdown.",
+      "Safari quotes for the 'same' trip vary wildly, and it's confusing — until you see where the money actually goes. The single biggest cost is one most travellers don't even know about: government park fees, which are fixed and substantial. This is the honest, itemised breakdown — per-day cost bands, what the park fees really are, what's included, three real priced examples, and why the cheapest quote is usually the most expensive mistake.",
     primaryCta: { label: "See safaris across every budget", href: "/safaris" },
     trustStrip: true,
-    inlineCtaAfter: 1,
+    inlineCtaAfter: 2,
     sections: [
       {
-        heading: "What drives the price",
+        heading: "What a safari costs per person, per day",
         paragraphs: [
-          "Four things move a safari's cost more than anything else. Park and conservation fees are set by the authorities and are substantial — charged per person, per day — and they're the same no matter how budget your trip is. The rest is accommodation, season and group size.",
+          "The clearest way to think about safari cost is per person, per day, all-inclusive. Here's the honest range for a private, guided Tanzania safari. Longer trips and bigger groups bring the daily figure down, because the fixed vehicle, guide and logistics costs spread across more days and more people.",
         ],
         table: {
-          caption: "The main levers on a safari price.",
-          headers: ["Factor", "Effect on price"],
+          caption: "Approximate per-person, per-day cost for a private guided safari, all-inclusive. Group size and trip length move these figures.",
+          headers: ["Tier", "Per person / day", "What you get"],
           rows: [
-            ["Park fees", "High and fixed — a big share of any safari, every day"],
-            ["Accommodation", "Budget camping → mid lodge → luxury can multiply the cost"],
-            ["Season", "Peak (Jun–Oct, Dec) costs more than green season"],
-            ["Group size", "More people share fixed vehicle/guide costs — cheaper per head"],
-            ["Days & parks", "More days and remoter parks add fees and logistics"],
+            ["Budget / camping", "~$250–$350", "Camping or simple lodges, shared where possible, the same parks"],
+            ["Mid-range (most travellers)", "~$350–$550", "Comfortable lodges and tented camps, private vehicle"],
+            ["Luxury", "~$600–$1,000+", "Premium camps and lodges, fly-in segments, more space and service"],
+          ],
+          highlightCol: 1,
+        },
+      },
+      {
+        heading: "Where your money actually goes: park fees",
+        paragraphs: [
+          "This is the part almost no operator shows you, and it's the key to the whole picture. Before a single night's lodging, vehicle, guide, fuel or meal, you pay government entry fees for every park, every day, per person. They are fixed, non-negotiable, and a huge share of any safari.",
+        ],
+        table: {
+          caption: "Approximate park fees. Official rates are set by TANAPA (national parks) and the NCAA (Ngorongoro) and are revised periodically — we itemise the exact current fees in every quote. Most attract 18% VAT.",
+          headers: ["Park", "Approximate fee", "Basis"],
+          rows: [
+            ["Serengeti National Park", "~$60–$70", "per adult, per day"],
+            ["Tarangire / Lake Manyara", "~$45–$53", "per adult, per day"],
+            ["Ngorongoro Conservation Area", "~$70–$80", "per person, per day"],
+            ["Ngorongoro Crater service fee", "~$250–$300", "per vehicle, per descent"],
+            ["Camping / concession inside parks", "~$30–$60", "per person, per night"],
           ],
         },
-      },
-      {
-        heading: "What's usually included",
-        bullets: [
-          "Included: park fees, 4x4 with pop-up roof and guide, accommodation, meals as specified, drinking water on drives, transfers",
-          "Usually extra: international flights, visa, travel insurance, tips, drinks and personal items",
-          "Optional add-ons: balloon safaris, cultural visits, fly-in segments and private vehicles",
-        ],
         callout: {
           tone: "info",
-          text: "Tipping your guide (and camp staff) is customary and sits outside the safari price. We'll suggest fair amounts so you can budget for it in advance.",
+          text: "Do the maths on a classic 3-day Tarangire–Ngorongoro–Serengeti trip for two: park and crater fees alone can run $500–$800+ before anyone has slept, eaten or driven a metre. That's the fixed floor under every honest quote — and the reason a bargain price has to come out of something else.",
         },
       },
       {
-        heading: "Why very cheap is a false economy",
+        heading: "What's included — and what isn't",
+        bullets: [
+          "Included: all park & conservation fees, a 4x4 with pop-up roof and a professional guide, accommodation, meals as specified, drinking water on game drives, and airport/hotel transfers",
+          "Usually extra: international flights, Tanzania visa, travel insurance, tips for your guide and crew, drinks and personal items",
+          "Optional add-ons: hot-air balloon safaris, cultural visits, fly-in segments, and a private vehicle if you're joining a group trip",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Tipping your guide and camp staff is customary and sits outside the safari price — budget for it. Our [tipping in Tanzania guide](/guides/tipping-in-tanzania) gives fair per-day amounts.",
+        },
+      },
+      {
+        heading: "Three real examples, with real prices",
         paragraphs: [
-          "Because park fees are fixed, the only way to hit a rock-bottom price is to cut elsewhere: cramming long drives to spend fewer nights inside the parks, packing vehicles full, using distant budget accommodation, or rushing the route. You can end up spending more time driving than watching wildlife.",
-          "A fair price buys you time in the right places with an experienced guide — which is the whole point of a safari.",
+          "Rather than talk in the abstract, here's what three of our actual safaris cost, from short and value-focused to a luxury fly-in. Every price is per person, and falls as your group grows.",
+        ],
+        table: {
+          caption: "Our current 'from' prices, per person sharing. See each trip for full details.",
+          headers: ["Safari", "Days", "From (per person)"],
+          rows: [
+            ["Tarangire, Lake Manyara & Ngorongoro", "3", "$1,460 mid-range / $1,906 luxury"],
+            ["Great Migration Safari", "7", "$2,200 budget / $2,800 mid-range"],
+            ["Luxury Fly-Out Safari", "5", "$2,499 mid-range / $3,666 luxury"],
+          ],
+          highlightCol: 2,
+        },
+      },
+      {
+        paragraphs: [
+          "You can see the pattern: the [3-day Tarangire, Manyara & Ngorongoro safari](/safaris/3-day-safari-tarangire-manyara-ngorongoro) is the value entry point; the [7-day Great Migration safari](/safaris/7-day-great-migration-safari) buys more days and the river crossings; and the [5-day luxury fly-out safari](/safaris/5-day-luxury-fly-safari) trades a night of driving for a scenic flight and premium camps. Same parks, different depth and comfort — browse [all our safaris](/safaris) by budget.",
         ],
       },
       {
-        heading: "Getting the best value",
+        heading: "Why the cheapest quote is the most expensive mistake",
+        paragraphs: [
+          "Because the park fees above are fixed, the only way to hit a suspiciously low price is to cut the things you can't see on a quote: fewer nights actually inside the parks, long transit drives instead of game time, overloaded vehicles, distant budget lodging outside the gates, underpaid guides and crew. You arrive expecting a safari and spend it in the car.",
+          "Worse, a price that undercuts the park fees themselves is a red flag that something isn't real — the same warning sign we cover in [how to verify a Tanzania operator's licence](/guides/how-to-choose-tour-operator). A fair price buys you time in the right places with a guide who knows them, which is the entire point. And booking direct rather than through an OTA keeps the [15–25% platform commission](/guides/book-direct-vs-ota) in your trip instead of a middleman's pocket.",
+        ],
+      },
+      {
+        heading: "How to get the best value",
         bullets: [
-          "Travel in a small group to share fixed costs",
-          "Consider green-season travel for lower rates and lush scenery",
-          "Be clear about your priorities so the route is built around them",
-          "Choose the accommodation tier that fits — we run budget to comfort",
+          "Travel in a small group so the fixed vehicle and guide costs split more ways",
+          "Consider the green season (roughly March–May) for lower rates and lush, quiet parks",
+          "Match the accommodation tier to what you'll actually notice — the wildlife is the same from every vehicle",
+          "Be clear about your priorities so the route is built around game time, not driving",
+          "Tell us your budget honestly — we'll show you the most cost-effective safe option, not just the lowest number",
+        ],
+        paragraphs: [
+          "Season matters more than most realise — see [the best time for the Great Migration](/guides/best-time-great-migration) to line up the wildlife you want with the price you pay.",
         ],
       },
     ],
     faqs: [
       {
-        question: "Why are Tanzania safaris expensive?",
+        question: "How much does a Tanzania safari cost per day?",
         answer:
-          "Mainly because national park and conservation fees are high and charged per person per day, on top of the cost of a guide, 4x4, accommodation and logistics. These fixed costs apply to every safari regardless of how budget the trip is.",
+          "Roughly $250–$350 per person per day for a budget/camping safari, $350–$550 for a comfortable mid-range private trip, and $600–$1,000+ for luxury — all-inclusive. Longer trips and larger groups lower the daily figure because fixed vehicle and guide costs spread further.",
       },
       {
-        question: "What's the cheapest way to do a safari?",
+        question: "Why are Tanzania safaris so expensive?",
         answer:
-          "Budget camping safaris in a shared group during the green season are the most affordable. We can build a cost-effective trip that still gives you real time in the parks — the key is not cutting so deep that you spend the trip driving.",
+          "Mainly government park and conservation fees, which are high, fixed, and charged per person per day — often $60–$80 a day before any lodging, vehicle, guide, fuel or food. Serengeti, Tarangire, Lake Manyara and the Ngorongoro Crater each carry their own fees, and they apply no matter how budget the trip is.",
+      },
+      {
+        question: "How much does a 3-day Tanzania safari cost?",
+        answer:
+          "Our 3-day Tarangire, Lake Manyara and Ngorongoro safari starts from $1,460 per person mid-range, or $1,906 for luxury lodges, per person sharing. Park and crater fees alone make up a large, fixed share of that — which is why quotes far below it usually mean cut corners.",
+      },
+      {
+        question: "What's the cheapest way to do a Tanzania safari?",
+        answer:
+          "A budget camping safari in a small shared group during the green season is the most affordable, and still gives you real time in the parks. The key is not cutting so deep that you spend the trip driving between distant budget lodges instead of watching wildlife.",
+      },
+      {
+        question: "Are park fees included in the safari price?",
+        answer:
+          "In a proper all-inclusive quote, yes — park and conservation fees should already be included, along with the 4x4, guide, accommodation, meals and transfers. Always confirm this: a quote that excludes park fees can look cheap until the fees are added on top.",
       },
     ],
     relatedGuides: [
