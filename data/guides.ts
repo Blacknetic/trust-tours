@@ -4326,73 +4326,105 @@ export const guides: Guide[] = [
     title: "Is Tanzania Safe for Tourists?",
     topic: "Health & Safety",
     excerpt:
-      "An honest look at safety on safari, on Kilimanjaro and in towns — and the simple precautions that keep trips trouble-free.",
-    updated: "2026-06-20",
-    readMinutes: 6,
+      "Is Tanzania safe for tourists in 2026? An honest look — safari, Kilimanjaro, Arusha, Zanzibar and solo female travellers — from a licensed local operator.",
+    updated: "2026-08-10",
+    readMinutes: 8,
     keyTakeaway:
-      "Tanzania is a popular, generally safe destination for tourists, with millions visiting each year. On safari and Kilimanjaro you're with professional guides throughout. As anywhere, use common-sense precautions in towns, look after valuables, follow your guide's wildlife instructions, and prepare for health risks like malaria. A reputable operator makes a big difference.",
+      "Yes — Tanzania is a safe, well-trodden destination, visited safely by more than a million tourists a year, and in 2026 that remains true. On safari and Kilimanjaro you're with professional guides the whole time, which makes them the safest parts of the trip. Towns like Arusha and Zanzibar call for ordinary city sense with valuables. The real risks are health-related — malaria, sun, altitude — and are easily managed with preparation. The single biggest safety decision you make is your operator: a licensed one changes the whole risk picture.",
     intro:
-      "Safety is a natural concern when planning a trip to East Africa, and it deserves an honest answer rather than either scaremongering or glossing over. The short version: Tanzania is a well-trodden, welcoming destination, and the vast majority of visits are completely trouble-free. Here's a realistic look, area by area.",
+      "Safety deserves an honest answer, not scaremongering or glossing over. The short version: Tanzania is a welcoming, heavily-visited destination, and the vast majority of trips are completely trouble-free. But \"is it safe?\" has different answers depending on where you are and who you are, so here's the realistic, context-by-context picture for 2026 — and, at the end, what I actually tell my own guests.",
     primaryCta: { label: "Plan a safe, guided trip", href: "/safaris" },
     trustStrip: true,
-    inlineCtaAfter: 2,
+    inlineCtaAfter: 3,
     sections: [
       {
-        heading: "On safari and Kilimanjaro",
+        heading: "On safari and Kilimanjaro — the safest part",
         paragraphs: [
-          "These are the safest parts of your trip, because you're with professionals the whole time. On safari you view wildlife from a vehicle with an experienced guide who knows how to keep a respectful distance. On Kilimanjaro, the main risk is altitude — managed by choosing enough days, going slowly, and climbing with a crew that does daily health checks and carries oxygen.",
+          "These are the safest parts of your whole trip, because you're with professionals the entire time. On safari you view wildlife from a vehicle with an experienced guide who keeps a respectful distance and reads animal behaviour for a living. On Kilimanjaro, the main risk isn't crime or wildlife — it's altitude, which is managed by choosing enough days, walking slowly, and climbing with a crew that runs daily health checks and carries emergency oxygen (see [altitude sickness on Kilimanjaro](/guides/altitude-sickness-on-kilimanjaro)).",
         ],
         callout: {
           tone: "tip",
-          text: "Wildlife is wild — the golden rule is simply to follow your guide's instructions at all times. Do that and a safari is remarkably safe.",
+          text: "Wildlife is wild — the one golden rule is to follow your guide's instructions at all times. Do that and a safari is remarkably safe.",
         },
       },
       {
-        heading: "In towns and cities",
+        heading: "In Arusha, Moshi & Zanzibar towns",
         paragraphs: [
-          "Arusha, Moshi and Stone Town are used to visitors and generally relaxed, but as in any city, petty theft can happen. Use common sense: don't flash expensive items, keep valuables in a hotel safe, use arranged transport at night, and stay aware in crowded markets. Your guide and hotel can advise on any areas to avoid.",
+          "Arusha, Moshi and Stone Town are used to visitors and generally relaxed, but like any town anywhere, petty theft can happen. This is ordinary city sense, not Tanzania-specific fear: keep valuables in the hotel safe, don't flash expensive items, use arranged transport after dark, and stay aware in crowded markets. Your guide and hotel will tell you if there's anywhere to avoid.",
         ],
         bullets: [
           "Keep passports and spare cash in the hotel safe",
           "Use your operator's transfers rather than hailing rides at night",
           "Be discreet with phones and cameras in busy public areas",
           "Dress modestly in Stone Town and other Muslim-majority areas",
+          "Carry a card and a little cash; avoid large cash withdrawals in the open",
         ],
       },
       {
-        heading: "Health and nature",
+        heading: "Is Tanzania safe for solo and female travellers?",
         paragraphs: [
-          "The practical risks are more about health than crime: malaria, sun and altitude. Take antimalarials, drink bottled or purified water, use sun protection, and respect the altitude on Kilimanjaro. Good travel insurance that covers your activities — including high altitude if you're climbing — is essential.",
+          "Yes — Tanzania is a popular and rewarding destination for solo travellers and solo female travellers, and many of our climbers and safari guests travel alone. On a guided trip you're rarely truly on your own: you're with a professional guide and, on group departures, a ready-made group. That structure is exactly why solo travel here feels comfortable.",
+          "The sensible precautions are the same you'd use travelling solo anywhere, with a little local awareness: dress modestly (especially in Zanzibar and Muslim-majority areas), use your operator's transport rather than the street at night, keep someone informed of your plans, and trust a licensed operator to handle logistics so you're never stranded. Female travellers report Tanzania as friendly and respectful; a good operator adds a layer of reassurance by vetting guides and camps.",
+        ],
+        callout: {
+          tone: "info",
+          text: "Solo and prefer not to climb or safari alone? A [scheduled group departure](/kilimanjaro/groups) pairs you with other travellers — the easiest, most sociable way to travel solo safely.",
+        },
+      },
+      {
+        heading: "The real risks are health, not crime",
+        paragraphs: [
+          "For most travellers the practical risks are health-related, and all are manageable with a little preparation. Malaria is present in most of the country — take antimalarials and use repellent (see [malaria in Tanzania](/guides/malaria-in-tanzania)). Make sure routine vaccinations are up to date and check whether you need a yellow-fever certificate (see [Tanzania vaccinations](/guides/tanzania-vaccinations)). Add strong sun protection, bottled or purified water, and respect for altitude on Kilimanjaro.",
+          "One thing we treat as non-negotiable: comprehensive [travel insurance](/guides/travel-insurance-tanzania) that covers your activities — including high-altitude trekking and emergency evacuation if you're climbing. It's the cheapest peace of mind you'll buy for the trip.",
         ],
       },
       {
-        heading: "Why your operator matters",
+        heading: "Why a licensed operator changes the whole picture",
         paragraphs: [
-          "A reputable, licensed operator is one of your best safety assurances — well-maintained vehicles, experienced guides, sound mountain safety procedures and reliable logistics. It's a major reason to choose carefully rather than simply going for the cheapest quote.",
+          "Here's the honest truth most safety articles miss: in Tanzania, your operator is your single biggest safety factor. A licensed, reputable one means well-maintained 4x4s, experienced guides who know the terrain and the wildlife, sound mountain-safety procedures, emergency plans that actually work, and someone reachable if anything changes. An unlicensed bargain operator is where the real risk lives — cut corners on vehicles, crew and safety don't show up on a quote until something goes wrong.",
+          "This is why we say choosing your operator carefully matters more than any other precaution — and why it's worth knowing [how to verify an operator is licensed](/guides/how-to-choose-tour-operator) before you book anyone.",
+        ],
+      },
+      {
+        heading: "What I tell my own guests — Ombeni",
+        paragraphs: [
+          "After running trips here since 2008, my honest answer to \"is Tanzania safe?\" is yes — and I'd say the same to my own family. The travellers who have trouble are almost never the ones on safari or the mountain; they're the ones who cut corners on the operator, or who forget the basics like insurance and malaria tablets. Get those right and Tanzania is one of the most welcoming places you'll ever visit.",
+          "What I tell every guest is simple: travel with a licensed operator, follow your guide, sort your insurance and antimalarials before you fly, and use normal city sense in town. Do that, and you can relax and enjoy the trip you came for. If you ever have a safety question while planning, message me directly — I'd rather answer it honestly than have you worry.",
         ],
       },
     ],
     faqs: [
       {
-        question: "Is Tanzania safe to visit?",
+        question: "Is Tanzania safe for tourists in 2026?",
         answer:
-          "Generally yes. It's a popular destination visited safely by huge numbers of tourists each year. On safari and Kilimanjaro you're with professional guides; in towns, normal city precautions apply. Health risks like malaria need preparation, and a reputable operator adds an important layer of safety.",
+          "Yes. Tanzania remains a popular, welcoming destination visited safely by well over a million tourists a year. Safari and Kilimanjaro are the safest parts of any trip because you're with professional guides throughout; towns need ordinary city sense. The main risks are health-related (malaria, sun, altitude) and easily managed with preparation and a licensed operator.",
+      },
+      {
+        question: "Is Tanzania safe for solo female travellers?",
+        answer:
+          "Yes — many women travel solo in Tanzania and find it friendly and respectful. On a guided trip you're with a professional guide throughout, and group departures pair you with other travellers. Use the same sensible precautions as anywhere: dress modestly (especially in Zanzibar), use your operator's transport at night, keep someone informed of your plans, and book a licensed operator.",
       },
       {
         question: "Is it safe to go on safari?",
         answer:
-          "Yes. You view wildlife from a vehicle with an experienced guide and follow their instructions, which keeps safaris very safe. Serious incidents are rare when you travel with a professional operator.",
+          "Yes. You view wildlife from a vehicle with an experienced guide and follow their instructions, which keeps safaris very safe. Serious incidents are rare when you travel with a professional, licensed operator.",
       },
       {
         question: "Is Zanzibar safe?",
         answer:
-          "Yes, Zanzibar is a popular, welcoming destination. Take normal precautions with valuables, dress respectfully given local customs, and use arranged transport at night.",
+          "Yes, Zanzibar is a popular, welcoming island destination. Take normal precautions with valuables, dress respectfully given local Muslim customs, and use arranged transport at night. Petty theft is the main thing to guard against, as in any beach-tourism area.",
+      },
+      {
+        question: "What is the biggest safety risk in Tanzania?",
+        answer:
+          "For most travellers it's health, not crime — chiefly malaria, sun and (for climbers) altitude, all manageable with preparation. The biggest avoidable risk is choosing an unlicensed, bargain operator that cuts corners on vehicles, guides and safety. A licensed operator is your strongest safety assurance.",
       },
     ],
     relatedGuides: [
       "malaria-in-tanzania",
       "tanzania-vaccinations",
       "travel-insurance-tanzania",
+      "how-to-choose-tour-operator",
       "tanzania-travel-guide",
     ],
     relatedPackages: ["5-day-northern-safari", "7-day-great-migration-safari", "7-day-machame-route"],
