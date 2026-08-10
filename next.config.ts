@@ -130,6 +130,14 @@ const nextConfig: NextConfig = {
       { source: "/book-online", destination: "/contact", permanent: true },
       { source: "/work-with-us", destination: "/about", permanent: true },
       { source: "/home", destination: "/", permanent: true },
+
+      // ── Dead landing URLs caught in Clarity session recordings (2026-08-10) ──
+      // Real visitors are landing on these and hitting a 404 (0 clicks, fast
+      // bounce). /about-us-3 is the old WP about page; /trekkin and
+      // /tanzania-safar are truncated links circulating in the wild.
+      { source: "/about-us-3", destination: "/about", permanent: true },
+      { source: "/trekkin", destination: "/trekking", permanent: true },
+      { source: "/tanzania-safar", destination: "/safaris", permanent: true },
     ];
   },
 };
