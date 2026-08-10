@@ -7,6 +7,32 @@ import Reveal from "@/components/Reveal";
 import Parallax from "@/components/Parallax";
 import WaypointEyebrow from "@/components/WaypointEyebrow";
 import ScrollProgressSpine from "@/components/ScrollProgressSpine";
+import { jsonLd } from "@/lib/json-ld";
+
+const SITE = "https://www.trusttourstz.com";
+
+// Founder Person schema — the same @id the guide Article `author` points to,
+// so Google resolves a single, credentialed human entity across the site
+// (E-E-A-T). Tied to the organisation via worksFor.
+const OMBENI_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE}/#ombeni`,
+  name: "Ombeni",
+  jobTitle: "Founder & Lead Guide",
+  worksFor: { "@id": `${SITE}/#organization` },
+  url: `${SITE}/about`,
+  image: `${SITE}/images/founder-ombeni.jpg`,
+  knowsAbout: [
+    "Kilimanjaro climbing",
+    "Mount Meru",
+    "Tanzania safaris",
+    "Serengeti",
+    "Ngorongoro Crater",
+    "Zanzibar",
+    "high-altitude trekking",
+  ],
+};
 
 export const metadata: Metadata = {
   title: "About Us — Meet Ombeni & the Team",
@@ -116,6 +142,7 @@ const DUST = Array.from({ length: 12 }, (_, i) => ({
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(OMBENI_JSON_LD) }} />
       <ScrollProgressSpine />
 
       {/* ── Page header — parallax mountain, fading copy ──────────── */}

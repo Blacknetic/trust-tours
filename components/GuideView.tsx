@@ -245,7 +245,11 @@ export default function GuideView({ guide }: { guide: Guide }) {
             {guide.title}
           </h1>
           <p className="fade-up fade-up-3 text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
-            {guide.readMinutes} min read · Updated {updated}
+            By{" "}
+            <Link href="/about" className="font-semibold underline decoration-1 underline-offset-2 hover:opacity-80">
+              Ombeni, Founder &amp; Lead Guide
+            </Link>{" "}
+            · {guide.readMinutes} min read · Updated {updated}
           </p>
         </div>
       </section>
@@ -368,6 +372,37 @@ export default function GuideView({ guide }: { guide: Guide }) {
           >
             {guide.primaryCta.label} →
           </Link>
+        </div>
+
+        {/* Author bio — E-E-A-T: a named, credentialed human behind the content */}
+        <div
+          className="mt-10 flex items-start gap-4 rounded-2xl p-5 md:p-6"
+          style={{ background: "var(--snow)", border: "1px solid rgba(26,26,22,0.08)" }}
+        >
+          <Link href="/about" className="relative w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+            <Photo
+              src="/images/founder-ombeni.jpg"
+              alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
+              fill
+              sizes="64px"
+              className="object-cover"
+            />
+          </Link>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: "var(--gold)" }}>
+              Written by
+            </p>
+            <p className="text-base font-extrabold" style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}>
+              Ombeni — Founder &amp; Lead Guide
+            </p>
+            <p className="text-sm leading-relaxed mt-1" style={{ color: "var(--ink)" }}>
+              Ombeni founded Trust Tours &amp; Safaris in Arusha in 2008 and has personally guided hundreds of
+              Kilimanjaro climbs and Tanzania safaris. TALA-licensed Tourism Agent (Class A).{" "}
+              <Link href="/about" className="font-semibold underline" style={{ color: "var(--gold)" }}>
+                More about Ombeni →
+              </Link>
+            </p>
+          </div>
         </div>
       </article>
 

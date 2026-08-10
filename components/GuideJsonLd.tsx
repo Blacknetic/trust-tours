@@ -22,7 +22,27 @@ export default function GuideJsonLd({ guide }: { guide: Guide }) {
     image: [`${SITE}/guides/${guide.slug}/opengraph-image`],
     datePublished: guide.updated,
     dateModified: guide.updated,
-    author: { "@type": "Organization", name: "Trust Tours & Safaris" },
+    // Named human author (founder & lead guide) rather than the Organization —
+    // Google's quality systems reward identifiable, credentialed expertise.
+    // Ties to the org via worksFor @id; full Person schema lives on /about.
+    author: {
+      "@type": "Person",
+      "@id": `${SITE}/#ombeni`,
+      name: "Ombeni",
+      jobTitle: "Founder & Lead Guide",
+      worksFor: { "@id": `${SITE}/#organization` },
+      url: `${SITE}/about`,
+      image: `${SITE}/images/founder-ombeni.jpg`,
+      knowsAbout: [
+        "Kilimanjaro climbing",
+        "Mount Meru",
+        "Tanzania safaris",
+        "Serengeti",
+        "Ngorongoro Crater",
+        "Zanzibar",
+        "high-altitude trekking",
+      ],
+    },
     publisher: {
       "@type": "Organization",
       name: "Trust Tours & Safaris",
