@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CrispChat from "@/components/CrispChat";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import MicrosoftClarity from "@/components/MicrosoftClarity";
 import StripTrackingParams from "@/components/StripTrackingParams";
 import QuoteModalProvider from "@/components/QuoteModal";
 import { SOCIAL_LINKS } from "@/data/social";
@@ -116,6 +117,7 @@ export default function RootLayout({
         <WhatsAppButton />
         <CrispChat />
         <GoogleAnalytics />
+        <MicrosoftClarity />
         <StripTrackingParams />
       </body>
     </html>
