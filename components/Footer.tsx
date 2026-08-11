@@ -35,6 +35,7 @@ const USEFUL_INFO = [
   { href: "/guides/travel-insurance-tanzania", label: "Travel insurance" },
   { href: "/guides/is-tanzania-safe", label: "Is Tanzania safe?" },
   { href: "/guides/how-to-choose-tour-operator", label: "Choosing an operator" },
+  { href: "/guides/book-direct-vs-ota", label: "Why book direct" },
 ];
 
 const WA_URL = `https://wa.me/255785938860?text=${encodeURIComponent(

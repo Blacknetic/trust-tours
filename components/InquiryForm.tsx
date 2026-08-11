@@ -382,6 +382,16 @@ export default function InquiryForm({
 
       <p className="text-xs" style={{ color: "var(--ink)", opacity: 0.7 }}>
         By sending, you agree to be contacted about your trip. No spam, ever.
+        You&rsquo;re also booking direct with the operator, not a reseller —{" "}
+        <a
+          href="/guides/book-direct-vs-ota"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline font-semibold"
+        >
+          here&rsquo;s why that matters
+        </a>
+        .
       </p>
 
       <button
