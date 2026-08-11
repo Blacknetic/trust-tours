@@ -5,18 +5,15 @@ import { getPackage } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
 import Reveal from "@/components/Reveal";
-import RotatingWords from "@/components/RotatingWords";
 import Parallax from "@/components/Parallax";
 import ScrollProgressSpine from "@/components/ScrollProgressSpine";
 import WaypointEyebrow from "@/components/WaypointEyebrow";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
-import WhyTrustUs from "@/components/WhyTrustUs";
 import SummitWall from "@/components/SummitWall";
-import TripFinder from "@/components/TripFinder";
 import PillLink from "@/components/PillLink";
 import SoaringBirds from "@/components/SoaringBirds";
 import GuideStrip from "@/components/GuideStrip";
-import RequestQuoteButton from "@/components/RequestQuoteButton";
+import HeroWhatsAppCTA from "@/components/HeroWhatsAppCTA";
 import { getGuide } from "@/data/guides";
 
 // Flagship pillar guides featured on the homepage.
@@ -145,78 +142,63 @@ export default function HomePage() {
           >
             Kilimanjaro climbs · Tanzania safaris
           </p>
+          {/* Headline — strongest proof pulled above the fold: Robin's real
+              review, tightened to a pull-quote. Full, unedited review lives
+              in the testimonial wall further down the page. */}
           <h1
-            className="fade-up fade-up-2 text-5xl md:text-7xl font-semibold mb-5"
+            className="fade-up fade-up-2 text-4xl md:text-6xl font-semibold mb-3"
             style={{
               fontFamily: "var(--font-display)",
               color: "var(--paper)",
-              lineHeight: 1.04,
+              lineHeight: 1.15,
               letterSpacing: "-0.015em",
-              maxWidth: "16ch",
+              maxWidth: "20ch",
+              fontStyle: "italic",
             }}
           >
-            The roof of Africa, with people you trust.
+            &ldquo;We had trouble paying — Ombeni was patient, and we found a
+            solution.&rdquo;
           </h1>
           <p
-            className="fade-up fade-up-3 text-2xl md:text-3xl mb-7"
-            style={{
-              fontFamily: "var(--font-display)",
-              color: "var(--paper)",
-              fontStyle: "italic",
-              lineHeight: 1.25,
-            }}
+            className="fade-up fade-up-2 text-sm font-semibold mb-7"
+            style={{ color: "var(--gold)" }}
           >
-            We guide you to{" "}
-            <RotatingWords
-              words={[
-                "the summit.",
-                "the Serengeti.",
-                "the crater rim.",
-                "the Great Migration.",
-                "Zanzibar.",
-              ]}
-              className="not-italic font-semibold text-gold"
-            />
+            — Robin Van Rompaey, climbed Kilimanjaro (Lemosho/Western Breach)
+            + 4-day safari, September 2023
           </p>
+          {/* Credential strip — pulled up from the old "Recognised, licensed,
+              and answerable to you" section further down the page. */}
           <p
-            className="fade-up fade-up-4 text-base mb-10"
-            style={{ color: "rgba(255,255,255,0.95)", maxWidth: "50ch", lineHeight: 1.6 }}
+            className="fade-up fade-up-3 text-sm font-semibold mb-6 flex flex-wrap items-center gap-x-2 gap-y-1"
+            style={{ color: "rgba(255,255,255,0.92)" }}
           >
-            A small Arusha-based crew, led by Ombeni. We drive, we cook, we
-            guide — from the moment you land to your summit certificate or your
-            last game drive.
+            <span>TALA Licensed (Class A)</span>
+            <span aria-hidden="true" style={{ color: "var(--gold)" }}>·</span>
+            <span>Owner-led, never outsourced</span>
+            <span aria-hidden="true" style={{ color: "var(--gold)" }}>·</span>
+            <span>Message Ombeni directly — not a call center</span>
           </p>
 
-          <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-4">
-            <RequestQuoteButton
-              label="Request a free quote"
-              context={{ heading: "Plan your Tanzania trip" }}
-            />
-            <Link
-              href="/kilimanjaro"
-              className="btn-fill text-center px-8 py-4 rounded-full font-semibold text-base transition-colors hover:text-white"
-              style={{ border: "2px solid rgba(255,255,255,0.45)", color: "var(--paper)" }}
-            >
-              View Kilimanjaro routes
-            </Link>
-            <Link
-              href="/kilimanjaro/groups"
-              className="btn-fill text-center px-8 py-4 rounded-full font-semibold text-base transition-colors hover:text-white"
-              style={{ border: "2px solid rgba(255,255,255,0.45)", color: "var(--paper)" }}
-            >
-              Join a group
-            </Link>
-          </div>
+          <Link
+            href="/about"
+            className="fade-up fade-up-3 link-draw inline-block text-sm font-semibold mb-8"
+            style={{ color: "var(--gold)" }}
+          >
+            More about Ombeni →
+          </Link>
 
-          {/* Trip finder — find your trip without browsing every page */}
-          <div className="fade-up fade-up-4 mt-10 max-w-4xl">
-            <p
-              className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-              style={{ color: "rgba(255,255,255,0.95)" }}
+          <div className="fade-up fade-up-4 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <HeroWhatsAppCTA
+              className="text-center px-8 py-4 rounded-full font-semibold text-base transition-transform duration-200 hover:-translate-y-0.5"
+              style={{ background: "var(--gold)", color: "var(--ink)" }}
+            />
+            <a
+              href="#how-it-works"
+              className="link-draw text-sm font-semibold"
+              style={{ color: "var(--paper)" }}
             >
-              Or find your trip
-            </p>
-            <TripFinder />
+              See how it works →
+            </a>
           </div>
         </div>
 
@@ -237,64 +219,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── About — meet the person behind the company first ──────── */}
-      <section style={{ background: "var(--paper)" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center">
-          <Reveal className="mx-auto w-56 md:w-full">
-            <div className="wipe relative aspect-square rounded-2xl overflow-hidden">
-              <Photo
-                src="/images/founder-ombeni.jpg"
-                alt="Ombeni, founder and lead guide of Trust Tours & Safaris"
-                fill
-                loading="eager"
-                sizes="(max-width: 768px) 224px, 300px"
-                className="object-cover"
-              />
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <WaypointEyebrow
-              className="text-sm font-semibold tracking-[0.22em] uppercase mb-4"
-              style={{ color: "var(--gold)" }}
-            >
-              From the founder
-            </WaypointEyebrow>
-            <blockquote
-              className="text-2xl md:text-3xl font-medium mb-6"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--ink)",
-                lineHeight: 1.35,
-                fontStyle: "italic",
-                maxWidth: "32ch",
-              }}
-            >
-              &ldquo;When you message Trust Tours, you talk to me — not a call
-              center. We keep the company small so every trip gets our full
-              attention.&rdquo;
-            </blockquote>
-            <p className="text-sm font-bold" style={{ color: "var(--ink)" }}>
-              Ombeni
-            </p>
-            <p className="text-sm" style={{ color: "var(--ink)" }}>
-              Founder &amp; lead guide, Trust Tours &amp; Safaris — Arusha, Tanzania
-            </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full font-semibold text-sm transition-colors hover:bg-gold hover:text-ink"
-              style={{ border: "1.5px solid rgba(74,41,18,0.3)", color: "var(--forest)" }}
-            >
-              More about Trust Tours &amp; Ombeni →
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── Why travellers trust us — back the person with proof ───── */}
-      <WhyTrustUs background="var(--snow)" />
-
-      {/* ── Wall of Summits — authentic proof, real guests & summits ─ */}
+      {/* ── Wall of Summits — authentic proof, real guests & summits.
+          Moved to sit directly after the hero: Clarity showed 38% average
+          scroll depth, so this now lands inside the zone visitors actually
+          reach. The founder quote and "Recognised, licensed" trust points
+          that used to live here have moved into the hero itself (credential
+          strip + About Ombeni link) — see above. ─────────────────────── */}
       <SummitWall />
 
       {/* ── Kilimanjaro picks — morning light ─────────────────────── */}
@@ -314,18 +244,19 @@ export default function HomePage() {
               >
                 Choose your way to the summit
               </h2>
-              <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
-                Every route up Kilimanjaro trades one thing for another — scenery
-                for solitude, an extra day for better odds at the top. Whichever
-                you choose, you climb with a guide who has stood on Uhuru Peak
-                hundreds of times and will pace you slowly so your body has time
-                to adjust. These three are the ones our climbers ask for most.
-              </p>
             </div>
             <div className="hidden md:block">
               <PillLink href="/kilimanjaro">All Kilimanjaro routes</PillLink>
             </div>
           </div>
+
+          {/* Sourced from Robin Van Rompaey's Google review (full text in
+              the testimonial wall below): most operators turn this request
+              down when asked directly. */}
+          <p className="text-sm font-semibold mb-6" style={{ color: "var(--forest)" }}>
+            We&rsquo;re one of the few operators who&rsquo;ll run the Western
+            Breach route on request, when other companies won&rsquo;t.
+          </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {kiliPicks.map((pkg, i) => (
@@ -436,7 +367,7 @@ export default function HomePage() {
       </section>
 
       {/* ── How it works — clear the path right before the ask ────── */}
-      <section style={{ background: "var(--dusk)" }}>
+      <section id="how-it-works" className="scroll-mt-24" style={{ background: "var(--dusk)" }}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
           <WaypointEyebrow
             className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"

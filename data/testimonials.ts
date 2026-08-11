@@ -14,6 +14,15 @@ export interface Testimonial {
  */
 export const testimonials: Testimonial[] = [
   {
+    name: "Robin Van Rompaey",
+    context: "Lemosho/Western Breach climb + 4-day safari · Sep 2023",
+    title: "Ombeni was patient, and we found a solution",
+    quote:
+      "Last month (September 2023) me and a friend went to Tanzania and we contacted Ombeni (the owner of Trust Tours) to arrange everything. We hiked to the top of Kilimanjaro on the Lemosho route (through the Western Breach). We booked with Ombeni because most other companies wouldn't offer us the Western Breach route, even if we specifically asked for it. We had a bit of troubles to pay, but Ombeni was patient and we found a solution and after that everything went according to plan. We were so happy about how perfectly everything was arranged, that we decided to also use Trust Tours for a 4-day safari (Tarangire, Ngorongoro Crater and Serengeti). They also provided transport to and from the airport. 10/10 would recommend!",
+    rating: 5,
+    source: "Google",
+  },
+  {
     name: "Irina D",
     context: "4-Day Mt Meru · Solo",
     title: "Such a well-organized Mt Meru trip!",
