@@ -1,4 +1,7 @@
+"use client";
+
 import Script from "next/script";
+import { useNotBot } from "@/lib/useNotBot";
 
 // Microsoft Clarity — free heatmaps + session recordings. Lets us watch how
 // visitors actually use the landing/tour pages (where they scroll, click,
@@ -9,7 +12,11 @@ import Script from "next/script";
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "y00vg5qobz";
 
 export default function MicrosoftClarity() {
-  if (!CLARITY_ID) return null;
+  // See lib/useNotBot.ts — same datacenter/automation traffic was showing up
+  // as real "sessions" here too.
+  const allow = useNotBot();
+
+  if (!CLARITY_ID || !allow) return null;
   return (
     <Script id="ms-clarity" strategy="afterInteractive">
       {`(function(c,l,a,r,i,t,y){

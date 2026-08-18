@@ -3246,13 +3246,13 @@ export const guides: Guide[] = [
     title: "Tanzania vs Kenya: Which Safari Is Right for You?",
     topic: "Safari",
     excerpt:
-      "Two of Africa's greatest safari countries compared — scenery, wildlife, crowds, cost and the Migration.",
-    updated: "2026-06-20",
-    readMinutes: 7,
+      "Two of Africa's greatest safari countries compared — wildlife density, crowds, real park fees and the Migration — from an operator who runs trips in both.",
+    updated: "2026-08-18",
+    readMinutes: 9,
     keyTakeaway:
-      "Tanzania and Kenya share the same Migration ecosystem and both offer world-class safaris. Tanzania has the larger, wilder parks (Serengeti, Ngorongoro) and a year-round Migration; Kenya's Masai Mara is more compact with famously dense big-cat viewing and the dramatic crossings in peak season. Many travellers find combining both — or a Tanzania-led trip — gives the best of each.",
+      "Tanzania and Kenya share the same Migration ecosystem and both offer world-class safaris. Tanzania has the larger, wilder parks (Serengeti, Ngorongoro) and a year-round Migration at a flat, predictable park-fee rate; Kenya's Masai Mara is more compact with famously dense big-cat viewing, but its park fees double in peak crossing season (July–December). Many travellers find combining both — or a Tanzania-led trip — gives the best of each.",
     intro:
-      "Tanzania and Kenya are the two titans of East African safari, and travellers often agonise over which to choose. The good news is there's no wrong answer — they share the same great ecosystem and both deliver superb wildlife. But they do have different characters, and the right pick depends on what you want. Here's an honest comparison.",
+      "Tanzania and Kenya are the two titans of East African safari, and travellers often agonise over which to choose. The good news is there's no wrong answer — they share the same great ecosystem and both deliver superb wildlife. We run trips into both countries ourselves — our own guides and vehicles, not a subcontracted partner — so this comparison isn't theory. Here's an honest, numbers-based look at wildlife density, crowds, real park fees and migration timing.",
     primaryCta: { label: "See our Tanzania & Kenya safaris", href: "/safaris" },
     inlineCtaAfter: 1,
     sections: [
@@ -3274,19 +3274,55 @@ export const guides: Guide[] = [
         },
       },
       {
+        heading: "Wildlife density: space vs concentration",
+        paragraphs: [
+          "This is the real trade-off, and it's worth being precise about. The Mara is roughly a tenth the size of the Serengeti ecosystem it connects to — so during crossing season, the same migrating herds are squeezed into a much smaller area. The upshot: predator sightings in the Mara are often closer and more frequent per game drive, but at popular crossing points you'll share them with more vehicles.",
+          "Ngorongoro Crater, on the Tanzania side, is its own case — a 260 km² caldera with one of the highest densities of predators anywhere in Africa, plus your best odds continent-wide of the black rhino. The Serengeti's plains, by contrast, trade some density for space and a genuine wilderness feel, especially away from the central Seronera area.",
+        ],
+      },
+      {
+        heading: "Cost: what the park fees actually are",
+        paragraphs: [
+          "Trip cost depends on your lodge/camp choice above all else, but the one cost that's fixed by government and genuinely comparable is the daily park entry fee — and it tells an honest, sometimes surprising story. All figures below are 2026 non-resident adult rates, per person per 24 hours.",
+        ],
+        table: {
+          caption: "Non-resident park entry fees, 2026 (adult, per 24 hours).",
+          headers: ["Park", "Country", "Fee"],
+          rows: [
+            ["Serengeti National Park", "Tanzania", "$80"],
+            ["Ngorongoro Conservation Area", "Tanzania", "$70.80 (+ $295/vehicle crater descent)"],
+            ["Tarangire National Park", "Tanzania", "$47.20"],
+            ["Amboseli National Park", "Kenya", "$90"],
+            ["Masai Mara National Reserve", "Kenya", "$100 (Jan–Jun) / $200 (Jul–Dec)"],
+          ],
+        },
+        callout: {
+          tone: "info",
+          text: "The single biggest number here: the Masai Mara's fee doubles to $200/person/day for July–December — exactly the peak crossing months everyone wants to see. A week in the Mara during crossing season can mean well over $1,000 per person in park fees alone, before accommodation. The Serengeti's $80 flat rate applies year-round, migration season or not.",
+        },
+      },
+      {
+        heading: "Migration timing on each side",
+        paragraphs: [
+          "The Migration is one continuous, weather-driven loop through a shared ecosystem — it doesn't restart in Kenya, it arrives there. Roughly: January–March, the herds calve on Tanzania's southern short-grass plains near Ndutu. April–May, they move northwest through the central Serengeti as the long rains push them on. June, they gather around the Grumeti River in the western corridor. July–October, the front of the herd reaches the Mara River and crosses into Kenya's Masai Mara — the dramatic river crossings both countries are known for. November–December, they turn south again, back into Tanzania, closing the loop.",
+          "In practice: Tanzania alone covers the full year, including the calving season most photographers rate as highly as the crossings. Kenya's Mara is really only the migration story for that July–October window — book Kenya outside those months and you're seeing excellent resident wildlife, but not the crossing herds.",
+        ],
+      },
+      {
         heading: "Choose Tanzania if…",
         bullets: [
           "You want the biggest, wildest parks and a sense of space",
           "You want the Ngorongoro Crater and a year-round Migration",
           "You'd like to combine safari with Kilimanjaro or Zanzibar",
           "Calving season (Jan–Feb) appeals as much as the crossings",
+          "You want one flat, predictable park fee instead of seasonal pricing",
         ],
       },
       {
         heading: "Choose Kenya if…",
         bullets: [
           "You want famously dense, close-up big-cat viewing in the Mara",
-          "Your priority is the river crossings in the classic Mara setting",
+          "Your priority is the river crossings in the classic Mara setting, July–October",
           "You're short on time and want a compact, action-packed trip",
           "Amboseli's elephants beneath Kilimanjaro are on your list",
         ],
@@ -3296,9 +3332,27 @@ export const guides: Guide[] = [
         },
       },
       {
+        heading: "The verdict, by traveller type",
+        paragraphs: [
+          "There's no single right answer — it genuinely depends on who's travelling and what they came for.",
+        ],
+        table: {
+          caption: "Our honest recommendation by traveller type.",
+          headers: ["Traveller type", "Our verdict"],
+          rows: [
+            ["First-time safari-goer", "Tanzania — the scale and the Crater give the broadest introduction to East Africa in one trip."],
+            ["Serious wildlife photographer", "Both, if time allows — Ngorongoro for density and rhino, the Mara in crossing season for predator action."],
+            ["Short on time (under a week)", "Kenya's Mara — compact geography means less time driving between parks."],
+            ["Family with children", "Tanzania — Ngorongoro and Tarangire pack huge sightings into shorter game drives, easier on younger kids."],
+            ["Honeymoon / romantic trip", "Tanzania combined with Zanzibar — safari and beach in one seamless trip, without a border crossing."],
+            ["Chasing the river crossings specifically", "Kenya's Mara, July–October only — outside that window, go to Tanzania instead."],
+          ],
+        },
+      },
+      {
         heading: "Our take",
         paragraphs: [
-          "As a Tanzania-based operator we're naturally biased, but here's our honest view: Tanzania's scale, the Ngorongoro Crater and the year-round Migration make it our pick for a first East African safari, with Zanzibar and Kilimanjaro easy to add. If the Mara crossings are your dream, a combined trip gives you both. Tell us your priorities and we'll build the right route.",
+          "As a Tanzania-based operator we're naturally biased, but here's our honest view, and it's grounded in actually running trips on both sides: Tanzania's scale, the Ngorongoro Crater and the year-round Migration at a flat park fee make it our pick for a first East African safari, with Zanzibar and Kilimanjaro easy to add. If the Mara crossings are your dream and your dates fall in July–October, Kenya earns its higher fee. If you can't choose, don't — a combined trip built around the calendar above gives you both without compromise. Tell us your priorities and dates and we'll build the right route.",
         ],
       },
     ],
@@ -3306,12 +3360,17 @@ export const guides: Guide[] = [
       {
         question: "Is Tanzania or Kenya better for safari?",
         answer:
-          "Both are excellent and share the same Migration ecosystem. Tanzania offers larger, wilder parks and the Ngorongoro Crater; Kenya's Masai Mara offers compact, dense viewing and famous crossings. The 'better' choice depends on your priorities — and you can combine both.",
+          "Both are excellent and share the same Migration ecosystem. Tanzania offers larger, wilder parks, the Ngorongoro Crater and one flat park fee year-round; Kenya's Masai Mara offers compact, dense viewing and the famous crossings, but its park fee doubles to $200/person/day in peak season (July–December). The 'better' choice depends on your priorities, dates and budget — and you can combine both.",
+      },
+      {
+        question: "Why does the Masai Mara cost more than the Serengeti?",
+        answer:
+          "The Masai Mara's non-resident park fee is seasonal — $100/person/day from January to June, rising to $200/person/day from July to December, exactly the months of the river crossings. The Serengeti charges a flat $80/person/day all year, regardless of season.",
       },
       {
         question: "Can you visit both Tanzania and Kenya in one trip?",
         answer:
-          "Yes. Combined itineraries are popular and we run several, letting you experience the Serengeti and the Masai Mara — and add Zanzibar's beaches — in a single journey.",
+          "Yes. Combined itineraries are popular and we run several ourselves, letting you experience the Serengeti and the Masai Mara — and add Zanzibar's beaches — in a single journey.",
       },
     ],
     relatedGuides: [
