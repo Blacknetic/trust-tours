@@ -4095,6 +4095,7 @@ export const guides: Guide[] = [
     ],
     relatedGuides: [
       "how-to-choose-tour-operator",
+      "best-tanzania-safari-company",
       "tanzania-safari-guide",
       "how-much-tanzania-safari-cost",
       "is-tanzania-safe",
@@ -4228,12 +4229,116 @@ export const guides: Guide[] = [
     ],
     relatedGuides: [
       "book-direct-vs-ota",
+      "best-tanzania-safari-company",
       "tanzania-travel-guide",
       "how-much-to-climb-kilimanjaro",
       "how-much-tanzania-safari-cost",
       "tipping-in-tanzania",
     ],
     relatedPackages: ["7-day-machame-route", "7-day-great-migration-safari", "5-day-northern-safari"],
+  },
+
+  {
+    slug: "best-tanzania-safari-company",
+    title: "Best Tanzania Safari Company: An Honest Checklist",
+    topic: "Planning",
+    excerpt:
+      "Every operator's website claims to be the best — that's marketing, not information. Here's the actual checklist that separates a trustworthy Tanzania safari company or tour operator from a risky one, and how we measure up against it ourselves.",
+    updated: "2026-08-18",
+    readMinutes: 8,
+    keyTakeaway:
+      "There's no single 'best' Tanzania safari company — but there is a clear, checkable list that separates trustworthy operators from risky ones: a real TALA licence (Class A), owned guides and vehicles rather than subcontracting, independently verifiable reviews, direct pricing with no hidden markup, and a named person who answers you personally rather than a call centre. Run this checklist on any operator you're considering — including us. We're TALA Class A, No. 014216, own our crew and vehicles, and carry 5.0 from 97 reviews on TripAdvisor.",
+    intro:
+      "Search 'best Tanzania safari company' and every result — ours included, if we're honest — will tell you they're the best. That's not useful information. What's actually useful is a checklist you can run against any operator in five minutes, before you send a deposit. Here's what genuinely separates a trustworthy Tanzania tour operator from a well-designed website, and exactly how we measure up against it ourselves — verify it, don't take our word for it.",
+    primaryCta: { label: "Verify us, then talk to Ombeni", href: "/contact" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
+    sections: [
+      {
+        heading: "What actually separates a trustworthy operator from a risky one",
+        paragraphs: [
+          "Reviews, licensing and a nice website are table stakes for anyone with a laptop. The checklist below is what actually predicts whether your trip goes well — each one is something you can verify independently, in minutes, without taking anyone's word for it.",
+        ],
+        table: {
+          caption: "The real checklist.",
+          headers: ["Check", "What to look for", "How to verify"],
+          rows: [
+            ["Licence", "TALA licence, Class A category specifically", "Ask for the number; see our [licence-verification guide](/guides/how-to-choose-tour-operator) for the full 5-step check"],
+            ["Who runs the trip", "Owned guides & vehicles, not subcontracted to whoever's free", "Ask directly: 'is this your own crew, or do you sub it out?'"],
+            ["Reviews", "Real volume and recency, on a platform you don't control (TripAdvisor, Google) — not just testimonials on their own site", "Check the review platform directly, read the recent ones"],
+            ["Pricing", "A real 'from' price shown before you hand over contact details, sitting above the fixed park fees", "Compare the quote against published park-fee minimums"],
+            ["Who you're talking to", "A named person, not a rotating inbox or call centre", "Ask who's planning your trip — get a name, not a department"],
+          ],
+        },
+      },
+      {
+        heading: "Why 'book direct' matters more than any single review",
+        paragraphs: [
+          "A five-star average tells you the trips went well. It doesn't tell you whether the company you're paying is the one actually running your trip, or a reseller who subcontracts to whoever's available that week — which is where service quality quietly slips. This is the real difference between booking direct with a licensed operator and booking through an OTA, and it's worth understanding before price becomes the deciding factor. See [why booking direct changes the outcome, not just the price](/guides/book-direct-vs-ota).",
+        ],
+      },
+      {
+        heading: "How we measure up — the same checklist, run on us",
+        paragraphs: [
+          "Rather than ask you to trust a claim, here's the checklist above applied to Trust Tours, with everything independently checkable:",
+        ],
+        bullets: [
+          "Licence: TALA Licensed Tourism Agent, Class A, No. 014216 — published, not hidden.",
+          "Who runs the trip: our own guides, cooks and vehicles on every climb and safari — nothing subcontracted.",
+          "Reviews: 5.0 from 97 reviews on TripAdvisor, verifiable off our own site, plus our Google Business Profile.",
+          "Pricing: real 'from' prices published on every package page, above the fixed park-fee floor, with what's included spelled out.",
+          "Who you're talking to: the founder, Ombeni, plans your trip with you directly and replies himself — not a call centre.",
+          "Operating history: running trips from Arusha since 2008; a World Travel Awards nominee in 2023 and 2024.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "This isn't a claim to be taken on faith — every line above links to something you can check yourself: the licence number, the TripAdvisor page, the named founder. Run the same five checks on any operator you're comparing us against.",
+        },
+      },
+      {
+        heading: "What recent travellers actually said",
+        paragraphs: [
+          "Independent reviews, not selected quotes from our own marketing:",
+        ],
+        bullets: [
+          "\"Trust Tours were very professional throughout — the payment, the timings, and the professionalism of the driver and guide. We were very pleased and would definitely recommend Mr Ombeni and his company.\" — victor Fainzilber, Google",
+          "\"We hiked to the top of Kilimanjaro on the Lemosho route, and were so happy about how perfectly everything was arranged. 10/10 would recommend.\" — Robin Van Rompaey, Google",
+        ],
+        callout: {
+          tone: "info",
+          text: "These are two of 97+ reviews across TripAdvisor and Google — read the rest on our [reviews page](/reviews) rather than trusting a curated selection here.",
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: "What makes a good Tanzania safari company?",
+        answer:
+          "A valid TALA licence (Class A specifically), owned guides and vehicles rather than subcontracted crews, independently verifiable reviews on a platform they don't control, transparent pricing shown before you hand over contact details, and a named person you deal with directly rather than a rotating call centre. Check all five before booking with anyone.",
+      },
+      {
+        question: "How do I verify a Tanzania tour operator is licensed?",
+        answer:
+          "Ask for their TALA licence number and category, and confirm the licensed company name matches who you're actually dealing with. Our full step-by-step verification guide, including a worked example, is here: [Verify a Tanzania Operator's Licence](/guides/how-to-choose-tour-operator).",
+      },
+      {
+        question: "Is it better to book direct or through an OTA like Viator?",
+        answer:
+          "Booking direct with a licensed operator means the company you're paying is the one actually running your trip — no subcontracting, no markup for a platform in between. See [Why Book Direct, Not Through an OTA](/guides/book-direct-vs-ota) for the full honest comparison.",
+      },
+      {
+        question: "Is Trust Tours the best Tanzania safari company?",
+        answer:
+          "We think we're a strong, honest choice — TALA Class A licensed, owner-led with our own crew and vehicles, and rated 5.0 from 97 independent reviews. But 'best' depends on your priorities, so we'd rather you run the checklist above on us and on anyone else you're considering than take our word for it.",
+      },
+    ],
+    relatedGuides: [
+      "how-to-choose-tour-operator",
+      "book-direct-vs-ota",
+      "how-much-tanzania-safari-cost",
+      "is-tanzania-safe",
+    ],
+    relatedPackages: ["7-day-great-migration-safari", "7-day-machame-route", "8-day-lemosho-route"],
   },
 
   {

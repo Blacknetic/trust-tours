@@ -237,6 +237,11 @@
 - Why it matters: These directories rank for "[trip] operator" queries themselves and provide relevant, legitimate backlinks — the easy 20% of link building.
 - Deliverable: ≥4 completed directory profiles, all logged with consistent NAP.
 
+### Inserted — Keyword Priority & the "Best Operator" Gap (2026-08-18)
+- Task: Off-cycle addition, not part of the original 90-day skeleton. Reviewed a local-SEO framework, realized we'd never done real Step-1-style keyword benchmarking for this site, and pulled actual GSC data (not estimates) for a 5-term shortlist. Found a clean two-bucket split: cost/informational queries have real impressions but zero clicks (an authority problem, already being addressed by Days 40–41's link building) vs. "best operator/company" queries with **zero impressions** — a relevance-matching gap, not an authority one. Built `/guides/best-tanzania-safari-company` to close it directly.
+- Why it matters: Confirms the authority-building pivot is correctly prioritized, and surfaces a real, fixable content gap that backlinks alone would never have fixed — Google was never even considering the site a candidate for "best tanzania tour operator" / "best tanzania safari company."
+- Deliverable: New guide live, cross-linked from `book-direct-vs-ota` and `how-to-choose-tour-operator`. Full findings + methodology: [keyword-priority-2026-08-18.md](./seo-tracking/keyword-priority-2026-08-18.md).
+
 ### Day 41
 - Task: Directory sweep 2 — general/platform: Bing Places, Apple Business Connect (Apple Maps), full Facebook page audit (services, CTA button → site), LinkedIn company page, and make sure every profile links to `https://www.trusttourstz.com` (with www — matching your canonical host) and appears in the org `sameAs` array in `app/layout.tsx` where appropriate.
 - Why it matters: Consistent cross-platform presence consolidates your knowledge-graph entity, and each profile is another page-one result for brand searches by comparison-shopping travelers.
