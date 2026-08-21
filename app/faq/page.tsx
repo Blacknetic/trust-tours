@@ -60,7 +60,7 @@ const FAQ_GROUPS: Group[] = [
       {
         question: "How much does it cost to climb Kilimanjaro?",
         answer:
-          "Our private climbs start from $2,240 per person, all-inclusive of park fees, licensed guides, the full crew, meals and airport transfers. The exact price depends on the route, the number of days and your group size, and falls as the group grows.",
+          "Our private climbs start from $1,950 per person, all-inclusive of park fees, licensed guides, the full crew, meals and airport transfers. The exact price depends on the route, the number of days and your group size — every route page shows the price for each party size from one climber to eight.",
         href: "/guides/how-much-to-climb-kilimanjaro",
       },
       {

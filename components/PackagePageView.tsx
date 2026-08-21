@@ -10,6 +10,8 @@ import BookingCard from "@/components/BookingCard";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
+import PriceLadder from "@/components/PriceLadder";
+import { paxLadder, ladderHigh } from "@/lib/pricing";
 import { guidesForCategory } from "@/data/guides";
 
 const SITE_URL = "https://www.trusttourstz.com";
@@ -17,7 +19,18 @@ const SITE_URL = "https://www.trusttourstz.com";
 // Category-specific wording so one template serves climbs, safaris and treks.
 const LEXICON: Record<
   TripPackage["category"],
-  { noun: string; crumb: string; basePath: string; readyLine: string; reviewsTitle: string; verb: string }
+  {
+    noun: string;
+    crumb: string;
+    basePath: string;
+    readyLine: string;
+    reviewsTitle: string;
+    verb: string;
+    // Price-ladder wording: card title ("7-day climbing") and the row label
+    // ("Machame route 7 days"). Kept here so one template serves every category.
+    gerund: string;
+    routeWord: string;
+  }
 > = {
   kilimanjaro: {
     noun: "Climb",
@@ -26,6 +39,8 @@ const LEXICON: Record<
     readyLine: "Ready to climb?",
     reviewsTitle: "What past climbers say",
     verb: "climb",
+    gerund: "climbing",
+    routeWord: "route",
   },
   safari: {
     noun: "Safari",
@@ -34,6 +49,8 @@ const LEXICON: Record<
     readyLine: "Ready to go?",
     reviewsTitle: "What past travellers say",
     verb: "travel",
+    gerund: "safari",
+    routeWord: "itinerary",
   },
   trekking: {
     noun: "Trek",
@@ -42,6 +59,8 @@ const LEXICON: Record<
     readyLine: "Ready to trek?",
     reviewsTitle: "What past trekkers say",
     verb: "trek",
+    gerund: "trekking",
+    routeWord: "route",
   },
   zanzibar: {
     noun: "Trip",
@@ -50,6 +69,8 @@ const LEXICON: Record<
     readyLine: "Ready to go?",
     reviewsTitle: "What past travellers say",
     verb: "travel",
+    gerund: "trip",
+    routeWord: "itinerary",
   },
   cultural: {
     noun: "Tour",
@@ -58,6 +79,8 @@ const LEXICON: Record<
     readyLine: "Ready to explore?",
     reviewsTitle: "What past travellers say",
     verb: "travel",
+    gerund: "tour",
+    routeWord: "itinerary",
   },
   paramotoring: {
     noun: "Adventure",
@@ -66,6 +89,8 @@ const LEXICON: Record<
     readyLine: "Ready to fly?",
     reviewsTitle: "What past flyers say",
     verb: "fly",
+    gerund: "flying",
+    routeWord: "itinerary",
   },
 };
 
@@ -83,6 +108,9 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   const pageUrl = `${SITE_URL}${lex.basePath}/${pkg.slug}`;
   const heroImg = packageImage(pkg);
   const planningGuides = guidesForCategory(pkg.category);
+  // Group-size ladder: one price per party size. `priceFromUSD` is the cheapest
+  // cell, so the hero's "From" and the table's 8+ column are the same number.
+  const ladder = pkg.groupPricing ? paxLadder(pkg.groupPricing) : null;
 
   return (
     <>
@@ -167,12 +195,25 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                   <p className="text-xs mt-1.5" style={{ color: "rgba(255,255,255,0.95)" }}>
                     per person
                   </p>
-                  <p
-                    className="text-xs mt-1 mb-5 md:ml-auto"
-                    style={{ color: "rgba(255,255,255,0.95)", maxWidth: "30ch" }}
-                  >
-                    {pkg.priceNote}
-                  </p>
+                  {ladder ? (
+                    <p
+                      className="text-xs mt-1 mb-5 md:ml-auto"
+                      style={{ color: "rgba(255,255,255,0.95)", maxWidth: "30ch" }}
+                    >
+                      in a group of 8. Climbing solo is $
+                      {ladderHigh(ladder).toLocaleString()}.{" "}
+                      <a href="#prices" className="underline underline-offset-2 hover:opacity-80">
+                        See every group size
+                      </a>
+                    </p>
+                  ) : (
+                    <p
+                      className="text-xs mt-1 mb-5 md:ml-auto"
+                      style={{ color: "rgba(255,255,255,0.95)", maxWidth: "30ch" }}
+                    >
+                      {pkg.priceNote}
+                    </p>
+                  )}
                 </>
               ) : (
                 <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.95)" }}>
@@ -204,6 +245,28 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 Best months to {lex.verb}: {pkg.bestMonths.join(" · ")}
               </p>
             </section>
+
+            {/* Group-size pricing */}
+            {ladder && (
+              <section id="prices" className="py-10 border-b scroll-mt-24" style={{ borderColor: BORDER }}>
+                <PriceLadder
+                  title={`${pkg.days}-day ${lex.gerund}`}
+                  subtitle="Price per person"
+                  rows={[
+                    {
+                      label: `${pkg.shortName.replace(/^\d+-Day /, "")} ${lex.routeWord} ${pkg.days} days`,
+                      prices: ladder,
+                    },
+                  ]}
+                  note={pkg.groupPricing?.note}
+                />
+                <p className="text-sm mt-4" style={{ color: "var(--ink)", maxWidth: "62ch" }}>
+                  The crew, park permits and vehicle cost the same whether one person
+                  {" "}{lex.verb}s or eight do — so the more of you there are, the less each
+                  person pays. Travelling alone? We can pair you with an existing departure.
+                </p>
+              </section>
+            )}
 
             {/* Itinerary + Elevation Journey */}
             <section className="py-10 border-b" style={{ borderColor: BORDER }}>
@@ -355,6 +418,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 priceFromUSD={pkg.priceFromUSD}
                 priceNote={pkg.priceNote}
                 tripType={quoteTripType}
+                ladder={ladder}
               />
             </div>
           </aside>

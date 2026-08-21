@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useQuote } from "@/components/QuoteModal";
+import { priceForGroup, ladderLow } from "@/lib/pricing";
 
 const MONTHS = [
   "Flexible", "January", "February", "March", "April", "May", "June",
@@ -22,19 +23,27 @@ interface Props {
   priceFromUSD: number;
   priceNote: string;
   tripType?: "kilimanjaro" | "safari" | "zanzibar";
+  /** Per-pax price ladder, when the trip has one. Makes the price react to the stepper. */
+  ladder?: number[] | null;
 }
 
 /**
  * Desktop sticky booking card. Quick inquiry fields (travel month + group
  * size) pre-fill the Request-a-quote modal. Mobile uses MobileCTABar
  * instead, so this is rendered inside a `hidden lg:block` aside.
+ *
+ * When the trip has a price ladder the headline price tracks the group
+ * stepper, so adding travellers visibly drops the per-person figure.
  */
-export default function BookingCard({ packageTitle, priceFromUSD, priceNote, tripType }: Props) {
+export default function BookingCard({ packageTitle, priceFromUSD, priceNote, tripType, ladder }: Props) {
   const { openQuote } = useQuote();
   const [month, setMonth] = useState("Flexible");
   const [group, setGroup] = useState(2);
 
   const groupLabel = `${group}${group === GROUP_MAX ? "+" : ""}`;
+  const livePrice = ladder ? priceForGroup(ladder, group) : priceFromUSD;
+  // "From" only reads honestly on the cheapest cell; otherwise it's an exact price.
+  const isFloor = !ladder || livePrice === ladderLow(ladder);
 
   return (
     <div
@@ -47,14 +56,17 @@ export default function BookingCard({ packageTitle, priceFromUSD, priceNote, tri
     >
       {priceFromUSD > 0 ? (
         <div className="mb-6">
-          <p className="text-xs" style={{ color: "var(--ink)" }}>From</p>
+          <p className="text-xs" style={{ color: "var(--ink)" }}>{isFloor ? "From" : "Your price"}</p>
           <p
-            className="text-4xl font-extrabold leading-none"
+            className="text-4xl font-extrabold leading-none tabular-nums"
             style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
+            aria-live="polite"
           >
-            ${priceFromUSD.toLocaleString()}
+            ${livePrice.toLocaleString()}
           </p>
-          <p className="text-xs mt-1.5" style={{ color: "var(--ink)" }}>per person</p>
+          <p className="text-xs mt-1.5" style={{ color: "var(--ink)" }}>
+            per person{ladder ? `, group of ${groupLabel}` : ""}
+          </p>
         </div>
       ) : (
         <p className="text-xl font-semibold mb-6" style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}>

@@ -1,6 +1,8 @@
 // data/packages.ts — SINGLE SOURCE OF TRUTH for all trips.
 // Pages, JSON-LD schema, WhatsApp messages, and the elevation animation all read from here.
 
+import type { GroupPricing } from "@/lib/pricing";
+
 export type Tier = "budget" | "mid-range" | "comfort";
 
 // Kilimanjaro route difficulty bucket — drives the difficulty filter pills.
@@ -51,6 +53,11 @@ export interface TripPackage {
   days: number;
   priceFromUSD: number;
   priceNote: string;
+  // Group-size pricing. When set, the trip page renders the per-pax ladder
+  // table and `priceFromUSD` must equal `atEight` — the cheapest cell — so the
+  // "From $X" on cards, in the hero and in schema all agree with the table.
+  // Two numbers per trip; every column between them is derived. See lib/pricing.ts.
+  groupPricing?: GroupPricing;
   tier: Tier[];
   heroImage: string;
   gallery: string[];
@@ -102,9 +109,9 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   {
     slug: "7-day-machame-route",
-    seoTitle: "Machame Route, 7 Days — from $2,700 · Trust Tours",
+    seoTitle: "Machame Route, 7 Days — from $2,300 · Trust Tours",
     metaDescription:
-      "Kilimanjaro's most popular route, climb-high-sleep-low for higher summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,700 pp, less for groups.",
+      "Kilimanjaro's most popular route, climb-high-sleep-low for higher summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,300 pp in a group of 8.",
     destinations: ["Kilimanjaro"],
     category: "kilimanjaro",
     effort: 4,
@@ -113,9 +120,14 @@ export const packages: TripPackage[] = [
     title: "7-Day Kilimanjaro Climb – Machame Route",
     shortName: "7-Day Machame",
     days: 7,
-    priceFromUSD: 2700,
+    priceFromUSD: 2300,
     priceNote:
-      "Per person, sharing, mid-range services. $2,700 for 1–2 climbers; $2,530 for 3–4; from $2,300 for groups of 5+. Final price depends on group size and season.",
+      "Per person, sharing, mid-range services. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
+    groupPricing: {
+      atTwo: 2700,
+      atEight: 2300,
+      note: "Per person, sharing, mid-range services — park fees, full crew, meals and camping equipment included. Final price depends on your travel season.",
+    },
     tier: ["mid-range"],
     heroImage: "/images/kilimanjaro-kibo-from-trail.jpg",
     gallery: [],
@@ -269,9 +281,9 @@ export const packages: TripPackage[] = [
     reviewSnippets: [
       { author: "Andreea J", text: "I did the 9-day Northern Circuit up Kilimanjaro as a solo traveller. The climb was absolutely fabulous — the team was amazing and made me feel so comfortable and taken care of.", source: "Google" },
     ],
-    seoTitle: "Northern Circuit, 9 Days — from $2,497 · Trust Tours",
+    seoTitle: "Northern Circuit, 9 Days — from $2,160 · Trust Tours",
     metaDescription:
-      "Kilimanjaro's longest, quietest route — and the highest summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,497 pp, no OTA markup.",
+      "Kilimanjaro's longest, quietest route — and the highest summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,160 pp, no OTA markup.",
     destinations: ["Kilimanjaro"],
     category: "kilimanjaro",
     effort: 4,
@@ -280,8 +292,14 @@ export const packages: TripPackage[] = [
     title: "9-Day Kilimanjaro Climb – Northern Circuit Route",
     shortName: "9-Day Northern Circuit",
     days: 9,
-    priceFromUSD: 2497,
-    priceNote: "Per person, sharing, group of 2+.",
+    priceFromUSD: 2160,
+    priceNote:
+      "Per person, sharing, mid-range services. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
+    groupPricing: {
+      atTwo: 2497,
+      atEight: 2160,
+      note: "Per person, sharing, mid-range services — park fees, full crew, meals and camping equipment included. Nine days on the mountain gives this route the highest summit success rate we run.",
+    },
     tier: ["mid-range"],
     // INTERIM low-res photo from Ombeni's archive — replace with a hi-res shot.
     heroImage: "/images/packages/9-day-northern-circuit.jpg",
@@ -457,9 +475,9 @@ export const packages: TripPackage[] = [
       { author: "Robin Van Rompaey", text: "We hiked to the top of Kilimanjaro on the Lemosho route, and were so happy about how perfectly everything was arranged. 10/10 would recommend.", source: "Google" },
       { author: "Richard Lee", text: "Went on the 8-day Lemosho trek. Excellent team of porters, and the camp crew took care of us so well from dawn till dusk — the small details make a huge difference.", source: "Google" },
     ],
-    seoTitle: "Lemosho Route, 8 Days — from $3,050 · Trust Tours",
+    seoTitle: "Lemosho Route, 8 Days — from $2,620 · Trust Tours",
     metaDescription:
-      "Crosses the wild Shira Plateau — the best acclimatisation and summit rates on Kilimanjaro. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $3,050 pp, direct.",
+      "Crosses the wild Shira Plateau — the best acclimatisation and summit rates on Kilimanjaro. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,620 pp, direct.",
     destinations: ["Kilimanjaro"],
     category: "kilimanjaro",
     effort: 3,
@@ -468,9 +486,14 @@ export const packages: TripPackage[] = [
     title: "8-Day Kilimanjaro Climb – Lemosho Route",
     shortName: "8-Day Lemosho",
     days: 8,
-    priceFromUSD: 3050,
+    priceFromUSD: 2620,
     priceNote:
-      "Per person, sharing, mid-range services. $3,050 for 1–2 climbers; $2,880 for 3–4; from $2,620 for groups of 5+. Final price depends on group size and season.",
+      "Per person, sharing, mid-range services. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
+    groupPricing: {
+      atTwo: 3050,
+      atEight: 2620,
+      note: "Per person, sharing, mid-range services — park fees, full crew, meals and camping equipment included. Final price depends on your travel season.",
+    },
     tier: ["mid-range"],
     heroImage: "/images/lemosho-route-hero.jpg",
     gallery: [],
@@ -610,9 +633,9 @@ export const packages: TripPackage[] = [
 
   {
     slug: "6-day-marangu-route",
-    seoTitle: "Marangu Route, 6 Days — from $2,240 · Trust Tours",
+    seoTitle: "Marangu Route, 6 Days — from $1,950 · Trust Tours",
     metaDescription:
-      "The only hut-based Kilimanjaro route and our most affordable climb. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,240 pp, less for groups.",
+      "The only hut-based Kilimanjaro route and our most affordable climb. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $1,950 pp in a group of 8.",
     destinations: ["Kilimanjaro"],
     category: "kilimanjaro",
     effort: 3,
@@ -621,9 +644,14 @@ export const packages: TripPackage[] = [
     title: "6-Day Kilimanjaro Climb – Marangu Route",
     shortName: "6-Day Marangu",
     days: 6,
-    priceFromUSD: 2240,
+    priceFromUSD: 1950,
     priceNote:
-      "Per person, sharing, hut accommodation. $2,240 for 1–2 climbers; $2,130 for 3–4; from $1,950 for groups of 5+. Final price depends on group size and season.",
+      "Per person, sharing, hut accommodation. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
+    groupPricing: {
+      atTwo: 2240,
+      atEight: 1950,
+      note: "Per person, sharing hut accommodation — park fees, full crew and all meals included. No tents on this route; you sleep in Kilimanjaro's only mountain huts.",
+    },
     tier: ["budget"],
     heroImage: "/images/packages/6-day-marangu-route.jpg",
     gallery: [],
@@ -756,9 +784,14 @@ export const packages: TripPackage[] = [
     title: "6-Day Kilimanjaro Climb – Umbwe Route",
     shortName: "6-Day Umbwe",
     days: 6,
-    priceFromUSD: 2420,
+    priceFromUSD: 2100,
     priceNote:
-      "Per person, sharing, mid-range tented. $2,420 for 1–2 climbers; $2,280 for 3–4; from $2,100 for groups of 5+. Final price depends on group size and season.",
+      "Per person, sharing, mid-range tented. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
+    groupPricing: {
+      atTwo: 2420,
+      atEight: 2100,
+      note: "Per person, sharing, mid-range tented camping — park fees, full crew, meals and camping equipment included. Final price depends on your travel season.",
+    },
     tier: ["mid-range"],
     heroImage: "",
     gallery: [],
@@ -902,9 +935,14 @@ export const packages: TripPackage[] = [
     title: "6-Day Kilimanjaro Climb – Rongai Route",
     shortName: "6-Day Rongai",
     days: 6,
-    priceFromUSD: 2360,
+    priceFromUSD: 2070,
     priceNote:
-      "Per person, sharing, mid-range tented. $2,360 for 1–2 climbers; $2,240 for 3–4; from $2,070 for groups of 5+. Final price depends on group size and season.",
+      "Per person, sharing, mid-range tented. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
+    groupPricing: {
+      atTwo: 2360,
+      atEight: 2070,
+      note: "Per person, sharing, mid-range tented camping — park fees, full crew, meals and camping equipment included. Final price depends on your travel season.",
+    },
     tier: ["mid-range"],
     heroImage: "",
     gallery: [],

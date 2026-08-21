@@ -2,12 +2,58 @@ import type { TripPackage } from "@/data/packages";
 import { CATEGORY_PATH } from "@/data/packages";
 import { packageImage } from "@/data/images";
 import { jsonLd } from "@/lib/json-ld";
+import { paxLadder, PAX_COLUMNS, MAX_PAX, ladderLow, ladderHigh } from "@/lib/pricing";
 
 const BASE = "https://www.trusttourstz.com";
 
 interface Props {
   pkg: TripPackage;
   pageUrl: string;
+}
+
+const SELLER = { "@type": "Organization", name: "Trust Tours & Safaris" };
+
+/**
+ * Trips with a group-size ladder have no single price, so they emit an
+ * AggregateOffer (Google surfaces `lowPrice` in rich results) wrapping one
+ * Offer per party size, each tagged with the `eligibleQuantity` it applies to.
+ * Everything else keeps the plain single Offer.
+ */
+function buildOffers(pkg: TripPackage, pageUrl: string) {
+  const base = {
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: pageUrl,
+    seller: SELLER,
+  };
+
+  if (!pkg.groupPricing) {
+    return { "@type": "Offer", price: pkg.priceFromUSD, ...base };
+  }
+
+  const ladder = paxLadder(pkg.groupPricing);
+  return {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    lowPrice: ladderLow(ladder),
+    highPrice: ladderHigh(ladder),
+    offerCount: ladder.length,
+    offers: ladder.map((price, i) => {
+      const pax = PAX_COLUMNS[i];
+      return {
+        "@type": "Offer",
+        name: `${pkg.title} — ${pax === MAX_PAX ? `${pax}+` : pax} ${pax === 1 ? "traveller" : "travellers"}`,
+        price,
+        eligibleQuantity: {
+          "@type": "QuantitativeValue",
+          unitCode: "IE", // UN/CEFACT code for "person"
+          minValue: pax,
+          ...(pax < MAX_PAX && { maxValue: pax }),
+        },
+        ...base,
+      };
+    }),
+  };
 }
 
 export default function TripJsonLd({ pkg, pageUrl }: Props) {
@@ -83,14 +129,7 @@ export default function TripJsonLd({ pkg, pageUrl }: Props) {
       ...(image && { image: `${BASE}${image}` }),
       brand: { "@type": "Brand", name: "Trust Tours & Safaris" },
       ...(reviews.length > 0 && { review: reviews }),
-      offers: {
-        "@type": "Offer",
-        price: pkg.priceFromUSD,
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-        url: pageUrl,
-        seller: { "@type": "Organization", name: "Trust Tours & Safaris" },
-      },
+      offers: buildOffers(pkg, pageUrl),
     });
   }
 

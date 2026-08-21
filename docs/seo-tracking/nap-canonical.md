@@ -53,10 +53,14 @@ Tick each once its Name / phone / website match the canonical values exactly. Ow
 - [ ] **SafariBookings** (profile p3691) — company name, phone, website. *(Day 23 paste-ready pack written: [safaribookings-optimization-day23.md](./safaribookings-optimization-day23.md) — description, 8 price-matched tours, photo list, 3 review invites. Awaiting Ombeni.)*
 - [ ] **Facebook** — page name, About phone/email, website button.
 - [ ] **Instagram / X / TikTok / LinkedIn** — bio website link = `https://www.trusttourstz.com`.
-- [ ] **Bookmundi** — new application. *(Day 40 paste-ready pack: [directory-sweep-day40.md](./directory-sweep-day40.md) — description, 4 price-matched tours. Awaiting Ombeni to apply; selective platform, not guaranteed.)*
+- [x] **Bookmundi** — application submitted 2026-08-19, awaiting response. *(Day 40 paste-ready pack: [directory-sweep-day40.md](./directory-sweep-day40.md).)*
 - [ ] **YourAfricanSafari** — check for an existing (unclaimed) auto-indexed listing before creating one. *(Same Day 40 doc, §3.)*
-- ~~TourRadar~~ — not currently onboarding new operators; parked, not a checklist item. *(Day 40 doc, §2.)*
+- [x] **TourRadar** — greenlit past onboarding; adventures being added directly (Machame, Lemosho, Great Migration, Mount Meru live or in progress as of 2026-08-19). Note: they'd said not onboarding new operators at Day 40 — status apparently changed, or the interest form led straight into dashboard access.
 - ~~TATO membership~~ — paid application, Ombeni's call, not an SEO task. *(Day 40 doc, §4.)*
+- [ ] **Bing Places** — new sign-up needed. *(Day 41 pack: [directory-sweep-day41.md](./directory-sweep-day41.md), §1.)*
+- [ ] **Apple Business Connect** — new sign-up needed. *(Day 41 doc, §2.)*
+- [ ] **Facebook** — page exists, needs audit (CTA button, Services tab likely gaps). *(Day 41 doc, §3.)*
+- [ ] **LinkedIn** — page exists, needs audit (website link, About section likely gaps). *(Day 41 doc, §4.)*
 
 ### Social profile URLs — RESOLVED 2026-07-23 (was a Day 41 item)
 The verified GBP "Social profiles" panel gave us Google's own canonical URLs, so `data/social.ts` was cleaned early:
