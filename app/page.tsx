@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Photo from "@/components/Photo";
 import type { Metadata } from "next";
-import { getPackage } from "@/data/packages";
+import { getPackage, packages, type TripPackage } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
 import Reveal from "@/components/Reveal";
@@ -10,7 +10,7 @@ import ScrollProgressSpine from "@/components/ScrollProgressSpine";
 import WaypointEyebrow from "@/components/WaypointEyebrow";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import SummitWall from "@/components/SummitWall";
-import PillLink from "@/components/PillLink";
+import TripTabs from "@/components/TripTabs";
 import SoaringBirds from "@/components/SoaringBirds";
 import GuideStrip from "@/components/GuideStrip";
 import HeroWhatsAppCTA from "@/components/HeroWhatsAppCTA";
@@ -27,18 +27,70 @@ export const metadata: Metadata = {
     "Climb Kilimanjaro or track the Great Migration with Trust Tours & Safaris — an Arusha-based operator led by Ombeni. Trips from $385. Plan yours on WhatsApp.",
 };
 
-// Featured trios for the homepage — a deliberate spread (popular / scenic /
-// classic) so visitors see range, not three near-identical options.
-const KILI_PICKS = [
-  "7-day-machame-route",
-  "8-day-lemosho-route",
-  "6-day-marangu-route",
-];
-const SAFARI_PICKS = [
-  "7-day-great-migration-safari",
-  "3-day-safari-tarangire-manyara-ngorongoro",
-  "5-day-northern-safari",
-];
+// Featured picks for the homepage — a deliberate spread (popular / scenic /
+// classic) so visitors see range, not near-identical options.
+const pick = (slugs: string[]) =>
+  slugs.map(getPackage).filter((p): p is TripPackage => p !== undefined);
+// Remaining tabs take the first four trips of their kind (shortest first).
+const firstFour = (match: (p: TripPackage) => boolean) =>
+  packages.filter(match).sort((a, b) => a.days - b.days).slice(0, 4);
+
+const TRIP_TABS = [
+  {
+    id: "kilimanjaro",
+    label: "Kilimanjaro",
+    // Sourced from Robin Van Rompaey's Google review (full text in the
+    // testimonial wall below): most operators turn this request down.
+    blurb:
+      "We’re one of the few operators who’ll run the Western Breach route on request, when other companies won’t.",
+    href: "/kilimanjaro",
+    linkLabel: "All Kilimanjaro routes",
+    picks: pick(["7-day-machame-route", "8-day-lemosho-route", "6-day-marangu-route", "9-day-northern-circuit"]),
+  },
+  {
+    id: "safaris",
+    label: "Safaris",
+    blurb:
+      "From the elephants of Tarangire to the Great Migration in the Serengeti — 4x4 days with a guide who knows where the animals move.",
+    href: "/safaris",
+    linkLabel: "All safaris",
+    picks: pick([
+      "7-day-great-migration-safari",
+      "3-day-safari-tarangire-manyara-ngorongoro",
+      "5-day-northern-safari",
+      "4-day-balloon-safari-serengeti-ngorongoro",
+    ]),
+  },
+  {
+    id: "honeymoon",
+    label: "Honeymoon",
+    blurb: "Private safaris and Zanzibar beaches for two — bush dinners, sundowners and every romantic detail handled.",
+    href: "/honeymoon",
+    linkLabel: "All honeymoon trips",
+    picks: firstFour((p) => Boolean(p.tags?.includes("honeymoon"))),
+  },
+  {
+    id: "zanzibar",
+    label: "Safari + Zanzibar",
+    href: "/zanzibar",
+    linkLabel: "All Zanzibar trips",
+    picks: firstFour((p) => p.category === "zanzibar"),
+  },
+  {
+    id: "trekking",
+    label: "Trekking",
+    href: "/trekking",
+    linkLabel: "All treks",
+    picks: firstFour((p) => p.category === "trekking"),
+  },
+  {
+    id: "cultural",
+    label: "Cultural",
+    href: "/cultural",
+    linkLabel: "All cultural tours",
+    picks: firstFour((p) => p.category === "cultural"),
+  },
+].filter((tab) => tab.picks.length > 0);
 
 const STEPS = [
   {
@@ -64,9 +116,6 @@ const DUST = Array.from({ length: 16 }, (_, i) => ({
 }));
 
 export default function HomePage() {
-  const kiliPicks = KILI_PICKS.map(getPackage).filter((p) => p !== undefined);
-  const safariPicks = SAFARI_PICKS.map(getPackage).filter((p) => p !== undefined);
-
   return (
     <>
       <ScrollProgressSpine />
@@ -142,30 +191,18 @@ export default function HomePage() {
           >
             Kilimanjaro climbs · Tanzania safaris
           </p>
-          {/* Headline — strongest proof pulled above the fold: Robin's real
-              review, tightened to a pull-quote. Full, unedited review lives
-              in the testimonial wall further down the page. */}
           <h1
-            className="fade-up fade-up-2 text-4xl md:text-6xl font-semibold mb-3"
+            className="fade-up fade-up-2 text-4xl md:text-6xl font-semibold mb-7"
             style={{
               fontFamily: "var(--font-display)",
               color: "var(--paper)",
-              lineHeight: 1.15,
+              lineHeight: 1.1,
               letterSpacing: "-0.015em",
-              maxWidth: "20ch",
-              fontStyle: "italic",
+              maxWidth: "18ch",
             }}
           >
-            &ldquo;We had trouble paying — Ombeni was patient, and we found a
-            solution.&rdquo;
+            What you have in mind, we bring to life.
           </h1>
-          <p
-            className="fade-up fade-up-2 text-sm font-semibold mb-7"
-            style={{ color: "var(--gold)" }}
-          >
-            — Robin Van Rompaey, climbed Kilimanjaro (Lemosho/Western Breach)
-            + 4-day safari, September 2023
-          </p>
           {/* Credential strip — pulled up from the old "Recognised, licensed,
               and answerable to you" section further down the page. */}
           <p
@@ -227,92 +264,50 @@ export default function HomePage() {
           strip + About Ombeni link) — see above. ─────────────────────── */}
       <SummitWall />
 
-      {/* ── Kilimanjaro picks — morning light ─────────────────────── */}
+      {/* ── Trip picks — one switcher across every trip type ─────── */}
       <section className="contour-bg" style={{ background: "var(--paper)" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-            <div className="max-w-2xl">
-              <WaypointEyebrow
-                className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
-                style={{ color: "var(--gold)" }}
-              >
-                Climb Kilimanjaro
-              </WaypointEyebrow>
-              <h2
-                className="text-3xl md:text-5xl font-semibold mb-4"
-                style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.08 }}
-              >
-                Choose your way to the summit
-              </h2>
-            </div>
-            <div className="hidden md:block">
-              <PillLink href="/kilimanjaro">All Kilimanjaro routes</PillLink>
-            </div>
+        {/* Wider than the rest of the page so four cards fill large screens */}
+        <div className="max-w-[1680px] mx-auto px-4 md:px-8 py-16 md:py-24">
+          <div className="max-w-3xl mx-auto mb-8 text-center">
+            <p
+              className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
+              style={{ color: "var(--gold)" }}
+            >
+              Our itineraries
+            </p>
+            <h2
+              className="text-3xl md:text-5xl font-semibold mb-4"
+              style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.08 }}
+            >
+              Pick the trip you&rsquo;re dreaming of
+            </h2>
+            <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
+              Summit, safari, honeymoon or beach — switch between trip types
+              below. Every itinerary is a starting point; we shape it around
+              your dates, group and budget.
+            </p>
           </div>
 
-          {/* Sourced from Robin Van Rompaey's Google review (full text in
-              the testimonial wall below): most operators turn this request
-              down when asked directly. */}
-          <p className="text-sm font-semibold mb-6" style={{ color: "var(--forest)" }}>
-            We&rsquo;re one of the few operators who&rsquo;ll run the Western
-            Breach route on request, when other companies won&rsquo;t.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {kiliPicks.map((pkg, i) => (
-              <Reveal key={pkg.slug} delay={i * 110} className="h-full">
-                <PackageCard pkg={pkg} />
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="md:hidden mt-8">
-            <PillLink href="/kilimanjaro">All Kilimanjaro routes</PillLink>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Safari picks — late morning on the plains ─────────────── */}
-      <section style={{ background: "var(--snow)" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-            <div className="max-w-2xl">
-              <WaypointEyebrow
-                className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
-                style={{ color: "var(--gold)" }}
-              >
-                Go on safari
-              </WaypointEyebrow>
-              <h2
-                className="text-3xl md:text-5xl font-semibold mb-4"
-                style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.08 }}
-              >
-                Meet Tanzania&rsquo;s wild north
-              </h2>
-              <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
-                From the elephants of Tarangire to a million wildebeest thundering
-                across the Serengeti, your days on safari are spent in a 4x4 with
-                a guide who knows where the animals move and when. Tell us how
-                many days you have and we&rsquo;ll shape the route around it —
-                here&rsquo;s where most travellers start.
-              </p>
-            </div>
-            <div className="hidden md:block">
-              <PillLink href="/safaris">All safaris</PillLink>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {safariPicks.map((pkg, i) => (
-              <Reveal key={pkg.slug} delay={i * 110} className="h-full">
-                <PackageCard pkg={pkg} />
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="md:hidden mt-8">
-            <PillLink href="/safaris">All safaris</PillLink>
-          </div>
+          <TripTabs
+            tabs={TRIP_TABS.map(({ picks, ...tab }) => ({
+              ...tab,
+              content: (
+                // Flex-wrap + centre so a tab with fewer cards (e.g. Cultural)
+                // stays balanced instead of hugging the left edge.
+                <div key={tab.id} className="flex flex-wrap justify-center gap-6">
+                  {picks.map((pkg, i) => (
+                    <Reveal
+                      key={pkg.slug}
+                      delay={i * 110}
+                      className="h-full w-full sm:w-[calc(50%-12px)] xl:w-[calc(25%-18px)]"
+                    >
+                      <PackageCard pkg={pkg} />
+                    </Reveal>
+                  ))}
+                </div>
+              ),
+            }))}
+          />
         </div>
       </section>
 
