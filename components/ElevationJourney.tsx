@@ -107,13 +107,19 @@ export default function ElevationJourney({ itinerary }: Props) {
     );
   }
 
+  // Safaris have no elevation data — without the panel the day list must take
+  // the full width instead of being squeezed into the 240px panel column.
+  const showPanel = points.length >= 2 && summit !== null;
+
   return (
     <div
       ref={containerRef}
-      className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8 lg:gap-10 items-start"
+      className={`grid grid-cols-1 gap-8 lg:gap-10 items-start ${
+        showPanel ? "lg:grid-cols-[240px_1fr]" : ""
+      }`}
     >
       {/* ── Sticky elevation panel (climbs & treks only) ──────────── */}
-      {points.length >= 2 && summit && (
+      {showPanel && summit && (
         <div
           className="lg:sticky lg:top-24 rounded-2xl p-5"
           style={{ background: "var(--ink)" }}
@@ -229,7 +235,7 @@ export default function ElevationJourney({ itinerary }: Props) {
               </h3>
               <p
                 className="text-sm leading-relaxed mb-3"
-                style={{ color: "var(--ink)", maxWidth: "58ch" }}
+                style={{ color: "var(--ink)" }}
               >
                 {day.description}
               </p>

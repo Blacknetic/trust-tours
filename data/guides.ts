@@ -4596,53 +4596,155 @@ export const guides: Guide[] = [
 
   {
     slug: "travel-insurance-tanzania",
-    title: "Travel Insurance for Tanzania (and Kilimanjaro)",
+    title: "Travel Insurance for Tanzania: Safari, Kilimanjaro & Zanzibar",
     topic: "Health & Safety",
     excerpt:
-      "Why insurance is essential, and the one thing Kilimanjaro climbers must check: high-altitude cover.",
-    updated: "2026-06-20",
-    readMinutes: 5,
+      "What to check before you fly — medical evacuation, the Kilimanjaro altitude catch, and Zanzibar's mandatory inbound insurance.",
+    updated: "2026-10-10",
+    readMinutes: 10,
     keyTakeaway:
-      "Comprehensive travel insurance is essential for Tanzania, and for Kilimanjaro it must specifically cover trekking to high altitude (above 4,000–6,000 m) and emergency evacuation. Always check that your policy includes your exact activities, medical care, evacuation and trip cancellation — and carry the details with you.",
+      "Comprehensive travel insurance is essential for Tanzania. Safari travellers need confirmed emergency medical evacuation cover for remote areas; Kilimanjaro climbers need cover explicitly rated for high-altitude trekking to around 6,000 m; and anyone visiting Zanzibar must also buy Zanzibar's Mandatory Inbound Travel Insurance (USD 22–44 per person) on top of their own policy — it doesn't replace it.",
     intro:
-      "Travel insurance is the easy-to-overlook essential that you really don't want to skip for Tanzania — and for Kilimanjaro it comes with one specific catch that catches people out. Here's what to look for so you're properly covered.",
-    primaryCta: { label: "See our Kilimanjaro climbs", href: "/kilimanjaro" },
-    inlineCtaAfter: 1,
+      "Travel insurance is the easy-to-overlook essential you really don't want to skip for Tanzania — and depending on your itinerary, there's more than one thing to check. Here's what good cover looks like for a safari, for Kilimanjaro, and for Zanzibar, including the one insurance requirement that regularly catches travellers out.",
+    primaryCta: { label: "Find your Tanzania trip", href: "/search" },
+    trustStrip: true,
+    inlineCtaAfter: 2,
     sections: [
       {
         heading: "Why you need it",
         paragraphs: [
-          "Good insurance protects you against the things that can go wrong far from home: medical treatment, emergency evacuation, trip cancellation or curtailment, and lost baggage. Medical care and especially evacuation can be very expensive without cover, which is why we consider insurance a non-negotiable part of any Tanzania trip.",
+          "Tanzania's best destinations are remote by design. A safari can take you deep into the Serengeti, Tarangire or the Ngorongoro Conservation Area, well away from major hospitals; a Kilimanjaro climb takes you to altitude; Zanzibar is an island. Good insurance protects you against the things that can go wrong far from home: medical treatment, emergency evacuation, trip cancellation or interruption, and lost baggage.",
+          "Exact cover always depends on the insurer, the policy, its limits and its exclusions — never assume a standard policy covers every activity on your itinerary. Choose insurance that matches what you're actually doing, not a generic city-break policy.",
         ],
+      },
+      {
+        heading: "What good Tanzania travel insurance covers",
+        paragraphs: ["When comparing policies, look past the headline price and check these specifically:"],
+        bullets: [
+          "Emergency medical expenses — and the maximum amount covered",
+          "Emergency evacuation from remote areas, and any conditions that apply",
+          "Repatriation home if medically necessary",
+          "Trip cancellation and interruption, and which reasons are covered",
+          "Lost, stolen or delayed baggage, including cameras and other equipment",
+          "Personal liability",
+          "Your specific activities — safari game drives, trekking, diving, etc.",
+        ],
+      },
+      {
+        heading: "Safari insurance: what to ask your insurer",
+        paragraphs: [
+          "A safari itinerary often includes several national parks, long transfers, domestic flights and remote camps. Before you book, ask your insurer directly:",
+          '"Does my policy cover emergency medical treatment and evacuation while travelling in remote safari areas of Tanzania?"',
+        ],
+        callout: {
+          tone: "tip",
+          text: "Also check for exclusions around wildlife activities, off-road travel, remote-area travel, pre-existing conditions and unattended belongings — these are common sticking points on safari claims.",
+        },
+      },
+      {
+        heading: "Medical evacuation: the cover that matters most",
+        paragraphs: [
+          "The most important distinction in any Tanzania policy is between ordinary medical treatment and emergency evacuation. In a city, reaching a hospital is straightforward. On safari, you could be several hours from the nearest major facility.",
+          "Depending on the policy, evacuation may cover transport to an appropriate medical facility when medically necessary, sometimes followed by repatriation home — but limits and authorisation procedures vary, and serious cases often need the insurer's emergency-assistance service to approve evacuation first.",
+        ],
+        callout: {
+          tone: "tip",
+          text: "Save your insurer's emergency-assistance phone number somewhere you can find it without signal or a working phone — written down, not only saved in an app.",
+        },
       },
       {
         heading: "The Kilimanjaro catch: altitude cover",
         paragraphs: [
-          "This is the one that trips people up. Many standard travel policies exclude trekking above a certain altitude — and Kilimanjaro reaches 5,895 m. You must check that your policy specifically covers high-altitude trekking to the height of Uhuru Peak, including emergency evacuation from the mountain. A policy that doesn't is effectively useless if something happens up high.",
+          "This is the one that trips people up. Kilimanjaro reaches 5,895 m (19,341 ft), and many standard travel policies exclude trekking above a set altitude — sometimes well below the summit. A policy that doesn't explicitly cover high-altitude trekking is effectively useless if something happens up high.",
+          "Before booking your climb, ask your insurer:",
+        ],
+        bullets: [
+          "What maximum altitude is covered?",
+          "Is high-altitude trekking included, and is emergency mountain evacuation included?",
+          "Are altitude-related medical conditions covered?",
+          "Is trip cancellation covered if I'm medically unable to climb?",
+          "Does the policy cover my whole trip if I'm combining Kilimanjaro with a safari or Zanzibar?",
         ],
         callout: {
           tone: "warning",
-          text: "Before you climb, confirm in writing that your insurance covers trekking to 6,000 m and helicopter/mountain evacuation. Don't assume a standard policy does — many don't.",
+          text: "Get it in writing: confirm your policy covers trekking to Kilimanjaro's summit height and mountain evacuation before you fly. Don't assume a standard policy does — many don't.",
         },
       },
       {
-        heading: "What a good policy covers",
-        bullets: [
-          "Emergency medical treatment and hospital care",
-          "Emergency evacuation and repatriation",
-          "High-altitude trekking to Uhuru Peak (for Kilimanjaro)",
-          "Trip cancellation and curtailment",
-          "Lost, stolen or delayed baggage",
-          "Your specific activities — safari, diving, kitesurfing, etc.",
+        heading: "Zanzibar's mandatory inbound insurance",
+        paragraphs: [
+          "If Zanzibar is part of your trip, there's a requirement that applies regardless of what travel insurance you already hold: foreign visitors entering Zanzibar must have Zanzibar's Mandatory Inbound Travel Insurance, issued by the Zanzibar Insurance Corporation — even if you already carry comprehensive international cover.",
+          "Treat your insurance as two separate things: your own comprehensive travel policy, plus Zanzibar's mandatory inbound insurance. One does not substitute for the other.",
+        ],
+        table: {
+          caption:
+            "Published Zanzibar Mandatory Inbound Travel Insurance rates — fees can change, so confirm current pricing on the official portal before you travel.",
+          headers: ["Traveller", "Price"],
+          rows: [
+            ["Adult", "USD 44"],
+            ["Child", "USD 22"],
+            ["SADC & EAC nationals", "USD 22"],
+          ],
+        },
+        callout: {
+          tone: "warning",
+          text: "Buy it only through the official Zanzibar Insurance Corporation portal — it specifically warns against third-party resellers. Save a digital copy of your confirmation on your phone, with a printed backup in your travel documents.",
+        },
+      },
+      {
+        heading: "Do you still need your own insurance if you have Zanzibar's cover?",
+        paragraphs: [
+          "Yes. The mandatory policy is an entry requirement, not a substitute for comprehensive cover — it's described as protection against medical emergencies, evacuation and baggage-related losses, but travellers shouldn't assume it matches the breadth of a full international policy. Your own insurance is what you'd rely on for cancellation before departure, higher medical limits, broader evacuation and repatriation cover, and protection for the rest of your trip beyond Zanzibar.",
         ],
       },
       {
-        heading: "Practical tips",
+        heading: "Trip cancellation",
+        paragraphs: [
+          "A Tanzania trip is often booked months ahead — flights, safari deposits, lodges, Kilimanjaro arrangements and Zanzibar accommodation can all involve non-refundable costs. Read the cancellation section of any policy before you buy it, not after you need to claim: check which reasons are covered, when cancellation protection begins, and whether there's a time limit for buying the policy after your first trip payment.",
+        ],
+      },
+      {
+        heading: "Families and honeymoons",
+        paragraphs: [
+          "Family trips need the same checks for every traveller, not just the lead booker — ages, medical limits, pre-existing conditions and cancellation protection can all vary by person. Honeymoons often involve higher prepaid costs — private vehicles, luxury lodges, hot-air balloon flights, Zanzibar resorts — so cancellation and interruption cover deserve particular attention. Make sure your policy's limits reflect the actual value of the trip.",
+        ],
+      },
+      {
+        heading: "What's usually excluded",
+        paragraphs: ["Every policy is different, but exclusions commonly relate to:"],
         bullets: [
-          "Buy insurance when you book, so cancellation cover starts early",
-          "Read the activity exclusions, not just the headline cover",
-          "Carry your policy number and emergency line with you on the trip",
-          "Declare any pre-existing medical conditions honestly",
+          "Pre-existing medical conditions not declared to the insurer",
+          "Certain high-risk or adventure activities",
+          "Failure to follow safety requirements or guide instructions",
+          "Alcohol-related incidents",
+          "Unattended belongings",
+          "Certain natural or political events",
+          "Pregnancy-related circumstances",
+          "Scheduled or preventative medical treatment",
+        ],
+        callout: {
+          tone: "info",
+          text: "Read the actual policy wording rather than relying on the marketing summary — exclusions are where claims most often fail.",
+        },
+      },
+      {
+        heading: "Your pre-departure checklist",
+        bullets: [
+          "Comprehensive travel insurance purchased and certificate saved",
+          "Emergency-assistance phone number saved and written down",
+          "Medical cover limit, evacuation and repatriation checked",
+          "Cancellation and trip-interruption protection checked",
+          "Baggage protection checked",
+          "Pre-existing conditions declared",
+          "Safari activities checked, and Kilimanjaro altitude cover confirmed if climbing",
+          "Zanzibar mandatory insurance arranged, if visiting",
+          "Copies of all documents saved online and offline",
+        ],
+      },
+      {
+        heading: "If something goes wrong during your trip",
+        paragraphs: [
+          "Your safety comes first — contact local emergency assistance immediately, and your Trust Tours guide can help with the practical coordination around your safari or climb. Contact your insurer's emergency-assistance team as soon as reasonably possible, especially if your policy requires prior authorisation for treatment or evacuation. Keep every piece of documentation: medical reports, receipts, hospital invoices, airline and baggage reports, police reports where relevant, and all correspondence with your insurer.",
         ],
       },
     ],
@@ -4650,15 +4752,46 @@ export const guides: Guide[] = [
       {
         question: "Do I need travel insurance for Kilimanjaro?",
         answer:
-          "Yes, and it must specifically cover high-altitude trekking up to Kilimanjaro's summit height (around 6,000 m) plus emergency evacuation. Many standard policies exclude high-altitude trekking, so check carefully and get it in writing.",
+          "Yes, and it must specifically cover high-altitude trekking up to Kilimanjaro's summit height (around 6,000 m) plus emergency mountain evacuation. Many standard policies exclude high-altitude trekking, so check carefully and get it in writing.",
       },
       {
         question: "What should travel insurance for Tanzania cover?",
         answer:
-          "Emergency medical care, evacuation and repatriation, trip cancellation, baggage, and all your planned activities. Climbers additionally need explicit high-altitude trekking cover.",
+          "Emergency medical care, evacuation and repatriation, trip cancellation, baggage, and all your planned activities. Climbers additionally need explicit high-altitude trekking cover, and anyone visiting Zanzibar also needs the mandatory inbound insurance.",
+      },
+      {
+        question: "Is travel insurance mandatory for Zanzibar?",
+        answer:
+          "Yes. Zanzibar's Mandatory Inbound Travel Insurance is currently required for foreign visitors entering Zanzibar, even if you already hold another travel or medical insurance policy.",
+      },
+      {
+        question: "How much does Zanzibar's mandatory travel insurance cost?",
+        answer:
+          "The published rates are USD 44 per adult and USD 22 per child, with a USD 22 rate for travellers from SADC and EAC member states. Fees can change, so confirm current pricing on the official Zanzibar Insurance Corporation portal before you travel.",
+      },
+      {
+        question: "Does Zanzibar's mandatory insurance replace my own travel insurance?",
+        answer:
+          "No. It's an entry requirement, not a substitute. We recommend comprehensive international travel insurance in addition, for broader cancellation, medical, evacuation and baggage cover.",
+      },
+      {
+        question: "Does travel insurance cover safari medical evacuation?",
+        answer:
+          "Some policies do, but coverage varies. Before travelling, confirm with your insurer that your policy covers emergency medical evacuation from remote safari areas, and understand the limits, exclusions and authorisation requirements.",
+      },
+      {
+        question: "Should I buy travel insurance before paying for my Tanzania safari?",
+        answer:
+          "We recommend arranging insurance as early as practical, particularly for cancellation protection — some policies only cover cancellation if bought within a set window of your first trip payment.",
+      },
+      {
+        question: "Can Trust Tours & Safaris provide travel insurance?",
+        answer:
+          "We can guide you on what to look for, but insurance cover itself is determined by your chosen provider and policy, not by us. Choose a reputable insurer and confirm the policy matches your actual itinerary and activities.",
       },
     ],
     relatedGuides: [
+      "zanzibar-travel-guide",
       "altitude-sickness-on-kilimanjaro",
       "climbing-kilimanjaro-guide",
       "tanzania-vaccinations",

@@ -129,6 +129,7 @@ const NAV: NavItem[] = [
           { href: "/guides/altitude-sickness-on-kilimanjaro", label: "Altitude sickness" },
           { href: "/guides/tanzania-vaccinations", label: "Vaccinations" },
           { href: "/guides/is-tanzania-safe", label: "Is Tanzania safe?" },
+          { href: "/guides/travel-insurance-tanzania", label: "Travel insurance" },
         ],
       },
       {
@@ -366,8 +367,12 @@ export default function Header() {
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             aria-label="Mobile navigation"
-            className="md:hidden px-4 pb-4"
-            style={{ background: "var(--paper)", borderTop: "1px solid rgba(74,41,18,0.12)" }}
+            className="md:hidden px-4 pb-4 overflow-y-auto"
+            style={{
+              background: "var(--paper)",
+              borderTop: "1px solid rgba(74,41,18,0.12)",
+              maxHeight: "calc(100vh - 4rem)",
+            }}
           >
             {NAV.map((item) =>
               isGroup(item) ? (
