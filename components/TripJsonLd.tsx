@@ -2,7 +2,7 @@ import type { TripPackage } from "@/data/packages";
 import { CATEGORY_PATH } from "@/data/packages";
 import { packageImage } from "@/data/images";
 import { jsonLd } from "@/lib/json-ld";
-import { paxLadder, PAX_COLUMNS, MAX_PAX, ladderLow, ladderHigh } from "@/lib/pricing";
+import { lowestPrice, highestPrice, tierLabel } from "@/lib/pricing";
 
 const BASE = "https://www.trusttourstz.com";
 
@@ -31,24 +31,28 @@ function buildOffers(pkg: TripPackage, pageUrl: string) {
     return { "@type": "Offer", price: pkg.priceFromUSD, ...base };
   }
 
-  const ladder = paxLadder(pkg.groupPricing);
+  const gp = pkg.groupPricing;
+  const { tiers } = gp;
   return {
     "@type": "AggregateOffer",
     priceCurrency: "USD",
-    lowPrice: ladderLow(ladder),
-    highPrice: ladderHigh(ladder),
-    offerCount: ladder.length,
-    offers: ladder.map((price, i) => {
-      const pax = PAX_COLUMNS[i];
+    lowPrice: lowestPrice(gp),
+    highPrice: highestPrice(gp),
+    offerCount: tiers.length,
+    offers: tiers.map((t, i) => {
+      // A tier covers its own size up to the next listed size (unlisted sizes
+      // pay the rate below them); the last tier is open-ended.
+      const next = tiers[i + 1];
+      const label = tierLabel(gp, t.pax);
       return {
         "@type": "Offer",
-        name: `${pkg.title} — ${pax === MAX_PAX ? `${pax}+` : pax} ${pax === 1 ? "traveller" : "travellers"}`,
-        price,
+        name: `${pkg.title} — ${label} ${label === "1" ? "traveller" : "travellers"}`,
+        price: t.usd,
         eligibleQuantity: {
           "@type": "QuantitativeValue",
           unitCode: "IE", // UN/CEFACT code for "person"
-          minValue: pax,
-          ...(pax < MAX_PAX && { maxValue: pax }),
+          minValue: t.pax,
+          ...(next && { maxValue: next.pax - 1 }),
         },
         ...base,
       };

@@ -1,276 +1,241 @@
-"use client";
-
-import { useRef, useEffect, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValueEvent,
-  useReducedMotion,
-} from "framer-motion";
 import type { ItineraryDay } from "@/data/packages";
+import { ContentFigure, RichList } from "@/components/LongForm";
 
 interface Props {
   itinerary: ItineraryDay[];
 }
 
-const W = 380;
-const H = 132;
-const PAD_X = 18;
-const PAD_Y = 22;
+const W = 1000;
+const H = 250;
+const PAD_X = 46;
+const TOP = 46;
+const BOTTOM = 44;
 
-interface Point {
-  x: number;
-  y: number;
-  alt: number;
-  label: string;
-  day: number;
+// The profile plots each day's highest point, so the summit and climb-high
+// days (Lava Tower) show as peaks even though you sleep lower.
+const peakOf = (d: ItineraryDay) => d.altitudeMax ?? d.altitudeEnd!;
+
+// "10–11" → 10.5, so ranges still add up to a sensible route total.
+function km(d: number | string | undefined): number {
+  if (d == null) return 0;
+  if (typeof d === "number") return d;
+  const nums = d.match(/\d+(\.\d+)?/g)?.map(Number) ?? [];
+  return nums.length ? nums.reduce((a, b) => a + b, 0) / nums.length : 0;
 }
 
-function buildPoints(days: ItineraryDay[]): Point[] {
-  const withAlt = days.filter((d) => d.altitudeEnd != null);
-  if (withAlt.length < 2) return [];
+const paragraphs = (text: string) =>
+  text
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
 
-  const alts = withAlt.map((d) => d.altitudeEnd!);
-  const minAlt = Math.min(...alts, ...withAlt.map((d) => d.altitudeStart ?? d.altitudeEnd!));
-  const maxAlt = Math.max(...alts);
+function RouteProfile({ itinerary }: Props) {
+  const days = itinerary.filter((d) => d.altitudeEnd != null);
+  if (days.length < 2) return null;
+
+  const peaks = days.map(peakOf);
+  const lows = days.map((d) => d.altitudeStart ?? d.altitudeEnd!);
+  const minAlt = Math.min(...peaks, ...lows);
+  const maxAlt = Math.max(...peaks);
   const range = maxAlt - minAlt || 1;
+  const x = (i: number) => PAD_X + (i / (days.length - 1)) * (W - PAD_X * 2);
+  const y = (alt: number) => TOP + (1 - (alt - minAlt) / range) * (H - TOP - BOTTOM);
 
-  return withAlt.map((day, i) => ({
-    x: PAD_X + (i / (withAlt.length - 1)) * (W - PAD_X * 2),
-    y: H - PAD_Y - ((day.altitudeEnd! - minAlt) / range) * (H - PAD_Y * 2),
-    alt: day.altitudeEnd!,
-    label: day.accommodation.split("(")[0].trim(),
-    day: day.day,
-  }));
-}
-
-function buildPath(pts: Point[]): string {
-  if (pts.length < 2) return "";
-  let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+  const pts = days.map((d, i) => ({ x: x(i), y: y(peakOf(d)), d }));
+  let line = `M ${pts[0].x} ${pts[0].y}`;
   for (let i = 1; i < pts.length; i++) {
     const p = pts[i - 1];
     const c = pts[i];
-    const cp1x = (p.x + (c.x - p.x) * 0.55).toFixed(1);
-    const cp2x = (c.x - (c.x - p.x) * 0.55).toFixed(1);
-    d += ` C ${cp1x} ${p.y.toFixed(1)} ${cp2x} ${c.y.toFixed(1)} ${c.x.toFixed(1)} ${c.y.toFixed(1)}`;
+    const mid = (p.x + c.x) / 2;
+    line += ` C ${mid} ${p.y} ${mid} ${c.y} ${c.x} ${c.y}`;
   }
-  return d;
+  const area = `${line} L ${pts[pts.length - 1].x} ${H - BOTTOM} L ${pts[0].x} ${H - BOTTOM} Z`;
+  const totalKm = Math.round(itinerary.reduce((s, d) => s + km(d.distanceKm), 0));
+
+  return (
+    <div className="rounded-2xl p-5 md:p-6 mb-10" style={{ background: "var(--ink)" }}>
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+        <p className="text-sm font-semibold uppercase tracking-widest" style={{ color: "var(--gold)" }}>
+          Route profile
+        </p>
+        <p className="text-sm" style={{ color: "rgba(255,255,255,0.9)" }}>
+          {days.length} days on the mountain · highest point {maxAlt.toLocaleString()} m
+          {totalKm > 0 ? ` · about ${totalKm} km` : ""}
+        </p>
+      </div>
+      <p className="text-xs mb-2 sm:hidden" style={{ color: "rgba(255,255,255,0.7)" }}>
+        Swipe sideways to see every day →
+      </p>
+      <div className="overflow-x-auto -mx-2 px-2">
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          className="w-full h-auto min-w-[640px]"
+          role="img"
+          aria-label={`Elevation profile: ${days.map((d) => `day ${d.day} ${peakOf(d)} metres`).join(", ")}`}
+        >
+          <defs>
+            <linearGradient id="profileFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <line x1={PAD_X} x2={W - PAD_X} y1={H - BOTTOM} y2={H - BOTTOM} stroke="rgba(255,255,255,0.15)" />
+          <path d={area} fill="url(#profileFill)" />
+          <path d={line} fill="none" stroke="var(--gold)" strokeWidth="3" strokeLinecap="round" />
+          {pts.map(({ x: px, y: py, d }) => {
+            const summit = peakOf(d) === maxAlt;
+            return (
+              <g key={d.day}>
+                <circle cx={px} cy={py} r={summit ? 7 : 5} fill={summit ? "var(--paper)" : "var(--gold)"} />
+                <text
+                  x={px}
+                  y={py - 14}
+                  textAnchor="middle"
+                  fontSize="17"
+                  fontWeight={summit ? 700 : 500}
+                  fill="var(--paper)"
+                >
+                  {peakOf(d).toLocaleString()} m
+                </text>
+                <text x={px} y={H - BOTTOM + 26} textAnchor="middle" fontSize="16" fill="rgba(255,255,255,0.75)">
+                  Day {d.day}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Chip({ children, strong }: { children: React.ReactNode; strong?: boolean }) {
+  return (
+    <span
+      className={`px-3 py-1 rounded-full text-sm ${strong ? "font-semibold" : ""}`}
+      style={{ background: "var(--snow)", color: strong ? "var(--forest)" : "var(--ink)" }}
+    >
+      {children}
+    </span>
+  );
 }
 
 export default function ElevationJourney({ itinerary }: Props) {
-  const prefersReduced = useReducedMotion();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
-  const [totalLength, setTotalLength] = useState(9999);
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  const points = buildPoints(itinerary);
-  const pathD = buildPath(points);
-  const areaD =
-    points.length >= 2
-      ? `${pathD} L ${points[points.length - 1].x.toFixed(1)} ${H} L ${points[0].x.toFixed(1)} ${H} Z`
-      : "";
-  const summit = points.length >= 2 ? points.reduce((a, b) => (b.alt > a.alt ? b : a), points[0]) : null;
-  const totalKm = itinerary.reduce((sum, d) => sum + (d.distanceKm ?? 0), 0);
-
-  useEffect(() => {
-    if (pathRef.current) setTotalLength(pathRef.current.getTotalLength());
-  }, [pathD]);
-
-  // Track scroll through the whole itinerary so the marker "rises" up the
-  // mountain as the reader moves down the day list.
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 0.7", "end 0.4"],
-  });
-
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.round(v * (points.length - 1));
-    setActiveIdx(Math.max(0, Math.min(idx, points.length - 1)));
-  });
-
-  const strokeOffset = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReduced ? [0, 0] : [totalLength, 0]
-  );
-
-  const activePoint = points[activeIdx];
-
   if (itinerary.length === 0) {
     return (
-      <p className="text-sm py-8 italic" style={{ color: "var(--ink)" }}>
-        {/* TODO: pull full itinerary from old site before it goes offline */}
+      <p className="text-base py-8 italic" style={{ color: "var(--ink)" }}>
         Full day-by-day itinerary coming soon. Contact us on WhatsApp for the complete plan.
       </p>
     );
   }
 
-  // Safaris have no elevation data — without the panel the day list must take
-  // the full width instead of being squeezed into the 240px panel column.
-  const showPanel = points.length >= 2 && summit !== null;
-
   return (
-    <div
-      ref={containerRef}
-      className={`grid grid-cols-1 gap-8 lg:gap-10 items-start ${
-        showPanel ? "lg:grid-cols-[240px_1fr]" : ""
-      }`}
-    >
-      {/* ── Sticky elevation panel (climbs & treks only) ──────────── */}
-      {showPanel && summit && (
-        <div
-          className="lg:sticky lg:top-24 rounded-2xl p-5"
-          style={{ background: "var(--ink)" }}
-        >
-          <div className="flex items-baseline justify-between mb-3">
-            <p
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "var(--gold)" }}
-            >
-              Route profile
-            </p>
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
-              {itinerary.length} days · {totalKm > 0 ? `${totalKm} km` : `${summit.alt.toLocaleString()} m`}
-            </p>
-          </div>
+    <div>
+      <RouteProfile itinerary={itinerary} />
 
-          <svg
-            viewBox={`0 0 ${W} ${H}`}
-            className="w-full h-auto"
-            role="img"
-            aria-label="Route elevation profile chart"
-          >
-            <defs>
-              <linearGradient id="elevFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.28" />
-                <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-
-            {/* Faint full path so the shape reads before scroll fills it */}
-            <path d={areaD} fill="url(#elevFill)" />
-            <path d={pathD} fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeOpacity="0.22" />
-
-            {/* Elevation line draws itself as you scroll the days */}
-            <motion.path
-              ref={pathRef}
-              d={pathD}
-              fill="none"
-              stroke="var(--gold)"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeDasharray={totalLength}
-              style={{ strokeDashoffset: strokeOffset }}
-            />
-
-            {/* Static day dots */}
-            {points.map((pt, i) => (
-              <circle key={i} cx={pt.x} cy={pt.y} r={2.5} fill="var(--gold)" opacity={0.5} />
-            ))}
-
-            {/* Rising active-day marker */}
-            {activePoint && (
-              <motion.g
-                animate={{ x: activePoint.x, y: activePoint.y }}
-                transition={
-                  prefersReduced ? { duration: 0 } : { type: "spring", stiffness: 180, damping: 22 }
-                }
-              >
-                <circle r="9" fill="var(--gold)" opacity="0.25" />
-                <circle r="4.5" fill="var(--gold)" />
-              </motion.g>
-            )}
-          </svg>
-
-          {/* Active-day readout — updates as you scroll */}
-          {activePoint && itinerary[activeIdx] && (
-            <div
-              className="flex items-center justify-between mt-3 pt-3"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}
-            >
-              <span className="text-xs" style={{ color: "rgba(255,255,255,0.95)" }}>
-                Day {itinerary[activeIdx].day} · {activePoint.label}
-              </span>
-              <span
-                className="text-base font-extrabold"
-                style={{ fontFamily: "var(--font-display)", color: "var(--paper)" }}
-              >
-                {activePoint.alt.toLocaleString()} m
-              </span>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* ── Itinerary day list ────────────────────────────────────── */}
       <ol className="relative">
         {itinerary.map((day, idx) => (
-          <li key={day.day} className="relative flex gap-5 pb-10 last:pb-0">
-            {/* Timeline connector */}
+          <li key={day.day} className="relative flex gap-4 md:gap-6 pb-12 last:pb-0">
             {idx < itinerary.length - 1 && (
               <div
-                className="absolute left-3.5 top-7 bottom-0 w-px"
-                style={{ background: "var(--gold)", opacity: 0.2 }}
+                className="absolute left-5 top-11 bottom-0 w-px"
+                style={{ background: "var(--gold)", opacity: 0.3 }}
+                aria-hidden="true"
               />
             )}
-
-            {/* Day badge */}
             <div
-              className="relative z-10 flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold"
+              className="relative z-10 flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-base font-bold"
               style={{ background: "var(--forest)", color: "var(--paper)" }}
             >
               {day.day}
             </div>
 
-            {/* Day content */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 pt-1">
+              <p className="text-sm font-semibold uppercase tracking-widest mb-1" style={{ color: "var(--gold)" }}>
+                Day {day.day}
+              </p>
               <h3
-                className="font-semibold text-base mb-1 leading-snug"
+                className="font-bold text-xl md:text-2xl mb-4 leading-snug"
                 style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
               >
                 {day.title}
               </h3>
-              <p
-                className="text-sm leading-relaxed mb-3"
-                style={{ color: "var(--ink)" }}
-              >
-                {day.description}
-              </p>
 
-              {/* Meta chips */}
-              <div className="flex flex-wrap gap-1.5 mb-2">
-                {day.altitudeEnd && (
-                  <span
-                    className="px-2 py-0.5 rounded-full text-xs font-medium"
-                    style={{ background: "var(--snow)", color: "var(--forest)" }}
-                  >
-                    {day.altitudeEnd.toLocaleString()} m
-                  </span>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {day.altitudeEnd != null && (
+                  <Chip strong>
+                    {day.altitudeStart != null && day.altitudeStart !== day.altitudeEnd
+                      ? `${day.altitudeStart.toLocaleString()} m → ${day.altitudeEnd.toLocaleString()} m`
+                      : `${day.altitudeEnd.toLocaleString()} m`}
+                  </Chip>
                 )}
-                {day.hours && (
-                  <span
-                    className="px-2 py-0.5 rounded-full text-xs"
-                    style={{ background: "var(--snow)", color: "var(--ink)" }}
-                  >
-                    {day.hours}
-                  </span>
-                )}
-                {day.distanceKm && (
-                  <span
-                    className="px-2 py-0.5 rounded-full text-xs"
-                    style={{ background: "var(--snow)", color: "var(--ink)" }}
-                  >
-                    {day.distanceKm} km
-                  </span>
-                )}
+                {day.altitudeMax != null && <Chip>Highest point {day.altitudeMax.toLocaleString()} m</Chip>}
+                {day.distanceKm != null && <Chip>{day.distanceKm} km</Chip>}
+                {day.hours && <Chip>{day.hours}</Chip>}
               </div>
 
-              <p className="text-xs" style={{ color: "var(--ink)" }}>
-                {day.meals} · {day.accommodation}
-              </p>
+              {day.image && <ContentFigure image={day.image} className="mb-5" />}
+
+              {paragraphs(day.description).map((p, i) => (
+                <p key={i} className="text-base md:text-lg leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
+                  {p}
+                </p>
+              ))}
+
+              {day.experience && (
+                <p className="text-base md:text-lg leading-relaxed mb-4 italic" style={{ color: "var(--forest)" }}>
+                  {day.experience}
+                </p>
+              )}
+
+              {day.notes?.map((n, i) => (
+                <div
+                  key={i}
+                  className="rounded-xl px-4 py-3 mb-4 text-base leading-relaxed"
+                  style={{ background: "var(--snow)", borderLeft: "4px solid var(--sunset)", color: "var(--ink)" }}
+                >
+                  {n}
+                </div>
+              ))}
+
+              <dl
+                className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-base mb-2"
+                style={{ color: "var(--ink)" }}
+              >
+                {day.accommodation && day.accommodation !== "—" && (
+                  <div className="flex gap-1.5">
+                    <dt className="font-semibold">Overnight:</dt>
+                    <dd>{day.accommodation}</dd>
+                  </div>
+                )}
+                {day.meals && (
+                  <div className="flex gap-1.5">
+                    <dt className="font-semibold">Meals:</dt>
+                    <dd>{day.meals}</dd>
+                  </div>
+                )}
+              </dl>
+
+              {(day.dayIncluded?.length || day.dayExcluded?.length) && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-4 rounded-xl p-4" style={{ background: "var(--snow)" }}>
+                  {day.dayIncluded && day.dayIncluded.length > 0 && (
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-wide mb-2" style={{ color: "var(--forest)" }}>
+                        Included today
+                      </p>
+                      <RichList items={day.dayIncluded} mark="✓" color="var(--forest)" size="sm" />
+                    </div>
+                  )}
+                  {day.dayExcluded && day.dayExcluded.length > 0 && (
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-wide mb-2" style={{ color: "var(--sunset)" }}>
+                        Not included today
+                      </p>
+                      <RichList items={day.dayExcluded} mark="✕" color="var(--sunset)" size="sm" />
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </li>
         ))}

@@ -1350,7 +1350,7 @@ export const guides: Guide[] = [
     updated: "2026-07-20",
     readMinutes: 10,
     keyTakeaway:
-      "A properly run Kilimanjaro climb costs roughly $2,000–$3,600 per person depending on route and party size, and ours start from $1,950. The biggest single line item is national park fees — around $873 on a 6-day Marangu and about $1,097 on an 8-day Lemosho, per person, before anything else is paid for. Those fees are identical for every operator, which is why a $1,200 'all-inclusive' climb is mathematically impossible to run safely: after park fees there is almost nothing left for crew wages, food and safety.",
+      "A properly run Kilimanjaro climb costs roughly $2,000–$4,500 per person depending on route, length and party size, and ours start from $1,950. The biggest single line item is national park fees — around $873 on a 6-day Marangu and about $1,097 on an 8-day Lemosho, per person, before anything else is paid for. Those fees are identical for every operator, which is why a $1,200 'all-inclusive' climb is mathematically impossible to run safely: after park fees there is almost nothing left for crew wages, food and safety.",
     intro:
       "Kilimanjaro is one of those trips where the cheapest quote is rarely the best decision. A large share of the cost is fixed by the national park and by the simple economics of supporting you on a high mountain for a week, so when a price looks too good to be true, the savings are coming from somewhere — usually the parts you can't see until you're already up there. Below we've itemised every major cost, including the park fees most operators never show you. If you're choosing a route first, see our [Kilimanjaro routes comparison](/guides/best-kilimanjaro-route).",
     primaryCta: { label: "See our Kilimanjaro climbs & prices", href: "/kilimanjaro" },
@@ -1360,18 +1360,22 @@ export const guides: Guide[] = [
       {
         heading: "The short answer: what our climbs cost",
         paragraphs: [
-          "Here are our current 'from' prices per person, all-inclusive of park fees, licensed guides, full crew, camping equipment, all mountain meals and airport transfers. They exclude flights, visa, insurance, personal gear and crew tips.",
+          "Here are our current prices per person, inclusive of park fees, licensed guides, full crew, camping or hut accommodation and all mountain meals. Most climbs also include two hotel nights and airport transfers — each route page lists exactly what's covered. They exclude flights, visa, insurance, personal gear and crew tips.",
         ],
         table: {
-          caption: "Trust Tours prices per person, sharing, mid-range. The per-person price falls with every climber you add; each route page shows all eight group sizes.",
-          headers: ["Climb", "Days", "Solo", "2 climbers", "8+ climbers"],
+          caption: "Trust Tours prices per person, sharing, for 2027–2028. The per-person price falls as your group grows; each route page shows every group size.",
+          headers: ["Climb", "Days on the mountain", "Solo", "2 climbers", "Largest group"],
           rows: [
-            ["Marangu", "6", "$2,627", "$2,240", "$1,950"],
-            ["Rongai", "6", "$2,747", "$2,360", "$2,070"],
-            ["Umbwe", "6", "$2,847", "$2,420", "$2,100"],
-            ["Machame", "7", "$3,233", "$2,700", "$2,300"],
-            ["Lemosho", "8", "$3,623", "$3,050", "$2,620"],
-            ["Northern Circuit", "9", "$2,946", "$2,497", "$2,160"],
+            ["Marangu", "5", "$2,850", "$2,550", "$1,999 (7+)"],
+            ["Marangu", "6", "$2,627", "$2,240", "$1,950 (8+)"],
+            ["Machame", "6", "$3,250", "$2,750", "$2,250 (8+)"],
+            ["Machame", "7", "$3,233", "$2,700", "$2,350 (6+)"],
+            ["Rongai", "6", "$3,250", "$2,750", "$2,300 (7+)"],
+            ["Umbwe", "6", "$3,250", "$2,750", "$1,990 (8+)"],
+            ["Lemosho", "7", "$3,250", "$2,750", "$2,450 (5+)"],
+            ["Lemosho", "8", "$3,850", "$3,150", "$2,550 (6+)"],
+            ["Northern Circuit", "9", "$4,550", "$3,450", "$2,850 (8+)"],
+            ["Northern Circuit + Crater Camp", "11", "$6,250", "$4,850", "$3,590 (6+)"],
           ],
           highlightCol: 4,
         },
@@ -1791,7 +1795,7 @@ export const guides: Guide[] = [
     updated: "2026-07-20",
     readMinutes: 9,
     keyTakeaway:
-      "The Machame Route — the 'Whiskey Route' — is the most popular path up Kilimanjaro: a scenic southern approach through rainforest, the famous Barranco Wall, and a strong 'climb high, sleep low' profile. Climb it over seven days, not six: the extra acclimatisation day lifts the estimated summit rate to around 85–93%, versus roughly 73% on the rushed six-day version. Our [7-day Machame climb](/kilimanjaro/7-day-machame-route) starts from $2,300 per person in a group of eight, and is $2,700 each for a pair.",
+      "The Machame Route — the 'Whiskey Route' — is the most popular path up Kilimanjaro: a scenic southern approach through rainforest, the famous Barranco Wall, and a strong 'climb high, sleep low' profile. Climb it over seven days, not six: the extra acclimatisation day lifts the estimated summit rate to around 85–93%, versus roughly 73% on the rushed six-day version. Our [7-day Machame climb](/kilimanjaro/7-day-machame-route) starts from $2,350 per person in a group of six or more, and is $2,700 each for a pair.",
     intro:
       "If you picture a classic Kilimanjaro climb, you're probably picturing Machame. Nicknamed the 'Whiskey Route' for its bolder character, it's the most-trekked path on the mountain — and our most-booked climb — thanks to gorgeous scenery, a sociable trail and an acclimatisation profile that gets a lot of people to the top. This guide walks the route day by day, compares the six- and seven-day versions, and gives you the honest success rate and cost. If you're still weighing routes, start with our [Kilimanjaro routes comparison](/guides/best-kilimanjaro-route).",
     primaryCta: { label: "View the 7-Day Machame climb", href: "/kilimanjaro/7-day-machame-route" },
@@ -1848,7 +1852,7 @@ export const guides: Guide[] = [
       {
         heading: "What the Machame route costs",
         paragraphs: [
-          "Our [7-day Machame climb](/kilimanjaro/7-day-machame-route) is $2,700 per person for a pair, falling to $2,300 in a group of eight — and $3,233 if you climb alone with your own private crew. That's all-inclusive of park and rescue fees, licensed guides, a full porter and cook crew, tents and mess gear, meals on the mountain, and airport transfers. It's not the cheapest quote you'll find online — and that's the point.",
+          "Our [7-day Machame climb](/kilimanjaro/7-day-machame-route) is $2,700 per person for a pair, falling to $2,350 in a group of six or more — and $3,233 if you climb alone with your own private crew. That's all-inclusive of park and rescue fees, licensed guides, a full porter and cook crew, tents and mess gear, meals on the mountain, two hotel nights and airport transfers. It's not the cheapest quote you'll find online — and that's the point.",
           "A Kilimanjaro climb priced far below this usually cuts corners you can't see: underpaid porters, thin safety margins, fewer guides. For an honest, itemised breakdown of where the money actually goes — park fees, crew wages, food — read our guide to [what it really costs to climb Kilimanjaro](/guides/how-much-to-climb-kilimanjaro).",
         ],
       },
@@ -1900,7 +1904,7 @@ export const guides: Guide[] = [
       "how-much-to-climb-kilimanjaro",
       "kilimanjaro-group-vs-private",
     ],
-    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "9-day-northern-circuit"],
+    relatedPackages: ["7-day-machame-route", "6-day-machame-route", "8-day-lemosho-route"],
   },
 
   {
@@ -1912,7 +1916,7 @@ export const guides: Guide[] = [
     updated: "2026-07-20",
     readMinutes: 9,
     keyTakeaway:
-      "The Lemosho Route approaches Kilimanjaro from the remote west, starting quietly before joining the Machame trail higher up. Over eight days it offers excellent acclimatisation — an estimated ~90% summit rate — the finest scenery on the mountain, and fewer crowds early on. It's our top pick for travellers who want the best balance of summit success and beauty. Our [8-day Lemosho climb](/kilimanjaro/8-day-lemosho-route) starts from $2,620 per person in a group of eight, and is $3,050 each for a pair.",
+      "The Lemosho Route approaches Kilimanjaro from the remote west, starting quietly before joining the Machame trail higher up. Over eight days it offers excellent acclimatisation — an estimated ~90% summit rate — the finest scenery on the mountain, and fewer crowds early on. It's our top pick for travellers who want the best balance of summit success and beauty. Our [8-day Lemosho climb](/kilimanjaro/8-day-lemosho-route) starts from $2,550 per person in a group of six or more, and is $3,150 each for a pair.",
     intro:
       "If we had to recommend one route to a first-time climber with a little time and budget, it would often be Lemosho. It takes the best of Machame's scenery and acclimatisation profile, but starts on the wild, quiet western side of the mountain — so your first days are peaceful before the trails converge higher up. This guide covers the route day by day, its honest success rate and cost, and how it compares to the classic. Weighing it against Machame? See our [Machame vs Lemosho comparison](/guides/machame-vs-lemosho).",
     primaryCta: { label: "View the 8-Day Lemosho climb", href: "/kilimanjaro/8-day-lemosho-route" },
@@ -1961,7 +1965,7 @@ export const guides: Guide[] = [
       {
         heading: "What the Lemosho route costs",
         paragraphs: [
-          "Our [8-day Lemosho climb](/kilimanjaro/8-day-lemosho-route) is $3,050 per person for a pair, falling to $2,620 in a group of eight. That's all-inclusive of park and rescue fees, licensed guides, a full porter and cook crew, tents and mess gear, meals on the mountain, and airport transfers — roughly $350 more than our 7-day Machame, for the extra day and the quieter western approach.",
+          "Our [8-day Lemosho climb](/kilimanjaro/8-day-lemosho-route) is $3,150 per person for a pair, falling to $2,550 in a group of six or more. That's all-inclusive of park and rescue fees, licensed guides, a full porter and cook crew, tents and mess gear, meals on the mountain, two hotel nights in Arusha and airport transfers — roughly $450 more than our 7-day Machame, for the extra day and the quieter western approach.",
           "As always, be wary of quotes far below this: the cheapest climbs cut corners on crew welfare and safety you can't see in the price. For the honest, itemised breakdown, read [what it really costs to climb Kilimanjaro](/guides/how-much-to-climb-kilimanjaro).",
         ],
       },
@@ -2012,7 +2016,7 @@ export const guides: Guide[] = [
       "machame-vs-lemosho",
       "kilimanjaro-success-rate",
     ],
-    relatedPackages: ["8-day-lemosho-route", "7-day-machame-route", "9-day-northern-circuit"],
+    relatedPackages: ["8-day-lemosho-route", "7-day-lemosho-route", "7-day-machame-route"],
   },
   {
     slug: "machame-vs-lemosho",
@@ -2023,7 +2027,7 @@ export const guides: Guide[] = [
     updated: "2026-07-20",
     readMinutes: 8,
     keyTakeaway:
-      "Machame and Lemosho share the same spectacular upper mountain, so the choice comes down to the first few days. Pick the 7-day Machame if you want the classic, sociable route, a day less on the mountain and a lower price — $2,700 per person for a pair. Pick the 8-day Lemosho, at $3,050, if you want a quieter, wilder start, the best scenery and slightly better acclimatisation. For first-timers who can spare the extra day and the extra ~$350, we lean Lemosho.",
+      "Machame and Lemosho share the same spectacular upper mountain, so the choice comes down to the first few days. Pick the 7-day Machame if you want the classic, sociable route, a day less on the mountain and a lower price — $2,700 per person for a pair. Pick the 8-day Lemosho, at $3,150, if you want a quieter, wilder start, the best scenery and slightly better acclimatisation. For first-timers who can spare the extra day and the extra ~$450, we lean Lemosho.",
     intro:
       "It's the most common decision our climbers face: Machame or Lemosho? The good news is there's no wrong answer — both are superb, non-technical routes that merge high on the mountain and finish the same way. The differences are all in the first half of the climb, and they're real. Here's the honest side-by-side, from an operator that runs both every season.",
     primaryCta: { label: "See both climbs & prices", href: "/kilimanjaro" },
@@ -2051,7 +2055,7 @@ export const guides: Guide[] = [
             ["Acclimatisation", "Very good", "Excellent"],
             ["Est. summit rate", "85–93%", "~90%"],
             ["Scenery", "Excellent", "Arguably the best"],
-            ["Price (per person, party of 2)", "$2,700", "$3,050"],
+            ["Price (per person, party of 2)", "$2,700", "$3,150"],
           ],
           highlightCol: 2,
         },
@@ -2091,12 +2095,12 @@ export const guides: Guide[] = [
       {
         question: "Is Lemosho worth the extra day over Machame?",
         answer:
-          "For most first-timers, yes — if you can spare the day and roughly $350. The extra night improves acclimatisation and gives you a quieter, more scenic start. Our Machame is $2,700 and Lemosho $3,050 per person for a pair; both fall with every climber you add.",
+          "For most first-timers, yes — if you can spare the day and roughly $450. The extra night improves acclimatisation and gives you a quieter, more scenic start. Our Machame is $2,700 and Lemosho $3,150 per person for a pair; both fall as your group grows.",
       },
       {
         question: "Which is cheaper, Machame or Lemosho?",
         answer:
-          "Machame. Our 7-day Machame is $2,700 per person for a pair versus $3,050 for the 8-day Lemosho — about $350 less, mostly because it's a day shorter. Both prices drop as your group grows: $2,300 and $2,620 respectively in a group of eight.",
+          "Machame. Our 7-day Machame is $2,700 per person for a pair versus $3,150 for the 8-day Lemosho — about $450 less, mostly because it's a day shorter. Both prices drop as your group grows: to $2,350 and $2,550 respectively in a group of six or more.",
       },
       {
         question: "Which route is better for beginners?",
@@ -2110,7 +2114,7 @@ export const guides: Guide[] = [
       "best-kilimanjaro-route",
       "kilimanjaro-group-vs-private",
     ],
-    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "9-day-northern-circuit"],
+    relatedPackages: ["7-day-machame-route", "8-day-lemosho-route", "7-day-lemosho-route"],
   },
 
   {
@@ -2122,7 +2126,7 @@ export const guides: Guide[] = [
     updated: "2026-07-22",
     readMinutes: 7,
     keyTakeaway:
-      "A group climb is cheaper and more sociable but runs on fixed dates and a shared pace. A private climb costs more per person and moves entirely on your schedule. The price gap is real but smaller than most people expect: on our 7-day Machame, a private climb is $2,700 per person for a pair and falls to $2,300 once there are eight of you, so a private climb for a group of friends already costs close to a scheduled departure. Solo travellers and couples on a budget should join a group. Families, tight schedules and anyone worried about being held to someone else's pace should go private.",
+      "A group climb is cheaper and more sociable but runs on fixed dates and a shared pace. A private climb costs more per person and moves entirely on your schedule. The price gap is real but smaller than most people expect: on our 7-day Machame, a private climb is $2,700 per person for a pair and falls to $2,350 once there are six of you, so a private climb for a group of friends already costs close to a scheduled departure. Solo travellers and couples on a budget should join a group. Families, tight schedules and anyone worried about being held to someone else's pace should go private.",
     intro:
       "Once climbers settle on a route, this is the next question: join a scheduled group departure, or book the mountain privately? Both get you to Uhuru Peak with the same guides and the same safety kit — what changes is the price, the calendar and who sets the pace. Here is the honest comparison from an operator that runs both every season.",
     primaryCta: { label: "See scheduled group departures", href: "/kilimanjaro/groups" },
@@ -2161,19 +2165,19 @@ export const guides: Guide[] = [
         ],
         table: {
           caption: "Per person, sharing. Private climbs, current rates. Park and rescue fees included.",
-          headers: ["Route", "Solo", "2 climbers", "4 climbers", "8+ climbers"],
+          headers: ["Route", "Solo", "2 climbers", "4 climbers", "Largest group"],
           rows: [
-            ["7-day Machame", "$3,233", "$2,700", "$2,433", "$2,300"],
-            ["8-day Lemosho", "$3,623", "$3,050", "$2,763", "$2,620"],
-            ["6-day Marangu", "$2,627", "$2,240", "$2,047", "$1,950"],
-            ["6-day Rongai", "$2,747", "$2,360", "$2,167", "$2,070"],
+            ["7-day Machame", "$3,233", "$2,700", "$2,433", "$2,350 (6+)"],
+            ["8-day Lemosho", "$3,850", "$3,150", "$2,650", "$2,550 (6+)"],
+            ["6-day Marangu", "$2,627", "$2,240", "$2,047", "$1,950 (8+)"],
+            ["6-day Rongai", "$3,250", "$2,750", "$2,450", "$2,300 (7+)"],
           ],
           highlightCol: 4,
         },
       },
       {
         paragraphs: [
-          "Read that table across, not down. A solo climber on [Machame](/guides/machame-route) pays $3,233; eight friends on the same route pay $2,300 each. That $933 gap is the whole economic argument for group climbing — a scheduled departure simply extends the same logic to strangers, spreading the crew and the vehicle across a full party instead of one person.",
+          "Read that table across, not down. A solo climber on [Machame](/guides/machame-route) pays $3,233; six or more friends on the same route pay $2,350 each. That $883 gap is the whole economic argument for group climbing — a scheduled departure simply extends the same logic to strangers, spreading the crew and the vehicle across a full party instead of one person.",
           "It also means the decision changes with your party size. Climbing alone, the saving from joining a group is large. Arriving with four friends, you are already near the bottom of the price ladder, and paying a little more to keep the mountain to yourselves is usually worth it. For a full breakdown of where the money actually goes, see [how much it costs to climb Kilimanjaro](/guides/how-much-to-climb-kilimanjaro).",
         ],
         callout: {
@@ -2232,7 +2236,7 @@ export const guides: Guide[] = [
       {
         question: "Is a Kilimanjaro group climb cheaper than a private climb?",
         answer:
-          "Yes, per person. A group departure shares park fees, guides, porters and camp logistics across up to 8–12 climbers, so the per-person cost is the lowest we offer. But a private climb also gets cheaper as your own party grows: our 7-day Machame is $2,700 per person for a pair and $2,300 for a group of eight, so a private climb for friends is closer to a group price than most people expect.",
+          "Yes, per person. A group departure shares park fees, guides, porters and camp logistics across up to 8–12 climbers, so the per-person cost is the lowest we offer. But a private climb also gets cheaper as your own party grows: our 7-day Machame is $2,700 per person for a pair and $2,350 for a group of six or more, so a private climb for friends is closer to a group price than most people expect.",
       },
       {
         question: "How many people are in a Kilimanjaro group climb?",
@@ -2337,7 +2341,7 @@ export const guides: Guide[] = [
       "climbing-kilimanjaro-guide",
       "how-much-to-climb-kilimanjaro",
     ],
-    relatedPackages: ["6-day-marangu-route", "7-day-machame-route", "8-day-lemosho-route"],
+    relatedPackages: ["6-day-marangu-route", "5-day-marangu-route", "6-day-rongai-route"],
   },
 
   {
@@ -2413,7 +2417,7 @@ export const guides: Guide[] = [
       "kilimanjaro-success-rate",
       "climbing-kilimanjaro-guide",
     ],
-    relatedPackages: ["9-day-northern-circuit", "8-day-lemosho-route", "7-day-machame-route"],
+    relatedPackages: ["9-day-northern-circuit", "northern-circuit-crater-camp", "8-day-lemosho-route"],
   },
 
   {

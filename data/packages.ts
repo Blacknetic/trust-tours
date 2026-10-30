@@ -2,19 +2,60 @@
 // Pages, JSON-LD schema, WhatsApp messages, and the elevation animation all read from here.
 
 import type { GroupPricing } from "@/lib/pricing";
+import { KILIMANJARO_PACKAGES } from "@/data/kilimanjaro";
 
 export type Tier = "budget" | "mid-range" | "comfort";
 
 // Kilimanjaro route difficulty bucket — drives the difficulty filter pills.
 export type Difficulty = "Moderate" | "Challenging" | "Tough";
 
+export interface ContentImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export interface ContentTable {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+  // Optional page per row; the row's first cell links to it.
+  rowLinks?: (string | undefined)[];
+}
+
+// A free-form block of long-form page content ("Is this route right for you?",
+// "Accommodation on the mountain", "Safety and acclimatisation", …).
+// Bullets written as "Label: detail" render the label in bold.
+export interface ContentSection {
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  table?: ContentTable;
+  images?: ContentImage[];
+  // Highlighted note shown after the section body.
+  note?: string;
+}
+
 export interface ItineraryDay {
   day: number;
   title: string;
+  // Paragraphs separated by a blank line ("\n\n").
   description: string;
+  image?: ContentImage;
+  // One-line summary of the day ("Day 1 experience: …").
+  experience?: string;
+  // Highlighted safety or practical notes for the day.
+  notes?: string[];
+  // What is and isn't covered on this particular day.
+  dayIncluded?: string[];
+  dayExcluded?: string[];
   altitudeStart?: number;
   altitudeEnd?: number;
-  distanceKm?: number;
+  // Highest point reached during the day when it differs from where you sleep
+  // (e.g. Lava Tower on a climb-high, sleep-low day).
+  altitudeMax?: number;
+  // A number, or a range as Ombeni writes it ("10–11").
+  distanceKm?: number | string;
   hours?: string;
   meals: string;
   accommodation: string;
@@ -50,22 +91,38 @@ export interface TripPackage {
   destinations: Destination[];
   title: string;
   shortName: string;
+  // Days on the mountain / of touring. Hotel nights wrapped around a climb are
+  // counted separately in `hotelNights`.
   days: number;
+  hotelNights?: number;
   priceFromUSD: number;
   priceNote: string;
-  // Group-size pricing. When set, the trip page renders the per-pax ladder
-  // table and `priceFromUSD` must equal `atEight` — the cheapest cell — so the
-  // "From $X" on cards, in the hero and in schema all agree with the table.
-  // Two numbers per trip; every column between them is derived. See lib/pricing.ts.
+  // Group-size rate card. When set, the page renders the price table and the
+  // booking box's group selector, and `priceFromUSD` must equal the 1-person
+  // tier: the headline price shown on cards and in the hero is the solo rate,
+  // with the cheaper group rates shown alongside. See lib/pricing.ts.
   groupPricing?: GroupPricing;
+  // Ids from data/addons.ts offered in the booking box.
+  addOns?: string[];
   tier: Tier[];
   heroImage: string;
   gallery: string[];
   summary: string;
+  // Long-form introduction shown under the summary on the trip page.
+  overview?: string[];
+  overviewImage?: ContentImage;
+  // Key facts box, e.g. { label: "Highest point", value: "Uhuru Peak, 5,895 m" }.
+  atAGlance?: { label: string; value: string }[];
   highlights: string[];
+  // Long-form explanation shown with the price table ("How the prices work").
+  pricingDetails?: string[];
+  pricingImage?: ContentImage;
   itinerary: ItineraryDay[];
+  // Inclusions/exclusions; "Label: detail" renders the label in bold.
   included: string[];
   excluded: string[];
+  // Long-form sections rendered after inclusions and before the FAQs.
+  sections?: ContentSection[];
   faqs: FAQ[];
   bestMonths: string[];
   summitSuccessRate?: string;
@@ -104,972 +161,8 @@ export const packagePath = (pkg: TripPackage): string =>
   `/${CATEGORY_PATH[pkg.category]}/${pkg.slug}`;
 
 export const packages: TripPackage[] = [
-  // ─────────────────────────────────────────────────────────────────
-  // FLAGSHIP — fully written. Template for all others.
-  // ─────────────────────────────────────────────────────────────────
-  {
-    slug: "7-day-machame-route",
-    seoTitle: "Machame Route, 7 Days — from $2,300 · Trust Tours",
-    metaDescription:
-      "Kilimanjaro's most popular route, climb-high-sleep-low for higher summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,300 pp in a group of 8.",
-    destinations: ["Kilimanjaro"],
-    category: "kilimanjaro",
-    effort: 4,
-    summitChance: 4,
-    difficulty: "Challenging",
-    title: "7-Day Kilimanjaro Climb – Machame Route",
-    shortName: "7-Day Machame",
-    days: 7,
-    priceFromUSD: 2300,
-    priceNote:
-      "Per person, sharing, mid-range services. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
-    groupPricing: {
-      atTwo: 2700,
-      atEight: 2300,
-      note: "Per person, sharing, mid-range services — park fees, full crew, meals and camping equipment included. Final price depends on your travel season.",
-    },
-    tier: ["mid-range"],
-    heroImage: "/images/kilimanjaro-kibo-from-trail.jpg",
-    gallery: [],
-    summary:
-      "The 7-day Machame Route is Kilimanjaro's most popular path, climbing through five climate zones with a 'climb high, sleep low' profile that boosts summit success. With Trust Tours' full crew of guides, porters and cooks, you trek 62 km to Uhuru Peak at 5,895 m.",
-    highlights: [
-      "Best acclimatization profile of the classic routes — climb high, sleep low",
-      "Scenic southern approach: rainforest, Shira Plateau, Lava Tower, Barranco Wall",
-      "Licensed guides, full porter and cook crew, quality 4-season tents",
-      "Summit night timed for sunrise at Uhuru Peak (5,895 m)",
-      "Airport pickup, park fees and all meals on the mountain included",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Machame Gate to Machame Camp",
-        description:
-          "After registration at Machame Gate, trek through dense montane rainforest — listen for colobus monkeys. The trail climbs steadily to camp at the forest's edge.",
-        altitudeStart: 1800,
-        altitudeEnd: 3010,
-        distanceKm: 11,
-        hours: "5–7 hours",
-        meals: "Lunch, dinner",
-        accommodation: "Machame Camp (tents)",
-      },
-      {
-        day: 2,
-        title: "Machame Camp to Shira Cave Camp",
-        description:
-          "Leave the forest for heath and moorland with first big views of Kibo. A steep ridge brings you onto the Shira Plateau.",
-        altitudeStart: 3010,
-        altitudeEnd: 3845,
-        distanceKm: 5,
-        hours: "4–6 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Shira Cave Camp (tents)",
-      },
-      {
-        day: 3,
-        title: "Shira to Barranco via Lava Tower",
-        description:
-          "The key acclimatization day: ascend to Lava Tower at 4,630 m for lunch, then descend into the Barranco Valley to sleep low. Tough day, huge payoff for your summit chances.",
-        altitudeStart: 3845,
-        altitudeEnd: 3960,
-        distanceKm: 10,
-        hours: "6–8 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Barranco Camp (tents)",
-      },
-      {
-        day: 4,
-        title: "Barranco Wall to Karanga Camp",
-        description:
-          "Scramble up the famous Barranco Wall — easier than it looks, and the most fun section of the route — then cross ridges and valleys to Karanga.",
-        altitudeStart: 3960,
-        altitudeEnd: 4035,
-        distanceKm: 5,
-        hours: "4–5 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Karanga Camp (tents)",
-      },
-      {
-        day: 5,
-        title: "Karanga to Barafu Base Camp",
-        description:
-          "A short climb to base camp. Early dinner and sleep by 19:00 — the summit push starts around midnight.",
-        altitudeStart: 4035,
-        altitudeEnd: 4673,
-        distanceKm: 4,
-        hours: "3–4 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Barafu Camp (tents)",
-      },
-      {
-        day: 6,
-        title: "Summit Day — Uhuru Peak, descend to Mweka",
-        description:
-          "Depart ~midnight by headlamp. Reach Stella Point on the crater rim for sunrise, then the final 45 minutes to Uhuru Peak, 5,895 m — the roof of Africa. Descend all the way to Mweka Camp.",
-        altitudeStart: 4673,
-        altitudeEnd: 5895,
-        distanceKm: 17,
-        hours: "11–15 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mweka Camp (tents)",
-      },
-      {
-        day: 7,
-        title: "Mweka Camp to Mweka Gate",
-        description:
-          "Final descent through the rainforest. Certificate ceremony at the gate, then transfer back to your Moshi/Arusha hotel for a long shower and a cold Kilimanjaro beer.",
-        altitudeStart: 3100,
-        altitudeEnd: 1640,
-        distanceKm: 10,
-        hours: "3–4 hours",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All Kilimanjaro National Park fees, camping fees and rescue fees",
-      "Licensed English-speaking mountain guides, porters and cook",
-      "4-season mountain tents, sleeping mats, mess tent with table & chairs",
-      "All meals on the mountain + drinking water",
-      "Airport/hotel transfers, pre-climb briefing and gear check",
-      "Emergency oxygen and pulse-oximeter checks twice daily",
-    ],
-    excluded: [
-      "International flights and visa",
-      "Tips for the mountain crew (budget $250–300 total)",
-      "Personal trekking gear (rental available in Moshi)",
-      "Travel insurance (required — must cover trekking to 6,000 m)",
-    ],
-    faqs: [
-      {
-        question: "How hard is the 7-day Machame Route?",
-        answer:
-          "Machame is a demanding trek but requires no technical climbing. Any reasonably fit person who trains with regular hikes for 2–3 months can do it. The 7-day version adds an acclimatization day, which significantly raises summit success.",
-      },
-      {
-        question:
-          "What is the summit success rate on the 7-day Machame Route?",
-        answer:
-          "On our 7-day Machame itinerary, climbers reach the summit at rates of about 85–93% — well above the 60–70% typical of rushed 5-day routes. The extra acclimatisation day at altitude is the single biggest factor.",
-      },
-      {
-        question: "When is the best time to climb Kilimanjaro?",
-        answer:
-          "The dry seasons: January–early March and June–October. July–September offers the most stable weather and clearest summit views, and pairs perfectly with Great Migration safaris.",
-      },
-      {
-        question: "How much should I tip the crew?",
-        answer:
-          "Plan roughly $250–300 per climber for the whole crew, handed over at the tipping ceremony on the final day. We'll give you a clear breakdown per role at your briefing.",
-      },
-      {
-        question: "Can I combine the climb with a safari?",
-        answer:
-          "Yes — most of our climbers add a 3–5 day Serengeti and Ngorongoro safari afterwards. We handle everything as one trip with one price.",
-      },
-    ],
-    bestMonths: ["Jan", "Feb", "Mar", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    summitSuccessRate: "85–93% (7-day)",
-    oldUrl: "/booking/CONFIRM-OLD-SLUG/",
-  },
-
-  // ─────────────────────────────────────────────────────────────────
-  // STUBS — itineraries TODO: copy from old /booking/ pages while still live.
-  // ─────────────────────────────────────────────────────────────────
-  {
-    slug: "9-day-northern-circuit",
-    reviewSnippets: [
-      { author: "Andreea J", text: "I did the 9-day Northern Circuit up Kilimanjaro as a solo traveller. The climb was absolutely fabulous — the team was amazing and made me feel so comfortable and taken care of.", source: "Google" },
-    ],
-    seoTitle: "Northern Circuit, 9 Days — from $2,160 · Trust Tours",
-    metaDescription:
-      "Kilimanjaro's longest, quietest route — and the highest summit success. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,160 pp, no OTA markup.",
-    destinations: ["Kilimanjaro"],
-    category: "kilimanjaro",
-    effort: 4,
-    summitChance: 5,
-    difficulty: "Challenging",
-    title: "9-Day Kilimanjaro Climb – Northern Circuit Route",
-    shortName: "9-Day Northern Circuit",
-    days: 9,
-    priceFromUSD: 2160,
-    priceNote:
-      "Per person, sharing, mid-range services. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
-    groupPricing: {
-      atTwo: 2497,
-      atEight: 2160,
-      note: "Per person, sharing, mid-range services — park fees, full crew, meals and camping equipment included. Nine days on the mountain gives this route the highest summit success rate we run.",
-    },
-    tier: ["mid-range"],
-    // INTERIM low-res photo from Ombeni's archive — replace with a hi-res shot.
-    heroImage: "/images/packages/9-day-northern-circuit.jpg",
-    gallery: [],
-    summary:
-      "The Northern Circuit is Kilimanjaro's longest and quietest route, circling the mountain's remote northern slopes with the highest summit success rate of any route thanks to nine days of acclimatization.",
-    highlights: [
-      "Highest success rate of all routes",
-      "Quietest trails on the mountain",
-      "360° circuit of Kibo",
-    ],
-    // DRAFT itinerary based on the standard Lemosho→Northern Circuit route.
-    // Altitudes/distances are typical figures — CONFIRM against Ombeni's own plan.
-    itinerary: [
-      {
-        day: 1,
-        title: "Londorossi Gate to Mti Mkubwa (Big Tree) Camp",
-        description:
-          "Drive to Londorossi Gate on the remote western side, then trek through dense montane rainforest — watch for colobus monkeys — to the first camp at the forest's edge.",
-        altitudeStart: 2100,
-        altitudeEnd: 2780,
-        distanceKm: 6,
-        hours: "3–4 hours",
-        meals: "Lunch, dinner",
-        accommodation: "Mti Mkubwa Camp (tents)",
-      },
-      {
-        day: 2,
-        title: "Mti Mkubwa to Shira 1 Camp",
-        description:
-          "Leave the forest for open heath and moorland, climbing onto the Shira Ridge with the first big views of Kibo ahead.",
-        altitudeStart: 2780,
-        altitudeEnd: 3505,
-        distanceKm: 8,
-        hours: "5–6 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Shira 1 Camp (tents)",
-      },
-      {
-        day: 3,
-        title: "Shira 1 to Shira 2 Camp",
-        description:
-          "A gentle day crossing the high Shira Plateau — one of the world's largest calderas — for acclimatization, with Kibo growing on the horizon.",
-        altitudeStart: 3505,
-        altitudeEnd: 3810,
-        distanceKm: 7,
-        hours: "4–5 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Shira 2 Camp (tents)",
-      },
-      {
-        day: 4,
-        title: "Shira 2 to Moir Hut via Lava Tower",
-        description:
-          "Climb high to Lava Tower (4,630 m) for lunch, then descend to the quiet Moir Hut camp below the Lent Hills — classic 'climb high, sleep low' acclimatization.",
-        altitudeStart: 3810,
-        altitudeEnd: 4200,
-        distanceKm: 11,
-        hours: "6–7 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Moir Hut Camp (tents)",
-      },
-      {
-        day: 5,
-        title: "Moir Hut to Buffalo Camp",
-        description:
-          "Begin the Northern Circuit proper, traversing onto the remote, rarely-walked northern slopes of Kibo. Big, quiet views toward Kenya open up.",
-        altitudeStart: 4200,
-        altitudeEnd: 4020,
-        distanceKm: 12,
-        hours: "5–7 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Buffalo Camp (tents)",
-      },
-      {
-        day: 6,
-        title: "Buffalo Camp to Rongai Third Cave",
-        description:
-          "Continue the circuit around the northern side to Third Cave, gaining gentle altitude on solitary trails far from the crowds of the southern routes.",
-        altitudeStart: 4020,
-        altitudeEnd: 3800,
-        distanceKm: 8,
-        hours: "5–6 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Third Cave Camp (tents)",
-      },
-      {
-        day: 7,
-        title: "Third Cave to School Hut",
-        description:
-          "A steady climb to summit base camp at School Hut. Early dinner and rest — the summit push starts around midnight.",
-        altitudeStart: 3800,
-        altitudeEnd: 4750,
-        distanceKm: 5,
-        hours: "4–5 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "School Hut (tents)",
-      },
-      {
-        day: 8,
-        title: "Summit Day — Uhuru Peak, descend to Mweka",
-        description:
-          "Depart ~midnight by headlamp. Reach Gilman's Point on the crater rim, then the final stretch to Uhuru Peak, 5,895 m — the roof of Africa — at sunrise. Long descent to Mweka Camp.",
-        altitudeStart: 4750,
-        altitudeEnd: 5895,
-        distanceKm: 17,
-        hours: "11–15 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mweka Camp (tents)",
-      },
-      {
-        day: 9,
-        title: "Mweka Camp to Mweka Gate",
-        description:
-          "Final descent through the rainforest. Certificate ceremony at the gate, then transfer back to your Moshi/Arusha hotel for a long shower and a cold Kilimanjaro beer.",
-        altitudeStart: 3100,
-        altitudeEnd: 1640,
-        distanceKm: 10,
-        hours: "3–4 hours",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All Kilimanjaro National Park fees, camping fees and rescue fees",
-      "Licensed English-speaking mountain guides, porters and cook",
-      "4-season mountain tents, sleeping mats, mess tent with table & chairs",
-      "All meals on the mountain + drinking water",
-      "Airport/hotel transfers, pre-climb briefing and gear check",
-      "Emergency oxygen and pulse-oximeter checks twice daily",
-    ],
-    excluded: [
-      "International flights and visa",
-      "Tips for the mountain crew (budget $250–350 total)",
-      "Personal trekking gear (rental available in Moshi)",
-      "Travel insurance (required — must cover trekking to 6,000 m)",
-    ],
-    faqs: [
-      {
-        question: "Why is the Northern Circuit the best route for summit success?",
-        answer:
-          "At nine days it gives your body the most time to acclimatize of any Kilimanjaro route, and the northern traverse adds extra 'climb high, sleep low' days. That's why it has the highest reported summit success rate. (Confirm Trust Tours' own number with Ombeni.)",
-      },
-      {
-        question: "How hard is the Northern Circuit?",
-        answer:
-          "No technical climbing is required, but it is the longest route, so you need to be comfortable hiking 5–7 hours a day for over a week. The gentle daily gradients and extra rest days actually make summit night easier than on shorter routes.",
-      },
-      {
-        question: "When is the best time to climb the Northern Circuit?",
-        answer:
-          "The dry seasons: January–early March and June–October. July–September has the most stable weather and clearest summit views, and pairs perfectly with Great Migration safaris.",
-      },
-      {
-        question: "How much should I tip the crew?",
-        answer:
-          "Because this is a longer climb with a larger crew, plan roughly $300–350 per climber for the whole team, handed over at the tipping ceremony on the final day. We'll give you a clear per-role breakdown at your briefing.",
-      },
-      {
-        question: "Can I combine the climb with a safari?",
-        answer:
-          "Yes — most of our climbers add a 3–5 day Serengeti and Ngorongoro safari afterwards. We handle everything as one trip with one price.",
-      },
-    ],
-    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    oldUrl:
-      "/booking/9-days-climb-mount-kilimanjaro-with-the-best-northern-circuit-route-trust-tours-and-safaris/",
-  },
-
-  {
-    slug: "8-day-lemosho-route",
-    reviewSnippets: [
-      { author: "Robin Van Rompaey", text: "We hiked to the top of Kilimanjaro on the Lemosho route, and were so happy about how perfectly everything was arranged. 10/10 would recommend.", source: "Google" },
-      { author: "Richard Lee", text: "Went on the 8-day Lemosho trek. Excellent team of porters, and the camp crew took care of us so well from dawn till dusk — the small details make a huge difference.", source: "Google" },
-    ],
-    seoTitle: "Lemosho Route, 8 Days — from $2,620 · Trust Tours",
-    metaDescription:
-      "Crosses the wild Shira Plateau — the best acclimatisation and summit rates on Kilimanjaro. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,620 pp, direct.",
-    destinations: ["Kilimanjaro"],
-    category: "kilimanjaro",
-    effort: 3,
-    summitChance: 4,
-    difficulty: "Moderate",
-    title: "8-Day Kilimanjaro Climb – Lemosho Route",
-    shortName: "8-Day Lemosho",
-    days: 8,
-    priceFromUSD: 2620,
-    priceNote:
-      "Per person, sharing, mid-range services. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
-    groupPricing: {
-      atTwo: 3050,
-      atEight: 2620,
-      note: "Per person, sharing, mid-range services — park fees, full crew, meals and camping equipment included. Final price depends on your travel season.",
-    },
-    tier: ["mid-range"],
-    heroImage: "/images/lemosho-route-hero.jpg",
-    gallery: [],
-    summary:
-      "Lemosho approaches Kilimanjaro from the remote west, crossing the wild Shira Plateau before joining the southern circuit to Uhuru Peak. Eight days of gradual 'climb high, sleep low' ascent gives it one of the best acclimatization profiles — and success rates — on the mountain, with quiet trails on the early days.",
-    highlights: [
-      "Most scenic western approach across the Shira Plateau caldera",
-      "Excellent 8-day acclimatization profile — climb high, sleep low",
-      "Quiet, low-traffic trails on the first three days",
-      "Lava Tower (4,630 m) acclimatization day and the Barranco Wall scramble",
-      "Summit night timed for sunrise at Uhuru Peak (5,895 m)",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Londorossi Gate to Mti Mkubwa (Big Tree) Camp",
-        description:
-          "Drive through rural farmland to Londorossi Gate for registration, then begin a gradual ascent through lush montane rainforest. Watch for blue and colobus monkeys before reaching Mti Mkubwa Camp, tucked into the forest.",
-        altitudeStart: 2100,
-        altitudeEnd: 2750,
-        meals: "Lunch, dinner",
-        accommodation: "Mti Mkubwa Camp (tents)",
-      },
-      {
-        day: 2,
-        title: "Mti Mkubwa to Shira 1 Camp",
-        description:
-          "Leave the last of the rainforest for open moorland dotted with giant heathers and lobelias. Cross the Shira Ridge onto the Shira Plateau with first views of Kibo and Mount Meru to the west.",
-        altitudeStart: 2750,
-        altitudeEnd: 3500,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Shira 1 Camp (tents)",
-      },
-      {
-        day: 3,
-        title: "Shira 1 to Shira 2 Camp",
-        description:
-          "An easier hike across the volcanic Shira Plateau, a feature unique to this side of the mountain. Optional short acclimatization walks at camp help your body adjust before the higher days ahead.",
-        altitudeStart: 3500,
-        altitudeEnd: 3850,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Shira 2 Camp (tents)",
-      },
-      {
-        day: 4,
-        title: "Shira 2 to Barranco Camp via Lava Tower",
-        description:
-          "The key acclimatization day: climb through alpine desert to Lava Tower at 4,630 m for lunch, then descend into the Barranco Valley to sleep low. A long day that pays off on summit night.",
-        altitudeStart: 3850,
-        altitudeEnd: 3900,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Barranco Camp (tents)",
-      },
-      {
-        day: 5,
-        title: "Barranco Wall to Karanga Camp",
-        description:
-          "Scramble up the famous Barranco Wall — steep but non-technical, and the most fun stretch of the route — then cross ridges and valleys to Karanga Camp with panoramic views of the Kibo summit.",
-        altitudeStart: 3900,
-        altitudeEnd: 4035,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Karanga Camp (tents)",
-      },
-      {
-        day: 6,
-        title: "Karanga to Barafu Base Camp",
-        description:
-          "A steady ascent across rocky, arid high-altitude terrain to Barafu, the final base camp. Your guide reviews the summit plan; an early dinner and sleep precede the midnight push.",
-        altitudeStart: 4035,
-        altitudeEnd: 4640,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Barafu Camp (tents)",
-      },
-      {
-        day: 7,
-        title: "Summit Day — Uhuru Peak, descend to Mweka",
-        description:
-          "Depart around midnight by headlamp, reaching Stella Point (5,756 m) on the crater rim near sunrise, then the final stretch to Uhuru Peak, 5,895 m — the roof of Africa. Descend to Barafu for a rest, then on to Mweka Camp.",
-        altitudeStart: 4640,
-        altitudeEnd: 5895,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mweka Camp (tents)",
-      },
-      {
-        day: 8,
-        title: "Mweka Camp to Mweka Gate, transfer to Arusha",
-        description:
-          "A final descent through the rainforest to Mweka Gate, where you receive your summit certificate. Transfer back to your Arusha hotel for a hot shower and a well-earned celebration.",
-        altitudeStart: 3080,
-        altitudeEnd: 1640,
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All Kilimanjaro National Park fees: conservation, camping, crew, rescue and vehicle fees",
-      "Licensed English-speaking mountain guide(s), porters and cook",
-      "Two nights' hotel accommodation (Moshi and Arusha), sharing basis",
-      "4-season tents, 10 cm sleeping mats, dining tent with table and chairs",
-      "All meals on the mountain plus drinking water, tea, coffee and hot chocolate",
-      "Airport transfers, summit certificate, emergency oxygen and twice-daily oximeter checks",
-      "GPS-tracking service, complete medical kits and free helicopter rescue coordination",
-    ],
-    excluded: [
-      "International flights and Tanzania visa ($50 on arrival)",
-      "Travel insurance (required — must cover trekking to 6,000 m)",
-      "Tips for the mountain crew (budget $200–350 per climber)",
-      "Sleeping bag rental ($35 for the trip) and personal trekking gear",
-      "Optional portable toilet ($150 per group, up to 5 people)",
-      "Alcoholic and other personal-nature expenses",
-    ],
-    faqs: [
-      {
-        question: "Why choose the 8-day Lemosho over a shorter route?",
-        answer:
-          "The extra days give your body more time to acclimatize, which is the single biggest factor in reaching the summit. Lemosho's gradual western approach and 'climb high, sleep low' profile make it one of the highest-success routes on Kilimanjaro.",
-      },
-      {
-        question: "How hard is the Lemosho Route?",
-        answer:
-          "It is a demanding multi-day trek but requires no technical climbing. Any reasonably fit person who trains with regular hikes for 2–3 months beforehand can attempt it. The Barranco Wall is a fun scramble, not a climb.",
-      },
-      {
-        question: "When is the best time to climb the Lemosho Route?",
-        answer:
-          "The dry seasons — January to early March and June to October. July to September offers the most stable weather and clearest summit views, and pairs perfectly with a Great Migration safari afterwards.",
-      },
-      {
-        question: "I'm travelling solo — can I still join?",
-        answer:
-          "Yes. Solo climbers are matched with a same-sex tent and room partner on a sharing basis, or you can request a private climb. Message Ombeni on WhatsApp for solo and private pricing.",
-      },
-    ],
-    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    oldUrl: "/booking/CONFIRM/",
-  },
-
-  {
-    slug: "6-day-marangu-route",
-    seoTitle: "Marangu Route, 6 Days — from $1,950 · Trust Tours",
-    metaDescription:
-      "The only hut-based Kilimanjaro route and our most affordable climb. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $1,950 pp in a group of 8.",
-    destinations: ["Kilimanjaro"],
-    category: "kilimanjaro",
-    effort: 3,
-    summitChance: 3,
-    difficulty: "Moderate",
-    title: "6-Day Kilimanjaro Climb – Marangu Route",
-    shortName: "6-Day Marangu",
-    days: 6,
-    priceFromUSD: 1950,
-    priceNote:
-      "Per person, sharing, hut accommodation. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
-    groupPricing: {
-      atTwo: 2240,
-      atEight: 1950,
-      note: "Per person, sharing hut accommodation — park fees, full crew and all meals included. No tents on this route; you sleep in Kilimanjaro's only mountain huts.",
-    },
-    tier: ["budget"],
-    heroImage: "/images/packages/6-day-marangu-route.jpg",
-    gallery: [],
-    summary:
-      "Marangu — the 'Coca-Cola Route' — is the only path on Kilimanjaro with comfortable hut accommodation and the most affordable way to attempt the summit. This 6-day version adds an extra acclimatization day at Horombo, raising your chances of reaching Uhuru Peak on the gentlest gradients of any route.",
-    highlights: [
-      "The only route with dormitory huts instead of tents",
-      "Extra acclimatization day at Horombo Hut for better summit odds",
-      "Gentlest gradients and a well-established, well-marked trail",
-      "Maundi Crater and Zebra Rocks side hikes en route",
-      "The most affordable guided way to summit Kilimanjaro",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Marangu Gate to Mandara Hut",
-        description:
-          "Register at Marangu Gate (1,860 m) and trek through lush, wide-trailed rainforest alive with birds and primates. Reach Mandara Hut and, with time to spare, walk to nearby Maundi Crater for views of Mawenzi Peak.",
-        altitudeStart: 1860,
-        altitudeEnd: 2720,
-        distanceKm: 8,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mandara Hut (dormitory huts)",
-      },
-      {
-        day: 2,
-        title: "Mandara Hut to Horombo Hut",
-        description:
-          "The forest gives way to open moorland of giant lobelias and groundsels as the air thins. Horombo Hut sits on a ridge with sweeping views of both Kibo and Mawenzi peaks.",
-        altitudeStart: 2720,
-        altitudeEnd: 3720,
-        distanceKm: 12,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Horombo Hut (dormitory huts)",
-      },
-      {
-        day: 3,
-        title: "Acclimatization Day at Horombo Hut",
-        description:
-          "A dedicated acclimatization day. After breakfast, take a short hike to Zebra Rocks (about 4,000 m) to help your body adjust, then return to Horombo to rest — the single best thing you can do for your summit chances.",
-        altitudeStart: 3720,
-        altitudeEnd: 3720,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Horombo Hut (dormitory huts)",
-      },
-      {
-        day: 4,
-        title: "Horombo Hut to Kibo Hut",
-        description:
-          "Ascend across 'The Saddle', a vast desert-like plateau between Mawenzi and Kibo. Arrive at Kibo Hut, eat an early dinner and rest — the summit push begins around midnight.",
-        altitudeStart: 3720,
-        altitudeEnd: 4700,
-        distanceKm: 10,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Kibo Hut (dormitory huts)",
-      },
-      {
-        day: 5,
-        title: "Summit Day — Uhuru Peak, descend to Horombo",
-        description:
-          "Set off just after midnight for the steep, thin-aired climb to Gilman's Point (5,685 m) on the crater rim, then on to Uhuru Peak, 5,895 m, for sunrise. Descend to Kibo for a brief rest, then continue down to Horombo Hut.",
-        altitudeStart: 4700,
-        altitudeEnd: 5895,
-        distanceKm: 22,
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Horombo Hut (dormitory huts)",
-      },
-      {
-        day: 6,
-        title: "Horombo Hut to Marangu Gate, return to Moshi",
-        description:
-          "A final descent through the rainforest to Marangu Gate, where you receive your summit certificate. Transfer back to your Moshi hotel for a farewell lunch and a well-earned rest.",
-        altitudeStart: 3720,
-        altitudeEnd: 1860,
-        distanceKm: 20,
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All Kilimanjaro National Park fees: conservation, camping, crew, rescue and vehicle fees",
-      "Licensed English-speaking mountain guide(s), porters and cook",
-      "One night's 3–4★ hotel accommodation before the climb, sharing basis",
-      "Hut accommodation on the mountain with mattresses",
-      "All meals on the mountain plus drinking water, tea, coffee and hot chocolate",
-      "Airport transfers, summit certificate, oxygen cylinders and oximeters",
-      "GPS-tracking service, complete medical kits and free helicopter rescue coordination",
-    ],
-    excluded: [
-      "International flights and Tanzania visa ($50 on arrival)",
-      "Travel insurance (required — must cover trekking to 6,000 m)",
-      "Tips for the mountain crew (budget $250–350 per climber)",
-      "Lunch and dinner at the hotel before and after the climb",
-      "Optional portable toilet ($270 for the trip) and personal trekking gear",
-      "Alcoholic and other personal-nature expenses",
-    ],
-    faqs: [
-      {
-        question: "Why is Marangu called the 'Coca-Cola Route'?",
-        answer:
-          "It's the oldest and most established route, historically where soft drinks were sold at the huts. It's the only Kilimanjaro route where you sleep in dormitory huts rather than tents.",
-      },
-      {
-        question: "Is the 6-day Marangu better than the 5-day?",
-        answer:
-          "Yes for summit success. The 6-day version adds an acclimatization day at Horombo Hut, which gives your body an extra day to adjust to altitude and meaningfully improves your chances of reaching the summit.",
-      },
-      {
-        question: "What's the accommodation like on Marangu?",
-        answer:
-          "Shared dormitory-style huts with mattresses and pillows at Mandara, Horombo and Kibo. It's more comfortable and weatherproof than camping, which makes Marangu a good choice in shoulder seasons.",
-      },
-      {
-        question: "When is the best time to climb the Marangu Route?",
-        answer:
-          "The dry seasons — January to early March and June to October. Because you sleep in huts, Marangu copes better with occasional wet weather than the tented routes.",
-      },
-    ],
-    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    oldUrl: "/booking/CONFIRM/",
-  },
-
-  {
-    slug: "6-day-umbwe-route",
-    destinations: ["Kilimanjaro"],
-    category: "kilimanjaro",
-    effort: 5,
-    summitChance: 3,
-    difficulty: "Tough",
-    title: "6-Day Kilimanjaro Climb – Umbwe Route",
-    shortName: "6-Day Umbwe",
-    days: 6,
-    priceFromUSD: 2100,
-    priceNote:
-      "Per person, sharing, mid-range tented. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
-    groupPricing: {
-      atTwo: 2420,
-      atEight: 2100,
-      note: "Per person, sharing, mid-range tented camping — park fees, full crew, meals and camping equipment included. Final price depends on your travel season.",
-    },
-    tier: ["mid-range"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "Umbwe is Kilimanjaro's steepest, most direct ascent — a bold ridge climb for fit, experienced trekkers and tight groups who want the boldest path to the summit. This 6-day version builds in a rest day at Barranco to acclimatise before the Barranco Wall and summit push to Uhuru Peak at 5,895 m.",
-    highlights: [
-      "The mountain's most direct and dramatic route — quiet gate, fewer climbers",
-      "Steep, ancient ridge forest and outstanding open ridgeline views",
-      "Acclimatisation rest day at Barranco to protect summit success",
-      "The famous Barranco Wall scramble onto the Southern Circuit",
-      "Built for fit, experienced hikers and corporate/expedition groups",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arusha to Umbwe Gate, trek to Umbwe Cave Camp",
-        description:
-          "A short drive to the quiet Umbwe Gate, then straight into a steep, ancient ridge forest — narrow trail with hands-on-root scrambling in places. Camp just above the treeline with the first open views of Kibo.",
-        altitudeStart: 1640,
-        altitudeEnd: 2850,
-        distanceKm: 8,
-        hours: "5–7 hours",
-        meals: "Lunch, dinner",
-        accommodation: "Umbwe Cave Camp (tents)",
-      },
-      {
-        day: 2,
-        title: "Umbwe Cave Camp to Barranco Camp",
-        description:
-          "Leave the forest for the Umbwe's signature open ridgeline, with steep drops, giant senecios and sweeping views. Arrive early at Barranco beneath the Breach Wall for an afternoon health check and a briefing on the Wall.",
-        altitudeStart: 2850,
-        altitudeEnd: 3950,
-        distanceKm: 6,
-        hours: "4–6 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Barranco Camp (tents)",
-      },
-      {
-        day: 3,
-        title: "Acclimatisation day at Barranco",
-        description:
-          "The strategic heart of the itinerary. A short 'climb high, sleep low' walk to about 4,200 m and back, with rest, hydration and full health monitoring — the single biggest investment in summit night.",
-        altitudeStart: 3950,
-        altitudeEnd: 4200,
-        distanceKm: 4,
-        hours: "2–3 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Barranco Camp (tents)",
-      },
-      {
-        day: 4,
-        title: "Barranco Camp to Barafu via the Barranco Wall",
-        description:
-          "Scramble the 257 m Barranco Wall — hands and feet, no ropes — onto the Southern Circuit, lunch in the Karanga Valley, then the final climb to the windswept high camp at Barafu. Early dinner and sleep before the midnight start.",
-        altitudeStart: 3950,
-        altitudeEnd: 4673,
-        distanceKm: 10,
-        hours: "6–8 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Barafu Camp (tents)",
-      },
-      {
-        day: 5,
-        title: "Summit night — Uhuru Peak, descend to Mweka",
-        description:
-          "Depart around midnight by headlamp up the scree to Stella Point on the crater rim for sunrise, then the final traverse to Uhuru Peak, 5,895 m — the roof of Africa. Descend all the way to Mweka Camp.",
-        altitudeStart: 4673,
-        altitudeEnd: 5895,
-        distanceKm: 17,
-        hours: "12–15 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mweka Camp (tents)",
-      },
-      {
-        day: 6,
-        title: "Mweka Camp to Mweka Gate, return to Arusha",
-        description:
-          "An easy forest descent to Mweka Gate, where your summit certificates and the tipping ceremony with your crew await. Transfer back to Arusha by early afternoon — tired, triumphant and at sea level again.",
-        altitudeStart: 3100,
-        altitudeEnd: 1640,
-        distanceKm: 10,
-        hours: "3–4 hours",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All Kilimanjaro National Park entry, conservation and rescue fees, VAT and taxes",
-      "Certified senior guide and qualified assistant guides (1 per 4 climbers)",
-      "Professional mountain chef and full KPAP-compliant porter team",
-      "Quality dome tents (two-share), private group dining tent and toilet tent",
-      "All meals on the mountain, hot drinks throughout, and sleeping mats",
-      "Road transfers to/from your Arusha hotel, pre-climb briefing and gear check",
-      "Emergency oxygen and daily pulse-oximetry checks for every climber",
-    ],
-    excluded: [
-      "International flights to Kilimanjaro (JRO) and Tanzania visa",
-      "Travel and medical insurance (required — must cover trekking to 6,000 m)",
-      "Personal trekking gear and sleeping bag (hire in Arusha from $20–30)",
-      "Tips for the mountain crew (budget roughly $60–90 per climber)",
-      "Personal expenses and souvenirs",
-    ],
-    faqs: [
-      {
-        question: "Who is the Umbwe Route right for?",
-        answer:
-          "Fit, experienced hikers who have done multi-day mountain treks before — and groups who want the most direct, most challenging ascent. It is not a good choice for a first big trek or for anyone with a history of altitude sickness. If you're unsure, contact us and we'll give an honest recommendation.",
-      },
-      {
-        question: "How hard is the Umbwe Route compared with Machame?",
-        answer:
-          "Harder. Umbwe is the steepest, most direct route on the mountain, gaining altitude faster than any other. The Day 1 forest involves genuine scrambling, and the Barranco Wall on Day 4 is a hands-and-feet scramble (no ropes needed). The Day 3 rest day at Barranco is what makes the 6-day version responsible.",
-      },
-      {
-        question: "What summit success rate can a group expect?",
-        answer:
-          "With proper fitness preparation, full guide coverage and the built-in acclimatisation day, groups consistently achieve summit success rates of about 75–88% on the 6-day Umbwe.",
-      },
-      {
-        question: "How large can an Umbwe group be?",
-        answer:
-          "We recommend a maximum of 8 climbers per group because of the narrow ridgeline and the technical Barranco Wall. For groups of 9–16 we run two guide teams. Itineraries can be customised for corporate teams, charity expeditions and clubs.",
-      },
-      {
-        question: "When is the best time to climb the Umbwe Route?",
-        answer:
-          "January–March and June–October. June–October is peak season with the finest, clearest conditions. April–May (the long rains) is not recommended on Umbwe — wet rock and root make the steep forest ridge genuinely hazardous.",
-      },
-    ],
-    bestMonths: ["Jan", "Feb", "Mar", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    summitSuccessRate: "75–88% (6-day, with acclimatisation day)",
-  },
-
-  {
-    slug: "6-day-rongai-route",
-    destinations: ["Kilimanjaro"],
-    category: "kilimanjaro",
-    effort: 3,
-    summitChance: 4,
-    difficulty: "Moderate",
-    title: "6-Day Kilimanjaro Climb – Rongai Route",
-    shortName: "6-Day Rongai",
-    days: 6,
-    priceFromUSD: 2070,
-    priceNote:
-      "Per person, sharing, mid-range tented. The price per person falls as your group grows — see the group-size table. Final price depends on season.",
-    groupPricing: {
-      atTwo: 2360,
-      atEight: 2070,
-      note: "Per person, sharing, mid-range tented camping — park fees, full crew, meals and camping equipment included. Final price depends on your travel season.",
-    },
-    tier: ["mid-range"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "Rongai is Kilimanjaro's only northern approach — the quiet, drier route that climbs in from the Kenya side through open moorland that most climbers never see. This 6-day version adds a crucial acclimatisation day at Second Cave, meaningfully improving your odds of reaching Uhuru Peak at 5,895 m on a steady, manageable gradient ideal for first-time climbers.",
-    highlights: [
-      "The only route up Kilimanjaro from the northern, Kenya side",
-      "Far fewer crowds than the busy southern Machame and Marangu routes",
-      "Drier approach — the best choice during the April–May long rains",
-      "Acclimatisation rest day at Second Cave to protect summit success",
-      "Open moorland views of the Amboseli basin and, on clear days, Mount Kenya",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arusha to Rongai Gate, trek to First Cave Camp",
-        description:
-          "A scenic 5–6 hour drive north around the mountain to the quiet Rongai Gate, then a gentle first climb through pine plantation and native rainforest — colobus monkeys overhead — to First Cave Camp, just above the treeline with your first open view of the summit.",
-        altitudeStart: 1950,
-        altitudeEnd: 2600,
-        distanceKm: 7.5,
-        hours: "3–4 hours",
-        meals: "Lunch, dinner",
-        accommodation: "First Cave Camp (tents)",
-      },
-      {
-        day: 2,
-        title: "First Cave Camp to Second Cave Camp",
-        description:
-          "One of the finest days on the route, crossing open heath and moorland of giant heather and lobelia with Kibo rising ahead. Second Cave sits on open moorland with views to the Kenyan plains, followed by a short 'climb high, sleep low' acclimatisation walk to about 3,700 m.",
-        altitudeStart: 2600,
-        altitudeEnd: 3450,
-        distanceKm: 8.5,
-        hours: "4–5 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Second Cave Camp (tents)",
-      },
-      {
-        day: 3,
-        title: "Acclimatisation day at Second Cave",
-        description:
-          "The strategic heart of the itinerary. A short walk up to Kikelewa Cave (about 3,600 m) and back gives your body extra altitude exposure before returning to sleep low, with rest, hydration, health monitoring and a full pre-summit briefing — the single biggest investment in summit night.",
-        altitudeStart: 3450,
-        altitudeEnd: 3600,
-        distanceKm: 4,
-        hours: "2–3 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Second Cave Camp (tents)",
-      },
-      {
-        day: 4,
-        title: "Second Cave Camp to Kibo Huts / School Hut",
-        description:
-          "Leave the moorland for Kilimanjaro's stark alpine desert — a vast rust-coloured plain of volcanic scree beneath the crater wall, with rare views of the northern icefields. Arrive early at the high camp, eat an early dinner and rest before the 11pm summit start.",
-        altitudeStart: 3450,
-        altitudeEnd: 4750,
-        distanceKm: 9,
-        hours: "5–7 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Kibo Huts / School Hut Area (tents)",
-      },
-      {
-        day: 5,
-        title: "Summit night — Uhuru Peak, descend to 3,100 m",
-        description:
-          "Wake at 11pm for the steep, thin-aired climb by headlamp up the northern approach to Gilman's Point (5,685 m) on the crater rim, then the final traverse to Uhuru Peak, 5,895 m — the roof of Africa — for sunrise. A long descent all the way down to camp at around 3,100 m.",
-        altitudeStart: 4750,
-        altitudeEnd: 5895,
-        distanceKm: 16,
-        hours: "12–14 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Horombo / Mweka area (tents)",
-      },
-      {
-        day: 6,
-        title: "Final descent to Mweka Gate, return to Arusha",
-        description:
-          "A leisurely final descent through lush montane forest to Mweka Gate, where your summit certificate and the tipping ceremony with your crew await. Transfer back to your Arusha hotel — tired, triumphant and at sea level again.",
-        altitudeStart: 3100,
-        altitudeEnd: 1800,
-        distanceKm: 10,
-        hours: "3–4 hours",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All Kilimanjaro National Park entry, conservation and rescue fees, VAT and taxes",
-      "Certified senior guide and qualified assistant guides (1 per 4 climbers)",
-      "Professional mountain chef and full porter team",
-      "Quality dome tents (two-share), private group dining tent and toilet tent",
-      "All meals on the mountain, hot drinks throughout, and sleeping mats",
-      "Road transfers to/from your Arusha hotel, pre-climb briefing and gear check",
-      "Emergency oxygen and daily pulse-oximetry checks for every climber",
-    ],
-    excluded: [
-      "International flights to Kilimanjaro (JRO) and Tanzania visa",
-      "Travel and medical insurance (required — must cover trekking to 6,000 m)",
-      "Personal trekking gear and sleeping bag (hire in Arusha from $20–30)",
-      "Tips for the mountain crew (budget roughly $250–350 per climber)",
-      "Alcoholic and other personal-nature expenses",
-    ],
-    faqs: [
-      {
-        question: "Is the Rongai Route good for beginners?",
-        answer:
-          "Yes. Rongai is one of the most accessible routes on Kilimanjaro — the gradient is steady rather than steep and the terrain is straightforward. Combined with a 6-day itinerary that includes an acclimatisation day, it's an excellent choice for first-time climbers with a moderate fitness level.",
-      },
-      {
-        question: "How does Rongai compare to Machame?",
-        answer:
-          "Machame is more dramatic — steeper terrain, the Barranco Wall scramble and more spectacular forest. Rongai is more gradual and quieter, with a drier northern approach and open moorland scenery. Both reach the summit via the crater rim, but Machame is more physically demanding while Rongai is more serene and private.",
-      },
-      {
-        question: "What is the success rate on the 6-day Rongai?",
-        answer:
-          "With an experienced operator and proper acclimatisation, the 6-day Rongai achieves summit success rates of roughly 80–88%. The dedicated acclimatisation day at Second Cave on Day 3 is a significant contributor to that figure.",
-      },
-      {
-        question: "When is the best time to climb the Rongai Route?",
-        answer:
-          "January–March and June–October offer the finest conditions. Because the northern approach stays comparatively dry, Rongai is also the recommended alternative to the southern routes during the April–May long rains.",
-      },
-    ],
-    bestMonths: ["Jan", "Feb", "Mar", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    summitSuccessRate: "80–88% (6-day, with acclimatisation day)",
-  },
+  // Kilimanjaro climbs live in data/kilimanjaro.ts (rebuilt from Ombeni's 2027–2028 docs).
+  ...KILIMANJARO_PACKAGES,
 
   {
     slug: "7-day-great-migration-safari",

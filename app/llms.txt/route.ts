@@ -62,7 +62,7 @@ ${guides.map((g) => line(g.title, `${BASE}/guides/${g.slug}`, g.excerpt)).join("
 
 ## Bookable trips (${priced.length} priced itineraries)
 
-${priced.map((p) => line(p.title, `${BASE}${packagePath(p)}`, `${p.days} days, from $${p.priceFromUSD} per person`)).join("\n")}
+${priced.map((p) => line(p.title, `${BASE}${packagePath(p)}`, `${p.days} days, ${p.groupPricing ? `$${p.priceFromUSD} for 1 person` : `from $${p.priceFromUSD} per person`}`)).join("\n")}
 `;
 
   return new Response(body, {

@@ -1,51 +1,55 @@
-// lib/pricing.ts — group-size price ladders.
+// lib/pricing.ts — group-size rate cards, exactly as Ombeni quotes them.
 //
-// A climb carries real fixed costs (guide, cook, porters, rescue fee, transfer
-// vehicle) that the whole party shares, plus a genuinely per-head cost (park
-// fees, food, gear). So the per-person price is an amortisation curve:
-//
-//     price(n) = perHead + fixed / n
-//
-// A solo climber carries the entire crew; by eight people the fixed share has
-// almost flattened, which is why the ladder stops at an "8+" column.
-//
-// `paxLadder` fits that curve to two anchors Ombeni can reason about without
-// touching code — what a pair pays today, and the floor quoted to big groups —
-// and derives every column in between. Change an anchor, the whole row moves.
+// Each trip lists a per-person price for the party sizes Ombeni prices
+// (e.g. 1, 2, 4, 6+). The last listed size also covers every bigger group.
+// A party size he hasn't listed pays the rate of the nearest listed size
+// below it, so the site never quotes under his card.
 
-/** Columns rendered by the ladder. The last one is the "8+" bucket. */
-export const PAX_COLUMNS = [1, 2, 3, 4, 5, 6, 7, 8] as const;
-
-export const MAX_PAX = 8;
+export interface PriceTier {
+  /** Party size this rate is quoted for. */
+  pax: number;
+  /** Per-person price in USD. */
+  usd: number;
+}
 
 export interface GroupPricing {
-  /** Per-person price for a party of two. Anchors the top of the curve. */
-  atTwo: number;
-  /** Per-person price at 8+. The floor — the price stops falling here. */
-  atEight: number;
-  /** Optional line under the table, e.g. what the price includes. */
+  /** Ascending by `pax`. The last tier is the "N+" bucket. */
+  tiers: PriceTier[];
+  /** Optional line under the price table, e.g. what the price includes. */
   note?: string;
 }
 
-/**
- * Expand two anchors into one price per column (index 0 = 1 pax … 7 = 8+ pax).
- * Values are whole dollars; the curve is monotonically decreasing by
- * construction as long as `atTwo` > `atEight`.
- */
-export function paxLadder({ atTwo, atEight }: GroupPricing): number[] {
-  const fixed = (atTwo - atEight) / (1 / 2 - 1 / MAX_PAX);
-  const perHead = atTwo - fixed / 2;
-  return PAX_COLUMNS.map((n) => Math.round(perHead + fixed / n));
+/** Largest listed party size — the "N+" bucket. */
+export const topPax = (gp: GroupPricing): number => gp.tiers[gp.tiers.length - 1].pax;
+
+/** "1", "2", … with the last tier shown as "6+". */
+export const tierLabel = (gp: GroupPricing, pax: number): string =>
+  pax >= topPax(gp) && gp.tiers.length > 1 ? `${topPax(gp)}+` : String(pax);
+
+/** Per-person price for a party of `group`. */
+export function priceForGroup(gp: GroupPricing, group: number): number {
+  let price = gp.tiers[0].usd;
+  for (const t of gp.tiers) if (t.pax <= group) price = t.usd;
+  return price;
 }
 
-/** Price for a party of `group`, clamped into the 1…8+ range of the ladder. */
-export function priceForGroup(prices: number[], group: number): number {
-  const i = Math.min(Math.max(Math.round(group), 1), MAX_PAX) - 1;
-  return prices[i];
+/** The tier whose rate a party of `group` pays. */
+export function tierForGroup(gp: GroupPricing, group: number): PriceTier {
+  let tier = gp.tiers[0];
+  for (const t of gp.tiers) if (t.pax <= group) tier = t;
+  return tier;
 }
 
-/** Cheapest cell — what "From $X" means on cards, in schema and in the hero. */
-export const ladderLow = (prices: number[]) => Math.min(...prices);
+/** True when Ombeni's card quotes this exact party size (or it falls in the "N+" bucket). */
+export const isQuotedSize = (gp: GroupPricing, group: number): boolean =>
+  group >= topPax(gp) || gp.tiers.some((t) => t.pax === group);
 
-/** Solo price — the top of the ladder. */
-export const ladderHigh = (prices: number[]) => Math.max(...prices);
+/** Cheapest per-person rate — the "groups from $X" line and schema `lowPrice`. */
+export const lowestPrice = (gp: GroupPricing): number => Math.min(...gp.tiers.map((t) => t.usd));
+
+/** Most expensive per-person rate (normally the solo price). */
+export const highestPrice = (gp: GroupPricing): number => Math.max(...gp.tiers.map((t) => t.usd));
+
+/** Party size at which the cheapest rate starts. */
+export const lowestPriceFrom = (gp: GroupPricing): number =>
+  gp.tiers.find((t) => t.usd === lowestPrice(gp))!.pax;

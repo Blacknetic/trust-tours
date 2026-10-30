@@ -1,7 +1,6 @@
-import { PAX_COLUMNS, MAX_PAX } from "@/lib/pricing";
-
 interface Row {
   label: string;
+  /** One price per column, same order as `columns`. */
   prices: number[];
 }
 
@@ -9,6 +8,8 @@ interface Props {
   /** Card heading, e.g. "7-DAY CLIMBING". */
   title: string;
   subtitle?: string;
+  /** Party-size column labels, e.g. ["1", "2", "4", "6+"]. */
+  columns: string[];
   rows: Row[];
   note?: string;
 }
@@ -25,7 +26,7 @@ const BORDER = "1px solid var(--sand)";
  * left, which keeps the left-to-right "watch it drop" reading intact; stacking
  * the rows would lose it.
  */
-export default function PriceLadder({ title, subtitle, rows, note }: Props) {
+export default function PriceLadder({ title, subtitle, columns, rows, note }: Props) {
   return (
     <div
       className="rounded-2xl overflow-hidden"
@@ -86,14 +87,14 @@ export default function PriceLadder({ title, subtitle, rows, note }: Props) {
               >
                 <span className="sr-only">Route</span>
               </th>
-              {PAX_COLUMNS.map((n) => (
+              {columns.map((c) => (
                 <th
-                  key={n}
+                  key={c}
                   scope="col"
                   className="text-right font-medium px-3 py-3 whitespace-nowrap"
                   style={{ color: "var(--ink)", opacity: 0.6, fontSize: "var(--text-xs)" }}
                 >
-                  {n === MAX_PAX ? `${n}+` : n} pax
+                  {c} pax
                 </th>
               ))}
               {/* Trailing spacer so the last price is not flush to the edge. */}
@@ -123,7 +124,7 @@ export default function PriceLadder({ title, subtitle, rows, note }: Props) {
                 </th>
                 {row.prices.map((price, i) => (
                   <td
-                    key={PAX_COLUMNS[i]}
+                    key={columns[i]}
                     className="text-right px-3 py-4 font-semibold tabular-nums whitespace-nowrap"
                     style={{ color: "var(--ink)" }}
                   >

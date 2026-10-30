@@ -465,3 +465,10 @@ p {
   .marquee-track { animation: none !important; }
   .marquee-mask { overflow-x: auto !important; }
 }
+
+/* Pages with the section menu: the header scrolls away and that menu takes the
+   top of the screen alone, so two bars never stack. Stays `relative`, not
+   static, because the mega menu is positioned against the header. */
+body:has([data-section-nav]) .site-header {
+  position: relative;
+}

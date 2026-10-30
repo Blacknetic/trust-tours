@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/kilimanjaro`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/kilimanjaro/groups`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/kilimanjaro/guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/safaris`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/zanzibar`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/trekking`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },

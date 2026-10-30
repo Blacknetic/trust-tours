@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuote } from "@/components/QuoteModal";
+import MegaMenu, { type MegaPanel } from "@/components/MegaMenu";
 
 type NavLink = { href: string; label: string };
 type NavSection = { label: string; children: NavLink[] };
@@ -17,44 +18,94 @@ type NavGroup = {
   align?: "left" | "right"; // which edge the dropdown panel anchors to
   children?: NavLink[];
   sections?: NavSection[];
+  panels?: MegaPanel[]; // full-width topic menu (Kilimanjaro)
   footer?: NavLink; // optional "see all" link under a sectioned panel
 };
 type NavItem = NavLink | NavGroup;
+
+const KILIMANJARO_PANELS: MegaPanel[] = [
+  {
+    href: "/kilimanjaro/groups",
+    label: "Group Departures",
+    badge: "$200 deposit",
+    teaser: "No team? Join ours for a $200 deposit.",
+    heading: "No team? Join ours.",
+    body: [
+      "Pick a date, put down $200 and you're on the climb. Most of our group spots are booked by people travelling alone, so you can arrive knowing nobody and still reach the summit as part of a team.",
+      "The same expert guides and quality kit as our private climbs, in groups of up to 12, at a lower price per person.",
+    ],
+    cta: "See open dates",
+    image: {
+      src: "/images/kilimanjaro/team-group-photo.jpg",
+      alt: "A Trust Tours & Safaris team of climbers and crew with the company banner on Kilimanjaro",
+    },
+  },
+  {
+    href: "/kilimanjaro/guide",
+    label: "Kilimanjaro Guide 2026–2028",
+    badge: "Prices inside",
+    teaser: "Every route, every group size, every line of the bill.",
+    heading: "Know the real cost before you pay a deposit",
+    body: [
+      "Every route, every group size and every line of the bill, in one place. See what your price should cover, what you'll pay on top, and how to choose between six routes.",
+      "Read it first and you'll be able to compare any Kilimanjaro quote, ours included.",
+    ],
+    cta: "Read the guide",
+    image: {
+      src: "/images/kilimanjaro-camp.jpg",
+      alt: "Climbers beside a Kilimanjaro signpost, with tents and a rock tower behind them",
+    },
+  },
+  {
+    href: "/kilimanjaro",
+    label: "Private Tours & Pricing",
+    badge: "From $2,627",
+    teaser: "Your dates, your people, with prices for every group size.",
+    heading: "Your dates. Your people. Your pace.",
+    body: [
+      "Climb with only the people you choose, on six routes and ten itineraries. Every price is published per person for every group size, so you know the number before you write to us.",
+      "Not sure which route fits? Tell Ombeni your dates and hiking experience and he'll recommend one.",
+    ],
+    cta: "Compare private climbs",
+    links: [
+      { href: "/kilimanjaro/7-day-machame-route", label: "7-Day Machame" },
+      { href: "/kilimanjaro/8-day-lemosho-route", label: "8-Day Lemosho" },
+      { href: "/kilimanjaro/6-day-marangu-route", label: "6-Day Marangu" },
+      { href: "/kilimanjaro/9-day-northern-circuit", label: "9-Day Northern Circuit" },
+    ],
+    image: {
+      src: "/images/kilimanjaro-summit-sign.jpg",
+      alt: "Three climbers with the Tanzanian flag on Kilimanjaro at sunrise",
+    },
+  },
+  {
+    href: "/guides",
+    label: "Helpful Articles",
+    badge: "Free",
+    teaser: "Honest answers on training, altitude and packing.",
+    heading: "Ask the questions before the mountain does",
+    body: [
+      "How hard is it really? How do you train? What does altitude feel like? Free, honest guides from the people who run these climbs, so nothing on the mountain takes you by surprise.",
+    ],
+    cta: "Browse all guides",
+    links: [
+      { href: "/guides/best-kilimanjaro-route", label: "Best route" },
+      { href: "/guides/kilimanjaro-training-and-fitness", label: "Training" },
+      { href: "/guides/altitude-sickness-on-kilimanjaro", label: "Altitude sickness" },
+      { href: "/guides/kilimanjaro-packing-list", label: "Packing list" },
+    ],
+    image: {
+      src: "/images/about-ombeni-guest.jpg",
+      alt: "Ombeni and a guest smiling with thumbs up on the mountain",
+    },
+  },
+];
 
 const NAV: NavItem[] = [
   {
     label: "Kilimanjaro",
     match: ["/kilimanjaro"],
-    align: "left",
-    sections: [
-      {
-        label: "Private climbs",
-        children: [
-          { href: "/kilimanjaro/7-day-machame-route", label: "7-Day Machame" },
-          { href: "/kilimanjaro/8-day-lemosho-route", label: "8-Day Lemosho" },
-          { href: "/kilimanjaro/6-day-marangu-route", label: "6-Day Marangu" },
-          { href: "/kilimanjaro/6-day-umbwe-route", label: "6-Day Umbwe" },
-          { href: "/kilimanjaro/6-day-rongai-route", label: "6-Day Rongai" },
-          { href: "/kilimanjaro/9-day-northern-circuit", label: "9-Day Northern Circuit" },
-        ],
-      },
-      {
-        label: "Group departures",
-        children: [
-          { href: "/kilimanjaro/groups", label: "Browse all departures" },
-          { href: "/kilimanjaro/groups", label: "Join a team · $200 deposit" },
-        ],
-      },
-      {
-        label: "Plan your climb",
-        children: [
-          { href: "/guides/climbing-kilimanjaro-guide", label: "Climbing guide" },
-          { href: "/guides/best-kilimanjaro-route", label: "Best route" },
-          { href: "/guides/kilimanjaro-packing-list", label: "Packing list" },
-        ],
-      },
-    ],
-    footer: { href: "/kilimanjaro", label: "All Kilimanjaro climbs →" },
+    panels: KILIMANJARO_PANELS,
   },
   {
     label: "Trekking",
@@ -155,7 +206,7 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 z-40 shadow-sm"
+      className="site-header sticky top-0 z-40 shadow-sm"
       style={{ background: "var(--paper)", borderBottom: "1px solid rgba(74,41,18,0.12)" }}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
@@ -174,7 +225,7 @@ export default function Header() {
             className="h-11 w-11 rounded-full"
           />
           <span
-            className="font-extrabold text-lg tracking-tight hidden sm:inline"
+            className="font-extrabold text-lg tracking-tight whitespace-nowrap hidden sm:inline lg:hidden min-[1140px]:inline"
             style={{ fontFamily: "var(--font-display)", color: "var(--forest)" }}
           >
             Trust Tours &amp; Safaris
@@ -182,14 +233,16 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-5 lg:gap-6" aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center gap-5 lg:gap-6" aria-label="Main navigation">
           {NAV.map((item) => {
             if (isGroup(item)) {
               const active = item.match.some((m) => pathname.startsWith(m));
               return (
                 <div
                   key={item.label}
-                  className="relative"
+                  // A mega menu anchors to the header, so its hover area runs
+                  // down to the header's edge with no gap before the panel.
+                  className={item.panels ? "h-16 flex items-center" : "relative"}
                   onMouseEnter={() => setMenu(item.label)}
                   onMouseLeave={() => setMenu(null)}
                 >
@@ -223,7 +276,23 @@ export default function Header() {
                     </svg>
                   </button>
                   <AnimatePresence>
-                    {menu === item.label && (
+                    {menu === item.label && item.panels && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 6 }}
+                        transition={{ duration: 0.15, ease: "easeOut" }}
+                        className="absolute inset-x-0 top-full z-50 px-4 md:px-6 pointer-events-none"
+                      >
+                        <div
+                          className="pointer-events-auto max-w-[1040px] mx-auto rounded-b-2xl overflow-hidden shadow-xl"
+                          style={{ background: "#fff", border: "1px solid rgba(74,41,18,0.14)", borderTop: "none" }}
+                        >
+                          <MegaMenu panels={item.panels} onNavigate={() => setMenu(null)} />
+                        </div>
+                      </motion.div>
+                    )}
+                    {menu === item.label && !item.panels && (
                       <motion.div
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -250,7 +319,7 @@ export default function Header() {
                                   </p>
                                   {sec.children.map((c) => (
                                     <Link
-                                      key={c.href}
+                                      key={`${c.href}|${c.label}`}
                                       href={c.href}
                                       onClick={() => setMenu(null)}
                                       className="block px-2 py-1.5 text-sm font-semibold rounded-md transition-colors hover:bg-[rgba(74,41,18,0.06)]"
@@ -284,7 +353,7 @@ export default function Header() {
                             <div className="min-w-[200px] py-1">
                               {item.children?.map((c) => (
                                 <Link
-                                  key={c.href}
+                                  key={`${c.href}|${c.label}`}
                                   href={c.href}
                                   onClick={() => setMenu(null)}
                                   className="block px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[rgba(74,41,18,0.06)]"
@@ -332,7 +401,7 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="md:hidden flex flex-col justify-center gap-1.5 p-2 rounded"
+          className="lg:hidden flex flex-col justify-center gap-1.5 p-2 rounded"
         >
           <span
             className="block w-6 h-0.5 origin-center transition-transform duration-200"
@@ -367,7 +436,7 @@ export default function Header() {
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             aria-label="Mobile navigation"
-            className="md:hidden px-4 pb-4 overflow-y-auto"
+            className="lg:hidden px-4 pb-4 overflow-y-auto"
             style={{
               background: "var(--paper)",
               borderTop: "1px solid rgba(74,41,18,0.12)",
@@ -383,7 +452,24 @@ export default function Header() {
                   >
                     {item.label}
                   </p>
-                  {item.sections ? (
+                  {item.panels ? (
+                    item.panels.map((p) => (
+                      <Link
+                        key={p.href}
+                        href={p.href}
+                        onClick={() => setOpen(false)}
+                        className="block py-3 pl-3"
+                        style={{ borderBottom: "1px solid rgba(74,41,18,0.1)" }}
+                      >
+                        <span className="block text-base font-semibold" style={{ color: "var(--forest)" }}>
+                          {p.label}
+                        </span>
+                        <span className="block text-sm mt-0.5" style={{ color: "var(--ink)" }}>
+                          {p.teaser}
+                        </span>
+                      </Link>
+                    ))
+                  ) : item.sections ? (
                     // Grouped-by-topic (Guides): topic sub-labels + links, then All guides.
                     <>
                       {item.sections.map((sec) => (
@@ -396,7 +482,7 @@ export default function Header() {
                           </p>
                           {sec.children.map((c) => (
                             <Link
-                              key={c.href}
+                              key={`${c.href}|${c.label}`}
                               href={c.href}
                               onClick={() => setOpen(false)}
                               className="block py-2.5 pl-5 text-base font-semibold transition-colors"
@@ -424,7 +510,7 @@ export default function Header() {
                   ) : (
                     item.children?.map((c) => (
                       <Link
-                        key={c.href}
+                        key={`${c.href}|${c.label}`}
                         href={c.href}
                         onClick={() => setOpen(false)}
                         className="block py-3 pl-3 text-base font-semibold transition-colors"

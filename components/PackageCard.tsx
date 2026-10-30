@@ -3,6 +3,7 @@ import Photo from "@/components/Photo";
 import type { TripPackage } from "@/data/packages";
 import { packagePath } from "@/data/packages";
 import { packageImage } from "@/data/images";
+import { lowestPrice } from "@/lib/pricing";
 
 // Brand-token gradients per category — used as a fallback when a package has
 // no real photo yet (pkg.heroImage === ""), and as the tint behind every image.
@@ -49,6 +50,7 @@ function MountainRating({ label, value }: { label: string; value: number }) {
 export default function PackageCard({ pkg }: { pkg: TripPackage }) {
   const href = packagePath(pkg);
   const img = packageImage(pkg);
+  const gp = pkg.groupPricing;
 
   return (
     <Link
@@ -114,7 +116,7 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
             {pkg.priceFromUSD > 0 ? (
               <>
                 <p className="text-xs leading-none mb-1" style={{ color: "var(--ink)" }}>
-                  From
+                  {gp ? "1 person" : "From"}
                 </p>
                 <p
                   className="text-xl font-extrabold leading-none"
@@ -128,6 +130,11 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
                     /person
                   </span>
                 </p>
+                {gp && gp.tiers.length > 1 && (
+                  <p className="text-xs mt-1.5" style={{ color: "var(--ink)", opacity: 0.75 }}>
+                    Groups from ${lowestPrice(gp).toLocaleString()} each
+                  </p>
+                )}
               </>
             ) : (
               <p className="text-sm font-medium" style={{ color: "var(--ink)" }}>
