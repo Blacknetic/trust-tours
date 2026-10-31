@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useQuote } from "@/components/QuoteModal";
-import type { GroupPricing } from "@/lib/pricing";
+import type { ComfortLevel, GroupPricing } from "@/lib/pricing";
 import { isAskSize, isQuotedSize, largestSize, priceForGroup, tierForGroup } from "@/lib/pricing";
 import type { AddOn } from "@/data/addons";
 import { addOnPriceLabel, addOnTotal } from "@/data/addons";
@@ -38,6 +38,8 @@ export interface BookingCardProps {
   priceNote: string;
   tripType?: "kilimanjaro" | "safari" | "zanzibar";
   groupPricing?: GroupPricing | null;
+  /** The same trip at several levels. The box then prices by the chosen level. */
+  levels?: ComfortLevel[];
   addOns?: AddOn[];
   /** "climber" on climbs, "traveller" elsewhere. */
   person?: string;
@@ -57,6 +59,7 @@ export default function BookingCard({
   priceNote,
   tripType,
   groupPricing,
+  levels,
   addOns = [],
   person = "traveller",
   surface = "#fff",
@@ -66,8 +69,11 @@ export default function BookingCard({
   // Rate cards open on their first tier, matching the headline price on the page.
   const [group, setGroup] = useState(groupPricing ? groupPricing.tiers[0].pax : 2);
   const [picked, setPicked] = useState<string[]>([]);
+  const [levelId, setLevelId] = useState(levels?.[0].id);
 
-  const gp = groupPricing ?? null;
+  const level = levels?.find((l) => l.id === levelId);
+  const gp = level?.groupPricing ?? groupPricing ?? null;
+  const offered = addOns.filter((a) => !level?.includedAddOns?.includes(a.id));
   const top = gp ? largestSize(gp) : STEPPER_MAX;
   const isTop = group >= top;
   const groupText = `${group}${gp && isTop && gp.tiers.length > 1 ? "+" : ""}`;
@@ -78,7 +84,7 @@ export default function BookingCard({
   const hasPrice = perPerson > 0;
   const tripTotal = perPerson * group;
 
-  const chosen = addOns.filter((a) => picked.includes(a.id));
+  const chosen = offered.filter((a) => picked.includes(a.id));
   const pricedExtras = chosen
     .map((a) => addOnTotal(a, group))
     .filter((v): v is number => v != null)
@@ -96,6 +102,7 @@ export default function BookingCard({
   function request() {
     const lines = [
       `Booking request — ${packageTitle}`,
+      level && `Comfort level: ${level.label}`,
       `Group: ${people(group)}${isTop && gp ? " (or more)" : ""}`,
       hasPrice && `Price shown: ${usd(perPerson)} per person · ${usd(tripTotal)} for the group`,
       askPrice && "Price: please quote for this group size",
@@ -119,7 +126,7 @@ export default function BookingCard({
       {/* Price headline */}
       {hasPrice ? (
         <div className="mb-5">
-          <p className="text-xs" style={{ color: "var(--ink)" }}>{gp ? "Your price" : "From"}</p>
+          <p className="text-xs" style={{ color: "var(--ink)" }}>{gp && !level ? "Your price" : "From"}</p>
           <p
             className="text-4xl font-extrabold leading-none tabular-nums"
             style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}
@@ -130,6 +137,11 @@ export default function BookingCard({
           <p className="text-xs mt-1.5" style={{ color: "var(--ink)" }}>
             per person{gp ? `, group of ${groupText}` : ""}
           </p>
+          {level && (
+            <p className="text-xs mt-1" style={{ color: "var(--ink)", opacity: 0.75 }}>
+              {usd(level.perDay.min)}–{usd(level.perDay.max)} per day
+            </p>
+          )}
         </div>
       ) : (
         <div className="mb-5">
@@ -145,6 +157,40 @@ export default function BookingCard({
       )}
 
       <div className="space-y-5 mb-5">
+        {/* Comfort level */}
+        {levels && (
+          <div>
+            <span className={labelCls} style={{ color: "var(--ink)" }}>
+              Comfort level
+            </span>
+            <div className="grid grid-cols-2 gap-1.5" role="radiogroup" aria-label="Comfort level">
+              {levels.map((l) => {
+                const active = l.id === levelId;
+                return (
+                  <button
+                    key={l.id}
+                    type="button"
+                    role="radio"
+                    aria-checked={active}
+                    onClick={() => setLevelId(l.id)}
+                    className="rounded-lg px-2 py-2 text-sm font-semibold leading-tight transition-colors"
+                    style={
+                      active
+                        ? { background: "var(--forest)", color: "var(--paper)", border: "1px solid var(--forest)" }
+                        : fieldStyle
+                    }
+                  >
+                    {l.label}
+                    <span className="block text-xs font-normal tabular-nums mt-0.5">
+                      From {usd(l.groupPricing.tiers[0].usd)}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Group size */}
         <div>
           <span className={labelCls} style={{ color: "var(--ink)" }}>
@@ -233,13 +279,13 @@ export default function BookingCard({
         </div>
 
         {/* Add-ons */}
-        {addOns.length > 0 && (
+        {offered.length > 0 && (
           <fieldset>
             <legend className={labelCls} style={{ color: "var(--ink)" }}>
               Add-ons
             </legend>
             <ul className="space-y-1">
-              {addOns.map((a) => {
+              {offered.map((a) => {
                 const on = picked.includes(a.id);
                 return (
                   <li key={a.id}>
@@ -305,7 +351,7 @@ export default function BookingCard({
             className="flex justify-between gap-3 mt-2 pt-2 font-bold"
             style={{ borderTop: "1px solid rgba(26,26,22,0.12)" }}
           >
-            <span>Estimated total</span>
+            <span>{level ? "Estimated total from" : "Estimated total"}</span>
             <span className="tabular-nums" aria-live="polite">{usd(grandTotal)}</span>
           </div>
           {onRequest.length > 0 && (

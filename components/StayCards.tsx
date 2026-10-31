@@ -1,4 +1,4 @@
-import Photo from "@/components/Photo";
+import StayGallery from "@/components/StayGallery";
 import type { Stay } from "@/data/accommodations";
 
 /** "Where you'll stay": one card per lodge, linked from each day's overnight. */
@@ -12,8 +12,8 @@ export default function StayCards({ stays, border }: { stays: Stay[]; border: st
         Where you&apos;ll stay
       </h2>
       <p className="text-base leading-relaxed mb-7" style={{ color: "var(--ink)" }}>
-        These are the mid-range stays we plan this route around. Seasonal camps fill early, so
-        your written quote confirms the exact property, or a similar one if a stay is full.
+        Your stays depend on the comfort level you choose. Seasonal camps fill early, so your
+        written quote confirms each property, or a similar one if a stay is full.
       </p>
 
       <div className="space-y-5">
@@ -26,25 +26,7 @@ export default function StayCards({ stays, border }: { stays: Stay[]; border: st
               className="rounded-2xl overflow-hidden scroll-mt-28"
               style={{ border: "1px solid rgba(74,41,18,0.15)", background: "#fff" }}
             >
-              {photos.length > 0 && (
-                <div className="flex gap-2 overflow-x-auto snap-x snap-mandatory">
-                  {photos.map((photo) => (
-                    <div
-                      key={photo.src}
-                      className="relative aspect-[3/2] w-[85%] sm:w-[60%] flex-shrink-0 snap-start"
-                      style={{ background: "var(--snow)" }}
-                    >
-                      <Photo
-                        src={photo.src}
-                        alt={photo.alt}
-                        fill
-                        sizes="(max-width: 1024px) 85vw, 460px"
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
+              {photos.length > 0 && <StayGallery name={stay.name} photos={photos} />}
               <div className="p-5 md:p-6">
                 <p className="text-xs font-semibold uppercase tracking-widest mb-1.5" style={{ color: "var(--gold)" }}>
                   {stay.type}

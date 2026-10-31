@@ -78,11 +78,11 @@ export const ADD_ONS: Record<string, AddOn> = {
     description: "Breakfast set up for your party out on the plains.",
     unit: "trip",
   },
-  "luxury-upgrade": {
-    id: "luxury-upgrade",
-    label: "Upgrade to luxury camps",
-    description: "The same route with premium lodges and luxury seasonal camps.",
-    unit: "trip",
+  "serengeti-flight": {
+    id: "serengeti-flight",
+    label: "Flight to Arusha",
+    description: "Fly from the Southern Serengeti to Arusha instead of the long road journey back.",
+    unit: "person",
   },
   "extra-serengeti-night": {
     id: "extra-serengeti-night",
@@ -135,7 +135,7 @@ export const SAFARI_ADDONS = [
   "cultural-visit",
   "walking-safari",
   "bush-breakfast",
-  "luxury-upgrade",
+  "serengeti-flight",
   "extra-serengeti-night",
   "single-supplement",
   "zanzibar-extension",

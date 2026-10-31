@@ -2,199 +2,207 @@ import type { TripPackage } from "@/data/packages";
 import { SAFARI_ADDONS } from "@/data/addons";
 import { CONTACT_BULLETS } from "@/data/kilimanjaro/shared";
 import { calvingLinks } from "./links";
+import { comfortLevels } from "./shared";
 
 const SLUG = "5-day-ndutu-migration-safari";
 
-// Route and the $3,760 price come from Ombeni's "5-DAY TANZANIA CALVING-SEASON
-// SAFARI" document. Day text also draws on his other three 5-day documents.
-// Draft: only the 2-guest rate is stated, so other sizes show "Ask".
+// From Ombeni's "5-Day Ndutu Calving Safari — Tarangire, Ngorongoro & Southern
+// Serengeti" document. Draft: its prices are indicative ranges for 2 adults.
 export const ndutuCalving5: TripPackage = {
   slug: SLUG,
   seoTitle: "5-Day Ndutu Calving Safari Tanzania | Trust Tours",
   metaDescription:
-    "Private 5-day Ndutu calving safari: Tarangire, Ngorongoro Crater, two nights among the herds, the Serengeti and a flight to Arusha. From $3,760 per person.",
+    "Private 5-day Ndutu calving safari from Kilimanjaro Airport: Tarangire, Ngorongoro Crater and a full day among the herds. Four comfort levels from $2,275 pp.",
   destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti"],
   category: "safari",
   tags: ["family"],
-  title: "5-Day Ndutu Calving Safari – Tarangire, Ngorongoro & Serengeti",
+  title: "5-Day Ndutu Calving Safari – Tarangire, Ngorongoro & Southern Serengeti",
   shortName: "5-Day Ndutu Calving Safari",
   days: 5,
-  priceFromUSD: 3760,
+  priceFromUSD: 2275,
   priceNote:
-    "Indicative price per person for 2 guests sharing a room on a private mid-range safari. Your written quote confirms the final price for your dates.",
-  groupPricing: {
-    tiers: [{ pax: 2, usd: 3760 }],
-    askSizes: [1, 3, 4, 5, 6],
-    note: "Indicative mid-range price for 2 guests sharing, including the flight from the Serengeti to Arusha.",
-  },
+    "Indicative price per person for 2 adults sharing a private vehicle, at Mid-range level. Your written quote confirms the final price.",
+  comfortLevels: comfortLevels(5),
   addOns: SAFARI_ADDONS,
-  stays: ["kudu-lodge", "ndutu-serengeti-heritage", "serengeti-heritage-tented-camp"],
+  stays: ["arusha-coffee-lodge", "marera-valley-lodge", "ndutu-camp"],
   links: calvingLinks(SLUG),
-  tier: ["mid-range"],
-  heroImage: "/images/serengeti-plains.jpg",
+  tier: ["mid-range", "comfort"],
+  heroImage: "/images/safaris/ndutu-calf-nursing.jpg",
   gallery: [],
   summary:
-    "A private five-day safari built around Tanzania's calving season: two nights on the Ndutu plains among wildebeest, newborn calves and predators, with Tarangire, the Ngorongoro Crater and Central Serengeti along the way.",
+    "Experience Tanzania's Great Migration at one of its most extraordinary moments, on a private five-day safari through Tarangire, the Ngorongoro Crater and the Ndutu plains of the Southern Serengeti.",
   overview: [
-    "Every year, enormous herds of wildebeest and zebra gather on the short-grass plains of Ndutu and the Southern Serengeti to give birth. Thousands of calves are born within a few weeks, and lions, cheetahs and hyenas follow close behind. It is one of the great wildlife events in Africa, and February is traditionally one of the best months to see it.",
-    "This five-day safari is designed to put you in the middle of it. Rather than rushing through as many parks as possible, we choose quality over quantity. You begin with the elephants and giant baobabs of Tarangire, spend a morning on the floor of the Ngorongoro Crater, and then settle in for two nights in the calving grounds.",
-    "Two nights matter. Arriving late in the afternoon and leaving the next morning is not enough to understand what is happening on the plains. Staying longer gives your guide a full day to follow the herds, wait at a promising sighting and choose fresh areas as conditions change.",
-    "From Ndutu, the safari continues north into Central Serengeti, where the landscape shifts to rocky kopjes, acacia trees and open grassland. After a last morning game drive, you fly back to Arusha instead of spending the day on the road, which leaves more of your time for the safari itself.",
-    "This is a private safari. The vehicle and guide are reserved for your party alone, so you decide how long to stay at a sighting, when to stop for photographs and when to break for lunch. No other group's timetable sets the pace.",
+    "From January to February, hundreds of thousands of wildebeest gather across the short-grass plains of the Southern Serengeti to give birth. Newborn calves take their first steps, and lions, cheetahs and hyenas follow the herds. December and March can also offer excellent migration experiences, although the exact location of the herds changes with rainfall and grazing.",
+    "This safari combines the elephant-rich landscapes of Tarangire, the remarkable wildlife of the Ngorongoro Crater and dedicated time in the Ndutu calving grounds. Rather than spending the whole trip moving from park to park, it gives you time where the migration is normally concentrated at this time of year.",
+    "With Trust Tours & Safaris, you are not simply following a fixed itinerary. Our experienced local safari team follows current wildlife conditions and adapts your game drives to where the herds and predators are actually moving, giving you the best possible opportunity for an unforgettable calving-season experience.",
+    "We believe a safari should be more than travelling between national parks. It should give you enough time to appreciate the landscapes, observe wildlife at a comfortable pace, take photographs and enjoy the knowledge of your professional guide.",
+    "From the first welcome at Kilimanjaro International Airport to your final departure, you are in safe hands with a trusted Tanzanian safari company.",
   ],
   atAGlance: [
     { label: "Duration", value: "5 days / 4 nights" },
-    { label: "Safari style", value: "Private, with your own vehicle and guide" },
-    { label: "Start / finish", value: "Arusha / flight from the Serengeti back to Arusha" },
-    { label: "Route", value: "Tarangire · Ngorongoro Crater · Ndutu · Central Serengeti" },
-    { label: "Best time", value: "December to March, usually peaking in late January and February" },
+    { label: "Main experience", value: "Great Migration and Ndutu calving season" },
+    { label: "Best period", value: "December to March" },
+    { label: "Peak calving", value: "Usually January to February" },
+    { label: "Destinations", value: "Tarangire · Ngorongoro · Ndutu · Southern Serengeti" },
+    { label: "Start / finish", value: "Kilimanjaro International Airport (JRO)" },
+    { label: "Safari style", value: "Private and customizable" },
     { label: "Vehicle", value: "4×4 safari vehicle with a pop-up roof" },
-    { label: "Ideal for", value: "Couples, families, private travellers and wildlife photographers" },
+    { label: "Guide", value: "Professional English-speaking safari guide" },
+    { label: "Focus", value: "Migration, calving, predators, the Big Five and photography" },
   ],
   highlights: [
-    "Two nights in the calving grounds: A full day on the Ndutu plains, with time to follow the herds instead of passing through.",
-    "Newborn calves and predators: Look for wildebeest and zebra with their young, along with the lions, cheetahs and hyenas drawn to them.",
-    "Ngorongoro Crater: A morning game drive among buffalo, hippos, flamingos and, with luck, black rhino.",
-    "Tarangire's elephants: Begin with a full game drive among the park's great herds and ancient baobabs.",
-    "Central Serengeti: Watch the scenery change to kopjes and acacia trees on a game drive north.",
-    "No long drive home: Fly from the Serengeti to Arusha after your last game drive.",
+    "A full day in Ndutu: Spend a whole day on the calving grounds, the heart of the entire safari.",
+    "New life and predators: Look for newborn calves, with lions, cheetahs and hyenas patrolling the edges of the herds.",
+    "Ngorongoro Crater: Game drive on the crater floor, one of the great wildlife concentrations in Africa.",
+    "Tarangire's elephants: A full-day game drive among giant baobabs and large elephant herds.",
+    "A rested start: A first night in Arusha, so the safari begins after a proper sleep, not straight after a long flight.",
+    "Four comfort levels: The same route, from Mid-range to Ultra-premium.",
   ],
   pricingDetails: [
-    "The price shown is for two guests sharing a room on a private mid-range safari. It covers the vehicle, guide, park fees, four nights of accommodation and your flight from the Serengeti to Arusha.",
-    "A private safari costs less per person as your group grows, because you share one vehicle and guide. A solo traveller carries those costs alone, so we quote one traveller and groups of three to six directly rather than estimating a price here.",
-    "Calving season is one of the busiest periods in the Southern Serengeti. We confirm your final price, camps, payment schedule and cancellation terms in writing before you pay a deposit.",
+    "These are indicative private-safari planning ranges per person, based on 2 adults sharing one private safari vehicle and a room. They are not confirmed quotations.",
+    "Your final cost depends on your travel dates, the number of guests, camp availability, flight fares and the exact services you choose. Ndutu camps can fill early in the calving season, so we confirm your price and accommodation in writing before you pay a deposit.",
+    "To request a price for one traveller or a group of three to six, select your group size in the booking box and Ombeni will quote you directly.",
   ],
   itinerary: [
     {
       day: 1,
-      title: "Arusha to Tarangire National Park and Karatu",
+      title: "Kilimanjaro Airport to Arusha: arrival and safari briefing",
       description:
-        "Your private safari guide meets you in Arusha after breakfast for a short briefing on the route, the wildlife you may see and the days ahead. You then set off through the Tanzanian countryside, passing farms and villages on the way to Tarangire National Park.\n\nTarangire is one of northern Tanzania's finest wildlife areas, known for its large elephant population, ancient baobab trees and the river that draws animals through the park. The game drive begins as soon as you enter. Your guide will look for elephants moving in family groups, giraffes browsing among the trees, zebras, wildebeest, buffalo, impala, warthogs and a wide range of birds. Lions and leopards live here too, although sightings can never be guaranteed.\n\nYou stop for a picnic lunch at an approved site, then continue exploring as the afternoon light softens. The baobabs make a memorable backdrop for photographs, and because this is a private safari, your guide can adjust the route to suit wildlife activity and your interests.\n\nLate in the day you leave the park and drive to Karatu, a welcoming highland town and a convenient base for the Ngorongoro Crater. Dinner and a comfortable bed are waiting at your lodge.",
-      experience: "A first taste of Tanzania among elephants and giant baobabs.",
-      image: {
-        src: "/images/tarangire-giraffes.jpg",
-        alt: "Giraffes in Tarangire National Park on the first day of the safari",
-      },
-      meals: "Lunch and dinner",
-      accommodation: "Kudu Lodge, Karatu, or similar",
-      stayId: "kudu-lodge",
+        "Your Tanzanian adventure begins with a warm welcome at Kilimanjaro International Airport (JRO) by your Trust Tours & Safaris representative. After help with your luggage, you transfer privately to Arusha, the safari capital of northern Tanzania. The drive is about 50 km and takes around an hour, depending on traffic.\n\nDepending on your arrival time, the rest of the day is yours. Relax at the lodge, enjoy the gardens, recover from your journey or simply prepare for the days ahead.\n\nIn the evening, your safari guide meets you for a detailed briefing on the route, the weather, wildlife expectations, photography opportunities and the next day's departure.",
+      experience: "A warm welcome and a comfortable first evening in Arusha.",
+      notes: [
+        "Why this night matters: Instead of starting a long safari drive straight after an international flight, you enjoy a comfortable first evening in Arusha and begin the main safari rested.",
+      ],
+      distanceKm: 50,
+      hours: "About 1 hour",
+      meals: "Dinner",
+      accommodation: "Arusha Coffee Lodge",
+      stayId: "arusha-coffee-lodge",
     },
     {
       day: 2,
-      title: "Ngorongoro Crater to Ndutu",
+      title: "Arusha to Tarangire National Park and Karatu",
       description:
-        "An early breakfast starts one of the safari's biggest days. You drive to the Ngorongoro Conservation Area and descend to the crater floor, a remarkable natural landscape formed by the collapse of a great volcano. Its grasslands, wetlands and woodland patches support a high concentration of wildlife in a compact area.\n\nDuring the morning game drive your guide will search for lions, elephants, buffalo, hippos, zebras, wildebeest, gazelles, hyenas and flamingos. With luck, you may also find the endangered black rhino, one of the crater's most sought-after animals. After a picnic lunch inside the crater, you climb back up to the rim.\n\nFrom the highlands, the road continues towards Ndutu and the Southern Serengeti ecosystem. The landscape gradually opens into wide plains, seasonal lakes and acacia-dotted grassland, and the character of the safari changes completely.\n\nDepending on your arrival time and wildlife activity, you may enjoy your first game drive among the migration herds before reaching camp. In February, this area can be alive with wildebeest, zebra, calves and predators. Dinner is at your seasonal tented camp, close to the wilderness.",
-      experience: "From the crater floor to the edge of the calving grounds in a single day.",
+        "After breakfast, you leave Arusha with your private safari guide and drive to Tarangire National Park, famous for its enormous elephant population, ancient baobab trees, seasonal wetlands and diverse wildlife. The safari begins as soon as you enter the park.\n\nYour guide chooses the best areas according to current wildlife conditions, looking for African elephants, lions, giraffes, zebras, wildebeest, buffalo, impala, warthogs, antelope, baboons, monkeys and numerous bird species.\n\nThe park's landscape of giant baobabs, open savannah and seasonal rivers has a completely different atmosphere from Ndutu. You enjoy a full-day game drive, with a picnic lunch at an authorised picnic area before continuing to explore.\n\nIn the late afternoon, you leave Tarangire and drive to the Karatu highlands for dinner and the night.",
+      experience: "Elephants, baobabs and a full day of Tarangire wildlife.",
       notes: [
-        "This is a long day of travel and wildlife viewing. We plan the crater departure carefully, and the final timing depends on your camp's exact location and road conditions.",
+        "Why Tarangire is included: It adds excellent resident wildlife and elephant viewing, and it breaks up the journey to the Ngorongoro and Ndutu ecosystem.",
       ],
       image: {
-        src: "/images/ngorongoro-rhino.jpg",
-        alt: "Two rhinos grazing on the floor of the Ngorongoro Crater",
+        src: "/images/safaris/tarangire-elephants.jpg",
+        alt: "A herd of elephants beneath a flat-topped acacia tree in Tarangire National Park",
       },
-      meals: "Breakfast, picnic lunch and dinner",
-      accommodation: "Ndutu Serengeti Heritage, Ndutu, or similar",
-      stayId: "ndutu-serengeti-heritage",
+      meals: "Breakfast, lunch and dinner",
+      accommodation: "Marera Valley Lodge, Karatu",
+      stayId: "marera-valley-lodge",
     },
     {
       day: 3,
-      title: "Full-day calving-season game drive at Ndutu",
+      title: "Ngorongoro Crater to Ndutu and the Southern Serengeti",
       description:
-        "This is the most important wildlife day of the safari. You wake before sunrise and head out after an early breakfast, because the first hours of the day are especially valuable for predator activity and photography. The golden light is perfect for capturing wildebeest, newborn calves, zebras, lions, cheetahs, hyenas, giraffes and birds of prey.\n\nThe aim is not simply to drive around looking for animals, but to understand what is happening on the plains. Your guide watches the movement of the herds and checks recent sightings, then adjusts the route to where wildlife activity is strongest. You may come across large nursery groups of mothers and newborn calves, with predators waiting nearby.\n\nAround midday, you stop for a picnic lunch in an approved area, then continue into the afternoon. Because the safari is private, you can stay longer at an exceptional sighting instead of following a fixed schedule. You may also see jackals, ostriches, gazelles, vultures and other birdlife, depending on the areas you visit.\n\nAs the sun lowers over the plains, you return to camp for dinner and, conditions allowing, an evening around the campfire.",
-      experience: "A whole day among the herds, at the heart of the Great Migration.",
+        "This is where the safari becomes a dedicated migration experience. After an early breakfast, you drive into the Ngorongoro Conservation Area and descend into the spectacular crater.\n\nThe crater floor supports an extraordinary concentration of wildlife. On your morning game drive, your guide will search for lions, buffalo, elephants, hippos, zebras, wildebeest, gazelles, hyenas, jackals, flamingos and other waterbirds. Black rhino live here too, although sightings are never guaranteed. You enjoy a picnic lunch in the crater before climbing back out on the western side of the conservation area.\n\nThen comes the important transition. Instead of spending another night around Karatu, you continue to Ndutu and the Southern Serengeti, where the Great Migration normally concentrates during the calving months. The landscape gradually changes from the highlands into vast open plains.\n\nAs you approach Ndutu, your game drive begins again. Look for wildebeest herds, zebras, gazelles, lions, cheetahs, hyenas, jackals, giraffes, elephants and other plains wildlife. If conditions are right, you may meet the first large migration herds before you reach camp.",
+      experience: "From the crater floor into the Great Migration.",
       image: {
-        src: "/images/ndutu-calving.jpg",
-        alt: "Four cheetahs watching the plains from a grassy mound",
+        src: "/images/safaris/ngorongoro-crater-floor.jpg",
+        alt: "A safari vehicle among zebra and wildebeest on the Ngorongoro Crater floor, with the crater walls behind",
       },
       meals: "Breakfast, picnic lunch and dinner",
-      accommodation: "Ndutu Serengeti Heritage, Ndutu, or similar",
-      stayId: "ndutu-serengeti-heritage",
+      accommodation: "Ndutu / Southern Serengeti camp or lodge",
+      stayId: "ndutu-camp",
     },
     {
       day: 4,
-      title: "Ndutu to Central Serengeti",
+      title: "Full day in Ndutu: the Great Migration calving safari",
       description:
-        "After an early breakfast you have one more morning in the Ndutu area, with another chance to find the herds and the predators following them. Herd movements can change from one day to the next, so your guide will choose the route based on the latest wildlife activity.\n\nLate in the morning you begin travelling gradually north towards Central Serengeti. This is not simply a transfer. The drive itself becomes a game drive, and you can stop whenever something interesting appears.\n\nAfter lunch, the scenery changes from the short-grass plains of Ndutu to the classic Serengeti landscape of rocky kopjes, grassland and acacia trees. Keep watch for lions, leopards, cheetahs, elephants, giraffes, buffalo, hippos, zebras, wildebeest and gazelles.\n\nYou reach your camp in time for a Serengeti sunset. Dinner and your last night on safari follow. If you have added the hot-air balloon, we arrange it around this part of the safari and the balloon operator's flying area.",
-      experience: "Following the wildlife north into the classic Serengeti landscape.",
-      meals: "Breakfast, lunch and dinner",
-      accommodation: "Serengeti Heritage Tented Camp, Central Serengeti, or similar",
-      stayId: "serengeti-heritage-tented-camp",
+        "This is the heart of the entire safari. You wake before sunrise for an early breakfast and leave with your guide while the plains are still cool and the morning light is ideal for photography.\n\nDuring the calving season, the Southern Serengeti and Ndutu plains become one of the main gathering areas for the migrating herds. The peak is generally around January and February, although rainfall can shift the timing. Your guide follows the latest wildlife information to find the concentrations of the migration. Depending on conditions, you may see thousands of wildebeest, newborn calves, zebras, Thomson's and Grant's gazelles, lions following the herds, cheetahs hunting on the open plains, hyenas, jackals, secretary birds and ostriches.\n\nThe magic of Ndutu is not simply the number of animals. It is the meeting of new life and predators. A newborn calf may be only minutes old, with its mother close by while predators patrol the edges of the herd. This concentration of vulnerable young animals is one reason predator activity can be so intense during the calving period.\n\nYou stop for a picnic lunch on the plains, then continue through the afternoon. There is no rigid route. Your guide adapts the day to where the herds are, where predators are active, road conditions, the weather, wildlife reports and your own interests.\n\nThe afternoon can bring wildebeest with newborn calves, herds moving across the plains, lion prides, cheetahs and the dramatic landscapes around Lake Ndutu and Lake Masek. You return to camp around sunset.",
+      experience: "The main event: a whole day on the calving grounds.",
+      image: {
+        src: "/images/safaris/ndutu-newborn-calf.jpg",
+        alt: "A young wildebeest calf feeding from its mother",
+      },
+      meals: "Breakfast, picnic lunch and dinner",
+      accommodation: "Ndutu / Southern Serengeti camp or lodge",
+      stayId: "ndutu-camp",
     },
     {
       day: 5,
-      title: "Final game drive and flight to Arusha",
+      title: "Final game drive and return to Kilimanjaro Airport",
       description:
-        "Wake early for your last Serengeti game drive, enjoying the cool morning air. Your guide will choose an area close to the airstrip while making the most of your final hours in the park. Depending on your flight schedule, you either return to camp for breakfast or take a packed breakfast with you.\n\nYou then transfer to the Serengeti airstrip, watching for wildlife along the way, and board your flight to Arusha. Flying saves a long road journey and keeps your last day focused on the safari.\n\nIn Arusha, our representative meets you. From there, you can continue to Kilimanjaro International Airport, stay overnight in Arusha, connect with your international flight or travel on to Zanzibar.",
-      experience: "One last Serengeti sunrise before flying home.",
+        "Wake early for your final sunrise over the Southern Serengeti. After breakfast, you set out on a last game drive through the Ndutu area. Depending on your flight schedule, this is another chance to look for wildebeest, newborn calves, zebras, lions, cheetahs, hyenas, gazelles, giraffes, elephants and other resident wildlife.\n\nAfter the game drive, you begin the journey back towards Arusha, with a picnic lunch on the way, and continue to Kilimanjaro International Airport for your onward flight.\n\nYour five-day safari ends with memories of the Great Migration, the Ngorongoro Crater and the incredible wildlife of northern Tanzania.",
+      experience: "One last sunrise on the plains before the journey home.",
       notes: [
-        "If you have an international flight on the same day, please share your departure time so that we can plan a safe connection. An extra night in Arusha may be the better choice.",
+        "Prefer to fly back? A flight from the Southern Serengeti to Arusha is available as an add-on, and it is part of the Luxury and High-end luxury levels.",
       ],
-      meals: "Breakfast",
+      image: {
+        src: "/images/serengeti-plains.jpg",
+        alt: "Wildebeest and zebra herds grazing on green plains in the Southern Serengeti",
+      },
+      meals: "Breakfast and lunch",
       accommodation: "—",
     },
   ],
   included: [
-    "Vehicle and guide: Private 4×4 safari vehicle with a professional English-speaking guide.",
-    "Game drives: All game drives listed in the itinerary.",
-    "Park fees: Tarangire National Park, Ngorongoro Conservation Area and crater, and Serengeti National Park fees.",
-    "Government fees: Applicable vehicle and government tourism fees.",
-    "Accommodation: Four nights in the selected category, based on two people sharing a room.",
-    "Meals: Breakfast, lunch and dinner as listed each day.",
-    "Drinking water: Provided during the safari.",
-    "Pickup: From your Arusha hotel or another agreed point in Arusha.",
-    "Road transfers: All road transfers described in the itinerary.",
-    "Flight: Serengeti to Arusha, including airstrip transfers.",
+    "Pickup: From an agreed location in Arusha, Kilimanjaro International Airport (JRO) or Arusha Airport (ARK).",
+    "Vehicle: Private 4×4 safari vehicle with a pop-up roof for wildlife viewing and photography.",
+    "Guide: A professional English-speaking driver-guide. Other languages may be available by arrangement.",
+    "Accommodation: In your selected comfort level, based on two people sharing a double or twin room.",
+    "Meals: As listed in the day-by-day itinerary, including picnic lunches.",
+    "Drinks: Soft drinks, plus drinking water in the safari vehicle.",
+    "Game drives: As set out in the itinerary.",
+    "Park fees: All park entry, conservation, crater and vehicle fees for the confirmed itinerary.",
+    "Insurance: Emergency evacuation insurance.",
+    "Transfers: Road transfers between destinations and to the agreed Arusha or airport drop-off point.",
+    "Taxes: Government fees and taxes, and applicable statutory charges listed in your written quotation.",
   ],
   excluded: [
     "International flights to and from Tanzania.",
     "Tanzania visa fees and any passport or travel-document costs.",
-    "Travel, medical and evacuation insurance.",
+    "Travel and medical insurance.",
     "Single-room supplements for guests who do not share.",
     "Meals, drinks or services not listed as included in the itinerary.",
-    "Alcoholic drinks, soft drinks, laundry, telephone charges and personal expenses.",
+    "Alcoholic drinks, laundry, telephone charges and personal expenses.",
     "Tips for your driver-guide and accommodation staff.",
-    "Optional activities, including the hot-air balloon safari ($600 per person), cultural visits ($80 per person) and guided walking activities ($85 per person).",
-    "Extra nights, or changes to the itinerary requested after confirmation.",
+    "Optional activities, including hot-air balloon safaris ($600 per person), cultural visits ($80 per person) and guided walking activities ($85 per person).",
+    "Additional nights or itinerary changes beyond the confirmed arrangements.",
+    "Unscheduled transfers, extra safari days or changes requested after confirmation.",
     "Medical expenses or costs arising from personal emergencies.",
+    "New government fees or charges introduced after your quotation, where the contract allows them to be passed on.",
   ],
   sections: [
     {
-      heading: "When is the best time for a Ndutu calving safari?",
+      heading: "Why this 5-day safari is different",
       paragraphs: [
-        "The herds are normally concentrated around Ndutu and the Southern Serengeti from December to March, with January and February usually the core of the calving season. This is why February is such a popular time to book this safari.",
-        "The migration follows the rain and the grazing, so its exact location changes from year to year and even from week to week. We monitor seasonal conditions and position your safari around the best available wildlife areas.",
-      ],
-      note: "No responsible operator can guarantee that the herds will be in one exact place on a particular day. Wildlife movements and sightings are natural events.",
-    },
-    {
-      heading: "Why this route works",
-      bullets: [
-        "Tarangire: Gives you an excellent first safari day, with wildlife that is quite different from the plains ahead.",
-        "Ngorongoro: Adds one of Africa's most spectacular landscapes and rich wildlife viewing.",
-        "Ndutu: The centrepiece of the trip, with two nights focused on the calving season.",
-        "Central Serengeti: Shows you a different side of the Serengeti, with good wildlife viewing all year.",
-        "Flight to Arusha: Avoids a long final road journey and makes five days go much further.",
-        "Optional balloon: Adds a memorable extra for those who want it, without every traveller paying for it.",
+        "This is not just another five-day Tanzania safari. It is a dedicated Ndutu calving safari, built around the seasonal movement of the Great Migration rather than an attempt to collect as many national parks as possible.",
+        "The route runs from Tarangire to Ngorongoro, then on to Ndutu and the Southern Serengeti, and it gives your two most valuable nights to the place where the calving actually happens. The spectacle takes place on the southern plains, not on the Ngorongoro Crater floor, so staying in or next to the Ndutu area matters more than any other choice on this trip.",
       ],
     },
     {
-      heading: "What a private safari gives you",
+      heading: "Best time to book this safari",
       paragraphs: [
-        "With a private safari you are paying for freedom as much as for a vehicle. If you find a spectacular lion sighting, you can stay longer. If you want to photograph the calving grounds, you can take your time. If someone in your party is tired, or you prefer an earlier lunch or a later start, your guide can adapt the day.",
-        "That flexibility is especially valuable for families, keen photographers and anyone who wants to travel at their own pace.",
+        "December to March is the overall Ndutu season, with January and February the prime calving window. Here is what normally happens in each month.",
+      ],
+      table: {
+        headers: ["Month", "What to expect"],
+        rows: [
+          ["December", "The migration begins gathering. The herds generally start concentrating in the south as the short rains bring fresh grass."],
+          ["January", "Calving begins. More wildebeest arrive and the first births take place."],
+          ["February", "Peak calving. Normally the core month, with huge concentrations of wildebeest, newborn calves and strong predator activity."],
+          ["March", "Late calving and transition. Newborn and predator sightings can still be excellent, especially early in the month, but the herds may begin moving north and west."],
+        ],
+      },
+      note: "The exact location of the herds varies with rainfall and conditions, and no wildlife sighting can ever be guaranteed.",
+    },
+    {
+      heading: "A safari designed around your experience",
+      paragraphs: [
+        "We believe a migration safari should be more than a list of parks and hotel nights. It should give you time to experience the wilderness.",
+        "You may wake to the sound of birds outside your tent, watch thousands of wildebeest spread across the plains, follow a mother with her newborn calf, wait quietly while a cheetah scans the grasslands, or watch the African sun disappear over the Serengeti. Some moments cannot be scheduled.",
       ],
     },
     {
-      heading: "Prefer a more luxurious safari?",
+      heading: "Book your Ndutu calving safari",
       paragraphs: [
-        "The same route can be arranged in premium lodges and exclusive seasonal camps, with a private sundowner on your last evening and a sunrise balloon flight as natural additions. Tick the luxury upgrade in the booking box and we will include it in your quote.",
-      ],
-    },
-    {
-      heading: "Book your Ndutu calving safari early",
-      paragraphs: [
-        "The calving season is one of the most sought-after periods in the Southern Serengeti, and the best-placed seasonal camps have limited space. We recommend confirming your Ndutu accommodation and safari vehicle as early as you can.",
-        "To request a quote, send us your preferred travel dates, number of travellers, accommodation level and room arrangements. We will check availability and reply with a written itinerary that clearly sets out the accommodation, meals, park fees, transport, flight and exclusions.",
+        "To receive an accurate quotation, tell us your travel dates, number of travellers, preferred comfort level, room-sharing arrangements and whether you will arrive at JRO, ARK or an Arusha hotel. We can then check suitable accommodation and give you a more precise price.",
       ],
       bullets: CONTACT_BULLETS,
     },
@@ -203,42 +211,42 @@ export const ndutuCalving5: TripPackage = {
     {
       question: "When is the Ndutu calving season?",
       answer:
-        "The herds are normally around Ndutu and the Southern Serengeti from December to March, with calving usually peaking in January and February. The exact timing and location change with the rain.",
-    },
-    {
-      question: "Will I definitely see newborn calves?",
-      answer:
-        "We can't guarantee it, because wildlife sightings are natural events. Travelling in the core of the season and spending two nights at Ndutu gives you a strong chance, and your guide adjusts the route daily to follow the herds.",
+        "The Ndutu season runs from about December to March. January and February are the prime calving window, with February usually the peak. The exact timing and location change with the rain.",
     },
     {
       question: "How much does this safari cost?",
       answer:
-        "The indicative mid-range price is $3,760 per person for two guests sharing, including the flight from the Serengeti to Arusha. Ask us for a quote for one traveller or a group of three to six.",
+        "It starts from $2,275 per person at Mid-range level, based on 2 adults sharing. Luxury starts from $3,775, High-end luxury from $6,500 and Ultra-premium from $11,500. These are indicative prices, and your written quote confirms the final figure.",
     },
     {
-      question: "Is the flight back to Arusha included?",
+      question: "What is the difference between the comfort levels?",
       answer:
-        "Yes, the flight from the Serengeti to Arusha and the airstrip transfers are included. If you would rather return by road, tell us when you request your quote. The drive is long, so it uses much of the final day.",
+        "The route stays the same. Higher levels add better lodges and camps, and some services. Luxury includes a one-way flight, while High-end luxury adds flights both ways and a hot-air balloon safari.",
     },
     {
-      question: "Is this safari suitable for families?",
+      question: "Will I definitely see newborn calves?",
       answer:
-        "Yes. Because it is private, your guide can adapt the pace, the start times and the length of each game drive to suit your family. Day 2 is long, so tell us your children's ages and we will advise you on the best plan.",
+        "We can't guarantee it, because wildlife sightings are natural events. Travelling in January or February and spending a full day at Ndutu gives you a strong chance, and your guide adapts the route to follow the herds.",
+    },
+    {
+      question: "Where does the safari start and finish?",
+      answer:
+        "It starts and finishes at Kilimanjaro International Airport (JRO). We can also collect you from Arusha Airport (ARK) or an agreed place in Arusha.",
+    },
+    {
+      question: "Can I fly back instead of driving?",
+      answer:
+        "Yes. A flight from the Southern Serengeti to Arusha is an optional add-on at Mid-range, and flights are part of the Luxury and High-end luxury levels. It saves a long road journey on your last day.",
     },
     {
       question: "Can I add a hot-air balloon safari?",
       answer:
-        "Yes. A Serengeti balloon flight costs $600 per person and is subject to weather and availability. Tick it in the booking box and we will arrange it around your safari.",
+        "Yes. A balloon safari costs $600 per person and is subject to weather and availability. Tick it in the booking box. It is already included at High-end luxury level.",
     },
     {
-      question: "Which lodges and camps will I stay in?",
+      question: "Can I extend the safari?",
       answer:
-        "We plan this route around Kudu Lodge in Karatu, Ndutu Serengeti Heritage at Ndutu and Serengeti Heritage Tented Camp in Central Serengeti, or similar stays. Your written quote confirms the exact properties for your dates.",
-    },
-    {
-      question: "How does this compare with your other calving safaris?",
-      answer:
-        "The 4-day safari is the shortest way to reach Ndutu. This 5-day trip adds Tarangire and Central Serengeti, while the 6-day and 10-day safaris give you more time. Tell us your dates and we will suggest the best fit.",
+        "Yes. You can add extra nights in the Serengeti, a Zanzibar beach extension or a Kilimanjaro climb. Tick them in the booking box and we will include them in your quote.",
     },
   ],
   bestMonths: ["Dec", "Jan", "Feb", "Mar"],

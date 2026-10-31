@@ -27,6 +27,23 @@ function buildOffers(pkg: TripPackage, pageUrl: string) {
     seller: SELLER,
   };
 
+  if (pkg.comfortLevels) {
+    const levels = pkg.comfortLevels;
+    return {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      lowPrice: pkg.priceFromUSD,
+      highPrice: levels[levels.length - 1].perDay.max * pkg.days,
+      offerCount: levels.length,
+      offers: levels.map((l) => ({
+        "@type": "Offer",
+        name: `${pkg.title} — ${l.label}`,
+        price: l.perDay.min * pkg.days,
+        ...base,
+      })),
+    };
+  }
+
   if (!pkg.groupPricing) {
     return { "@type": "Offer", price: pkg.priceFromUSD, ...base };
   }

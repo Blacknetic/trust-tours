@@ -19,6 +19,65 @@ export interface Stay {
 }
 
 export const STAYS: Record<string, Stay> = {
+  "arusha-coffee-lodge": {
+    id: "arusha-coffee-lodge",
+    name: "Arusha Coffee Lodge",
+    area: "Western edge of Arusha",
+    type: "Elewana lodge on a working coffee estate",
+    about:
+      "Set among the coffee fields of a large estate on the western edge of Arusha, at the foot of Mount Meru. It is a peaceful first stop after a long flight, with gardens to relax in before your evening safari briefing.",
+    activities: [
+      "Coffee plantation tour, following the bean to the cup",
+      "Swimming pool and spa",
+      "Arusha city and cultural excursions, at extra cost",
+    ],
+    photos: [
+      {
+        src: "/images/safaris/lodges/arusha-coffee-lodge-exterior.jpg",
+        alt: "The lit-up restaurant at Arusha Coffee Lodge reflected in a courtyard pool at dusk",
+      },
+      {
+        src: "/images/safaris/lodges/arusha-coffee-lodge-bathroom.jpg",
+        alt: "A spacious bathroom at Arusha Coffee Lodge with a freestanding bath and walk-in shower",
+      },
+      {
+        src: "/images/safaris/lodges/arusha-coffee-lodge-coffee.jpg",
+        alt: "Two glasses of coffee on a silver tray scattered with coffee beans at Arusha Coffee Lodge",
+      },
+    ],
+  },
+  "marera-valley-lodge": {
+    id: "marera-valley-lodge",
+    name: "Marera Valley Lodge",
+    area: "Karatu, near the Ngorongoro Crater",
+    type: "Cottage lodge",
+    about:
+      "A lodge of private cottages at the edge of Karatu, close to the village of Rhotia and about 30 minutes from the Ngorongoro gate. Each cottage has its own veranda, making it a restful stop between Tarangire and the crater.",
+    activities: [
+      "Swimming pool for hot afternoons",
+      "Coffee estate tours, birding and hiking nearby",
+      "Massages and an evening campfire",
+    ],
+    photos: [
+      {
+        src: "/images/safaris/lodges/marera-valley-lodge-main.jpg",
+        alt: "The main building at Marera Valley Lodge reflected in the swimming pool at dusk",
+      },
+    ],
+  },
+  "ndutu-camp": {
+    id: "ndutu-camp",
+    name: "Your Ndutu camp or lodge",
+    area: "Ndutu / Southern Serengeti",
+    type: "Chosen to match your comfort level",
+    about:
+      "Your two most important nights. We place you inside or right next to the Ndutu area, as close to the calving grounds as possible, so that you wake up near the herds. Camps here fill early in the calving season, so we confirm the exact property in your written quote.",
+    activities: [
+      "Early-morning, afternoon and full-day game drives",
+      "Wildlife photography around Lake Ndutu and Lake Masek",
+      "Dinner in camp after your return at sunset",
+    ],
+  },
   "kudu-lodge": {
     id: "kudu-lodge",
     name: "Kudu Lodge",

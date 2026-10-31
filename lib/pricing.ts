@@ -25,6 +25,20 @@ export interface GroupPricing {
   askSizes?: number[];
 }
 
+/** One way to take the same trip: Mid-range, Luxury and so on. */
+export interface ComfortLevel {
+  id: string;
+  label: string;
+  /** Per person, per day, for 2 adults sharing. */
+  perDay: { min: number; max: number };
+  /** Headline rates: `min × days`. */
+  groupPricing: GroupPricing;
+  summary: string;
+  includes: string[];
+  /** Add-on ids this level already covers, so the box stops offering them. */
+  includedAddOns?: string[];
+}
+
 /** Largest listed party size — the "N+" bucket. */
 export const topPax = (gp: GroupPricing): number => gp.tiers[gp.tiers.length - 1].pax;
 

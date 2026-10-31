@@ -1,7 +1,7 @@
 // data/packages.ts — SINGLE SOURCE OF TRUTH for all trips.
 // Pages, JSON-LD schema, WhatsApp messages, and the elevation animation all read from here.
 
-import type { GroupPricing } from "@/lib/pricing";
+import type { ComfortLevel, GroupPricing } from "@/lib/pricing";
 import { KILIMANJARO_PACKAGES } from "@/data/kilimanjaro";
 import type { ClimbLinks } from "@/data/kilimanjaro/links";
 import { SAFARI_PACKAGES } from "@/data/safaris";
@@ -107,6 +107,9 @@ export interface TripPackage {
   // tier: the headline price shown on cards and in the hero is the solo rate,
   // with the cheaper group rates shown alongside. See lib/pricing.ts.
   groupPricing?: GroupPricing;
+  // The same trip at several levels, each with its own rates. Used instead of
+  // `groupPricing`; `priceFromUSD` must equal the lowest level's headline rate.
+  comfortLevels?: ComfortLevel[];
   // Ids from data/addons.ts offered in the booking box.
   addOns?: string[];
   // Ids from data/accommodations.ts shown under "Where you'll stay".

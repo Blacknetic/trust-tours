@@ -11,6 +11,7 @@ import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import PriceLadder from "@/components/PriceLadder";
+import type { GroupPricing } from "@/lib/pricing";
 import { headlineParty, isAskSize, lowestPrice, lowestPriceFrom, partySizes, priceForGroup, tierLabel } from "@/lib/pricing";
 import { ADD_ONS } from "@/data/addons";
 import { staysFor } from "@/data/accommodations";
@@ -20,6 +21,7 @@ import SectionNav from "@/components/SectionNav";
 import ReadNext from "@/components/ReadNext";
 import RelatedClimbs from "@/components/RelatedClimbs";
 import StayCards from "@/components/StayCards";
+import ComfortLevels from "@/components/ComfortLevels";
 import { climbLinks } from "@/data/kilimanjaro/links";
 
 const SITE_URL = "https://www.trusttourstz.com";
@@ -104,6 +106,9 @@ const LEXICON: Record<
 
 const BORDER = "rgba(26, 26, 22,0.08)";
 
+const priceRow = (gp: GroupPricing) =>
+  partySizes(gp).map((n) => (isAskSize(gp, n) ? null : priceForGroup(gp, n)));
+
 export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   const lex = LEXICON[pkg.category];
   // Map the package category onto the quote form's three trip-type buckets.
@@ -117,6 +122,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   const heroImg = packageImage(pkg);
   const planningGuides = guidesForCategory(pkg.category);
   const gp = pkg.groupPricing ?? null;
+  const levels = pkg.comfortLevels ?? null;
   const totalDays = pkg.days + (pkg.hotelNights ?? 0);
   const booking = {
     packageTitle: pkg.title,
@@ -124,6 +130,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
     priceNote: pkg.priceNote,
     tripType: quoteTripType,
     groupPricing: gp,
+    levels: pkg.comfortLevels,
     addOns: (pkg.addOns ?? []).map((id) => ADD_ONS[id]).filter(Boolean),
     person: pkg.category === "kilimanjaro" || pkg.category === "trekking" ? "climber" : "traveller",
   };
@@ -133,7 +140,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   const hasInclusions = pkg.included.length > 0 || pkg.excluded.length > 0;
   const navItems = [
     { id: "overview", label: "Overview" },
-    gp && { id: "prices", label: "Prices" },
+    (gp || levels) && { id: "prices", label: "Prices" },
     { id: "itinerary", label: "Itinerary" },
     stays.length > 0 && { id: "stays", label: "Where you'll stay" },
     hasInclusions && { id: "included", label: "What's included" },
@@ -195,7 +202,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 className="text-sm font-semibold tracking-widest uppercase mb-3"
                 style={{ color: "rgba(255,255,255,0.95)", textShadow: "0 1px 6px rgba(0,0,0,0.6)" }}
               >
-                {pkg.days}-Day {lex.noun} · {pkg.tier.join(" / ")}
+                {pkg.days}-Day {lex.noun} · {levels ? `${levels.length} comfort levels` : pkg.tier.join(" / ")}
               </p>
               <h1
                 className="text-4xl md:text-6xl font-extrabold"
@@ -301,9 +308,9 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
             </section>
 
             {/* Group-size pricing */}
-            {gp && (
+            {(gp || levels) && (
               <section id="prices" className="py-10 border-b scroll-mt-24" style={{ borderColor: BORDER }}>
-                <PriceLadder
+                {gp && <PriceLadder
                   title={`${pkg.days}-day ${lex.gerund}`}
                   subtitle={
                     pkg.hotelNights
@@ -314,11 +321,12 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                   rows={[
                     {
                       label: `${pkg.shortName.replace(/^\d+-Day /, "")} ${lex.routeWord} ${pkg.days} days`,
-                      prices: partySizes(gp).map((n) => (isAskSize(gp, n) ? null : priceForGroup(gp, n))),
+                      prices: priceRow(gp),
                     },
                   ]}
                   note={gp.note}
-                />
+                />}
+                {levels && <ComfortLevels levels={levels} days={pkg.days} />}
                 {pkg.pricingImage && <ContentFigure image={pkg.pricingImage} className="mt-8" />}
                 {pkg.pricingDetails && (
                   <div className="mt-8">
