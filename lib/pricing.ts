@@ -17,10 +17,34 @@ export interface GroupPricing {
   tiers: PriceTier[];
   /** Optional line under the price table, e.g. what the price includes. */
   note?: string;
+  /**
+   * Party sizes offered but not priced yet: the box and table say "Ask" instead
+   * of quoting a rate Ombeni hasn't given. Safaris use this until his group
+   * rates arrive; remove a size once it has a tier.
+   */
+  askSizes?: number[];
 }
 
 /** Largest listed party size — the "N+" bucket. */
 export const topPax = (gp: GroupPricing): number => gp.tiers[gp.tiers.length - 1].pax;
+
+/** Largest party size the booking box offers, priced or not. */
+export const largestSize = (gp: GroupPricing): number =>
+  Math.max(topPax(gp), ...(gp.askSizes ?? []));
+
+/** Every party size to show, ascending. */
+export const partySizes = (gp: GroupPricing): number[] =>
+  [...new Set([...gp.tiers.map((t) => t.pax), ...(gp.askSizes ?? [])])].sort((a, b) => a - b);
+
+/** True when this party size is shown as "Ask" rather than priced. */
+export const isAskSize = (gp: GroupPricing, group: number): boolean =>
+  gp.askSizes?.includes(group) ?? false;
+
+/** "1 person" / "2 people": who the headline price is for. */
+export const headlineParty = (gp: GroupPricing): string => {
+  const { pax } = gp.tiers[0];
+  return pax === 1 ? "1 person" : `${pax} people`;
+};
 
 /** "1", "2", … with the last tier shown as "6+". */
 export const tierLabel = (gp: GroupPricing, pax: number): string =>

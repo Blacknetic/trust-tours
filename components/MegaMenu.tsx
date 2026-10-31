@@ -13,7 +13,7 @@ export interface MegaPanel {
   heading: string;
   body: string[];
   cta: string;
-  links?: { href: string; label: string }[];
+  links?: { href: string; label: string; tag?: string }[];
   // Only real trip photos here: Trust Tours banners, guests and crew.
   image: { src: string; alt: string; position?: string };
 }
@@ -80,17 +80,25 @@ export default function MegaMenu({ panels, onNavigate }: { panels: MegaPanel[]; 
           </p>
         ))}
         {active.links && (
-          <ul className="flex flex-wrap gap-x-4 gap-y-1 mb-3">
+          <ul className="list-disc pl-5 mt-1 mb-5 space-y-1.5" style={{ color: "var(--forest)" }}>
             {active.links.map((l) => (
               <li key={l.href}>
                 <Link
                   href={l.href}
                   onClick={onNavigate}
-                  className="text-sm font-semibold underline underline-offset-2 hover:opacity-80"
-                  style={{ color: "var(--forest)" }}
+                  className="text-base font-semibold hover:underline underline-offset-2"
+                  style={{ color: "var(--ink)" }}
                 >
                   {l.label}
                 </Link>
+                {l.tag && (
+                  <span
+                    className="ml-2 inline-block rounded px-2 py-0.5 text-xs font-semibold whitespace-nowrap"
+                    style={{ background: "rgba(74,41,18,0.09)", color: "var(--forest)" }}
+                  >
+                    {l.tag}
+                  </span>
+                )}
               </li>
             ))}
           </ul>

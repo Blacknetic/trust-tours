@@ -51,6 +51,51 @@ export const ADD_ONS: Record<string, AddOn> = {
     description: "Serengeti, Ngorongoro or Tarangire — we plan it around your descent date.",
     unit: "trip",
   },
+  "balloon-safari": {
+    id: "balloon-safari",
+    label: "Hot-air balloon safari",
+    description: "A sunrise flight over the Serengeti with a bush breakfast after landing. Subject to weather and availability.",
+    priceUSD: 600,
+    unit: "person",
+  },
+  "cultural-visit": {
+    id: "cultural-visit",
+    label: "Maasai cultural visit",
+    description: "Time with a Maasai community to learn about daily life and traditions.",
+    priceUSD: 80,
+    unit: "person",
+  },
+  "walking-safari": {
+    id: "walking-safari",
+    label: "Guided walking activity",
+    description: "Leave the vehicle and explore on foot with a guide, where the park allows it.",
+    priceUSD: 85,
+    unit: "person",
+  },
+  "bush-breakfast": {
+    id: "bush-breakfast",
+    label: "Private bush breakfast",
+    description: "Breakfast set up for your party out on the plains.",
+    unit: "trip",
+  },
+  "luxury-upgrade": {
+    id: "luxury-upgrade",
+    label: "Upgrade to luxury camps",
+    description: "The same route with premium lodges and luxury seasonal camps.",
+    unit: "trip",
+  },
+  "extra-serengeti-night": {
+    id: "extra-serengeti-night",
+    label: "Extra Serengeti night",
+    description: "One more night and another full day in the Serengeti.",
+    unit: "night",
+  },
+  "kilimanjaro-extension": {
+    id: "kilimanjaro-extension",
+    label: "Add a Kilimanjaro climb",
+    description: "Climb before or after your safari. We plan the dates so the two fit together.",
+    unit: "trip",
+  },
   "zanzibar-extension": {
     id: "zanzibar-extension",
     label: "Add Zanzibar beach days",
@@ -83,6 +128,18 @@ export const KILIMANJARO_CAMPING_ADDONS = [
   "gear-rental",
   "safari-extension",
   "zanzibar-extension",
+];
+
+export const SAFARI_ADDONS = [
+  "balloon-safari",
+  "cultural-visit",
+  "walking-safari",
+  "bush-breakfast",
+  "luxury-upgrade",
+  "extra-serengeti-night",
+  "single-supplement",
+  "zanzibar-extension",
+  "kilimanjaro-extension",
 ];
 
 // Marangu sleeps in huts with shared toilets, so no private toilet tent.

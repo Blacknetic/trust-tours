@@ -3,7 +3,7 @@ import Photo from "@/components/Photo";
 import type { TripPackage } from "@/data/packages";
 import { packagePath } from "@/data/packages";
 import { packageImage } from "@/data/images";
-import { lowestPrice } from "@/lib/pricing";
+import { headlineParty, lowestPrice } from "@/lib/pricing";
 
 // Brand-token gradients per category — used as a fallback when a package has
 // no real photo yet (pkg.heroImage === ""), and as the tint behind every image.
@@ -116,7 +116,7 @@ export default function PackageCard({ pkg }: { pkg: TripPackage }) {
             {pkg.priceFromUSD > 0 ? (
               <>
                 <p className="text-xs leading-none mb-1" style={{ color: "var(--ink)" }}>
-                  {gp ? "1 person" : "From"}
+                  {gp ? headlineParty(gp) : "From"}
                 </p>
                 <p
                   className="text-xl font-extrabold leading-none"

@@ -205,7 +205,15 @@ export default function ElevationJourney({ itinerary }: Props) {
                 {day.accommodation && day.accommodation !== "—" && (
                   <div className="flex gap-1.5">
                     <dt className="font-semibold">Overnight:</dt>
-                    <dd>{day.accommodation}</dd>
+                    <dd>
+                      {day.stayId ? (
+                        <a href={`#stay-${day.stayId}`} className="underline underline-offset-2" style={{ color: "var(--forest)" }}>
+                          {day.accommodation}
+                        </a>
+                      ) : (
+                        day.accommodation
+                      )}
+                    </dd>
                   </div>
                 )}
                 {day.meals && (

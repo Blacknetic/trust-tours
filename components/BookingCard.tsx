@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useQuote } from "@/components/QuoteModal";
 import type { GroupPricing } from "@/lib/pricing";
-import { priceForGroup, tierForGroup, isQuotedSize, topPax } from "@/lib/pricing";
+import { isAskSize, isQuotedSize, largestSize, priceForGroup, tierForGroup } from "@/lib/pricing";
 import type { AddOn } from "@/data/addons";
 import { addOnPriceLabel, addOnTotal } from "@/data/addons";
 
@@ -63,17 +63,18 @@ export default function BookingCard({
 }: BookingCardProps) {
   const { openQuote } = useQuote();
   const [month, setMonth] = useState("Flexible");
-  // Rate cards open on the solo price, matching the headline price on the page.
-  const [group, setGroup] = useState(groupPricing ? 1 : 2);
+  // Rate cards open on their first tier, matching the headline price on the page.
+  const [group, setGroup] = useState(groupPricing ? groupPricing.tiers[0].pax : 2);
   const [picked, setPicked] = useState<string[]>([]);
 
   const gp = groupPricing ?? null;
-  const top = gp ? topPax(gp) : STEPPER_MAX;
+  const top = gp ? largestSize(gp) : STEPPER_MAX;
   const isTop = group >= top;
   const groupText = `${group}${gp && isTop && gp.tiers.length > 1 ? "+" : ""}`;
   const people = (n: number) => `${n} ${n === 1 ? person : `${person}s`}`;
 
-  const perPerson = gp ? priceForGroup(gp, group) : priceFromUSD;
+  const askPrice = gp ? isAskSize(gp, group) : false;
+  const perPerson = gp ? (askPrice ? 0 : priceForGroup(gp, group)) : priceFromUSD;
   const hasPrice = perPerson > 0;
   const tripTotal = perPerson * group;
 
@@ -97,6 +98,7 @@ export default function BookingCard({
       `Booking request — ${packageTitle}`,
       `Group: ${people(group)}${isTop && gp ? " (or more)" : ""}`,
       hasPrice && `Price shown: ${usd(perPerson)} per person · ${usd(tripTotal)} for the group`,
+      askPrice && "Price: please quote for this group size",
       chosen.length > 0 && `Add-ons: ${chosen.map((a) => `${a.label} (${addOnPriceLabel(a)})`).join(", ")}`,
       hasPrice && chosen.length > 0 &&
         `Estimated total: ${usd(grandTotal)}${onRequest.length ? " plus add-ons priced on request" : ""}`,
@@ -130,9 +132,16 @@ export default function BookingCard({
           </p>
         </div>
       ) : (
-        <p className="text-xl font-semibold mb-5" style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}>
-          Price on request
-        </p>
+        <div className="mb-5">
+          <p className="text-xl font-semibold" style={{ fontFamily: "var(--font-display)", color: "var(--ink)" }}>
+            {askPrice ? "Ask for price" : "Price on request"}
+          </p>
+          {askPrice && (
+            <p className="text-xs mt-1.5" style={{ color: "var(--ink)" }} aria-live="polite">
+              Ombeni will quote {group === 1 ? "one traveller" : `your group of ${groupText}`}.
+            </p>
+          )}
+        </div>
       )}
 
       <div className="space-y-5 mb-5">
@@ -301,7 +310,7 @@ export default function BookingCard({
           </div>
           {onRequest.length > 0 && (
             <p className="text-xs mt-1.5" style={{ opacity: 0.7 }}>
-              + {onRequest.map((a) => a.label.toLowerCase()).join(", ")}, priced in your quote
+              + {onRequest.map((a) => a.label).join(", ")}, priced in your quote
             </p>
           )}
         </div>

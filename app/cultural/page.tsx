@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { byCategory } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
+import SampleItineraryNotice from "@/components/SampleItineraryNotice";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
 import ItemListJsonLd from "@/components/ItemListJsonLd";
@@ -58,6 +59,7 @@ export default function CulturalListingPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+        <SampleItineraryNotice className="mb-8" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {tours.map((pkg) => (
             <PackageCard key={pkg.slug} pkg={pkg} />

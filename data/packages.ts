@@ -3,6 +3,9 @@
 
 import type { GroupPricing } from "@/lib/pricing";
 import { KILIMANJARO_PACKAGES } from "@/data/kilimanjaro";
+import type { ClimbLinks } from "@/data/kilimanjaro/links";
+import { SAFARI_PACKAGES } from "@/data/safaris";
+import type { SafariFacets, SafariTypeId } from "@/lib/safari-filter";
 
 export type Tier = "budget" | "mid-range" | "comfort";
 
@@ -59,6 +62,8 @@ export interface ItineraryDay {
   hours?: string;
   meals: string;
   accommodation: string;
+  // Id from data/accommodations.ts; links the overnight to its card on the page.
+  stayId?: string;
 }
 
 export interface FAQ {
@@ -104,6 +109,10 @@ export interface TripPackage {
   groupPricing?: GroupPricing;
   // Ids from data/addons.ts offered in the booking box.
   addOns?: string[];
+  // Ids from data/accommodations.ts shown under "Where you'll stay".
+  stays?: string[];
+  // Guides and related trips linked from each section of the page.
+  links?: ClimbLinks;
   tier: Tier[];
   heroImage: string;
   gallery: string[];
@@ -163,6 +172,8 @@ export const packagePath = (pkg: TripPackage): string =>
 export const packages: TripPackage[] = [
   // Kilimanjaro climbs live in data/kilimanjaro.ts (rebuilt from Ombeni's 2027–2028 docs).
   ...KILIMANJARO_PACKAGES,
+  // Safaris rebuilt from Ombeni's documents live in data/safaris.
+  ...SAFARI_PACKAGES,
 
   {
     slug: "7-day-great-migration-safari",
@@ -3537,6 +3548,7 @@ export const packages: TripPackage[] = [
     slug: "4-day-private-ndutu-calving-safari",
     destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
     category: "safari",
+    tags: ["family"],
     title: "4-Day Private Calving-Season Safari – Tarangire, Ngorongoro & Ndutu",
     shortName: "4-Day Ndutu Calving Safari",
     days: 4,
@@ -3733,6 +3745,7 @@ export const packages: TripPackage[] = [
     slug: "5-day-arusha-serengeti-cultural",
     destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti"],
     category: "safari",
+    tags: ["family"],
     title: "5-Day Safari & Culture – Arusha Park, Tarangire, Ngorongoro & Serengeti",
     shortName: "5-Day Safari & Culture",
     days: 5,
@@ -3923,105 +3936,6 @@ export const packages: TripPackage[] = [
       },
     ],
     bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct", "Dec"],
-  },
-
-  {
-    slug: "5-day-ndutu-migration-safari",
-    heroImage: "/images/safari-elephant.jpg",
-    destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
-    category: "safari",
-    title: "5-Day Calving-Season Safari – Tarangire, Ngorongoro & Ndutu",
-    shortName: "5-Day Ndutu Migration",
-    days: 5,
-    priceFromUSD: 3760,
-    priceNote:
-      "Per person, all-inclusive. From $3,760 standard / $4,599 luxury lodges. Reduced rate for kids 14–16 (from $2,795).",
-    tier: ["mid-range", "comfort"],
-    gallery: [],
-    summary:
-      "Five days built around the Great Migration's calving season on the Ndutu plains. From Tarangire's elephant herds and a full day inside the Ngorongoro Crater, you head into the southern Serengeti for two days at Ndutu, where thousands of wildebeest and zebra give birth and the predators gather. Morning, afternoon and full-day drives in a 4x4 with pop-up roof.",
-    highlights: [
-      "Two full days at Ndutu in peak calving season (Dec–Apr)",
-      "Newborn herds and intense predator action — lion, cheetah, hyena",
-      "Full day inside the Ngorongoro Crater and the Big Five",
-      "Tarangire's baobabs and large elephant herds to open",
-      "Morning, afternoon and full-day game drives; family rates available",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival & Tarangire Afternoon Game Drive",
-        description:
-          "Met at Kilimanjaro International Airport (or from your Arusha hotel) and driven to Tarangire National Park. After lunch, an afternoon game drive among the park's ancient baobabs and big elephant herds, with giraffe, zebra, buffalo and abundant birdlife drawn to the Tarangire River. Dinner and overnight at a mid-range lodge.",
-        meals: "Lunch, dinner",
-        accommodation: "Mid-range lodge near Tarangire",
-      },
-      {
-        day: 2,
-        title: "Tarangire Morning Drive & Transfer to Ngorongoro",
-        description:
-          "An early game drive in Tarangire — prime time for lion and leopard, and elephants along the river — then a scenic drive to the Ngorongoro Conservation Area past Maasai villages and Rift Valley views. Afternoon at leisure at your lodge near the crater rim with dinner.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range lodge near the Ngorongoro crater rim",
-      },
-      {
-        day: 3,
-        title: "Ngorongoro Crater Full Day & Transfer to Ndutu",
-        description:
-          "Descend into the crater for a full-day game drive among the Big Five plus hippo, wildebeest and flamingos, with a picnic lunch at the hippo pool. In the afternoon ascend the crater walls and continue into the Ndutu region of the southern Serengeti — the migration's calving grounds — for dinner at your lodge.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge or tented camp, Ndutu area",
-      },
-      {
-        day: 4,
-        title: "Full Day at Ndutu — Heart of the Migration",
-        description:
-          "A full day tracking the calving herds across the Ndutu plains. Thousands of wildebeest and zebra gather to give birth, drawing lions, cheetahs and hyenas — your guide reads the herds for the best sightings and photography. Picnic lunch among the action, with game viewing into the late afternoon before returning to camp.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge or tented camp, Ndutu area",
-      },
-      {
-        day: 5,
-        title: "Ndutu Morning Drive & Departure",
-        description:
-          "A final early game drive in the cool morning light — a prime time for predators finishing the night's hunt — then back to the lodge to pack before the transfer to Arusha or Kilimanjaro International Airport for departure.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All park, conservation and crater fees (Tarangire, Ngorongoro, Ndutu/Serengeti)",
-      "Full-board mid-range lodges plus picnic lunches on game-drive days",
-      "Daily morning, afternoon and full-day game drives in a 4x4 with pop-up roof",
-      "All internal transfers plus airport transfers",
-      "Professional, English-speaking guide experienced in the migration regions",
-      "Bottled water and refreshments in the vehicle",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional hot air balloon safari ($550 per person) and Zanzibar add-ons",
-      "Tips, souvenirs and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "When is the Ndutu calving season?",
-        answer:
-          "Roughly December to April, peaking around late January and February, when the migration herds mass on the southern Serengeti and Ndutu plains to give birth. It's one of the best times of year for predator sightings.",
-      },
-      {
-        question: "How is this different from the 4-Day Ndutu private safari?",
-        answer:
-          "This is a scheduled 5-day trip with two full days at Ndutu and a choice of standard or luxury lodges. The 4-day version is a private, family-paced trip quoted per group. Both centre on the calving season.",
-      },
-      {
-        question: "Is there a reduced rate for children?",
-        answer:
-          "Yes — children aged 14–16 are from $2,795 per person sharing. Message Ombeni with your group's ages for an exact quote.",
-      },
-    ],
-    bestMonths: ["Dec", "Jan", "Feb", "Mar", "Apr"],
-    oldUrl: "/booking/5-day-mid-range-tarangire-ngorongoro-crater-and-ndutu-migration-safari/",
   },
 
   {
@@ -5541,6 +5455,16 @@ export const bySafariCategory = (id: SafariCategoryId) =>
     .filter((p) => safariCategoryOf(p) === id)
     .sort((a, b) => a.days - b.days);
 
+// Everything the /safaris sidebar filters on. Unlike the single bucket above, a
+// trip can carry several types: a Zanzibar add-on doesn't stop it being Big Five.
+export const safariFacets = (p: TripPackage): SafariFacets => {
+  const bucket = safariCategoryOf(p);
+  const types: SafariTypeId[] = bucket ? [bucket] : [];
+  if (p.destinations.includes("Zanzibar")) types.push("zanzibar");
+  if (p.tags?.includes("family")) types.push("family");
+  return { slug: p.slug, days: p.days, types };
+};
+
 // Display metadata for each bucket — consumed by the nav dropdown and the
 // /safaris landing page so labels/order/copy stay in one place.
 export interface SafariCategoryMeta {
@@ -5555,7 +5479,7 @@ export const SAFARI_CATEGORIES: SafariCategoryMeta[] = [
   {
     id: "big-five",
     label: "Big Five Safari",
-    href: "/safaris#big-five",
+    href: "/safaris?type=big-five#safari-results",
     tagline: "Lion · Leopard · Elephant · Buffalo · Rhino",
     blurb:
       "Classic private game drives across Tarangire, Lake Manyara, the Ngorongoro Crater and the Serengeti — the surest way to see Africa's Big Five.",
@@ -5563,7 +5487,7 @@ export const SAFARI_CATEGORIES: SafariCategoryMeta[] = [
   {
     id: "migration",
     label: "Migration Safari",
-    href: "/safaris#migration",
+    href: "/safaris?type=migration#safari-results",
     tagline: "River crossings · Calving season · Endless herds",
     blurb:
       "Timed to the Great Migration and the Ndutu calving season — follow the wildebeest and zebra across the Serengeti plains and into the Maasai Mara.",

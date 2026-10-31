@@ -1,7 +1,7 @@
 interface Row {
   label: string;
-  /** One price per column, same order as `columns`. */
-  prices: number[];
+  /** One price per column, same order as `columns`. Null shows "Ask". */
+  prices: (number | null)[];
 }
 
 interface Props {
@@ -128,7 +128,7 @@ export default function PriceLadder({ title, subtitle, columns, rows, note }: Pr
                     className="text-right px-3 py-4 font-semibold tabular-nums whitespace-nowrap"
                     style={{ color: "var(--ink)" }}
                   >
-                    ${price.toLocaleString()}
+                    {price == null ? "Ask" : `$${price.toLocaleString()}`}
                   </td>
                 ))}
                 <td aria-hidden="true" />

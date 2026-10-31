@@ -11,13 +11,15 @@ import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import PriceLadder from "@/components/PriceLadder";
-import { lowestPrice, lowestPriceFrom, tierLabel } from "@/lib/pricing";
+import { headlineParty, isAskSize, lowestPrice, lowestPriceFrom, partySizes, priceForGroup, tierLabel } from "@/lib/pricing";
 import { ADD_ONS } from "@/data/addons";
+import { staysFor } from "@/data/accommodations";
 import { AtAGlance, ContentFigure, Prose, RichList, SectionBlock } from "@/components/LongForm";
 import { guidesForCategory } from "@/data/guides";
 import SectionNav from "@/components/SectionNav";
 import ReadNext from "@/components/ReadNext";
 import RelatedClimbs from "@/components/RelatedClimbs";
+import StayCards from "@/components/StayCards";
 import { climbLinks } from "@/data/kilimanjaro/links";
 
 const SITE_URL = "https://www.trusttourstz.com";
@@ -126,12 +128,14 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
     person: pkg.category === "kilimanjaro" || pkg.category === "trekking" ? "climber" : "traveller",
   };
   const isClimb = pkg.category === "kilimanjaro";
-  const links = isClimb ? climbLinks(pkg.slug) : null;
+  const links = isClimb ? climbLinks(pkg.slug) : (pkg.links ?? null);
+  const stays = staysFor(pkg.stays);
   const hasInclusions = pkg.included.length > 0 || pkg.excluded.length > 0;
   const navItems = [
     { id: "overview", label: "Overview" },
     gp && { id: "prices", label: "Prices" },
     { id: "itinerary", label: "Itinerary" },
+    stays.length > 0 && { id: "stays", label: "Where you'll stay" },
     hasInclusions && { id: "included", label: "What's included" },
     pkg.sections?.length && { id: "details", label: "Good to know" },
     pkg.faqs.length > 0 && { id: "faq", label: "FAQ" },
@@ -217,7 +221,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
               {pkg.priceFromUSD > 0 ? (
                 <>
                   <p className="text-sm" style={{ color: "rgba(255,255,255,0.95)" }}>
-                    {gp ? "Price for 1 person" : "From"}
+                    {gp ? `Price for ${headlineParty(gp)}` : "From"}
                   </p>
                   <p
                     className="text-5xl font-extrabold leading-none"
@@ -228,7 +232,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                   <p className="text-xs mt-1.5" style={{ color: "rgba(255,255,255,0.95)" }}>
                     per person
                   </p>
-                  {gp ? (
+                  {gp && gp.tiers.length > 1 ? (
                     <p
                       className="text-xs mt-1 mb-5 md:ml-auto"
                       style={{ color: "rgba(255,255,255,0.95)", maxWidth: "30ch" }}
@@ -293,7 +297,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
               <p className="text-base font-medium mt-6" style={{ color: "var(--gold)" }}>
                 Best months to {lex.verb}: {pkg.bestMonths.join(" · ")}
               </p>
-              {links && <ReadNext links={links.overview} title="Help choosing a route" />}
+              {links && <ReadNext links={links.overview} title={isClimb ? "Help choosing a route" : "Help planning your safari"} />}
             </section>
 
             {/* Group-size pricing */}
@@ -306,11 +310,11 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                       ? `Price per person · includes ${pkg.hotelNights} hotel nights (${totalDays} days in total)`
                       : "Price per person"
                   }
-                  columns={gp.tiers.map((t) => tierLabel(gp, t.pax))}
+                  columns={partySizes(gp).map((n) => tierLabel(gp, n))}
                   rows={[
                     {
                       label: `${pkg.shortName.replace(/^\d+-Day /, "")} ${lex.routeWord} ${pkg.days} days`,
-                      prices: gp.tiers.map((t) => t.usd),
+                      prices: partySizes(gp).map((n) => (isAskSize(gp, n) ? null : priceForGroup(gp, n))),
                     },
                   ]}
                   note={gp.note}
@@ -328,8 +332,9 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                   </div>
                 )}
                 <p className="text-base mt-4" style={{ color: "var(--ink)" }}>
-                  Guides, crew and transport are shared by the whole party, so the more of
-                  you there are, the less each person pays.
+                  {isClimb || pkg.category === "trekking"
+                    ? "Guides, crew and transport are shared by the whole party, so the more of you there are, the less each person pays."
+                    : "Your private vehicle and guide are shared only by your own party, so the more of you there are, the less each person pays."}
                   {pkg.category === "kilimanjaro" && (
                     <>
                       {" "}Travelling alone? You can also{" "}
@@ -353,8 +358,10 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 Day-by-Day Itinerary
               </h2>
               <ElevationJourney itinerary={pkg.itinerary} />
-              {links && <ReadNext links={links.itinerary} title="Prepare for the climb" />}
+              {links && <ReadNext links={links.itinerary} title={isClimb ? "Prepare for the climb" : "Explore the places on this route"} />}
             </section>
+
+            {stays.length > 0 && <StayCards stays={stays} border={BORDER} />}
 
             {/* Included / Excluded */}
             {hasInclusions && (

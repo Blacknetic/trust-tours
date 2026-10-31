@@ -11,14 +11,14 @@ import MegaMenu, { type MegaPanel } from "@/components/MegaMenu";
 type NavLink = { href: string; label: string };
 type NavSection = { label: string; children: NavLink[] };
 // A group renders as a hover/tap dropdown. It lists either a flat set of
-// `children` (Trekking, Safaris) or topic `sections` (Guides) — same panel.
+// `children` (Trekking) or topic `sections` (Guides) — same panel.
 type NavGroup = {
   label: string;
   match: string[];
   align?: "left" | "right"; // which edge the dropdown panel anchors to
   children?: NavLink[];
   sections?: NavSection[];
-  panels?: MegaPanel[]; // full-width topic menu (Kilimanjaro)
+  panels?: MegaPanel[]; // full-width topic menu (Kilimanjaro, Safaris)
   footer?: NavLink; // optional "see all" link under a sectioned panel
 };
 type NavItem = NavLink | NavGroup;
@@ -101,6 +101,142 @@ const KILIMANJARO_PANELS: MegaPanel[] = [
   },
 ];
 
+const SAFARI_PANELS: MegaPanel[] = [
+  {
+    href: "/safaris",
+    label: "All Safaris & Prices",
+    badge: "From $576",
+    teaser: "Every private safari, sorted by type and length.",
+    heading: "Your safari, your dates, your pace",
+    body: [
+      "Every safari we run is private, with your own vehicle and guide. Start with a sample itinerary, filter by type and length, then tell us what to change.",
+    ],
+    cta: "See all safaris",
+    links: [
+      { href: "/safaris?days=1-5#safari-results", label: "1 to 5 days" },
+      { href: "/safaris?days=6-11#safari-results", label: "6 to 11 days" },
+      { href: "/safaris?days=12-plus#safari-results", label: "12+ days" },
+    ],
+    image: {
+      src: "/images/safari-lion-pride.jpg",
+      alt: "A male lion roaring above another lion in the grass",
+    },
+  },
+  {
+    href: "/safaris?type=big-five#safari-results",
+    label: "Big Five Safaris",
+    teaser: "Game drives across the northern parks.",
+    heading: "Lion, leopard, elephant, buffalo and rhino",
+    body: [
+      "Classic private game drives across Tarangire, Lake Manyara, the Ngorongoro Crater and the Serengeti, the surest way to see all five.",
+    ],
+    cta: "View Big Five safaris",
+    links: [
+      { href: "/safaris?type=zanzibar#safari-results", label: "Add Zanzibar" },
+      { href: "/guides/what-to-expect-on-safari", label: "What to expect" },
+    ],
+    image: {
+      src: "/images/ngorongoro-rhino.jpg",
+      alt: "Two rhinos grazing on the floor of the Ngorongoro Crater",
+    },
+  },
+  {
+    href: "/safaris?type=migration#safari-results",
+    label: "Great Migration",
+    teaser: "Timed to the herds and the calving season.",
+    heading: "Be where the herds are",
+    body: [
+      "The migration moves all year, so the right trip depends on your month. We time every safari to the river crossings or the Ndutu calving season.",
+    ],
+    cta: "View migration safaris",
+    links: [
+      { href: "/guides/best-time-great-migration", label: "Migration by month" },
+      { href: "/guides/calving-season-guide", label: "Calving season" },
+    ],
+    image: {
+      src: "/images/serengeti-plains.jpg",
+      alt: "Wildebeest herds on the Serengeti plains during the Great Migration",
+    },
+  },
+  {
+    href: "/honeymoon",
+    label: "Honeymoon",
+    teaser: "Safari and Zanzibar for two.",
+    heading: "The bush, then the beach",
+    body: [
+      "Private safaris paired with the white sands of Zanzibar, with bush dinners, sunrise balloon flights and sundowners for two.",
+    ],
+    cta: "View honeymoons",
+    links: [
+      { href: "/safaris?type=zanzibar#safari-results", label: "Safari + Zanzibar trips" },
+      { href: "/guides/tanzania-honeymoon-guide", label: "Honeymoon guide" },
+    ],
+    image: {
+      src: "/images/honeymoon.jpg",
+      alt: "A lodge bed decorated with rose petals and towel swans for honeymooners",
+    },
+  },
+  {
+    href: "/cultural",
+    label: "Cultural & Paramotoring",
+    teaser: "Meet local communities, or see it all from the air.",
+    heading: "A different side of Tanzania",
+    body: [
+      "Spend time with the Maasai, Hadzabe and Chagga, or glide on a paramotor over Kilimanjaro and the Great Rift Valley.",
+    ],
+    cta: "View cultural tours",
+    links: [
+      { href: "/paramotoring", label: "Paramotoring trips" },
+      { href: "/guides/tanzania-cultural-tours-guide", label: "Cultural tours guide" },
+    ],
+    image: {
+      src: "/images/maasai-dance.jpg",
+      alt: "Two guests dressed in traditional red Maasai cloth outside a gallery in Arusha",
+    },
+  },
+  {
+    href: "/guides/tanzania-safari-guide",
+    label: "National Parks",
+    teaser: "Where each park fits in your trip.",
+    heading: "Which parks belong on your trip?",
+    body: [
+      "Each park shines at a different time of year. Our guides explain what you'll see in each one and how many days it deserves.",
+    ],
+    cta: "Read the safari guide",
+    links: [
+      { href: "/guides/serengeti-guide", label: "Serengeti", tag: "UNESCO Heritage Site" },
+      { href: "/guides/ngorongoro-crater-guide", label: "Ngorongoro", tag: "UNESCO Heritage Site" },
+      { href: "/guides/tarangire-guide", label: "Tarangire" },
+      { href: "/guides/lake-manyara-guide", label: "Lake Manyara" },
+    ],
+    image: {
+      src: "/images/tarangire-giraffes.jpg",
+      alt: "Giraffes in Tarangire National Park",
+    },
+  },
+  {
+    href: "/guides",
+    label: "Plan Your Safari",
+    badge: "Free",
+    teaser: "Costs, timing and packing, answered honestly.",
+    heading: "Honest answers before you book",
+    body: [
+      "What a safari really costs, when to go and what to pack. Free guides from the people who run these trips.",
+    ],
+    cta: "Browse all guides",
+    links: [
+      { href: "/guides/how-much-tanzania-safari-cost", label: "What it costs" },
+      { href: "/guides/best-time-to-visit-tanzania", label: "Best time" },
+      { href: "/guides/tanzania-safari-packing-list", label: "Packing list" },
+      { href: "/guides/tanzania-vs-kenya-safari", label: "Tanzania vs Kenya" },
+    ],
+    image: {
+      src: "/images/safari-acacia-sunset.jpg",
+      alt: "The sun setting behind acacia trees on the Tanzanian savannah",
+    },
+  },
+];
+
 const NAV: NavItem[] = [
   {
     label: "Kilimanjaro",
@@ -119,14 +255,7 @@ const NAV: NavItem[] = [
   {
     label: "Safaris",
     match: ["/safaris", "/honeymoon", "/cultural", "/paramotoring"],
-    children: [
-      { href: "/safaris#big-five", label: "Big Five Safari" },
-      { href: "/safaris#migration", label: "Migration Safari" },
-      { href: "/honeymoon", label: "Honeymoon" },
-      { href: "/cultural", label: "Cultural" },
-      { href: "/paramotoring", label: "Paramotoring" },
-      { href: "/safaris", label: "All safaris →" },
-    ],
+    panels: SAFARI_PANELS,
   },
   { href: "/zanzibar", label: "Zanzibar" },
   {
@@ -349,7 +478,7 @@ export default function Header() {
                               )}
                             </div>
                           ) : (
-                            // Flat menu (Trekking, Safaris) — unchanged.
+                            // Flat menu (Trekking) — unchanged.
                             <div className="min-w-[200px] py-1">
                               {item.children?.map((c) => (
                                 <Link

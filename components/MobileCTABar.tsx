@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import BookingCard, { type BookingCardProps } from "@/components/BookingCard";
+import { headlineParty } from "@/lib/pricing";
 
 /**
  * Phone/tablet booking bar. Shows the starting price; tapping it slides up the
@@ -40,7 +41,7 @@ export default function MobileCTABar(props: BookingCardProps) {
             {priceFromUSD > 0 ? (
               <>
                 <p className="text-xs leading-none mb-0.5" style={{ color: "var(--ink)" }}>
-                  {props.groupPricing ? "1 person" : "From"}
+                  {props.groupPricing ? headlineParty(props.groupPricing) : "From"}
                 </p>
                 <p
                   className="text-2xl font-extrabold leading-none"
