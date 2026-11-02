@@ -49,6 +49,7 @@ const TRIP_LABEL: Record<string, string> = {
   kilimanjaro: "Hiking Kilimanjaro / Meru",
   safari: "Safari",
   zanzibar: "Zanzibar",
+  other: "Other tours",
 };
 
 // Per-IP throttle: 5 inquiries / 10 min. Stops form-spam, email-bombing and the

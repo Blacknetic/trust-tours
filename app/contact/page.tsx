@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import InquiryForm from "@/components/InquiryForm";
+import QuoteWizard from "@/components/QuoteWizard";
 import SocialLinks from "@/components/SocialLinks";
 
 export const metadata: Metadata = {
@@ -132,7 +132,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* ── Inquiry form ────────────────────────────────────── */}
+        {/* ── Quote journey ───────────────────────────────────── */}
         <div>
           <h2
             className="text-2xl font-extrabold mb-2"
@@ -144,7 +144,9 @@ export default function ContactPage() {
             Tell us what you&apos;re dreaming about and we&apos;ll send a free
             day-by-day itinerary priced for your group.
           </p>
-          <InquiryForm />
+          <div className="rounded-2xl" style={{ border: "1px solid rgba(74,41,18,0.15)", background: "#fff" }}>
+            <QuoteWizard ctx={{}} />
+          </div>
         </div>
       </section>
     </>

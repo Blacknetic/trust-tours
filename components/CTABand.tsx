@@ -1,4 +1,5 @@
 import RequestQuoteButton from "@/components/RequestQuoteButton";
+import type { QuoteTrip } from "@/components/QuoteModal";
 
 interface Props {
   eyebrow: string;
@@ -10,12 +11,14 @@ interface Props {
   tripType?: "kilimanjaro" | "safari" | "zanzibar";
   /** Pre-fills the specific trip name (e.g. on a package page). */
   tripName?: string;
+  /** Tailors the quote journey to this trip. */
+  trip?: QuoteTrip;
   /** @deprecated legacy props — kept so existing call sites still compile. */
   ctaLabel?: string;
   waMessage?: string;
 }
 
-export default function CTABand({ eyebrow, title, subtitle, quoteLabel, tripType, tripName }: Props) {
+export default function CTABand({ eyebrow, title, subtitle, quoteLabel, tripType, tripName, trip }: Props) {
   return (
     <section className="py-16 text-center px-4" style={{ background: "var(--forest)" }}>
       <p
@@ -44,7 +47,7 @@ export default function CTABand({ eyebrow, title, subtitle, quoteLabel, tripType
       )}
       <RequestQuoteButton
         label={quoteLabel ?? "Request a quote"}
-        context={{ tripType, tripName, heading: title }}
+        context={{ tripType, tripName, trip }}
       />
     </section>
   );

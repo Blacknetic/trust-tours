@@ -13,15 +13,12 @@ import { useSearchParams } from "next/navigation";
 import {
   SAFARI_TYPES,
   TRAVEL_TIMES,
-  TRIPS_PER_PAGE,
   matchesTime,
   matchesType,
-  parsePage,
   parseSelection,
   serializeSelection,
   type SafariFacets,
   type SafariSelection,
-  type SafariTypeId,
 } from "@/lib/safari-filter";
 
 const RESULTS_ID = "safari-results";
@@ -40,11 +37,11 @@ function subscribe(listener: () => void) {
 const getSearch = () => window.location.search;
 const getServerSearch = () => "";
 
-function writeSelection(next: SafariSelection, page = 1) {
-  const qs = serializeSelection(next, page);
+function writeSelection(next: SafariSelection) {
+  const qs = serializeSelection(next);
   window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   listeners.forEach((l) => l());
-  // A new page or a shorter list can leave the visitor stranded down the page.
+  // A shorter list can leave the visitor stranded down the page.
   const results = document.getElementById(RESULTS_ID);
   if (results && results.getBoundingClientRect().top < 0) results.scrollIntoView();
 }
@@ -65,11 +62,7 @@ function UrlChangeListener() {
 interface FilterState {
   trips: SafariFacets[];
   selection: SafariSelection;
-  total: number; // trips matching the filters, across all pages
-  firstShown: number; // index of the page's first trip within those matches
-  shown: Set<string>; // the trips on the current page
-  page: number;
-  pageCount: number;
+  visible: Set<string>;
 }
 const FilterContext = createContext<FilterState | null>(null);
 
@@ -90,22 +83,12 @@ export function SafariFilterProvider({
 
   const state = useMemo(() => {
     const selection = parseSelection(search);
-    const matches = trips.filter(
-      (t) => matchesType(t, selection.types) && matchesTime(t, selection.times),
+    const visible = new Set(
+      trips
+        .filter((t) => matchesType(t, selection.types) && matchesTime(t, selection.times))
+        .map((t) => t.slug),
     );
-    const pageCount = Math.max(1, Math.ceil(matches.length / TRIPS_PER_PAGE));
-    const page = Math.min(parsePage(search), pageCount);
-    const firstShown = (page - 1) * TRIPS_PER_PAGE;
-    const onPage = matches.slice(firstShown, firstShown + TRIPS_PER_PAGE);
-    return {
-      trips,
-      selection,
-      total: matches.length,
-      firstShown,
-      shown: new Set(onPage.map((t) => t.slug)),
-      page,
-      pageCount,
-    };
+    return { trips, selection, visible };
   }, [trips, search]);
 
   return (
@@ -126,24 +109,32 @@ export function FilteredTrip({
   slug: string;
   children: React.ReactNode;
 }) {
-  const { shown } = useFilter();
+  const { visible } = useFilter();
   return (
-    <div className="h-full" hidden={!shown.has(slug)}>
+    <div className="h-full" hidden={!visible.has(slug)}>
       {children}
     </div>
   );
 }
 
-/** A category's introduction, shown when that is the one type ticked. */
-export function SafariTypeIntro({
+/** Wraps a server-rendered category section; hidden once none of its trips match. */
+export function FilteredSection({
   id,
+  slugs,
+  className,
   children,
 }: {
-  id: SafariTypeId;
+  id: string;
+  slugs: string[];
+  className?: string;
   children: React.ReactNode;
 }) {
-  const { types } = useFilter().selection;
-  return <div hidden={types.length !== 1 || types[0] !== id}>{children}</div>;
+  const { visible } = useFilter();
+  return (
+    <section id={id} className={className} hidden={!slugs.some((s) => visible.has(s))}>
+      {children}
+    </section>
+  );
 }
 
 function Checkbox({
@@ -196,7 +187,7 @@ function Group({ title, children }: { title: string; children: React.ReactNode }
 // `sticky` keeps the panel in view while the trips scroll past: beside them on
 // desktop, as a bar under the site header on mobile.
 export function SafariFilterPanel() {
-  const { trips, selection, total } = useFilter();
+  const { trips, selection, visible } = useFilter();
   const [open, setOpen] = useState(false);
   const { types, times } = selection;
   const active = types.length + times.length;
@@ -277,49 +268,10 @@ export function SafariFilterPanel() {
           className="lg:hidden w-full mt-5 px-4 py-3 rounded-xl text-sm font-semibold"
           style={{ background: "var(--gold)", color: "var(--paper)" }}
         >
-          Show {total} {total === 1 ? "trip" : "trips"}
+          Show {visible.size} {visible.size === 1 ? "trip" : "trips"}
         </button>
       </div>
     </aside>
-  );
-}
-
-function Pagination() {
-  const { selection, page, pageCount } = useFilter();
-  if (pageCount < 2) return null;
-
-  const arrow = (target: number, label: string, path: string) => (
-    <button
-      type="button"
-      onClick={() => writeSelection(selection, target)}
-      aria-label={label}
-      className="w-12 h-12 flex items-center justify-center rounded-full transition-opacity hover:opacity-80"
-      style={{ background: "var(--sand)", color: "var(--forest)" }}
-    >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d={path} />
-      </svg>
-    </button>
-  );
-
-  return (
-    <nav aria-label="Trip pages" className="flex items-center justify-end gap-2 mt-10">
-      {page > 1 && arrow(page - 1, "Previous page", "M19 12H5M12 19l-7-7 7-7")}
-      {Array.from({ length: pageCount }, (_, i) => i + 1).map((n) => (
-        <button
-          key={n}
-          type="button"
-          onClick={() => writeSelection(selection, n)}
-          aria-label={`Page ${n}`}
-          aria-current={n === page ? "page" : undefined}
-          className={`w-10 h-12 text-lg ${n === page ? "font-extrabold underline underline-offset-8" : ""}`}
-          style={{ color: "var(--forest)" }}
-        >
-          {n}
-        </button>
-      ))}
-      {page < pageCount && arrow(page + 1, "Next page", "M5 12h14M12 5l7 7-7 7")}
-    </nav>
   );
 }
 
@@ -330,17 +282,14 @@ export function SafariResults({
   noMatch: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const { total, firstShown, shown } = useFilter();
+  const { trips, visible } = useFilter();
   return (
     <div id={RESULTS_ID} className="min-w-0 scroll-mt-36 lg:scroll-mt-24">
-      <p className="text-sm mb-6" style={{ color: "var(--ink)" }} aria-live="polite">
-        {total === 0
-          ? "No trips found"
-          : `Showing ${firstShown + 1}–${firstShown + shown.size} of ${total} trips`}
+      <p className="text-sm mb-8" style={{ color: "var(--ink)" }} aria-live="polite">
+        Showing {visible.size} of {trips.length} trips
       </p>
       {children}
-      <Pagination />
-      {total === 0 && noMatch}
+      {visible.size === 0 && noMatch}
     </div>
   );
 }

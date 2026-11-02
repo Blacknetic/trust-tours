@@ -2,18 +2,39 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import InquiryForm from "@/components/InquiryForm";
+import QuoteWizard from "@/components/QuoteWizard";
 
-// Context passed when opening the quote modal so the form can pre-fill itself
-// with whatever the visitor was looking at (a trip, a category, a date).
+/** What the quote journey needs to know about the trip it opened from. */
+export interface QuoteTrip {
+  shortName: string;
+  /** What this trip is called: "safari", "climb", "trek"… */
+  noun: string;
+  days: number;
+  bestMonths?: string[];
+  levels?: { id: string; label: string; fromUSD: number }[];
+  addOns?: { id: string; label: string; price: string }[];
+}
+
+// Context passed when opening the quote journey, so it can skip what the page
+// already knows (a trip, a category) and start from the visitor's choices.
 export interface QuoteContext {
+  /** The trip page it opened from. Trip questions are skipped when set. */
+  trip?: QuoteTrip;
+  /** Everything chosen in the booking box. Its presence makes this a booking. */
+  known?: {
+    level?: string;
+    travellers?: number;
+    month?: string;
+    /** A fixed departure date: the journey then skips "when". */
+    date?: string;
+    stays?: { nights: string; name: string }[];
+    addOns?: string[];
+    /** Recalculates the request for a party size, as it can change in the journey. */
+    describe: (people: number) => { lines: string[]; total: number | null };
+  };
   tripType?: "kilimanjaro" | "safari" | "zanzibar";
-  tripName?: string; // e.g. "7-Day Machame Route" — shown in the heading + message
-  defaultMessage?: string;
-  travelMonth?: string;
-  groupSize?: string;
-  heading?: string;
-  subheading?: string;
+  tripName?: string; // e.g. "7-Day Machame Route" — shown on each step and in the message
+  submitLabel?: string;
 }
 
 interface QuoteModalApi {
@@ -32,9 +53,12 @@ export function useQuote(): QuoteModalApi {
 export default function QuoteModalProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [ctx, setCtx] = useState<QuoteContext>({});
+  // Bumped on each open, so the journey always starts fresh.
+  const [session, setSession] = useState(0);
 
   const openQuote = useCallback((next?: QuoteContext) => {
     setCtx(next ?? {});
+    setSession((s) => s + 1);
     setOpen(true);
   }, []);
   const closeQuote = useCallback(() => setOpen(false), []);
@@ -76,54 +100,25 @@ export default function QuoteModalProvider({ children }: { children: React.React
               role="dialog"
               aria-modal="true"
               aria-label="Request a free quote"
-              className="relative w-full max-w-2xl my-4 rounded-2xl overflow-hidden"
+              className="relative w-full max-w-3xl my-4 rounded-2xl overflow-hidden"
               style={{ background: "var(--paper)", boxShadow: "0 30px 80px -30px rgba(0,0,0,0.6)" }}
               initial={{ opacity: 0, y: 24, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 24, scale: 0.98 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
             >
-              {/* Header band */}
-              <div className="px-6 sm:px-8 pt-7 pb-6" style={{ background: "var(--forest)" }}>
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  aria-label="Close"
-                  className="absolute top-4 right-4 text-white/80 hover:text-white p-1.5"
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-                  </svg>
-                </button>
-                <p
-                  className="text-xs font-semibold tracking-[0.2em] uppercase mb-2"
-                  style={{ color: "var(--gold)" }}
-                >
-                  Free, no-obligation quote
-                </p>
-                <h2
-                  className="text-2xl sm:text-3xl font-extrabold"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--paper)", lineHeight: 1.1 }}
-                >
-                  {ctx.heading ?? "Planning a trip to Tanzania?"}
-                </h2>
-                <p className="text-sm mt-2" style={{ color: "rgba(255,255,255,0.92)" }}>
-                  {ctx.subheading ??
-                    "Tell us a little about your trip and Ombeni will send a tailored quote — usually within a day."}
-                </p>
-              </div>
-
-              {/* Form body (scrolls if tall) */}
-              <div className="px-6 sm:px-8 py-7 max-h-[calc(100vh-13rem)] overflow-y-auto">
-                <InquiryForm
-                  variant="modal"
-                  defaultTripType={ctx.tripType}
-                  tripName={ctx.tripName}
-                  defaultMessage={ctx.defaultMessage}
-                  defaultTravelMonth={ctx.travelMonth}
-                  defaultGroupSize={ctx.groupSize}
-                />
-              </div>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close"
+                className="absolute top-4 right-4 z-10 p-1.5"
+                style={{ color: "var(--ink)" }}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                </svg>
+              </button>
+              <QuoteWizard key={session} ctx={ctx} onClose={() => setOpen(false)} />
             </motion.div>
           </motion.div>
         )}

@@ -26,8 +26,6 @@ export interface SafariFacets {
   types: SafariTypeId[];
 }
 
-export const TRIPS_PER_PAGE = 9;
-
 export interface SafariSelection {
   types: SafariTypeId[];
   times: TravelTimeId[];
@@ -47,8 +45,8 @@ export const matchesTime = (trip: SafariFacets, times: TravelTimeId[]) =>
 const isType = (v: string): v is SafariTypeId => SAFARI_TYPES.some((t) => t.id === v);
 const isTime = (v: string): v is TravelTimeId => TRAVEL_TIMES.some((t) => t.id === v);
 
-// The selection lives in the URL (?type=migration,honeymoon&days=6-11&page=2) so
-// a filtered list can be shared and survives the back button from a trip page.
+// The selection lives in the URL (?type=migration,honeymoon&days=6-11) so a
+// filtered list can be shared and survives the back button from a trip page.
 export function parseSelection(search: string): SafariSelection {
   const params = new URLSearchParams(search);
   return {
@@ -57,15 +55,9 @@ export function parseSelection(search: string): SafariSelection {
   };
 }
 
-export function parsePage(search: string): number {
-  const page = Number(new URLSearchParams(search).get("page"));
-  return Number.isInteger(page) && page > 1 ? page : 1;
-}
-
-export function serializeSelection({ types, times }: SafariSelection, page = 1): string {
+export function serializeSelection({ types, times }: SafariSelection): string {
   const params = new URLSearchParams();
   if (types.length) params.set("type", types.join(","));
   if (times.length) params.set("days", times.join(","));
-  if (page > 1) params.set("page", String(page));
   return params.toString();
 }

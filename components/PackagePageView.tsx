@@ -13,14 +13,15 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import PriceLadder from "@/components/PriceLadder";
 import type { GroupPricing } from "@/lib/pricing";
 import { headlineParty, isAskSize, lowestPrice, lowestPriceFrom, partySizes, priceForGroup, tierLabel } from "@/lib/pricing";
-import { ADD_ONS } from "@/data/addons";
-import { staysFor } from "@/data/accommodations";
+import { ADD_ONS, addOnPriceLabel } from "@/data/addons";
+import { resolveStayChoices } from "@/data/accommodations";
 import { AtAGlance, ContentFigure, Prose, RichList, SectionBlock } from "@/components/LongForm";
 import { guidesForCategory } from "@/data/guides";
 import SectionNav from "@/components/SectionNav";
 import ReadNext from "@/components/ReadNext";
 import RelatedClimbs from "@/components/RelatedClimbs";
-import StayCards from "@/components/StayCards";
+import StayChooser from "@/components/StayChooser";
+import { TripChoicesProvider } from "@/components/TripChoices";
 import ComfortLevels from "@/components/ComfortLevels";
 import { climbLinks } from "@/data/kilimanjaro/links";
 
@@ -134,15 +135,24 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
     addOns: (pkg.addOns ?? []).map((id) => ADD_ONS[id]).filter(Boolean),
     person: pkg.category === "kilimanjaro" || pkg.category === "trekking" ? "climber" : "traveller",
   };
+  // What the quote journey needs, so it can skip the questions this page answers.
+  const quoteTrip = {
+    shortName: pkg.shortName,
+    noun: lex.noun.toLowerCase(),
+    days: pkg.days,
+    bestMonths: pkg.bestMonths,
+    levels: levels?.map((l) => ({ id: l.id, label: l.label, fromUSD: l.perDay.min * pkg.days })),
+    addOns: booking.addOns.map((a) => ({ id: a.id, label: a.label, price: addOnPriceLabel(a) })),
+  };
   const isClimb = pkg.category === "kilimanjaro";
   const links = isClimb ? climbLinks(pkg.slug) : (pkg.links ?? null);
-  const stays = staysFor(pkg.stays);
+  const stayChoices = resolveStayChoices(pkg.stayChoices);
   const hasInclusions = pkg.included.length > 0 || pkg.excluded.length > 0;
   const navItems = [
     { id: "overview", label: "Overview" },
     (gp || levels) && { id: "prices", label: "Prices" },
     { id: "itinerary", label: "Itinerary" },
-    stays.length > 0 && { id: "stays", label: "Where you'll stay" },
+    levels && stayChoices.length > 0 && { id: "stays", label: "Where you'll sleep" },
     hasInclusions && { id: "included", label: "What's included" },
     pkg.sections?.length && { id: "details", label: "Good to know" },
     pkg.faqs.length > 0 && { id: "faq", label: "FAQ" },
@@ -150,7 +160,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
   ].filter((i): i is { id: string; label: string } => !!i);
 
   return (
-    <>
+    <TripChoicesProvider levelId={levels?.[0].id} choices={stayChoices}>
       <TripJsonLd pkg={pkg} pageUrl={pageUrl} />
 
       {/* ── Hero ──────────────────────────────────────────────── */}
@@ -268,7 +278,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 label="Request a quote"
                 variant="gold"
                 className="hidden md:inline-flex"
-                context={{ tripType: quoteTripType, tripName: pkg.title }}
+                context={{ tripType: quoteTripType, tripName: pkg.title, trip: quoteTrip }}
               />
             </div>
           </div>
@@ -369,7 +379,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
               {links && <ReadNext links={links.itinerary} title={isClimb ? "Prepare for the climb" : "Explore the places on this route"} />}
             </section>
 
-            {stays.length > 0 && <StayCards stays={stays} border={BORDER} />}
+            {levels && stayChoices.length > 0 && <StayChooser levels={levels} border={BORDER} />}
 
             {/* Included / Excluded */}
             {hasInclusions && (
@@ -501,7 +511,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 boxShadow: "0 18px 44px -22px rgba(26, 26, 22,0.4)",
               }}
             >
-              <BookingCard {...booking} />
+              <BookingCard {...booking} trip={quoteTrip} />
             </div>
           </aside>
         </div>
@@ -523,10 +533,11 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
         quoteLabel="Get a free quote"
         tripType={quoteTripType}
         tripName={pkg.title}
+        trip={quoteTrip}
       />
 
       {/* Mobile sticky CTA — sits above the global WhatsApp button */}
-      <MobileCTABar {...booking} />
-    </>
+      <MobileCTABar {...booking} trip={quoteTrip} />
+    </TripChoicesProvider>
   );
 }

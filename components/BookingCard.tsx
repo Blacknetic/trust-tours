@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useQuote } from "@/components/QuoteModal";
+import { useQuote, type QuoteTrip } from "@/components/QuoteModal";
+import { useTripChoices } from "@/components/TripChoices";
 import type { ComfortLevel, GroupPricing } from "@/lib/pricing";
 import { isAskSize, isQuotedSize, largestSize, priceForGroup, tierForGroup } from "@/lib/pricing";
 import type { AddOn } from "@/data/addons";
@@ -22,14 +23,6 @@ const fieldStyle: React.CSSProperties = {
 
 const labelCls = "block text-xs font-semibold mb-2 uppercase tracking-wide";
 
-// The inquiry form's group-size dropdown uses buckets, not exact counts.
-function formGroupBucket(n: number): string {
-  if (n <= 2) return String(n);
-  if (n <= 4) return "3–4";
-  if (n <= 8) return "5–8";
-  return "9+";
-}
-
 const usd = (n: number) => `$${n.toLocaleString()}`;
 
 export interface BookingCardProps {
@@ -45,6 +38,8 @@ export interface BookingCardProps {
   person?: string;
   /** Background of the scrolling container, so the pinned total stays opaque. */
   surface?: string;
+  /** This trip, for the quote journey. */
+  trip?: QuoteTrip;
 }
 
 /**
@@ -63,13 +58,20 @@ export default function BookingCard({
   addOns = [],
   person = "traveller",
   surface = "#fff",
+  trip,
 }: BookingCardProps) {
   const { openQuote } = useQuote();
   const [month, setMonth] = useState("Flexible");
   // Rate cards open on their first tier, matching the headline price on the page.
   const [group, setGroup] = useState(groupPricing ? groupPricing.tiers[0].pax : 2);
   const [picked, setPicked] = useState<string[]>([]);
-  const [levelId, setLevelId] = useState(levels?.[0].id);
+  // Safaris have a lot to choose, so add-ons start folded to keep the box short.
+  const [showAddOns, setShowAddOns] = useState(!levels);
+  const { levelId, setLevelId, choices, pickedStay } = useTripChoices();
+  const stayLines = choices
+    .map((c) => ({ nights: c.nights, stay: pickedStay(c) }))
+    .filter((s) => s.stay)
+    .map((s) => `${s.nights}: ${s.stay!.name}`);
 
   const level = levels?.find((l) => l.id === levelId);
   const gp = level?.groupPricing ?? groupPricing ?? null;
@@ -99,25 +101,42 @@ export default function BookingCard({
     setPicked((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
   }
 
-  function request() {
+  // Priced by party size, because the group can still change in the booking steps.
+  function describe(party: number) {
+    const rate = gp ? (isAskSize(gp, party) ? 0 : priceForGroup(gp, party)) : priceFromUSD;
+    const extras = chosen
+      .map((a) => addOnTotal(a, party))
+      .filter((v): v is number => v != null)
+      .reduce((s, v) => s + v, 0);
+    const total = rate > 0 ? rate * party + extras : null;
     const lines = [
       `Booking request — ${packageTitle}`,
       level && `Comfort level: ${level.label}`,
-      `Group: ${people(group)}${isTop && gp ? " (or more)" : ""}`,
-      hasPrice && `Price shown: ${usd(perPerson)} per person · ${usd(tripTotal)} for the group`,
-      askPrice && "Price: please quote for this group size",
+      stayLines.length > 0 && `Accommodation: ${stayLines.join("; ")}`,
+      rate > 0 ? `Price shown: ${usd(rate)} per person · ${usd(rate * party)} for the group` : "Price: please quote for this group size",
       chosen.length > 0 && `Add-ons: ${chosen.map((a) => `${a.label} (${addOnPriceLabel(a)})`).join(", ")}`,
-      hasPrice && chosen.length > 0 &&
-        `Estimated total: ${usd(grandTotal)}${onRequest.length ? " plus add-ons priced on request" : ""}`,
-    ].filter(Boolean);
+      total != null && chosen.length > 0 &&
+        `Estimated total: ${usd(total)}${onRequest.length ? " plus add-ons priced on request" : ""}`,
+    ].filter((line): line is string => Boolean(line));
+    return { lines, total };
+  }
+
+  function request() {
     openQuote({
       tripType,
       tripName: packageTitle,
-      travelMonth: month,
-      groupSize: formGroupBucket(group),
-      defaultMessage: lines.join("\n"),
-      heading: "Request to book",
-      subheading: "Nothing is charged now. Ombeni confirms availability and your final price first.",
+      trip,
+      known: {
+        level: level?.label,
+        travellers: group,
+        month: month === "Flexible" ? undefined : month,
+        stays: choices.flatMap((c) => {
+          const stay = pickedStay(c);
+          return stay ? [{ nights: c.nights, name: stay.name }] : [];
+        }),
+        addOns: chosen.map((a) => a.label),
+        describe,
+      },
     });
   }
 
@@ -136,12 +155,8 @@ export default function BookingCard({
           </p>
           <p className="text-xs mt-1.5" style={{ color: "var(--ink)" }}>
             per person{gp ? `, group of ${groupText}` : ""}
+            {level && ` · ${usd(level.perDay.min)}–${usd(level.perDay.max)} a day`}
           </p>
-          {level && (
-            <p className="text-xs mt-1" style={{ color: "var(--ink)", opacity: 0.75 }}>
-              {usd(level.perDay.min)}–{usd(level.perDay.max)} per day
-            </p>
-          )}
         </div>
       ) : (
         <div className="mb-5">
@@ -156,7 +171,7 @@ export default function BookingCard({
         </div>
       )}
 
-      <div className="space-y-5 mb-5">
+      <div className={`${levels ? "space-y-3.5 mb-3" : "space-y-5 mb-5"}`}>
         {/* Comfort level */}
         {levels && (
           <div>
@@ -191,13 +206,27 @@ export default function BookingCard({
           </div>
         )}
 
+        {/* Chosen stays */}
+        {stayLines.length > 0 && (
+          <div>
+            <p className="text-xs" style={{ color: "var(--ink)" }}>
+              <span className="font-semibold uppercase tracking-wide">Your stays</span>
+              {" · "}
+              {stayLines.length} {stayLines.length === 1 ? "stop" : "stops"} chosen
+              <a href="#stays" className="hidden lg:inline underline ml-2">
+                Change
+              </a>
+            </p>
+          </div>
+        )}
+
         {/* Group size */}
         <div>
           <span className={labelCls} style={{ color: "var(--ink)" }}>
             How many {person}s?
           </span>
           {gp ? (
-            <div className="grid grid-cols-4 gap-1.5" role="radiogroup" aria-label="Group size">
+            <div className={`grid gap-1.5 ${top <= 6 ? "grid-cols-6" : "grid-cols-4"}`} role="radiogroup" aria-label="Group size">
               {Array.from({ length: top }, (_, i) => i + 1).map((n) => {
                 const active = n === Math.min(group, top);
                 const label = n === top && gp.tiers.length > 1 ? `${n}+` : String(n);
@@ -261,15 +290,15 @@ export default function BookingCard({
         </div>
 
         {/* Month */}
-        <div>
-          <label htmlFor="bc-month" className={labelCls} style={{ color: "var(--ink)" }}>
+        <div className="flex items-center gap-3">
+          <label htmlFor="bc-month" className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--ink)" }}>
             When?
           </label>
           <select
             id="bc-month"
             value={month}
             onChange={(e) => setMonth(e.target.value)}
-            className="w-full rounded-xl px-3.5 py-2.5 text-sm"
+            className="flex-1 min-w-0 rounded-xl px-3.5 py-2 text-sm"
             style={fieldStyle}
           >
             {MONTHS.map((m) => (
@@ -281,10 +310,22 @@ export default function BookingCard({
         {/* Add-ons */}
         {offered.length > 0 && (
           <fieldset>
-            <legend className={labelCls} style={{ color: "var(--ink)" }}>
+            <legend className={levels ? "sr-only" : labelCls} style={{ color: "var(--ink)" }}>
               Add-ons
             </legend>
-            <ul className="space-y-1">
+            {levels && (
+              <button
+                type="button"
+                onClick={() => setShowAddOns((s) => !s)}
+                aria-expanded={showAddOns}
+                className="w-full flex items-center justify-between text-xs font-semibold uppercase tracking-wide rounded-xl px-3.5 py-2.5"
+                style={fieldStyle}
+              >
+                <span>Add-ons{chosen.length > 0 ? ` (${chosen.length} chosen)` : ""}</span>
+                <span aria-hidden="true">{showAddOns ? "▲" : "▼"}</span>
+              </button>
+            )}
+            <ul className={`space-y-1 ${levels ? "mt-1" : ""}`} hidden={!showAddOns}>
               {offered.map((a) => {
                 const on = picked.includes(a.id);
                 return (

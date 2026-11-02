@@ -6,11 +6,11 @@ import CTABand from "@/components/CTABand";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import SampleItineraryNotice from "@/components/SampleItineraryNotice";
 import {
+  FilteredSection,
   FilteredTrip,
   SafariFilterPanel,
   SafariFilterProvider,
   SafariResults,
-  SafariTypeIntro,
 } from "@/components/SafariFilter";
 import GuideStrip from "@/components/GuideStrip";
 import ItemListJsonLd from "@/components/ItemListJsonLd";
@@ -82,7 +82,7 @@ export default function SafarisListingPage() {
         </div>
       </section>
 
-      {/* ── Filter panel beside the paginated trip list ───────── */}
+      {/* ── Filter panel beside one section per safari category ── */}
       <SafariFilterProvider trips={allSafaris.map(safariFacets)}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:py-14 pb-14 md:pb-20 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
           <SafariFilterPanel />
@@ -102,41 +102,52 @@ export default function SafarisListingPage() {
                 </div>
               }
             >
-              {SAFARI_CATEGORIES.map((cat) => (
-                <SafariTypeIntro key={cat.id} id={cat.id}>
-                  <div className="mb-8 max-w-3xl">
-                    <p
-                      className="text-xs font-semibold tracking-widest uppercase mb-2"
-                      style={{ color: "var(--gold)" }}
+              <div className="flex flex-col gap-14 md:gap-20">
+                {SAFARI_CATEGORIES.map((cat) => {
+                  const trips = bySafariCategory(cat.id);
+                  if (trips.length === 0) return null;
+                  return (
+                    <FilteredSection
+                      key={cat.id}
+                      id={cat.id}
+                      slugs={trips.map((t) => t.slug)}
+                      className="scroll-mt-36 lg:scroll-mt-24"
                     >
-                      {cat.tagline}
-                    </p>
-                    <h2
-                      className="text-3xl md:text-4xl font-extrabold mb-3"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        color: "var(--forest)",
-                        letterSpacing: "-0.02em",
-                      }}
-                    >
-                      {cat.label}
-                    </h2>
-                    <p
-                      className="text-base leading-relaxed"
-                      style={{ color: "rgba(74,41,18,0.75)" }}
-                    >
-                      {cat.blurb}
-                    </p>
-                  </div>
-                </SafariTypeIntro>
-              ))}
+                      <div className="mb-8 md:mb-10 max-w-3xl">
+                        <p
+                          className="text-xs font-semibold tracking-widest uppercase mb-2"
+                          style={{ color: "var(--gold)" }}
+                        >
+                          {cat.tagline}
+                        </p>
+                        <h2
+                          className="text-3xl md:text-4xl font-extrabold mb-3"
+                          style={{
+                            fontFamily: "var(--font-display)",
+                            color: "var(--forest)",
+                            letterSpacing: "-0.02em",
+                          }}
+                        >
+                          {cat.label}
+                        </h2>
+                        <p
+                          className="text-base leading-relaxed"
+                          style={{ color: "rgba(74,41,18,0.75)" }}
+                        >
+                          {cat.blurb}
+                        </p>
+                      </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {allSafaris.map((pkg) => (
-                  <FilteredTrip key={pkg.slug} slug={pkg.slug}>
-                    <PackageCard pkg={pkg} />
-                  </FilteredTrip>
-                ))}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                        {trips.map((pkg) => (
+                          <FilteredTrip key={pkg.slug} slug={pkg.slug}>
+                            <PackageCard pkg={pkg} />
+                          </FilteredTrip>
+                        ))}
+                      </div>
+                    </FilteredSection>
+                  );
+                })}
               </div>
             </SafariResults>
           </div>

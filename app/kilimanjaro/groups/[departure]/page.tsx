@@ -15,7 +15,7 @@ import {
 } from "@/data/departures";
 import ElevationJourney from "@/components/ElevationJourney";
 import FAQAccordion from "@/components/FAQAccordion";
-import InquiryForm from "@/components/InquiryForm";
+import GroupDepartureBooking from "@/components/GroupDepartureBooking";
 import CTABand from "@/components/CTABand";
 
 const WA = "255785938860";
@@ -60,7 +60,7 @@ export default async function JoinDeparturePage({ params }: Props) {
   const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}`;
   const formMsg =
     `I'd like to ${full ? "join the waitlist for" : "join"} the ${dep.route.name} group departure ` +
-    `on ${formatDateRange(dep)} (ref ${dep.id}).\n\nA little about me: `;
+    `on ${formatDateRange(dep)} (ref ${dep.id}).`;
 
   return (
     <>
@@ -228,10 +228,13 @@ export default async function JoinDeparturePage({ params }: Props) {
             {BALANCE_DUE_DAYS} days before departure. We&apos;ll confirm availability and send payment
             details within a day.
           </div>
-          <InquiryForm
-            defaultTripType="kilimanjaro"
+          <GroupDepartureBooking
             tripName={`${dep.route.name} · ${formatDateRange(dep)}`}
-            defaultMessage={formMsg}
+            routeName={dep.route.name}
+            days={dep.days}
+            dateLabel={formatDateRange(dep)}
+            priceUSD={dep.priceUSD}
+            note={formMsg}
             submitLabel={full ? "Join the waitlist" : "Request my spot"}
           />
           <p className="text-sm mt-5" style={{ color: "var(--ink)" }}>

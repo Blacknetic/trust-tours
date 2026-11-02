@@ -3,6 +3,7 @@
 
 import type { ComfortLevel, GroupPricing } from "@/lib/pricing";
 import { KILIMANJARO_PACKAGES } from "@/data/kilimanjaro";
+import type { StayChoice } from "@/data/accommodations";
 import type { ClimbLinks } from "@/data/kilimanjaro/links";
 import { SAFARI_PACKAGES } from "@/data/safaris";
 import type { SafariFacets, SafariTypeId } from "@/lib/safari-filter";
@@ -62,7 +63,7 @@ export interface ItineraryDay {
   hours?: string;
   meals: string;
   accommodation: string;
-  // Id from data/accommodations.ts; links the overnight to its card on the page.
+  // A `stayChoices` id; links the overnight to that stop's choices on the page.
   stayId?: string;
 }
 
@@ -112,8 +113,8 @@ export interface TripPackage {
   comfortLevels?: ComfortLevel[];
   // Ids from data/addons.ts offered in the booking box.
   addOns?: string[];
-  // Ids from data/accommodations.ts shown under "Where you'll stay".
-  stays?: string[];
+  // Where visitors choose their stays, stop by stop (data/accommodations.ts).
+  stayChoices?: StayChoice[];
   // Guides and related trips linked from each section of the page.
   links?: ClimbLinks;
   tier: Tier[];
@@ -1729,111 +1730,6 @@ export const packages: TripPackage[] = [
       },
     ],
     bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
-  {
-    slug: "6-day-calving-safari",
-    destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
-    category: "safari",
-    title: "6-Day Calving-Season Safari – Tarangire, Ndutu & Ngorongoro",
-    shortName: "6-Day Calving Safari",
-    days: 6,
-    priceFromUSD: 2350,
-    priceNote:
-      "Per person, mid-range. From $2,350 (3 travellers) / $2,650 (2) / $3,250 (solo). December–April.",
-    tier: ["mid-range"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "Six days at the heart of the Great Migration's calving season (December–April), when over two million wildebeest, zebra and gazelle gather on the Ndutu and southern Serengeti plains and around 8,000 calves are born each day at the peak. Three full days in the migration zone, bookended by Tarangire and the Ngorongoro Crater — outstanding value and superb predator action.",
-    highlights: [
-      "Three days in the Ndutu calving grounds at peak season",
-      "Thousands of newborn calves and intense predator activity",
-      "Tarangire's baobabs and large elephant herds",
-      "Full game drive on the floor of the Ngorongoro Crater",
-      "Excellent value — per-person price drops with group size",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arusha to Tarangire National Park",
-        description:
-          "A morning briefing in Arusha, then the 2½-hour drive to Tarangire through Maasai country. An afternoon game drive among massive elephant herds, baobabs, lions and 550+ bird species, with a picnic lunch in the park. Continue to Karatu for dinner and overnight.",
-        meals: "Lunch, dinner",
-        accommodation: "Mid-range lodge, Karatu",
-      },
-      {
-        day: 2,
-        title: "Karatu to the Ndutu Conservation Area",
-        description:
-          "Drive through the Ngorongoro highlands and volcanic landscapes into the Ndutu ecosystem, arriving by midday as the plains fill with wildebeest, zebra and the predators that follow. An afternoon game drive where the migration drama begins — newborn calves, stalking lions and cheetahs.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Tented camp, Ndutu",
-      },
-      {
-        day: 3,
-        title: "Full Day in Ndutu — Calving Season",
-        description:
-          "A full day in the migration's maternity ward. Early morning for predators returning from the hunt, then tracking the short-grass plains where thousands of calves are born daily — wildebeest mothers, massive zebra herds, bat-eared foxes and serval cats. Evening storytelling around the campfire.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Tented camp, Ndutu",
-      },
-      {
-        day: 4,
-        title: "Full Day — Ndutu & Southern Serengeti",
-        description:
-          "Another full day following the herds, your guide positioning you in the most active areas. Lion prides with cubs, cheetahs hunting gazelle, large hyena clans and elephants crossing the plains — short grass and high density make it superb for photography. Spectacular southern Serengeti sunsets.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Tented camp, Ndutu",
-      },
-      {
-        day: 5,
-        title: "Ndutu to the Ngorongoro Highlands",
-        description:
-          "A final migration game drive, then after lunch the drive toward the Ngorongoro Highlands, arriving at the crater rim in the late afternoon for spectacular views over one of Africa's most iconic landscapes.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge or camp, Ngorongoro rim",
-      },
-      {
-        day: 6,
-        title: "Ngorongoro Crater to Arusha",
-        description:
-          "An early descent into the Ngorongoro Crater — 'Africa's Garden of Eden' — for a chance at the Big Five in a single morning, plus hippo, flamingo and hyena, with a picnic lunch by the hippo pool. Continue your game drive, then return to Arusha where your safari concludes.",
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Private 4x4 Land Cruiser with pop-up roof and a professional guide",
-      "All national park, conservation and Ngorongoro Crater fees",
-      "Full-board accommodation throughout the safari",
-      "Unlimited game drives and bottled water on safari",
-      "Government taxes and VAT, plus Arusha airport transfers",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Alcoholic and soft drinks, plus personal expenses",
-      "Tips and gratuities for guide and staff",
-    ],
-    faqs: [
-      {
-        question: "When exactly is the calving season?",
-        answer:
-          "December to April, peaking January–March, when up to 500,000 calves are born around Ndutu and thousands of births occur daily — drawing exceptional numbers of predators.",
-      },
-      {
-        question: "How does the price work?",
-        answer:
-          "It's per person and drops with group size: from $3,250 solo, $2,650 for two, and $2,350 each for three travellers sharing. Message Ombeni with your party for an exact quote.",
-      },
-      {
-        question: "How is this different from the 5- and 10-day calving safaris?",
-        answer:
-          "The 6-day gives three full days in Ndutu — more migration time than the 5-day — while staying more focused (and better value) than the 10-day full-circuit version.",
-      },
-    ],
-    bestMonths: ["Dec", "Jan", "Feb", "Mar", "Apr"],
   },
 
   {
@@ -3545,98 +3441,6 @@ export const packages: TripPackage[] = [
     bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Jan", "Feb"],
     oldUrl:
       "/booking/4-day-safari-itinerary-arusha-national-park-tarangire-lake-manyara-and-ngorongoro-crater/",
-  },
-
-  {
-    slug: "4-day-private-ndutu-calving-safari",
-    destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
-    category: "safari",
-    tags: ["family"],
-    title: "4-Day Private Calving-Season Safari – Tarangire, Ngorongoro & Ndutu",
-    shortName: "4-Day Ndutu Calving Safari",
-    days: 4,
-    priceFromUSD: 0,
-    priceNote:
-      "Private trip. From $4,035 for 2 adults + 1 child (mid-range) / $5,685 luxury. Per-person pricing on request — family-friendly.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "A private, family-friendly safari built around the Great Migration's calving season in the southern Serengeti. From Kilimanjaro Airport you take in Tarangire's elephants and baobabs and a full day in the Ngorongoro Crater, then two days on the Ndutu plains where thousands of wildebeest, zebra and gazelle give birth — and the predators that follow them. Travel times and activities are paced for families.",
-    highlights: [
-      "Two days on the Ndutu plains in peak calving season (Dec–Mar)",
-      "Newborn herds and dramatic predator action — lion, cheetah, hyena",
-      "Full day in the Ngorongoro Crater and the Big Five",
-      "Tarangire's elephant herds and ancient baobabs",
-      "Private vehicle and guide, paced for families with children",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Kilimanjaro Airport to Tarangire National Park",
-        description:
-          "Met at Kilimanjaro International Airport by your private guide and driven via Arusha to Tarangire National Park. Picnic lunch, then an afternoon game drive among the park's iconic baobabs and some of the largest elephant herds in Africa, with giraffe, zebra, lion and over 500 bird species along the Tarangire River. Dinner and overnight at a lodge near the park.",
-        meals: "Lunch, dinner",
-        accommodation: "Mid-range lodge near Tarangire",
-      },
-      {
-        day: 2,
-        title: "Ngorongoro Crater",
-        description:
-          "After breakfast, drive through the highlands to the Ngorongoro Conservation Area and descend 600 m into the crater — the largest intact volcanic caldera on Earth. Game viewing among the Big Five plus zebra, wildebeest, warthog and flamingos on the soda lakes, with a picnic lunch near the hippo pool. Ascend in the late afternoon and transfer to your lodge.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge near the Ngorongoro highlands",
-      },
-      {
-        day: 3,
-        title: "Southern Serengeti — Ndutu Calving Plains",
-        description:
-          "Head onto the Ndutu plains of the southern Serengeti, a prime calving-season location where thousands of wildebeest, zebra and gazelle gather on lush grass. Watch newborn calves and the herds' interactions — and the lions, cheetahs and hyenas the season draws in. Picnic lunch on the plains and an afternoon of game viewing before a tented-camp dinner under the stars.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Tented camp, Ndutu area",
-      },
-      {
-        day: 4,
-        title: "Ndutu Sunrise Drive & Return to Arusha",
-        description:
-          "An early sunrise game drive in Ndutu at the height of calving season, followed by a bush breakfast on the plains and a final drive through the woodlands. Around midday, begin the scenic 5–6 hour drive back to Arusha for your onward flight or an overnight before departure.",
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Private safari vehicle and English-speaking guide",
-      "Park and conservation-area entry fees for all destinations",
-      "Mid-range (or luxury) lodge and tented-camp accommodation",
-      "Full-board meals as specified plus bottled water throughout",
-      "Airport transfers",
-    ],
-    excluded: [
-      "International and domestic flights",
-      "Travel insurance (recommended for all travellers)",
-      "Tips and gratuities",
-      "Personal expenses and optional activities",
-    ],
-    faqs: [
-      {
-        question: "When is the calving season?",
-        answer:
-          "Roughly December to March, peaking around late January–February, when the migration herds gather on the southern Serengeti and Ndutu plains to give birth. It's one of the best times for predator action.",
-      },
-      {
-        question: "Is this safari suitable for children?",
-        answer:
-          "Yes — it's a private trip paced with manageable travel times and family-friendly activities, and your guide tailors each day to your group. Tell Ombeni your children's ages and he'll adjust accordingly.",
-      },
-      {
-        question: "Why is the price shown on request?",
-        answer:
-          "Because it's a private trip, the price depends on group size, ages and lodge level. As a guide, a recent booking ran from $4,035 for two adults and a child (mid-range). Message Ombeni with your party for an exact quote.",
-      },
-    ],
-    bestMonths: ["Dec", "Jan", "Feb", "Mar"],
-    oldUrl:
-      "/booking/4-day-private-safari-itinerary-tarangire-ngorongoro-crater-and-southern-serengeti-ndutu-area/",
   },
 
   {
@@ -5435,6 +5239,12 @@ const MIGRATION_SAFARI_SLUGS = new Set<string>([
   "6-day-calving-safari",
   "4-day-private-ndutu-calving-safari",
   "5-day-ndutu-migration-safari",
+  "3-day-ndutu-calving-safari",
+  "4-day-tarangire-ndutu-ngorongoro-safari",
+  "6-day-ndutu-great-migration-safari",
+  "7-day-ndutu-calving-safari",
+  "8-day-ndutu-calving-safari",
+  "9-day-calving-migration-safari",
   // NOTE: 10-day-kenya-safari (broad Kenya parks circuit) and
   // 3-day-serengeti-balloon-zanzibar (Zanzibar add-on, no migration focus)
   // intentionally live in Big Five, not Migration.

@@ -2,7 +2,7 @@ import type { TripPackage } from "@/data/packages";
 import { SAFARI_ADDONS } from "@/data/addons";
 import { CONTACT_BULLETS } from "@/data/kilimanjaro/shared";
 import { calvingLinks } from "./links";
-import { comfortLevels } from "./shared";
+import { STAYS_ARUSHA, STAYS_HIGHLANDS, STAYS_NDUTU, comfortLevels, stop } from "./shared";
 
 const SLUG = "5-day-ndutu-migration-safari";
 
@@ -24,7 +24,11 @@ export const ndutuCalving5: TripPackage = {
     "Indicative price per person for 2 adults sharing a private vehicle, at Mid-range level. Your written quote confirms the final price.",
   comfortLevels: comfortLevels(5),
   addOns: SAFARI_ADDONS,
-  stays: ["arusha-coffee-lodge", "marera-valley-lodge", "ndutu-camp"],
+  stayChoices: [
+    stop("arusha", "Night 1", "Arusha", STAYS_ARUSHA),
+    stop("highlands", "Night 2", "Karatu and the Ngorongoro Highlands", STAYS_HIGHLANDS),
+    stop("ndutu", "Nights 3 and 4", "Ndutu and the Southern Serengeti", STAYS_NDUTU),
+  ],
   links: calvingLinks(SLUG),
   tier: ["mid-range", "comfort"],
   heroImage: "/images/safaris/ndutu-calf-nursing.jpg",
@@ -57,6 +61,7 @@ export const ndutuCalving5: TripPackage = {
     "Tarangire's elephants: A full-day game drive among giant baobabs and large elephant herds.",
     "A rested start: A first night in Arusha, so the safari begins after a proper sleep, not straight after a long flight.",
     "Four comfort levels: The same route, from Mid-range to Ultra-premium.",
+    "Your choice of stays: Choose where you sleep at each stop, from the lodges and camps offered at your level.",
   ],
   pricingDetails: [
     "These are indicative private-safari planning ranges per person, based on 2 adults sharing one private safari vehicle and a room. They are not confirmed quotations.",
@@ -68,7 +73,7 @@ export const ndutuCalving5: TripPackage = {
       day: 1,
       title: "Kilimanjaro Airport to Arusha: arrival and safari briefing",
       description:
-        "Your Tanzanian adventure begins with a warm welcome at Kilimanjaro International Airport (JRO) by your Trust Tours & Safaris representative. After help with your luggage, you transfer privately to Arusha, the safari capital of northern Tanzania. The drive is about 50 km and takes around an hour, depending on traffic.\n\nDepending on your arrival time, the rest of the day is yours. Relax at the lodge, enjoy the gardens, recover from your journey or simply prepare for the days ahead.\n\nIn the evening, your safari guide meets you for a detailed briefing on the route, the weather, wildlife expectations, photography opportunities and the next day's departure.",
+        "Your Tanzanian adventure begins with a warm welcome at Kilimanjaro International Airport (JRO) by your Trust Tours & Safaris representative. After help with your luggage, you transfer privately to Arusha, the safari capital of northern Tanzania. The drive is about 50 km and takes around an hour, depending on traffic.\n\nDepending on your arrival time, the rest of the day is yours. Relax at your hotel, recover from your journey or simply prepare for the days ahead.\n\nIn the evening, your safari guide meets you for a detailed briefing on the route, the weather, wildlife expectations, photography opportunities and the next day's departure.",
       experience: "A warm welcome and a comfortable first evening in Arusha.",
       notes: [
         "Why this night matters: Instead of starting a long safari drive straight after an international flight, you enjoy a comfortable first evening in Arusha and begin the main safari rested.",
@@ -76,14 +81,14 @@ export const ndutuCalving5: TripPackage = {
       distanceKm: 50,
       hours: "About 1 hour",
       meals: "Dinner",
-      accommodation: "Arusha Coffee Lodge",
-      stayId: "arusha-coffee-lodge",
+      accommodation: "Your chosen stay in Arusha",
+      stayId: "arusha",
     },
     {
       day: 2,
       title: "Arusha to Tarangire National Park and Karatu",
       description:
-        "After breakfast, you leave Arusha with your private safari guide and drive to Tarangire National Park, famous for its enormous elephant population, ancient baobab trees, seasonal wetlands and diverse wildlife. The safari begins as soon as you enter the park.\n\nYour guide chooses the best areas according to current wildlife conditions, looking for African elephants, lions, giraffes, zebras, wildebeest, buffalo, impala, warthogs, antelope, baboons, monkeys and numerous bird species.\n\nThe park's landscape of giant baobabs, open savannah and seasonal rivers has a completely different atmosphere from Ndutu. You enjoy a full-day game drive, with a picnic lunch at an authorised picnic area before continuing to explore.\n\nIn the late afternoon, you leave Tarangire and drive to the Karatu highlands for dinner and the night.",
+        "After breakfast, you leave Arusha with your private safari guide and drive to Tarangire National Park, famous for its enormous elephant population, ancient baobab trees, seasonal wetlands and diverse wildlife. The safari begins as soon as you enter the park.\n\nYour guide chooses the best areas according to current wildlife conditions, looking for African elephants, lions, giraffes, zebras, wildebeest, buffalo, impala, warthogs, antelope, baboons, monkeys and numerous bird species.\n\nThe park's landscape of giant baobabs, open savannah and seasonal rivers has a completely different atmosphere from Ndutu. You enjoy a full-day game drive, with a picnic lunch at an authorised picnic area before continuing to explore.\n\nIn the late afternoon, you leave Tarangire and drive to your lodge in the Karatu and Ngorongoro highlands for dinner and the night.",
       experience: "Elephants, baobabs and a full day of Tarangire wildlife.",
       notes: [
         "Why Tarangire is included: It adds excellent resident wildlife and elephant viewing, and it breaks up the journey to the Ngorongoro and Ndutu ecosystem.",
@@ -93,8 +98,8 @@ export const ndutuCalving5: TripPackage = {
         alt: "A herd of elephants beneath a flat-topped acacia tree in Tarangire National Park",
       },
       meals: "Breakfast, lunch and dinner",
-      accommodation: "Marera Valley Lodge, Karatu",
-      stayId: "marera-valley-lodge",
+      accommodation: "Your chosen stay in the highlands",
+      stayId: "highlands",
     },
     {
       day: 3,
@@ -107,8 +112,8 @@ export const ndutuCalving5: TripPackage = {
         alt: "A safari vehicle among zebra and wildebeest on the Ngorongoro Crater floor, with the crater walls behind",
       },
       meals: "Breakfast, picnic lunch and dinner",
-      accommodation: "Ndutu / Southern Serengeti camp or lodge",
-      stayId: "ndutu-camp",
+      accommodation: "Your chosen camp or lodge at Ndutu",
+      stayId: "ndutu",
     },
     {
       day: 4,
@@ -121,8 +126,8 @@ export const ndutuCalving5: TripPackage = {
         alt: "A young wildebeest calf feeding from its mother",
       },
       meals: "Breakfast, picnic lunch and dinner",
-      accommodation: "Ndutu / Southern Serengeti camp or lodge",
-      stayId: "ndutu-camp",
+      accommodation: "Your chosen camp or lodge at Ndutu",
+      stayId: "ndutu",
     },
     {
       day: 5,
@@ -222,6 +227,11 @@ export const ndutuCalving5: TripPackage = {
       question: "What is the difference between the comfort levels?",
       answer:
         "The route stays the same. Higher levels add better lodges and camps, and some services. Luxury includes a one-way flight, while High-end luxury adds flights both ways and a hot-air balloon safari.",
+    },
+    {
+      question: "Can I choose where I sleep?",
+      answer:
+        "Yes. Pick your comfort level, then choose a stay for each part of the route. Your choices go with your booking request, and Ombeni confirms availability. If a stay is full, he will suggest a similar one.",
     },
     {
       question: "Will I definitely see newborn calves?",
