@@ -81,7 +81,7 @@ export const ADD_ONS: Record<string, AddOn> = {
   "serengeti-flight": {
     id: "serengeti-flight",
     label: "Flight to Arusha",
-    description: "Fly from the Southern Serengeti to Arusha instead of the long road journey back.",
+    description: "Fly from the Serengeti to Arusha instead of the long road journey back.",
     unit: "person",
   },
   "extra-serengeti-night": {

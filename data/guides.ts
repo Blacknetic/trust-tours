@@ -3030,7 +3030,7 @@ export const guides: Guide[] = [
           headers: ["Safari", "Days", "From (per person)"],
           rows: [
             ["Tarangire, Lake Manyara & Ngorongoro", "3", "$1,460 mid-range / $1,906 luxury"],
-            ["Great Migration Safari", "7", "$2,200 budget / $2,800 mid-range"],
+            ["Cross Migration Safari", "7", "$3,185 mid-range / $5,285 luxury"],
             ["Luxury Fly-Out Safari", "5", "$2,499 mid-range / $3,666 luxury"],
           ],
           highlightCol: 2,

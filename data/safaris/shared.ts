@@ -1,13 +1,13 @@
-// Shared pieces for the rebuilt calving-season safaris (data/safaris/*.ts).
-// Content comes from Ombeni's documents (flash drive D:\mpya\calvining season,
-// Oct 2026). Prices are draft until he reviews the live pages.
+// Shared pieces for the rebuilt safaris (data/safaris/*.ts).
+// Content comes from Ombeni's documents (flash drive D:\mpya, Oct 2026). Prices are draft until he reviews the live pages.
 
 import type { StayChoice } from "@/data/accommodations";
 import { SAFARI_ADDONS } from "@/data/addons";
 import { CONTACT_BULLETS } from "@/data/kilimanjaro/shared";
 import type { ContentSection, FAQ, ItineraryDay, TripPackage } from "@/data/packages";
+import type { ClimbLinks } from "@/data/kilimanjaro/links";
 import type { ComfortLevel } from "@/lib/pricing";
-import { calvingLinks } from "./links";
+import { calvingLinks, crossingLinks } from "./links";
 
 // Ombeni's per-person, per-day ranges for 2 adults sharing a private vehicle.
 // A change here reprices every trip built with comfortLevels().
@@ -149,6 +149,31 @@ export const STAYS_CENTRAL_SERENGETI = {
   "ultra-premium": ["four-seasons-serengeti"],
 };
 
+// The north is mostly seasonal camps that follow the herds from about June to
+// November, so the exact camp is confirmed for each traveller's dates.
+export const STAYS_NORTH_SERENGETI = {
+  "mid-range": ["mara-kati-kati", "nyikani-migration-camp"],
+  luxury: ["lemala-kuria-hills", "serengeti-bushtops"],
+  "high-end": ["singita-mara-river", "olakira-camp", "nomad-serengeti-camp", "serengeti-under-canvas"],
+  "ultra-premium": ["singita-mara-river", "serengeti-under-canvas"],
+};
+
+// The Tarangire and Lake Manyara lists are Ombeni's own, from his cross
+// migration documents. Maramboi may be closed into 2027, so it isn't the default.
+export const STAYS_TARANGIRE = {
+  "mid-range": ["tarangire-simba-lodge", "maramboi-tented-lodge"],
+  luxury: ["tarangire-treetops", "sanctuary-swala"],
+  "high-end": ["chem-chem-lodge"],
+  "ultra-premium": ["chem-chem-lodge"],
+};
+
+export const STAYS_MANYARA = {
+  "mid-range": ["lake-manyara-serena", "maramboi-tented-lodge"],
+  luxury: ["manyaras-secret", "lake-manyara-kilimamoja"],
+  "high-end": ["chem-chem-lodge"],
+  "ultra-premium": ["chem-chem-lodge"],
+};
+
 export const stop = (
   id: string,
   nights: string,
@@ -217,6 +242,70 @@ export const IMG = {
   serengetiLion: {
     src: "/images/safaris/serengeti-lion-waterhole.jpg",
     alt: "A male lion beside a shallow pool on the open plains",
+  },
+  crossing: {
+    src: "/images/safaris/mara-crossing-zebra-wildebeest.jpg",
+    alt: "Zebra and wildebeest crossing the Mara River through churning water",
+  },
+  crossingBank: {
+    src: "/images/safaris/mara-crossing-riverbank.jpg",
+    alt: "Herds of zebra and wildebeest scrambling down a steep bank into the Mara River",
+  },
+  northPlains: {
+    src: "/images/safaris/serengeti-acacia-plains.jpg",
+    alt: "A lone flat-topped acacia tree on golden plains in the Serengeti",
+  },
+  craterRoad: {
+    src: "/images/safaris/ngorongoro-crater-road.jpg",
+    alt: "A safari vehicle on a red track beside zebras on the Ngorongoro Crater floor",
+  },
+  flight: {
+    src: "/images/safaris/serengeti-flight-herds.jpg",
+    alt: "A light aircraft flying low over wildebeest herds in the Serengeti",
+  },
+  riverHerd: {
+    src: "/images/safaris/mara-river-wildebeest-herd.jpg",
+    alt: "Wildebeest surging through the shallows of the Mara River",
+  },
+  crocodile: {
+    src: "/images/safaris/mara-river-crocodile.jpg",
+    alt: "A crocodile in the river as wildebeest crowd the water around it",
+  },
+  crossingWave: {
+    src: "/images/safaris/mara-river-crossing-wave.jpg",
+    alt: "A line of wildebeest wading across the Mara River from a steep bank",
+  },
+  crossingDust: {
+    src: "/images/safaris/mara-crossing-dust.jpg",
+    alt: "Dust rising as huge herds pour down to the river",
+  },
+  riverGathering: {
+    src: "/images/safaris/mara-river-gathering.jpg",
+    alt: "Thousands of wildebeest gathered on both banks of the river",
+  },
+  steepBank: {
+    src: "/images/safaris/mara-river-steep-bank.jpg",
+    alt: "Wildebeest packed along a steep riverbank above the Mara River",
+  },
+  manyaraFlamingos: {
+    src: "/images/safaris/lake-manyara-flamingos.jpg",
+    alt: "Flamingos in the shallows of a lake, with zebra and wildebeest walking along the shore",
+  },
+  sunsetDrive: {
+    src: "/images/safaris/serengeti-sunset-herds.jpg",
+    alt: "A safari vehicle watching herds on the plains at sunset",
+  },
+  tarangireBaobab: {
+    src: "/images/safaris/tarangire-baobab-elephant.jpg",
+    alt: "An elephant walking beneath a huge baobab tree in Tarangire",
+  },
+  balloon: {
+    src: "/images/safaris/serengeti-balloon-sunrise.jpg",
+    alt: "A hot-air balloon drifting over the Serengeti plains at sunrise",
+  },
+  stormHerds: {
+    src: "/images/safaris/serengeti-herds-plains.jpg",
+    alt: "Wildebeest herds spread across green plains beneath a dark sky",
   },
   plains: {
     src: "/images/serengeti-plains.jpg",
@@ -319,11 +408,111 @@ const EXCLUDED = [
   "New government fees or charges introduced after your quotation, where the contract allows them to be passed on.",
 ];
 
-type CalvingTrip = Pick<
+const CROSSING_FAQS: FAQ[] = [
+  {
+    question: "When is the river crossing season?",
+    answer:
+      "The main crossing season generally runs from July to October, with late July to September the most popular time. October can still be rewarding as some herds begin moving south.",
+  },
+  {
+    question: "Can you guarantee I will see a river crossing?",
+    answer:
+      "No. No responsible operator can. Herds may wait at the river for hours or days, change direction or cross somewhere else. Staying in the north and travelling with an experienced guide gives you the best opportunity.",
+  },
+  {
+    question: "Where do the crossings happen?",
+    answer:
+      "In the Northern Serengeti, mainly around the Kogatende and Lamai areas, where the Mara River lies on the migration route. Your guide chooses where to go from recent wildlife movements and road conditions.",
+  },
+  {
+    question: "Can I choose where I sleep?",
+    answer:
+      "Yes. Pick your comfort level, then choose a stay for each part of the route. Your choices go with your booking request, and Ombeni confirms availability. If a stay is full, he will suggest a similar one.",
+  },
+  {
+    question: "Can I add a hot-air balloon safari?",
+    answer:
+      "Yes. A balloon safari costs $600 per person and is subject to weather and availability. Tick it in the booking box. It is already included at High-end luxury level.",
+  },
+];
+
+const CROSSING_SEASON_SECTION: ContentSection = {
+  heading: "Best time for a cross migration safari",
+  paragraphs: [
+    "The main crossing season generally runs from July to October. Here is what normally happens each month, although the herds follow the rain and the grazing rather than a calendar.",
+  ],
+  table: {
+    headers: ["Month", "What to expect"],
+    rows: [
+      ["July", "The season begins. The first large herds may reach the north, although crossings can be irregular early in the month."],
+      ["August", "A peak month. Large herds may gather around the river, making it a favourite for migration photography."],
+      ["September", "Excellent potential. Herds continue moving across the north and into Kenya, so crossing points can change."],
+      ["October", "Late-season opportunities. Crossings can continue as some herds move between Tanzania and Kenya, while others begin heading south."],
+      ["November", "The end of the season. Most of the migration gradually moves towards the southern Serengeti."],
+    ],
+  },
+  note: "These are general seasonal patterns, not guarantees. Even in peak season, herds can gather at a riverbank for hours or days without crossing.",
+};
+
+const CROSSING_GUARANTEE_SECTION: ContentSection = {
+  heading: "Can a river crossing be guaranteed?",
+  paragraphs: [
+    "No responsible safari operator can guarantee that a crossing will happen on a particular day, at a particular time or in front of a particular vehicle. The migration is a natural event, not a scheduled show. Herds may gather for hours, turn back or cross at another point.",
+    "The best approach is to stay in the north during the season, travel with an experienced guide and allow time for patient watching. At designated crossing points, vehicles must follow park rules, stay in permitted viewing areas and avoid blocking the animals.",
+    "If no crossing happens, the Northern Serengeti still offers huge herds, predators and beautiful scenery.",
+  ],
+};
+
+const CROSSING_RETURN_SECTION: ContentSection = {
+  heading: "Return by road or by flight?",
+  bullets: [
+    "By road: You travel back by safari vehicle, with game viewing along the way. It avoids a domestic flight, but the journey out of the Serengeti is long and uses much of the day. Best if you want to avoid flight costs.",
+    "By flight: You fly from a Serengeti airstrip, commonly Kogatende in the north or Seronera in the centre, to Arusha or another agreed destination. It saves many hours on the road. Best if you value your time or have onward plans.",
+  ],
+  note: "Flight routes, operating days, baggage limits and fares depend on your dates, so we confirm the flight together with your accommodation.",
+};
+
+const CROSSING_BOOK_SECTION: ContentSection = {
+  heading: "Book your cross migration safari",
+  paragraphs: [
+    "July to October is a popular season, and well-placed camps and flights in the north can sell out, so we recommend booking 6 to 15 months ahead. To receive an accurate quotation, tell us your travel dates, number of travellers, preferred comfort level, room-sharing arrangements and whether you will arrive at JRO, ARK or an Arusha hotel.",
+  ],
+  bullets: CONTACT_BULLETS,
+};
+
+// What differs between one kind of safari and another.
+interface TripTheme {
+  tag: string;
+  bestMonths: string[];
+  links: (slug: string) => ClimbLinks;
+  availability: string;
+  sections: ContentSection[];
+  faqs: FAQ[];
+}
+
+const CALVING: TripTheme = {
+  tag: "calving",
+  bestMonths: ["Dec", "Jan", "Feb", "Mar"],
+  links: calvingLinks,
+  availability: "Ndutu camps can fill early in the calving season",
+  sections: [SEASON_SECTION, BOOK_SECTION],
+  faqs: CALVING_FAQS,
+};
+
+const CROSSING: TripTheme = {
+  tag: "cross-migration",
+  bestMonths: ["Jul", "Aug", "Sep", "Oct"],
+  links: crossingLinks,
+  availability: "Camps near the Mara River can sell out early in the crossing season",
+  sections: [CROSSING_GUARANTEE_SECTION, CROSSING_SEASON_SECTION, CROSSING_RETURN_SECTION, CROSSING_BOOK_SECTION],
+  faqs: CROSSING_FAQS,
+};
+
+type ThemedTrip = Pick<
   TripPackage,
   | "slug" | "seoTitle" | "metaDescription" | "destinations" | "title" | "shortName" | "days"
   | "heroImage" | "summary" | "overview" | "atAGlance" | "highlights" | "itinerary"
-  | "stayChoices" | "tags" | "oldUrl"
+  | "stayChoices" | "tags" | "oldUrl" | "reviewSnippets"
 > & {
   sections: ContentSection[];
   faqs: FAQ[];
@@ -332,39 +521,43 @@ type CalvingTrip = Pick<
   flightIncluded?: boolean;
 };
 
-/** A calving safari: everything that is the same on every page, around its own story. */
-export function calvingTrip({ rates = RATES, flightIncluded, ...trip }: CalvingTrip): TripPackage {
+/** A rebuilt safari: everything that is the same on every page, around its own story. */
+function themedTrip(theme: TripTheme, { rates = RATES, flightIncluded, ...trip }: ThemedTrip): TripPackage {
   const from = rates.midRange.min * trip.days;
   const levels = comfortLevels(trip.days, rates);
   return {
     ...trip,
     category: "safari",
+    tags: [...(trip.tags ?? []), theme.tag],
     priceFromUSD: from,
     priceNote:
-      "Indicative price per person for 2 adults sharing a private vehicle, at Mid-range level. Your written quote confirms the final price.",
+      "Indicative prices per person for 2 adults sharing a private vehicle. Your written quote confirms the final price.",
     comfortLevels: levels,
     addOns: flightIncluded ? SAFARI_ADDONS.filter((id) => id !== "serengeti-flight") : SAFARI_ADDONS,
-    links: calvingLinks(trip.slug),
+    links: theme.links(trip.slug),
     tier: ["mid-range", "comfort"],
     gallery: [],
     pricingDetails: [
       "These are indicative private-safari planning ranges per person, based on 2 adults sharing one private safari vehicle and a room. They are not confirmed quotations.",
-      "Your final cost depends on your travel dates, the number of guests, camp availability, flight fares and the exact services you choose. Ndutu camps can fill early in the calving season, so we confirm your price and accommodation in writing before you pay a deposit.",
+      `Your final cost depends on your travel dates, the number of guests, camp availability, flight fares and the exact services you choose. ${theme.availability}, so we confirm your price and accommodation in writing before you pay a deposit.`,
       "To request a price for one traveller or a group of three to six, select your group size in the booking box and Ombeni will quote you directly.",
     ],
     included: flightIncluded
       ? [...INCLUDED, "Flight: Scheduled flight from the Serengeti to Arusha, subject to availability."]
       : INCLUDED,
     excluded: EXCLUDED,
-    sections: [...trip.sections, SEASON_SECTION, BOOK_SECTION],
+    sections: [...trip.sections, ...theme.sections],
     faqs: [
       {
         question: "How much does this safari cost?",
         answer: `It starts from $${from.toLocaleString()} per person at Mid-range level, based on 2 adults sharing. Luxury starts from $${levels[1].groupPricing.tiers[0].usd.toLocaleString()}, High-end luxury from $${levels[2].groupPricing.tiers[0].usd.toLocaleString()} and Ultra-premium from $${levels[3].groupPricing.tiers[0].usd.toLocaleString()}. These are indicative prices, and your written quote confirms the final figure.`,
       },
       ...trip.faqs,
-      ...CALVING_FAQS,
+      ...theme.faqs,
     ],
-    bestMonths: ["Dec", "Jan", "Feb", "Mar"],
+    bestMonths: theme.bestMonths,
   };
 }
+
+export const calvingTrip = (trip: ThemedTrip) => themedTrip(CALVING, trip);
+export const crossingTrip = (trip: ThemedTrip) => themedTrip(CROSSING, trip);

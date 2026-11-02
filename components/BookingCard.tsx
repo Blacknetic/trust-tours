@@ -68,10 +68,10 @@ export default function BookingCard({
   // Safaris have a lot to choose, so add-ons start folded to keep the box short.
   const [showAddOns, setShowAddOns] = useState(!levels);
   const { levelId, setLevelId, choices, pickedStay } = useTripChoices();
-  const stayLines = choices
-    .map((c) => ({ nights: c.nights, stay: pickedStay(c) }))
-    .filter((s) => s.stay)
-    .map((s) => `${s.nights}: ${s.stay!.name}`);
+  const stays = choices.flatMap((c) => {
+    const stay = pickedStay(c);
+    return stay ? [{ nights: c.nights, name: stay.name }] : [];
+  });
 
   const level = levels?.find((l) => l.id === levelId);
   const gp = level?.groupPricing ?? groupPricing ?? null;
@@ -112,7 +112,7 @@ export default function BookingCard({
     const lines = [
       `Booking request — ${packageTitle}`,
       level && `Comfort level: ${level.label}`,
-      stayLines.length > 0 && `Accommodation: ${stayLines.join("; ")}`,
+      stays.length > 0 && `Accommodation: ${stays.map((s) => `${s.nights}: ${s.name}`).join("; ")}`,
       rate > 0 ? `Price shown: ${usd(rate)} per person · ${usd(rate * party)} for the group` : "Price: please quote for this group size",
       chosen.length > 0 && `Add-ons: ${chosen.map((a) => `${a.label} (${addOnPriceLabel(a)})`).join(", ")}`,
       total != null && chosen.length > 0 &&
@@ -130,10 +130,7 @@ export default function BookingCard({
         level: level?.label,
         travellers: group,
         month: month === "Flexible" ? undefined : month,
-        stays: choices.flatMap((c) => {
-          const stay = pickedStay(c);
-          return stay ? [{ nights: c.nights, name: stay.name }] : [];
-        }),
+        stays,
         addOns: chosen.map((a) => a.label),
         describe,
       },
@@ -207,16 +204,21 @@ export default function BookingCard({
         )}
 
         {/* Chosen stays */}
-        {stayLines.length > 0 && (
-          <div>
-            <p className="text-xs" style={{ color: "var(--ink)" }}>
+        {stays.length > 0 && (
+          <div className="text-xs" style={{ color: "var(--ink)" }}>
+            <p className="mb-1">
               <span className="font-semibold uppercase tracking-wide">Your stays</span>
-              {" · "}
-              {stayLines.length} {stayLines.length === 1 ? "stop" : "stops"} chosen
               <a href="#stays" className="hidden lg:inline underline ml-2">
                 Change
               </a>
             </p>
+            <ul className="space-y-0.5">
+              {stays.map((s) => (
+                <li key={s.nights}>
+                  <span className="font-semibold">{s.nights}:</span> {s.name}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
 

@@ -196,7 +196,7 @@ export const STAYS: Record<string, Stay> = {
     area: "Moves with the migration",
     type: "High-end mobile tented camp",
     about:
-      "A high-end mobile camp that moves through the year to follow the Great Migration. We confirm its position for your dates, so that it suits your time at Ndutu.",
+      "A high-end mobile camp that moves through the year to follow the Great Migration. We confirm its position for your dates, so that it suits your route.",
     activities: [
       "Game drives wherever the herds are that week",
       "An intimate camp in the middle of the wilderness",
@@ -336,12 +336,12 @@ export const STAYS: Record<string, Stay> = {
   "olakira-camp": {
     id: "olakira-camp",
     name: "Olakira Migration Camp",
-    area: "Ndutu, from December to March",
+    area: "Ndutu from December to March, the Mara River from June to November",
     type: "High-end mobile camp by Asilia",
     about:
       "An intimate camp of nine tents that moves between the far north and Ndutu to follow the herds. Stargazing tents give wide views from your bed, so the plains stay with you through the night.",
     activities: [
-      "Game drives among the calving herds",
+      "Game drives among the migrating herds",
       "Stargazing from your tent",
       "Wildlife photography at first and last light",
     ],
@@ -349,10 +349,10 @@ export const STAYS: Record<string, Stay> = {
   "nomad-serengeti-camp": {
     id: "nomad-serengeti-camp",
     name: "Nomad Serengeti Safari Camp",
-    area: "Ndutu, from December to March",
+    area: "Ndutu from December to March, Kogatende from July to October",
     type: "Small high-end mobile camp",
     about:
-      "A small mobile camp of just a few canvas tents that moves through the year with the migration, and settles at Ndutu for the calving season.",
+      "A small mobile camp of just a few canvas tents that moves through the year with the migration, settling at Ndutu for the calving season and at Kogatende for the river crossings.",
     activities: [
       "Game drives wherever the herds are",
       "A quiet, intimate camp in the wilderness",
@@ -866,16 +866,81 @@ export const STAYS: Record<string, Stay> = {
       "A classic safari camp atmosphere",
     ],
   },
+  "mara-kati-kati": {
+    id: "mara-kati-kati",
+    name: "Mara Kati Kati Tented Camp",
+    area: "Northern Serengeti, near Kogatende",
+    type: "Seasonal mobile tented camp",
+    about:
+      "A simple, wild mobile camp of about 11 tents, around 20 minutes from Kogatende airstrip. It is set up in the north for the migration months, and wildlife can pass through the camp itself.",
+    activities: [
+      "Game drives along the Mara River",
+      "Searching for river crossings",
+      "Evenings in a true bush camp",
+    ],
+  },
+  "nyikani-migration-camp": {
+    id: "nyikani-migration-camp",
+    name: "Nyikani Migration Camp",
+    area: "Northern Serengeti, about 25 minutes from Kogatende airstrip",
+    type: "Seasonal mobile tented camp",
+    about:
+      "A mobile camp of comfortable en-suite safari tents, which spends the crossing months near the Mara River and moves south to Ndutu for the calving season.",
+    activities: [
+      "Game drives around the Mara River",
+      "Searching for river crossings",
+      "Meals together in camp",
+    ],
+  },
+  "lemala-kuria-hills": {
+    id: "lemala-kuria-hills",
+    name: "Lemala Kuria Hills Lodge",
+    area: "Wogakuria Hills, Northern Serengeti",
+    type: "Luxury tented suites",
+    about:
+      "A lodge of 15 glass-fronted tented suites set among boulders in the Wogakuria Hills, each with a plunge pool. It is about 45 minutes from Kogatende airstrip and closes in April and May.",
+    activities: [
+      "Game drives to the Mara River",
+      "Your own plunge pool",
+      "Views across the northern hills",
+    ],
+  },
+  "serengeti-bushtops": {
+    id: "serengeti-bushtops",
+    name: "Serengeti Bushtops",
+    area: "Wogakuria, Northern Serengeti",
+    type: "Permanent luxury tented camp",
+    about:
+      "A permanent camp on a hillside overlooking plains and acacia woodland, not far from the Mara River. Every tent has a deck with sunken seating and its own hot tub.",
+    activities: [
+      "Game drives in the northern Serengeti",
+      "A private hot tub on your deck",
+      "Views over the plains from the hillside",
+    ],
+  },
+  "singita-mara-river": {
+    id: "singita-mara-river",
+    name: "Singita Mara River Tented Camp",
+    area: "Lamai Wedge, on the Mara River",
+    type: "Ultra-luxury tented camp",
+    about:
+      "A small camp of six tented suites on the northern bank of the Mara River, in the Lamai Wedge at the northern tip of the Serengeti. It is close to the crossing points and closes for part of the rainy season.",
+    activities: [
+      "Game drives along the Mara River",
+      "Searching for crossings near camp",
+      "Personal service in a very small camp",
+    ],
+  },
   "kudu-lodge": {
     id: "kudu-lodge",
     name: "Kudu Lodge",
     area: "Karatu, Ngorongoro Highlands",
     type: "Garden lodge",
     about:
-      "A relaxed lodge set in about eleven acres of gardens in Karatu, the highland farming town between Lake Manyara and the Ngorongoro Crater. It suits this route well: you arrive after a day in Tarangire and leave early for the crater the next morning.",
+      "A relaxed lodge set in about eleven acres of gardens in Karatu, the highland farming town between Lake Manyara and the Ngorongoro Crater. It is a short drive from the Ngorongoro gate, so it works well before or after a day in the crater.",
     activities: [
       "Swimming pool and gardens to unwind in after the game drive",
-      "Restaurant and bar for dinner after your first day on safari",
+      "Restaurant and bar for dinner after a day on safari",
       "Games room with darts and pool",
     ],
   },
@@ -898,11 +963,128 @@ export const STAYS: Record<string, Stay> = {
     area: "Seronera, Central Serengeti",
     type: "Small tented camp",
     about:
-      "A small tented camp in the Seronera area, in the heart of the Serengeti and close to the airstrip. That makes it a practical last night on this route, with time for a final game drive before you fly back to Arusha.",
+      "A small tented camp in the Seronera area, in the heart of the Serengeti and close to the airstrip. That makes it a practical base for a final game drive before you fly back to Arusha.",
     activities: [
       "Game drives through the kopjes and grasslands of Central Serengeti",
       "Sunrise hot-air balloon safari, as an optional extra",
       "Sundowners on the plains, by arrangement",
+    ],
+  },
+  "tarangire-simba-lodge": {
+    id: "tarangire-simba-lodge",
+    name: "Tarangire Simba Lodge",
+    area: "Just outside Tarangire's western boundary, near Sangaiwe Gate",
+    type: "Tented lodge",
+    about:
+      "A tented lodge in a wildlife management area on Tarangire's western edge, about ten minutes from Sangaiwe Gate. A waterhole near the lodge draws passing animals, and there are views towards Lake Burunge.",
+    activities: [
+      "Game drives in Tarangire National Park",
+      "Watching the waterhole from the viewing platform",
+      "Swimming pool to cool off in after a day on safari",
+    ],
+  },
+  "maramboi-tented-lodge": {
+    id: "maramboi-tented-lodge",
+    name: "Maramboi Tented Lodge",
+    area: "Between Tarangire and Lake Manyara",
+    type: "Tented lodge",
+    about:
+      "A tented lodge on open grassland between Tarangire and Lake Manyara, around 20 minutes from the Tarangire gate. Raised tents look out towards the lake and the Rift Valley escarpment.",
+    activities: [
+      "Game drives in Tarangire or Lake Manyara",
+      "Swimming pool overlooking the plains",
+      "Evening views of the Rift Valley escarpment",
+    ],
+  },
+  "tarangire-treetops": {
+    id: "tarangire-treetops",
+    name: "Elewana Tarangire Treetops",
+    area: "Randilen Wildlife Management Area, next to Tarangire",
+    type: "Treehouse lodge",
+    about:
+      "Twenty treehouse rooms set among marula and baobab trees, in a wildlife management area outside the national park. That location allows night drives and bush walks, which aren't possible inside Tarangire.",
+    activities: [
+      "Day game drives in Tarangire National Park",
+      "Night drives and guided walks, by arrangement",
+      "Maasai cultural visits, by arrangement",
+    ],
+  },
+  "sanctuary-swala": {
+    id: "sanctuary-swala",
+    name: "Sanctuary Swala",
+    area: "South-western Tarangire National Park",
+    type: "Luxury tented camp",
+    about:
+      "A small camp of canvas tents inside the national park, in Tarangire's south-west at the edge of the Gurusi wetlands. The tents overlook a waterhole, so wildlife can come to you between game drives.",
+    activities: [
+      "Game drives in southern Tarangire",
+      "Watching wildlife at the waterhole from your tent",
+      "Drives towards the Silale swamp",
+    ],
+  },
+  "chem-chem-lodge": {
+    id: "chem-chem-lodge",
+    name: "Chem Chem Lodge",
+    area: "Burunge Wildlife Management Area, between Tarangire and Lake Manyara",
+    type: "Luxury tented lodge",
+    about:
+      "An intimate lodge of eight tented suites on a private concession between Tarangire and Lake Manyara, including a two-bedroom family suite. Being outside the national parks means you can walk and drive at night as well as take game drives.",
+    activities: [
+      "Guided walking safaris",
+      "Night drives",
+      "Game drives in Tarangire or Lake Manyara",
+    ],
+  },
+  "lake-manyara-serena": {
+    id: "lake-manyara-serena",
+    name: "Lake Manyara Serena Safari Lodge",
+    area: "Rift Valley escarpment, above Lake Manyara",
+    type: "Escarpment lodge",
+    about:
+      "Circular two-storey thatched rondavels on the edge of the escarpment at Mto wa Mbu, with wide views over Lake Manyara and the Great Rift Valley. The pool and bar sit close to the cliff edge.",
+    activities: [
+      "Game drives in Lake Manyara National Park",
+      "Swimming pool with views over the lake",
+      "Sunset views across the Rift Valley",
+    ],
+  },
+  "manyaras-secret": {
+    id: "manyaras-secret",
+    name: "Manyara's Secret",
+    area: "Mto wa Mbu, near Lake Manyara National Park",
+    type: "Boutique villa lodge",
+    about:
+      "A small lodge of private villas near Mto wa Mbu, a short drive from the Lake Manyara park gate. Villas have their own terraces and pools, with views towards the lake.",
+    activities: [
+      "Game drives in Lake Manyara National Park",
+      "Your own pool and terrace at the villa",
+      "Quiet evenings looking out over the lake",
+    ],
+  },
+  "lake-manyara-kilimamoja": {
+    id: "lake-manyara-kilimamoja",
+    name: "Lake Manyara Kilimamoja Lodge",
+    area: "Rift Valley rim, near Mto wa Mbu",
+    type: "Luxury lodge",
+    about:
+      "A lodge on the rim of the Great Rift Valley, about 5 km from Mto wa Mbu and 25 minutes from the park gate. Suites have private verandas, and on clear days the views can reach Mount Meru and Kilimanjaro.",
+    activities: [
+      "Game drives in Lake Manyara National Park",
+      "Infinity pool",
+      "Spa treatments, by arrangement",
+    ],
+  },
+  "singita-sasakwa": {
+    id: "singita-sasakwa",
+    name: "Singita Sasakwa Lodge",
+    area: "Grumeti Reserve, western Serengeti",
+    type: "Luxury hilltop lodge",
+    about:
+      "A hilltop lodge of private cottages in the Grumeti Reserve, a private concession bordering the national park in the western Serengeti. Each cottage has its own pool, and the reserve funds conservation and local education.",
+    activities: [
+      "Game drives in the private Grumeti Reserve",
+      "Your own pool at the cottage",
+      "Views across the plains from the hilltop",
     ],
   },
 };

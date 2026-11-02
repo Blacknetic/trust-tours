@@ -17,7 +17,7 @@ function Stop({ choice }: { choice: ResolvedStayChoice }) {
 
   return (
     <div id={`stay-${choice.id}`} className="scroll-mt-28">
-      <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "var(--gold)" }}>
+      <p className="text-sm font-bold uppercase tracking-widest mb-1" style={{ color: "var(--gold)" }}>
         {choice.nights}
       </p>
       <h3
@@ -108,6 +108,39 @@ function Stop({ choice }: { choice: ResolvedStayChoice }) {
   );
 }
 
+/** Every night of the trip at a glance, because the stops below can be a long scroll apart. */
+function NightsOverview() {
+  const { choices, pickedStay } = useTripChoices();
+
+  return (
+    <div className="mb-10">
+      <p className="text-sm font-bold mb-2" style={{ color: "var(--ink)" }}>
+        Your nights on this trip
+      </p>
+      <ol className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {choices.map((choice) => (
+          <li key={choice.id}>
+            <a
+              href={`#stay-${choice.id}`}
+              className="flex h-full items-center justify-between gap-3 rounded-xl px-3.5 py-3"
+              style={{ background: "var(--snow)", color: "var(--ink)" }}
+            >
+              <span className="min-w-0">
+                <span className="block text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--gold)" }}>
+                  {choice.nights}
+                </span>
+                <span className="block text-sm font-bold leading-snug mt-0.5">{pickedStay(choice)?.name}</span>
+                <span className="block text-xs leading-snug mt-0.5">{choice.place}</span>
+              </span>
+              <span className="shrink-0 text-sm font-semibold underline underline-offset-2">Change</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
 /** "Choose where you sleep": lodges for each stop, offered by comfort level. */
 export default function StayChooser({ levels, border }: { levels: ComfortLevel[]; border: string }) {
   const { levelId, setLevelId, choices } = useTripChoices();
@@ -126,7 +159,7 @@ export default function StayChooser({ levels, border }: { levels: ComfortLevel[]
         suggests a similar stay if one is full.
       </p>
 
-      <div className="flex flex-wrap gap-2 mb-8" role="radiogroup" aria-label="Comfort level for stays">
+      <div className="flex flex-wrap gap-2 mb-6" role="radiogroup" aria-label="Comfort level for stays">
         {levels.map((l) => {
           const on = l.id === levelId;
           return (
@@ -148,6 +181,8 @@ export default function StayChooser({ levels, border }: { levels: ComfortLevel[]
           );
         })}
       </div>
+
+      {choices.length > 1 && <NightsOverview />}
 
       <div className="space-y-10">
         {choices.map((choice) => (

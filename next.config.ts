@@ -33,6 +33,7 @@ const nextConfig: NextConfig = {
       { source: "/booking/5-day-mid-range-tarangire-ngorongoro-crater-and-ndutu-migration-safari-december-april", destination: "/safaris/5-day-ndutu-migration-safari", permanent: true },
       { source: "/booking/6-day-safari-in-northern-tanzania-explore-tarangire-ngorongoro-crater-and-serengeti-a-year-round-adventure", destination: "/safaris/6-day-northern-safari", permanent: true },
       { source: "/booking/6-day-safari-in-northern-tanzania-explore-tarangire-ngorongoro-crater-and-serengeti-a-year-round-adventure-2", destination: "/safaris/6-day-northern-safari", permanent: true },
+      { source: "/booking/7-day-6-night-lower-budget-and-mid-range-safari-tracking-the-great-migration-crossing-with-trust-tours-and-safaris", destination: "/safaris/7-day-great-migration-safari", permanent: true },
       { source: "/booking/8-day-7-night-mid-range-safari-tracking-the-great-migration-crossing-with-trust-tours-and-safaris", destination: "/safaris/8-day-great-migration-safari", permanent: true },
       { source: "/booking/9-day-adventure-is-perfect-a-perfect-combination-for-an-unforgettable-adventure-with-trust-tours-and-safaris", destination: "/safaris/9-day-beach-city-bush", permanent: true },
       { source: "/booking/9-day-wildlife-and-culture-safari-in-tanzania", destination: "/safaris/9-day-northern-tanzania-safari", permanent: true },

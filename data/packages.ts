@@ -180,142 +180,6 @@ export const packages: TripPackage[] = [
   ...SAFARI_PACKAGES,
 
   {
-    slug: "7-day-great-migration-safari",
-    reviewSnippets: [
-      { author: "Julieth Nathaniel", text: "Trust Tours made our Kilimanjaro trek and Serengeti safari unforgettable. Professional guides, excellent service, and seamless logistics ensured an amazing experience. Truly the best.", source: "Google" },
-    ],
-    seoTitle: "Great Migration Safari, 7 Days — from $2,200",
-    metaDescription:
-      "Private Great Migration safari across Tarangire, Serengeti & Ngorongoro. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,200 pp, no OTA markup.",
-    destinations: ["Tarangire", "Serengeti", "Ngorongoro"],
-    category: "safari",
-    title: "7-Day Great Migration Safari – Tarangire, Serengeti & Ngorongoro",
-    shortName: "7-Day Migration Safari",
-    days: 7,
-    priceFromUSD: 2200,
-    priceNote:
-      "Per person, sharing, group of 2+. From $2,200 budget / $2,800 mid-range camps and lodges.",
-    tier: ["budget", "mid-range"],
-    heroImage: "/images/migration-river-crossing.jpg",
-    gallery: [
-      "/images/gallery/safari/safari-2023-01-07-1.jpg",
-      "/images/gallery/safari/safari-2023-01-07-25.jpg",
-      "/images/gallery/safari/safari-fb-img-1443719006917.jpg",
-      "/images/gallery/safari/safari-fb-img-1453366840089.jpg",
-      "/images/gallery/safari/safari-2023-01-07-28.jpg",
-      "/images/gallery/safari/safari-2023-01-07-20.jpg",
-    ],
-    summary:
-      "Track the Great Wildebeest Migration across the Serengeti with game drives in Tarangire and a full day inside the Ngorongoro Crater — seven days covering northern Tanzania's headline parks in a private 4x4 with a pop-up roof. Your guide tailors each drive to your interests, whether that's river crossings, big cats or photography.",
-    highlights: [
-      "Timed to the Great Migration river crossings (July–October)",
-      "Full day inside the Ngorongoro Crater, the 'Eden of Africa'",
-      "Tarangire's baobabs, elephant herds and 550+ bird species",
-      "Private 4x4 with pop-up roof and an expert English-speaking guide",
-      "Maasai village visit and Serengeti sundowners",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Tarangire National Park — Baobabs and Elephants",
-        description:
-          "Morning pickup and drive to Tarangire for a game drive among iconic baobab trees and large elephant herds along the Tarangire River. Look for lions, leopards, buffalo, zebra and an exceptional variety of birdlife, with a picnic lunch in the park.",
-        meals: "Lunch, dinner",
-        accommodation: "Budget or mid-range tented camp near Tarangire",
-      },
-      {
-        day: 2,
-        title: "Ngorongoro Crater — The Eden of Africa",
-        description:
-          "Descend at dawn into the Ngorongoro Crater, a UNESCO World Heritage Site with one of the highest wildlife densities in Africa — lions, elephants, rhinos, hippos and flamingos. Picnic lunch by a hippo pool, then a Maasai village visit on the way out.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Budget or mid-range lodge on the crater rim",
-      },
-      {
-        day: 3,
-        title: "Into the Serengeti — Endless Plains",
-        description:
-          "Drive into the Serengeti, game-viewing as you go. The afternoon is spent tracking wildlife across the southern and central plains — home to the Big Five — before a sundowner as the sun dips below the horizon.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Budget or mid-range tented camp in the Serengeti",
-      },
-      {
-        day: 4,
-        title: "Northern Serengeti — Tracking the Migration",
-        description:
-          "A full day following the Great Migration toward the Mara River. In season (July–October) you may witness thousands of wildebeest, zebra and gazelle massing to cross, watched by lions, cheetahs and crocodiles.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Budget or mid-range tented camp in the Serengeti",
-      },
-      {
-        day: 5,
-        title: "Serengeti — Big Cats and River Crossings",
-        description:
-          "Another full day in the heart of the Serengeti, with drives customized to your interests — photography, predators, or quieter corners of the park. Your guide reads the herds to give you the best chance at a crossing.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Budget or mid-range tented camp in the Serengeti",
-      },
-      {
-        day: 6,
-        title: "Serengeti — Full Day Game Drives",
-        description:
-          "A final full day exploring the vast plains, returning to favourite sightings and chasing new ones. Enjoy a sundowner in a scenic spot before your last night under the Serengeti sky.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Budget or mid-range tented camp in the Serengeti",
-      },
-      {
-        day: 7,
-        title: "Return to Arusha — Farewell Tanzania",
-        description:
-          "An early morning game drive for last sightings, then breakfast and the scenic drive back to Arusha. Depending on your flight, there's time for a coffee plantation or cultural visit and a farewell dinner of Tanzanian cuisine.",
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Six nights' accommodation in budget or mid-range tented camps and lodges",
-      "Full board throughout — breakfast, lunch and dinner",
-      "Private 4x4 safari vehicle with pop-up roof for game viewing",
-      "All national park and Ngorongoro Conservation Area entrance fees",
-      "Professional, English-speaking safari guide",
-      "Game drives, Maasai village visit and a birdwatching checklist",
-      "Pickup and drop-off at Kilimanjaro International Airport",
-    ],
-    excluded: [
-      "International flights and Tanzania visa ($50–100 depending on nationality)",
-      "Optional hot air balloon safari ($600 per person)",
-      "Tips for guides, drivers and lodge staff",
-      "Travel insurance (recommended for all travellers)",
-      "Alcoholic drinks and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "When can I see the Great Migration river crossings?",
-        answer:
-          "The dramatic Mara River crossings in the northern Serengeti typically happen between July and October. Timing varies year to year with the rains — message Ombeni with your travel dates and he'll advise where the herds are likely to be.",
-      },
-      {
-        question: "Budget or mid-range — what's the difference?",
-        answer:
-          "The route, vehicle and guiding are the same; the difference is accommodation. Budget uses simpler tented camps, mid-range uses more comfortable camps and lodges. Both are full board.",
-      },
-      {
-        question: "Can I combine this safari with a Kilimanjaro climb?",
-        answer:
-          "Yes — many travellers climb Kilimanjaro first and add this safari afterwards. We arrange it as one trip with a single price. Just ask Ombeni on WhatsApp.",
-      },
-      {
-        question: "Is the vehicle private?",
-        answer:
-          "Yes. You travel in a private 4x4 with a pop-up roof, so drives are tailored to your group's interests rather than shared with strangers.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct"],
-    oldUrl:
-      "/booking/7-day-6-night-lower-budget-and-mid-range-safari-tracking-the-great-migration-crossing-with-trust-tours-and-safaris/",
-  },
-
-  {
     slug: "7-day-tanzania-zanzibar",
     seoTitle: "Tanzania Safari + Zanzibar, 7 Days — $2,879",
     metaDescription:
@@ -442,133 +306,6 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   // SAFARIS — longer migration trips & multi-region combos (Wave 3).
   // ─────────────────────────────────────────────────────────────────
-  {
-    slug: "8-day-great-migration-safari",
-    heroImage: "/images/safari-hippo.jpg",
-    seoTitle: "8-Day Migration Safari — from $3,250 · Trust Tours",
-    metaDescription:
-      "Extra days in the Serengeti timed to the Great Migration river crossings. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $3,250 pp, private and direct.",
-    destinations: ["Tarangire", "Ngorongoro", "Serengeti"],
-    category: "safari",
-    title: "8-Day Great Migration Safari – Tarangire, Ngorongoro & Serengeti",
-    shortName: "8-Day Migration Safari",
-    days: 8,
-    priceFromUSD: 3250,
-    priceNote:
-      "Per person, sharing. From $3,250 (3-star) / $3,950 (4-star lodges & camps). Best July–October for the Mara crossings.",
-    tier: ["mid-range", "comfort"],
-    gallery: [],
-    summary:
-      "Eight days built around the Great Migration river crossings: Tarangire's elephants and baobabs, a full day in the Ngorongoro Crater, and three days deep in the Serengeti tracking the herds toward the Mara River. Small private groups, a 4x4 with pop-up roof, and 4-star lodges and tented camps (3-star option available).",
-    highlights: [
-      "Three days in the Serengeti at the height of the migration",
-      "The dramatic Mara River crossing in season (July–October)",
-      "Full day inside the Ngorongoro Crater and the Big Five",
-      "Tarangire's baobabs and big elephant herds",
-      "Small private groups with 4-star lodges and tented camps",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Arusha",
-        description:
-          "Met at Kilimanjaro International Airport and transferred to your lodge in Arusha for a welcome drink and a safari briefing. An optional visit to the Arusha Cultural Heritage Centre, then a relaxed dinner under the African sky.",
-        meals: "Dinner",
-        accommodation: "Lodge in Arusha",
-      },
-      {
-        day: 2,
-        title: "Tarangire National Park to Karatu",
-        description:
-          "An early start for Tarangire, where the sun rises over ancient baobabs and predators are active. Game viewing among large elephant herds, giraffe, zebra and cheetah along the wildlife-rich Tarangire River, with a picnic lunch in the park. Drive on to Karatu for dinner and overnight.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range lodge, Karatu",
-      },
-      {
-        day: 3,
-        title: "Ngorongoro Crater to the Serengeti",
-        description:
-          "A sunrise descent into the Ngorongoro Crater for a morning game drive among the Big Five — black rhino, lion, elephant, buffalo and leopard — plus hippos and flamingos, with a picnic lunch near the hippo pool. In the afternoon, drive on into the Serengeti to a tented camp and a fireside dinner.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Tented camp, Serengeti",
-      },
-      {
-        day: 4,
-        title: "Serengeti — Tracking the Migration",
-        description:
-          "Sunrise and full-day game drives following the migration herds across the plains, with cheetah, leopard and hyena hunting at dawn. Explore the predator-rich Seronera Valley and, in season, position for the herds massing toward the Mara. Picnic lunch and a sundowner with endless Serengeti views.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Tented camp, Serengeti",
-      },
-      {
-        day: 5,
-        title: "Serengeti — Mara River Crossings",
-        description:
-          "A full day in the northern Serengeti, where in season the wildebeest face the crocodile-filled Mara River in the migration's most dramatic spectacle. Your guide reads the herds for the best chance at a crossing, with photography stops throughout the day.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Tented camp, Serengeti",
-      },
-      {
-        day: 6,
-        title: "Serengeti — Full Day Game Drives",
-        description:
-          "A final full day exploring different regions of the Serengeti, returning to favourite sightings and chasing new ones. Sundowners and fireside storytelling at your luxury tented camp under a sky thick with stars.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Tented camp, Serengeti",
-      },
-      {
-        day: 7,
-        title: "Serengeti to Arusha",
-        description:
-          "An early morning game drive for last sightings as the sun rises over the plains, then begin the journey back toward Arusha with an optional Maasai village visit and lunch en route. Arrive for a relaxing evening and a farewell dinner.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge in Arusha",
-      },
-      {
-        day: 8,
-        title: "Departure",
-        description:
-          "Breakfast at the lodge, then a private transfer to Kilimanjaro International Airport for your onward flight, with a lifetime of memories from the migration.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Seven nights' accommodation in 4-star (or 3-star) lodges and tented camps",
-      "All meals — breakfast, lunch and dinner",
-      "Private 4x4 safari vehicle with pop-up roof and a professional guide",
-      "All park entrance and conservation fees",
-      "Unlimited game drives as per the itinerary",
-      "Bottled water throughout and airport transfers",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Tips and gratuities for guides and staff",
-      "Personal expenses and optional activities",
-    ],
-    faqs: [
-      {
-        question: "When can I see the Mara River crossings?",
-        answer:
-          "The crossings in the northern Serengeti typically happen July to October, peaking in the dry season. Timing shifts each year with the rains — message Ombeni with your dates and he'll advise where the herds are likely to be.",
-      },
-      {
-        question: "How is this different from the 7-Day Migration Safari?",
-        answer:
-          "The 8-day adds an extra full day in the Serengeti, which means more time positioning for river crossings and big-cat sightings. Both are private safaris with the same route through Tarangire and Ngorongoro.",
-      },
-      {
-        question: "What's the difference between 3-star and 4-star?",
-        answer:
-          "The route, vehicle and guiding are identical; the difference is the lodges and camps. 3-star is from $3,250pp and 4-star from $3,950pp.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct"],
-    oldUrl:
-      "/booking/8-day-7-night-mid-range-safari-tracking-the-great-migration-crossing-with-trust-tours-and-safaris/",
-  },
-
   {
     slug: "9-day-beach-city-bush",
     destinations: ["Zanzibar", "Arusha", "Tarangire", "Kenya"],
@@ -974,6 +711,7 @@ export const packages: TripPackage[] = [
     slug: "10-day-serengeti-calving-safari",
     destinations: ["Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
     category: "safari",
+    tags: ["calving"],
     title: "10-Day Calving-Season Migration Safari – Ndutu & the Serengeti",
     shortName: "10-Day Calving Safari",
     days: 10,
@@ -5240,6 +4978,13 @@ const MIGRATION_SAFARI_SLUGS = new Set<string>([
   "4-day-private-ndutu-calving-safari",
   "5-day-ndutu-migration-safari",
   "3-day-ndutu-calving-safari",
+  "4-day-cross-migration-safari",
+  "5-day-cross-migration-safari",
+  "5-day-great-migration-safari",
+  "6-day-cross-migration-safari",
+  "7-day-manyara-serengeti-migration-safari",
+  "8-day-mara-river-crossing-safari",
+  "9-day-great-migration-safari",
   "4-day-tarangire-ndutu-ngorongoro-safari",
   "6-day-ndutu-great-migration-safari",
   "7-day-ndutu-calving-safari",
@@ -5275,6 +5020,8 @@ export const safariFacets = (p: TripPackage): SafariFacets => {
   const types: SafariTypeId[] = bucket ? [bucket] : [];
   if (p.destinations.includes("Zanzibar")) types.push("zanzibar");
   if (p.tags?.includes("family")) types.push("family");
+  if (p.tags?.includes("cross-migration")) types.push("cross-migration");
+  if (p.tags?.includes("calving")) types.push("calving");
   return { slug: p.slug, days: p.days, types };
 };
 

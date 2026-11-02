@@ -15,13 +15,13 @@ export const ndutuCalving5: TripPackage = {
     "Private 5-day Ndutu calving safari from Kilimanjaro Airport: Tarangire, Ngorongoro Crater and a full day among the herds. Four comfort levels from $2,275 pp.",
   destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti"],
   category: "safari",
-  tags: ["family"],
+  tags: ["family", "calving"],
   title: "5-Day Ndutu Calving Safari – Tarangire, Ngorongoro & Southern Serengeti",
   shortName: "5-Day Ndutu Calving Safari",
   days: 5,
   priceFromUSD: 2275,
   priceNote:
-    "Indicative price per person for 2 adults sharing a private vehicle, at Mid-range level. Your written quote confirms the final price.",
+    "Indicative prices per person for 2 adults sharing a private vehicle. Your written quote confirms the final price.",
   comfortLevels: comfortLevels(5),
   addOns: SAFARI_ADDONS,
   stayChoices: [

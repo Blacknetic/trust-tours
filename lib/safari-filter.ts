@@ -4,6 +4,8 @@
 export const SAFARI_TYPES = [
   { id: "big-five", label: "Big Five safari" },
   { id: "migration", label: "Great Migration" },
+  { id: "cross-migration", label: "Cross migration" },
+  { id: "calving", label: "Calving season" },
   { id: "zanzibar", label: "Safari + Zanzibar" },
   { id: "honeymoon", label: "Honeymoon" },
   { id: "family", label: "Family-friendly" },
