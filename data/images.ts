@@ -81,6 +81,10 @@ const HONEYMOON = [I("honeymoon.jpg"), I("honeymoon-2.jpg"), I("honeymoon-3.jpg"
 // These take precedence over the destination match so a Big Five trip never
 // shows a wildebeest crossing and a Migration trip never shows a lone lion.
 const BY_SAFARI_CATEGORY: Record<SafariCategoryId, string[]> = {
+  // Only Chemka has no photo of its own yet, so a neutral Kilimanjaro view
+  // stands in rather than a game-drive picture.
+  "day-trips": [I("kili-sunrise-hero.jpg")],
+  "fly-in": [I("balloon-safari.jpg"), I("aerial-balloon.jpg")],
   "big-five": [
     I("safari-lion-pride.jpg"),
     I("safari-leopard.jpg"),

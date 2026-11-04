@@ -152,7 +152,7 @@ export default function ElevationJourney({ itinerary }: Props) {
 
             <div className="flex-1 min-w-0 pt-1">
               <p className="text-sm font-semibold uppercase tracking-widest mb-1" style={{ color: "var(--gold)" }}>
-                Day {day.day}
+                {day.time ?? `Day ${day.day}`}
               </p>
               <h3
                 className="font-bold text-xl md:text-2xl mb-4 leading-snug"

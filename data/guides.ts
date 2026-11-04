@@ -2446,7 +2446,7 @@ export const guides: Guide[] = [
       {
         heading: "Meru is a destination, not just a warm-up",
         paragraphs: [
-          "Mount Meru is one of the most beautiful treks in Tanzania. The route climbs through Arusha National Park, where you walk — accompanied by an armed ranger — past giraffe, buffalo and other wildlife in the lower forest, before a spectacular knife-edge ridge to the summit at dawn, with Kilimanjaro floating above the clouds in the distance. We run it as a [3-day climb](/trekking/3-day-mount-meru-momela) from $645 per person, or a more relaxed [4-day version](/trekking/4-day-mount-meru) from $725 — both include the armed ranger the park requires.",
+          "Mount Meru is one of the most beautiful treks in Tanzania. The route climbs through Arusha National Park, where you walk — accompanied by an armed ranger — past giraffe, buffalo and other wildlife in the lower forest, before a spectacular knife-edge ridge to the summit at dawn, with Kilimanjaro floating above the clouds in the distance. We run it as a [3-day climb](/trekking/3-day-mount-meru-momela), a more relaxed [4-day version](/trekking/4-day-mount-meru), or a [5-day trip with a Tarangire safari](/trekking/5-day-mount-meru), from $895 per person in a group of four or more. All include the armed ranger the park requires.",
         ],
         callout: {
           tone: "tip",
@@ -2964,7 +2964,7 @@ export const guides: Guide[] = [
     updated: "2026-07-30",
     readMinutes: 10,
     keyTakeaway:
-      "A Tanzania safari typically costs around $300–$500 per person per day for a mid-range private trip, more for luxury and less for longer trips or bigger groups. Our safaris start from $576 for a 2-day trip and run from about $1,460 for a 3-day up to $3,600+ for a 5-day luxury fly-in. The reason there's a floor is park fees: national-park and Ngorongoro fees are set by the authorities, charged per person per day, and can be $60–$80 a day before you've paid for a vehicle, guide, fuel, food or a bed. That fixed floor is why a quote far below the market is impossible without cutting something — days, park time, crew pay or safety.",
+      "A Tanzania safari typically costs around $300–$500 per person per day for a mid-range private trip, more for luxury and less for longer trips or bigger groups. Our day trips start from $455, two-day safaris from $910, and longer safaris run from about $1,460 for a 3-day up to $3,600+ for a 5-day luxury fly-in. The reason there's a floor is park fees: national-park and Ngorongoro fees are set by the authorities, charged per person per day, and can be $60–$80 a day before you've paid for a vehicle, guide, fuel, food or a bed. That fixed floor is why a quote far below the market is impossible without cutting something — days, park time, crew pay or safety.",
     intro:
       "Safari quotes for the 'same' trip vary wildly, and it's confusing — until you see where the money actually goes. The single biggest cost is one most travellers don't even know about: government park fees, which are fixed and substantial. This is the honest, itemised breakdown — per-day cost bands, what the park fees really are, what's included, three real priced examples, and why the cheapest quote is usually the most expensive mistake.",
     primaryCta: { label: "See safaris across every budget", href: "/safaris" },
@@ -4813,13 +4813,13 @@ export const guides: Guide[] = [
     topic: "Trekking",
     excerpt:
       "A 4,566 m volcano through a wildlife-rich national park — a spectacular climb in its own right, and the smartest warm-up for Kilimanjaro.",
-    updated: "2026-06-20",
+    updated: "2026-11-04",
     readMinutes: 7,
     keyTakeaway:
       "Mount Meru (4,566 m) is Tanzania's second-highest mountain and one of its finest treks — a 3-to-4-day climb through Arusha National Park, past giraffe and buffalo, to a dramatic knife-edge summit ridge. It's a wonderful objective on its own and an ideal acclimatization climb before Kilimanjaro.",
     intro:
       "Overshadowed by its giant neighbour, Mount Meru is one of Tanzania's best-kept secrets — a strikingly beautiful volcano that rewards climbers with wildlife on the lower slopes, a knife-edge summit ridge, and a sunrise view of Kilimanjaro floating above the clouds. Whether as a standalone adventure or a warm-up for Kili, here's why it deserves your attention.",
-    primaryCta: { label: "View the Mount Meru climb", href: "/trekking/3-day-mount-meru-momela" },
+    primaryCta: { label: "View the 4-day Mount Meru climb", href: "/trekking/4-day-mount-meru" },
     inlineCtaAfter: 1,
     sections: [
       {
@@ -4840,9 +4840,36 @@ export const guides: Guide[] = [
         },
       },
       {
+        heading: "The best time to climb Mount Meru",
+        paragraphs: [
+          "Meru can be climbed all year, but conditions change a lot from month to month. For most climbers, the best periods are June to October and January to February, with the best balance of trail conditions and clear summit views. Even then, prepare for cold, wind and the odd shower on summit night.",
+        ],
+        table: {
+          headers: ["Month", "Typical conditions", "For climbing"],
+          rows: [
+            ["January", "Generally dry, often clear views of Kilimanjaro", "Excellent"],
+            ["February", "Often dry, good visibility; pairs well with the Ndutu calving season", "Excellent"],
+            ["March", "Rain increasing, muddier trails", "Variable"],
+            ["April", "The long rains: slippery trails, limited views", "Challenging"],
+            ["May", "Wet, improving late in the month", "Variable"],
+            ["June", "The dry season begins; cold mornings and nights", "Very good"],
+            ["July", "Generally dry, cold summit night", "Excellent"],
+            ["August", "Usually dry, good visibility", "Excellent"],
+            ["September", "Generally dry, cold nights", "Excellent"],
+            ["October", "Usually dry; more cloud as the short rains approach", "Very good"],
+            ["November", "The short rains: showers, mist and slippery trails", "Variable"],
+            ["December", "Variable early, often drier later; popular for holiday trips", "Good"],
+          ],
+        },
+        callout: {
+          tone: "info",
+          text: "These are typical seasonal patterns, not forecasts. Weather on Meru varies from year to year and changes quickly with altitude and time of day.",
+        },
+      },
+      {
         heading: "What to expect",
         bullets: [
-          "3–4 days, sleeping in mountain huts (not tents)",
+          "3–4 days on the mountain, sleeping in huts (not tents)",
           "An armed ranger accompanies you through the wildlife zones",
           "A pre-dawn summit push along a dramatic crater rim",
           "Sunrise views of Kilimanjaro across the plains",
@@ -5063,11 +5090,218 @@ export const guides: Guide[] = [
       },
     ],
     relatedGuides: [
+      "paramotor-flying-regulations-tanzania",
       "tanzania-travel-guide",
       "climbing-kilimanjaro-guide",
       "tanzania-safari-guide",
       "is-tanzania-safe",
     ],
+    relatedPackages: ["3-day-paramotoring-arusha-kilimanjaro", "12-day-paramotoring-safari"],
+  },
+
+  {
+    slug: "paramotor-flying-regulations-tanzania",
+    title: "Paramotor Rules in Tanzania",
+    topic: "Culture & Adventure",
+    excerpt:
+      "What to check before flying a paramotor in Tanzania: TCAA classification, pilot licences, registration, where you can fly, commercial flights and safety.",
+    updated: "2026-11-04",
+    readMinutes: 9,
+    keyTakeaway:
+      "Paramotors are aviation in Tanzania, so don't assume one is exempt from the rules because it is small or flies low. The Tanzania Civil Aviation Authority (TCAA) decides how your equipment is classified and what licence, registration, airspace clearance and site permission you need. Get its answer in writing before you buy, import or fly, and before you sell any paid flight.",
+    intro:
+      "A paramotor is a powered paraglider: a paraglider wing, a motor and propeller, and a harness or frame. It can look like simple recreational kit, but flying one in Tanzania involves airspace safety, pilot qualifications, approval of the aircraft and, for paid flights, extra permissions. This page explains what to establish and who to ask, whether you want to fly for fun, take aerial photographs or run a business. It's general information, not legal advice.",
+    primaryCta: { label: "See paramotoring adventures", href: "/paramotoring" },
+    trustStrip: false,
+    sections: [
+      {
+        heading: "Who regulates paramotor flying?",
+        paragraphs: [
+          "The Tanzania Civil Aviation Authority (TCAA) is the authority for the classification, registration, airworthiness, pilot licensing and operation of aircraft in Tanzania. The first step is to ask it how your particular powered paraglider is classified under the current Civil Aviation Regulations.",
+          "TCAA publishes the regulations, aircraft registration procedures, licensing requirements and flight-permit information on its website, along with circulars on microlight and ultralight aircraft. Those circulars don't, on their own, say whether a foot-launched paramotor falls within them, so ask for a decision on your exact equipment. Regulations are revised from time to time, so always work from the current edition rather than an older guide.",
+        ],
+        callout: {
+          tone: "warning",
+          label: "Don't assume an exemption",
+          text: "A paramotor is not automatically exempt because it is small, light or flown at low altitude. Confirm the rules for your aircraft and your type of flying with TCAA first.",
+        },
+      },
+      {
+        heading: "What you need to establish",
+        paragraphs: [
+          "These are the questions to settle with TCAA. They are not a fixed list of legal requirements for every paramotor: what applies depends on how the aircraft is classified, where you fly and what the flight is for.",
+        ],
+        table: {
+          headers: ["Requirement", "What to establish"],
+          rows: [
+            ["Aircraft classification", "Whether your powered paraglider counts as a paramotor, a microlight, an ultralight or another category."],
+            ["Pilot qualification", "Whether you need a licence, rating, permit or recognised paramotor qualification."],
+            ["Registration", "Whether the equipment must be registered in Tanzania or can fly under another recognised arrangement."],
+            ["Airworthiness", "Which inspection, equipment standards, airworthiness document or exemption applies."],
+            ["Airspace", "Whether your flying area and altitude are permitted, and whether you need coordination or clearance."],
+            ["Take-off and landing site", "Whether you need the landowner's consent and any aviation or local-authority permission."],
+            ["Insurance", "What third-party and passenger cover your flying needs."],
+            ["Commercial flying", "What extra approvals apply if you charge for flights, carry passengers, train pilots or sell aerial services."],
+            ["Foreign pilots and equipment", "Whether you need import approval, foreign-aircraft clearance, recognition of your licence, or immigration or work permits."],
+          ],
+        },
+      },
+      {
+        heading: "Do you need a pilot licence?",
+        paragraphs: [
+          "Settle this before you buy equipment. Training schools abroad often issue powered-paragliding certificates, but a private school's certificate doesn't on its own prove that you may fly a paramotor in Tanzania. Nor should the usual private aeroplane pilot rules be applied to paramotors without TCAA's confirmation.",
+          "Ask TCAA to confirm:",
+        ],
+        bullets: [
+          "Whether Tanzania requires a specific paramotor or powered-paragliding licence, or whether a microlight or other pilot licence applies.",
+          "Whether a foreign paramotor licence or training certificate is recognised.",
+          "Whether there is a minimum age, and whether you need a medical certificate, and of which class.",
+          "Whether a minimum number of training and solo hours applies, and whether an instructor must supervise your first flights.",
+          "Whether carrying passengers or flying commercially needs a separate authorisation.",
+        ],
+      },
+      {
+        heading: "If you're a pilot from abroad",
+        paragraphs: [
+          "If you hold a paramotor licence from Europe, the United States, South Africa or elsewhere, prepare the following for TCAA to review. Ask whether your qualification is accepted, whether it needs validating, and whether your equipment needs separate permission. A foreign qualification doesn't automatically let you fly in Tanzania.",
+        ],
+        bullets: [
+          "Your pilot certificate or licence.",
+          "Your training records and flight logbook, with details of your recent flying.",
+          "Your passport and the dates you plan to fly.",
+          "The make, model and specifications of your paramotor.",
+          "Where you plan to fly, and why.",
+        ],
+      },
+      {
+        heading: "Registration and airworthiness",
+        paragraphs: [
+          "TCAA's registration guidance says that aircraft covered by the registration rules must be registered before they operate in Tanzania, with registration forms, proof of ownership and technical records. For a paramotor, ask whether the whole powered paraglider needs registering, whether the engine, wing and frame are assessed as one aircraft, whether a foreign registration is accepted, and whether you need a certificate of airworthiness or another approval. Ask too whether modifications, a new engine or a replacement wing need approval, and whether the aircraft must carry identification markings.",
+          "Buying a paramotor abroad and bringing it into Tanzania doesn't mean you can fly it straight away.",
+        ],
+      },
+      {
+        heading: "Where can you fly?",
+        paragraphs: [
+          "Tanzania's grasslands, coast, farmland and plains can look ideal for paramotoring, but a good-looking field isn't automatically an authorised take-off or landing site. Check each of these before you fly:",
+        ],
+        bullets: [
+          "Airports and controlled airspace: Flying low doesn't make an area unrestricted. Ask TCAA, and the air traffic services provider where relevant, about the permitted area, altitude, times and radio requirements.",
+          "Towns and crowds: Flying over homes, roads, markets and crowds raises the stakes of an engine failure. Find out the actual restrictions and minimum heights; a general safety tip is no substitute for the rule.",
+          "National parks and protected areas: Around the Serengeti, Ngorongoro, Tarangire, Lake Manyara or Kilimanjaro, aviation approval and a landowner's consent aren't enough. You also need any authorisation the conservation authority or park management requires, including for commercial filming.",
+          "Zanzibar and the coast: Check the aviation arrangements and local permissions for the location. TCAA has a separate prior-permission process for some flights involving Zanzibar; ask whether it applies to you.",
+          "Private land: Get the landowner's or occupier's permission, and check that the site and its approach and departure paths are safe.",
+        ],
+        callout: {
+          tone: "tip",
+          label: "The rule of thumb",
+          text: "Don't launch until you've confirmed both that the flight is legal and that the take-off and landing site is suitable.",
+        },
+      },
+      {
+        heading: "Commercial paramotor flights",
+        paragraphs: [
+          "Flying for your own enjoyment is different from selling a flight. Even recreational pilots must meet every aviation and site requirement, but paid activities can bring further rules:",
+        ],
+        bullets: [
+          "Training: Teaching others to fly can trigger instructor and training-organisation approval. TCAA says aviation training needs approval under its framework.",
+          "Passenger flights: Carrying a paying customer, or including a flight in a tour package, is a separate and potentially more tightly regulated activity. It needs the right aircraft, pilot qualification, operating approval, insurance and commercial permission.",
+          "Photography and filming: Aerial work can need extra aviation permission, site approval or filming consent.",
+        ],
+        callout: {
+          tone: "info",
+          label: "Before you book a paid flight",
+          text: "Paid passenger flights should only be advertised once the approvals are confirmed. If you're booking a paramotor flight in Tanzania, it's reasonable to ask the operator which approvals and insurance cover your flight.",
+        },
+      },
+      {
+        heading: "Safety practices every pilot should follow",
+        paragraphs: [
+          "Whatever the classification, a responsible operation covers the points below. They're good practice, not a complete list of Tanzania's legal requirements, and they come on top of the manufacturer's operating limits.",
+        ],
+        bullets: [
+          "Weather and wind: Check wind speed and direction, gusts, turbulence, visibility and cloud. Postpone when conditions exceed your limits or your equipment's.",
+          "Pre-flight inspection: Check the wing, lines, harness, propeller cage, engine, fuel system, throttle and emergency equipment against the manufacturer's checklist.",
+          "Protective equipment: Wear a suitable helmet and clothing, and carry communications equipment where required.",
+          "Flight planning: Know your authorised take-off and landing areas, emergency landing sites, obstacles, power lines and airspace limits.",
+          "Fuel and maintenance: Carry enough fuel of the right type, and never continue with a serious mechanical concern.",
+          "Emergencies: Carry a way to call for help, leave your flight plan with someone, and know what you'll do after a forced landing or an injury.",
+        ],
+      },
+      {
+        heading: "Importing a paramotor",
+        paragraphs: [
+          "Contact TCAA about aircraft acceptance and registration before you import, and check customs procedures separately with the Tanzanian authorities. TCAA's registration guidance asks applicants to seek acceptance before importing an aircraft for registration and operation where the process requires it.",
+        ],
+        bullets: [
+          "Is the make and model acceptable, and do you need written approval before importing it?",
+          "Can a foreign registration be kept, and which manufacturer documents are needed?",
+          "Which customs duties, taxes or import documents apply?",
+          "Do fuel, batteries or radios have extra transport or import conditions?",
+        ],
+      },
+      {
+        heading: "What to prepare before you contact TCAA",
+        bullets: [
+          "The make, model and manufacturer of the paramotor.",
+          "Technical specifications for the wing, engine and frame.",
+          "The maximum take-off mass and serial numbers.",
+          "Proof of purchase or ownership.",
+          "Your pilot licence, training certificate and logbook.",
+          "Your proposed flying locations, with coordinates or maps.",
+          "The purpose: recreation, training, photography or passenger flights.",
+          "The expected altitude, times and how often you'll fly.",
+          "Your proposed take-off and landing sites.",
+          "Insurance details, if you have them.",
+          "Any foreign registration and airworthiness documents.",
+          "The import date and country of origin, if you're importing.",
+        ],
+      },
+      {
+        heading: "How to ask TCAA for guidance",
+        paragraphs: [
+          "Write to TCAA and ask the relevant department to assess your proposed flying. Its Legal Affairs Unit handles questions on how the law should be read, and the Government Printer's versions of the regulations are the authoritative ones.",
+          "In your letter, ask for written guidance on: how foot-launched powered paragliders are classified; whether a licence, qualification or medical certificate is needed; whether the equipment must be registered, inspected or certified; the import requirements; the airspace limits, minimum heights and site permissions; the rules for foreign pilots and equipment; any extra approvals for passenger flights, training, photography or tourism; and the fees, forms and processing times. Include the make and model, where you plan to fly, the purpose and your qualifications, and ask whether other Tanzanian authorities must also give permission.",
+        ],
+        bullets: [
+          "Tanzania Civil Aviation Authority: Aviation House, Nyerere / Kitunda Road Junction, P.O. Box 2819, Dar es Salaam.",
+          "Telephone: +255 22 232 7000",
+          "Email: barua@tcaa.go.tz",
+          "Website: www.tcaa.go.tz",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can I buy a paramotor and start flying straight away?",
+        answer:
+          "No. Owning the equipment doesn't authorise you to fly it. First confirm its classification, the pilot qualification you need, any registration or approval, the airspace limits and permission for your sites.",
+      },
+      {
+        question: "Can I fly without a licence if I'm experienced?",
+        answer: "Don't assume so. Ask TCAA whether a licence, recognised qualification or other authorisation applies to your aircraft and your flying.",
+      },
+      {
+        question: "Can I fly a paramotor over the Serengeti for photography?",
+        answer:
+          "Not without confirming both the aviation rules and the conservation authority's requirements. Taking photographs doesn't remove any aviation restriction.",
+      },
+      {
+        question: "Can I carry tourists and charge them for a flight?",
+        answer:
+          "Only once you've confirmed that the passenger flight is lawful and that the pilot, aircraft, commercial and insurance approvals are in place.",
+      },
+      {
+        question: "Can I bring my own paramotor on holiday and fly it?",
+        answer:
+          "Not automatically. Confirm the equipment's import status, any foreign-aircraft requirements, whether your qualification is recognised and the permissions for each flight.",
+      },
+      {
+        question: "Are there fixed fees or processing times for a paramotor permit?",
+        answer: "We haven't seen a published fee schedule or processing time for paramotors. Ask TCAA directly for the current fees and timings.",
+      },
+    ],
+    relatedGuides: ["paramotoring-tanzania-guide", "is-tanzania-safe", "travel-insurance-tanzania", "tanzania-travel-guide"],
     relatedPackages: ["3-day-paramotoring-arusha-kilimanjaro", "12-day-paramotoring-safari"],
   },
 ];

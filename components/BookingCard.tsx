@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useQuote, type QuoteTrip } from "@/components/QuoteModal";
 import { useTripChoices } from "@/components/TripChoices";
 import type { ComfortLevel, GroupPricing } from "@/lib/pricing";
-import { isAskSize, isQuotedSize, largestSize, priceForGroup, tierForGroup } from "@/lib/pricing";
+import { isAskSize, isQuotedSize, largestSize, perDayLabel, priceForGroup, tierForGroup } from "@/lib/pricing";
 import type { AddOn } from "@/data/addons";
 import { addOnPriceLabel, addOnTotal } from "@/data/addons";
 
@@ -152,7 +152,7 @@ export default function BookingCard({
           </p>
           <p className="text-xs mt-1.5" style={{ color: "var(--ink)" }}>
             per person{gp ? `, group of ${groupText}` : ""}
-            {level && ` · ${usd(level.perDay.min)}–${usd(level.perDay.max)} a day`}
+            {level && ` · ${perDayLabel(level)} a day`}
           </p>
         </div>
       ) : (

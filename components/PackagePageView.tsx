@@ -12,7 +12,7 @@ import GuideStrip from "@/components/GuideStrip";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import PriceLadder from "@/components/PriceLadder";
 import type { GroupPricing } from "@/lib/pricing";
-import { headlineParty, isAskSize, lowestPrice, lowestPriceFrom, partySizes, priceForGroup, tierLabel } from "@/lib/pricing";
+import { headlineParty, isAskSize, levelFrom, lowestPrice, lowestPriceFrom, partySizes, priceForGroup, tierLabel } from "@/lib/pricing";
 import { ADD_ONS, addOnPriceLabel } from "@/data/addons";
 import { resolveStayChoices } from "@/data/accommodations";
 import { AtAGlance, ContentFigure, Prose, RichList, SectionBlock } from "@/components/LongForm";
@@ -141,7 +141,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
     noun: lex.noun.toLowerCase(),
     days: pkg.days,
     bestMonths: pkg.bestMonths,
-    levels: levels?.map((l) => ({ id: l.id, label: l.label, fromUSD: l.perDay.min * pkg.days })),
+    levels: levels?.map((l) => ({ id: l.id, label: l.label, fromUSD: levelFrom(l) })),
     addOns: booking.addOns.map((a) => ({ id: a.id, label: a.label, price: addOnPriceLabel(a) })),
   };
   const isClimb = pkg.category === "kilimanjaro";

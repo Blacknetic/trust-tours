@@ -102,6 +102,57 @@ export const ADD_ONS: Record<string, AddOn> = {
     description: "Recover on the beach: flights, transfers and hotel arranged for you.",
     unit: "trip",
   },
+
+  // Zanzibar excursions. Ombeni's 2026 list gives typical ranges, not fixed
+  // prices, so each is quoted with the trip and the range shown as a guide.
+  "safari-blue": {
+    id: "safari-blue",
+    label: "Safari Blue excursion",
+    description: "A full day by dhow in Menai Bay: snorkelling, sandbanks and a seafood lunch. Typically $70–$100 per person.",
+    unit: "person",
+  },
+  "mnemba-snorkelling": {
+    id: "mnemba-snorkelling",
+    label: "Mnemba snorkelling trip",
+    description: "A half-day boat trip from Matemwe to snorkel the reefs around Mnemba Atoll, with a chance of dolphins. Typically $40–$80 per person.",
+    unit: "person",
+  },
+  "prison-island-nakupenda": {
+    id: "prison-island-nakupenda",
+    label: "Prison Island and Nakupenda sandbank",
+    description: "Giant tortoises on Changuu Island, then swimming and a seafood lunch on the sandbank. Typically $60–$90 per person.",
+    unit: "person",
+  },
+  "sunset-dhow-cruise": {
+    id: "sunset-dhow-cruise",
+    label: "Sunset dhow cruise",
+    description: "Two hours under sail as the sun goes down, with drinks and snacks. Typically $25–$40 per person.",
+    unit: "person",
+  },
+  "kizimkazi-dolphins": {
+    id: "kizimkazi-dolphins",
+    label: "Kizimkazi dolphin trip",
+    description: "An early boat trip off the south coast to look for dolphins. Typically $25–$45 per person.",
+    unit: "person",
+  },
+  "scuba-dive": {
+    id: "scuba-dive",
+    label: "Scuba dive",
+    description: "A guided dive with equipment, from Nungwi or Matemwe. Typically $60–$90 per person, per dive.",
+    unit: "person",
+  },
+  "rock-restaurant": {
+    id: "rock-restaurant",
+    label: "Transfer to The Rock restaurant",
+    description: "Return transport to the famous restaurant on a rock in the sea at Michamvi. Typically $30–$60, with the meal paid there.",
+    unit: "trip",
+  },
+  "zanzibar-safari": {
+    id: "zanzibar-safari",
+    label: "Add a safari",
+    description: "Fly to the Serengeti or drive the northern parks before or after the beach. We plan the flights so the two fit together.",
+    unit: "trip",
+  },
 };
 
 const UNIT_LABEL: Record<AddOnUnit, string> = {
@@ -140,6 +191,18 @@ export const SAFARI_ADDONS = [
   "single-supplement",
   "zanzibar-extension",
   "kilimanjaro-extension",
+];
+
+export const ZANZIBAR_ADDONS = [
+  "safari-blue",
+  "mnemba-snorkelling",
+  "prison-island-nakupenda",
+  "sunset-dhow-cruise",
+  "kizimkazi-dolphins",
+  "scuba-dive",
+  "rock-restaurant",
+  "single-supplement",
+  "zanzibar-safari",
 ];
 
 // Marangu sleeps in huts with shared toilets, so no private toilet tent.

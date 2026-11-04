@@ -105,7 +105,7 @@ const SAFARI_PANELS: MegaPanel[] = [
   {
     href: "/safaris",
     label: "All Safaris & Prices",
-    badge: "From $576",
+    badge: "From $455",
     teaser: "Every private safari, sorted by type and length.",
     heading: "Your safari, your dates, your pace",
     body: [
@@ -168,6 +168,50 @@ const SAFARI_PANELS: MegaPanel[] = [
     },
   },
   {
+    href: "/safaris?type=day-trips#safari-results",
+    label: "Day Trips",
+    badge: "1 to 2 days",
+    teaser: "Short trips from Arusha and Moshi.",
+    heading: "A real taste of Tanzania in a day or two",
+    body: [
+      "Short on time? Spend a day with Tarangire's elephants or in the Ngorongoro Crater, walk with a ranger in Arusha National Park, swim at Chemka or hike Kilimanjaro's rainforest, and be back at your hotel by evening.",
+    ],
+    cta: "View day trips",
+    links: [
+      { href: "/safaris/tarangire-day-trip", label: "Tarangire Day Trip" },
+      { href: "/safaris/ngorongoro-crater-day-trip", label: "Ngorongoro Crater Day Trip" },
+      { href: "/safaris/arusha-national-park-day-trip", label: "Arusha National Park" },
+      { href: "/safaris/chemka-hot-springs-day-trip", label: "Chemka Hot Springs" },
+      { href: "/trekking/kilimanjaro-day-trip-marangu", label: "Kilimanjaro Day Hike" },
+      { href: "/safaris/2-day-tarangire-ngorongoro", label: "2-Day Tarangire & Ngorongoro" },
+      { href: "/trekking/2-day-ol-doinyo-lengai-climb", label: "2-Day Ol Doinyo Lengai Climb" },
+    ],
+    image: {
+      src: "/images/safaris/tarangire-elephants.jpg",
+      alt: "A herd of elephants beneath a flat-topped acacia tree in Tarangire National Park",
+    },
+  },
+  {
+    href: "/safaris?type=fly-in#safari-results",
+    label: "Fly-in Safaris",
+    badge: "Flights included",
+    teaser: "Fly in from Zanzibar, or fly out to the beach.",
+    heading: "Less time on the road, more time on safari",
+    body: [
+      "Fly from Zanzibar straight into the Serengeti for a balloon safari and two nights of game drives, or take a private northern safari that ends with a flight to the beach.",
+    ],
+    cta: "View fly-in safaris",
+    links: [
+      { href: "/safaris/3-day-serengeti-balloon-zanzibar", label: "3-Day Zanzibar to Serengeti" },
+      { href: "/safaris/5-day-premium-safari-fly-to-zanzibar", label: "5-Day Premium Safari, Fly to Zanzibar" },
+      { href: "/guides/paramotor-flying-regulations-tanzania", label: "Paramotor rules in Tanzania" },
+    ],
+    image: {
+      src: "/images/safaris/serengeti-balloon-sunrise.jpg",
+      alt: "A hot-air balloon drifting over the Serengeti plains at sunrise",
+    },
+  },
+  {
     href: "/safaris?type=calving#safari-results",
     label: "Calving Season",
     badge: "December to March",
@@ -186,6 +230,27 @@ const SAFARI_PANELS: MegaPanel[] = [
     image: {
       src: "/images/safaris/ndutu-calf-nursing.jpg",
       alt: "A wildebeest calf feeding from its mother on the plains",
+    },
+  },
+  {
+    href: "/safaris?type=zanzibar#safari-results",
+    label: "Safari & Zanzibar",
+    badge: "Flight included",
+    teaser: "The bush, then the beach, in one trip.",
+    heading: "Game drives first, then the Indian Ocean",
+    body: [
+      "Start with the northern parks or the Serengeti, then fly to Zanzibar for Stone Town, the reefs and the beach. The domestic flight is included.",
+    ],
+    cta: "View safari and beach trips",
+    links: [
+      { href: "/safaris/6-day-safari-zanzibar", label: "6-Day Safari & Zanzibar" },
+      { href: "/safaris/7-day-tanzania-zanzibar", label: "7-Day Safari & Zanzibar" },
+      { href: "/safaris/10-day-safari-zanzibar-adventure", label: "10-Day Safari & Zanzibar" },
+      { href: "/safaris/20-day-honeymoon-tanzania-zanzibar", label: "20-Day Honeymoon" },
+    ],
+    image: {
+      src: "/images/zanzibar-dhow.jpg",
+      alt: "A traditional dhow lit up on a Zanzibar beach at dusk",
     },
   },
   {
@@ -267,6 +332,155 @@ const SAFARI_PANELS: MegaPanel[] = [
   },
 ];
 
+const TREKKING_PANELS: MegaPanel[] = [
+  {
+    href: "/trekking/4-day-mount-meru",
+    label: "Mount Meru",
+    badge: "From $895",
+    teaser: "Tanzania's second-highest peak, 4,566 m.",
+    heading: "Wildlife, forest and a sunrise over Kilimanjaro",
+    body: [
+      "Climb through Arusha National Park with an armed ranger, sleep in mountain huts and reach Socialist Peak before dawn. A rewarding climb on its own and the best warm-up for Kilimanjaro.",
+    ],
+    cta: "View the 4-day climb",
+    links: [
+      { href: "/trekking/3-day-mount-meru-momela", label: "3-Day Mount Meru Climb" },
+      { href: "/trekking/4-day-mount-meru", label: "4-Day Mount Meru Climb" },
+      { href: "/trekking/5-day-mount-meru", label: "5-Day Meru & Tarangire Safari" },
+      { href: "/guides/mount-meru-climb-guide", label: "Mount Meru guide" },
+      { href: "/guides/kilimanjaro-and-mount-meru", label: "Meru before Kilimanjaro" },
+    ],
+    image: {
+      src: "/images/meru-montane-forest.jpg",
+      alt: "Trekkers walking through misty, moss-draped forest on Mount Meru",
+    },
+  },
+  {
+    href: "/ol-doinyo-lengai",
+    label: "Ol Doinyo Lengai",
+    teaser: "The Maasai's Mountain of God, an active volcano.",
+    heading: "A night climb up an active volcano",
+    body: [
+      "Climb Ol Doinyo Lengai by night to watch the sun rise over the Rift Valley and Lake Natron, with time for the flamingos and waterfalls below.",
+    ],
+    cta: "View the Lengai climbs",
+    links: [
+      { href: "/trekking/2-day-ol-doinyo-lengai-climb", label: "2-Day Ol Doinyo Lengai Climb" },
+      { href: "/guides/ol-doinyo-lengai-guide", label: "Ol Doinyo Lengai guide" },
+    ],
+    image: {
+      src: "/images/ol-doinyo-lengai-2day.jpg",
+      alt: "Ol Doinyo Lengai rising above dry grassland and lava flats",
+    },
+  },
+  {
+    href: "/trekking/kilimanjaro-day-trip-marangu",
+    label: "Kilimanjaro Day Hike",
+    teaser: "A day on Africa's highest mountain.",
+    heading: "Kilimanjaro's rainforest in a day",
+    body: [
+      "Walk the Marangu Route through the rainforest to Mandara Hut at about 2,700 metres, then back to the gate, without committing to a full climb.",
+    ],
+    cta: "View the day hike",
+    links: [
+      { href: "/kilimanjaro", label: "Climb to the summit" },
+      { href: "/trekking", label: "All treks" },
+    ],
+    image: {
+      src: "/images/kilimanjaro/marangu-rainforest-trail.jpg",
+      alt: "Climbers walking through the rainforest on the Marangu Route",
+    },
+  },
+];
+
+const ZANZIBAR_PANELS: MegaPanel[] = [
+  {
+    href: "/zanzibar",
+    label: "Zanzibar Beach Holidays",
+    badge: "From $1,596",
+    teaser: "Four to ten days on the Spice Island.",
+    heading: "Stone Town, the reefs and the beach",
+    body: [
+      "Private island holidays with the excursions built in: Stone Town, spice farms, Mnemba's reefs, Safari Blue and Jozani Forest. Choose your hotel for each part of the trip.",
+    ],
+    cta: "See all Zanzibar holidays",
+    links: [
+      { href: "/zanzibar/4-day-zanzibar-escape", label: "4-Day Zanzibar Escape" },
+      { href: "/zanzibar/5-day-zanzibar-escape", label: "5-Day Zanzibar Holiday" },
+      { href: "/zanzibar/6-day-zanzibar-holiday", label: "6-Day Zanzibar Holiday" },
+      { href: "/zanzibar/7-day-zanzibar-holiday", label: "7-Day Zanzibar Holiday" },
+      { href: "/zanzibar/8-day-zanzibar-tour", label: "8-Day Zanzibar Tour" },
+      { href: "/zanzibar/10-day-zanzibar-island-holiday", label: "10-Day Island Holiday" },
+    ],
+    image: {
+      src: "/images/zanzibar-beach.jpg",
+      alt: "A white sandbar curving into turquoise water off Zanzibar",
+    },
+  },
+  {
+    href: "/zanzibar?type=safari#zanzibar-results",
+    label: "Safari & Zanzibar",
+    badge: "Flight included",
+    teaser: "The bush, then the beach, in one trip.",
+    heading: "Game drives first, then the Indian Ocean",
+    body: [
+      "Start with the northern parks or the Serengeti, then fly to Zanzibar to unwind. We book the safari, the flight and the island as one trip.",
+    ],
+    cta: "View safari and beach trips",
+    links: [
+      { href: "/safaris/6-day-safari-zanzibar", label: "6-Day Safari & Zanzibar" },
+      { href: "/safaris/7-day-tanzania-zanzibar", label: "7-Day Safari & Zanzibar" },
+      { href: "/safaris/10-day-safari-zanzibar-adventure", label: "10-Day Safari & Zanzibar" },
+      { href: "/safaris/20-day-honeymoon-tanzania-zanzibar", label: "20-Day Honeymoon" },
+    ],
+    image: {
+      src: "/images/zanzibar-dhow.jpg",
+      alt: "A traditional dhow lit up on a Zanzibar beach at dusk",
+    },
+  },
+  {
+    href: "/zanzibar/7-day-zanzibar-honeymoon",
+    label: "Zanzibar Honeymoon",
+    teaser: "Beach dinners, a couples' spa and the reefs.",
+    heading: "A week on the island, for two",
+    body: [
+      "Six nights at a romantic east-coast resort, with a couples' spa treatment, candlelit dinners on the sand, dhow trips and Mnemba's reefs.",
+    ],
+    cta: "View the honeymoon",
+    links: [
+      { href: "/zanzibar?type=honeymoon#zanzibar-results", label: "Zanzibar honeymoons" },
+      { href: "/honeymoon", label: "All honeymoons" },
+      { href: "/guides/tanzania-honeymoon-guide", label: "Honeymoon guide" },
+    ],
+    image: {
+      src: "/images/zanzibar-2.jpg",
+      alt: "A dhow sailing past a red sunset on the Indian Ocean",
+    },
+  },
+  {
+    href: "/guides/zanzibar-travel-guide",
+    label: "Plan Your Zanzibar Trip",
+    badge: "Free",
+    teaser: "Beaches, tides and the best time to go.",
+    heading: "Which beach, which month?",
+    body: [
+      "The north is best for swimming at any tide, the east for quiet lagoons. Our guides explain the beaches, the seasons and what to do.",
+    ],
+    cta: "Read the Zanzibar guide",
+    links: [
+      { href: "/zanzibar?stay=north-coast#zanzibar-results", label: "Trips on the north coast" },
+      { href: "/zanzibar?stay=east-coast#zanzibar-results", label: "Trips on the east coast" },
+      { href: "/guides/best-beaches-zanzibar", label: "Best beaches" },
+      { href: "/guides/best-time-to-visit-zanzibar", label: "Best time" },
+      { href: "/guides/things-to-do-zanzibar", label: "Things to do" },
+    ],
+    image: {
+      src: "/images/zanzibar/snorkeling.jpg",
+      alt: "Snorkellers floating over a coral reef in clear turquoise water",
+    },
+  },
+];
+
 const NAV: NavItem[] = [
   {
     label: "Kilimanjaro",
@@ -276,18 +490,18 @@ const NAV: NavItem[] = [
   {
     label: "Trekking",
     match: ["/trekking", "/ol-doinyo-lengai"],
-    children: [
-      { href: "/trekking/3-day-mount-meru-momela", label: "Mount Meru" },
-      { href: "/ol-doinyo-lengai", label: "Ol Doinyo Lengai" },
-      { href: "/trekking", label: "All treks →" },
-    ],
+    panels: TREKKING_PANELS,
   },
   {
     label: "Safaris",
     match: ["/safaris", "/honeymoon", "/cultural", "/paramotoring"],
     panels: SAFARI_PANELS,
   },
-  { href: "/zanzibar", label: "Zanzibar" },
+  {
+    label: "Zanzibar",
+    match: ["/zanzibar"],
+    panels: ZANZIBAR_PANELS,
+  },
   {
     label: "Guides",
     match: ["/guides"],

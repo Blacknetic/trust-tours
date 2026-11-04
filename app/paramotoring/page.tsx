@@ -4,7 +4,7 @@ import PackageCard from "@/components/PackageCard";
 import SampleItineraryNotice from "@/components/SampleItineraryNotice";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
-import { guidesForCategory } from "@/data/guides";
+import { getGuide, guidesForCategory, type Guide } from "@/data/guides";
 
 export const metadata: Metadata = {
   title: "Paramotoring in Tanzania – Fly over Kilimanjaro & the Serengeti",
@@ -15,6 +15,12 @@ export const metadata: Metadata = {
 
 export default function ParamotoringListingPage() {
   const trips = byCategory("paramotoring");
+  // The rules page and the paramotoring guide first, then other adventure reads.
+  const pinned = ["paramotor-flying-regulations-tanzania", "paramotoring-tanzania-guide"];
+  const paramotorGuides = [
+    ...pinned.map(getGuide).filter((g): g is Guide => Boolean(g)),
+    ...guidesForCategory("paramotoring", 5).filter((g) => !pinned.includes(g.slug)),
+  ].slice(0, 3);
 
   return (
     <>
@@ -59,9 +65,9 @@ export default function ParamotoringListingPage() {
       </section>
 
       <GuideStrip
-        guides={guidesForCategory("paramotoring")}
+        guides={paramotorGuides}
         title="Read before you fly"
-        subtitle="What paramotoring in Tanzania actually involves."
+        subtitle="What paramotoring in Tanzania involves, and the aviation rules that apply."
         className="pb-16 md:pb-24"
       />
 

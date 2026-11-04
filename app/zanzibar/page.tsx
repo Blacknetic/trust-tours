@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
-import { byCategory } from "@/data/packages";
+import { zanzibarFacets, zanzibarIslandTrips, zanzibarSafariTrips } from "@/data/packages";
 import PackageCard from "@/components/PackageCard";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
+import SampleItineraryNotice from "@/components/SampleItineraryNotice";
+import {
+  FilteredSection,
+  FilteredTrip,
+  SafariFilterPanel,
+  SafariFilterProvider,
+  SafariResults,
+} from "@/components/SafariFilter";
+import { ZANZIBAR_FILTER_GROUPS } from "@/lib/safari-filter";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
 import ItemListJsonLd from "@/components/ItemListJsonLd";
@@ -53,7 +63,26 @@ export const metadata: Metadata = {
 };
 
 export default function ZanzibarListingPage() {
-  const escapes = byCategory("zanzibar");
+  const escapes = zanzibarIslandTrips();
+  const safariAndBeach = zanzibarSafariTrips();
+  const sections = [
+    {
+      id: "beach-holidays",
+      eyebrow: "Stone Town · Nungwi · Paje · Matemwe",
+      title: "Zanzibar beach holidays",
+      blurb:
+        "Island-only holidays from four to ten days, with airport transfers, your choice of hotel at every stop and the excursions in each day plan included.",
+      trips: escapes,
+    },
+    {
+      id: "safari-and-zanzibar",
+      eyebrow: "Safari and Zanzibar",
+      title: "Game drives first, then the beach",
+      blurb:
+        "Start with a private safari in the northern parks or the Serengeti, then fly to Zanzibar. We book the safari, the flight and the island as one trip.",
+      trips: safariAndBeach,
+    },
+  ];
 
   return (
     <>
@@ -108,14 +137,71 @@ export default function ZanzibarListingPage() {
         </div>
       </section>
 
-      {/* ── Zanzibar cards ────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {escapes.map((pkg) => (
-            <PackageCard key={pkg.slug} pkg={pkg} />
-          ))}
+      {/* ── Filter panel beside the island and safari-and-beach trips ── */}
+      <SafariFilterProvider
+        trips={[...escapes, ...safariAndBeach].map(zanzibarFacets)}
+        groups={ZANZIBAR_FILTER_GROUPS}
+        resultsId="zanzibar-results"
+      >
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:py-14 pb-14 md:pb-20 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
+          <SafariFilterPanel label="Filter Zanzibar trips" />
+
+          <div>
+            <SampleItineraryNotice className="mb-6" />
+            <SafariResults
+              noMatch={
+                <div className="text-center py-10">
+                  <p className="text-base mb-6" style={{ color: "var(--ink)" }}>
+                    No sample trip matches those filters, but we can build one that does.
+                  </p>
+                  <RequestQuoteButton label="Request a quote" context={{ tripType: "zanzibar" }} />
+                </div>
+              }
+            >
+              <div className="flex flex-col gap-14 md:gap-20">
+                {sections.map((sec) => (
+                  <FilteredSection
+                    key={sec.id}
+                    id={sec.id}
+                    slugs={sec.trips.map((t) => t.slug)}
+                    className="scroll-mt-36 lg:scroll-mt-24"
+                  >
+                    <div className="mb-8 md:mb-10 max-w-3xl">
+                      <p
+                        className="text-xs font-semibold tracking-widest uppercase mb-2"
+                        style={{ color: "var(--gold)" }}
+                      >
+                        {sec.eyebrow}
+                      </p>
+                      <h2
+                        className="text-3xl md:text-4xl font-extrabold mb-3"
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          color: "var(--forest)",
+                          letterSpacing: "-0.02em",
+                        }}
+                      >
+                        {sec.title}
+                      </h2>
+                      <p className="text-base leading-relaxed" style={{ color: "rgba(74,41,18,0.75)" }}>
+                        {sec.blurb}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                      {sec.trips.map((pkg) => (
+                        <FilteredTrip key={pkg.slug} slug={pkg.slug}>
+                          <PackageCard pkg={pkg} />
+                        </FilteredTrip>
+                      ))}
+                    </div>
+                  </FilteredSection>
+                ))}
+              </div>
+            </SafariResults>
+          </div>
         </div>
-      </section>
+      </SafariFilterProvider>
 
       {/* ── Island gallery — alternating tiles ────────────────── */}
       <section style={{ background: "var(--paper)" }}>

@@ -12,6 +12,7 @@ import {
   SafariFilterProvider,
   SafariResults,
 } from "@/components/SafariFilter";
+import { SAFARI_FILTER_GROUPS } from "@/lib/safari-filter";
 import GuideStrip from "@/components/GuideStrip";
 import ItemListJsonLd from "@/components/ItemListJsonLd";
 import { guidesForCategory } from "@/data/guides";
@@ -83,7 +84,7 @@ export default function SafarisListingPage() {
       </section>
 
       {/* ── Filter panel beside one section per safari category ── */}
-      <SafariFilterProvider trips={allSafaris.map(safariFacets)}>
+      <SafariFilterProvider trips={allSafaris.map(safariFacets)} groups={SAFARI_FILTER_GROUPS}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:py-14 pb-14 md:pb-20 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
           <SafariFilterPanel />
 

@@ -11,17 +11,14 @@ import {
 } from "react";
 import { useSearchParams } from "next/navigation";
 import {
-  SAFARI_TYPES,
-  TRAVEL_TIMES,
-  matchesTime,
-  matchesType,
+  matchesGroup,
+  matchesSelection,
   parseSelection,
   serializeSelection,
-  type SafariFacets,
-  type SafariSelection,
+  type FilterGroup,
+  type FilterSelection,
+  type TripFacets,
 } from "@/lib/safari-filter";
-
-const RESULTS_ID = "safari-results";
 
 // The URL is the single source of truth. Reading it through an external store
 // (rather than useSearchParams) keeps every card in the prerendered HTML.
@@ -37,12 +34,12 @@ function subscribe(listener: () => void) {
 const getSearch = () => window.location.search;
 const getServerSearch = () => "";
 
-function writeSelection(next: SafariSelection) {
-  const qs = serializeSelection(next);
+function writeSelection(next: FilterSelection, groups: FilterGroup[], resultsId: string) {
+  const qs = serializeSelection(next, groups);
   window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   listeners.forEach((l) => l());
   // A shorter list can leave the visitor stranded down the page.
-  const results = document.getElementById(RESULTS_ID);
+  const results = document.getElementById(resultsId);
   if (results && results.getBoundingClientRect().top < 0) results.scrollIntoView();
 }
 
@@ -60,8 +57,10 @@ function UrlChangeListener() {
 }
 
 interface FilterState {
-  trips: SafariFacets[];
-  selection: SafariSelection;
+  trips: TripFacets[];
+  groups: FilterGroup[];
+  resultsId: string;
+  selection: FilterSelection;
   visible: Set<string>;
 }
 const FilterContext = createContext<FilterState | null>(null);
@@ -74,22 +73,25 @@ function useFilter() {
 
 export function SafariFilterProvider({
   trips,
+  groups,
+  resultsId = "safari-results",
   children,
 }: {
-  trips: SafariFacets[];
+  trips: TripFacets[];
+  groups: FilterGroup[];
+  /** The id links use as an anchor (#safari-results) to land on the list. */
+  resultsId?: string;
   children: React.ReactNode;
 }) {
   const search = useSyncExternalStore(subscribe, getSearch, getServerSearch);
 
   const state = useMemo(() => {
-    const selection = parseSelection(search);
+    const selection = parseSelection(search, groups);
     const visible = new Set(
-      trips
-        .filter((t) => matchesType(t, selection.types) && matchesTime(t, selection.times))
-        .map((t) => t.slug),
+      trips.filter((t) => matchesSelection(t, selection)).map((t) => t.slug),
     );
-    return { trips, selection, visible };
-  }, [trips, search]);
+    return { trips, groups, resultsId, selection, visible };
+  }, [trips, groups, resultsId, search]);
 
   return (
     <FilterContext.Provider value={state}>
@@ -186,18 +188,20 @@ function Group({ title, children }: { title: string; children: React.ReactNode }
 
 // `sticky` keeps the panel in view while the trips scroll past: beside them on
 // desktop, as a bar under the site header on mobile.
-export function SafariFilterPanel() {
-  const { trips, selection, visible } = useFilter();
+export function SafariFilterPanel({ label = "Filter safaris" }: { label?: string }) {
+  const { trips, groups, resultsId, selection, visible } = useFilter();
   const [open, setOpen] = useState(false);
-  const { types, times } = selection;
-  const active = types.length + times.length;
+  const active = Object.values(selection).reduce((n, ids) => n + ids.length, 0);
 
-  const toggle = <T,>(list: T[], item: T) =>
-    list.includes(item) ? list.filter((x) => x !== item) : [...list, item];
+  const toggle = (param: string, id: string) => {
+    const list = selection[param] ?? [];
+    const next = list.includes(id) ? list.filter((x) => x !== id) : [...list, id];
+    writeSelection({ ...selection, [param]: next }, groups, resultsId);
+  };
 
   return (
     <aside
-      aria-label="Filter safaris"
+      aria-label={label}
       className="sticky top-16 z-30 -mx-4 md:-mx-6 lg:mx-0 mb-8 lg:mb-0 px-4 md:px-6 lg:px-0 py-3 lg:py-0 lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
       style={{ background: "var(--paper)" }}
     >
@@ -220,40 +224,30 @@ export function SafariFilterPanel() {
         className={`${open ? "block" : "hidden"} lg:block pt-4 lg:pt-0 max-h-[calc(100dvh-11rem)] lg:max-h-none overflow-y-auto lg:overflow-visible`}
       >
         <div className="flex flex-col gap-7">
-          <Group title="Type">
-            {SAFARI_TYPES.map((t) => (
-              <Checkbox
-                key={t.id}
-                label={t.label}
-                count={
-                  trips.filter((trip) => trip.types.includes(t.id) && matchesTime(trip, times))
-                    .length
-                }
-                checked={types.includes(t.id)}
-                onChange={() => writeSelection({ types: toggle(types, t.id), times })}
-              />
-            ))}
-          </Group>
-
-          <Group title="Travel time">
-            {TRAVEL_TIMES.map((t) => (
-              <Checkbox
-                key={t.id}
-                label={t.label}
-                count={
-                  trips.filter((trip) => matchesTime(trip, [t.id]) && matchesType(trip, types))
-                    .length
-                }
-                checked={times.includes(t.id)}
-                onChange={() => writeSelection({ types, times: toggle(times, t.id) })}
-              />
-            ))}
-          </Group>
+          {groups.map((g) => (
+            <Group key={g.param} title={g.title}>
+              {g.options.map((o) => (
+                <Checkbox
+                  key={o.id}
+                  label={o.label}
+                  count={
+                    trips.filter(
+                      (trip) =>
+                        matchesGroup(trip, g.param, [o.id]) &&
+                        matchesSelection(trip, selection, g.param),
+                    ).length
+                  }
+                  checked={(selection[g.param] ?? []).includes(o.id)}
+                  onChange={() => toggle(g.param, o.id)}
+                />
+              ))}
+            </Group>
+          ))}
 
           {active > 0 && (
             <button
               type="button"
-              onClick={() => writeSelection({ types: [], times: [] })}
+              onClick={() => writeSelection({}, groups, resultsId)}
               className="self-start text-sm font-semibold underline"
               style={{ color: "var(--forest)" }}
             >
@@ -282,9 +276,9 @@ export function SafariResults({
   noMatch: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const { trips, visible } = useFilter();
+  const { trips, resultsId, visible } = useFilter();
   return (
-    <div id={RESULTS_ID} className="min-w-0 scroll-mt-36 lg:scroll-mt-24">
+    <div id={resultsId} className="min-w-0 scroll-mt-36 lg:scroll-mt-24">
       <p className="text-sm mb-8" style={{ color: "var(--ink)" }} aria-live="polite">
         Showing {visible.size} of {trips.length} trips
       </p>

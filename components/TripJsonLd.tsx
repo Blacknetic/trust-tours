@@ -2,7 +2,7 @@ import type { TripPackage } from "@/data/packages";
 import { CATEGORY_PATH } from "@/data/packages";
 import { packageImage } from "@/data/images";
 import { jsonLd } from "@/lib/json-ld";
-import { lowestPrice, highestPrice, tierLabel } from "@/lib/pricing";
+import { lowestPrice, highestPrice, levelFrom, levelTo, tierLabel } from "@/lib/pricing";
 
 const BASE = "https://www.trusttourstz.com";
 
@@ -33,12 +33,12 @@ function buildOffers(pkg: TripPackage, pageUrl: string) {
       "@type": "AggregateOffer",
       priceCurrency: "USD",
       lowPrice: pkg.priceFromUSD,
-      highPrice: levels[levels.length - 1].perDay.max * pkg.days,
+      highPrice: levelTo(levels[levels.length - 1], pkg.days),
       offerCount: levels.length,
       offers: levels.map((l) => ({
         "@type": "Offer",
         name: `${pkg.title} — ${l.label}`,
-        price: l.perDay.min * pkg.days,
+        price: levelFrom(l),
         ...base,
       })),
     };

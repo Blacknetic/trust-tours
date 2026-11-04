@@ -1,4 +1,4 @@
-import type { ComfortLevel } from "@/lib/pricing";
+import { levelFrom, levelTo, perDayLabel, type ComfortLevel } from "@/lib/pricing";
 
 const usd = (n: number) => `$${n.toLocaleString()}`;
 
@@ -32,14 +32,15 @@ export default function ComfortLevels({ levels, days }: { levels: ComfortLevel[]
               {level.label}
             </h3>
             <p className="text-xl font-extrabold tabular-nums" style={{ color: "var(--sunset)" }}>
-              From {usd(level.perDay.min * days)}
+              From {usd(levelFrom(level))}
               <span className="text-xs font-normal ml-1" style={{ color: "var(--ink)" }}>
                 per person
               </span>
             </p>
             <p className="text-xs mt-1 mb-3" style={{ color: "var(--ink)", opacity: 0.75 }}>
-              {usd(level.perDay.min)}–{usd(level.perDay.max)} per day ·{" "}
-              {usd(level.perDay.min * days)}–{usd(level.perDay.max * days)} for {days} days
+              {perDayLabel(level)} per day
+              {levelTo(level, days) > levelFrom(level) &&
+                ` · ${usd(levelFrom(level))}–${usd(levelTo(level, days))} for ${days} days`}
             </p>
             <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--ink)" }}>
               {level.summary}

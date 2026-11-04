@@ -66,7 +66,7 @@ const FAQ_GROUPS: Group[] = [
       {
         question: "How much does a Tanzania safari cost?",
         answer:
-          "Our safaris start from $576 for a short two-day trip; multi-day safaris typically run from around $2,100 to $3,400 per person depending on the parks, length and comfort level. Park fees are a large, fixed part of the cost.",
+          "Our day trips start from $455 per person and two-day safaris from $910. Most of our longer safaris start between about $1,800 and $4,100 per person at mid-range, depending on the parks, length and comfort level. Park fees are a large, fixed part of the cost.",
         href: "/guides/how-much-tanzania-safari-cost",
       },
       {

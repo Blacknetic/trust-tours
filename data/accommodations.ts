@@ -1087,6 +1087,268 @@ export const STAYS: Record<string, Stay> = {
       "Views across the plains from the hilltop",
     ],
   },
+
+  // Zanzibar, from Ombeni's Zanzibar documents (D:\mpya, Oct 2026).
+  "tembo-house": {
+    id: "tembo-house",
+    name: "Tembo House Hotel",
+    area: "Shangani, Stone Town",
+    type: "Heritage hotel on the seafront",
+    about:
+      "A restored seafront building in the Shangani quarter, on the small town beach facing the harbour. Rooms keep a traditional Zanzibari style, and the historic streets, Forodhani Gardens and the Old Fort are a short walk away.",
+    activities: [
+      "Outdoor swimming pool facing the sea",
+      "Restaurant with harbour views",
+      "Walks through the old town from the door",
+    ],
+  },
+  "maru-maru-hotel": {
+    id: "maru-maru-hotel",
+    name: "Maru Maru Hotel",
+    area: "Gizenga Street, Stone Town",
+    type: "Boutique town hotel",
+    about:
+      "A boutique hotel in the heart of Stone Town, just behind the House of Wonders and the Old Fort. Its rooftop terrace has wide views over the old town's roofs and out to the Indian Ocean.",
+    activities: [
+      "Rooftop terrace restaurant and bar",
+      "Small rooftop swimming pool",
+      "Markets, museums and the waterfront within walking distance",
+    ],
+  },
+  "emerson-spice": {
+    id: "emerson-spice",
+    name: "Emerson Spice Hotel",
+    area: "Central Stone Town",
+    type: "Restored merchant's house",
+    about:
+      "A restored 19th-century merchant's house in the old town, with individually decorated rooms full of carved wood, stained glass and antiques. Its rooftop restaurant is one of the best places in Stone Town to watch the sunset.",
+    activities: [
+      "Rooftop restaurant and sunset views over the old town",
+      "Rooms with traditional Zanzibari decor",
+      "Stone Town's lanes, markets and historic sites on foot",
+    ],
+  },
+  "park-hyatt-zanzibar": {
+    id: "park-hyatt-zanzibar",
+    name: "Park Hyatt Zanzibar",
+    area: "Shangani seafront, Stone Town",
+    type: "Luxury seafront hotel",
+    about:
+      "A luxury hotel on the Stone Town seafront that includes the restored Mambo Msiige, one of the town's historic houses. Many rooms look out over the Indian Ocean and the dhows passing the harbour.",
+    activities: [
+      "Infinity pool overlooking the ocean",
+      "Spa treatments",
+      "Restaurants and a bar with sunset views",
+    ],
+  },
+  "zanzibar-serena": {
+    id: "zanzibar-serena",
+    name: "Zanzibar Serena Hotel",
+    area: "Shangani seafront, Stone Town",
+    type: "Heritage hotel on the seafront",
+    about:
+      "A seafront hotel in Shangani made from restored historic buildings, decorated with Zanzibari chests, carved doors and Persian rugs. Its terraces face the ocean, and the old town begins at the back door.",
+    activities: [
+      "Swimming pool beside the sea",
+      "Spa and terrace restaurants",
+      "Sunset views across the harbour",
+    ],
+  },
+  "z-hotel-nungwi": {
+    id: "z-hotel-nungwi",
+    name: "The Z Hotel",
+    area: "Nungwi, northern Zanzibar",
+    type: "Boutique beach hotel",
+    about:
+      "A boutique hotel of around 40 rooms on the beach at Nungwi, near the northern tip of the island. It is a lively, friendly base, with sea views from many rooms and the beach right below.",
+    activities: [
+      "Outdoor pool and beach loungers",
+      "Spa and two restaurants",
+      "Sunsets over the sea on the west-facing coast",
+    ],
+  },
+  "amaan-bungalows": {
+    id: "amaan-bungalows",
+    name: "Amaan Beach Bungalows",
+    area: "Nungwi, northern Zanzibar",
+    type: "Beach bungalows",
+    about:
+      "A good-value, 3-star stay in Nungwi village, a few minutes' walk from the beach. Rooms are simple and comfortable, and the village's restaurants and dhow builders are close by.",
+    activities: [
+      "Outdoor swimming pool",
+      "Restaurants and a pool bar on site",
+      "Easy walks to Nungwi beach and village",
+    ],
+  },
+  "essque-zalu": {
+    id: "essque-zalu",
+    name: "Essque Zalu Zanzibar",
+    area: "Nungwi peninsula, northern Zanzibar",
+    type: "Luxury resort",
+    about:
+      "A luxury resort on the quieter, sheltered side of the Nungwi peninsula, with suites and villas set in tropical gardens above the sea. It suits couples who want space and calm close to the north coast's beaches.",
+    activities: [
+      "Infinity pool and spa",
+      "Several restaurants, including dining over the water",
+      "Boat trips and snorkelling, by arrangement",
+    ],
+  },
+  "zuri-zanzibar": {
+    id: "zuri-zanzibar",
+    name: "Zuri Zanzibar",
+    area: "Kendwa, northern Zanzibar",
+    type: "Luxury beach resort",
+    about:
+      "A luxury resort on Kendwa beach, where the sand stays good for swimming at most tides. Bungalows, suites and villas sit among tropical gardens and a working spice garden, and the beach faces west for sunsets.",
+    activities: [
+      "Beachfront pool and spa",
+      "Spice garden walks",
+      "Water sports and sunset dhow trips, by arrangement",
+    ],
+  },
+  "jafferji-house": {
+    id: "jafferji-house",
+    name: "Jafferji House & Spa",
+    area: "Behind the Old Fort, Stone Town",
+    type: "Boutique town house",
+    about:
+      "A former family home in the heart of Stone Town turned into a small boutique hotel, with individually decorated suites full of African fabrics and antiques. Its rooftop looks out over the old town's roofs and minarets.",
+    activities: [
+      "Rooftop spa and lounge",
+      "Swahili dishes in the hotel restaurant",
+      "The Old Fort and Forodhani Gardens a short walk away",
+    ],
+  },
+  "kendwa-rocks": {
+    id: "kendwa-rocks",
+    name: "Kendwa Rocks Beach Hotel",
+    area: "Kendwa, northern Zanzibar",
+    type: "Beach hotel",
+    about:
+      "A lively beach hotel on Kendwa beach, with rooms ranging from simple bungalows to beach houses. It is known for its monthly full-moon beach party, so ask for a quieter room if you'd rather sleep early on those nights.",
+    activities: [
+      "Swimming at most tides on Kendwa beach",
+      "Beach bar and restaurant",
+      "Sunset dhow trips and diving nearby",
+    ],
+  },
+  "dhow-inn": {
+    id: "dhow-inn",
+    name: "Dhow Inn Boutique Hotel",
+    area: "Paje, south-east coast",
+    type: "Boutique beach hotel",
+    about:
+      "A boutique hotel at the edge of Paje, about an hour from Stone Town, with rooms around several pools and a short walk to the beach. Paje's wide lagoon is one of the best places on the island for kitesurfing.",
+    activities: [
+      "Several swimming pools and a spa",
+      "Kitesurfing lessons on Paje beach, by arrangement",
+      "Jozani Forest about 20 minutes away",
+    ],
+  },
+  "zula-zanzibar": {
+    id: "zula-zanzibar",
+    name: "Zula Zanzibar",
+    area: "Paje, south-east coast",
+    type: "Small beach hotel",
+    about:
+      "A small, relaxed hotel a few steps from Paje beach, with a homely feel and a garden pool. It is a good-value base for families and couples who want to be close to the sand and Paje's cafes.",
+    activities: [
+      "Garden pool and terrace",
+      "Paje beach and its lagoon on the doorstep",
+      "Cycling and kitesurfing nearby",
+    ],
+  },
+  zanziblue: {
+    id: "zanziblue",
+    name: "Zanziblue",
+    area: "Matemwe, north-east coast",
+    type: "Small beachfront hotel",
+    about:
+      "A small, quiet beachfront hotel at Matemwe, close to the boats that leave for the Mnemba reefs. It suits couples looking for a calm base away from the busier beaches.",
+    activities: [
+      "Outdoor pool and restaurant",
+      "Spa treatments",
+      "Short trips to the Mnemba reefs",
+    ],
+  },
+  "baraza-resort": {
+    id: "baraza-resort",
+    name: "Baraza Resort & Spa",
+    area: "Bwejuu, south-east coast",
+    type: "All-inclusive luxury villa resort",
+    about:
+      "An all-inclusive resort of around 30 villas on Bwejuu beach, built in a palace-like Swahili and Omani style. Every villa has its own plunge pool, and a butler looks after each stay, which makes it a favourite for honeymoons.",
+    activities: [
+      "Your own plunge pool at the villa",
+      "Spa, fitness centre and beachfront pool",
+      "Meals and most drinks included",
+    ],
+  },
+  "tulia-zanzibar": {
+    id: "tulia-zanzibar",
+    name: "Tulia Zanzibar Unique Beach Resort",
+    area: "Pongwe, east coast",
+    type: "Boutique luxury beach resort",
+    about:
+      "A small, award-winning resort on the east coast at Pongwe, with villas, bungalows and suites set along a quiet beach. Its size keeps it peaceful and personal.",
+    activities: [
+      "Two outdoor pools and a spa",
+      "Kayaking and horse riding on the beach",
+      "Fine dining in the resort restaurant",
+    ],
+  },
+  "royal-zanzibar": {
+    id: "royal-zanzibar",
+    name: "Royal Zanzibar Beach Resort",
+    area: "Nungwi, northern Zanzibar",
+    type: "All-inclusive beach resort",
+    about:
+      "A large all-inclusive resort at Nungwi on the island's northern tip, with several pools and restaurants. With meals, snacks and drinks included, it is an easy choice for families and couples alike.",
+    activities: [
+      "Several pools, including one for children",
+      "Spa and private beach",
+      "Restaurants and bars, all included",
+    ],
+  },
+  "lemala-mpingo-ridge": {
+    id: "lemala-mpingo-ridge",
+    name: "Lemala Mpingo Ridge",
+    area: "Escarpment above the Tarangire River",
+    type: "Luxury tented lodge",
+    about:
+      "A lodge of 15 tented suites on a ridge above the Tarangire River, about 35 minutes from the park gate. Each suite has a private deck with an outdoor bath, and the views stretch across the valley.",
+    activities: [
+      "Game drives in Tarangire National Park",
+      "Infinity pool overlooking the valley",
+      "Small spa",
+    ],
+  },
+  "lake-natron-tented-camp": {
+    id: "lake-natron-tented-camp",
+    name: "Lake Natron Tented Camp",
+    area: "Lake Natron, at the foot of Ol Doinyo Lengai",
+    type: "Tented camp",
+    about:
+      "A tented camp near the shores of Lake Natron, below the Ol Doinyo Lengai volcano. Tents have their own bathrooms with hot showers, and the camp is a base for the lake, the waterfall walk and Maasai villages nearby.",
+    activities: [
+      "Walk to the lake flats to see flamingos",
+      "Waterfall hike up the Engaresero gorge",
+      "Maasai cultural visits",
+    ],
+  },
+  "riu-palace-zanzibar": {
+    id: "riu-palace-zanzibar",
+    name: "Riu Palace Zanzibar",
+    area: "Nungwi, northern Zanzibar",
+    type: "Adults-only all-inclusive resort",
+    about:
+      "An adults-only, all-inclusive beach resort at Nungwi. Meals and drinks are included, which makes it an easy choice for couples who want to relax without planning each day.",
+    activities: [
+      "Pools beside the beach",
+      "Restaurants and bars, all included",
+      "Spa and evening entertainment",
+    ],
+  },
 };
 
 /** The choices with every stay they offer looked up, for the browser. */

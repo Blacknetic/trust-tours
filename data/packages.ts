@@ -6,7 +6,12 @@ import { KILIMANJARO_PACKAGES } from "@/data/kilimanjaro";
 import type { StayChoice } from "@/data/accommodations";
 import type { ClimbLinks } from "@/data/kilimanjaro/links";
 import { SAFARI_PACKAGES } from "@/data/safaris";
-import type { SafariFacets, SafariTypeId } from "@/lib/safari-filter";
+import { DAY_TRIP_PACKAGES } from "@/data/day-trips";
+import { ZANZIBAR_PACKAGES } from "@/data/zanzibar";
+import { FLY_IN_PACKAGES } from "@/data/fly-in";
+import { MERU_PACKAGES } from "@/data/meru";
+import { travelTimeOf } from "@/lib/safari-filter";
+import type { SafariTypeId, TripFacets, ZanzibarAreaId, ZanzibarTypeId } from "@/lib/safari-filter";
 
 export type Tier = "budget" | "mid-range" | "comfort";
 
@@ -61,6 +66,8 @@ export interface ItineraryDay {
   // A number, or a range as Ombeni writes it ("10–11").
   distanceKm?: number | string;
   hours?: string;
+  // Clock time shown in place of "Day N" on one-day trips, e.g. "6:00 am".
+  time?: string;
   meals: string;
   accommodation: string;
   // A `stayChoices` id; links the overnight to that stop's choices on the page.
@@ -178,6 +185,12 @@ export const packages: TripPackage[] = [
   ...KILIMANJARO_PACKAGES,
   // Safaris rebuilt from Ombeni's documents live in data/safaris.
   ...SAFARI_PACKAGES,
+  // Day trips and short safaris rebuilt from Ombeni's documents live in data/day-trips.
+  ...DAY_TRIP_PACKAGES,
+  // Zanzibar holidays rebuilt from Ombeni's documents live in data/zanzibar.
+  ...ZANZIBAR_PACKAGES,
+  ...FLY_IN_PACKAGES,
+  ...MERU_PACKAGES,
 
   {
     slug: "7-day-tanzania-zanzibar",
@@ -1388,230 +1401,6 @@ export const packages: TripPackage[] = [
     bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct"],
   },
 
-  {
-    slug: "3-day-serengeti-balloon-zanzibar",
-    destinations: ["Serengeti", "Zanzibar"],
-    category: "safari",
-    title: "3-Day Serengeti Safari & Hot Air Balloon from Zanzibar",
-    shortName: "3-Day Serengeti Fly-in",
-    days: 3,
-    priceFromUSD: 2228,
-    priceNote:
-      "Per person, sharing, mid-range. Includes round-trip flights from Zanzibar and the hot air balloon safari.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "/images/packages/3-day-serengeti-balloon-zanzibar.jpg",
-    gallery: [],
-    summary:
-      "The perfect safari add-on to a Zanzibar beach holiday: fly straight from the island to the Serengeti for two nights of game drives and a dawn hot air balloon flight with a champagne bush breakfast, then fly back to the coast. Three action-packed days with the flights, balloon and all meals included.",
-    highlights: [
-      "Round-trip flights between Zanzibar and the Serengeti",
-      "Sunrise hot air balloon safari with a champagne bush breakfast",
-      "Game drives across the Serengeti's wildlife-rich plains",
-      "Lions, elephants, cheetahs, wildebeest and more",
-      "An easy safari taste for beach holidaymakers, all arranged",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Fly Zanzibar to the Serengeti — Afternoon Game Drive",
-        description:
-          "Fly directly from Zanzibar to the Serengeti and check into your lodge or tented camp. Head out for an afternoon game drive across the plains for your first sightings — lion, elephant, giraffe and herds of wildebeest — returning for a relaxed dinner.",
-        meals: "Lunch, dinner",
-        accommodation: "Mid-range lodge or tented camp, Serengeti",
-      },
-      {
-        day: 2,
-        title: "Hot Air Balloon Safari & Full-Day Game Drive",
-        description:
-          "An early start for a dawn hot air balloon flight over the Serengeti, drifting above the plains as the sunrise lights up the herds, followed by a champagne breakfast in the bush. A full-day game drive then explores more of the park — cheetah, zebra and hippo — with a picnic lunch at a scenic spot.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range lodge or tented camp, Serengeti",
-      },
-      {
-        day: 3,
-        title: "Final Game Drive & Return to Zanzibar",
-        description:
-          "A last morning game drive to catch the wildlife at its most active — predators returning from the night's hunt — then transfer to the airstrip for your return flight to Zanzibar.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Round-trip flights from Zanzibar to the Serengeti",
-      "Two nights' mid-range lodge or tented-camp accommodation",
-      "All meals — breakfast, lunch and dinner",
-      "Sunrise hot air balloon safari with champagne breakfast",
-      "Game drives in a 4x4 with a professional guide",
-      "Park entry and conservation fees",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Tips, souvenirs and items of a personal nature",
-      "Drinks beyond those specified",
-    ],
-    faqs: [
-      {
-        question: "Is this good as an add-on to a Zanzibar holiday?",
-        answer:
-          "Exactly — it's designed for it. You fly from Zanzibar to the Serengeti and back, so you get a real safari and a balloon flight in three days without unwinding your beach plans. We arrange the flights both ways.",
-      },
-      {
-        question: "Is the balloon flight guaranteed?",
-        answer:
-          "The sunrise balloon is included and pre-booked, but flies subject to weather for safety. If conditions force a cancellation, that portion is refunded by the operator.",
-      },
-      {
-        question: "Can I extend my time on safari?",
-        answer:
-          "Yes — add nights in the Serengeti or the Ngorongoro Crater, or combine with a longer northern-circuit safari. Message Ombeni with your dates on WhatsApp.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
-  {
-    slug: "10-day-safari-zanzibar-adventure",
-    heroImage: "/images/safari-zanzibar-adventure.jpg",
-    seoTitle: "Safari & Zanzibar Adventure, 10 Days — $4,890",
-    metaDescription:
-      "Bush-to-beach adventure: a northern-circuit safari paired with Zanzibar. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $4,890 pp, no OTA markup.",
-    destinations: ["Tarangire", "Ngorongoro", "Serengeti", "Zanzibar"],
-    category: "safari",
-    title: "10-Day Safari & Zanzibar Adventure – Bush to Beach",
-    shortName: "10-Day Safari + Zanzibar",
-    days: 10,
-    priceFromUSD: 4890,
-    priceNote:
-      "Per person, double sharing. From $4,890 (4-star) / $5,999 (5-star). Includes the flight from the safari to Zanzibar.",
-    tier: ["comfort"],
-    gallery: [],
-    summary:
-      "The complete bush-to-beach escape: six days on the classic northern circuit — Tarangire, the Ngorongoro Crater and the Serengeti — then a flight to Zanzibar for four days of Stone Town, spice farms, Mnemba's reefs and the white sands of the Indian Ocean. A 'Comfort' (4-star) or 'Classic' (5-star) itinerary with the internal flight and all activities arranged.",
-    highlights: [
-      "Big Five game drives in Tarangire, Ngorongoro and the Serengeti",
-      "Flight from the safari straight to the Zanzibar coast",
-      "Stone Town tour, spice farm and a sunset dhow cruise",
-      "Mnemba Island snorkelling, dolphins and a Blue Safari",
-      "Sea turtles at Baraka and white-sand beach time to finish",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Arusha",
-        description:
-          "Welcomed at Kilimanjaro International Airport and transferred to your lodge in Arusha. Relax after your journey and meet your guide in the evening for a detailed briefing on the safari ahead.",
-        meals: "Dinner",
-        accommodation: "Lodge, Arusha",
-      },
-      {
-        day: 2,
-        title: "Tarangire National Park",
-        description:
-          "A scenic drive to Tarangire, famous for its large elephant herds and ancient baobabs. Picnic lunch in the park, then a game drive for elephant, giraffe, lion, leopard and abundant birdlife. Dinner under the stars at a lodge or tented camp near the park.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge or tented camp near Tarangire",
-      },
-      {
-        day: 3,
-        title: "Tarangire to the Ngorongoro Crater",
-        description:
-          "An early game drive in Tarangire, then drive through the Great Rift Valley to the Ngorongoro Conservation Area and descend into the crater for an afternoon among the Big Five. Ascend to a lodge on the crater rim for dinner with a view.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge on the Ngorongoro crater rim",
-      },
-      {
-        day: 4,
-        title: "Ngorongoro Crater to the Serengeti",
-        description:
-          "A second descent into the crater at dawn for predators and grazing herds, picnic lunch, then drive on to the central Serengeti (Seronera) for an evening game drive in big-cat country. Dinner and overnight at a Serengeti lodge or camp.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge or tented camp, Serengeti",
-      },
-      {
-        day: 5,
-        title: "Full Day in the Serengeti",
-        description:
-          "A sunrise game drive in golden light, brunch and rest, then an afternoon following the wildlife — the Great Migration if in season, or resident herds and predators. A sundowner and dinner around the campfire.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge or tented camp, Serengeti",
-      },
-      {
-        day: 6,
-        title: "Serengeti to Zanzibar",
-        description:
-          "A final morning game drive, then transfer to the airstrip and fly (via Kilimanjaro/Arusha) to Zanzibar. Arrive on the Spice Island and transfer to your Stone Town hotel for an evening at leisure.",
-        meals: "Breakfast, dinner",
-        accommodation: "Top-quality hotel, Stone Town",
-      },
-      {
-        day: 7,
-        title: "Stone Town & Sunset Dhow Cruise",
-        description:
-          "A guided walking tour of UNESCO-listed Stone Town — the House of Wonders, Sultan's Palace, Old Fort and Darajani Market — then a romantic sunset dhow cruise with cocktails and a traditional Swahili dinner.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Top-quality hotel, Stone Town",
-      },
-      {
-        day: 8,
-        title: "Spice Tour & Nakupenda Beach",
-        description:
-          "A morning spice farm tour — cinnamon, cloves and nutmeg — then the Nakupenda sandbank for swimming, snorkelling and a fresh seafood lunch on the beach. Evening at leisure with an optional spa treatment.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Beachfront hotel",
-      },
-      {
-        day: 9,
-        title: "Mnemba Island & Blue Safari",
-        description:
-          "Boat out to Mnemba Island to snorkel pristine reefs and look for dolphins, then a Blue Safari among remote sandbanks with a beach barbecue. Return for a private dinner, with the option to dine under the stars on the beach.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Beachfront hotel",
-      },
-      {
-        day: 10,
-        title: "Sea Turtles & Departure",
-        description:
-          "A morning visit to the Baraka Natural Aquarium to swim alongside endangered green sea turtles, then time to relax or explore Stone Town's galleries and shops before your airport transfer for departure.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Internal flight from the safari to Zanzibar and all transfers",
-      "Six nights' safari accommodation (4-star or 5-star) and three nights in Zanzibar, full board",
-      "All park, crater and conservation fees",
-      "Private 4x4 game drives with a professional guide",
-      "Stone Town and spice tours, Nakupenda, Mnemba snorkelling and Baraka turtles",
-      "Sunset dhow cruise and all activities as per the itinerary",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional activities not mentioned in the itinerary",
-      "Tips, souvenirs and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "Is the flight to Zanzibar included?",
-        answer:
-          "Yes — the internal flight from the safari to Zanzibar is included, along with all transfers. You only arrange your international flights.",
-      },
-      {
-        question: "What's the difference between 4-star and 5-star?",
-        answer:
-          "The itinerary is identical; the difference is the hotels and lodges. The 4-star 'Comfort' package is from $4,890pp and the 5-star 'Classic' (Serena, Park Hyatt and similar) from $5,999pp.",
-      },
-      {
-        question: "Can the safari/beach split be adjusted?",
-        answer:
-          "Yes — you can lengthen either side or add a Kilimanjaro climb. Tell Ombeni what you have in mind on WhatsApp and he'll tailor it.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-    oldUrl:
-      "/booking/11-day-adventure-is-perfect-a-perfect-combination-for-an-unforgettable-adventure-with-trust-tours-and-safaris-stay-at-5-star-or-4-star-hotels-and-lodges/",
-  },
 
   {
     slug: "5-day-safari-lengai",
@@ -2093,339 +1882,6 @@ export const packages: TripPackage[] = [
   },
 
   {
-    slug: "20-day-honeymoon-tanzania-zanzibar",
-    destinations: ["Arusha", "Tarangire", "Ngorongoro", "Serengeti", "Lake Natron", "Zanzibar"],
-    category: "safari",
-    tags: ["honeymoon"],
-    title: "20-Day Tanzania & Zanzibar Honeymoon Adventure",
-    shortName: "20-Day Honeymoon",
-    days: 20,
-    priceFromUSD: 8750,
-    priceNote:
-      "Per person, sharing. From $8,750 mid-range / $14,450 luxury. Includes Flying Doctors evacuation cover.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "/images/packages/20-day-honeymoon-tanzania-zanzibar.jpg",
-    gallery: [],
-    summary:
-      "The ultimate once-in-a-lifetime honeymoon: ten days across Tanzania's wilderness — Arusha NP, Tarangire, the Ngorongoro Crater, the Serengeti migration and the surreal Lake Natron — then ten days unwinding on Zanzibar's beaches with Stone Town, spice farms, Jozani Forest and Mnemba snorkelling. Romance, adventure and island bliss, with mid-range or luxury options throughout.",
-    highlights: [
-      "Ten days of safari plus ten days on the Zanzibar coast",
-      "Great Migration in the Serengeti and the Big Five in Ngorongoro",
-      "Lake Natron's flamingos, waterfalls and volcanic scenery",
-      "Stone Town, spice farm, Jozani Forest and Mnemba snorkelling",
-      "Flying Doctors evacuation cover and handpicked romantic stays",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Arusha",
-        description:
-          "Met at Kilimanjaro International Airport and transferred to a romantic lodge in Arusha to relax among lush gardens before the adventure begins.",
-        meals: "Dinner",
-        accommodation: "Mid-range or luxury hotel, Arusha",
-      },
-      {
-        day: 2,
-        title: "Arusha National Park — Walking Safari",
-        description:
-          "Ease in with a guided walking safari in Arusha National Park — giraffe, zebra and monkeys — an optional canoe on Momella Lake and a picnic lunch in the wild.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury hotel, Arusha",
-      },
-      {
-        day: 3,
-        title: "Tarangire National Park",
-        description:
-          "A full-day game drive in Tarangire among huge elephant herds and baobabs, with lions, leopards and migratory birds, ending with a candlelit dinner under the stars.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury lodge near Tarangire",
-      },
-      {
-        day: 4,
-        title: "Mto wa Mbu Cultural Tour & Karatu",
-        description:
-          "A guided cultural tour of the multicultural village of Mto wa Mbu — local cuisine, banana farms and artisans — then on to the highland town of Karatu.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury lodge, Karatu",
-      },
-      {
-        day: 5,
-        title: "Ngorongoro Crater",
-        description:
-          "A full-day game drive on the Ngorongoro Crater floor — high chances of the Big Five in a single day — with a picnic lunch beside a hippo pool.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury lodge, Karatu",
-      },
-      {
-        day: 6,
-        title: "Drive to the Central Serengeti",
-        description:
-          "Travel into the Serengeti with game viewing en route and an evening game drive before settling into a romantic safari tent.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury tented camp, Serengeti",
-      },
-      {
-        day: 7,
-        title: "Serengeti — Track the Migration",
-        description:
-          "A full day across the central (and possibly northern) Serengeti following the Great Migration — epic herds, predator action and sunsets — with romantic bush lunches and private dinners.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury tented camp, Serengeti",
-      },
-      {
-        day: 8,
-        title: "Serengeti — Full Day Safari",
-        description:
-          "Another full day chasing the migration and the Big Five across the plains, your guide positioning you for the best wildlife and light.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury tented camp, Serengeti",
-      },
-      {
-        day: 9,
-        title: "Serengeti to Lake Natron",
-        description:
-          "Journey to the remote, surreal landscapes of Lake Natron — flamingos and volcanic scenery — with a guided walk to nearby waterfalls.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury camp, Lake Natron",
-      },
-      {
-        day: 10,
-        title: "Lake Natron to Arusha",
-        description:
-          "A scenic drive back to Arusha to rest, review your safari photos and prepare for the island half of your honeymoon.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range or luxury hotel, Arusha",
-      },
-      {
-        day: 11,
-        title: "Fly to Zanzibar",
-        description:
-          "A short flight to Zanzibar and a transfer to your east-coast resort for ocean views and swaying palms. (Zanzibar nights and some meals per the package tier.)",
-        meals: "Breakfast, dinner",
-        accommodation: "Mid-range or luxury beach resort, Zanzibar",
-      },
-      {
-        day: 12,
-        title: "Stone Town & Sunset Dhow Cruise",
-        description:
-          "A private guided tour of historic Stone Town — markets, landmarks and ancient alleys — then a romantic sunset dhow cruise on the Indian Ocean.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 13,
-        title: "Spice Farm & Jozani Forest",
-        description:
-          "Visit a Zanzibar spice farm to taste the island's famous spices, then Jozani Forest to see the rare red colobus monkeys in their natural habitat.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 14,
-        title: "Beach Relaxation",
-        description:
-          "A day at leisure on white-sand beaches — swim, snorkel or paddleboard — with an optional beach massage and a private dinner on the sand.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 15,
-        title: "Mnemba Island Snorkelling",
-        description:
-          "A boat trip to the Mnemba Atoll for world-class snorkelling among coral reefs and tropical fish, with a seafood lunch aboard or on a secluded beach.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 16,
-        title: "Leisure by the Ocean",
-        description:
-          "A free day for honeymoon pampering or optional diving, kite surfing or a fishing-village visit — at the pace you like.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 17,
-        title: "Leisure by the Ocean",
-        description:
-          "More time to relax and enjoy the tranquillity and beauty of your resort and the Indian Ocean.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 18,
-        title: "Leisure by the Ocean",
-        description:
-          "A final full beach day — spa, water sports or simply soaking up paradise together.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 19,
-        title: "Farewell Dinner & Cultural Drumming",
-        description:
-          "On your final night, a romantic candlelit dinner followed by a live cultural drumming performance — a last toast in paradise.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 20,
-        title: "Departure",
-        description:
-          "After breakfast, a transfer to Zanzibar International Airport for your flight home, carrying memories of an unforgettable honeymoon.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All airport transfers in Tanzania and Zanzibar, plus the Arusha–Zanzibar flight",
-      "Private 4x4 Land Cruiser with pop-up roof and an English-speaking guide",
-      "All park entry and conservation fees",
-      "Accommodation as listed (mid-range or luxury) and meals as specified",
-      "All cultural tours, walking safari, dhow cruise and excursions mentioned",
-      "Flying Doctors emergency medical evacuation cover",
-    ],
-    excluded: [
-      "International flights and Tanzania visa ($50pp)",
-      "Travel and health insurance",
-      "Optional balloon safari in the Serengeti ($590pp)",
-      "Alcoholic drinks, gratuities and personal expenses",
-    ],
-    faqs: [
-      {
-        question: "Is 20 days too long?",
-        answer:
-          "It's designed as a complete honeymoon — ten days of safari and ten days of beach, with rest days built in so it never feels rushed. We can shorten either half if you prefer; just ask Ombeni.",
-      },
-      {
-        question: "What's the difference between mid-range and luxury?",
-        answer:
-          "The route and private guiding are the same; the difference is the lodges, camps and resorts. Mid-range is from $8,750pp and luxury from $14,450pp at premium properties.",
-      },
-      {
-        question: "Are honeymoon extras included?",
-        answer:
-          "Romantic touches like candlelit dinners and a farewell drumming night are built in; spa treatments and some beach extras are arranged on request. Tell us it's your honeymoon and we'll make it special.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-    oldUrl: "/booking/20-day-tanzania-zanzibar-honeymoon-safari-adventure/",
-  },
-
-  {
-    slug: "7-day-zanzibar-honeymoon",
-    destinations: ["Zanzibar"],
-    category: "zanzibar",
-    tags: ["honeymoon"],
-    title: "7-Day Zanzibar Honeymoon – Beaches, Spice & Romance",
-    shortName: "7-Day Zanzibar Honeymoon",
-    days: 7,
-    priceFromUSD: 0,
-    priceNote: "Mid-range Zanzibar honeymoon — per-person pricing on request.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "/images/packages/7-day-zanzibar-honeymoon.jpg",
-    gallery: [],
-    summary:
-      "A romantic week on the Spice Island, blending relaxation, adventure and culture: white-sand beaches and turquoise water, historic Stone Town, a spice tour, the Nakupenda sandbank, Jozani Forest, Mnemba snorkelling and couples' spa days. Carefully paced for newlyweds, with optional sunset dhow cruises and beach dinners.",
-    highlights: [
-      "Stone Town tour and a Zanzibar spice farm",
-      "Nakupenda sandbank with a seafood BBQ",
-      "Jozani Forest red colobus monkeys and lunch at The Rock",
-      "Mnemba Island snorkelling with dolphins",
-      "Couples' spa day and romantic beachside dinners",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Zanzibar",
-        description:
-          "Met at Abeid Amani Karume International Airport and transferred to your mid-range beachfront hotel. Relax on the beach and enjoy a welcome dinner.",
-        meals: "Dinner",
-        accommodation: "Beachfront hotel, Zanzibar",
-      },
-      {
-        day: 2,
-        title: "Stone Town & Spice Tour",
-        description:
-          "A guided tour of historic Stone Town — architecture, markets and culture — then a spice farm to taste and learn about Zanzibar's famous spices, with dinner at a local restaurant.",
-        meals: "Breakfast, dinner",
-        accommodation: "Hotel, Stone Town",
-      },
-      {
-        day: 3,
-        title: "Nakupenda Beach Excursion",
-        description:
-          "A full-day trip to the Nakupenda sandbank near Stone Town for snorkelling, swimming and a seafood BBQ lunch, then back to relax at your hotel.",
-        meals: "Breakfast, lunch",
-        accommodation: "Hotel, Stone Town",
-      },
-      {
-        day: 4,
-        title: "Jozani Forest & The Rock",
-        description:
-          "Visit Jozani Forest to see the rare red colobus monkeys and mangrove boardwalks, then a memorable lunch at The Rock Restaurant, perched on a rock in the ocean. Transfer to a beachfront resort.",
-        meals: "Breakfast, lunch",
-        accommodation: "Beachfront resort, Zanzibar",
-      },
-      {
-        day: 5,
-        title: "Mnemba Island & Water Activities",
-        description:
-          "An excursion to Mnemba Island for snorkelling in crystal-clear water with a chance of dolphins, then beach time or water sports like kayaking and paddleboarding, and a fresh seafood dinner.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beachfront resort, Zanzibar",
-      },
-      {
-        day: 6,
-        title: "Relaxation Day",
-        description:
-          "A relaxed day with an optional couples' spa treatment, a stroll to nearby markets, or simply unwinding by the beach, ending with a romantic beachside dinner.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beachfront resort, Zanzibar",
-      },
-      {
-        day: 7,
-        title: "Departure",
-        description:
-          "A leisurely breakfast and a final walk on the beach before your private transfer to the airport for departure.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Private airport and activity transfers",
-      "6 nights' mid-range beachfront and Stone Town accommodation",
-      "Daily breakfast plus meals as specified",
-      "Stone Town and spice tours, Nakupenda, Jozani and Mnemba excursions",
-      "Professional English-speaking local guides",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional add-ons (sunset dhow cruise, horse riding, village tour)",
-      "Tips, drinks and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "Is this a good standalone honeymoon?",
-        answer:
-          "Yes — it's a complete week of beach, culture and romance on Zanzibar. Many couples also pair it with a few safari days beforehand; we can add those and the flights as one trip.",
-      },
-      {
-        question: "Can you arrange romantic extras?",
-        answer:
-          "Of course — sunset dhow cruises, private beach dinners, couples' spa treatments and honeymoon room setups. Tell Ombeni it's your honeymoon when booking.",
-      },
-      {
-        question: "When is the best time to visit Zanzibar?",
-        answer:
-          "June–October and December–February are the driest, sunniest months. The long rains (April–May) are quieter and greener but wetter.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
-  {
     slug: "9-day-honeymoon-northern",
     destinations: ["Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
     category: "safari",
@@ -2724,283 +2180,9 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   // ZANZIBAR — standalone beach escapes (Wave 2, from Ombeni's PDFs).
   // ─────────────────────────────────────────────────────────────────
-  {
-    slug: "4-day-zanzibar-escape",
-    destinations: ["Zanzibar"],
-    category: "zanzibar",
-    tags: ["honeymoon"],
-    title: "4-Day Zanzibar Escape – Stone Town, Mnemba & Sea Turtles",
-    shortName: "4-Day Zanzibar",
-    days: 4,
-    priceFromUSD: 1708,
-    priceNote:
-      "Per person, sharing. From $1,708 mid-range / $2,204 luxury beachfront. Includes a one-way flight to Zanzibar.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "/images/packages/4-day-zanzibar-escape.jpg",
-    gallery: [],
-    summary:
-      "A short, romantic taste of the Spice Island: historic Stone Town and a sunset dhow cruise, an aromatic spice tour and the Nakupenda sandbank, the coral reefs and dolphins of Mnemba Island, and a morning with green sea turtles at Baraka. Four days designed for honeymooners and anyone wanting a quick island getaway or a post-safari unwind.",
-    highlights: [
-      "Guided Stone Town tour and a romantic sunset dhow cruise",
-      "Spice farm tour — see, smell and taste the Spice Island",
-      "Nakupenda sandbank with a fresh seafood lunch on the beach",
-      "Mnemba Island snorkelling, dolphins and a Blue Safari excursion",
-      "Swim with green sea turtles at the Baraka Natural Aquarium",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival & Stone Town",
-        description:
-          "Arrive in Zanzibar and transfer to your hotel in the heart of Stone Town. Explore the UNESCO-listed old town — the House of Wonders, the Sultan's Palace, the Old Fort and the bustling Darajani Market — then board a sunset dhow cruise along the coast with cocktails, before a traditional Swahili dinner at a local restaurant.",
-        meals: "Dinner",
-        accommodation: "Top-quality hotel, Stone Town",
-      },
-      {
-        day: 2,
-        title: "Spice Tour & Nakupenda Beach",
-        description:
-          "A morning spice farm tour to discover why Zanzibar is the 'Spice Island' — cinnamon, cloves and nutmeg straight from the plant. Then head to Nakupenda, a stunning sandbank, for swimming, snorkelling over the reefs and a fresh seafood lunch on the sand. Return for an evening at leisure or an optional spa treatment.",
-        meals: "Breakfast, lunch",
-        accommodation: "Beachfront resort",
-      },
-      {
-        day: 3,
-        title: "Mnemba Island & Blue Safari",
-        description:
-          "An early transfer to the north coast to boat out to Mnemba Island, ringed by pristine coral reefs, to snorkel among vibrant fish and look for dolphins. In the afternoon, a Blue Safari among remote sandbanks with a beach barbecue and shallow waters full of starfish. Return for a private dinner, with the option to dine under the stars on the beach.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Beachfront resort",
-      },
-      {
-        day: 4,
-        title: "Sea Turtles & Departure",
-        description:
-          "Visit the Baraka Natural Aquarium to feed and swim alongside endangered green sea turtles in a natural lagoon. Time to relax or take a final stroll through Stone Town's galleries and shops, then your airport transfer for departure.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "One-way flight to Zanzibar plus private airport and activity transfers",
-      "3 nights in mid-range or luxury beachfront accommodation",
-      "Daily breakfast plus 2 lunches and 3 dinners (welcome and farewell dinners included)",
-      "Stone Town and spice tour, Nakupenda sandbank, Mnemba snorkelling and Blue Safari",
-      "Baraka sea-turtle visit and a sunset dhow cruise",
-      "Professional, English-speaking local guides",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional activities not mentioned in the itinerary",
-      "Tips, souvenirs and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "Is the 4-Day Zanzibar good for a honeymoon?",
-        answer:
-          "Yes — it's built as a honeymoon and getaway trip, with a luxury beachfront option, a sunset dhow cruise and private ocean-side dinners. Tell Ombeni it's a special occasion and he'll arrange the extra touches.",
-      },
-      {
-        question: "How is this different from the 5-Day Zanzibar?",
-        answer:
-          "The 4-day is the shorter version (3 nights) and a great quick escape or post-safari unwind. The 5-day adds an extra night and more relaxed beach time. Both cover Stone Town, the spice tour, Mnemba and the sea turtles.",
-      },
-      {
-        question: "Can I add this to a safari or Kilimanjaro climb?",
-        answer:
-          "Absolutely. Many travellers finish a climb or safari with a few days on the beach — we arrange the connecting flights and book it all as one trip.",
-      },
-      {
-        question: "When is the best time to visit Zanzibar?",
-        answer:
-          "June to October and December to February are the driest, sunniest months. The long rains (April–May) are quieter and greener but wetter.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
-  {
-    slug: "5-day-zanzibar-escape",
-    destinations: ["Zanzibar"],
-    category: "zanzibar",
-    tags: ["honeymoon"],
-    title: "5-Day Zanzibar Beach & Culture Escape",
-    shortName: "5-Day Zanzibar",
-    days: 5,
-    priceFromUSD: 1708,
-    priceNote:
-      "Per person, sharing. From $1,708 mid-range / $2,804 luxury beachfront.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "/images/packages/5-day-zanzibar-escape.jpg",
-    gallery: [],
-    summary:
-      "Five days of the best of the Spice Island: historic Stone Town, an aromatic spice tour, the coral reefs of Mnemba Island and the white sandbank of Nakupenda. A relaxed blend of culture, ocean adventure and beach time — ideal as a standalone trip or a post-safari unwind.",
-    highlights: [
-      "Guided Stone Town tour and sunset dhow cruise",
-      "Spice farm tour — see, smell and taste the Spice Island",
-      "Mnemba Island snorkelling and a Blue Safari sandbank trip",
-      "Seafood lunch on Nakupenda Beach",
-      "Mid-range or luxury beachfront accommodation",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival & Stone Town",
-        description:
-          "Arrive in Zanzibar and transfer to your Stone Town hotel. Explore the UNESCO-listed old town — House of Wonders, Sultan's Palace, Old Fort and Darajani Market — then a sunset dhow cruise and a traditional Swahili dinner.",
-        meals: "Dinner",
-        accommodation: "Top-quality hotel, Stone Town",
-      },
-      {
-        day: 2,
-        title: "Spice Tour & Nakupenda Beach",
-        description:
-          "A morning spice farm tour to discover why Zanzibar is the 'Spice Island', then to Nakupenda — a stunning sandbank — for swimming, snorkelling and a fresh seafood lunch on the beach.",
-        meals: "Breakfast, lunch",
-        accommodation: "Beachfront resort",
-      },
-      {
-        day: 3,
-        title: "Mnemba Island & Blue Safari",
-        description:
-          "Boat out to Mnemba Island to snorkel pristine coral reefs and look for dolphins, then a Blue Safari among remote sandbanks with a beach barbecue. Return for a private dinner by the ocean.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Beachfront resort",
-      },
-      {
-        day: 4,
-        title: "Sea Turtles & Leisure",
-        description:
-          "Visit the Baraka Natural Aquarium to meet and swim alongside endangered green sea turtles in a natural lagoon, then time at leisure — beach, Stone Town galleries or last-minute shopping.",
-        meals: "Breakfast",
-        accommodation: "Beachfront resort",
-      },
-      {
-        day: 5,
-        title: "Departure",
-        description:
-          "A final morning at leisure on the beach before your airport transfer. If time allows, an optional short cultural village tour can be arranged before you depart.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Airport transfers and private activity transfers",
-      "4 nights in mid-range or luxury beachfront accommodation",
-      "Daily breakfast plus selected lunches and dinners",
-      "Stone Town and spice tour, Nakupenda sandbank, Mnemba snorkelling",
-      "Professional, English-speaking local guides",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional activities not mentioned in the itinerary",
-      "Tips, souvenirs and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "Is the 5-Day Zanzibar good as a honeymoon?",
-        answer:
-          "Yes — it's a popular honeymoon and getaway choice, with a luxury beachfront option, sunset dhow cruise and private ocean-side dinners. Tell Ombeni it's a special occasion and he'll arrange the details.",
-      },
-      {
-        question: "Can I add Zanzibar to a safari or Kilimanjaro climb?",
-        answer:
-          "Absolutely. Many travellers finish a climb or safari with a few days on the beach. We arrange the connecting flights and book it all as one trip.",
-      },
-      {
-        question: "When is the best time to visit Zanzibar?",
-        answer:
-          "June to October and December to February are the driest, sunniest months. The long rains (April–May) are quieter and greener but wetter.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
   // ─────────────────────────────────────────────────────────────────
   // SAFARIS — short & mid-length northern circuit (Wave 2, from PDFs).
   // ─────────────────────────────────────────────────────────────────
-  {
-    slug: "2-day-tarangire-ngorongoro",
-    reviewSnippets: [
-      { author: "Andreas Galanakis", text: "We went to Tarangire National Park with Trust Tours. Our guide Ombeni did a great job arranging our day trip — a unique experience. I strongly recommend them for your next trip in Tanzania.", source: "Google" },
-      { author: "victor Fainzilber", text: "Trust Tours were very professional throughout — the payment, the timings, and the professionalism of the driver and guide. We were very pleased and would definitely recommend Mr Ombeni and his company.", source: "Google" },
-    ],
-    destinations: ["Tarangire", "Ngorongoro"],
-    category: "safari",
-    title: "2-Day Tanzania Safari – Tarangire & Ngorongoro Crater",
-    shortName: "2-Day Safari",
-    days: 2,
-    priceFromUSD: 576,
-    priceNote:
-      "Per person, sharing, mid-range lodge, group of 2+. Final price depends on group size and season.",
-    tier: ["mid-range"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "The quickest way to see two of northern Tanzania's finest parks: a full game-drive day among the baobabs and elephant herds of Tarangire, then a dawn descent onto the floor of the Ngorongoro Crater for the Big Five. A compact round-trip from Arusha — ideal if you're short on time or adding a safari to a beach stay or climb.",
-    highlights: [
-      "Two headline parks in a tight 2-day loop from Arusha",
-      "Tarangire's giant baobabs and some of Africa's largest elephant herds",
-      "Full game drive on the floor of the Ngorongoro Crater",
-      "Picnic lunch beside the crater's hippo pool",
-      "Maasai village visit and a private 4x4 with pop-up roof",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arusha to Tarangire National Park",
-        description:
-          "Morning pickup from your Arusha hotel around 8:30 and a drive to Tarangire with a picnic lunch for a full day of game viewing. Famous for its majestic baobabs and large elephant herds along the Tarangire River, the park also holds lion, leopard, cheetah, lesser kudu, buffalo, eland, giraffe and zebra. Dinner and overnight at your lodge or camp.",
-        meals: "Lunch, dinner",
-        accommodation: "Mid-range lodge or tented camp near Tarangire",
-      },
-      {
-        day: 2,
-        title: "Ngorongoro Crater, return to Arusha",
-        description:
-          "An early breakfast and a dawn descent (around 6:30) onto the crater floor — the world's largest intact volcanic caldera — for a roughly five-hour game drive among elephant, buffalo, black rhino, hippo, hyena, cheetah and lion. Picnic lunch at the hippo pool, then the climb out and the scenic drive back to Arusha, arriving by early evening.",
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All transfers and transport in a 4x4 safari vehicle with pop-up roof",
-      "One night's full-board mid-range lodge or tented-camp accommodation",
-      "All national park entry and Ngorongoro Crater fees, plus government taxes and VAT",
-      "Professional, English-speaking driver/guide",
-      "Game drives, Maasai village visit and crater tour services",
-      "Unlimited drinking water, medical kit, binoculars and helicopter rescue coordination",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Alcoholic and bottled drinks, laundry and SIM cards",
-      "Tips for your guide and lodge staff",
-      "Items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "Is two days enough for a safari?",
-        answer:
-          "It's the quickest way to experience two of the north's best parks, so it's perfect if you're short on time or pairing a safari with a beach stay or climb. If you'd like Serengeti time and the migration, step up to the 3-day or 5-day safari.",
-      },
-      {
-        question: "What animals will I see?",
-        answer:
-          "In Tarangire: big elephant herds, baobabs, lion, leopard, cheetah, giraffe and zebra. In the Ngorongoro Crater: black rhino, lion, elephant, buffalo, hippo, hyena and cheetah — one of the densest concentrations of wildlife in Africa.",
-      },
-      {
-        question: "Can I extend or upgrade this safari?",
-        answer:
-          "Yes — add a day in Lake Manyara or the Serengeti, or upgrade to luxury lodges. Tell Ombeni your dates and budget on WhatsApp and he'll tailor it.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-    oldUrl: "/booking/2-days-tarangire-and-ngorongoro-crater/",
-  },
-
   {
     slug: "3-day-safari-tarangire-manyara-ngorongoro",
     destinations: ["Tarangire", "Lake Manyara", "Ngorongoro"],
@@ -3687,305 +2869,9 @@ export const packages: TripPackage[] = [
     bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Jan", "Feb"],
   },
 
-  {
-    slug: "8-day-zanzibar-tour",
-    destinations: ["Zanzibar"],
-    category: "zanzibar",
-    title: "8-Day Zanzibar Tour – Stone Town, Villages & Beaches",
-    shortName: "8-Day Zanzibar",
-    days: 8,
-    priceFromUSD: 2500,
-    priceNote:
-      "Per person, sharing. From $2,500 midrange / $4,500 luxury, full board.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "Eight days to see the whole of the Spice Island: historic Stone Town, Jozani Forest's red colobus monkeys, a Swahili cooking class, the Safari Blue sailing excursion, and days on the white sands of Nungwi, Paje and Kendwa. A full-board blend of culture, village life and beach time.",
-    highlights: [
-      "Stone Town, Jozani Forest and a spice farm with a cooking class",
-      "Safari Blue full-day sailing, snorkelling and sandbank BBQ",
-      "Village tours — Makunduchi, Nungwi, Jambiani seaweed farms",
-      "Beach time at Nungwi, Paje and Kendwa with a sunset dhow cruise",
-      "Full-board, with all-inclusive for the final three nights",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival & Stone Town",
-        description:
-          "Arrive at Zanzibar International Airport and transfer to your Stone Town hotel. An evening walking tour of the historic centre — the Old Fort, Forodhani Gardens and the House of Wonders.",
-        meals: "Lunch, dinner",
-        accommodation: "Midrange or luxury hotel, Stone Town",
-      },
-      {
-        day: 2,
-        title: "Jozani Forest & Swahili Cooking Class",
-        description:
-          "A morning in Jozani Forest among the rare red colobus monkeys and mangrove boardwalks, then a spice farm tour in the afternoon and a hands-on Swahili cooking class to prepare local dishes.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Midrange or luxury hotel, Stone Town",
-      },
-      {
-        day: 3,
-        title: "Safari Blue & Makunduchi Village",
-        description:
-          "The full-day Safari Blue excursion along the southern coast — snorkelling over coral reefs and a seafood BBQ on a sandbank — followed by a visit to the traditional village of Makunduchi.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Midrange or luxury hotel, Stone Town",
-      },
-      {
-        day: 4,
-        title: "Transfer to Nungwi Beach",
-        description:
-          "Transfer north to Nungwi, renowned for white sand and turquoise water. An afternoon village tour explores Nungwi's dhow-building and fishing heritage.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Midrange or luxury beach resort, Nungwi",
-      },
-      {
-        day: 5,
-        title: "Nungwi Beach & Jambiani Village",
-        description:
-          "A relaxed morning at Nungwi — snorkelling, kayaking or lounging — then a visit to Jambiani on the southeast coast to meet the women who run its seaweed farms and learn about village life.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Midrange or luxury beach resort, Nungwi",
-      },
-      {
-        day: 6,
-        title: "Paje Beach & Kendwa Sunset Cruise",
-        description:
-          "Time at Paje, one of Zanzibar's best kite-surfing beaches, then a sunset dhow cruise off Kendwa with drinks on board as the sun sets over the northern coast.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Midrange or luxury beach resort, Nungwi area",
-      },
-      {
-        day: 7,
-        title: "Kendwa Beach",
-        description:
-          "A final full beach day at Kendwa — paddleboarding, diving or simply relaxing — capped with a special beach BBQ dinner under the stars.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Midrange or luxury beach resort, Nungwi area",
-      },
-      {
-        day: 8,
-        title: "Departure",
-        description:
-          "A last walk or swim on the beach before your transfer to Zanzibar International Airport for departure.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Seven nights in midrange or luxury hotels and beach resorts",
-      "Full board, with all-inclusive for the final three nights",
-      "Safari Blue, Jozani Forest, spice tour and Swahili cooking class",
-      "Village tours in Makunduchi, Nungwi and Jambiani; sunset dhow cruise",
-      "Private airport transfers and transport between all activities",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional activities not mentioned in the itinerary",
-      "Tips, souvenirs and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "Is the 8-day Zanzibar tour more than just beaches?",
-        answer:
-          "Yes — it balances beach time with culture and nature: Stone Town's history, Jozani Forest's red colobus monkeys, a Swahili cooking class, the Safari Blue sailing trip and three village visits.",
-      },
-      {
-        question: "What's the difference between midrange and luxury?",
-        answer:
-          "The itinerary is the same; the difference is the hotels and level of service. Midrange is from $2,500pp; luxury (Park Hyatt, Zuri, Essque Zalu and similar) is from $4,500pp with private tours and spa treatments.",
-      },
-      {
-        question: "Can I combine Zanzibar with a safari?",
-        answer:
-          "Yes. Many travellers pair the island with a northern-circuit safari or a Kilimanjaro climb. Ombeni arranges the connecting flights and books it as a single trip.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
-  {
-    slug: "3-day-mount-meru-momela",
-    category: "trekking",
-    destinations: ["Mount Meru", "Arusha"],
-    title: "3-Day Mount Meru Climb – Momela Route",
-    shortName: "3-Day Mount Meru",
-    days: 3,
-    priceFromUSD: 645,
-    priceNote:
-      "From $645 pp for groups of 4–8; $895 pp for 1–3. All-inclusive, sharing. Includes the armed park ranger required in Arusha National Park.",
-    tier: ["budget", "mid-range"],
-    heroImage: "/images/meru-montane-forest.jpg",
-    gallery: [
-      "/images/gallery/meru/meru-summit-sign.jpg",
-      "/images/gallery/meru/meru-pxl-20250817-135926369.jpg",
-      "/images/gallery/meru/meru-pxl-20250817-091809553.jpg",
-      "/images/gallery/meru/meru-pxl-20250818-105052548.jpg",
-      "/images/gallery/meru/meru-pxl-20250818-134023267.jpg",
-      "/images/gallery/meru/meru-pxl-20250819-032743057.jpg",
-    ],
-    summary:
-      "Mount Meru (4,566 m) is Tanzania's second-highest peak and the perfect Kilimanjaro warm-up — a hut-to-hut trek through Arusha National Park where you walk past buffalo and giraffe with an armed ranger, climb a dramatic crater-rim ridgeline, and summit Socialist Peak at sunrise with Kilimanjaro floating on the horizon.",
-    highlights: [
-      "Ideal high-altitude acclimatization before Kilimanjaro",
-      "Wildlife on the lower slopes — buffalo, giraffe, colobus monkeys",
-      "Dramatic ridge walk between the crater's outer wall and inner cliffs",
-      "Sunrise on Socialist Peak (4,566 m) facing Kilimanjaro",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Momela Gate to Miriakamba Hut",
-        description:
-          "From Momela Gate the trail crosses open grassland with cape buffalo and warthogs — with luck, giraffe and elephant too — then climbs steadily through montane forest (lunch at the famous Fig Tree). The forest thins to birdlife and black-and-white colobus monkeys, and by mid-afternoon you reach Miriakamba Hut in a grassy glade with views across the plains toward Kilimanjaro.",
-        altitudeStart: 1500,
-        altitudeEnd: 2514,
-        hours: "3–5 hours",
-        meals: "Lunch, dinner",
-        accommodation: "Miriakamba Hut",
-      },
-      {
-        day: 2,
-        title: "Miriakamba Hut to Saddle Hut + Little Meru",
-        description:
-          "A steep, sustained climb through lush montane forest, over the Elephant Back Ridge and up through giant heather and moorland to Saddle Hut, reached in time for lunch. In the afternoon, an optional 1-hour climb to the nearby summit of Little Meru (3,820 m) rewards you with superb views before an early night ahead of the summit push.",
-        altitudeStart: 2514,
-        altitudeEnd: 3570,
-        hours: "3–5 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Saddle Hut",
-      },
-      {
-        day: 3,
-        title: "Summit Socialist Peak, descend to Momela Gate",
-        description:
-          "An early start (~midnight) with a steep hour to Rhino Point (3,800 m), then along a ridge of ash and rock to Cobra Point (4,350 m) and on to Socialist Peak (4,566 m) for sunrise — the crater cliffs, the Ash Cone, and Kilimanjaro above the clouds. Retrace the dramatic ridge to Saddle Hut for brunch, then descend through forest and grassland (more wildlife) to Miriakamba and on to Momela Gate by afternoon.",
-        altitudeStart: 3570,
-        altitudeEnd: 4566,
-        hours: "10+ hours",
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All Arusha National Park fees (non-resident) and rescue fee",
-      "Armed park ranger (required in Arusha NP) and professional driver/guide",
-      "Porterage and all hut accommodation on the mountain",
-      "All meals as specified in the day-by-day itinerary",
-      "Camping/trekking equipment (sleeping bag excluded)",
-      "All transportation, activities and taxes/VAT",
-    ],
-    excluded: [
-      "International flights and roundtrip airport transfer",
-      "Personal climbing gear, sleeping bag and bath towels",
-      "Accommodation before and after the trek",
-      "Tips (guideline ~$30 per person per day)",
-    ],
-    faqs: [
-      {
-        question: "Is 3 days enough to climb Mount Meru?",
-        answer:
-          "Yes — the Momela route is regularly done in 3 days, though it is not an easy summit. Expect a long summit day (10+ hours) with some scrambling on rock in the dark at altitude. A 4-day version adds an extra acclimatization day if you'd prefer a gentler pace — just ask.",
-      },
-      {
-        question: "Why is an armed ranger required?",
-        answer:
-          "Mount Meru sits inside Arusha National Park, which is home to buffalo, elephant and giraffe on the lower slopes. Park rules require every group to be accompanied by an armed ranger employed by the park, in addition to your own Trust Tours mountain guide.",
-      },
-      {
-        question: "Is Mount Meru good preparation for Kilimanjaro?",
-        answer:
-          "It's the best warm-up there is. The altitude profile and hiking distances acclimatize you well, and climbing Meru a few days before Kilimanjaro measurably improves your summit chances — many of our climbers do both back-to-back.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-    oldUrl: "/booking/3-days-mount-meru-climb-2/",
-  },
-
   // ─────────────────────────────────────────────────────────────────
   // OL DOINYO LENGAI — "Mountain of God" active volcano treks (Wave 4).
   // ─────────────────────────────────────────────────────────────────
-  {
-    slug: "2-day-ol-doinyo-lengai-climb",
-    heroImage: "/images/ol-doinyo-lengai-2day.jpg",
-    destinations: ["Arusha", "Lake Natron", "Ol Doinyo Lengai"],
-    category: "trekking",
-    difficulty: "Challenging",
-    title: "2-Day Ol Doinyo Lengai Climb – Mountain of God",
-    shortName: "2-Day Lengai Climb",
-    days: 2,
-    priceFromUSD: 450,
-    priceNote:
-      "Per person. From $450 budget / $750–1,050 mid-range / $1,200–1,800 luxury. Plus local climbing fee (~$70–100pp) and TAWA fee (~$20pp).",
-    tier: ["budget", "mid-range", "comfort"],
-    gallery: [],
-    summary:
-      "A short, intense adventure to the summit of Ol Doinyo Lengai (2,962 m), the only active carbonatite volcano on Earth and sacred to the Maasai as the 'Mountain of God'. Drive into the Great Rift Valley to Lake Natron, then climb beneath the stars from midnight to reach the crater rim at sunrise — panoramas across Lake Natron, the Rift Valley, Mount Meru and even Kilimanjaro on clear mornings.",
-    highlights: [
-      "Summit the world's only active carbonatite volcano",
-      "Midnight ascent beneath the stars to a sunrise summit",
-      "Views over Lake Natron, the Great Rift Valley and Mount Meru",
-      "Maasai mountain guides who know the volcano intimately",
-      "Dramatic Rift Valley drive past volcanic landscapes",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arusha to Lake Natron — Summit Preparation",
-        description:
-          "Depart Arusha early and travel 5–6 hours north through the Great Rift Valley, past Maasai villages and volcanic scenery, to Lake Natron with Ol Doinyo Lengai rising from the valley floor. Lunch at the lodge, an afternoon to relax, explore the lakeshore or visit a Maasai community, then an early dinner and a few hours' rest before waking around 11 PM for the climb.",
-        meals: "Lunch, dinner",
-        accommodation: "Lodge or camp, Lake Natron",
-      },
-      {
-        day: 2,
-        title: "Summit Ol Doinyo Lengai, Return to Arusha",
-        description:
-          "Around midnight, begin the steep 4–7 hour ascent with experienced Maasai guides, reaching the summit at dawn for one of East Africa's most spectacular sunrises over Lake Natron, the Rift Valley escarpment, Mount Meru and the active volcanic craters. Descend to the base, transfer to the lodge for a shower and brunch, then drive back to Arusha, arriving in the late afternoon.",
-        altitudeStart: 1000,
-        altitudeEnd: 2962,
-        hours: "4–7 hours up",
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Private transport and a professional driver-guide",
-      "Local Maasai mountain guide and climbing support",
-      "One night's accommodation (budget, mid-range or luxury)",
-      "Meals as per the itinerary and drinking water",
-      "Government taxes",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Local village climbing fee (~$70–100pp) and TAWA fee (~$20pp)",
-      "Travel insurance (trekking cover advised)",
-      "Tips for guides and staff, plus personal expenses",
-    ],
-    faqs: [
-      {
-        question: "How difficult is the climb?",
-        answer:
-          "Challenging — a steep ascent of roughly 1,600 m over a short distance to 2,962 m, taking 4–7 hours up, started around midnight without much sleep. No technical skills are needed, but good fitness and a no-quit mindset help. Guides set a manageable pace.",
-      },
-      {
-        question: "Why does the climb start at midnight?",
-        answer:
-          "To summit for sunrise and to avoid the extreme daytime heat of the Lake Natron basin, which can soar. You're usually back at the lodge by early afternoon.",
-      },
-      {
-        question: "Can I add a safari or the waterfalls?",
-        answer:
-          "Yes — the 3-day version adds the Ngare Sero waterfalls and a flamingo walk, and our 5-day combo pairs the climb with a Serengeti and Ngorongoro safari. Ask Ombeni on WhatsApp.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
   {
     slug: "3-day-ol-doinyo-lengai-hike",
     destinations: ["Arusha", "Lake Natron", "Ol Doinyo Lengai"],
@@ -4192,292 +3078,6 @@ export const packages: TripPackage[] = [
   // ─────────────────────────────────────────────────────────────────
   // MOUNT MERU & KILIMANJARO DAY HIKE — more trekking options (Wave 5).
   // ─────────────────────────────────────────────────────────────────
-  {
-    slug: "4-day-mount-meru",
-    reviewSnippets: [
-      { author: "Irina D", text: "A wonderful, well-organized 4-day Mt Meru trip from start to finish — an encouraging guide, a phenomenal cook, and porters carrying the gear, with real care to keep me safe and minimize altitude sickness.", source: "Google" },
-      { author: "Evaline Mshina", text: "The guides Jonas and Samuel did an excellent job leading our way up Mt Meru and to the Kilimanjaro summit. They meet the client needs and give the extra confidence you need.", source: "Google" },
-    ],
-    destinations: ["Mount Meru", "Arusha"],
-    category: "trekking",
-    difficulty: "Challenging",
-    title: "4-Day Mount Meru Climb – Momela Route",
-    shortName: "4-Day Mount Meru",
-    days: 4,
-    priceFromUSD: 725,
-    priceNote:
-      "From $725 per person, all-inclusive. Includes the armed park ranger required in Arusha National Park.",
-    tier: ["budget", "mid-range"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "A four-day climb of Mount Meru (4,566 m), Tanzania's second-highest peak and the ideal Kilimanjaro warm-up. The extra night over the three-day version means a more relaxed pace and better acclimatization — hut-to-hut through Arusha National Park with an armed ranger, past buffalo and giraffe, up the dramatic crater-rim ridge to a sunrise on Socialist Peak facing Kilimanjaro.",
-    highlights: [
-      "Better acclimatization than the 3-day, with an extra night high on the mountain",
-      "Wildlife on the lower slopes — buffalo, giraffe, colobus monkeys",
-      "Dramatic ridge walk along the crater rim",
-      "Sunrise on Socialist Peak (4,566 m) facing Kilimanjaro",
-      "Ideal high-altitude prep before a Kilimanjaro climb",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Momela Gate to Miriakamba Hut",
-        description:
-          "Drive to Arusha National Park and register at Momela Gate, then hike about 10 km with an armed ranger through open grassland — cape buffalo, giraffe and warthog — and montane forest (lunch near the Fig Tree Arch) to Miriakamba Hut, with views into the U-shaped Meru crater.",
-        altitudeStart: 1500,
-        altitudeEnd: 2514,
-        hours: "4–7 hours",
-        meals: "Lunch, dinner",
-        accommodation: "Miriakamba Hut",
-      },
-      {
-        day: 2,
-        title: "Miriakamba to Saddle Hut + Little Meru",
-        description:
-          "A steeper climb through montane forest over Elephant Ridge to Saddle Hut, reached by lunch. In the afternoon, an optional 1–2 hour walk up Little Meru (3,820 m) for superb views and acclimatization before an early night.",
-        altitudeStart: 2514,
-        altitudeEnd: 3570,
-        hours: "3–5 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Saddle Hut",
-      },
-      {
-        day: 3,
-        title: "Summit Socialist Peak, return to Saddle Hut",
-        description:
-          "A pre-dawn start (~1:30 am) up to Rhino Point and along the ash-and-rock crater rim — some scrambling — to Socialist Peak (4,566 m) for sunrise, with the crater cliffs, ash cone and Kilimanjaro above the clouds. Descend to Saddle Hut for brunch and a restful afternoon.",
-        altitudeStart: 3570,
-        altitudeEnd: 4566,
-        hours: "8–10 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Saddle Hut",
-      },
-      {
-        day: 4,
-        title: "Saddle Hut to Momela Gate, return to Arusha",
-        description:
-          "Descend through forest and grassland — more wildlife along the way — to Miriakamba and on to Momela Gate, where you receive your summit certificate. Transfer back to your Arusha hotel.",
-        altitudeStart: 3570,
-        altitudeEnd: 1500,
-        hours: "4–6 hours",
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All Arusha National Park fees (non-resident) and rescue fee",
-      "Armed park ranger (required) and a professional mountain guide",
-      "Porterage and hut accommodation on the mountain",
-      "All meals on the trek and 2 litres of drinking water per day",
-      "Trekking equipment (sleeping bag excluded) and all transfers",
-      "Flying Doctors evacuation cover and government taxes",
-    ],
-    excluded: [
-      "International flights and roundtrip airport transfer",
-      "Personal climbing gear, sleeping bag and bath towels",
-      "Accommodation before and after the trek",
-      "Tips for guide and crew (guideline ~$30 per day)",
-    ],
-    faqs: [
-      {
-        question: "How is the 4-day different from the 3-day Mount Meru?",
-        answer:
-          "The 4-day adds a night so you summit on day 3 and descend on day 4, rather than summiting and descending on the same final day. The gentler pace aids acclimatization — a great choice before Kilimanjaro.",
-      },
-      {
-        question: "Why is an armed ranger required?",
-        answer:
-          "Mount Meru is inside Arusha National Park, home to buffalo, elephant and giraffe on the lower slopes. Park rules require an armed ranger with every group, alongside your Trust Tours mountain guide.",
-      },
-      {
-        question: "Is Mount Meru good preparation for Kilimanjaro?",
-        answer:
-          "It's the best warm-up there is — the altitude profile and distances acclimatize you well, and climbing Meru a few days before Kilimanjaro measurably improves your summit chances.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
-  {
-    slug: "5-day-mount-meru",
-    destinations: ["Mount Meru", "Arusha"],
-    category: "trekking",
-    difficulty: "Challenging",
-    title: "5-Day Mount Meru Climb – Comfort, with Rivertrees Lodge",
-    shortName: "5-Day Mount Meru",
-    days: 5,
-    priceFromUSD: 0,
-    priceNote:
-      "Comfort climb with Rivertrees Country Inn lodge nights — per-person pricing on request.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "The most relaxed way to climb Mount Meru (4,566 m): bookended by nights at the historic Rivertrees Country Inn in the foothills, with a gentle hut-to-hut ascent of the Momela Route through Arusha National Park. Wildlife on the lower slopes, the dramatic crater-rim ridge and a sunrise summit facing Kilimanjaro — at a comfortable pace, ideal as a Kilimanjaro warm-up.",
-    highlights: [
-      "Lodge nights at the historic Rivertrees Country Inn before and after",
-      "Relaxed, well-acclimatized pace over five days",
-      "Wildlife with an armed ranger on the lower slopes",
-      "Optional Little Meru (3,820 m) acclimatization hike",
-      "Sunrise on Socialist Peak (4,566 m) facing Kilimanjaro",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival — Rivertrees Country Inn",
-        description:
-          "Met at Kilimanjaro International Airport and transferred (~45 min) to Rivertrees Country Inn, a former coffee farm in the foothills of Mount Meru with gardens, a stream and a pool. Relax and prepare for the climb.",
-        meals: "Dinner",
-        accommodation: "Rivertrees Country Inn, Arusha",
-      },
-      {
-        day: 2,
-        title: "Momela Gate to Miriakamba Hut",
-        description:
-          "Register at Momela Gate and hike with an armed ranger through open grassland and montane forest — buffalo, giraffe and warthog, past the Fig Tree Arch — to Miriakamba Hut, with views into the Meru crater.",
-        altitudeStart: 1500,
-        altitudeEnd: 2515,
-        hours: "4–7 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Miriakamba Hut",
-      },
-      {
-        day: 3,
-        title: "Miriakamba to Saddle Hut + Little Meru",
-        description:
-          "A shorter, steeper climb through glades and Elephant Ridge to Saddle Hut by lunch, with good views into the crater. An optional afternoon hike up Little Meru (3,820 m) aids acclimatization.",
-        altitudeStart: 2515,
-        altitudeEnd: 3570,
-        hours: "3–4 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Saddle Hut",
-      },
-      {
-        day: 4,
-        title: "Summit Socialist Peak, return to Saddle Hut",
-        description:
-          "An early start (~2 am) up through bushes to bare rock and ash, via Rhino Point along the crater rim to Socialist Peak (4,566 m) for sunrise — typically 5–6 hours up and 2–3 down. Hot lunch and overnight back at Saddle Hut.",
-        altitudeStart: 3570,
-        altitudeEnd: 4566,
-        hours: "7–9 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Saddle Hut",
-      },
-      {
-        day: 5,
-        title: "Descend to Momela Gate, return to Rivertrees",
-        description:
-          "Descend from Saddle Hut via Miriakamba (hot lunch) to Momela Gate to collect your summit certificate, then transfer back to Rivertrees Country Inn for a shower and a relaxing final evening.",
-        altitudeStart: 3570,
-        altitudeEnd: 1500,
-        hours: "4–6 hours",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Rivertrees Country Inn, Arusha",
-      },
-    ],
-    included: [
-      "All Arusha National Park fees (non-resident) and rescue fee",
-      "Armed park ranger and a professional mountain guide",
-      "Lodge nights at Rivertrees Country Inn before and after the climb",
-      "Porterage, hut accommodation and all meals on the mountain",
-      "Trekking equipment (sleeping bag excluded) and all transfers",
-      "Flying Doctors evacuation cover and government taxes",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Personal climbing gear and sleeping bag",
-      "Tips for guide and crew (guideline ~$30 per day)",
-      "Alcoholic drinks and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "Why choose the 5-day over the 4-day Meru?",
-        answer:
-          "The 5-day adds comfortable lodge nights at Rivertrees Country Inn before and after, plus a gentler overall pace — the most relaxed and best-acclimatized way to climb Meru, especially as Kilimanjaro prep.",
-      },
-      {
-        question: "How hard is the summit?",
-        answer:
-          "Challenging — a pre-dawn climb with some rock scrambling along the crater rim to 4,566 m, roughly 5–6 hours up. No technical skills are needed, but good fitness helps.",
-      },
-      {
-        question: "Can I combine it with Kilimanjaro or a safari?",
-        answer:
-          "Yes — many climbers do Meru a few days before Kilimanjaro, or add a northern-circuit safari. Ombeni arranges it as one trip.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-  },
-
-  {
-    slug: "kilimanjaro-day-trip-marangu",
-    destinations: ["Kilimanjaro"],
-    category: "trekking",
-    difficulty: "Moderate",
-    title: "Kilimanjaro Day Trip – Marangu Route Rainforest Hike",
-    shortName: "Kilimanjaro Day Trip",
-    days: 1,
-    priceFromUSD: 385,
-    priceNote: "Per person. A day hike to Mandara Hut and back — no overnight or summit.",
-    tier: ["budget"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "A taste of Kilimanjaro in a single day: hike the lower Marangu Route ('Coca-Cola Route') through the mountain's lush rainforest to Mandara Hut (2,700 m) and back. Perfect if you're short on time or want a Kilimanjaro experience without a multi-day climb — blue and colobus monkeys, exotic birds, and a glimpse of the snow-capped peak on a clear day.",
-    highlights: [
-      "Hike Kilimanjaro's UNESCO-listed rainforest in a day",
-      "Reach Mandara Hut (2,700 m), the first climbers' camp",
-      "Blue and colobus monkeys and Hartlaub's turaco",
-      "Optional short hike to the Maundi Crater for views",
-      "Certificate of participation — and inspiration to return for the summit",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Marangu Gate to Mandara Hut & back",
-        description:
-          "Early pick-up from your Moshi or Arusha hotel (~6 am) and a scenic drive to Marangu Gate (1,870 m). Register, meet your guide and hike up through dense rainforest to Mandara Hut (2,700 m) by late morning — monkeys, birds and forest views, with a packed lunch and an optional walk to the Maundi Crater. Descend to the gate for your certificate, then return to your hotel by late afternoon.",
-        altitudeStart: 1870,
-        altitudeEnd: 2700,
-        hours: "5–6 hours hiking",
-        meals: "Lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Hotel pick-up and drop-off in Moshi or Arusha",
-      "Kilimanjaro National Park entry fees and permits",
-      "Professional English-speaking guide",
-      "Packed lunch and bottled water",
-      "Certificate of participation",
-    ],
-    excluded: [
-      "Accommodation and meals outside the day trip",
-      "Tanzania visa and travel insurance",
-      "Tips for your guide",
-      "Personal hiking gear",
-    ],
-    faqs: [
-      {
-        question: "Do we summit Kilimanjaro on this trip?",
-        answer:
-          "No — this is a one-day rainforest hike to Mandara Hut and back, a taste of the mountain rather than a summit climb. For Uhuru Peak, see our 6–9 day Kilimanjaro routes.",
-      },
-      {
-        question: "How fit do I need to be?",
-        answer:
-          "It's a moderate day hike on a well-maintained trail with a gentle gradient, suitable for most fitness levels — great for families and casual hikers.",
-      },
-      {
-        question: "What should I bring?",
-        answer:
-          "Comfortable hiking shoes, layered clothing for changing temperatures, a small backpack, sunscreen, a hat, water and a camera.",
-      },
-    ],
-    bestMonths: ["Jan", "Feb", "Jun", "Jul", "Aug", "Sep", "Oct", "Dec"],
-  },
-
   // ─────────────────────────────────────────────────────────────────
   // CULTURAL TOURS — community & heritage journeys (Wave 6).
   // ─────────────────────────────────────────────────────────────────
@@ -4962,6 +3562,8 @@ export const byCategory = (c: TripPackage["category"]) =>
 export type SafariCategoryId =
   | "big-five"
   | "migration"
+  | "day-trips"
+  | "fly-in"
   | "honeymoon"
   | "cultural"
   | "paramotoring";
@@ -5000,6 +3602,10 @@ const MIGRATION_SAFARI_SLUGS = new Set<string>([
 // pure zanzibar beach trips without a honeymoon tag).
 export const safariCategoryOf = (p: TripPackage): SafariCategoryId | null => {
   if (p.tags?.includes("honeymoon")) return "honeymoon";
+  // Day trips include a Kilimanjaro hike and a volcano climb, which keep
+  // their /trekking pages but are listed with the other day trips.
+  if (p.tags?.includes("day-trip")) return "day-trips";
+  if (p.tags?.includes("fly-in")) return "fly-in";
   if (p.category === "cultural") return "cultural";
   if (p.category === "paramotoring") return "paramotoring";
   if (p.category === "safari") {
@@ -5015,15 +3621,45 @@ export const bySafariCategory = (id: SafariCategoryId) =>
 
 // Everything the /safaris sidebar filters on. Unlike the single bucket above, a
 // trip can carry several types: a Zanzibar add-on doesn't stop it being Big Five.
-export const safariFacets = (p: TripPackage): SafariFacets => {
+export const safariFacets = (p: TripPackage): TripFacets => {
   const bucket = safariCategoryOf(p);
   const types: SafariTypeId[] = bucket ? [bucket] : [];
   if (p.destinations.includes("Zanzibar")) types.push("zanzibar");
   if (p.tags?.includes("family")) types.push("family");
   if (p.tags?.includes("cross-migration")) types.push("cross-migration");
   if (p.tags?.includes("calving")) types.push("calving");
-  return { slug: p.slug, days: p.days, types };
+  if (p.tags?.includes("fly-in") && bucket !== "fly-in") types.push("fly-in");
+  return { slug: p.slug, values: { type: types, days: [travelTimeOf(p.days)] } };
 };
+
+// Zanzibar stop ids in `stayChoices` and the part of the island each covers.
+const ZANZIBAR_STOP_AREAS: Record<string, ZanzibarAreaId> = {
+  "stone-town": "stone-town",
+  "north-coast": "north-coast",
+  "east-coast": "east-coast",
+  zanzibar: "east-coast", // the 20-day honeymoon's single island stop
+};
+
+// Everything the /zanzibar sidebar filters on. Older combos without a stay
+// chooser carry no area, so they drop out once an area is ticked.
+export const zanzibarFacets = (p: TripPackage): TripFacets => {
+  const types: ZanzibarTypeId[] = [p.category === "zanzibar" ? "island" : "safari"];
+  if (p.tags?.includes("honeymoon")) types.push("honeymoon");
+  const areas = [
+    ...new Set(
+      (p.stayChoices ?? []).flatMap((s) => (ZANZIBAR_STOP_AREAS[s.id] ? [ZANZIBAR_STOP_AREAS[s.id]] : [])),
+    ),
+  ];
+  return { slug: p.slug, values: { type: types, stay: areas, days: [travelTimeOf(p.days)] } };
+};
+
+// Island holidays, then the safaris that finish on Zanzibar, shortest first.
+export const zanzibarIslandTrips = () =>
+  packages.filter((p) => p.category === "zanzibar").sort((a, b) => a.days - b.days);
+export const zanzibarSafariTrips = () =>
+  packages
+    .filter((p) => p.category !== "zanzibar" && p.destinations.includes("Zanzibar"))
+    .sort((a, b) => a.days - b.days);
 
 // Display metadata for each bucket — consumed by the nav dropdown and the
 // /safaris landing page so labels/order/copy stay in one place.
@@ -5051,6 +3687,22 @@ export const SAFARI_CATEGORIES: SafariCategoryMeta[] = [
     tagline: "River crossings · Calving season · Endless herds",
     blurb:
       "Timed to the Great Migration and the Ndutu calving season — follow the wildebeest and zebra across the Serengeti plains and into the Maasai Mara.",
+  },
+  {
+    id: "day-trips",
+    label: "Day Trips",
+    href: "/safaris?type=day-trips#safari-results",
+    tagline: "Tarangire · Ngorongoro · Arusha National Park · Kilimanjaro",
+    blurb:
+      "One and two-day trips from Arusha and Moshi: a day with Tarangire's elephants or in the Ngorongoro Crater, a walking safari, a swim at Chemka or a hike on Kilimanjaro.",
+  },
+  {
+    id: "fly-in",
+    label: "Fly-in Safaris",
+    href: "/safaris?type=fly-in#safari-results",
+    tagline: "Zanzibar · Serengeti · Ngorongoro",
+    blurb:
+      "Fly over the long road journeys and spend the time on safari: from Zanzibar straight into the Serengeti and back, or a private northern safari that ends with a flight to the beach.",
   },
   {
     id: "honeymoon",

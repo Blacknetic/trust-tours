@@ -31,13 +31,26 @@ export interface ComfortLevel {
   label: string;
   /** Per person, per day, for 2 adults sharing. */
   perDay: { min: number; max: number };
-  /** Headline rates: `min × days`. */
+  /** Headline rates: normally `min × days`, or a package's own set price. */
   groupPricing: GroupPricing;
   summary: string;
   includes: string[];
   /** Add-on ids this level already covers, so the box stops offering them. */
   includedAddOns?: string[];
 }
+
+/** A level's headline price per person: its first tier, normally 2 sharing. */
+export const levelFrom = (level: ComfortLevel): number => level.groupPricing.tiers[0].usd;
+
+/** Top of a level's range for the whole trip, never below its headline price. */
+export const levelTo = (level: ComfortLevel, days: number): number =>
+  Math.max(levelFrom(level), Math.round(level.perDay.max * days));
+
+/** "$399–$550" per day, or one figure when a package has a single set price. */
+export const perDayLabel = (level: ComfortLevel): string => {
+  const f = (n: number) => `$${Math.round(n).toLocaleString()}`;
+  return level.perDay.max > level.perDay.min ? `${f(level.perDay.min)}–${f(level.perDay.max)}` : `about ${f(level.perDay.min)}`;
+};
 
 /** Largest listed party size — the "N+" bucket. */
 export const topPax = (gp: GroupPricing): number => gp.tiers[gp.tiers.length - 1].pax;
