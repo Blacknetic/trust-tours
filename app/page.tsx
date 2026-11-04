@@ -11,6 +11,8 @@ import WaypointEyebrow from "@/components/WaypointEyebrow";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import SummitWall from "@/components/SummitWall";
 import TripTabs from "@/components/TripTabs";
+import RotatingWords from "@/components/RotatingWords";
+import WelcomeNote from "@/components/WelcomeNote";
 import SoaringBirds from "@/components/SoaringBirds";
 import GuideStrip from "@/components/GuideStrip";
 import HeroWhatsAppCTA from "@/components/HeroWhatsAppCTA";
@@ -91,6 +93,16 @@ const TRIP_TABS = [
     picks: firstFour((p) => p.category === "cultural"),
   },
 ].filter((tab) => tab.picks.length > 0);
+
+// Traveller types from Ombeni's welcome note, cycled in the hero.
+const HERO_TRAVELLERS = [
+  "on your honeymoon",
+  "chasing adventure",
+  "celebrating an anniversary",
+  "travelling with family",
+  "exploring solo",
+  "after pure luxury",
+];
 
 const STEPS = [
   {
@@ -192,7 +204,7 @@ export default function HomePage() {
             Kilimanjaro climbs · Tanzania safaris
           </p>
           <h1
-            className="fade-up fade-up-2 text-4xl md:text-6xl font-semibold mb-7"
+            className="fade-up fade-up-2 text-4xl md:text-6xl font-semibold mb-4"
             style={{
               fontFamily: "var(--font-display)",
               color: "var(--paper)",
@@ -203,6 +215,26 @@ export default function HomePage() {
           >
             What you have in mind, we bring to life.
           </h1>
+          {/* Ombeni's "You're in safe hands" welcome, condensed for the hero —
+              the full note sits in <WelcomeNote /> right below. */}
+          <p
+            className="fade-up fade-up-2 text-lg md:text-xl mb-7"
+            style={{ color: "var(--paper)", maxWidth: "40ch", lineHeight: 1.45 }}
+          >
+            <span className="font-semibold" style={{ color: "var(--dawn)" }}>Karibu Tanzania!</span>{" "}
+            Whether you&rsquo;re{" "}
+            <span className="sr-only">
+              on your honeymoon, chasing adventure, celebrating an anniversary,
+              travelling with family, exploring solo or after pure luxury
+            </span>
+            <span aria-hidden="true">
+              <RotatingWords
+                words={HERO_TRAVELLERS}
+                className="font-semibold"
+              />
+            </span>{" "}
+            — you&rsquo;re in safe hands.
+          </p>
           {/* Credential strip — pulled up from the old "Recognised, licensed,
               and answerable to you" section further down the page. */}
           <p
@@ -262,6 +294,8 @@ export default function HomePage() {
           reach. The founder quote and "Recognised, licensed" trust points
           that used to live here have moved into the hero itself (credential
           strip + About Ombeni link) — see above. ─────────────────────── */}
+      <WelcomeNote />
+
       <SummitWall />
 
       {/* ── Trip picks — one switcher across every trip type ─────── */}
@@ -297,7 +331,7 @@ export default function HomePage() {
                 <div key={tab.id} className="flex flex-wrap justify-center gap-6">
                   {picks.map((pkg, i) => (
                     <Reveal
-                      key={pkg.slug}
+                      key={`${tab.id}-${pkg.slug}`}
                       delay={i * 110}
                       className="h-full w-full sm:w-[calc(50%-12px)] xl:w-[calc(25%-18px)]"
                     >
