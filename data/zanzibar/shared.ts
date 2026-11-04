@@ -113,6 +113,19 @@ export const STAYS_EAST_COAST = {
   "ultra-premium": ["baraza-resort"],
 };
 
+/** One beach stop for trips where guests pick the coast: north and east together. */
+export const STAYS_ZANZIBAR_BEACH = Object.fromEntries(
+  Object.keys(STAYS_NORTH_COAST).map((level) => [
+    level,
+    [
+      ...new Set([
+        ...STAYS_NORTH_COAST[level as keyof typeof STAYS_NORTH_COAST],
+        ...STAYS_EAST_COAST[level as keyof typeof STAYS_EAST_COAST],
+      ]),
+    ],
+  ]),
+) as Record<keyof typeof STAYS_NORTH_COAST, string[]>;
+
 /** The same stays for a trip that is only priced at some levels. */
 export const onlyLevels = (options: Record<string, string[]>, ...ids: string[]) =>
   Object.fromEntries(ids.map((id) => [id, options[id]]));
@@ -147,8 +160,11 @@ export const ZANZIBAR_TRIPS: LinkItem[] = [
 
 export const SAFARI_AND_BEACH_TRIPS: LinkItem[] = [
   { href: "/safaris/6-day-safari-zanzibar", label: "6-Day Safari & Zanzibar" },
-  { href: "/safaris/7-day-tanzania-zanzibar", label: "7-Day Safari & Zanzibar" },
+  { href: "/safaris/7-day-tanzania-zanzibar", label: "7-Day Serengeti & Zanzibar" },
   { href: "/safaris/10-day-safari-zanzibar-adventure", label: "10-Day Safari & Zanzibar" },
+  { href: "/safaris/11-day-safari-zanzibar-beach-holiday", label: "11-Day Safari & Zanzibar" },
+  { href: "/safaris/13-day-safari-zanzibar-beach-holiday", label: "13-Day Safari & Zanzibar" },
+  { href: "/safaris/15-day-safari-zanzibar-beach-holiday", label: "15-Day Safari & Zanzibar" },
   { href: "/safaris/20-day-honeymoon-tanzania-zanzibar", label: "20-Day Safari & Zanzibar Honeymoon" },
 ];
 
@@ -240,7 +256,7 @@ const BEST_TIME: ContentSection = {
   note: "Boat trips and snorkelling always depend on the weather, the tides and the state of the sea on the day.",
 };
 
-const GOOD_TO_KNOW: ContentSection = {
+export const GOOD_TO_KNOW: ContentSection = {
   heading: "Good to know before you go",
   bullets: [
     "Tides: On the east coast, the sea can go out a long way at low tide, revealing lagoons and seaweed farms. The north, around Nungwi and Kendwa, is better for swimming at most tides.",
@@ -339,7 +355,7 @@ export interface SetPrice {
   includes: string[];
 }
 
-const SAFARI_BEACH_INCLUDED = [
+export const SAFARI_BEACH_INCLUDED = [
   "Pickup: From Kilimanjaro International Airport (JRO) or your Arusha hotel.",
   "Safari: Private 4×4 safari vehicle with a pop-up roof and a professional English-speaking driver-guide.",
   "Park fees: All park entry, conservation, crater and vehicle fees for the confirmed itinerary.",
@@ -350,7 +366,7 @@ const SAFARI_BEACH_INCLUDED = [
   "Drinking water: In the safari vehicle and on excursions.",
 ];
 
-const SAFARI_BEACH_EXCLUDED = [
+export const SAFARI_BEACH_EXCLUDED = [
   "International flights to and from Tanzania.",
   "Tanzania visa fees.",
   "Travel insurance, including Zanzibar's mandatory inbound insurance for foreign visitors.",
@@ -369,7 +385,7 @@ const SAFARI_BEACH_BOOK: ContentSection = {
   bullets: CONTACT_BULLETS,
 };
 
-const SAFARI_BEACH_FAQS: FAQ[] = [
+export const SAFARI_BEACH_FAQS: FAQ[] = [
   {
     question: "How do I get from the safari to Zanzibar?",
     answer:

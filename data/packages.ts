@@ -10,6 +10,7 @@ import { DAY_TRIP_PACKAGES } from "@/data/day-trips";
 import { ZANZIBAR_PACKAGES } from "@/data/zanzibar";
 import { FLY_IN_PACKAGES } from "@/data/fly-in";
 import { MERU_PACKAGES } from "@/data/meru";
+import { COMBO_PACKAGES } from "@/data/combo";
 import { travelTimeOf } from "@/lib/safari-filter";
 import type { SafariTypeId, TripFacets, ZanzibarAreaId, ZanzibarTypeId } from "@/lib/safari-filter";
 
@@ -94,6 +95,8 @@ export const DESTINATIONS = [
   "Kenya",
   "Ol Doinyo Lengai",
   "Lake Natron",
+  "Nyerere",
+  "Mafia Island",
 ] as const;
 export type Destination = (typeof DESTINATIONS)[number];
 
@@ -191,130 +194,7 @@ export const packages: TripPackage[] = [
   ...ZANZIBAR_PACKAGES,
   ...FLY_IN_PACKAGES,
   ...MERU_PACKAGES,
-
-  {
-    slug: "7-day-tanzania-zanzibar",
-    seoTitle: "Tanzania Safari + Zanzibar, 7 Days — $2,879",
-    metaDescription:
-      "Big Five safari then Zanzibar's beaches — bush to beach, done right. TALA-licensed, owner-led, 5.0★ TripAdvisor. From $2,879 pp, book direct.",
-    destinations: ["Ngorongoro", "Serengeti", "Zanzibar"],
-    category: "safari",
-    title: "7-Day Tanzania Safari & Zanzibar Beach Escape",
-    shortName: "7-Day Safari + Zanzibar",
-    days: 7,
-    priceFromUSD: 2879,
-    priceNote:
-      "Per person, sharing. Includes return local flights to Zanzibar.",
-    tier: ["mid-range"],
-    heroImage: "/images/safari-lion-pride.jpg",
-    gallery: [
-      "/images/gallery/safari/safari-2023-01-07-25.jpg",
-      "/images/gallery/safari/safari-fb-img-1443719006917.jpg",
-      "/images/gallery/safari/safari-fb-img-1480881331527.jpg",
-      "/images/gallery/safari/safari-2023-01-07-5.jpg",
-    ],
-    summary:
-      "The complete Tanzania trip in one week: four days of game drives in the Ngorongoro Crater and Serengeti, then a flight to Zanzibar for three days of Stone Town culture, spice farms and white-sand beaches. Safari adrenaline and Indian Ocean recovery, seamlessly arranged.",
-    highlights: [
-      "Safari and beach in one booking, with internal flights arranged",
-      "Full day inside the Ngorongoro Crater, the 'Eden of Africa'",
-      "Central Serengeti game drives — Big Cat country and the migration plains",
-      "Stone Town guided tour and a Zanzibar spice farm visit",
-      "White-sand beaches, dhow cruise and Indian Ocean snorkelling",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival & Ngorongoro Crater Rim",
-        description:
-          "Met at Kilimanjaro International Airport and driven through the Great Rift Valley's coffee highlands to the Ngorongoro Conservation Area. Settle into a lodge on the crater rim with panoramic views and an evening at leisure.",
-        meals: "Lunch, dinner",
-        accommodation: "Mid-range lodge or tented camp on the crater rim",
-      },
-      {
-        day: 2,
-        title: "Ngorongoro Crater Safari & Transfer to Serengeti",
-        description:
-          "Descend 600 m into the crater at dawn for game viewing among lions, elephants, hippos and rare black rhino, then ascend and drive on across the Maasai highlands into the Serengeti's endless plains.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range lodge or tented camp, central Serengeti",
-      },
-      {
-        day: 3,
-        title: "Full Day in the Serengeti",
-        description:
-          "A full day of game drives in the Serengeti — morning for predators in the Seronera Valley, the 'Big Cat Capital', and afternoon exploring further plains. Dinner under an unpolluted night sky.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range lodge or tented camp, central Serengeti",
-      },
-      {
-        day: 4,
-        title: "Morning Game Drive & Flight to Zanzibar",
-        description:
-          "A final dawn game drive, then transfer to the airstrip for your flight to Zanzibar. Arrive on the Spice Island and transfer to your beach resort for an evening of ocean-side relaxation.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 5,
-        title: "Zanzibar Beach Day",
-        description:
-          "A free day on the beach: swim in the warm Indian Ocean, snorkel the coral reefs, or unwind with an optional spa treatment. Sunset stroll and a fresh seafood dinner at the resort.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 6,
-        title: "Stone Town Tour & Spice Farm",
-        description:
-          "A guided tour of UNESCO-listed Stone Town — the House of Wonders, Sultan's Palace and Old Fort — followed by a spice farm visit to see, smell and taste Zanzibar's famous cloves, cinnamon and vanilla.",
-        meals: "Breakfast, dinner",
-        accommodation: "Beach resort, Zanzibar",
-      },
-      {
-        day: 7,
-        title: "Leisure & Departure",
-        description:
-          "A final morning at leisure — beach, markets or an optional dhow cruise along the coast — before your airport transfer for departure.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Airport transfers and all transfers as per the itinerary",
-      "Return local flights (Serengeti to Zanzibar)",
-      "All national park and conservation area entry fees",
-      "Guided game drives in a 4x4 safari vehicle",
-      "Accommodation in lodges, tented camps and a Zanzibar beach resort",
-      "All meals as specified plus bottled water on game drives",
-      "Services of an experienced English-speaking safari guide",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional activities not mentioned in the itinerary",
-      "Tips, souvenirs and items of a personal nature",
-    ],
-    faqs: [
-      {
-        question: "Is the flight to Zanzibar included?",
-        answer:
-          "Yes — return local flights between the Serengeti and Zanzibar are included in the package price, along with all transfers.",
-      },
-      {
-        question: "Can the safari and beach split be adjusted?",
-        answer:
-          "Yes. The standard split is four days on safari and three in Zanzibar, but we can lengthen either side. Message Ombeni on WhatsApp with what you have in mind.",
-      },
-      {
-        question: "When is the best time for this trip?",
-        answer:
-          "June to October offers the best safari game viewing and dry beach weather; January and February are also excellent. The Serengeti has resident wildlife year-round even outside the migration.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Jan", "Feb"],
-    oldUrl: "/booking/CONFIRM/",
-  },
+  ...COMBO_PACKAGES,
 
   // ─────────────────────────────────────────────────────────────────
   // SAFARIS — longer migration trips & multi-region combos (Wave 3).
@@ -1741,274 +1621,6 @@ export const packages: TripPackage[] = [
     ],
     bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
     oldUrl: "/booking/7-days-in-paradise-with-trust-tours-and-safaris-company-your-ultimate-honeymoon-haven/",
-  },
-
-  {
-    slug: "10-day-honeymoon-migration",
-    destinations: ["Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
-    category: "safari",
-    tags: ["honeymoon"],
-    title: "10-Day Honeymoon Safari – Tracking the Great Migration",
-    shortName: "10-Day Honeymoon Migration",
-    days: 10,
-    priceFromUSD: 0,
-    priceNote: "Private luxury honeymoon safari — per-person pricing on request.",
-    tier: ["comfort"],
-    heroImage: "/images/packages/10-day-honeymoon-migration.jpg",
-    gallery: [],
-    summary:
-      "Celebrate your love in the heart of the Great Migration: ten days through Tarangire, Lake Manyara, the Ngorongoro Crater and deep into the Serengeti — central plains, big-cat country and the northern Mara crossings — with luxury tented camps, romantic sundowners, private bush dinners and a balloon safari. Intimate, unhurried and tailored to couples.",
-    highlights: [
-      "Follows the path of the Great Migration across the Serengeti",
-      "Northern Serengeti Mara River crossings (season dependent)",
-      "Sunrise balloon safari and champagne bush breakfast",
-      "Couples' spa, private bush dinners and sundowners for two",
-      "Luxury tented camps and lodges throughout",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Arusha",
-        description:
-          "Met at Kilimanjaro International Airport by your private guide and transferred to a serene lodge outside Arusha. A candlelit dinner and a toast to the start of your honeymoon.",
-        meals: "Dinner",
-        accommodation: "Luxury lodge, Arusha",
-      },
-      {
-        day: 2,
-        title: "Tarangire National Park",
-        description:
-          "Drive to Tarangire — towering baobabs and Tanzania's largest elephant concentration — tracking elephant, giraffe and big cats, with a romantic picnic over the Tarangire River and a sundowner just for two.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Romantic tented camp near Tarangire",
-      },
-      {
-        day: 3,
-        title: "Lake Manyara National Park",
-        description:
-          "A leisurely game drive in Lake Manyara — tree-climbing lions, flamingos and forested lakeshore — then unwind at a Rift Valley lodge with an optional couples' spa treatment.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge with lake or escarpment views",
-      },
-      {
-        day: 4,
-        title: "Ngorongoro Crater",
-        description:
-          "Descend into the Ngorongoro Crater for a game drive among the densest wildlife in Africa — black rhino, lion and hippo — with a gourmet picnic lunch and a sunset toast from a luxury lodge on the rim.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Luxury lodge on the crater rim",
-      },
-      {
-        day: 5,
-        title: "Into the Central Serengeti",
-        description:
-          "Travel through the Ngorongoro Highlands into the central Serengeti, with an afternoon game drive, then settle into a luxury tented camp where lanterns glow and the savannah sets a dreamy tone.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Luxury tented camp, central Serengeti",
-      },
-      {
-        day: 6,
-        title: "Full Day in the Serengeti",
-        description:
-          "A sunrise game drive for predators on the move, quiet time together at camp, then an afternoon among the Big Five and the great herds — capped by a private bush dinner under the stars.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Luxury tented camp, central Serengeti",
-      },
-      {
-        day: 7,
-        title: "Northern Serengeti — The Migration",
-        description:
-          "Journey north to track the Great Migration, with dramatic Mara River crossings in season as the herds brave the crocodile-filled waters. Overnight at a remote migration-hotspot camp.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Luxury migration camp, northern Serengeti",
-      },
-      {
-        day: 8,
-        title: "Serengeti Balloon Safari",
-        description:
-          "An early hot air balloon safari over the plains (optional) with a champagne bush breakfast, then game drives or romantic downtime at camp — a couples' massage or a private bush lunch in untouched nature.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Luxury camp, northern Serengeti",
-      },
-      {
-        day: 9,
-        title: "Fly Back to Arusha",
-        description:
-          "A final morning game drive, then a scenic bush flight back to Arusha and a relaxing afternoon at a charming lodge — time to reflect, shop for souvenirs and enjoy a celebratory dinner.",
-        meals: "Breakfast, dinner",
-        accommodation: "Boutique lodge, Arusha",
-      },
-      {
-        day: 10,
-        title: "Departure",
-        description:
-          "A leisurely breakfast and, time permitting, a craft market or coffee-estate visit before your private transfer to Kilimanjaro International Airport.",
-        meals: "Breakfast",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "All ground transfers and domestic flights",
-      "Private 4x4 safari vehicle with pop-up roof and a professional guide",
-      "Mid- to high-end lodges and luxury tented camps",
-      "Park and conservation fees and all meals as listed",
-      "Romantic bush dinners, sundowners and special honeymoon touches",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional balloon safari surcharge and personal expenses",
-      "Tips and gratuities for guides and staff",
-    ],
-    faqs: [
-      {
-        question: "When are the Mara River crossings?",
-        answer:
-          "Typically July–October in the northern Serengeti. Timing shifts with the rains, so tell Ombeni your dates and he'll place your northern nights for the best chance of a crossing.",
-      },
-      {
-        question: "How private is this honeymoon?",
-        answer:
-          "Fully private — your own vehicle, guide and tailored pace, with intimate experiences like private bush dinners and sundowners for two throughout.",
-      },
-      {
-        question: "Can we add Zanzibar at the end?",
-        answer:
-          "Yes — many couples finish on the beach. We'll add the flights and resort and book it as one trip. Just ask.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
-    oldUrl: "/booking/tanzania-honeymoon-safari-tracking-the-great-migration/",
-  },
-
-  {
-    slug: "9-day-honeymoon-northern",
-    destinations: ["Arusha", "Tarangire", "Lake Manyara", "Ngorongoro", "Serengeti"],
-    category: "safari",
-    tags: ["honeymoon"],
-    title: "9-Day Honeymoon Safari – Northern Tanzania",
-    shortName: "9-Day Honeymoon Safari",
-    days: 9,
-    priceFromUSD: 0,
-    priceNote: "Private mid-range honeymoon safari — per-person pricing on request.",
-    tier: ["mid-range", "comfort"],
-    heroImage: "",
-    gallery: [],
-    summary:
-      "A romantic nine-day safari through northern Tanzania for couples: Tarangire, Lake Manyara, the Ngorongoro Crater and three days in the Serengeti — central plains, big cats and the northern Mara — with candlelit dinners, sundowners for two and a Maasai-highlands finale. Intimate lodges and a private vehicle throughout.",
-    highlights: [
-      "Three days in the Serengeti, including the northern Mara",
-      "Full game drive in the Ngorongoro Crater — black rhino country",
-      "Lake Manyara's tree-climbing lions and flamingos",
-      "Candlelit bush dinners and sundowners for two",
-      "Maasai village visit in the Ngorongoro Highlands",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Arusha",
-        description:
-          "A warm welcome at Kilimanjaro International Airport and transfer to a charming lodge in Arusha. A romantic dinner and a safari briefing, with a toast to your new journey together.",
-        meals: "Dinner",
-        accommodation: "Mid-range lodge, Arusha",
-      },
-      {
-        day: 2,
-        title: "Tarangire National Park",
-        description:
-          "A morning and afternoon game drive in Tarangire among large elephant herds and ancient baobabs, with a picnic lunch and a private dinner under the stars by the campfire.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range tented camp near Tarangire",
-      },
-      {
-        day: 3,
-        title: "Lake Manyara National Park",
-        description:
-          "A lakeside game drive for hippos, flamingos and tree-climbing lions, the groundwater forest for elephants and baboons, then a romantic sunset dinner at a Rift Valley escarpment lodge.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge on the Rift Valley escarpment",
-      },
-      {
-        day: 4,
-        title: "Ngorongoro Crater",
-        description:
-          "Descend into the crater — the 'Garden of Eden' — for the Big Five including elusive black rhino, with a picnic lunch at the hippo pool, then a private dinner at a romantic lodge on the crater rim.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge on the Ngorongoro rim",
-      },
-      {
-        day: 5,
-        title: "Central Serengeti — Seronera",
-        description:
-          "Journey into the Serengeti and the Seronera Valley, famed for big cats, with an afternoon game drive and a candlelit dinner under a dazzling, unpolluted night sky.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range tented camp, central Serengeti",
-      },
-      {
-        day: 6,
-        title: "Full Day in the Serengeti",
-        description:
-          "A sunrise game drive for predators in action, quiet time together, then a full day exploring the plains — and, in season, the Great Migration — with a private dinner to follow.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range tented camp, central Serengeti",
-      },
-      {
-        day: 7,
-        title: "Northern Serengeti — The Mara",
-        description:
-          "Head to the remote northern Serengeti, famous for the dramatic Mara River crossings in season, with a picnic in the wilderness and a fireside evening at a remote camp.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Mid-range camp, northern Serengeti",
-      },
-      {
-        day: 8,
-        title: "Serengeti to the Ngorongoro Highlands",
-        description:
-          "A final Serengeti game drive, then the scenic drive into the cooler highlands, with an optional nature walk or Maasai village visit and a romantic dinner in the peaceful highland air.",
-        meals: "Breakfast, lunch, dinner",
-        accommodation: "Lodge, Ngorongoro Highlands",
-      },
-      {
-        day: 9,
-        title: "Departure",
-        description:
-          "A leisurely breakfast and free time, then a transfer back to Arusha for a farewell lunch before your departure flight.",
-        meals: "Breakfast, lunch",
-        accommodation: "—",
-      },
-    ],
-    included: [
-      "Eight nights in mid-range lodges and romantic tented camps",
-      "All meals from dinner on Day 1, with private dining and picnic lunches",
-      "Daily game drives in a private 4x4 with a professional guide",
-      "All park and Ngorongoro Crater fees",
-      "Guided bush walks, Maasai village visit and sundowners",
-      "All airport transfers and transport between parks",
-    ],
-    excluded: [
-      "International flights and Tanzania visa fees",
-      "Travel insurance (recommended for all travellers)",
-      "Optional balloon safari and personal expenses",
-      "Tips and gratuities for guides and staff",
-    ],
-    faqs: [
-      {
-        question: "How romantic is this safari really?",
-        answer:
-          "It's built for couples — private vehicle and guide, intimate camps, candlelit and private bush dinners, and sundowners for two. Tell Ombeni it's your honeymoon and he'll add special touches.",
-      },
-      {
-        question: "Will we see the migration?",
-        answer:
-          "In season, yes — northern Mara crossings around July–October, the calving plains December–March. The Serengeti and Ngorongoro hold abundant wildlife year-round.",
-      },
-      {
-        question: "Can we finish on the beach?",
-        answer:
-          "Absolutely — add a Zanzibar stay and we'll arrange the flights and book it as one honeymoon.",
-      },
-    ],
-    bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
   },
 
   {
@@ -3633,11 +3245,12 @@ export const safariFacets = (p: TripPackage): TripFacets => {
 };
 
 // Zanzibar stop ids in `stayChoices` and the part of the island each covers.
-const ZANZIBAR_STOP_AREAS: Record<string, ZanzibarAreaId> = {
-  "stone-town": "stone-town",
-  "north-coast": "north-coast",
-  "east-coast": "east-coast",
-  zanzibar: "east-coast", // the 20-day honeymoon's single island stop
+const ZANZIBAR_STOP_AREAS: Record<string, ZanzibarAreaId[]> = {
+  "stone-town": ["stone-town"],
+  "north-coast": ["north-coast"],
+  "east-coast": ["east-coast"],
+  zanzibar: ["east-coast"], // the 20-day honeymoon's single island stop
+  "zanzibar-beach": ["north-coast", "east-coast"], // guests choose the coast
 };
 
 // Everything the /zanzibar sidebar filters on. Older combos without a stay
@@ -3647,7 +3260,7 @@ export const zanzibarFacets = (p: TripPackage): TripFacets => {
   if (p.tags?.includes("honeymoon")) types.push("honeymoon");
   const areas = [
     ...new Set(
-      (p.stayChoices ?? []).flatMap((s) => (ZANZIBAR_STOP_AREAS[s.id] ? [ZANZIBAR_STOP_AREAS[s.id]] : [])),
+      (p.stayChoices ?? []).flatMap((s) => ZANZIBAR_STOP_AREAS[s.id] ?? []),
     ),
   ];
   return { slug: p.slug, values: { type: types, stay: areas, days: [travelTimeOf(p.days)] } };

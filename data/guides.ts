@@ -3985,7 +3985,7 @@ export const guides: Guide[] = [
     ],
     relatedPackages: [
       "7-day-ultimate-honeymoon",
-      "10-day-honeymoon-migration",
+      "10-day-honeymoon-safari-zanzibar",
       "7-day-zanzibar-honeymoon",
     ],
   },

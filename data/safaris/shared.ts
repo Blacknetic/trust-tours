@@ -379,7 +379,7 @@ const BOOK_SECTION: ContentSection = {
   bullets: CONTACT_BULLETS,
 };
 
-const INCLUDED = [
+export const SAFARI_INCLUDED = [
   "Pickup: From an agreed location in Arusha, Kilimanjaro International Airport (JRO) or Arusha Airport (ARK).",
   "Vehicle: Private 4×4 safari vehicle with a pop-up roof for wildlife viewing and photography.",
   "Guide: A professional English-speaking driver-guide. Other languages may be available by arrangement.",
@@ -393,7 +393,7 @@ const INCLUDED = [
   "Taxes: Government fees and taxes, and applicable statutory charges listed in your written quotation.",
 ];
 
-const EXCLUDED = [
+export const SAFARI_EXCLUDED = [
   "International flights to and from Tanzania.",
   "Tanzania visa fees and any passport or travel-document costs.",
   "Travel and medical insurance.",
@@ -543,9 +543,9 @@ function themedTrip(theme: TripTheme, { rates = RATES, flightIncluded, ...trip }
       "To request a price for one traveller or a group of three to six, select your group size in the booking box and Ombeni will quote you directly.",
     ],
     included: flightIncluded
-      ? [...INCLUDED, "Flight: Scheduled flight from the Serengeti to Arusha, subject to availability."]
-      : INCLUDED,
-    excluded: EXCLUDED,
+      ? [...SAFARI_INCLUDED, "Flight: Scheduled flight from the Serengeti to Arusha, subject to availability."]
+      : SAFARI_INCLUDED,
+    excluded: SAFARI_EXCLUDED,
     sections: [...trip.sections, ...theme.sections],
     faqs: [
       {

@@ -33,6 +33,9 @@ const CASES = [
   ["/tours/3-days-mount-meru", "/trekking/3-day-mount-meru-momela"],
   ["/tours/2-days-ol-doinyo-lengai", "/trekking/2-day-ol-doinyo-lengai-climb"],
   ["/tours/tanzania-honeymoon-safari", "/honeymoon"],
+  // Retired trip slugs
+  ["/safaris/10-day-honeymoon-migration", "/safaris/10-day-honeymoon-safari-zanzibar"],
+  ["/booking/tanzania-honeymoon-safari-tracking-the-great-migration", "/safaris/10-day-honeymoon-safari-zanzibar"],
   ["/tours/maasai-cultural-experience", "/cultural"],
   ["/tours/12-day-paramotoring-flying-safari", "/paramotoring"],
   ["/tours/some-unknown-trip-we-never-listed", "/safaris"], // fallback net

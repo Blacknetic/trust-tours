@@ -1336,6 +1336,119 @@ export const STAYS: Record<string, Stay> = {
       "Maasai cultural visits",
     ],
   },
+  // ── Nyerere National Park (formerly the Selous) ───────────────────────────
+  // Most camps close from about mid-March to the end of May, in the long rains.
+  "rufiji-river-camp": {
+    id: "rufiji-river-camp",
+    name: "Rufiji River Camp",
+    area: "On the banks of the Rufiji River, Nyerere National Park",
+    type: "Tented camp",
+    about:
+      "One of the park's first camps, run by the same family for many years, with simple, comfortable tents along the Rufiji River. It is one of the better-value places to stay in Nyerere.",
+    activities: ["Game drives", "Boat safaris on the Rufiji River", "Guided walks", "Fly-camping"],
+  },
+  "lake-manze-camp": {
+    id: "lake-manze-camp",
+    name: "Lake Manze Camp",
+    area: "On the shore of Lake Manze, in the heart of Nyerere's main game area",
+    type: "Rustic tented bush camp",
+    about:
+      "A relaxed bush camp of simple tents on the edge of Lake Manze, in one of the best wildlife areas of the park. Elephants and other animals often wander through camp.",
+    activities: ["Game drives", "Boat safaris on the lakes", "Guided walks"],
+  },
+  "selous-impala-camp": {
+    id: "selous-impala-camp",
+    name: "Selous Impala Camp",
+    area: "On the eastern edge of Nyerere's main game-viewing area",
+    type: "Privately owned tented camp",
+    about:
+      "A comfortable, good-value, privately owned camp with tents on raised platforms, well placed for the lakes and channels of the eastern park.",
+    activities: ["Game drives", "Boat safaris", "Guided walks for ages 16 and over", "Fly-camping"],
+  },
+  "roho-ya-selous": {
+    id: "roho-ya-selous",
+    name: "Roho ya Selous",
+    area: "On the west side of Lake Nzerakera, Nyerere National Park",
+    type: "Smart tented camp",
+    about:
+      "A stylish tented camp beside Lake Nzerakera, with spacious tents, attentive hosting and a lakeside setting for watching hippos and birdlife.",
+    activities: ["Game drives", "Boat safaris on Lake Nzerakera", "Guided walks"],
+  },
+  siwandu: {
+    id: "siwandu",
+    name: "Siwandu",
+    area: "Overlooking Lake Nzerakera, Nyerere National Park",
+    type: "Luxury tented camp",
+    about:
+      "One of the park's longest-established luxury camps, formerly the Selous Safari Camp, with large tents looking out over Lake Nzerakera.",
+    activities: ["Game drives", "Boat safaris", "Guided walks"],
+  },
+  "sand-rivers-selous": {
+    id: "sand-rivers-selous",
+    name: "Sand Rivers Selous",
+    area: "On a bend of the Rufiji River, Nyerere National Park",
+    type: "Luxury lodge",
+    about:
+      "The longest-running camp on the Selous circuit, set on the Rufiji River, with a stylish design and a strong reputation for walking safaris.",
+    activities: ["Game drives", "Boat safaris on the Rufiji", "Walking safaris", "Fly-camping"],
+  },
+  "beho-beho": {
+    id: "beho-beho",
+    name: "Beho Beho",
+    area: "In the Beho Beho hills, Nyerere National Park",
+    type: "High-end lodge",
+    about:
+      "A small, exclusive lodge of private cottages in the Beho Beho hills, often counted among the finest camps in East Africa.",
+    activities: ["Game drives", "Walking safaris", "Boat safaris", "Fly-camping"],
+  },
+
+  // ── Mafia Island and Fanjove ───────────────────────────────────────────
+  "butiama-beach-lodge": {
+    id: "butiama-beach-lodge",
+    name: "Butiama Beach Lodge",
+    area: "On the west coast of Mafia Island, just west of Kilindoni",
+    type: "Simple beach lodge",
+    about:
+      "A laid-back beach lodge of about a dozen bungalows near Mafia's main town, a relaxed and good-value base for the island.",
+    activities: ["Snorkelling and diving trips", "Seasonal whale shark trips, about October to March", "Dhow trips"],
+  },
+  "pole-pole-mafia": {
+    id: "pole-pole-mafia",
+    name: "Pole Pole",
+    area: "Mafia Island, near Chole Bay",
+    type: "Small beach lodge",
+    about:
+      "A small, quiet beach lodge among coconut palms, comfortable and almost luxurious, close to the reefs of the marine park.",
+    activities: ["Snorkelling and diving in Mafia Island Marine Park", "Seasonal whale shark trips", "Dhow and sandbank trips"],
+  },
+  "kinasi-lodge": {
+    id: "kinasi-lodge",
+    name: "Kinasi Lodge",
+    area: "Mafia Island",
+    type: "Small beach lodge",
+    about:
+      "A small, personal beach lodge with a large pool, a spa and hotel-style comforts.",
+    activities: ["Snorkelling and diving", "Spa treatments", "Dhow trips"],
+  },
+  "chole-mjini": {
+    id: "chole-mjini",
+    name: "Chole Mjini",
+    area: "On Chole Island, a short boat ride from Mafia",
+    type: "Tree-house eco-lodge",
+    about:
+      "An environmentally aware lodge of a handful of tree houses on tiny Chole Island, in a rural setting, known for excellent diving nearby.",
+    activities: ["Diving and snorkelling", "Dhow trips"],
+  },
+  "fanjove-island-lodge": {
+    id: "fanjove-island-lodge",
+    name: "Fanjove Private Island Lodge",
+    area: "Fanjove Island, Songo Songo Archipelago, about 140 km south of Dar es Salaam",
+    type: "Private-island beach lodge",
+    about:
+      "A secluded lodge of beach-front villas on a private island less than a kilometre long, reached by a short flight and a boat crossing. Meals are served in a restored 19th-century lighthouse or on the beach. Usually open from June to mid-March.",
+    activities: ["Snorkelling, kayaks and paddleboards", "Dolphin trips and sunset dhow cruises", "Scuba diving, best from November to March"],
+  },
+
   "riu-palace-zanzibar": {
     id: "riu-palace-zanzibar",
     name: "Riu Palace Zanzibar",

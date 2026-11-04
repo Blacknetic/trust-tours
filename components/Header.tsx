@@ -132,6 +132,7 @@ const SAFARI_PANELS: MegaPanel[] = [
     ],
     cta: "View Big Five safaris",
     links: [
+      { href: "/safaris/9-day-natron-ngorongoro-serengeti-safari", label: "9-Day Natron, Ngorongoro & Serengeti" },
       { href: "/safaris?type=zanzibar#safari-results", label: "Add Zanzibar" },
       { href: "/guides/what-to-expect-on-safari", label: "What to expect" },
     ],
@@ -244,8 +245,11 @@ const SAFARI_PANELS: MegaPanel[] = [
     cta: "View safari and beach trips",
     links: [
       { href: "/safaris/6-day-safari-zanzibar", label: "6-Day Safari & Zanzibar" },
-      { href: "/safaris/7-day-tanzania-zanzibar", label: "7-Day Safari & Zanzibar" },
+      { href: "/safaris/7-day-tanzania-zanzibar", label: "7-Day Serengeti & Zanzibar" },
       { href: "/safaris/10-day-safari-zanzibar-adventure", label: "10-Day Safari & Zanzibar" },
+      { href: "/safaris/11-day-safari-zanzibar-beach-holiday", label: "11-Day Safari & Zanzibar" },
+      { href: "/safaris/13-day-safari-zanzibar-beach-holiday", label: "13-Day Safari & Zanzibar" },
+      { href: "/safaris/15-day-safari-zanzibar-beach-holiday", label: "15-Day Safari & Zanzibar" },
       { href: "/safaris/20-day-honeymoon-tanzania-zanzibar", label: "20-Day Honeymoon" },
     ],
     image: {
@@ -263,12 +267,36 @@ const SAFARI_PANELS: MegaPanel[] = [
     ],
     cta: "View honeymoons",
     links: [
-      { href: "/safaris?type=zanzibar#safari-results", label: "Safari + Zanzibar trips" },
+      { href: "/safaris/7-day-nyerere-mafia-honeymoon", label: "7-Day Nyerere & Mafia" },
+      { href: "/safaris/8-day-honeymoon-safari-zanzibar", label: "8-Day Safari & Zanzibar" },
+      { href: "/safaris/9-day-honeymoon-northern", label: "9-Day Safari & Zanzibar" },
+      { href: "/safaris/10-day-honeymoon-safari-zanzibar", label: "10-Day Safari & Zanzibar" },
+      { href: "/safaris/12-day-honeymoon-safari-zanzibar", label: "12-Day Safari & Zanzibar" },
       { href: "/guides/tanzania-honeymoon-guide", label: "Honeymoon guide" },
     ],
     image: {
       src: "/images/honeymoon.jpg",
       alt: "A lodge bed decorated with rose petals and towel swans for honeymooners",
+    },
+  },
+  {
+    href: "/safaris?type=family#safari-results",
+    label: "Family Safaris",
+    teaser: "Paced for children and teenagers.",
+    heading: "A safari the whole family will remember",
+    body: [
+      "Fewer moves, lodges with pools and family rooms, and a guide who explains what you're seeing. Private safaris paced for families.",
+    ],
+    cta: "View family safaris",
+    links: [
+      { href: "/safaris/9-day-family-safari", label: "9-Day Family Safari" },
+      { href: "/safaris/4-day-private-ndutu-calving-safari", label: "4-Day Calving Safari" },
+      { href: "/safaris/5-day-ndutu-migration-safari", label: "5-Day Calving Safari" },
+      { href: "/safaris/6-day-calving-safari", label: "6-Day Calving Safari" },
+    ],
+    image: {
+      src: "/images/safaris/tarangire-elephants-vehicle.jpg",
+      alt: "Guests in a safari vehicle watching elephants beside the track in Tarangire",
     },
   },
   {
@@ -429,8 +457,11 @@ const ZANZIBAR_PANELS: MegaPanel[] = [
     cta: "View safari and beach trips",
     links: [
       { href: "/safaris/6-day-safari-zanzibar", label: "6-Day Safari & Zanzibar" },
-      { href: "/safaris/7-day-tanzania-zanzibar", label: "7-Day Safari & Zanzibar" },
+      { href: "/safaris/7-day-tanzania-zanzibar", label: "7-Day Serengeti & Zanzibar" },
       { href: "/safaris/10-day-safari-zanzibar-adventure", label: "10-Day Safari & Zanzibar" },
+      { href: "/safaris/11-day-safari-zanzibar-beach-holiday", label: "11-Day Safari & Zanzibar" },
+      { href: "/safaris/13-day-safari-zanzibar-beach-holiday", label: "13-Day Safari & Zanzibar" },
+      { href: "/safaris/15-day-safari-zanzibar-beach-holiday", label: "15-Day Safari & Zanzibar" },
       { href: "/safaris/20-day-honeymoon-tanzania-zanzibar", label: "20-Day Honeymoon" },
     ],
     image: {
@@ -449,6 +480,7 @@ const ZANZIBAR_PANELS: MegaPanel[] = [
     cta: "View the honeymoon",
     links: [
       { href: "/zanzibar?type=honeymoon#zanzibar-results", label: "Zanzibar honeymoons" },
+      { href: "/safaris/8-day-honeymoon-safari-zanzibar", label: "8-Day Honeymoon Safari & Zanzibar" },
       { href: "/honeymoon", label: "All honeymoons" },
       { href: "/guides/tanzania-honeymoon-guide", label: "Honeymoon guide" },
     ],
