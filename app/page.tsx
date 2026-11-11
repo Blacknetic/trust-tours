@@ -2,7 +2,6 @@ import Link from "next/link";
 import Photo from "@/components/Photo";
 import type { Metadata } from "next";
 import { getPackage, packages, type TripPackage } from "@/data/packages";
-import PackageCard from "@/components/PackageCard";
 import CTABand from "@/components/CTABand";
 import Reveal from "@/components/Reveal";
 import Parallax from "@/components/Parallax";
@@ -10,7 +9,7 @@ import ScrollProgressSpine from "@/components/ScrollProgressSpine";
 import WaypointEyebrow from "@/components/WaypointEyebrow";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import SummitWall from "@/components/SummitWall";
-import TripTabs from "@/components/TripTabs";
+import TripShowcase from "@/components/TripShowcase";
 import RotatingWords from "@/components/RotatingWords";
 import WelcomeNote from "@/components/WelcomeNote";
 import SoaringBirds from "@/components/SoaringBirds";
@@ -29,70 +28,37 @@ export const metadata: Metadata = {
     "Climb Kilimanjaro or track the Great Migration with Trust Tours & Safaris — an Arusha-based operator led by Ombeni. Trips from $385. Plan yours on WhatsApp.",
 };
 
-// Featured picks for the homepage — a deliberate spread (popular / scenic /
-// classic) so visitors see range, not near-identical options.
-const pick = (slugs: string[]) =>
-  slugs.map(getPackage).filter((p): p is TripPackage => p !== undefined);
-// Remaining tabs take the first four trips of their kind (shortest first).
-const firstFour = (match: (p: TripPackage) => boolean) =>
-  packages.filter(match).sort((a, b) => a.days - b.days).slice(0, 4);
+// Homepage carousels: hand-picked favourites first — a deliberate spread
+// (popular / scenic / classic) — then the rest of the category, shortest
+// first, up to 10 cards. Day trips and gem tours are filed under these
+// categories but aren't climbs/safaris, so they're left out (own pages).
+const EXCLUDED_TAGS = ["day-trip", "gem-tour"];
+const showcase = (featured: string[], category: TripPackage["category"]) => {
+  const first = featured.map(getPackage).filter((p): p is TripPackage => p !== undefined);
+  const rest = packages
+    .filter(
+      (p) =>
+        p.category === category &&
+        !p.tags?.some((t) => EXCLUDED_TAGS.includes(t)) &&
+        !featured.includes(p.slug),
+    )
+    .sort((a, b) => a.days - b.days);
+  return [...first, ...rest].slice(0, 10);
+};
 
-const TRIP_TABS = [
-  {
-    id: "kilimanjaro",
-    label: "Kilimanjaro",
-    // Sourced from Robin Van Rompaey's Google review (full text in the
-    // testimonial wall below): most operators turn this request down.
-    blurb:
-      "We’re one of the few operators who’ll run the Western Breach route on request, when other companies won’t.",
-    href: "/kilimanjaro",
-    linkLabel: "All Kilimanjaro routes",
-    picks: pick(["7-day-machame-route", "8-day-lemosho-route", "6-day-marangu-route", "9-day-northern-circuit"]),
-  },
-  {
-    id: "safaris",
-    label: "Safaris",
-    blurb:
-      "From the elephants of Tarangire to the Great Migration in the Serengeti — 4x4 days with a guide who knows where the animals move.",
-    href: "/safaris",
-    linkLabel: "All safaris",
-    picks: pick([
-      "7-day-great-migration-safari",
-      "3-day-safari-tarangire-manyara-ngorongoro",
-      "5-day-northern-safari",
-      "4-day-balloon-safari-serengeti-ngorongoro",
-    ]),
-  },
-  {
-    id: "honeymoon",
-    label: "Honeymoon",
-    blurb: "Private safaris and Zanzibar beaches for two — bush dinners, sundowners and every romantic detail handled.",
-    href: "/honeymoon",
-    linkLabel: "All honeymoon trips",
-    picks: firstFour((p) => Boolean(p.tags?.includes("honeymoon"))),
-  },
-  {
-    id: "zanzibar",
-    label: "Safari + Zanzibar",
-    href: "/zanzibar",
-    linkLabel: "All Zanzibar trips",
-    picks: firstFour((p) => p.category === "zanzibar"),
-  },
-  {
-    id: "trekking",
-    label: "Trekking",
-    href: "/trekking",
-    linkLabel: "All treks",
-    picks: firstFour((p) => p.category === "trekking"),
-  },
-  {
-    id: "cultural",
-    label: "Cultural",
-    href: "/cultural",
-    linkLabel: "All cultural tours",
-    picks: firstFour((p) => p.category === "cultural"),
-  },
-].filter((tab) => tab.picks.length > 0);
+const KILI_TRIPS = showcase(
+  ["7-day-machame-route", "8-day-lemosho-route", "6-day-marangu-route", "9-day-northern-circuit"],
+  "kilimanjaro",
+);
+const SAFARI_TRIPS = showcase(
+  [
+    "7-day-great-migration-safari",
+    "3-day-safari-tarangire-manyara-ngorongoro",
+    "5-day-northern-safari",
+    "4-day-balloon-safari-serengeti-ngorongoro",
+  ],
+  "safari",
+);
 
 // Traveller types from Ombeni's welcome note, cycled in the hero.
 const HERO_TRAVELLERS = [
@@ -298,52 +264,33 @@ export default function HomePage() {
 
       <SummitWall />
 
-      {/* ── Trip picks — one switcher across every trip type ─────── */}
-      <section className="contour-bg" style={{ background: "var(--paper)" }}>
-        {/* Wider than the rest of the page so four cards fill large screens */}
-        <div className="max-w-[1680px] mx-auto px-4 md:px-8 py-16 md:py-24">
-          <div className="max-w-3xl mx-auto mb-8 text-center">
-            <p
-              className="text-sm font-semibold tracking-[0.22em] uppercase mb-3"
-              style={{ color: "var(--gold)" }}
-            >
-              Our itineraries
-            </p>
-            <h2
-              className="text-3xl md:text-5xl font-semibold mb-4"
-              style={{ fontFamily: "var(--font-display)", color: "var(--ink)", lineHeight: 1.08 }}
-            >
-              Pick the trip you&rsquo;re dreaming of
-            </h2>
-            <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
-              Summit, safari, honeymoon or beach — switch between trip types
-              below. Every itinerary is a starting point; we shape it around
-              your dates, group and budget.
-            </p>
-          </div>
+      {/* ── Kilimanjaro trips ────────────────────────────────────── */}
+      {/* Western Breach line sourced from Robin Van Rompaey's Google review
+          (full text in the testimonial wall below). */}
+      <TripShowcase
+        id="kilimanjaro-trips"
+        eyebrow="Climb Kilimanjaro"
+        title="Our popular climbs"
+        subtitle="Stand on the roof of Africa at 5,895 m. We’re one of the few operators who’ll run the Western Breach route on request."
+        tripNoun="climb"
+        href="/kilimanjaro"
+        ctaLabel="View all climbs"
+        trips={KILI_TRIPS}
+        background="var(--snow)"
+      />
 
-          <TripTabs
-            tabs={TRIP_TABS.map(({ picks, ...tab }) => ({
-              ...tab,
-              content: (
-                // Flex-wrap + centre so a tab with fewer cards (e.g. Cultural)
-                // stays balanced instead of hugging the left edge.
-                <div key={tab.id} className="flex flex-wrap justify-center gap-6">
-                  {picks.map((pkg, i) => (
-                    <Reveal
-                      key={`${tab.id}-${pkg.slug}`}
-                      delay={i * 110}
-                      className="h-full w-full sm:w-[calc(50%-12px)] xl:w-[calc(25%-18px)]"
-                    >
-                      <PackageCard pkg={pkg} />
-                    </Reveal>
-                  ))}
-                </div>
-              ),
-            }))}
-          />
-        </div>
-      </section>
+      {/* ── Safari trips ──────────────────────────────────────────── */}
+      <TripShowcase
+        id="safari-trips"
+        eyebrow="Go on safari"
+        title="Our popular safaris"
+        subtitle="Lions in the Serengeti, rhino in the crater and the Great Migration on the move — with a guide who knows where the animals are."
+        tripNoun="safari"
+        href="/safaris"
+        ctaLabel="View all safaris"
+        trips={SAFARI_TRIPS}
+        background="var(--paper)"
+      />
 
       {/* ── Testimonials — social proof, right after the trips ─────── */}
       <section className="relative" style={{ background: "var(--canopy)" }}>
