@@ -84,6 +84,12 @@ export const ADD_ONS: Record<string, AddOn> = {
     description: "Fly from the Serengeti to Arusha instead of the long road journey back.",
     unit: "person",
   },
+  "tanzanite-tour": {
+    id: "tanzanite-tour",
+    label: "Tanzanite tour",
+    description: "A half-day in Arusha learning how tanzanite is mined, graded and cut, or a full day at the Mererani mines. Price on request.",
+    unit: "person",
+  },
   "extra-serengeti-night": {
     id: "extra-serengeti-night",
     label: "Extra Serengeti night",
@@ -191,6 +197,7 @@ export const SAFARI_ADDONS = [
   "single-supplement",
   "zanzibar-extension",
   "kilimanjaro-extension",
+  "tanzanite-tour",
 ];
 
 export const ZANZIBAR_ADDONS = [

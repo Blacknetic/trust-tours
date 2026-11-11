@@ -213,6 +213,25 @@ const SAFARI_PANELS: MegaPanel[] = [
     },
   },
   {
+    href: "/safaris?type=gems#safari-results",
+    label: "Gem & Mineral Tours",
+    teaser: "Tanzanite, from the mines to the cutter.",
+    heading: "The only place on Earth where tanzanite is found",
+    body: [
+      "Spend a day at the Mererani mines between Arusha and Kilimanjaro, or a half-day in Arusha watching tanzanite being graded, cut and polished. Tours only, with no pressure to buy.",
+    ],
+    cta: "View gem tours",
+    links: [
+      { href: "/safaris/mererani-tanzanite-mine-tour", label: "Mererani Tanzanite Mine Tour" },
+      { href: "/safaris/tanzanite-experience-arusha", label: "Tanzanite Experience, Arusha" },
+      { href: "/guides/tanzania-gemstones-guide", label: "Tanzania's gemstones" },
+    ],
+    image: {
+      src: "/images/kili-sunrise-hero.jpg",
+      alt: "Kilimanjaro at sunrise above the plains",
+    },
+  },
+  {
     href: "/safaris?type=calving#safari-results",
     label: "Calving Season",
     badge: "December to March",

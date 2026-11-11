@@ -85,6 +85,8 @@ const BY_SAFARI_CATEGORY: Record<SafariCategoryId, string[]> = {
   // stands in rather than a game-drive picture.
   "day-trips": [I("kili-sunrise-hero.jpg")],
   "fly-in": [I("balloon-safari.jpg"), I("aerial-balloon.jpg")],
+  // No gem or mine photos yet: a neutral Kilimanjaro view until Ombeni sends his own.
+  gems: [I("kili-sunrise-hero.jpg")],
   "big-five": [
     I("safari-lion-pride.jpg"),
     I("safari-leopard.jpg"),

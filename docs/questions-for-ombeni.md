@@ -51,6 +51,23 @@ Collected while rebuilding the website from the documents on the D:\mpya flash d
 17. **5-Day with Tarangire.** At $1,255 per person for two, it is only $65 more than the 3-Day ($1,190), but a Tarangire day trip alone is $455. Is $1,255 right?
 18. **Lodge near Momella.** We couldn't find "Mbise Lodge". Which lodge do you mean?
 
+## Gem and mineral tours (new)
+
+29. **Your partner at Mererani.** Do you already run tours to the Mererani tanzanite mines, and with which licensed local partner? The mining area is behind a security wall with one guarded gate.
+30. **Underground visits.** Can foreign visitors go underground, or only watch from viewing areas?
+31. **Prices.** What do you charge per person for the Mererani day tour and the half-day Tanzanite Experience in Arusha? Both show "Price on request" for now.
+32. **Venues.** Which museum and cutting workshop do you use in Arusha?
+33. **Shop stops.** Do you want a dealer visit included? If it earns a commission, the page should say so honestly.
+34. **Photos.** Can you send photos from your own mine visits and workshop visits?
+
+## Kilimanjaro food plan and group climbs (new)
+
+35. **Special diets.** Can your cook provide vegetarian, vegan or halal meals, and handle allergies?
+36. **Testimonials.** The group-climb article quotes "Sarah, 38, UK", "Yuki, 31, Japan" and "Patricia, 57". Are these real guests who agreed to be quoted? Until you confirm, they're not on the site.
+37. **Group deposit.** The article says $150, but the group climbs page says $200. Which is right?
+38. **Group routes.** The article lists Lemosho, Machame and Rongai, but the group climbs page lists Lemosho, Machame, Marangu and the Northern Circuit. Which routes have group departures?
+39. **Success rate.** The Ultimate Guide says your summit success rate is above the industry average. Do you have figures we could publish?
+
 ## Carried over from earlier work
 
 19. **Group prices.** What are the safari prices for 1 person and for groups of 3 to 6?

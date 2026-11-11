@@ -692,7 +692,7 @@ export const guides: Guide[] = [
     topic: "Kilimanjaro",
     excerpt:
       "Everything that actually decides whether you stand on the Roof of Africa — routes, days, fitness, altitude, cost and timing — in one honest read.",
-    updated: "2026-07-26",
+    updated: "2026-11-11",
     readMinutes: 12,
     keyTakeaway:
       "Kilimanjaro is a 5,895 m walk-up — no ropes or technical climbing — but it is a serious high-altitude trek. The people who summit aren't the fittest; they're the ones who give their body enough days to acclimatize, on a well-supported route, in the right season. Get those four things right and the mountain is within reach for most reasonably fit travellers.",
@@ -712,6 +712,16 @@ export const guides: Guide[] = [
           tone: "info",
           text: "There are seven established routes up Kilimanjaro, but most travellers climb one of four: [Machame](/guides/machame-route), [Lemosho](/guides/lemosho-route), [Marangu](/guides/marangu-route) or the [Northern Circuit](/guides/northern-circuit-route). We'll compare them below.",
         },
+      },
+      {
+        heading: "Can you climb Kilimanjaro? The honest answer",
+        paragraphs: [
+          "Yes. It isn't easy, and the altitude is a real challenge, but with the right route, enough days and a good guide, most motivated, reasonably fit people can reach the summit.",
+        ],
+        bullets: [
+          "You don't need: Technical climbing skills, ropes or ice axes, previous high-altitude experience, or an athlete's fitness.",
+          "You do need: About 12 weeks of preparation, the patience to walk slowly, a route long enough to acclimatise and an experienced guide.",
+        ],
       },
       {
         heading: "Five climates in one climb",
@@ -766,14 +776,22 @@ export const guides: Guide[] = [
         heading: "Summit night, honestly",
         paragraphs: [
           "Summit night is the hardest part of the climb and worth understanding before you commit. You'll typically be woken around 11 pm, and set off by headtorch into the cold and dark so that you reach the crater rim around sunrise. It's six or seven hours of slow, steep switchbacks in temperatures that can fall well below freezing, on the least oxygen of the whole trip.",
+          "Be ready for it to be hard. Temperatures are often between -10°C and -20°C, it can be windy, and many climbers have a headache or feel sick. Our guides know the difference between normal discomfort and serious altitude sickness, pace the climb so you keep something in reserve, and will turn a climber around if it isn't safe to go on.",
           "Then the sky lightens, you reach Stella Point on the rim, and a final gentle hour along the crater brings you to Uhuru Peak — the highest point in Africa. After photos, you descend the same day to a lower camp, because the best cure for altitude is to lose height.",
         ],
         diagram: "summit-night",
       },
       {
+        heading: "What you eat on the mountain",
+        paragraphs: [
+          "Our mountain cook prepares three hot meals a day at camp, with soup, plenty of carbohydrates and hot drinks morning and evening. See the full [Kilimanjaro menu](/guides/kilimanjaro-food-menu) from one of our 8-day Lemosho climbs.",
+        ],
+      },
+      {
         heading: "How fit do you need to be?",
         paragraphs: [
           "You don't need to be an athlete, but you should be comfortable hiking for six to eight hours on consecutive days. The best preparation is simply walking — long, hilly day-hikes with a daypack, ideally back-to-back on weekends, in the months before your climb.",
+          "A simple 12-week plan works for most people. In weeks 1 to 4, build your base with 30 to 60 minutes of walking, cycling, jogging or swimming four or five times a week. In weeks 5 to 8, hike with a 5 to 8 kg daypack, use hills or stairs, and add back-to-back hiking days. In weeks 9 to 12, do one long hike of 5 to 8 hours each week at Kilimanjaro's slow, steady pace.",
           "If you can do a full day on the hills, sleep, and get up and do it again without dreading it, you're in good shape for Kilimanjaro. We cover this in detail in our [Kilimanjaro training guide](/guides/kilimanjaro-training-and-fitness), and what to carry is in the [packing list](/guides/kilimanjaro-packing-list).",
         ],
       },
@@ -2265,6 +2283,7 @@ export const guides: Guide[] = [
       },
     ],
     relatedGuides: [
+      "climbing-kilimanjaro-solo",
       "how-much-to-climb-kilimanjaro",
       "best-kilimanjaro-route",
       "machame-vs-lemosho",
@@ -5303,6 +5322,215 @@ export const guides: Guide[] = [
     ],
     relatedGuides: ["paramotoring-tanzania-guide", "is-tanzania-safe", "travel-insurance-tanzania", "tanzania-travel-guide"],
     relatedPackages: ["3-day-paramotoring-arusha-kilimanjaro", "12-day-paramotoring-safari"],
+  },
+
+  {
+    slug: "kilimanjaro-food-menu",
+    title: "Kilimanjaro Food: Our Mountain Menu",
+    topic: "Kilimanjaro",
+    excerpt:
+      "Three hot meals a day, cooked fresh at camp: the full menu from one of our 8-day Lemosho climbs, day by day.",
+    updated: "2026-11-11",
+    readMinutes: 5,
+    keyTakeaway:
+      "On a Trust Tours climb, your mountain cook prepares three fresh meals a day at camp: a hot breakfast, a cooked lunch and a three-course dinner with soup, plus hot drinks morning and evening. The menu is built around carbohydrates and fluids for energy at altitude.",
+    intro:
+      "Eating well is one of the most important things you can do on Kilimanjaro. Appetite often drops at altitude, so the food has to be warm, tasty and easy to eat. Here is the full menu from one of our 8-day Lemosho Route climbs, exactly as our cook served it.",
+    primaryCta: { label: "See the 8-day Lemosho climb", href: "/kilimanjaro/8-day-lemosho-route" },
+    sections: [
+      {
+        heading: "How meals work on the mountain",
+        paragraphs: [
+          "Your mountain cook and the porters carry fresh food up the mountain and cook every meal at camp. Each morning starts with hot water, milk, ginger tea, coffee and hot chocolate. On walking days, lunch is served hot at a rest stop or packed for the trail, and dinner is three courses in the mess tent.",
+          "The menu leans on carbohydrates for energy and on soups and hot drinks to keep you drinking, which matters at altitude. Your guide will encourage you to eat even when you're not hungry.",
+        ],
+      },
+      {
+        heading: "Our 8-day Lemosho menu, day by day",
+        table: {
+          caption: "A sample menu. Dishes change with the route, the season and what's fresh in the market.",
+          headers: ["Day and camp", "Breakfast", "Lunch", "Dinner"],
+          rows: [
+            ["Day 1: Mti Mkubwa Camp", "Fruit, scrambled eggs, sausages, toast and porridge; pancakes", "Leek soup; spaghetti with minced meat, chapati and salad; fruit", "Cucumber soup and popcorn; beans, boiled potatoes and fish fingers; banana fritters and fruit"],
+            ["Day 2: Shira 1 Camp", "Fruit, eggs, sausages, toast and porridge; pancakes", "Cucumber soup; fried chicken, macaroni bolognese, vegetables and salad; fruit", "Tea and nuts; bhajia, rice, beef stew and vegetables; fruit"],
+            ["Day 3: Shira 2 Camp", "Fruit, eggs, sausages and toast; hot chocolate", "Minced meat, mashed potatoes and vegetable sauce; fruit", "Courgette soup and popcorn; fried chicken, Russian salad and spaghetti; biscuits and fruit"],
+            ["Day 4: Barranco Camp", "Porridge, boiled eggs, pancakes and sausages; fruit", "Cucumber soup and bread; beef burgers, vegetable sauce and bhajia; fruit", "Carrot soup and bread; chicken wraps, potato and leek salad and mushroom sauce; fruit"],
+            ["Day 5: Karanga Camp", "Millet porridge, fried eggs, sausages and toast; fruit", "Carrot soup and bread; chicken and chips, chapati and vegetable sauce; fruit", "Pumpkin soup and bread; brown rice with chicken or beef stew; fruit"],
+            ["Day 6: Barafu Camp (summit night)", "Millet porridge, boiled eggs, toast, bhajia and sausages; fruit", "Vegetable pie; French toast, chicken sauce and vegetables; fruit", "An early dinner before the summit: spaghetti with minced meat and vegetable sauce; fruit"],
+            ["Day 7: Summit, then Mweka Camp", "Hot soup, ginger tea, cashew nuts, popcorn, biscuits and chocolate for the climb", "Hot soup and pancakes; fried chicken, bhajia and vegetables; fruit juice", "Hot soup and tea; rice with yellow lentil sauce; fruit"],
+            ["Day 8: Mweka Gate", "Carrot soup and tea; eggs and yellow lentil sauce; fruit and peanuts", "Hot soup and tea; banana stew with beef sauce; fruit", "At your hotel"],
+          ],
+        },
+      },
+      {
+        heading: "Special diets and allergies",
+        paragraphs: [
+          "Tell us about any dietary needs, allergies or foods you don't eat when you book, so our cook can plan and buy for you before the climb. Bring a few favourite snacks from home too: familiar food can be welcome when your appetite dips.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is the food enough for a climb?",
+        answer:
+          "Yes. You get three cooked meals a day plus hot drinks and snacks such as popcorn and nuts. If you'd like more of something, just ask the cook.",
+      },
+      {
+        question: "What happens on summit night?",
+        answer:
+          "You eat an early dinner at Barafu Camp and rest, then have tea and a light snack before setting off around midnight. You carry biscuits, nuts and chocolate for the climb, and eat a hot meal back at camp afterwards.",
+      },
+    ],
+    relatedGuides: ["kilimanjaro-packing-list", "altitude-sickness-on-kilimanjaro", "climbing-kilimanjaro-guide", "lemosho-route"],
+    relatedPackages: ["8-day-lemosho-route", "7-day-machame-route"],
+  },
+
+  {
+    slug: "climbing-kilimanjaro-solo",
+    title: "Kilimanjaro Solo: Join a Group Climb",
+    topic: "Kilimanjaro",
+    excerpt:
+      "No one to climb with? Join one of our group departures. Here's how they work and which months suit you best.",
+    updated: "2026-11-11",
+    readMinutes: 6,
+    keyTakeaway:
+      "You don't need a partner to climb Kilimanjaro. Book a place on one of our group departures and you climb with other solo travellers, couples and small groups, led by our guides, with everything arranged. January to February and September to October bring smaller groups; July and August are the busiest and most sociable.",
+    intro:
+      "Many people put off Kilimanjaro because they have no one to climb with. You don't have to wait. On a group departure, you join other climbers on a set route and date, and by the time you reach the first camp, the group has become your team.",
+    primaryCta: { label: "See our group departures", href: "/kilimanjaro/groups" },
+    sections: [
+      {
+        heading: "How a group departure works",
+        bullets: [
+          "Choose a date and route: Book a place on a scheduled departure that suits you.",
+          "We build the group: You climb with other solo travellers, couples and small groups who booked the same departure.",
+          "Meet the night before: A briefing in Arusha the evening before the climb introduces you to your group and your senior guide.",
+          "Everything arranged: Guides, porters, a cook, tents, food, park fees and transfers are all included.",
+          "One pace: The guides set a steady pace the whole group can keep, because the summit belongs to everyone.",
+        ],
+        callout: { tone: "info", text: "Groups have between 4 and 12 climbers. Larger groups are split into two guide teams." },
+      },
+      {
+        heading: "The best time to join a group",
+        table: {
+          headers: ["Months", "Conditions", "Groups", "Best for"],
+          rows: [
+            ["January and February", "Clear, cold and dry, with good summit views", "Smaller", "Climbers who prefer a small, close group; combine with the calving season on safari"],
+            ["March to May", "The long rains: wet trails and fewer departures", "Fewest", "Flexible climbers. Ask us about dates"],
+            ["June", "The dry season begins; trails firm up", "Moderate", "Peak-season conditions before the busiest months"],
+            ["July and August", "Dry and clear: some of the best summit months", "Largest and most sociable", "Climbers who enjoy meeting lots of people; combine with the river crossings on safari"],
+            ["September and October", "Still dry and clear, with fewer people", "Smaller", "A quieter mountain in excellent conditions"],
+            ["November and December", "Short rains low down, often clear higher up", "Moderate", "An end-of-year challenge, including over the festive season"],
+          ],
+        },
+        callout: { tone: "info", text: "Weather on the mountain changes quickly in every month. These are typical patterns, not forecasts." },
+      },
+      {
+        heading: "Which route?",
+        paragraphs: [
+          "Longer routes give the group more time to acclimatise and to get to know each other before summit night. For most solo climbers, we recommend the 8-day Lemosho or 7-day Machame. See the current routes and dates on our [group departures page](/kilimanjaro/groups), and compare them in our [route guide](/guides/best-kilimanjaro-route).",
+        ],
+      },
+      {
+        heading: "How to join",
+        bullets: [
+          "Tell us your dates: Say when you want to be in Arusha and which route you like.",
+          "Reserve your place: A deposit holds your place, and we send a booking confirmation, a gear list and preparation notes.",
+          "Prepare: We share a training plan, packing list, and visa and health information, and you can message your senior guide with questions.",
+          "Arrive: We pick you up at Kilimanjaro Airport, and the group briefing takes place the evening before you start.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Will I feel left out if others already know each other?",
+        answer:
+          "Rarely. Most groups are mainly solo travellers and couples in the same position as you, and the briefing in Arusha breaks the ice before you start.",
+      },
+      {
+        question: "What if I'm faster or slower than the others?",
+        answer:
+          "The guides set a pace that suits the whole group. If someone needs to go much slower for health reasons, an assistant guide can walk with them.",
+      },
+      {
+        question: "Can I have my own tent?",
+        answer: "Yes. Tents are shared between two climbers by default, and you can ask for a private tent for a supplement.",
+      },
+      {
+        question: "Is there an age limit?",
+        answer:
+          "Our climbers range from their twenties to their sixties and beyond. Fitness and preparation matter more than age. Our Kilimanjaro climbs accept climbers from 12 to 70, subject to fitness and medical advice.",
+      },
+    ],
+    relatedGuides: ["kilimanjaro-group-vs-private", "best-time-to-climb-kilimanjaro", "best-kilimanjaro-route", "kilimanjaro-training-and-fitness"],
+    relatedPackages: ["8-day-lemosho-route", "7-day-machame-route", "6-day-rongai-route"],
+  },
+
+  {
+    slug: "tanzania-gemstones-guide",
+    title: "Tanzania's Gemstones: Tanzanite and More",
+    topic: "Culture & Adventure",
+    excerpt:
+      "Tanzanite is found in only one place on Earth. Here's what makes it special, the other gems Tanzania produces, and how to buy safely.",
+    updated: "2026-11-11",
+    readMinutes: 6,
+    keyTakeaway:
+      "Tanzanite, a blue-violet gem, is mined only in the Merelani hills between Arusha and Kilimanjaro. Tanzania also produces tsavorite and other garnets, tourmaline, spinel, sapphire and ruby. You can visit the tanzanite mining area or watch stones being cut in Arusha. If you buy, use a licensed dealer and keep every receipt and certificate.",
+    intro:
+      "Northern Tanzania is one of the world's great gem regions. Most famous is tanzanite, a stone found nowhere else, but the country's rocks hold many more. Here's a short introduction, and how to see it for yourself.",
+    primaryCta: { label: "See our gem tours", href: "/safaris?type=gems#safari-results" },
+    trustStrip: false,
+    sections: [
+      {
+        heading: "Tanzanite: found in only one place",
+        paragraphs: [
+          "Tanzanite is a blue to violet variety of the mineral zoisite. According to the [Gemological Institute of America](https://www.gia.edu/tanzanite), its only known source is the Merelani hills in northern Tanzania, on the plains between Arusha and Mount Kilimanjaro. It came to the world's attention in 1967.",
+          "Its colour shifts between blue and violet depending on the angle and the light. Most tanzanite is gently heated to bring out the blue, a common and accepted practice; a good seller will tell you whether a stone has been treated.",
+        ],
+      },
+      {
+        heading: "Other gems from Tanzania",
+        bullets: [
+          "Tsavorite: A vivid green garnet, found in Tanzania and neighbouring Kenya.",
+          "Other garnets: Red and pink garnets in many shades, popular in jewellery.",
+          "Tourmaline: Green, pink and multicoloured stones.",
+          "Spinel: Red, pink and blue spinel, increasingly sought after.",
+          "Sapphire and ruby: Including ruby in green zoisite from the Longido area north of Arusha, a striking stone often used for carvings.",
+        ],
+      },
+      {
+        heading: "See it for yourself",
+        paragraphs: [
+          "The mining area at Mererani is about 60 km from Arusha, inside a security wall with a single guarded gate, so visits go through a licensed local partner. On our [Mererani tanzanite mine tour](/safaris/mererani-tanzanite-mine-tour), you see how miners work and watch stones being cut. For something shorter, the [Tanzanite Experience in Arusha](/safaris/tanzanite-experience-arusha) is a half-day museum visit with a cutting demonstration.",
+        ],
+      },
+      {
+        heading: "Buying gems safely",
+        bullets: [
+          "Buy only from licensed dealers, never from people on the street. Fake and glass stones are common.",
+          "Look at stones in daylight and ask whether they have been treated.",
+          "Keep the receipt, any certificate and the export or tax paperwork the dealer gives you.",
+          "Rules on selling and exporting gemstones are set by Tanzania's Ministry of Minerals and can change, so ask the dealer what applies to you.",
+        ],
+        callout: {
+          tone: "info",
+          text: "Trust Tours runs gem tours only. We don't sell gemstones, and there is no pressure to buy on any of our tours.",
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: "Is tanzanite really only found in Tanzania?",
+        answer: "Yes. Its only known source is the Merelani hills in northern Tanzania.",
+      },
+      {
+        question: "Can I visit a tanzanite mine?",
+        answer:
+          "Yes, with a licensed local guide. Our Mererani tour is a full day from Arusha or Moshi. Whether you can go underground depends on the rules and the mine on the day.",
+      },
+    ],
+    relatedGuides: ["tanzania-cultural-tours-guide", "tanzania-travel-guide", "is-tanzania-safe"],
+    relatedPackages: ["mererani-tanzanite-mine-tour", "tanzanite-experience-arusha"],
   },
 ];
 

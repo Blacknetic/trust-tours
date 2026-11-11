@@ -40,6 +40,7 @@ export function climbLinks(slug: string): ClimbLinks {
       guide("how-much-to-climb-kilimanjaro", "What a Kilimanjaro climb really costs"),
       guide("kilimanjaro-group-vs-private", "Group or private climb?"),
       { href: "/kilimanjaro/groups", label: "Join a group departure" },
+      guide("climbing-kilimanjaro-solo", "Climbing solo? Join a group"),
     ],
     itinerary: [
       guide("altitude-sickness-on-kilimanjaro", "Altitude sickness explained"),
@@ -48,6 +49,7 @@ export function climbLinks(slug: string): ClimbLinks {
     ],
     inclusions: [
       guide("kilimanjaro-packing-list", "Kilimanjaro packing list"),
+      guide("kilimanjaro-food-menu", "What you eat on the mountain"),
       guide("travel-insurance-tanzania", "Travel insurance for Tanzania"),
       guide("tipping-in-tanzania", "Tipping your mountain crew"),
     ],

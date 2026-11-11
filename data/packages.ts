@@ -11,6 +11,7 @@ import { ZANZIBAR_PACKAGES } from "@/data/zanzibar";
 import { FLY_IN_PACKAGES } from "@/data/fly-in";
 import { MERU_PACKAGES } from "@/data/meru";
 import { COMBO_PACKAGES } from "@/data/combo";
+import { GEM_PACKAGES } from "@/data/gems";
 import { travelTimeOf } from "@/lib/safari-filter";
 import type { SafariTypeId, TripFacets, ZanzibarAreaId, ZanzibarTypeId } from "@/lib/safari-filter";
 
@@ -195,6 +196,7 @@ export const packages: TripPackage[] = [
   ...FLY_IN_PACKAGES,
   ...MERU_PACKAGES,
   ...COMBO_PACKAGES,
+  ...GEM_PACKAGES,
 
   // ─────────────────────────────────────────────────────────────────
   // SAFARIS — longer migration trips & multi-region combos (Wave 3).
@@ -3176,6 +3178,7 @@ export type SafariCategoryId =
   | "migration"
   | "day-trips"
   | "fly-in"
+  | "gems"
   | "honeymoon"
   | "cultural"
   | "paramotoring";
@@ -3218,6 +3221,7 @@ export const safariCategoryOf = (p: TripPackage): SafariCategoryId | null => {
   // their /trekking pages but are listed with the other day trips.
   if (p.tags?.includes("day-trip")) return "day-trips";
   if (p.tags?.includes("fly-in")) return "fly-in";
+  if (p.tags?.includes("gem-tour")) return "gems";
   if (p.category === "cultural") return "cultural";
   if (p.category === "paramotoring") return "paramotoring";
   if (p.category === "safari") {
@@ -3308,6 +3312,14 @@ export const SAFARI_CATEGORIES: SafariCategoryMeta[] = [
     tagline: "Tarangire · Ngorongoro · Arusha National Park · Kilimanjaro",
     blurb:
       "One and two-day trips from Arusha and Moshi: a day with Tarangire's elephants or in the Ngorongoro Crater, a walking safari, a swim at Chemka or a hike on Kilimanjaro.",
+  },
+  {
+    id: "gems",
+    label: "Gem & Mineral Tours",
+    href: "/safaris?type=gems#safari-results",
+    tagline: "Tanzanite · Mererani · Arusha",
+    blurb:
+      "Visit the only place on Earth where tanzanite is mined, or spend a half-day in Arusha learning how the stone is graded, cut and polished. Tours only, with no pressure to buy.",
   },
   {
     id: "fly-in",

@@ -21,6 +21,7 @@ export const SAFARI_TYPES = [
   { id: "calving", label: "Calving season" },
   { id: "day-trips", label: "Day trips" },
   { id: "fly-in", label: "Fly-in safari" },
+  { id: "gems", label: "Gem & mineral tours" },
   { id: "zanzibar", label: "Safari + Zanzibar" },
   { id: "honeymoon", label: "Honeymoon" },
   { id: "family", label: "Family-friendly" },
