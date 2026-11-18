@@ -12,6 +12,7 @@ import { FLY_IN_PACKAGES } from "@/data/fly-in";
 import { MERU_PACKAGES } from "@/data/meru";
 import { COMBO_PACKAGES } from "@/data/combo";
 import { GEM_PACKAGES } from "@/data/gems";
+import { withComfortLevels } from "@/data/safaris/older";
 import { travelTimeOf } from "@/lib/safari-filter";
 import type { SafariTypeId, TripFacets, ZanzibarAreaId, ZanzibarTypeId } from "@/lib/safari-filter";
 
@@ -184,7 +185,7 @@ export const CATEGORY_PATH: Record<TripPackage["category"], string> = {
 export const packagePath = (pkg: TripPackage): string =>
   `/${CATEGORY_PATH[pkg.category]}/${pkg.slug}`;
 
-export const packages: TripPackage[] = [
+export const packages: TripPackage[] = withComfortLevels([
   // Kilimanjaro climbs live in data/kilimanjaro.ts (rebuilt from Ombeni's 2027–2028 docs).
   ...KILIMANJARO_PACKAGES,
   // Safaris rebuilt from Ombeni's documents live in data/safaris.
@@ -3151,7 +3152,7 @@ export const packages: TripPackage[] = [
     ],
     bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Dec", "Jan", "Feb"],
   },
-];
+]);
 
 export const getPackage = (slug: string) =>
   packages.find((p) => p.slug === slug);

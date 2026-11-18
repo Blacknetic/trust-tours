@@ -4366,72 +4366,222 @@ export const guides: Guide[] = [
 
   {
     slug: "tipping-in-tanzania",
-    title: "Tipping in Tanzania: Safari & Kilimanjaro",
+    title: "Tipping in Tanzania: Safari & Climbs",
     topic: "Planning",
     excerpt:
-      "Who to tip, roughly how much, and how it works — so you can budget for it and avoid awkwardness.",
-    updated: "2026-06-20",
-    readMinutes: 6,
+      "How much to tip Kilimanjaro guides, porters and cooks, safari guides, drivers and lodge staff, with worked examples and budgeting advice.",
+    updated: "2026-11-18",
+    readMinutes: 10,
     keyTakeaway:
-      "Tipping is customary and genuinely important in Tanzania, especially for safari guides and Kilimanjaro crews, for whom tips are a meaningful part of their income. It's not included in your trip price, so budget for it separately. We give every traveller clear, fair guidance on amounts before they go.",
+      "Tipping is customary in Tanzania's tourism industry, but it is voluntary and not included in your tour price. On Kilimanjaro, the climbing group as a whole contributes a daily amount for each crew member: about US$20–25 for the lead guide, US$15–20 for an assistant guide, US$12–15 for the cook and US$8–10 for each porter. On a private safari, many travellers budget US$15–25 per guest per day for their driver-guide, plus a little for lodge staff.",
     intro:
-      "Tipping can feel awkward when you don't know the norms — too little feels mean, too much feels naive. In Tanzania, tips are a customary and significant part of how guides and mountain crews earn, so it's worth understanding before you travel. Here's a practical, no-stress guide.",
-    primaryCta: { label: "Plan your trip with us", href: "/about" },
-    inlineCtaAfter: 1,
+      "When planning a trip to Tanzania, it is important to budget not only for accommodation, park fees, meals and transport, but also for tips. Tipping is a customary way to recognise the hard work and personal service of the people who make your holiday memorable. This guide explains how tipping works, how much to budget, when to give tips and how to share them fairly. The amounts are guidelines, not compulsory charges: the right figure depends on the service you receive, your group size, the length of your trip and your budget.",
+    primaryCta: { label: "Plan your trip with us", href: "/contact" },
+    inlineCtaAfter: 2,
     sections: [
       {
-        heading: "Why tipping matters here",
+        heading: "Is tipping expected in Tanzania?",
         paragraphs: [
-          "For safari guides and especially Kilimanjaro porters, guides and cooks, tips are an expected and important supplement to their wages — a real recognition of hard work that genuinely matters to the people who make your trip special. It's customary, not optional, and budgeting for it is part of planning your trip properly.",
+          "Tipping is customary in Tanzania's tourism industry, particularly on Mount Kilimanjaro and during wildlife safaris. On a climb, a large team works behind the scenes to prepare meals, carry equipment, organise camps and support climbers. On safari, your driver-guide spends long hours driving through the parks, locating wildlife and explaining animal behaviour.",
+          "Tips should not be confused with park fees, service charges or the price of your tour package. They are voluntary and should reflect the quality of service, your satisfaction and what you can comfortably afford. The best way to prepare is to include a separate tipping allowance in your travel budget before you leave home.",
         ],
         callout: {
           tone: "info",
-          text: "Tips are not included in your trip price. Set the money aside in advance — ideally in clean US dollars or Tanzanian shillings — so it's ready at the end.",
+          text: "Tips are not included in our tour prices unless your written quotation says so.",
         },
       },
       {
-        heading: "How it works on Kilimanjaro",
+        heading: "How much should you tip on Mount Kilimanjaro?",
         paragraphs: [
-          "On the mountain you tip the whole crew — guides, assistant guides, cooks and porters — usually pooled and handed over at a small ceremony on the last day. Because crews are large, the total adds up, so it's best thought of as a per-day, per-crew budget. We'll give you a clear recommended range based on your specific climb and crew size before you go.",
+          "On Kilimanjaro, tips are calculated for each crew member per trekking day and contributed by the climbing group as a whole. The daily amounts below are not amounts that every individual climber pays to every crew member.",
+        ],
+        table: {
+          caption: "Suggested Kilimanjaro crew tips, per day, from the whole group",
+          headers: ["Mountain crew member", "Suggested tip per day"],
+          rows: [
+            ["Lead mountain guide", "US$20–25+"],
+            ["Assistant guide", "US$15–20+"],
+            ["Cook", "US$12–15+"],
+            ["Each porter", "US$8–10+"],
+            ["Specialised support crew", "An appropriate amount for their responsibilities"],
+          ],
+        },
+      },
+      {
+        heading: "Why does the mountain crew receive tips?",
+        paragraphs: [
+          "Climbing Mount Kilimanjaro is a team effort. Your lead guide manages the trek, monitors conditions and makes decisions with your safety in mind. Assistant guides support the group and help climbers who need a slower pace. Cooks prepare meals in challenging mountain conditions, while porters carry supplies and equipment between camps.",
+          "Many crew members start work long before climbers leave camp and continue after the day's walking is done. Tipping recognises this collective effort, but it should be additional to fair wages and suitable working conditions, not a substitute for them.",
         ],
       },
       {
-        heading: "How it works on safari",
+        heading: "Example: tips for a seven-day climb",
         paragraphs: [
-          "On safari you typically tip your driver-guide (the person who makes or breaks the experience) and leave something for camp or lodge staff. A daily guideline per guest is the easiest way to think about it. Again, we'll suggest fair figures so there's no guesswork.",
+          "Consider an illustrative group of two climbers on a seven-day route, supported by a lead guide, an assistant guide, a cook and eight porters.",
         ],
+        table: {
+          caption: "Suggested daily tip pool for the whole crew",
+          headers: ["Crew member", "Calculation", "Group tip per day"],
+          rows: [
+            ["Lead guide", "1 × US$25", "US$25"],
+            ["Assistant guide", "1 × US$18", "US$18"],
+            ["Cook", "1 × US$14", "US$14"],
+            ["Porters", "8 × US$10", "US$80"],
+            ["Total", "", "US$137 per day"],
+          ],
+          highlightCol: 2,
+        },
+        callout: {
+          tone: "tip",
+          text: "Over seven days that is about US$959 for the whole crew, or roughly US$480 per climber when two climbers share it. This is an example, not a fixed quote: crew numbers vary with the route and group size, so ask us to confirm your crew and tipping arrangements when you plan your climb.",
+        },
       },
       {
-        heading: "Other situations",
+        heading: "When should you give tips on Kilimanjaro?",
+        paragraphs: [
+          "Tips are usually organised near the end of the climb, often at a final crew gathering or tipping ceremony, which is a chance to thank the team and recognise each person's contribution.",
+          "Before the climb begins, ask your guide or tour coordinator to explain the tipping procedure: who is in the crew, how the amount is calculated and how it is distributed. Tips may be given individually or through a clearly explained group arrangement.",
+          "A summit attempt is never guaranteed. Weather, altitude symptoms and safety decisions can mean turning back before the top, yet the crew will still have worked hard for you, so base your tip on the service provided rather than summit success alone.",
+        ],
+        callout: {
+          tone: "warning",
+          text: "There are no ATMs on the mountain. Prepare your tipping cash before the climb and keep it separate from your everyday spending money.",
+        },
+      },
+      {
+        heading: "How much should you tip on a Tanzania safari?",
+        paragraphs: [
+          "Safari tipping is usually simpler, because most private safaris have one main driver-guide who stays with you throughout. As a budgeting guideline:",
+        ],
+        table: {
+          caption: "Suggested safari tips",
+          headers: ["Safari service", "Suggested tipping guideline"],
+          rows: [
+            ["Private safari driver-guide", "US$15–25+ per guest per day"],
+            ["Shared safari guide", "About US$10–20+ per guest per day"],
+            ["Airport or hotel transfer driver", "About US$3–10+ per transfer"],
+            ["Lodge or tented-camp staff", "About US$5–15+ per guest per day, where appropriate"],
+            ["Hotel luggage porter", "A small amount per bag"],
+          ],
+        },
         bullets: [
-          "Restaurants — rounding up or roughly 10% is appreciated where service isn't included",
-          "Hotel porters and housekeeping — a small note is kind",
-          "Zanzibar drivers and excursion guides — a modest tip for good service",
-          "Carry small denominations to make tipping easy",
+          "For two guests on a private safari, US$15–25 each per day means US$30–50 a day for the guide.",
+          "Over a five-day safari, that is about US$150–250 for the guide.",
+          "For a larger group, decide an amount per guest that reflects the service and your budget.",
+        ],
+      },
+      {
+        heading: "What if the safari is all-inclusive?",
+        paragraphs: [
+          "An all-inclusive package may cover park fees, accommodation, meals, transport, fuel and guiding, but all-inclusive does not automatically mean that tips are included. Read your quotation carefully, and if gratuities are not listed as included, plan for them as an extra expense.",
+        ],
+      },
+      {
+        heading: "Who should you tip during a safari?",
+        paragraphs: [
+          "Your safari driver-guide has the greatest influence on your daily experience: starting early, driving challenging terrain, spotting animals, keeping safe viewing distances and adjusting plans when conditions change. Give your tip directly at the end of the safari with a sincere thank-you.",
+          "Lodge and tented-camp staff prepare rooms, serve meals and look after shared areas. Many properties have a communal tip box that shares appreciation among employees you may never meet; ask the lodge or your guide how theirs works.",
+          "Airport and transfer drivers appreciate a small tip for helpful, punctual service, though it is a personal choice. For a walking safari, canoe excursion or other specialist activity, you may wish to tip the activity guide separately, after checking whether a gratuity is already included.",
+        ],
+      },
+      {
+        heading: "How much should you budget for a complete trip?",
+        paragraphs: [
+          "Combining a Kilimanjaro climb with a safari? Budget separately for the mountain crew and the safari guide, and do the same for any Zanzibar extension. An illustrative example for one traveller:",
+        ],
+        table: {
+          caption: "Example tipping budget for one traveller",
+          headers: ["Trip component", "Example allowance"],
+          rows: [
+            ["Seven-day Kilimanjaro climb", "About US$480, from the example above"],
+            ["Five-day safari guide", "US$75–125"],
+            ["Five days of lodge staff tips at US$5–15 a day", "US$25–75"],
+            ["Airport or hotel transfers", "US$5–20"],
+            ["Illustrative total", "About US$585–700"],
+          ],
+          highlightCol: 1,
+        },
+        callout: {
+          tone: "info",
+          text: "This helps you plan; it is not a prediction. The mountain figure assumes a two-person group with eight porters. Families and groups should calculate the shared crew pool first, then divide it; for safaris, check whether a suggestion is per guest or per vehicle.",
+        },
+      },
+      {
+        heading: "What currency should you use?",
+        paragraphs: [
+          "US dollars are commonly used for tips on climbs and safaris, and Tanzanian shillings are useful for smaller services. Carry clean, undamaged dollar notes in small denominations so you can prepare individual amounts without needing change. Not every provider accepts foreign currency or offers a good rate, so if in doubt, ask your guide which currency suits best.",
+        ],
+      },
+      {
+        heading: "Is tipping mandatory in Tanzania?",
+        paragraphs: [
+          "No. Tipping is customary but voluntary, and you should never feel obliged to give more than you can afford. If your experience was exceptional, you may choose to give more than the lower end of a range.",
+          "If you have concerns about the service, discuss them with your tour consultant or the relevant manager; feedback helps us resolve problems and improve. Responsible tourism also means tipping should never replace fair wages, safe working conditions or respectful treatment of tourism staff.",
+        ],
+      },
+      {
+        heading: "Practical tipping advice before you travel",
+        bullets: [
+          "Plan ahead: add a realistic tipping allowance to your budget alongside your tour price, flights and insurance.",
+          "Confirm the procedure: before a climb, ask for the crew list and how tips are distributed; before a safari, check whether amounts are per guest or per vehicle.",
+          "Carry suitable cash: small, clean notes kept somewhere secure. Don't rely on cards for tips in remote areas.",
+          "Recognise the whole team: cooks, porters and camp staff contribute as much as the guides you see most.",
+          "Keep it voluntary: choose an amount that feels fair and affordable; a guideline is not a charge.",
+          "Ask respectfully: if you're unsure of a local custom, ask your guide or tour consultant before the activity begins.",
         ],
       },
     ],
     faqs: [
       {
-        question: "How much should I tip on Kilimanjaro?",
+        question: "How much should I tip a Kilimanjaro guide?",
         answer:
-          "Tips are usually budgeted per day and shared among the whole crew, so the total depends on the length of your climb and crew size. Rather than quote a figure that may be out of date, we give every climber a clear, fair recommended range before departure.",
+          "A practical guideline is about US$20–25 per trekking day for the lead guide, contributed by the whole climbing group rather than by each climber.",
       },
       {
-        question: "Is tipping expected in Tanzania?",
+        question: "How much should I tip a Kilimanjaro porter?",
         answer:
-          "Yes. Tipping safari guides and Kilimanjaro crews is customary and an important part of their income. It's separate from your trip price, so budget for it in advance.",
+          "About US$8–10 per porter per day, contributed by the group. The number of porters and the length of the climb set the final total.",
       },
       {
-        question: "What currency should I tip in?",
+        question: "How much should I tip a safari guide in Tanzania?",
         answer:
-          "US dollars (in clean, newer notes) or Tanzanian shillings are both fine. Bring a range of small denominations so you can tip easily and accurately.",
+          "For a private safari, many travellers budget about US$15–25 per guest per day for the driver-guide. It is discretionary and varies with group size, service and budget.",
+      },
+      {
+        question: "Should I tip the safari guide every day?",
+        answer:
+          "Most guests find it simpler to tip their driver-guide at the end of the safari, so they can consider the whole trip and hand it over in person.",
+      },
+      {
+        question: "Are tips included in a Tanzania safari package?",
+        answer:
+          "Not necessarily. Park fees, accommodation, meals and guiding may be included while gratuities stay separate. Check your written quotation.",
+      },
+      {
+        question: "Should I tip hotel and camp staff separately?",
+        answer:
+          "Use the communal staff tip box if the property has one, or follow its stated procedure, so tips reach everyone who contributes to your stay.",
+      },
+      {
+        question: "What if I cannot afford the suggested amount?",
+        answer:
+          "Tipping is voluntary. Give what you can comfortably afford and say thank you sincerely; respectful feedback also recognises good service.",
+      },
+      {
+        question: "Should I tip if I do not reach the Kilimanjaro summit?",
+        answer:
+          "Summit success is never guaranteed, and turning back is sometimes the safe decision. Base your tip on the crew's effort and support rather than the summit alone.",
+      },
+      {
+        question: "Can I tip in Tanzanian shillings?",
+        answer:
+          "Yes. Shillings are convenient, and US dollars are also widely used in tourism, as long as the notes are clean and undamaged.",
       },
     ],
     relatedGuides: [
-      "how-to-choose-tour-operator",
       "how-much-to-climb-kilimanjaro",
       "how-much-tanzania-safari-cost",
+      "kilimanjaro-packing-list",
       "tanzania-travel-guide",
     ],
     relatedPackages: ["7-day-machame-route", "5-day-northern-safari", "7-day-great-migration-safari"],

@@ -87,3 +87,9 @@ Collected while rebuilding the website from the documents on the D:\mpya flash d
     - Is $910 right for the 2-Day Ol Doinyo Lengai climb?
 27. **The "scheduled" 5-Day Ndutu safari.** It is described as scheduled, which conflicts with "all our trips are tailor-made". Which is right?
 28. **Family-friendly trips.** Which other trips should carry the family-friendly label?
+
+## Comfort levels, tipping and gem prices (new, 2026-11-18)
+
+29. **Prices that used to say "on request".** The older safaris now have the same four comfort levels as the rest (as on Kilimanjaro Wings). Where you hadn't given prices, they use the standard daily rates (Mid-range $455, Luxury $755, High-end luxury $1,300, Ultra-premium $2,300 per person per day): the 10-day Kenya safari (from $4,550), the 10-day calving safari (from $4,550), the 7-day ultimate honeymoon (from $3,185) and the 5- and 8-day cultural tours (from $2,275 and $3,640). Please confirm, especially Kenya and the cultural tours. Your own prices were kept everywhere you gave one, and the two paramotoring trips stay on request.
+30. **Tips on Kilimanjaro and Mount Meru.** The tipping guide suggests, per day from the whole group: lead guide $20–25, assistant $15–20, cook $12–15, each porter $8–10. The Mount Meru pages say about $30 a day for the guide, $20 for the cook and $10 per porter. Should Meru use the same figures?
+31. **Deposit and payment dates.** The new booking terms on every trip show the USD 200 Kilimanjaro deposit; please send the deposit percentage and balance due date for safaris and beach holidays so they can be added.

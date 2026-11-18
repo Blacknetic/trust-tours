@@ -63,7 +63,7 @@ export function RichList({
 export function DataTable({ table }: { table: ContentTable }) {
   return (
     <figure className="my-6 overflow-x-auto">
-      <table className="w-full border-collapse text-base min-w-[30rem]">
+      <table className={`w-full border-collapse text-base ${table.headers.length > 2 ? "min-w-[30rem]" : ""}`}>
         <thead>
           <tr>
             {table.headers.map((h) => (

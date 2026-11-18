@@ -7,6 +7,8 @@ import FAQAccordion from "@/components/FAQAccordion";
 import MobileCTABar from "@/components/MobileCTABar";
 import ElevationJourney from "@/components/ElevationJourney";
 import BookingCard from "@/components/BookingCard";
+import BookingTerms from "@/components/BookingTerms";
+import GemPriceGuide from "@/components/GemPriceGuide";
 import CTABand from "@/components/CTABand";
 import GuideStrip from "@/components/GuideStrip";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
@@ -154,6 +156,7 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
     { id: "itinerary", label: "Itinerary" },
     levels && stayChoices.length > 0 && { id: "stays", label: "Where you'll sleep" },
     hasInclusions && { id: "included", label: "What's included" },
+    { id: "terms", label: "Terms" },
     pkg.sections?.length && { id: "details", label: "Good to know" },
     pkg.faqs.length > 0 && { id: "faq", label: "FAQ" },
     isClimb && { id: "compare", label: "Other climbs" },
@@ -381,6 +384,8 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
 
             {levels && stayChoices.length > 0 && <StayChooser levels={levels} border={BORDER} />}
 
+            {pkg.tags?.includes("gem-tour") && <GemPriceGuide border={BORDER} />}
+
             {/* Included / Excluded */}
             {hasInclusions && (
               <section id="included" className="py-10 border-b space-y-10 scroll-mt-24" style={{ borderColor: BORDER }}>
@@ -409,6 +414,8 @@ export default function PackagePageView({ pkg }: { pkg: TripPackage }) {
                 {links && <ReadNext links={links.inclusions} title="Before you pack" />}
               </section>
             )}
+
+            <BookingTerms pkg={pkg} border={BORDER} />
 
             {pkg.sections && pkg.sections.length > 0 && (
               <div id="details" className="scroll-mt-24">

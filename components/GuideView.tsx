@@ -5,6 +5,7 @@ import { getPackage } from "@/data/packages";
 import Photo from "@/components/Photo";
 import PackageCard from "@/components/PackageCard";
 import FAQAccordion from "@/components/FAQAccordion";
+import GemPriceGuide from "@/components/GemPriceGuide";
 import CTABand from "@/components/CTABand";
 import GuideJsonLd from "@/components/GuideJsonLd";
 import GuideDiagram from "@/components/GuideDiagram";
@@ -341,6 +342,8 @@ export default function GuideView({ guide }: { guide: Guide }) {
             )}
           </div>
         ))}
+
+        {guide.slug === "tanzania-gemstones-guide" && <GemPriceGuide compact />}
 
         {/* FAQs */}
         {guide.faqs && guide.faqs.length > 0 && (

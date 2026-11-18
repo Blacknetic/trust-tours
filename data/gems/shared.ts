@@ -1,7 +1,8 @@
-// Gem and mineral tours. Ombeni asked for a minerals section with tours only:
-// nothing is sold on the site, and no gemstone prices are shown. His gem
-// company's price lists stay off the website. Tour prices are on request until
-// he sends them.
+// Gem and mineral tours. Tours only: nothing is sold on the site. Since
+// 2026-11-18 (approved by Ombeni) the tour pages and the gemstones guide show an
+// indicative gemstone price guide for buyers (data/gem-prices.ts,
+// components/GemPriceGuide.tsx), without his gem company's name, contacts or
+// per-kg/per-ton mineral lists. Tour prices are on request until he sends them.
 
 import { CONTACT_BULLETS } from "@/data/kilimanjaro/shared";
 import type { ClimbLinks, LinkItem } from "@/data/kilimanjaro/links";
